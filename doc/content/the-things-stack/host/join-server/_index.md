@@ -25,12 +25,13 @@ The Things Join Server operated by The Things Industries is configured in {{% tt
 If you have provisioner access to deployment of The Things Join Server, use the [Command-line Interface `ttjs`](https://www.npmjs.com/package/ttjs-cli) to provision devices in bulk.
 
 When it comes to using JoinEUIs for provisioning devices on The Things Join Server, there are two cases:
+
 - If you are using The Things Join Server hosted by The Things Industries and you don't have your own EUI, you are free to use `70B3D57ED0000000`. On the other hand, if you do have your own EUI that you want to use, you need to [contact The Things Industries support](mailto:support@thethingsindustries.com) for assistance.
 - If you are using an externally hosted The Things Join Server, you must acquire your JoinEUI via IEEE.
 
 ## Device Claiming
 
-The Things Join Server supports LoRaWAN Backend Interfaces 1.0 and 1.1 as well as device claiming. [Learn more about device claiming]({{< ref "/devices/device-claiming" >}}).
+The Things Join Server supports LoRaWAN Backend Interfaces 1.0 and 1.1 as well as device claiming. [Learn more about device claiming]({{< ref "/devices/concepts/device-claiming" >}}).
 
 ## Security Features
 

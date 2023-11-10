@@ -1,7 +1,8 @@
 ---
 title: "Device Claiming"
 description: ""
---- 
+aliases: ["/devices/device-claiming"]
+---
 
 Device claiming is a mechanism that securely transfers ownership from the device maker to the device owner without transferring LoRaWAN® root keys. This section provides an overview to resources for device makers and device owners.
 

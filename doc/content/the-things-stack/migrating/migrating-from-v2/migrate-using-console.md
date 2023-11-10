@@ -19,7 +19,7 @@ The first step is to add your end device in {{% tts %}}. See [Adding Devices]({{
 
 There are two ways to add devices in {{% tts %}} Console - **Manually** and via the **LoRaWAN Device Repository**.
 
-Configuring settings for end devices depends on their type - OTAA or ABP. We strongly recommend using OTAA over ABP. Read [why using OTAA is better than ABP]({{< ref "/devices/abp-vs-otaa" >}}).
+Configuring settings for end devices depends on their type - OTAA or ABP. We strongly recommend using OTAA over ABP. Read [why using OTAA is better than ABP]({{< ref "/devices/concepts/abp-vs-otaa" >}}).
 
 {{< tabs/container "OTAA" "ABP" >}}
 
@@ -66,7 +66,7 @@ The **DevAddr** and **RX1 Delay** values depend on your specific use case.
 
 If you want your end device traffic to be routed via Packet Broker to {{% tts %}}, [Packet Broker Requirements for End Device Migration]({{< ref "/the-things-stack/migrating/migrating-from-v2/packet-broker-requirements" >}}) need to be fulfilled. If you are migrating from **The Things Industries {{% ttnv2 %}}** to **{{% tts %}} Cloud**, you might be able to keep the existing **DevAddr** (please contact [The Things Industries support](mailto:support@thethingsindustries.com)). If the existing **DevAddr** is not routable by the Packet Broker (i.e. you are not migrating from **The Things Industries V2** to **The Things Stack Cloud**), you will need to auto-generate new **DevAddr** during device registration on {{% tts %}}, then re-program the device to assign it with the new **DevAddr**. Note that in both of these cases, you will have to adjust your device's **RX1 Delay** to 5 seconds using MAC commands, otherwise your device's traffic might not reach {{% tts %}} in time.
 
-Re-programming the ABP device to change **DevAddr** to the one issued by {{% tts %}} and **RX1 Delay** to 5 seconds is **recommended**. Re-programming the ABP device to do this might also be a good time to reconsider switching it to OTAA by flashing the firmware and adopting some [best practices]({{< ref "/devices/concepts/best-practices" >}}). [Check why using OTAA is recommended]({{< ref "/devices/abp-vs-otaa" >}}).
+Re-programming the ABP device to change **DevAddr** to the one issued by {{% tts %}} and **RX1 Delay** to 5 seconds is **recommended**. Re-programming the ABP device to do this might also be a good time to reconsider switching it to OTAA by flashing the firmware and adopting some [best practices]({{< ref "/devices/concepts/best-practices" >}}). [Check why using OTAA is recommended]({{< ref "/devices/concepts/abp-vs-otaa" >}}).
 
 If you do not want your traffic to be routed by the Packet Broker, i.e. you want to migrate your gateway to {{% tts %}} too, you do not have to re-program your device. You can keep the existing **DevAddr** and **RX1 Delay** of 1 second, and use these values when adding the device to {{% tts %}}. Be aware that if you are using a high-latency backhaul, keeping the **RX1 Delay** of 1 second still might cause latency issues, even if you migrate your gateway.
 

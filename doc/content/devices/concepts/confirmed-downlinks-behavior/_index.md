@@ -1,7 +1,7 @@
 ---
 title: "Confirmed Downlinks Behavior"
 description: ""
-weight: 8
+aliases: ["/devices/confirmed-downlinks-behavior"]
 ---
 
 This section describes differences in behavior of class A, B and C devices when scheduling confirmed downlink messages.
@@ -12,9 +12,9 @@ Let's consider scheduling a confirmed downlink message from the Network Server. 
 
 To confirm a reception of the above mentioned downlink, a confirmation flag is attached to device's next uplink message. The confirmation flag is part of the standard LoRaWAN® frame header. If the flag is an NACK, the end device indicates that it has not previously received a downlink message that required acknowledgement. If the flag is a ACK, the end device indicates that it wants to provide the acknowledgement for the previously received downlink message that requested it. This applies to all [device classes](https://www.thethingsnetwork.org/docs/lorawan/classes/).
 
-In general, upon receiving the next uplink message with an ACK flag, the Network Server decrypts the uplink message and generates the `downlink ack` message. The Application Server receives the `downlink ack` message and  forwards it further to the integrations.
+In general, upon receiving the next uplink message with an ACK flag, the Network Server decrypts the uplink message and generates the `downlink ack` message. The Application Server receives the `downlink ack` message and forwards it further to the integrations.
 
-Similar to that, if the next uplink message with a NACK flag is received, the Network Server decrypts the uplink, generates the `downlink nack` message and sends it to the Application Server. The Application Server then forwards the `downlink nack` to integrations and regenerates the downlink. 
+Similar to that, if the next uplink message with a NACK flag is received, the Network Server decrypts the uplink, generates the `downlink nack` message and sends it to the Application Server. The Application Server then forwards the `downlink nack` to integrations and regenerates the downlink.
 
 Sending a downlink happens only after an uplink for class A devices. If a NACK is received from a class A device, the downlink will automatically be re-encrypted and resent.
 

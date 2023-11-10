@@ -1,7 +1,7 @@
 ---
 title: "The Things Uno"
 description: ""
-weight: 
+weight:
 ---
 
 {{< figure src="TheThingsUno.png" alt="The Things Uno" class="float plain" >}}
@@ -10,7 +10,7 @@ This section will help you get started with using The Things Uno on {{% tts %}}.
 
 <!--more-->
 
-**The Things Uno** is based on the [Arduino Leonardo](https://store.arduino.cc/usa/leonardo) (not the Arduino Uno) with an added Microchip LoRaWAN® module ([RN2483](https://www.microchip.com/wwwproducts/en/RN2483) or [RN2903](https://www.microchip.com/wwwproducts/en/RN2903)). 
+**The Things Uno** is based on the [Arduino Leonardo](https://store.arduino.cc/usa/leonardo) (not the Arduino Uno) with an added Microchip LoRaWAN® module ([RN2483](https://www.microchip.com/wwwproducts/en/RN2483) or [RN2903](https://www.microchip.com/wwwproducts/en/RN2903)).
 
 The Things Uno is fully compatible with the Arduino software also known as the Arduino Integrated Development Environment (IDE) and the existing Arduino shields.
 
@@ -30,7 +30,7 @@ In the **Library Manager** window, search for `TheThingsNetwork` Arduino library
 
 ## Connecting Things Uno to your Computer
 
-To begin, connect your Things Uno to the computer using a micro-USB cable. 
+To begin, connect your Things Uno to the computer using a micro-USB cable.
 
 In the Arduino IDE, select **Tools &#8594; Board &#8594; Arduino Leonardo** from the menu bar. This will tell your Arduino IDE to upload sketches to your Things Uno board.
 
@@ -68,7 +68,7 @@ Select **Sketch &#8594; Include Library &#8594; The Things Network** from the me
 #include <TheThingsNetwork.h>
 ```
 
-This will import **The Things Network** Arduino library to your sketch and provide you with some useful functions to work with LoRaWAN. 
+This will import **The Things Network** Arduino library to your sketch and provide you with some useful functions to work with LoRaWAN.
 
 Type the following lines to create two serial port objects for **Serial** and **Serial1**.
 
@@ -76,7 +76,7 @@ Type the following lines to create two serial port objects for **Serial** and **
 #define loraSerial Serial1
 #define debugSerial Serial
 ```
- 
+
 The **Serial** object allows communication between **The Things Uno** and your **computer**. Also, the **Serial1** object allows communication between **The Things Uno** and the **Microchip LoRa module**.
 
 Type the following line to define the frequency plan of your Things Uno. Replace `REPLACE_ME` with `TTN_FP_EU868` or `TTN_FP_US915` depending on the frequency plan of your Things Uno and your country/region.
@@ -96,7 +96,6 @@ TheThingsNetwork ttn(loraSerial, debugSerial, freqPlan);
 
 This will create a `TheThingsNetwork` object named `ttn` with `loraSerial`, `debugSerial`, and `freqPlan` as inputs.
 
-
 Type the following lines inside the `setup()` function.
 
 ```
@@ -104,10 +103,9 @@ debugSerial.begin(9600);
 loraSerial.begin(57600);
 ```
 
-This will call the `begin()` function for each serial port object to set the baud rate for serial data transmission. Use `9600` and `57600` bits per second for `debugSerial` and `loraSerial` respectively. 
+This will call the `begin()` function for each serial port object to set the baud rate for serial data transmission. Use `9600` and `57600` bits per second for `debugSerial` and `loraSerial` respectively.
 
-
-Type the following lines just after the `loraSerial.begin(57600);`. 
+Type the following lines just after the `loraSerial.begin(57600);`.
 
 ```
 while (!debugSerial) {
@@ -126,23 +124,23 @@ ttn.showStatus();
 
 The `showStatus()` function retrieves some useful device-specific information from the Microchip LoRa module and prints them on the **Serial Monitor**.
 
-After editing your sketch, **save** it as `TheThingsUnoTest` by selecting **File &#8594; Save As** from the menu bar. 
+After editing your sketch, **save** it as `TheThingsUnoTest` by selecting **File &#8594; Save As** from the menu bar.
 
 Once completed your Arduino sketch should look something like this:
 
-***TheThingsUnoTest.ino***
+**_TheThingsUnoTest.ino_**
 
 ```
 #include <TheThingsNetwork.h>
- 
+
 #define loraSerial Serial1
 #define debugSerial Serial
- 
+
 // Replace REPLACE_ME with TTN_FP_EU868 or TTN_FP_US915
 #define freqPlan TTN_FP_EU868
- 
+
 TheThingsNetwork ttn(loraSerial, debugSerial, freqPlan);
- 
+
 void setup()
 {
   loraSerial.begin(57600);
@@ -156,7 +154,7 @@ void setup()
   ttn.showStatus();
 
 }
- 
+
 void loop()
 {
 }
@@ -164,7 +162,7 @@ void loop()
 
 Make sure that your Things Uno board is connected to your computer and select the **Upload** button in the toolbar. The IDE verifies your sketch again and uploads it to your Things Uno. During this process, the **TX/RX** LEDs on your Things Uno board should blink, indicating the information is traveling between the Things Uno and your computer.
 
-Once uploaded, your sketch will immediately start to run but you cannot see any output unless you open the Arduino **Serial Monitor**. The Arduino Serial Monitor is a tool that can be used to print information passing through the serial port. 
+Once uploaded, your sketch will immediately start to run but you cannot see any output unless you open the Arduino **Serial Monitor**. The Arduino Serial Monitor is a tool that can be used to print information passing through the serial port.
 
 In the Arduino IDE, select **Tools &#8594; Serial Monitor** from the menu bar. Once open the Serial Monitor prints something similar to the following output.
 
@@ -185,9 +183,9 @@ Total airtime: 0.00 s
 
 ## Registering The Things Uno with {{% tts %}}
 
-It’s time to register your Things Uno with {{% tts %}}. 
+It’s time to register your Things Uno with {{% tts %}}.
 
-On the **Applications** page, select your application to go to its overview page. 
+On the **Applications** page, select your application to go to its overview page.
 
 Select **+ Add end device** in the bottom-right of the page.
 
@@ -207,8 +205,8 @@ Under **Select the end device**, select the following mandatory fields.
 - Brand - `The Things Products`
 - Model – `The Things Uno`
 - Hardware Ver. – `1.0`
-- Firmware Ver. – `quickstart` or `abp`. We recommend you to use `quickstart` as it supports [OTAA]({{< ref "devices/abp-vs-otaa#otaa" >}}).
-- Profile (Region) – Choose `EU_863_870` or `US_902_928` to match with your board. 
+- Firmware Ver. – `quickstart` or `abp`. We recommend you to use `quickstart` as it supports [OTAA]({{< ref "devices/concepts/abp-vs-otaa#otaa" >}}).
+- Profile (Region) – Choose `EU_863_870` or `US_902_928` to match with your board.
 
 {{< figure src="RegisterEndDeviceRepo.png" alt="Register End Device from LoRaWAN repository" >}}
 
@@ -217,12 +215,12 @@ Under the **Enter registration data**, select/fill the following mandatory field
 If you have selected `quickstart` from the **Firmware Ver.** in the previous step:
 
 - Frequency plan – Select `Europe 863-870 MHz (SF9 for RX2 - recommended)` for **EU_863_870** or `United States 902-928 MHz, FSB2 (used by TTN)` for **US_902_928**.
-- AppEUI – Copy the **AppEUI** from the output printed by the ***TheThingsUnoTest*** sketch.
-- DevEUI – Copy the **DevEUI** from the output printed by the ***TheThingsUnoTest*** sketch.
+- AppEUI – Copy the **AppEUI** from the output printed by the **_TheThingsUnoTest_** sketch.
+- DevEUI – Copy the **DevEUI** from the output printed by the **_TheThingsUnoTest_** sketch.
 - AppKey – Select **Generate** button to generate an **AppKey**.
 - End device ID – Give your device a unique human-readable [identifier]({{< ref "reference/id-eui-constraints" >}}).
 
-Select the **Register end device** button. 
+Select the **Register end device** button.
 
 {{< figure src="RegisterEndDeviceRepoOTAA.png" alt="Register End Device from LoRaWAN repository OTAA" >}}
 
@@ -234,7 +232,7 @@ If you have selected `abp` from the **Firmware Ver.** in the previous step:
 - NwkSKey– Select **Generate** button.
 - End device ID – Give your device a unique human-readable [identifier]({{< ref "reference/id-eui-constraints" >}}).
 
-Select the **Register end device** button. 
+Select the **Register end device** button.
 
 {{< figure src="RegisterEndDeviceRepoABP.png" alt="Register End Device from LoRaWAN repository ABP" >}}
 
@@ -244,7 +242,7 @@ Once registered, you will be redirected to the overview page of the newly regist
 
 In this section, you will learn how to use the **Over the air activation (OTAA)** method to activate your Things Uno with {{% tts %}}. To do so you had to register your Things Uno with {{% tts %}} using **From the LoRaWAN Device Repository** with the `quickstart` firmware version.
 
-Open the ***TheThingsUnoTest*** sketch with your Arduino IDE if not already open.
+Open the **_TheThingsUnoTest_** sketch with your Arduino IDE if not already open.
 
 Type the following code after the `#include <TheThingsNetwork.h>`.
 
@@ -299,18 +297,18 @@ Your device is now activated and ready to send/receive messages to/from {{% tts 
 
 With {{% tts %}}, you can send small packets of data under certain limitations. The following example will explain to you how to send the status of the Things Uno’s built-in LED (pin 13) as a simple message.
 
-In the Arduino IDE, go back to your ***TheThingsUnoTest*** sketch and replace the `loop()` function with the following lines:
+In the Arduino IDE, go back to your **_TheThingsUnoTest_** sketch and replace the `loop()` function with the following lines:
 
 ```
 debugSerial.println("-- LOOP");
-    
+
 // Prepare array of 1 byte to indicate LED status
 byte data[1];
 data[0] = (digitalRead(LED_BUILTIN) == HIGH) ? 1 : 0;
-    
+
 // Send it off
 ttn.sendBytes(data, sizeof(data));
-      
+
 delay(10000);
 ```
 
@@ -327,11 +325,11 @@ Sending: mac tx uncnf 1 with 1 bytes
 Successful transmission
 ```
 
-The above output indicates that the data has been sent from your Things Uno side to {{% tts %}}. 
+The above output indicates that the data has been sent from your Things Uno side to {{% tts %}}.
 
 ## Decoding the received messages
 
-Now let’s confirm whether the data has been received to {{% tts %}}. On the **Applications** page, select the **Live data** tab. You should now see the messages come in. What you see on the **Live data** tab are the raw payloads in hex-formatted, space-separated bytes. 
+Now let’s confirm whether the data has been received to {{% tts %}}. On the **Applications** page, select the **Live data** tab. You should now see the messages come in. What you see on the **Live data** tab are the raw payloads in hex-formatted, space-separated bytes.
 
 {{< figure src="TheThingsUnoRawData.png" alt="Raw payload" >}}
 
@@ -348,9 +346,9 @@ function Decoder(bytes, port) {
   // Decode an uplink message from a buffer
   // (array) of bytes to an object of fields.
   var decoded = {};
-        
+
   if (port === 1) decoded.led = bytes[0];
-        
+
   return decoded;
 }
 ```

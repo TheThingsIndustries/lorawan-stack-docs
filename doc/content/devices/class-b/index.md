@@ -10,12 +10,12 @@ Class B end devices listen for downlink messages during ping slots. This allows 
 
 Read more about device classes in [The Things Network LoRaWAN® documentation](https://www.thethingsnetwork.org/docs/lorawan/classes/).
 
-{{< note >}} See the [Confirmed Downlinks Behavior]({{< ref "/devices/confirmed-downlinks-behavior" >}}) section to learn how confirmed downlinks behavior for class B devices differs from confirmed downlinks behavior for class A devices. {{</ note >}}
+{{< note >}} See the [Confirmed Downlinks Behavior]({{< ref "/devices/concepts/confirmed-downlinks-behavior" >}}) section to learn how confirmed downlinks behavior for class B devices differs from confirmed downlinks behavior for class A devices. {{</ note >}}
 
 We define some user parameters that will be used below:
 
 ```bash
-APP_ID="app1" 
+APP_ID="app1"
 DEVICE_ID="dev1"
 FREQUENCY_PLAN="EU_863_870"
 LORAWAN_VERSION="1.0.3"
@@ -51,7 +51,7 @@ See [Multicast]({{< ref "devices/multicast" >}}) for instructions for creating a
 
 {{% tts %}} supports optional settings for Class B downlink messages: the downlink path and the time to send the message.
 
-The downlink path is defined by one or more gateways IDs. The Network Server and Gateway Server schedules only on the specified gateways in the specified order. This is useful for multicast (where no downlink path is known because there is no uplink). A scheduling attempt can fail when the gateway is not connected, if there is a scheduling conflict or if duty-cycle regulations prohibit transmission. 
+The downlink path is defined by one or more gateways IDs. The Network Server and Gateway Server schedules only on the specified gateways in the specified order. This is useful for multicast (where no downlink path is known because there is no uplink). A scheduling attempt can fail when the gateway is not connected, if there is a scheduling conflict or if duty-cycle regulations prohibit transmission.
 
 The time to transmit is an absolute timestamp in ISO 8601 format to send the message. This requires gateways either with GPS lock, or gateways that use a protocol that provide round-trip times (RTT). See the [Example]({{< relref "#example" >}}) section below.
 
@@ -76,26 +76,27 @@ Then, schedule the following message to the [Application Server MQTT server]({{<
 
 ```json
 {
-  "downlinks": [{
-    "frm_payload": "vu8=",
-    "f_port": 42,
-    "priority": "NORMAL",
-    "class_b_c": {
-      "gateways": [
-        {
-          "gateway_ids": {
-            "gateway_id": "gtw1"
+  "downlinks": [
+    {
+      "frm_payload": "vu8=",
+      "f_port": 42,
+      "priority": "NORMAL",
+      "class_b_c": {
+        "gateways": [
+          {
+            "gateway_ids": {
+              "gateway_id": "gtw1"
+            }
           },
-        },
-        {
-          "gateway_ids": {
-            "gateway_id": "gtw2"
-          },
-        }
-      ],
-      "absolute_time": "2019-07-23T13:05:00Z"
+          {
+            "gateway_ids": {
+              "gateway_id": "gtw2"
+            }
+          }
+        ],
+        "absolute_time": "2019-07-23T13:05:00Z"
+      }
     }
-  }]
+  ]
 }
 ```
-

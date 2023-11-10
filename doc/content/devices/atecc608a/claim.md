@@ -56,14 +56,14 @@ This provisions the secure elements in The Things Join Server and returns the ge
 ```js
 [
   {
-    devEUI: '0004A310001AAED6',
-    ownerToken: 'C05EA29C',
-    rootKeysExposed: false
-  }
-]
+    devEUI: "0004A310001AAED6",
+    ownerToken: "C05EA29C",
+    rootKeysExposed: false,
+  },
+];
 ```
 
-The owner token is called claim authentication code in {{% tts %}}. This is the proof of ownership for claiming devices. See [Device Claiming]({{< ref "/devices/device-claiming" >}}) for more information.
+The owner token is called claim authentication code in {{% tts %}}. This is the proof of ownership for claiming devices. See [Device Claiming]({{< ref "/devices/concepts/device-claiming" >}}) for more information.
 
 ## Export root keys
 
