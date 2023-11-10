@@ -2,7 +2,7 @@
 title: "Class C Settings"
 description: ""
 aliases: ["/devices/class-c"]
-weight: 2
+weight: 4
 ---
 
 Class C end devices continuously listen for downlink messages. This allows applications to send messages to devices at any time, instead of having to wait for a Class A uplink. When combined with [multicast groups]({{< ref "/devices/configuring-devices/multicast" >}}), this allows applications to send immediate downlinks to many devices at the same time.

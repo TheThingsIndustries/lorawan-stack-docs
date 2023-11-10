@@ -2,7 +2,8 @@
 title: "Migrate using the Migration Tool"
 description: ""
 weight: 2
-aliases: [/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool]
+aliases:
+  [/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool]
 ---
 
 This section refers to migrating end devices to {{% tts %}} using [`ttn-lw-migrate` migration tool](https://github.com/TheThingsNetwork/lorawan-stack-migrate).
@@ -49,7 +50,7 @@ If the Discovery Server of your private The Things Industries V2 (SaaS) cluster 
 
 ## Export End Devices from {{% ttnv2 %}}
 
-Next, you can proceed with exporting one or more end devices, with or without their active session, from {{% ttnv2 %}} to a [JSON file]({{< ref "/the-things-stack/migrating/device-json" >}}).
+Next, you can proceed with exporting one or more end devices, with or without their active session, from {{% ttnv2 %}} to a [JSON file]({{< ref "/devices/adding-devices/adding-devices-in-bulk/device-json" >}}).
 
 {{< note >}} Migrating end devices from {{% ttnv2 %}} to {{% tts %}} is a one-way process, since LoRaWAN® devices may be handled by only one Network Server at a time. {{</ note >}}
 

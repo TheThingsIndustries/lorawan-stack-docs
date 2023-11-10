@@ -10,13 +10,63 @@ aliases:
 weight: 1
 ---
 
-This section contains instructions for adding devices in {{% tts %}}.
+This section contains instructions for LoRaWAN® adding devices in {{% tts %}}.
 
 <!--more-->
 
-Devices are managed under applications. An application can contain an unlimited number of devices, but it can be helpful to sort devices in to applications by function or geographical area, to make the integrations and live data views more useful.
+End devices in {{% tts %}} are managed under **Applications**.
+An application is a logical collection devices that can be used to collect devices by function or geographical area.
 
-Devices can be easily added using the Console and the CLI, so those methods are extensively explained in this section. It is also possible to add devices [using the API]({{< ref "/the-things-stack/interact/api#multi-step-actions" >}}).
+Before proceeding with this guide, [create an application]({{< ref "/integrations/adding-applications/" >}}) first.
+
+## Prerequisites
+
+In order to add a LoRaWAN® end devices, the following are the minimum pre-requisite information needed.
+
+**1. Basic Information**
+
+The basic identifiers and keys required for devices depend on whether a device uses **Over the Air Activation (OTAA)** or **Activation by Personalization (ABP)**. If these terms are unclear, see the guide [here]({{< ref "/devices/concepts/abp-vs-otaa/" >}}).
+
+{{< tabs/container "OTAA" "ABP" >}}
+
+{{< tabs/tab "OTAA" >}}
+
+#### Over the Air Activation
+
+<div class="fixed-table table-devices>
+
+| Field         | Description                                                                             |
+| ------------- | --------------------------------------------------------------------------------------- |
+| Device EUI    | Sign (always positive)                                                                  |
+| Join(App) EUI | Radio unit where the time stamp originated from (max 128)                               |
+| Root Keys     | Session ID; Random value to disambiguate different SX1301 sessions (should never be 0). |
+
+</div>
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "ABP" >}}
+
+#### Activation by Personalization
+
+<div class="fixed-table table-devices">
+
+| Field          | Description                                                                             |
+| -------------- | --------------------------------------------------------------------------------------- |
+| Device EUI     | Sign (always positive)                                                                  |
+| Join(App) EUI  | Radio unit where the time stamp originated from (max 128)                               |
+| Session Keys   | Session ID; Random value to disambiguate different SX1301 sessions (should never be 0). |
+| Device Address | Microseconds since SX1301 start (rollover every 9y >> uptime of sessions).              |
+
+</div>
+
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
+
+**2. LoRaWAN Parameters**
+
+**3. Payload Formatters**
 
 {{< tabs/container "Console" "CLI" >}}
 
@@ -296,81 +346,6 @@ ttn-lw-cli end-devices create $APP_ID $DEVICE_ID \
 This will create an end device `dev1` in application `app1` with the `EU_863_870` frequency plan, that uses LoRaWAN 1.1.0 MAC and 1.1.0-b PHY versions. Make sure you replace these versions according to your setup.
 
 You can also pass `--with-session` to have a session generated.
-
-{{< /tabs/tab >}}
-
-{{< /tabs/container >}}
-
-## Adding devices in bulk
-
-It is also possible to import end devices in bulk.
-
-Devices' descriptions need to be in a [JSON]({{< ref "/the-things-stack/migrating/device-json" >}}) or [CSV]({{< ref "/the-things-stack/migrating/device-csv" >}}) format. See [Import End Devices in {{% tts %}}]({{< ref "/the-things-stack/migrating/import-devices" >}}) section for instructions on how to import devices in bulk using these files.
-
-See the following video from [The Things Network youtube channel](https://youtu.be/ouz-VuiosU4) for instructions.
-
-<details><summary>Show video</summary>
-{{< youtube "ouz-VuiosU4" >}}
-</details>
-
-## Set device location
-
-{{< tabs/container "Console" "CLI" >}}
-
-{{< tabs/tab "Console" >}}
-
-Once you have added your end device to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**.
-
-The end device location can be manually set by pinning on the map widget, or entering the **Latitude**, **Longitude** and **Altitude** values.
-
-{{< figure src="device-location.png" alt="Gateway location" >}}
-
-{{< /tabs/tab >}}
-
-{{< tabs/tab "CLI" >}}
-
-Once you have added your end device to {{% tts %}}, you can also set its location.
-
-Set your end device's location with:
-
-```bash
-LAT="43.84"
-LONG="18.32"
-ALT="500"
-ttn-lw-cli end-devices set $APP_ID $DEVICE_ID \
-  --location.latitude $LAT \
-  --location.longitude $LONG \
-  --location.altitude $ALT \
-```
-
-You can also set the end device location to be updated from various sources with the `--location.source` flag.
-
-The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc. Use `ttn-lw-cli end-devices set $APP_ID $DEVICE_ID --help` command to see the full list of the available location sources and other relatable info. If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.
-
-The CLI will return something like:
-
-```json
-{
-  "ids": {
-    "device_id": "dev1",
-    "application_ids": {
-      "application_id": "app1"
-    },
-    "dev_eui": "0004A30B001C0530",
-    "join_eui": "800000000000000C"
-  },
-  "created_at": "2020-05-27T15:50:38.567Z",
-  "updated_at": "2020-12-25T11:16:20.592Z",
-  "locations": {
-    "user": {
-      "latitude": 43.84,
-      "longitude": 18.32,
-      "altitude": 500,
-      "source": "SOURCE_REGISTRY"
-    }
-  }
-}
-```
 
 {{< /tabs/tab >}}
 

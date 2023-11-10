@@ -2,7 +2,7 @@
 title: "Class B Settings"
 description: ""
 aliases: ["/devices/class-b"]
-weight: 1
+weight: 3
 ---
 
 Class B end devices listen for downlink messages during ping slots. This allows applications to send messages to devices at predefined time slots, rather than waiting for a Class A uplink. When combined with [multicast groups]({{< ref "/devices/configuring-devices/multicast" >}}), this allows applications to send periodic downlinks to many devices at the same time.

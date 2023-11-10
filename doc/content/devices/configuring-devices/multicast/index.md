@@ -2,7 +2,7 @@
 title: "Multicast Groups"
 description: ""
 aliases: ["devices/multicast"]
-weight: 4
+weight: 5
 ---
 
 It is also possible to create a [Class B]({{< ref "devices/configuring-devices/class-b" >}}) or [Class C]({{< ref "devices/configuring-devices/class-c" >}}) multicast group to send downlink messages to a group of end devices. A multicast group is a virtual ABP device, where multiple physical devices share the same DevAddr and session keys. It does not support uplink, confirmed downlink nor MAC commands.

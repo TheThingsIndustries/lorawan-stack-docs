@@ -1,7 +1,10 @@
 ---
 title: "Migrate Active Device Session"
 description: ""
-aliases: [/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session]
+aliases:
+  [
+    /getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session,
+  ]
 ---
 
 This section explains how to migrate end devices from {{% tts %}} Community Edition to {{% tts %}} Cloud while persisting sessions that were already established between those devices and {{% tts %}} Community Edition.
@@ -45,7 +48,7 @@ ttn-lw-migrate device --source tts 'my-device' \
     --tts.delete-source-device
 ```
 
-Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [Import End Devices in {{% tts %}}]({{< ref "/the-things-stack/migrating/import-devices" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [Import End Devices in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
 
 {{</ tabs/tab >}}
 
@@ -90,9 +93,9 @@ ttn-lw-cli end-devices get --application-id <app-id> --device-id <device-id> \
 
 The command above will export your device's session to the `device-session.json` file in the current folder. Open the file with a text editor and remove the following fields: `join_server_address`, `network_server_address` and `application_server_address`.
 
-Before your device's session is imported in {{% tts %}} Cloud, you need to completely delete your device from {{% tts %}} Community Edition to prevent conflicts. 
+Before your device's session is imported in {{% tts %}} Cloud, you need to completely delete your device from {{% tts %}} Community Edition to prevent conflicts.
 
-Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [Import End Devices in {{% tts %}}]({{< ref "/the-things-stack/migrating/import-devices" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [Import End Devices in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
 
 {{</ tabs/tab >}}
 
