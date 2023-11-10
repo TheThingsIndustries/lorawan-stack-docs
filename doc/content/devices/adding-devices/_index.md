@@ -370,7 +370,6 @@ The CLI will return something like:
     }
   }
 }
-
 ```
 
 {{< /tabs/tab >}}

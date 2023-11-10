@@ -12,7 +12,7 @@ It is also possible to create a [Class B]({{< ref "devices/class-b" >}}) or [Cla
 We define some user parameters that will be used below:
 
 ```bash
-APP_ID="app1" 
+APP_ID="app1"
 DEVICE_ID="dev1"
 FREQUENCY_PLAN="EU_863_870"
 LORAWAN_VERSION="1.0.3"
@@ -76,26 +76,27 @@ Then, schedule the following message to the [Application Server MQTT server]({{<
 
 ```json
 {
-  "downlinks": [{
-    "frm_payload": "vu8=",
-    "f_port": 42,
-    "priority": "NORMAL",
-    "class_b_c": {
-      "gateways": [
-        {
-          "gateway_ids": {
-            "gateway_id": "gtw1"
+  "downlinks": [
+    {
+      "frm_payload": "vu8=",
+      "f_port": 42,
+      "priority": "NORMAL",
+      "class_b_c": {
+        "gateways": [
+          {
+            "gateway_ids": {
+              "gateway_id": "gtw1"
+            }
+          },
+          {
+            "gateway_ids": {
+              "gateway_id": "gtw2"
+            }
           }
-        },
-        {
-          "gateway_ids": {
-            "gateway_id": "gtw2"
-          }
-        }
-      ],
-      "absolute_time": "2019-07-23T13:05:00Z"
+        ],
+        "absolute_time": "2019-07-23T13:05:00Z"
+      }
     }
-  }]
+  ]
 }
 ```
-

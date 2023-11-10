@@ -1,7 +1,8 @@
 ---
 title: "Best Practices"
 description: ""
-weight: 3
+weight: -1
+aliases: ["/devices/best-practices"]
 ---
 
 This section contains best practices for building connected devices which use {{% tts %}} as a Network Server.
@@ -92,7 +93,7 @@ OTAA devices perform a join-procedure with the network, during which a dynamic D
 
 Devices should save network parameters between regular power cycles. This includes session parameters like `DevAddr`, session keys, `FCnt`, and nonces. This allows the device to easily Join, as keys and counters remain synchronized.
 
-Devices should also randomize initial power on delay (i.e. Join). See [Synchronization, Backoff, and Jitter]({{< ref "/devices/best-practices#synchronization-backoff-and-jitter" >}}).
+Devices should also randomize initial power on delay (i.e. Join). See [Synchronization, Backoff, and Jitter]({{< ref "/devices/concepts/best-practices#synchronization-backoff-and-jitter" >}}).
 
 ## Frame Counters
 

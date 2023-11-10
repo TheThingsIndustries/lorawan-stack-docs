@@ -1,7 +1,7 @@
 ---
 title: "MAC Settings"
 description: ""
-weight: 8
+aliases: ["/devices/mac-settings"]
 ---
 
 This section provides guidelines for configuring MAC settings for end devices from the CLI.
@@ -125,7 +125,7 @@ See the [End Device API Reference]({{< ref "reference/api/end_device#message:MAC
 To enable ADR, set the `mac-settings.use-adr` parameter:
 
 ```bash
-ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.use-adr=true 
+ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.use-adr=true
 ```
 
 See the [Adaptive Data Rate]({{< ref "/reference/adr" >}}) section for detailed information on configuring ADR parameters and ADR margin using MAC settings.

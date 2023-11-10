@@ -145,7 +145,7 @@ The `ns.down.data.schedule.fail` event, that can be noticed in the Live data tab
 The `ns.down.data.schedule.fail` event usually occurs with the following errors:
 
 - `no_absolute_gateway_time`: Downlinks are being scheduled with the absolute time, and the absolute time of the Gateway Server is not in sync with the absolute time of the gateway. To sync them, a gateway has to either report its GPS time, or transmit five downlink frames in order for Gateway Server to infer its absolute time by observing RTTs.
-- `scheduling_conflict`: Devices are synchronized, i.e. a number of devices are sending joins or uplinks at the same time. To avoid device synchronization, devices need to be configured to initiate joins or send uplinks at random times or with random delays. You can also try with improving the network coverage in your area. See [Best Practices]({{< ref "/devices/best-practices#synchronization-backoff-and-jitter" >}}) for more info about device synchronization.
+- `scheduling_conflict`: Devices are synchronized, i.e. a number of devices are sending joins or uplinks at the same time. To avoid device synchronization, devices need to be configured to initiate joins or send uplinks at random times or with random delays. You can also try with improving the network coverage in your area. See [Best Practices]({{< ref "/devices/concepts/best-practices#synchronization-backoff-and-jitter" >}}) for more info about device synchronization.
 
 We also advise to double check your network connection. If the connection between the gateway and the Network Server is slow, downlink messages could be sent too late. For example, this can happen in case of:
 
@@ -166,7 +166,7 @@ Read more about skipping payload crypto option on an [application level]({{< ref
 Your device probably does not have a good network coverage. Some common reasons:
 
 - The device is using SF7, while it should be using a higher SF for better coverage and reach.
-- There might be a conflict in receiving uplinks due to [synchronization of devices]({{< ref "/devices/best-practices#synchronization-backoff-and-jitter" >}}).
+- There might be a conflict in receiving uplinks due to [synchronization of devices]({{< ref "/devices/concepts/best-practices#synchronization-backoff-and-jitter" >}}).
 
 Check your network coverage, and make sure your devices are within your gateway's reach and are using a suitable SF.
 
