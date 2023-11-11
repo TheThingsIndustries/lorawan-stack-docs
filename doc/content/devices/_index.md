@@ -7,4 +7,4 @@ menu:
     weight: 3
 ---
 
-This section contains information to help you work with end devices in {{% tts %}}. Here, you'll find guides for adding devices, configuring MAC settings, best practices for designing devices, and much more.
+This section contains guides to add, configure and troubleshoot LoRaWAN® end devices in {{% tts %}}. There are also guides on core concepts to learn more and detailed information on popular end devices.
