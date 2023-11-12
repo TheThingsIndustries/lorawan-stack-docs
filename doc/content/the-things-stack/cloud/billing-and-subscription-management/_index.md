@@ -125,6 +125,14 @@ Please contact our [sales team](mailto:sales@thethingsindustries.com).
 
 No, {{% tts %}} Billing Account can only be accessed by one person (i.e. one email address).
 
+### Is it possible to add other people to the billing section?
+
+No, unfortunately, this is not possible at the moment. If you have questions about accessing billing info, please send an email to [TTI finance department](mailto:finance@thethingsindustries.com).
+
+### My payment failed, so I updated my credit card details - is charging automatically retried?
+
+Yes, charging will be automatically retried in the following 7 days after the failed payment occurred.
+
 ### I'm facing an error that says I reached a limit for adding devices/gateways. What do I do?
 
 If you've reached a limit for adding devices and/or gateways, you'll be facing the `error:pkg/identityserver:tenant_entity_limit` error. For example, if you're using {{% tts %}} Discovery plan (which allows 10 devices, 1 application and 1 gateway to be registered) and you try adding a second gateway, you'll see something like this:
