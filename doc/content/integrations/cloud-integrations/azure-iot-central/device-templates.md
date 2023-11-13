@@ -8,11 +8,11 @@ Azure IoT Central allows users to model the telemetry and device properties usin
 
 <!--more-->
 
-As part of this tutorial we will build a small DTDL model for [The Things Uno]({{< ref "/devices/the-things-uno" >}}) which allows us to control the built in LED of the device.
+As part of this tutorial we will build a small DTDL model for [The Things Uno]({{< ref "/devices/models/the-things-uno" >}}) which allows us to control the built in LED of the device.
 
 ## Prerequisites
 
-1. A [The Things Uno]({{< ref "/devices/the-things-uno" >}}) registered in your end device, with the end device version identifiers set, and using the `quickstart` sketch.
+1. A [The Things Uno]({{< ref "/devices/models/the-things-uno" >}}) registered in your end device, with the end device version identifiers set, and using the `quickstart` sketch.
 
 > You can check if the end device version identifiers are set by checking the Console end device overview, under the **Hardware** section.
 
@@ -29,7 +29,7 @@ A DTDL model ID is a [**_Digital Twin Modeling Identifier_**](https://github.com
 3. `{modelID}` is replaced by the normalized form of the end device version identifiers `model_id` field.
 4. `{hwVersion}` is replaced by the normalized form of the end device version identifiers `hardware_version` field, prepended by `hw` (as versions may start with numeric values, but DTMI segments cannot start with a numeric value).
 5. `{fwVersion}` is replaced by the normalized form of the end device version identifiers `firmware_version` field,
-prepended by `fw` (using the same reasoning as above).
+   prepended by `fw` (using the same reasoning as above).
 6. `{bandID}` is replaced by the normalized form of the end device version identifiers `{band_id}` field.
 7. `{generation}` is currently always replaced by `1`.
 
@@ -64,10 +64,7 @@ The top level object of a DTDL model is an [_Interface_](https://github.com/Azur
   "displayName": {
     "en": "The Things Uno"
   },
-  "@context": [
-    "dtmi:iotcentral:context;2",
-    "dtmi:dtdl:context;2"
-  ]
+  "@context": ["dtmi:iotcentral:context;2", "dtmi:dtdl:context;2"]
 }
 ```
 
@@ -130,10 +127,7 @@ We can now put together our intermediate model, by providing the two properties 
   "displayName": {
     "en": "The Things Uno"
   },
-  "@context": [
-    "dtmi:iotcentral:context;2",
-    "dtmi:dtdl:context;2"
-  ]
+  "@context": ["dtmi:iotcentral:context;2", "dtmi:dtdl:context;2"]
 }
 ```
 
@@ -371,10 +365,7 @@ We can now put everything together and thus obtain the following updated model:
   "displayName": {
     "en": "The Things Uno"
   },
-  "@context": [
-    "dtmi:iotcentral:context;2",
-    "dtmi:dtdl:context;2"
-  ]
+  "@context": ["dtmi:iotcentral:context;2", "dtmi:dtdl:context;2"]
 }
 ```
 

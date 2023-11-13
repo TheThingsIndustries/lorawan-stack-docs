@@ -9,7 +9,7 @@ aliases: [/getting-started/migrating/migration-tool]
 
 <!--more-->
 
-This tool works in a way that it exports descriptions of end devices and applications to a [JSON file]({{< ref "/the-things-stack/migrating/device-json" >}}), that can later be [imported in {{% tts %}}]({{< ref "/the-things-stack/migrating/import-devices" >}}).
+This tool works in a way that it exports descriptions of end devices and applications to a [JSON file]({{< ref "/devices/adding-devices/adding-devices-in-bulk/device-json" >}}), that can later be [imported in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}).
 
 ## Installation
 
@@ -75,8 +75,8 @@ Currently, there are three available sources listed in the table below. For deta
 
 > The `tts` source can be used for migrating devices between applications in the same {{% tts %}} tenant, migrating between different tenants, or migrating between different {{% tts %}} deployments.
 
-|   Source  |   Section |   Used for    |
-| :----------- | :---------------------------------------------------------------------------------------------------------------------------------- | :------------------------ |
-| `tts`      | [Export Devices from {{% tts %}}]({{< ref "/the-things-stack/migrating/migration-tool/export-from-tts" >}}) | [Migrating between {{% tts %}} distributions]({{< ref "/the-things-stack/migrating/migrating-between-tts-distributions" >}})
-| `chirpstack` | [Export Devices from ChirpStack]({{< ref "/the-things-stack/migrating/migration-tool/export-from-chirpstack" >}})            |  Migrating devices from ChirpStack
-| `ttnv2`      | Discontinued | Migrating from legacy {{% ttnv2 %}} deployments
+| Source       | Section                                                                                                           | Used for                                                                                                                     |
+| :----------- | :---------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------- |
+| `tts`        | [Export Devices from {{% tts %}}]({{< ref "/the-things-stack/migrating/migration-tool/export-from-tts" >}})       | [Migrating between {{% tts %}} distributions]({{< ref "/the-things-stack/migrating/migrating-between-tts-distributions" >}}) |
+| `chirpstack` | [Export Devices from ChirpStack]({{< ref "/the-things-stack/migrating/migration-tool/export-from-chirpstack" >}}) | Migrating devices from ChirpStack                                                                                            |
+| `ttnv2`      | Discontinued                                                                                                      | Migrating from legacy {{% ttnv2 %}} deployments                                                                              |

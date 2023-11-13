@@ -21,9 +21,9 @@ See the [FUOTA Process Summary document from LoRa Alliance](https://lora-allianc
 
 On a high level, a FUOTA process implies the following steps:
 
-- Server enables [class C]({{< ref "/devices/class-c" >}}) and joins a [multicast]({{< ref "/devices/multicast" >}}) group
+- Server enables [class C]({{< ref "/devices/configuring-devices/class-c" >}}) and joins a [multicast]({{< ref "/devices/configuring-devices/multicast" >}}) group
 - Server signs the firmware update and splits it in chunks
-- Server schedules each update chunk as a [downlink message]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) to the multicast group 
+- Server schedules each update chunk as a [downlink message]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) to the multicast group
 - Server verifies that the device has received all chunks, synthesizes them and verifies the update signature
 - Device applies the firmware update
 - Device sends a `firmware update complete` uplink message
@@ -41,7 +41,7 @@ The preferred fragment size depends on the available data rate, which depends on
 
 ### Duty Cycle
 
-Using multiple gateways for updating firmware on the same group of end devices is recommended because of duty cycle restrictions and to avoid packet loss. It is also recommended to use [class B]({{< ref "/devices/class-b" >}}), which takes longer to update but it is likely better for duty cycle distribution.
+Using multiple gateways for updating firmware on the same group of end devices is recommended because of duty cycle restrictions and to avoid packet loss. It is also recommended to use [class B]({{< ref "/devices/configuring-devices/class-b" >}}), which takes longer to update but it is likely better for duty cycle distribution.
 
 ## Useful Links
 

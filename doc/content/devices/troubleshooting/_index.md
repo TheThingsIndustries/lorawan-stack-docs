@@ -145,7 +145,7 @@ The `ns.down.data.schedule.fail` event, that can be noticed in the Live data tab
 The `ns.down.data.schedule.fail` event usually occurs with the following errors:
 
 - `no_absolute_gateway_time`: Downlinks are being scheduled with the absolute time, and the absolute time of the Gateway Server is not in sync with the absolute time of the gateway. To sync them, a gateway has to either report its GPS time, or transmit five downlink frames in order for Gateway Server to infer its absolute time by observing RTTs.
-- `scheduling_conflict`: Devices are synchronized, i.e. a number of devices are sending joins or uplinks at the same time. To avoid device synchronization, devices need to be configured to initiate joins or send uplinks at random times or with random delays. You can also try with improving the network coverage in your area. See [Best Practices]({{< ref "/devices/best-practices#synchronization-backoff-and-jitter" >}}) for more info about device synchronization.
+- `scheduling_conflict`: Devices are synchronized, i.e. a number of devices are sending joins or uplinks at the same time. To avoid device synchronization, devices need to be configured to initiate joins or send uplinks at random times or with random delays. You can also try with improving the network coverage in your area. See [Best Practices]({{< ref "/devices/concepts/best-practices#synchronization-backoff-and-jitter" >}}) for more info about device synchronization.
 
 We also advise to double check your network connection. If the connection between the gateway and the Network Server is slow, downlink messages could be sent too late. For example, this can happen in case of:
 
@@ -166,7 +166,7 @@ Read more about skipping payload crypto option on an [application level]({{< ref
 Your device probably does not have a good network coverage. Some common reasons:
 
 - The device is using SF7, while it should be using a higher SF for better coverage and reach.
-- There might be a conflict in receiving uplinks due to [synchronization of devices]({{< ref "/devices/best-practices#synchronization-backoff-and-jitter" >}}).
+- There might be a conflict in receiving uplinks due to [synchronization of devices]({{< ref "/devices/concepts/best-practices#synchronization-backoff-and-jitter" >}}).
 
 Check your network coverage, and make sure your devices are within your gateway's reach and are using a suitable SF.
 
@@ -178,19 +178,19 @@ Possible causes and solutions:
   - The uplinks could be coming from other devices in the gateways range, that are not registered in {{% tts %}}. In this case, you can just ignore them.
   - If you are facing this while trying to activate a device, please double-check that the DevEUI and JoinEUI/AppEUI on {{% tts %}} and on your device match.
 - FCnt mismatch
-  - For ABP devices, the FCnt mismatch might occur if the device resets while the **Reset Frame Counters** option for the device is disabled. Try enabling the **Reset Frame Counters** option in the device's overview in {{% tts %}} Console, or by setting [MAC commands]({{< ref "/devices/mac-settings#available-mac-settings" >}}) using the CLI.
+  - For ABP devices, the FCnt mismatch might occur if the device resets while the **Reset Frame Counters** option for the device is disabled. Try enabling the **Reset Frame Counters** option in the device's overview in {{% tts %}} Console, or by setting [MAC commands]({{< ref "/devices/configuring-devices/mac-settings#available-mac-settings" >}}) using the CLI.
   - For OTAA devices, the FCnt mismatch might occur due to missing packets. The maximum FCnt gap between two consecutive uplinks is `16384` according to the LoRaWAN specification. Try re-joining your OTAA device.
 - Using inappropriate frequencies
-  - This case applies only to ABP devices and EU/IN/AS frequency bands. Since the Network Server is initially accepting uplinks from devices only in default channels, uplinks from the device that is using non-default channels are dropped. In this case, **Factory Preset Frequencies** have to be set either in device's overview in {{% tts %}} Console, or by setting [MAC commands]({{< ref "/devices/mac-settings#available-mac-settings" >}}) using the CLI. If these settings are applied to an existing device, you might need to reset the device as well.
+  - This case applies only to ABP devices and EU/IN/AS frequency bands. Since the Network Server is initially accepting uplinks from devices only in default channels, uplinks from the device that is using non-default channels are dropped. In this case, **Factory Preset Frequencies** have to be set either in device's overview in {{% tts %}} Console, or by setting [MAC commands]({{< ref "/devices/configuring-devices/mac-settings#available-mac-settings" >}}) using the CLI. If these settings are applied to an existing device, you might need to reset the device as well.
 - Session keys mismatch
   - For ABP devices, if there is a mismatch between session keys (AppSKey and NwkSKey) that are hardcoded in the device and those used when registering the device on {{% tts %}}, uplinks will not be seen in the device's Live data tab. Please cross-check that your device's session keys match the ones used upon registration on {{% tts %}}.
 
-This problem can also occur after [migrating an active device session]({{< ref "/the-things-stack/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session" >}}) from {{% ttnv2 %}} to {{% tts %}}, for devices that transmit uplinks on frequencies that are not part of the standard [frequency plans]({{< ref "/reference/frequency-plans" >}}) used by {{% tts %}}. The issue arises from the fact that factory preset frequencies were not stored in {{% ttnv2 %}}, so they are not present in the [JSON file]({{< ref "/the-things-stack/migrating/device-json" >}}) used for importing devices in {{% tts %}}. There are two possible solutions:
+This problem can also occur after [migrating an active device session]({{< ref "/the-things-stack/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session" >}}) from {{% ttnv2 %}} to {{% tts %}}, for devices that transmit uplinks on frequencies that are not part of the standard [frequency plans]({{< ref "/reference/frequency-plans" >}}) used by {{% tts %}}. The issue arises from the fact that factory preset frequencies were not stored in {{% ttnv2 %}}, so they are not present in the [JSON file]({{< ref "/devices/adding-devices/adding-devices-in-bulk/device-json" >}}) used for importing devices in {{% tts %}}. There are two possible solutions:
 
 - If the end device can be reset, i.e. if it can perform a re-join to {{% tts %}} network or at least reset frame counters (for ABP devices)
   - Go to **General settings** in the device overview in {{% tts %}} Console, navigate to **Network layer &#8594; Advanced MAC settings** and set the **Factory preset frequencies**, then click the **Reset session and MAC state** button. By resetting the device, a new session will be established with {{% tts %}} Network Server and the uplinks on the defined frequencies will be accepted.
 - If the end device cannot be reset
-  - Changes related to factory preset frequencies take effect only after a device reset, but applying the fix explained above will break the existing device session. If you really want to keep the active session or simply cannot reset the device physically, you can try adding the frequency channels manually in the `mac_state.current.channels` and `mac_state.desired_channels` parameters of the [JSON file]({{< ref "/the-things-stack/migrating/device-json" >}}) before you import it to {{% tts %}}.
+  - Changes related to factory preset frequencies take effect only after a device reset, but applying the fix explained above will break the existing device session. If you really want to keep the active session or simply cannot reset the device physically, you can try adding the frequency channels manually in the `mac_state.current.channels` and `mac_state.desired_channels` parameters of the [JSON file]({{< ref "/devices/adding-devices/adding-devices-in-bulk/device-json" >}}) before you import it to {{% tts %}}.
 
 ## I notice a delay in scheduling Class C downlinks. What can I do to fix it?
 

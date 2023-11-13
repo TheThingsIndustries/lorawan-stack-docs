@@ -2,7 +2,11 @@
 title: "Export End Devices from ChirpStack"
 description: ""
 weight: 3
-aliases: [/the-things-stack/migrating-from-networks/migrate-from-chirpstack, /getting-started/migrating/migration-tool/export-from-chirpstack]
+aliases:
+  [
+    /the-things-stack/migrating-from-networks/migrate-from-chirpstack,
+    /getting-started/migrating/migration-tool/export-from-chirpstack,
+  ]
 ---
 
 This section contains instructions on how to configure migration tool and use it to export end devices from ChirpStack, that can later be imported in {{% tts %}}. This is a base for migrating end devices from ChirpStack to {{% tts %}}.
@@ -88,4 +92,4 @@ Please note that `MaxEIRP` parameter may not be always set properly, and that th
 
 ---
 
-After exporting, devices and applications can be imported in {{% tts %}}. See [Import End Devices in {{% tts %}}]({{< ref "/the-things-stack/migrating/import-devices" >}}) for details about importing devices.
+After exporting, devices and applications can be imported in {{% tts %}}. See [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}) for details about importing devices.

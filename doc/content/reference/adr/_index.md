@@ -40,8 +40,10 @@ The implementation is based on Semtech's recommended algorithm described in [thi
 1. Determine [the maximum SNR over recent transmissions](https://github.com/TheThingsNetwork/lorawan-stack/blob/5a816e8171f993db9659566286d45725698f032e/pkg/networkserver/mac/adr.go#L218)
 2. Determine [the minimum SNR to demodulate an uplink given the current parameters](https://github.com/TheThingsNetwork/lorawan-stack/blob/5a816e8171f993db9659566286d45725698f032e/pkg/networkserver/mac/adr.go#L232)
 3. Calculate [the margin to further optimize the data rate](https://github.com/TheThingsNetwork/lorawan-stack/blob/5a816e8171f993db9659566286d45725698f032e/pkg/networkserver/mac/adr.go#L236)
-  - Part of this is configurable per device (if you use the CLI)
-  - If less measurements (uplinks) are available than necessary, [include a safety margin](https://github.com/TheThingsNetwork/lorawan-stack/blob/5a816e8171f993db9659566286d45725698f032e/pkg/networkserver/mac/adr.go#L238-L240)
+
+- Part of this is configurable per device (if you use the CLI)
+- If less measurements (uplinks) are available than necessary, [include a safety margin](https://github.com/TheThingsNetwork/lorawan-stack/blob/5a816e8171f993db9659566286d45725698f032e/pkg/networkserver/mac/adr.go#L238-L240)
+
 4. [Increase the data rate as long as there's enough margin](https://github.com/TheThingsNetwork/lorawan-stack/blob/5a816e8171f993db9659566286d45725698f032e/pkg/networkserver/mac/adr.go#L251-L262)
 5. If there's still margin after reaching the maximum data rate, [decrease the transmit power](https://github.com/TheThingsNetwork/lorawan-stack/blob/5a816e8171f993db9659566286d45725698f032e/pkg/networkserver/mac/adr.go#L273-L281)
 6. Depending on packet loss, [increase the number of retransmissions](https://github.com/TheThingsNetwork/lorawan-stack/blob/5a816e8171f993db9659566286d45725698f032e/pkg/networkserver/mac/adr.go#L288-L296)
@@ -76,7 +78,7 @@ The Network Server uses the ADR margin of 15, but this value can be configured p
 ttn-lw-cli end-devices set --application-id <app-id> --device-id <device-id> --mac-settings.adr.mode.dynamic.margin <float32>
 ```
 
-Keep in mind that changes to `mac-settings.adr.mode.dynamic.<parameter>` are persistent and will be present even after a device reset/rejoin. Read the [MAC Settings]({{< ref "/devices/mac-settings" >}}) section for detailed info.
+Keep in mind that changes to `mac-settings.adr.mode.dynamic.<parameter>` are persistent and will be present even after a device reset/rejoin. Read the [MAC Settings]({{< ref "/devices/configuring-devices/mac-settings" >}}) section for detailed info.
 
 #### Examples
 
@@ -86,7 +88,7 @@ In practice, the ADR margin value should be tuned until the optimization target 
 
 ##### Case 1: ADR margin set to default
 
-The default ADR margin value in {{% tts %}} is 15, while the minimum SNR required to demodulate a message for DR3 is 12.5. 
+The default ADR margin value in {{% tts %}} is 15, while the minimum SNR required to demodulate a message for DR3 is 12.5.
 
 First, the maximum SNR is computed for recent uplinks. In this example, the `SNRmax` is 7.
 
