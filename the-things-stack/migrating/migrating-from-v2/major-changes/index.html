@@ -10,7 +10,7 @@
   <title>Major Changes In The Things Stack | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/major-changes/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.fd3d59eb4852f5cc339297cb0cb5a6af3c7895bf80bc7bc02db7b78eadec7102.css" integrity="sha256-/T1Z60hS9cwzkpfLDLWmrzx4lb&#43;AvHvALbe3jq3scQI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.21413411dcb7ceb71f0089712d35a7e290a58ed727cd109f5780d2e7967c6299.css" integrity="sha256-IUE0Edy3zrcfAIlxLTWn4pCljtcnzRCfV4DS55Z8Ypk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Major Changes In The Things Stack">
@@ -164,27 +164,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/import-devices/" class="">Import End Devices in The Things Stack</a>
-    
-  </li>
-
-  <li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/configure-mac-settings/" class="">Fine-tuning MAC Settings for End Devices</a>
     
   </li>
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/gateway-migration/" class="">Migrating Gateways</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-json/" class="">JSON File Reference</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-csv/" class="">CSV File Reference</a>
     
   </li>
 
@@ -239,10 +224,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="rx1-delay">RX1 Delay</h2>
 <p>The RX1 delay is the time after which the first receive window (RX1) opens. In the receive window, the Network Server can schedule a downlink. The second receive window (RX2) opens exactly 1 second after the first one opens. In LoRaWAN, the RX1 delay can be between 1 and 15 seconds.</p>
 <p>Devices imported from V2 are configured with an RX1 delay of 1 second. In all The Things Stack deployments, the recommended RX1 delay is 5 seconds to accommodate for high latency backhauls and/or <a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/">peering with Packet Broker</a>.</p>
-<p>See the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC settings guide</a> for more information and instructions about configuring the RX1 delay.</p>
+<p>See the <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/mac-settings/">MAC settings guide</a> for more information and instructions about configuring the RX1 delay.</p>
 <h2 id="mac-commands">MAC Commands</h2>
 <p>The Things Stack expects that all end devices comply with the LoRaWAN specification by default, which means that the end devices should respond to Network Server MAC command requests accordingly. If a device fails to answer a MAC Command in a timely manner, there may be disruptions to the device uplink or downlink traffic. As mentioned in the LoRaWAN specification, the Network Server of The Things Stack will always prioritize MAC commands over application payloads on downlink.</p>
-<p>In case a device is not fully compliant with the LORaWAN specification, it can still work on The Things Stack, but it may require custom <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC settings configuration</a>.</p>
+<p>In case a device is not fully compliant with the LORaWAN specification, it can still work on The Things Stack, but it may require custom <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/mac-settings/">MAC settings configuration</a>.</p>
 <h3 id="devstatusreq">DevStatusReq</h3>
 <p>The <code>DevStatusReq</code> MAC command is sent by the Network Server periodically to check the current status of the end device. Devices are expected to send a <code>DevStatusAns</code> reply.</p>
 <p>For end devices that ignore this MAC command, make sure to configure the <code>StatusTimePeriodicity</code> (time duration after which a <code>DevStatusReq</code> is issued by the Network Server) and <code>StatusCountPeriodicity</code> (number of frames after which a <code>DevStatusReq</code> is issued) of the device explicitly to <code>0</code>.</p>
@@ -251,7 +236,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   In the scope of <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/">Migrating from The Things Network Stack V2</a>, devices exported with the <code>ttn-lw-migrate</code> tool have these MAC settings set to <code>0</code> by default.
 </div>
 
-<p>See the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC settings guide</a> for more information.</p>
+<p>See the <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/mac-settings/">MAC settings guide</a> for more information.</p>
 <h2 id="gateway-coverage">Gateway Coverage</h2>
 <p><a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/">Packet Broker</a> enables peering between networks, so traffic received by one network (The Things Network V2) but intended for a different network (The Things Stack) can be forwarded to and from that network. With Packet Broker enabled on both The Things Stack and The Things Network V2, you can receive traffic on The Things Stack without having to re-configure any of your gateways.</p>
 <p>Packet Broker is already enabled on The Things Network V2 (public community network) and The Things Stack Cloud. For The Things Stack Enterprise or The Things Stack Open Source, see how to <a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/connect/">Connect</a> to Packet Broker.</p>
@@ -318,7 +303,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <tr>
 <td>Downlink scheduling topic (pub)</td>
 <td><code>{application_id}/devices/{device_id}/downSchedule</code> (the downlink as the first or last item in a downlink queue using <code>schedule</code> key value in the payload)</td>
-<td>Push downlink - <code>v3/{application id}@{tenant id}/devices/{device id}/down/push</code>,                                     Replace downlink queue - <code>v3/{application id}@{tenant id}/devices/{device id}/down/replace</code></td>
+<td>Push downlink - <code>v3/{application id}@{tenant id}/devices/{device id}/down/push</code>,                                   Replace downlink queue - <code>v3/{application id}@{tenant id}/devices/{device id}/down/replace</code></td>
 </tr>
 </tbody>
 </table>
@@ -334,7 +319,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <tbody>
 <tr>
 <td>Overall Uplink Format</td>
-<td><details><summary>Show example</summary> {<br>&ldquo;app_id&rdquo;: &ldquo;my-app-id&rdquo;,  <br>&ldquo;dev_id&rdquo;: &ldquo;my-dev-id&rdquo;,  <br>&ldquo;hardware_serial&rdquo;: &ldquo;0102030405060708&rdquo;,<br>&ldquo;port&rdquo;: 1,  <br>&ldquo;counter&rdquo;: 2,  <br>&ldquo;is_retry&rdquo;: false,  <br>&ldquo;confirmed&rdquo;: false,  <br>&ldquo;payload_raw&rdquo;: &ldquo;AQIDBA==&rdquo;,  <br>&ldquo;payload_fields&rdquo;: {<br>&ldquo;temperature&rdquo;: 1.0,<br>&ldquo;luminosity&rdquo;: 0.64<br>},,  <br>&ldquo;metadata&rdquo;: {<br>&ldquo;airtime&rdquo;: 46336000,  <br>&ldquo;time&rdquo;: &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;,  <br>&ldquo;frequency&rdquo;: 868.1,  <br>&ldquo;modulation&rdquo;: &ldquo;LORA&rdquo;,  <br>&ldquo;data_rate&rdquo;: &ldquo;SF7BW125&rdquo;,<br>&ldquo;coding_rate&rdquo;: &ldquo;4/5&rdquo;,  <br>&ldquo;gateways&rdquo;: [<br>{<br>&ldquo;gtw_id&rdquo;: &ldquo;ttn-herengracht-ams&rdquo;, <br>&ldquo;timestamp&rdquo;: 12345,  <br>&ldquo;time&rdquo;: &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;, <br>&ldquo;channel&rdquo;: 2,  <br>&ldquo;rssi&rdquo;: -25,  <br>&ldquo;snr&rdquo;: 5,  <br>&ldquo;rf_chain&rdquo;: 0,  <br>&ldquo;latitude&rdquo;: 52.1234,  <br>&ldquo;longitude&rdquo;: 6.1234,  <br>&ldquo;altitude&rdquo;: 6  <br>},<br>//&hellip;more if received by more gateways&hellip;<br>],<br>&ldquo;latitude&rdquo;: 52.2345,  <br>&ldquo;longitude&rdquo;: 6.2345,  <br>&ldquo;altitude&rdquo;: 2  <br>}<br>} </details></td>
+<td><details><summary>Show example</summary> {<br>&ldquo;app_id&rdquo;: &ldquo;my-app-id&rdquo;, <br>&ldquo;dev_id&rdquo;: &ldquo;my-dev-id&rdquo;, <br>&ldquo;hardware_serial&rdquo;: &ldquo;0102030405060708&rdquo;,<br>&ldquo;port&rdquo;: 1, <br>&ldquo;counter&rdquo;: 2, <br>&ldquo;is_retry&rdquo;: false, <br>&ldquo;confirmed&rdquo;: false, <br>&ldquo;payload_raw&rdquo;: &ldquo;AQIDBA==&rdquo;, <br>&ldquo;payload_fields&rdquo;: {<br>&ldquo;temperature&rdquo;: 1.0,<br>&ldquo;luminosity&rdquo;: 0.64<br>},, <br>&ldquo;metadata&rdquo;: {<br>&ldquo;airtime&rdquo;: 46336000, <br>&ldquo;time&rdquo;: &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;, <br>&ldquo;frequency&rdquo;: 868.1, <br>&ldquo;modulation&rdquo;: &ldquo;LORA&rdquo;, <br>&ldquo;data_rate&rdquo;: &ldquo;SF7BW125&rdquo;,<br>&ldquo;coding_rate&rdquo;: &ldquo;4/5&rdquo;, <br>&ldquo;gateways&rdquo;: [<br>{<br>&ldquo;gtw_id&rdquo;: &ldquo;ttn-herengracht-ams&rdquo;, <br>&ldquo;timestamp&rdquo;: 12345, <br>&ldquo;time&rdquo;: &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;, <br>&ldquo;channel&rdquo;: 2, <br>&ldquo;rssi&rdquo;: -25, <br>&ldquo;snr&rdquo;: 5, <br>&ldquo;rf_chain&rdquo;: 0, <br>&ldquo;latitude&rdquo;: 52.1234, <br>&ldquo;longitude&rdquo;: 6.1234, <br>&ldquo;altitude&rdquo;: 6 <br>},<br>//&hellip;more if received by more gateways&hellip;<br>],<br>&ldquo;latitude&rdquo;: 52.2345, <br>&ldquo;longitude&rdquo;: 6.2345, <br>&ldquo;altitude&rdquo;: 2 <br>}<br>} </details></td>
 <td><details><summary>Show example</summary> {<br>&ldquo;end_device_ids&rdquo; : {<br>&ldquo;device_id&rdquo; : &ldquo;my-dev-id&rdquo;,<br>&ldquo;application_ids&rdquo; : {<br>&ldquo;application_id&rdquo; : &ldquo;my-app-id&rdquo;<br>},<br>&ldquo;dev_eui&rdquo; : &ldquo;0102030405060708&rdquo;,<br>&ldquo;join_eui&rdquo; : &ldquo;0102030405060708&rdquo;,<br>&ldquo;dev_addr&rdquo; : &ldquo;01020304&rdquo;<br>},<br>&ldquo;correlation_ids&rdquo; : [<br>// …<br>],<br>&ldquo;received_at&rdquo; : &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;,<br>&ldquo;uplink_message&rdquo; : {<br>&ldquo;session_key_id&rdquo; : &ldquo;AXA50tHUGUucuzS/bCGMNw==&rdquo;,<br>&ldquo;f_cnt&rdquo; : 1,<br>&ldquo;frm_payload&rdquo; : &ldquo;AQIDBA==&rdquo;,<br>&ldquo;decoded_payload&rdquo; : {<br>&ldquo;temperature&rdquo;: 1.0,<br>&ldquo;luminosity&rdquo;: 0.64<br>},<br>&ldquo;rx_metadata&rdquo; : [ {<br>&ldquo;gateway_ids&rdquo; : {<br>&ldquo;gateway_id&rdquo; : &ldquo;ttn-herengracht-ams&rdquo;,<br>&ldquo;eui&rdquo; : &ldquo;9C5C8E00001A05C4&rdquo;<br>},<br>&ldquo;time&rdquo; : &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;,<br>&ldquo;timestamp&rdquo; : 12345,<br>&ldquo;rssi&rdquo; : -25,<br>&ldquo;channel_rssi&rdquo; : -25,<br>&ldquo;snr&rdquo; : 5,<br>&ldquo;uplink_token&rdquo; : &ldquo;ChIKEAoEZ3R3MRIInFyOAAAaBcQQ6L3Vlgk=&rdquo;,<br>&ldquo;channel_index&rdquo; : 2<br>} ],<br>&ldquo;settings&rdquo; : {<br>&ldquo;data_rate&rdquo; : {<br>&ldquo;lora&rdquo; : {<br>&ldquo;bandwidth&rdquo; : 125000,<br>&ldquo;spreading_factor&rdquo; : 7<br>}<br>},<br>&ldquo;data_rate_index&rdquo; : 5,<br>&ldquo;coding_rate&rdquo; : &ldquo;4/5&rdquo;,<br>&ldquo;frequency&rdquo; : &ldquo;868100000&rdquo;,<br>&ldquo;timestamp&rdquo; : 12345,<br>&ldquo;time&rdquo; : &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;<br>},<br>&ldquo;received_at&rdquo; : &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;<br>,&ldquo;consumed_airtime&rdquo;: &ldquo;0.051321s&rdquo;,<br>&ldquo;locations&rdquo;: {<br>&ldquo;user&rdquo;: {<br>&ldquo;latitude&rdquo;: 37.97155556731436,<br>&ldquo;longitude&rdquo;: 23.72678801175413,<br>&ldquo;altitude&rdquo;: 10,<br>&ldquo;source&rdquo;: &ldquo;SOURCE_REGISTRY&rdquo;<br>}<br>},}<br>} </details></td>
 </tr>
 <tr>

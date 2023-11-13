@@ -10,7 +10,7 @@
   <title>Build an Application using Generic Node Sensor Edition and Kuando Busylight | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/guides/build-an-end-to-end-solution-gn/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.fd3d59eb4852f5cc339297cb0cb5a6af3c7895bf80bc7bc02db7b78eadec7102.css" integrity="sha256-/T1Z60hS9cwzkpfLDLWmrzx4lb&#43;AvHvALbe3jq3scQI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.21413411dcb7ceb71f0089712d35a7e290a58ed727cd109f5780d2e7967c6299.css" integrity="sha256-IUE0Edy3zrcfAIlxLTWn4pCljtcnzRCfV4DS55Z8Ypk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Build an Application using Generic Node Sensor Edition and Kuando Busylight">
@@ -191,12 +191,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="using-payload-formatters">Using Payload Formatters</h2>
 <p>To decode the payload you will need a <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a>.</p>
 <p>Create a payload formatter for the uplink messages using the following JavaScript formatter code:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">){</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{};</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">batt_volt</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">=</span> <span class="p">(((</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">-</span> <span class="mi">500</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">humidity</span> <span class="o">=</span> <span class="p">((</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span><span class="o">/</span><span class="mi">10</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">button_press</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">batt_volt</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">=</span> <span class="p">((</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">500</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">humidity</span> <span class="o">=</span> <span class="p">((</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">button_press</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span>
@@ -261,7 +261,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </figure>
 
 <h2 id="adding-kuando-busylight">Adding Kuando Busylight</h2>
-<p>Kuando BusyLight is a light device that you can control using LoRaWAN downlinks. It is a <a href="https://www.thethingsindustries.com/docs/devices/class-c/">class C</a> end device that opens continuous receive windows so it is capable of receiving downlinks anytime.</p>
+<p>Kuando BusyLight is a light device that you can control using LoRaWAN downlinks. It is a <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/class-c/">class C</a> end device that opens continuous receive windows so it is capable of receiving downlinks anytime.</p>
 <figure><img src="busylight.png"/>
 </figure>
 
@@ -315,7 +315,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>This solution can be customized to meet your specific needs and ideas, such as changing the Busylight&rsquo;s color to red when the temperature exceeds a set threshold.</p>
 
         </div>
-        
+          <div class="columns is-multiline">
+</div>
+
           <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/guides/">← Guides</a>
 </div>

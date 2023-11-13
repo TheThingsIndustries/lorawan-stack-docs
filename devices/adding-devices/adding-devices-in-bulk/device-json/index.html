@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.112.3">
+  <title>JSON File Reference | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/device-json/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.21413411dcb7ceb71f0089712d35a7e290a58ed727cd109f5780d2e7967c6299.css" integrity="sha256-IUE0Edy3zrcfAIlxLTWn4pCljtcnzRCfV4DS55Z8Ypk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="JSON File Reference">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="JSON File Reference">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/device-json/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="JSON File Reference" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.7.2/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://accounts.thethingsindustries.com/fee-calculator">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Devices</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/devices/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/" class="">Adding Devices</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/" class="">Manually adding devices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/" class="">Adding devices in bulk</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/device-json/" class="is-active">JSON File Reference</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/device-csv/" class="">CSV File Reference</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/atecc608a/" class="">Adding devices with ATECC608 Secure Elements</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/" class="">Configuring Devices</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/devices/concepts/" class="">Concepts</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/devices/models/" class="">Models</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/devices/troubleshooting/" class="">Troubleshooting Devices</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">JSON File Reference
+          
+        </h1>
+        
+        <div class="content">
+          <p>The Things Stack has support for importing end devices from JSON files.</p>
+<p>This method is useful when batches of end devices are managed as JSON files or to add end devices in bulk from V2, ChirpStack and other LoRaWAN® networks using a JSON file describing those devices.</p>
+<p>Using JSON file with device descriptions, you can migrate end devices with or without their existing sessions.</p>
+<p>Here is an example of an OTAA device description in the <code>devices.json</code> file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;my-device&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0102030405060708&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0102030405060708&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;My Device&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Living room temperature sensor&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;lorawan_version&#34;</span><span class="p">:</span> <span class="s2">&#34;MAC_V1_0_2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;lorawan_phy_version&#34;</span><span class="p">:</span> <span class="s2">&#34;PHY_V1_0_2_REV_B&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;frequency_plan_id&#34;</span><span class="p">:</span> <span class="s2">&#34;EU_863_870_TTN&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;supports_join&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;root_keys&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;app_key&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;01020304050607080102030405060708&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Multiple end devices can also be contained in a single <code>devices.json</code> file like so:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* device 1 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* device 2 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The format above is considered by the Console and CLI as a JSON stream, processing one object at a time.
+For more details in how to use the file, please refer to <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/">Adding End Devices in Bulk</a>.</p>
+<h2 id="json-end-device-format">JSON End Device Format</h2>
+<p>The full specification of the JSON format is defined in the API protos. See the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:EndDevice">EndDevice</a> message definition for details.</p>
+<p>The linked specification is quite extensive, and contains a lot of fields that are not required, or are only set and used internally by the Network Server. Below, the required and most commonly used fields are discussed.</p>
+<div class="fixed-table table-device-json">
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Type</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>ids.device_id</code></strong></td>
+<td><strong>Always</strong></td>
+<td>string</td>
+<td><code>&quot;sensor-1&quot;</code></td>
+<td><a href="https://www.thethingsindustries.com/docs/reference/glossary/#device-id">More info</a></td>
+</tr>
+<tr>
+<td><strong><code>ids.dev_eui</code></strong></td>
+<td><strong>Always</strong></td>
+<td>string</td>
+<td><code>&quot;0102030405060708&quot;</code></td>
+<td><a href="https://www.thethingsindustries.com/docs/reference/glossary/#deveui">More info</a></td>
+</tr>
+<tr>
+<td><strong><code>ids.join_eui</code></strong></td>
+<td><strong>Always</strong></td>
+<td>string</td>
+<td><code>&quot;0102030405060708&quot;</code></td>
+<td>Also referred to as <strong>AppEUI</strong>. <a href="https://www.thethingsindustries.com/docs/reference/glossary/#joineui">More info</a></td>
+</tr>
+<tr>
+<td><strong><code>name</code></strong></td>
+<td>No</td>
+<td>string</td>
+<td><code>&quot;My Sensor&quot;</code></td>
+<td>Optional, a name for the device</td>
+</tr>
+<tr>
+<td><strong><code>description</code></strong></td>
+<td>No</td>
+<td>string</td>
+<td><code>&quot;Situated in living room&quot;</code></td>
+<td>Optional, description of the device</td>
+</tr>
+<tr>
+<td><strong><code>lorawan_version</code></strong></td>
+<td><strong>Always</strong></td>
+<td>string</td>
+<td><code>&quot;MAC_V1_0_2&quot;</code></td>
+<td>See <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#enum:MACVersion">MACVersion</a> for supported versions. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#lorawan-version">LoRaWAN Version</a> for more information.</td>
+</tr>
+<tr>
+<td><strong><code>lorawan_phy_version</code></strong></td>
+<td><strong>Always</strong></td>
+<td>string</td>
+<td><code>&quot;PHY_V1_0_2_REV_B&quot;</code></td>
+<td>See <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#enum:PHYVersion">PHYVersion</a> for supported versions. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#regional-parameters">LoRaWAN Version</a> for more information.</td>
+</tr>
+<tr>
+<td><strong><code>frequency_plan_id</code></strong></td>
+<td><strong>Always</strong></td>
+<td>string</td>
+<td><code>&quot;EU_863_870_TTN&quot;</code></td>
+<td>See <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans</a> for a list of supported frequency plans (The frequency plan <code>ID</code> is needed). See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#frequency-plan">Frequency Plan</a> for more information.</td>
+</tr>
+<tr>
+<td><strong><code>supports_join</code></strong></td>
+<td><strong>Always</strong></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td><code>true</code> for OTAA devices, <code>false</code> for ABP.</td>
+</tr>
+<tr>
+<td><strong><code>supports_class_c</code></strong></td>
+<td>No</td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td><code>true</code> for Class C devices, <code>false</code> otherwise.</td>
+</tr>
+<tr>
+<td><strong><code>root_keys.app_key.key</code></strong></td>
+<td><strong>For OTAA devices</strong></td>
+<td>string</td>
+<td><code>&quot;01020304050607080102030405060708&quot;</code></td>
+<td>See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#application-key">Application Key</a> for more information.</td>
+</tr>
+<tr>
+<td><strong><code>root_keys.nwk_key.key</code></strong></td>
+<td><strong>For OTAA devices</strong></td>
+<td>string</td>
+<td><code>&quot;01020304050607080102030405060708&quot;</code></td>
+<td>For LoRaWAN version 1.1 and later only. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#network-key">Network Key</a> for more information.</td>
+</tr>
+<tr>
+<td><strong><code>mac_settings.rx1_delay</code></strong></td>
+<td>No</td>
+<td>string</td>
+<td><code>&quot;RX_DELAY_5&quot;</code></td>
+<td>Delay for the first Class A receive window (Rx1). Typical values are <code>&quot;RX_DELAY_1&quot;</code> (1 second) and <code>&quot;RX_DELAY_5&quot;</code> (5 seconds). See <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">MACSettings</a> for more information.</td>
+</tr>
+<tr>
+<td><strong><code>mac_settings.supports_32_bit_f_cnt</code></strong></td>
+<td>No</td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td><code>true</code> if device supports 32-bit frame counters, <code>false</code> if device only supports 16-bit frame counters.</td>
+</tr>
+<tr>
+<td><strong><code>session.dev_addr</code></strong></td>
+<td><strong>For existing session</strong></td>
+<td>string</td>
+<td><code>&quot;01020304&quot;</code></td>
+<td><strong>Needed for ABP devices or when migrating OTAA devices with an existing session</strong>. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#device-address">Device Address</a> for more information.</td>
+</tr>
+<tr>
+<td><strong><code>session.keys.app_s_key.key</code></strong></td>
+<td><strong>For existing session</strong></td>
+<td>string</td>
+<td><code>&quot;01020304050607080102030405060708&quot;</code></td>
+<td><strong>Needed for ABP devices or when migrating OTAA devices with an existing session</strong>. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#application-session-key">Application Session Key</a> for more information.</td>
+</tr>
+<tr>
+<td><strong><code>session.keys.f_nwk_s_int_key.key</code></strong></td>
+<td><strong>For existing session</strong></td>
+<td>string</td>
+<td><code>&quot;01020304050607080102030405060708&quot;</code></td>
+<td>Forwarding Network Session Integrity Key, also referred to as <strong>Network Session Key</strong> in LoRaWAN v1.0.x compatibility mode. See <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:SessionKeys">SessionKeys</a> and <a href="https://www.thethingsindustries.com/docs/reference/glossary/#forwarding-network-session-integrity-key">Forwarding Network Session Integrity Key</a> for more information.</td>
+</tr>
+<tr>
+<td><strong><code>session.last_f_cnt_up</code></strong></td>
+<td><strong>For existing session</strong></td>
+<td>uint</td>
+<td><code>12</code></td>
+<td>Last uplink frame counter used.</td>
+</tr>
+<tr>
+<td><strong><code>session.last_n_f_cnt_down</code></strong></td>
+<td><strong>For existing session</strong></td>
+<td>uint</td>
+<td><code>12</code></td>
+<td>Last network downlink frame counter used.</td>
+</tr>
+<tr>
+<td><strong><code>session.last_a_f_cnt_down</code></strong></td>
+<td><strong>For existing session</strong></td>
+<td>uint</td>
+<td><code>12</code></td>
+<td>Last application downlink frame counter used.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<p>Note that the dots in the <strong>Field</strong> column imply an embedded object. For example, <code>root_keys.nwk_key.key</code> must be set as:</p>
+<pre tabindex="0"><code>&#34;root_keys&#34;: {
+  &#34;nwk_key:&#34;: {
+  &#34;key&#34;: &#34;&lt;NWK_KEY_HERE&gt;&#34;
+  }
+}
+</code></pre>
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/devices/adding-devices/adding-devices-in-bulk/">← Adding devices in bulk</a>
+<a class="button is-pulled-right" href="/docs/devices/adding-devices/adding-devices-in-bulk/device-csv/">CSV File Reference →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#json-end-device-format'>JSON End Device Format</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.4a22f0dea0620048bc258cf6dedbdfbec40f3b5dba1dcdc6536e61e7bc20a5bf.js" integrity="sha256-SiLw3qBiAEi8JYz23tvfvsQPO126Hc3GU25h57wgpb8=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

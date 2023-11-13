@@ -10,7 +10,7 @@
   <title>Troubleshooting Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/troubleshooting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.fd3d59eb4852f5cc339297cb0cb5a6af3c7895bf80bc7bc02db7b78eadec7102.css" integrity="sha256-/T1Z60hS9cwzkpfLDLWmrzx4lb&#43;AvHvALbe3jq3scQI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.21413411dcb7ceb71f0089712d35a7e290a58ed727cd109f5780d2e7967c6299.css" integrity="sha256-IUE0Edy3zrcfAIlxLTWn4pCljtcnzRCfV4DS55Z8Ypk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Troubleshooting Devices">
@@ -96,43 +96,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/" class="">Adding Devices</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/" class="">ABP vs OTAA</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/" class="">Configuring Devices</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/best-practices/" class="">Best Practices</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/concepts/" class="">Concepts</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/class-b/" class="">Class B</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/class-c/" class="">Class C</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/multicast/" class="">Multicast</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/downlink-queue-ops/" class="">Downlink Queue Operations</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/confirmed-downlinks-behavior/" class="">Confirmed Downlinks Behavior</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/" class="">MAC Settings</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608 Secure Elements</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/" class="">Device Claiming</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/generic-node-se/" class="">Generic Node Sensor Edition</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/the-things-node/" class="">The Things Node</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/the-things-uno/" class="">The Things Uno</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/models/" class="">Models</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/troubleshooting/" class="is-active">Troubleshooting Devices</a>
@@ -279,7 +249,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>The <code>ns.down.data.schedule.fail</code> event usually occurs with the following errors:</p>
 <ul>
 <li><code>no_absolute_gateway_time</code>: Downlinks are being scheduled with the absolute time, and the absolute time of the Gateway Server is not in sync with the absolute time of the gateway. To sync them, a gateway has to either report its GPS time, or transmit five downlink frames in order for Gateway Server to infer its absolute time by observing RTTs.</li>
-<li><code>scheduling_conflict</code>: Devices are synchronized, i.e. a number of devices are sending joins or uplinks at the same time. To avoid device synchronization, devices need to be configured to initiate joins or send uplinks at random times or with random delays. You can also try with improving the network coverage in your area. See <a href="https://www.thethingsindustries.com/docs/devices/best-practices/#synchronization-backoff-and-jitter">Best Practices</a> for more info about device synchronization.</li>
+<li><code>scheduling_conflict</code>: Devices are synchronized, i.e. a number of devices are sending joins or uplinks at the same time. To avoid device synchronization, devices need to be configured to initiate joins or send uplinks at random times or with random delays. You can also try with improving the network coverage in your area. See <a href="https://www.thethingsindustries.com/docs/devices/concepts/best-practices/#synchronization-backoff-and-jitter">Best Practices</a> for more info about device synchronization.</li>
 </ul>
 <p>We also advise to double check your network connection. If the connection between the gateway and the Network Server is slow, downlink messages could be sent too late. For example, this can happen in case of:</p>
 <ul>
@@ -295,7 +265,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Your device probably does not have a good network coverage. Some common reasons:</p>
 <ul>
 <li>The device is using SF7, while it should be using a higher SF for better coverage and reach.</li>
-<li>There might be a conflict in receiving uplinks due to <a href="https://www.thethingsindustries.com/docs/devices/best-practices/#synchronization-backoff-and-jitter">synchronization of devices</a>.</li>
+<li>There might be a conflict in receiving uplinks due to <a href="https://www.thethingsindustries.com/docs/devices/concepts/best-practices/#synchronization-backoff-and-jitter">synchronization of devices</a>.</li>
 </ul>
 <p>Check your network coverage, and make sure your devices are within your gateway&rsquo;s reach and are using a suitable SF.</p>
 <h2 id="i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events">I can see some received uplinks in gateway Live data events, but I do not see them in device events.</h2>
@@ -309,13 +279,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
 <li>FCnt mismatch
 <ul>
-<li>For ABP devices, the FCnt mismatch might occur if the device resets while the <strong>Reset Frame Counters</strong> option for the device is disabled. Try enabling the <strong>Reset Frame Counters</strong> option in the device&rsquo;s overview in The Things Stack Console, or by setting <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/#available-mac-settings">MAC commands</a> using the CLI.</li>
+<li>For ABP devices, the FCnt mismatch might occur if the device resets while the <strong>Reset Frame Counters</strong> option for the device is disabled. Try enabling the <strong>Reset Frame Counters</strong> option in the device&rsquo;s overview in The Things Stack Console, or by setting <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/mac-settings/#available-mac-settings">MAC commands</a> using the CLI.</li>
 <li>For OTAA devices, the FCnt mismatch might occur due to missing packets. The maximum FCnt gap between two consecutive uplinks is <code>16384</code> according to the LoRaWAN specification. Try re-joining your OTAA device.</li>
 </ul>
 </li>
 <li>Using inappropriate frequencies
 <ul>
-<li>This case applies only to ABP devices and EU/IN/AS frequency bands. Since the Network Server is initially accepting uplinks from devices only in default channels, uplinks from the device that is using non-default channels are dropped. In this case, <strong>Factory Preset Frequencies</strong> have to be set either in device&rsquo;s overview in The Things Stack Console, or by setting <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/#available-mac-settings">MAC commands</a> using the CLI. If these settings are applied to an existing device, you might need to reset the device as well.</li>
+<li>This case applies only to ABP devices and EU/IN/AS frequency bands. Since the Network Server is initially accepting uplinks from devices only in default channels, uplinks from the device that is using non-default channels are dropped. In this case, <strong>Factory Preset Frequencies</strong> have to be set either in device&rsquo;s overview in The Things Stack Console, or by setting <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/mac-settings/#available-mac-settings">MAC commands</a> using the CLI. If these settings are applied to an existing device, you might need to reset the device as well.</li>
 </ul>
 </li>
 <li>Session keys mismatch
@@ -324,7 +294,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 </li>
 </ul>
-<p>This problem can also occur after <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session/">migrating an active device session</a> from V2 to The Things Stack, for devices that transmit uplinks on frequencies that are not part of the standard <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">frequency plans</a> used by The Things Stack. The issue arises from the fact that factory preset frequencies were not stored in V2, so they are not present in the <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-json/">JSON file</a> used for importing devices in The Things Stack. There are two possible solutions:</p>
+<p>This problem can also occur after <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session/">migrating an active device session</a> from V2 to The Things Stack, for devices that transmit uplinks on frequencies that are not part of the standard <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">frequency plans</a> used by The Things Stack. The issue arises from the fact that factory preset frequencies were not stored in V2, so they are not present in the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/device-json/">JSON file</a> used for importing devices in The Things Stack. There are two possible solutions:</p>
 <ul>
 <li>If the end device can be reset, i.e. if it can perform a re-join to The Things Stack network or at least reset frame counters (for ABP devices)
 <ul>
@@ -333,7 +303,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
 <li>If the end device cannot be reset
 <ul>
-<li>Changes related to factory preset frequencies take effect only after a device reset, but applying the fix explained above will break the existing device session. If you really want to keep the active session or simply cannot reset the device physically, you can try adding the frequency channels manually in the <code>mac_state.current.channels</code> and <code>mac_state.desired_channels</code> parameters of the <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-json/">JSON file</a> before you import it to The Things Stack.</li>
+<li>Changes related to factory preset frequencies take effect only after a device reset, but applying the fix explained above will break the existing device session. If you really want to keep the active session or simply cannot reset the device physically, you can try adding the frequency channels manually in the <code>mac_state.current.channels</code> and <code>mac_state.desired_channels</code> parameters of the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/device-json/">JSON file</a> before you import it to The Things Stack.</li>
 </ul>
 </li>
 </ul>
@@ -356,9 +326,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>The <code>COLLISION_PACKET</code> error occurs when downlink transmissions overlap - this happens when two or more packets overlap in time and use the same spreading factor, bandwith and frequency plan settings.</p>
 <p>To avoid packet collisions, users can enable server-side buffering of donwlink messages. If server-side buffering is enabled, the Gateway Server schedules the downlink message to be sent after the downlink message that was already queued but not sent yet, so that their transmissions don&rsquo;t overlap. To enable this, navigate to your gateway&rsquo;s <strong>General settings</strong> section, expand the <strong>LoRaWAN</strong> section and <strong>Enable</strong> the <strong>Schedule downlink late</strong> option by ticking the box. Note that this is a recommended setting for gateways that use <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/">UDP packet forwarder</a>.</p>
         </div>
-        
+          <div class="columns is-multiline">
+</div>
+
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/devices/the-things-uno/">← The Things Uno</a>
+<a class="button is-pulled-left" href="/docs/devices/models/the-things-uno/">← The Things Uno</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>

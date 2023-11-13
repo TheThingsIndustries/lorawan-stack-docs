@@ -10,7 +10,7 @@
   <title>Migrate using the Console | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/migrate-using-console/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.fd3d59eb4852f5cc339297cb0cb5a6af3c7895bf80bc7bc02db7b78eadec7102.css" integrity="sha256-/T1Z60hS9cwzkpfLDLWmrzx4lb&#43;AvHvALbe3jq3scQI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.21413411dcb7ceb71f0089712d35a7e290a58ed727cd109f5780d2e7967c6299.css" integrity="sha256-IUE0Edy3zrcfAIlxLTWn4pCljtcnzRCfV4DS55Z8Ypk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Migrate using the Console">
@@ -164,27 +164,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/import-devices/" class="">Import End Devices in The Things Stack</a>
-    
-  </li>
-
-  <li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/configure-mac-settings/" class="">Fine-tuning MAC Settings for End Devices</a>
     
   </li>
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/gateway-migration/" class="">Migrating Gateways</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-json/" class="">JSON File Reference</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-csv/" class="">CSV File Reference</a>
     
   </li>
 
@@ -235,7 +220,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="add-an-end-device-in-the-things-stack">Add an End Device in The Things Stack</h2>
 <p>The first step is to add your end device in The Things Stack. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> section for more details on adding devices in The Things Stack.</p>
 <p>There are two ways to add devices in The Things Stack Console - <strong>Manually</strong> and via the <strong>LoRaWAN Device Repository</strong>.</p>
-<p>Configuring settings for end devices depends on their type - OTAA or ABP. We strongly recommend using OTAA over ABP. Read <a href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/">why using OTAA is better than ABP</a>.</p>
+<p>Configuring settings for end devices depends on their type - OTAA or ABP. We strongly recommend using OTAA over ABP. Read <a href="https://www.thethingsindustries.com/docs/devices/concepts/abp-vs-otaa/">why using OTAA is better than ABP</a>.</p>
 <div class="tabs is-boxed">
   <ul>
     
@@ -293,8 +278,8 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
 </li>
 </ul>
 <p>The <strong>DevAddr</strong> and <strong>RX1 Delay</strong> values depend on your specific use case.</p>
-<p>If you want your end device traffic to be routed via Packet Broker to The Things Stack, <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/packet-broker-requirements/">Packet Broker Requirements for End Device Migration</a> need to be fulfilled. If you are migrating from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>, you might be able to keep the existing <strong>DevAddr</strong> (please contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>). If the existing <strong>DevAddr</strong> is not routable by the Packet Broker (i.e. you are not migrating from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>), you will need to auto-generate new <strong>DevAddr</strong> during device registration on The Things Stack, then re-program the device to assign it with the new <strong>DevAddr</strong>. Note that in both of these cases, you will  have to adjust your device&rsquo;s <strong>RX1 Delay</strong> to 5 seconds using MAC commands, otherwise your device&rsquo;s traffic might not reach The Things Stack in time.</p>
-<p>Re-programming the ABP device to change <strong>DevAddr</strong> to the one issued by The Things Stack and <strong>RX1 Delay</strong> to 5 seconds is <strong>recommended</strong>. Re-programming the ABP device to do this might also be a good time to reconsider switching it to OTAA by flashing the firmware and adopting some <a href="https://www.thethingsindustries.com/docs/devices/best-practices/">best practices</a>. <a href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/">Check why using OTAA is recommended</a>.</p>
+<p>If you want your end device traffic to be routed via Packet Broker to The Things Stack, <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/packet-broker-requirements/">Packet Broker Requirements for End Device Migration</a> need to be fulfilled. If you are migrating from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>, you might be able to keep the existing <strong>DevAddr</strong> (please contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>). If the existing <strong>DevAddr</strong> is not routable by the Packet Broker (i.e. you are not migrating from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>), you will need to auto-generate new <strong>DevAddr</strong> during device registration on The Things Stack, then re-program the device to assign it with the new <strong>DevAddr</strong>. Note that in both of these cases, you will have to adjust your device&rsquo;s <strong>RX1 Delay</strong> to 5 seconds using MAC commands, otherwise your device&rsquo;s traffic might not reach The Things Stack in time.</p>
+<p>Re-programming the ABP device to change <strong>DevAddr</strong> to the one issued by The Things Stack and <strong>RX1 Delay</strong> to 5 seconds is <strong>recommended</strong>. Re-programming the ABP device to do this might also be a good time to reconsider switching it to OTAA by flashing the firmware and adopting some <a href="https://www.thethingsindustries.com/docs/devices/concepts/best-practices/">best practices</a>. <a href="https://www.thethingsindustries.com/docs/devices/concepts/abp-vs-otaa/">Check why using OTAA is recommended</a>.</p>
 <p>If you do not want your traffic to be routed by the Packet Broker, i.e. you want to migrate your gateway to The Things Stack too, you do not have to re-program your device. You can keep the existing <strong>DevAddr</strong> and <strong>RX1 Delay</strong> of 1 second, and use these values when adding the device to The Things Stack. Be aware that if you are using a high-latency backhaul, keeping the <strong>RX1 Delay</strong> of 1 second still might cause latency issues, even if you migrate your gateway.</p>
 <p>For the <strong>NwkSKey</strong>, you can choose to keep the one used on V2, or to generate a new one in The Things Stack Console during the device registration process.</p>
 </section>
@@ -334,7 +319,7 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
 </ul>
 </section>
 <section data-content="abp">
-  ABP devices must be completely deleted from V2, especially if they are not re-programmed for a new <strong>DevAddr</strong>. Having the device registered in both V2 and The Things Stack  introduces serious conflicts, including race conditions for Joins and unpredictable, out-of-spec operation.
+  ABP devices must be completely deleted from V2, especially if they are not re-programmed for a new <strong>DevAddr</strong>. Having the device registered in both V2 and The Things Stack introduces serious conflicts, including race conditions for Joins and unpredictable, out-of-spec operation.
 </section>
 
 </div>

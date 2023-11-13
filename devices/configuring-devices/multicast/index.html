@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.112.3">
+  <title>Multicast Groups | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/configuring-devices/multicast/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.21413411dcb7ceb71f0089712d35a7e290a58ed727cd109f5780d2e7967c6299.css" integrity="sha256-IUE0Edy3zrcfAIlxLTWn4pCljtcnzRCfV4DS55Z8Ypk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Multicast Groups">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Multicast Groups">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/configuring-devices/multicast/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Multicast Groups" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.7.2/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://accounts.thethingsindustries.com/fee-calculator">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Devices</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/devices/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/" class="">Adding Devices</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/" class="">Configuring Devices</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/device-location/" class="">Device location settings</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/mac-settings/" class="">MAC Settings</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/class-b/" class="">Class B Settings</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/class-c/" class="">Class C Settings</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/multicast/" class="is-active">Multicast Groups</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/downlink-queue-ops/" class="">Downlink Queue Operations</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/payload-crypto-override/" class="">Payload Crypto Override</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/devices/concepts/" class="">Concepts</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/devices/models/" class="">Models</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/devices/troubleshooting/" class="">Troubleshooting Devices</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">Multicast Groups
+          
+        </h1>
+        
+        <div class="content">
+          <p>It is also possible to create a <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/class-b/">Class B</a> or <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/class-c/">Class C</a> multicast group to send downlink messages to a group of end devices. A multicast group is a virtual ABP device, where multiple physical devices share the same DevAddr and session keys. It does not support uplink, confirmed downlink nor MAC commands.</p>
+<p>We define some user parameters that will be used below:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LORAWAN_VERSION</span><span class="o">=</span><span class="s2">&#34;1.0.3&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LORAWAN_PHY_VERSION</span><span class="o">=</span><span class="s2">&#34;1.0.3-a&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">DEV_ADDR</span><span class="o">=</span><span class="s2">&#34;00E4304D&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">APP_SESSION_KEY</span><span class="o">=</span><span class="s2">&#34;A0CAD5A30036DBE03096EB67CA975BAA&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">NWK_SESSION_KEY</span><span class="o">=</span><span class="s2">&#34;B7F3E161BC9D4388E6C788A0C547F255&#34;</span>
+</span></span></code></pre></div><p>Make sure to modify these according to your setup.</p>
+<h2 id="class-b-and-multicast">Class B and Multicast</h2>
+<p>Since there are no uplinks in multicast groups, there is no MAC layer communication between the end device and The Things Stack. Therefore, it is necessary to specify the ping slot periodicity by setting the following parameter:</p>
+<ul>
+<li><code>mac-settings.ping-slot-periodicity.value</code></li>
+</ul>
+<p>See the <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/mac-settings/">MAC Settings</a> guide for more information about configuring MAC layer parameters.</p>
+<h2 id="creating-a-multicast-group">Creating a Multicast Group</h2>
+<p>When creating a device, you can specify in the Console and CLI whether it&rsquo;s a multicast group.</p>
+<p>CLI example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-version <span class="nv">$LORAWAN_VERSION</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-phy-version <span class="nv">$LORAWAN_PHY_VERSION</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.dev-addr <span class="nv">$DEV_ADDR</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.app-s-key.key <span class="nv">$APP_SESSION_KEY</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.nwk-s-key.key <span class="nv">$NWK_SESSION_KEY</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --multicast <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --supports-class-c <span class="c1"># or --supports-class-b</span>
+</span></span></code></pre></div><p>Please note that a multicast group cannot be converted to a normal unicast device or the other way around.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Since multicast does not support uplink, the Network Server does not know a downlink path. Therefore, you need to specify a downlink path when scheduling a downlink message.
+</div>
+
+<h2 id="example">Example</h2>
+<div class="notification is-primary is-light has-text-dark">
+  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
+  <p>The instructions below use the command-line interface (CLI).</p>
+  
+  
+  <div class="buttons">
+    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/the-things-stack/interact/cli/installing-cli/">Learn how to install the CLI</a>
+  </div>
+</div>
+
+<p>First, create a multicast group:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-version <span class="nv">$LORAWAN_VERSION</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-phy-version <span class="nv">$LORAWAN_PHY_VERSION</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.dev-addr <span class="nv">$DEV_ADDR</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.app-s-key.key <span class="nv">$APP_SESSION_KEY</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.nwk-s-key.key <span class="nv">$NWK_SESSION_KEY</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --multicast <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --supports-class-c
+</span></span></code></pre></div><p>Then, schedule the following message to the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">Application Server MQTT server</a> or <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/">HTTP webhooks</a>. A downlink path must be specified because none is known, as there is no uplink in multicast:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;downlinks&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;vu8=&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;priority&#34;</span><span class="p">:</span> <span class="s2">&#34;NORMAL&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;class_b_c&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;gateways&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gtw1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gtw2&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;absolute_time&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-07-23T13:05:00Z&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/devices/configuring-devices/class-c/">← Class C Settings</a>
+<a class="button is-pulled-right" href="/docs/devices/configuring-devices/downlink-queue-ops/">Downlink Queue Operations →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#class-b-and-multicast'>Class B and Multicast</a></li>
+    
+      
+      <li><a href='#creating-a-multicast-group'>Creating a Multicast Group</a></li>
+    
+      
+      <li><a href='#example'>Example</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.4a22f0dea0620048bc258cf6dedbdfbec40f3b5dba1dcdc6536e61e7bc20a5bf.js" integrity="sha256-SiLw3qBiAEi8JYz23tvfvsQPO126Hc3GU25h57wgpb8=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

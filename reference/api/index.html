@@ -10,7 +10,7 @@
   <title>API | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/api/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.fd3d59eb4852f5cc339297cb0cb5a6af3c7895bf80bc7bc02db7b78eadec7102.css" integrity="sha256-/T1Z60hS9cwzkpfLDLWmrzx4lb&#43;AvHvALbe3jq3scQI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.21413411dcb7ceb71f0089712d35a7e290a58ed727cd109f5780d2e7967c6299.css" integrity="sha256-IUE0Edy3zrcfAIlxLTWn4pCljtcnzRCfV4DS55Z8Ypk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="API">
@@ -339,7 +339,541 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="examples-and-troubleshooting">Examples and Troubleshooting</h2>
 <p>Examples, fixes for common errors and answers to FAQ are provided in the <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/api/">Using the API</a> Getting Started section.</p>
         </div>
-        
+          <div class="columns is-multiline">
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/authentication/">Authentication</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            API calls can be authorized either by providing an API key, OAuth access token or a Session cookie.
+Usage with HTTP Authorization Header: Bearer XXXXX Usage with HTTP _session Cookie, containing a session secret XXXXX Usage with gRPC call credentials (in the authorization header): Bearer XXXXX Usage with MQTT Password: XXXXX Here, XXXXX is either a valid API key, a valid OAuth access token or a valid session secret.
+API keys and OAuth access tokens in The Things Stack have the following format: &amp;lt;token-type&amp;gt;.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/authentication/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/field-mask/">Fields and Field Masks</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            Field Masks The Things Stack APIs use field masks to specify a subset of fields that should be returned by a reading request, or to specify fields that should be updated in a writing request. API request messages which contain a field_mask field operate this way - for example, GetEndDeviceRequest, or UpdateApplicationRequest, and most Get, List, Set, and Update requests. By default, these API requests will not return or update most fields, unless they are specified in a field mask.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/field-mask/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/application/">Application APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The ApplicationRegistry service Method ApplicationRegistry.Create Description Create a new application. This also sets the given organization or user as first collaborator with all possible rights. Request type CreateApplicationRequest Response type Application HTTP bindings POST /api/v3/users/{collaborator.user_ids.user_id}/applications
+POST /api/v3/organizations/{collaborator.organization_ids.organization_id}/applications
+Method ApplicationRegistry.Get Description Get the application with the given identifiers, selecting the fields specified in the field mask. More or less fields may be returned, depending on the rights of the caller. Request type GetApplicationRequest Response type Application HTTP bindings GET /api/v3/applications/{application_ids.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/application/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/application_packages/">Application Package APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The ApplicationPackageRegistry service Method ApplicationPackageRegistry.List Description List returns the available packages for the end device. Request type EndDeviceIdentifiers Response type ApplicationPackages HTTP bindings GET /api/v3/as/applications/{application_ids.application_id}/devices/{device_id}/packages
+Method ApplicationPackageRegistry.GetAssociation Description GetAssociation returns the association registered on the FPort of the end device. Request type GetApplicationPackageAssociationRequest Response type ApplicationPackageAssociation HTTP bindings GET /api/v3/as/applications/{ids.end_device_ids.application_ids.application_id}/devices/{ids.end_device_ids.device_id}/packages/associations/{ids.f_port}
+Method ApplicationPackageRegistry.ListAssociations Description ListAssociations returns all of the associations of the end device. Request type ListApplicationPackageAssociationRequest Response type ApplicationPackageAssociations HTTP bindings GET /api/v3/as/applications/{ids.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/application_packages/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/application_pub_sub/">Application Pub/Sub APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The ApplicationPubSubRegistry service Method ApplicationPubSubRegistry.GetFormats Request type google.protobuf.Empty Response type ApplicationPubSubFormats HTTP bindings GET /api/v3/as/pubsub-formats
+Method ApplicationPubSubRegistry.Set Request type SetApplicationPubSubRequest Response type ApplicationPubSub HTTP bindings PUT /api/v3/as/pubsub/{pubsub.ids.application_ids.application_id}/{pubsub.ids.pub_sub_id}
+POST /api/v3/as/pubsub/{pubsub.ids.application_ids.application_id}
+Method ApplicationPubSubRegistry.Get Request type GetApplicationPubSubRequest Response type ApplicationPubSub HTTP bindings GET /api/v3/as/pubsub/{ids.application_ids.application_id}/{ids.pub_sub_id}
+Method ApplicationPubSubRegistry.List Request type ListApplicationPubSubsRequest Response type ApplicationPubSubs HTTP bindings GET /api/v3/as/pubsub/{application_ids.application_id}
+Method ApplicationPubSubRegistry.Delete Request type ApplicationPubSubIdentifiers Response type google.protobuf.Empty HTTP bindings DELETE /api/v3/as/pubsub/{application_ids.application_id}/{pub_sub_id}
+Messages Message ApplicationPubSub Restrictions: Only one of nats, mqtt, aws_iot can be set.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/application_pub_sub/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/application_server/">Application Server APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The As service Method As.SetLink Description Set a link configuration from the Application Server a Network Server. This call returns immediately after setting the link configuration; it does not wait for a link to establish. To get link statistics or errors, use GetLinkStats. Note that there can only be one Application Server instance linked to a Network Server for a given application at a time. Request type SetApplicationLinkRequest Response type ApplicationLink HTTP bindings PUT /api/v3/as/applications/{application_ids.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/application_server/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/application_webhooks/">Application Webhook APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The ApplicationWebhookRegistry service Method ApplicationWebhookRegistry.Get Request type GetApplicationWebhookRequest Response type ApplicationWebhook HTTP bindings GET /api/v3/as/webhooks/{ids.application_ids.application_id}/{ids.webhook_id}
+Method ApplicationWebhookRegistry.GetFormats Request type google.protobuf.Empty Response type ApplicationWebhookFormats HTTP bindings GET /api/v3/as/webhook-formats
+Method ApplicationWebhookRegistry.GetTemplate Request type GetApplicationWebhookTemplateRequest Response type ApplicationWebhookTemplate HTTP bindings GET /api/v3/as/webhook-templates/{ids.template_id}
+Method ApplicationWebhookRegistry.Set Request type SetApplicationWebhookRequest Response type ApplicationWebhook HTTP bindings PUT /api/v3/as/webhooks/{webhook.ids.application_ids.application_id}/{webhook.ids.webhook_id}
+POST /api/v3/as/webhooks/{webhook.ids.application_ids.application_id}
+Method ApplicationWebhookRegistry.List Request type ListApplicationWebhooksRequest Response type ApplicationWebhooks HTTP bindings GET /api/v3/as/webhooks/{application_ids.application_id}
+Method ApplicationWebhookRegistry.ListTemplates Request type ListApplicationWebhookTemplatesRequest Response type ApplicationWebhookTemplates HTTP bindings GET /api/v3/as/webhook-templates
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/application_webhooks/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/client/">Client APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The ClientRegistry service Method ClientRegistry.Create Description Create a new OAuth client. This also sets the given organization or user as first collaborator with all possible rights. Request type CreateClientRequest Response type Client HTTP bindings POST /api/v3/users/{collaborator.user_ids.user_id}/clients
+POST /api/v3/organizations/{collaborator.organization_ids.organization_id}/clients
+Method ClientRegistry.Get Description Get the OAuth client with the given identifiers, selecting the fields specified in the field mask. More or less fields may be returned, depending on the rights of the caller.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/client/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/crypto_operations/">Crypto Operations APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The NetworkCryptoService service Method NetworkCryptoService.JoinRequestMIC Description Calculate the join-request message MIC. Request type CryptoServicePayloadRequest Response type CryptoServicePayloadResponse HTTP bindings Method NetworkCryptoService.JoinAcceptMIC Description Calculate the join-accept message MIC. Request type JoinAcceptMICRequest Response type CryptoServicePayloadResponse HTTP bindings Method NetworkCryptoService.EncryptJoinAccept Description Encrypt the join-accept payload. Request type CryptoServicePayloadRequest Response type CryptoServicePayloadResponse HTTP bindings Method NetworkCryptoService.EncryptRejoinAccept Description Encrypt the rejoin-accept payload. Request type CryptoServicePayloadRequest Response type CryptoServicePayloadResponse HTTP bindings Method NetworkCryptoService.DeriveNwkSKeys Description Derive network session keys (NwkSKey, or FNwkSKey, SNwkSKey and NwkSEncKey) Request type DeriveSessionKeysRequest Response type NwkSKeysResponse HTTP bindings Method NetworkCryptoService.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/crypto_operations/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/end_device/">End Device APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            End devices are registered in multiple registries. The Identity Server has a registry with end device metadata, the Network Server&amp;rsquo;s registry contains the MAC configuration, MAC state and network session keys, the Application Server keeps payload formatters and application session keys, the Join Server keeps the root keys.
+When registering end devices, we recommend registering them in the following order:
+EndDeviceRegistry.Create (Identity Server) JsEndDeviceRegistry.Set (Join Server, only for OTAA devices) NsEndDeviceRegistry.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/events/">Events API</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The Events service Method Events.Stream Description Stream live events, optionally with a tail of historical events (depending on server support and retention policy). Events may arrive out-of-order. Request type StreamEventsRequest Response type Stream of Event The HTTP API uses Content-Type: text/event-stream
+and a response body of newline-delimited JSON.
+Make sure to send Accept: text/event-stream in the request. HTTP bindings POST /api/v3/events
+Method Events.FindRelated Request type FindRelatedEventsRequest Response type FindRelatedEventsResponse HTTP bindings GET /api/v3/events/related
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/events/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/gateway/">Gateway APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The GatewayRegistry service Method GatewayRegistry.Create Description Create a new gateway. This also sets the given organization or user as first collaborator with all possible rights. Request type CreateGatewayRequest Response type Gateway HTTP bindings POST /api/v3/users/{collaborator.user_ids.user_id}/gateways
+POST /api/v3/organizations/{collaborator.organization_ids.organization_id}/gateways
+Method GatewayRegistry.Get Description Get the gateway with the given identifiers, selecting the fields specified in the field mask. More or less fields may be returned, depending on the rights of the caller. Request type GetGatewayRequest Response type Gateway HTTP bindings GET /api/v3/gateways/{gateway_ids.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/gateway/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server/">Gateway Server APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The Gs service Method Gs.GetGatewayConnectionStats Description Get statistics about the current gateway connection to the Gateway Server. This is not persisted between reconnects. Request type GatewayIdentifiers Response type GatewayConnectionStats HTTP bindings GET /api/v3/gs/gateways/{gateway_id}/connection/stats
+Method Gs.BatchGetGatewayConnectionStats Description Get statistics about gateway connections to the Gateway Server of a batch of gateways.
+Statistics are not persisted between reconnects. Gateways that are not connected or are part of a different cluster are ignored. The client should ensure that the requested gateways are in the requested cluster.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server_mqtt/">Gateway Server MQTT</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            This reference describes the MQTT protocol used by the Gateway Server. Packet forwarders implementing the MQTT protocols are specific for The Things Stack.
+The MQTT protocol can be used to develop custom packet forwarders or gateway bridges for exchanging traffic between a gateway and The Things Stack, or easily simulating gateway traffic for testing purposes. It is an alternative to the Basic Station and the Semtech UDP protocols.
+Multi-Tenancy On multi-tenant environments such as Cloud, endpoints include the tenant id, e.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server_mqtt/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/identity_server/">Identity Server APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The AuthenticationProviderRegistry service Method AuthenticationProviderRegistry.Create Request type CreateAuthenticationProviderRequest Response type AuthenticationProvider HTTP bindings POST /api/v3/authentication_providers
+Method AuthenticationProviderRegistry.Get Request type GetAuthenticationProviderRequest Response type AuthenticationProvider HTTP bindings GET /api/v3/authentication_providers/{ids.provider_id}
+Method AuthenticationProviderRegistry.List Request type ListAuthenticationProvidersRequest Response type AuthenticationProviders HTTP bindings GET /api/v3/authentication_providers
+Method AuthenticationProviderRegistry.Update Request type UpdateAuthenticationProviderRequest Response type AuthenticationProvider HTTP bindings PUT /api/v3/authentication_providers/{provider.ids.provider_id}
+Method AuthenticationProviderRegistry.Delete Request type AuthenticationProviderIdentifiers Response type google.protobuf.Empty HTTP bindings DELETE /api/v3/authentication_providers/{provider_id}
+The ContactInfoRegistry service Method ContactInfoRegistry.RequestValidation Description Request validation for the non-validated contact info for the given entity.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/identity_server/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/join_server/">Join Server APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The Js service Method Js.GetJoinEUIPrefixes Description Request the JoinEUI prefixes that are configured for this Join Server. Request type google.protobuf.Empty Response type JoinEUIPrefixes HTTP bindings GET /api/v3/js/join_eui_prefixes
+Method Js.GetDefaultJoinEUI Description Request the default JoinEUI that is configured for this Join Server. Request type google.protobuf.Empty Response type GetDefaultJoinEUIResponse HTTP bindings GET /api/v3/js/default_join_eui
+Messages Message JoinEUIPrefix Show object example { &#34;join_eui&#34;: &#34;&#34;, &#34;length&#34;: 0, } Fields:
+Field join_eui Type bytes Description ignore_empty
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/join_server/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/network_operations_center/">Network Operations Center APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The Noc service Method Noc.QueryApplicationsActiveMetrics Request type TimeWindowQuery Response type ApplicationsActiveMetrics HTTP bindings POST /api/v3/noc/applications/active-metrics
+Method Noc.QueryApplicationsActive Request type TimeBucketQuery Response type ConnectedTimeBuckets HTTP bindings POST /api/v3/noc/applications/active
+Method Noc.QueryApplicationsStatistics Request type TimeWindowQuery Response type ApplicationsStatistics HTTP bindings POST /api/v3/noc/applications/statistics
+Method Noc.QueryApplicationStatistics Request type ApplicationTimeWindowQuery Response type ApplicationEndDeviceStatistics HTTP bindings POST /api/v3/noc/application/{application_ids.application_id}/statistics
+Method Noc.QueryApplicationEndDevicesActiveMetrics Request type ApplicationTimeWindowQuery Response type EndDevicesActiveMetrics HTTP bindings POST /api/v3/noc/application/{application_ids.application_id}/end_devices/active-metrics
+Method Noc.QueryApplicationGatewaysSeen Request type ApplicationTimeWindowQuery Response type ApplicationGatewaysSeen HTTP bindings POST /api/v3/noc/application/{application_ids.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/network_operations_center/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/network_server/">Network Server APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The Ns service Method Ns.GenerateDevAddr Description GenerateDevAddr requests a device address assignment from the Network Server. Request type google.protobuf.Empty Response type GenerateDevAddrResponse HTTP bindings GET /api/v3/ns/dev_addr
+Method Ns.GetDefaultMACSettings Description GetDefaultMACSettings retrieves the default MAC settings for a frequency plan. Request type GetDefaultMACSettingsRequest Response type MACSettings HTTP bindings GET /api/v3/ns/default_mac_settings/{frequency_plan_id}/{lorawan_phy_version}
+Method Ns.GetNetID Request type google.protobuf.Empty Response type GetNetIDResponse HTTP bindings GET /api/v3/ns/net_id
+Method Ns.GetDeviceAddressPrefixes Request type google.protobuf.Empty Response type GetDeviceAdressPrefixesResponse HTTP bindings GET /api/v3/ns/dev_addr_prefixes
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/network_server/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/organization/">Organization APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The OrganizationRegistry service Method OrganizationRegistry.Create Description Create a new organization. This also sets the given user as first collaborator with all possible rights. Request type CreateOrganizationRequest Response type Organization HTTP bindings POST /api/v3/users/{collaborator.user_ids.user_id}/organizations
+Method OrganizationRegistry.Get Description Get the organization with the given identifiers, selecting the fields specified in the field mask. More or less fields may be returned, depending on the rights of the caller. Request type GetOrganizationRequest Response type Organization HTTP bindings GET /api/v3/organizations/{organization_ids.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/organization/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/packet_broker/">Packet Broker APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The Pba service Method Pba.DeleteHomeNetworkRoutingPolicy Description Delete the routing policy for the given Home Network. Deleting routing policies requires administrative access. Request type PacketBrokerNetworkIdentifier Response type google.protobuf.Empty HTTP bindings DELETE /api/v3/pba/home-networks/policies/{net_id}
+DELETE /api/v3/pba/home-networks/policies/{net_id}/{tenant_id}
+Method Pba.DeleteHomeNetworkDefaultRoutingPolicy Description Deletes the default routing policy. Deleting routing policies requires administrative access. Request type google.protobuf.Empty Response type google.protobuf.Empty HTTP bindings DELETE /api/v3/pba/home-networks/policies/default
+Method Pba.DeleteHomeNetworkDefaultGatewayVisibility Description Deletes the default gateway visibility. Deleting gateway visibilities requires administrative access.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/packet_broker/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/storage_integration/">Storage Integration API</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The ApplicationUpStorage Service Method ApplicationUpStorage.GetStoredApplicationUp Description Returns a stream of application messages that have been stored in the database. Request type GetStoredApplicationUpRequest Response type Stream of ApplicationUp The HTTP API uses Content-Type: text/event-stream
+and a response body of newline-delimited JSON.
+Make sure to send Accept: text/event-stream in the request. HTTP bindings GET /api/v3/as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/packages/storage/{type}
+GET /api/v3/as/applications/{application_ids.application_id}/packages/storage/{type}
+Method ApplicationUpStorage.GetStoredApplicationUpCount Description Returns how many application messages have been stored in the database for an application or end device.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/storage_integration/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/tenant/">Tenant APIs</a>
+          </h1>
+          
+          <h2 class="subtitle">
+            
+              
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Enterprise Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+</a>
+
+
+            
+            
+            
+            
+          </h2>
+          
+          <div class="content has-text-grey">
+            
+            Authentication Unlike the other services, the tenant services do not accept API keys or OAuth access tokens. Instead, authentication is done with a &amp;ldquo;tenant admin key&amp;rdquo; that is configured in the Identity Server
+Usage with HTTP Authorization Header: TenantAdminKey XXXXX Usage with gRPC call credentials (in the authorization header): TenantAdminKey XXXXX The TenantRegistry service Method TenantRegistry.Create Request type CreateTenantRequest Response type Tenant HTTP bindings POST /api/v3/tenants
+Method TenantRegistry.Get Request type GetTenantRequest Response type Tenant HTTP bindings GET /api/v3/tenants/{tenant_ids.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/tenant/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/reference/api/user/">User APIs</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The UserRegistry service Method UserRegistry.Create Description Register a new user. This method may be restricted by network settings. Request type CreateUserRequest Response type User HTTP bindings POST /api/v3/users
+Method UserRegistry.Get Description Get the user with the given identifiers, selecting the fields given by the field mask. The method may return more or less fields, depending on the rights of the caller. Request type GetUserRequest Response type User HTTP bindings GET /api/v3/users/{user_ids.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/reference/api/user/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
           <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/reference/adr/">← Adaptive Data Rate</a>
 <a class="button is-pulled-right" href="/docs/reference/api/authentication/">Authentication →</a>

@@ -10,7 +10,7 @@
   <title>Adding Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/adding-devices/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.fd3d59eb4852f5cc339297cb0cb5a6af3c7895bf80bc7bc02db7b78eadec7102.css" integrity="sha256-/T1Z60hS9cwzkpfLDLWmrzx4lb&#43;AvHvALbe3jq3scQI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.21413411dcb7ceb71f0089712d35a7e290a58ed727cd109f5780d2e7967c6299.css" integrity="sha256-IUE0Edy3zrcfAIlxLTWn4pCljtcnzRCfV4DS55Z8Ypk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Adding Devices">
@@ -97,47 +97,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
 
 
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/" class="">Manually adding devices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/" class="">Adding devices in bulk</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/atecc608a/" class="">Adding devices with ATECC608 Secure Elements</a>
+    
+  </li>
+
+</ul>
+
 
     
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/" class="">ABP vs OTAA</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/" class="">Configuring Devices</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/best-practices/" class="">Best Practices</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/concepts/" class="">Concepts</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/class-b/" class="">Class B</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/class-c/" class="">Class C</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/multicast/" class="">Multicast</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/downlink-queue-ops/" class="">Downlink Queue Operations</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/confirmed-downlinks-behavior/" class="">Confirmed Downlinks Behavior</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/" class="">MAC Settings</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608 Secure Elements</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/" class="">Device Claiming</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/generic-node-se/" class="">Generic Node Sensor Edition</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/the-things-node/" class="">The Things Node</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/the-things-uno/" class="">The Things Uno</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/models/" class="">Models</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/troubleshooting/" class="">Troubleshooting Devices</a>
@@ -164,307 +153,152 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </h1>
         
         <div class="content">
-          <p>This section contains instructions for adding devices in The Things Stack.</p>
-<p>Devices are managed under applications. An application can contain an unlimited number of devices, but it can be helpful to sort devices in to applications by function or geographical area, to make the integrations and live data views more useful.</p>
-<p>Devices can be easily added using the Console and the CLI, so those methods are extensively explained in this section. It is also possible to add devices <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/api/#multi-step-actions">using the API</a>.</p>
-<div class="tabs is-boxed">
-  <ul>
-    
-    <li data-tab="console">
-      <a>
-        <span>Console</span>
-      </a>
-    </li>
-    
-    <li data-tab="cli">
-      <a>
-        <span>CLI</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-<div class="tab-content content">
-  <section data-content="console">
-  <h2 id="adding-devices-using-the-console">Adding devices using the Console</h2>
-<p>To create a device, first open the application you wish to add the device in. Go to <strong>End devices</strong> in the left menu and click on <strong>+ Add end device</strong> to reach the end device registration page.</p>
+          <p>This section contains instructions for adding LoRaWAN® devices in The Things Stack.</p>
+<p>End devices in The Things Stack are managed under <strong>Applications</strong>.
+An application is a logical collection of devices that can be used to collect devices by function or geographical area. Before proceeding with this guide, <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">create an application</a> first.</p>
+<p>This guide assumes that your device is in the <a href="https://github.com/TheThingsNetwork/lorawan-devices/">LoRaWAN® Device Repository</a> and that you&rsquo;re using the Console. If your device is not in the LoRaWAN® Device Repository or if you want to use The Things Stack CLI, see <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/">Manually adding devices </a>.</p>
+<p>To create a device, first open the application you wish to add the device in. Go to <strong>End devices</strong> in the left menu and click on <strong>+Register end device</strong> to reach the end device registration page.</p>
 <figure><img src="application-overview.png"
          alt="Application overview"/>
 </figure>
+
 <p>You will be presented with options to easily onboard your device using its QR code (if you have it), and to register your end device from the <a href="https://github.com/TheThingsNetwork/lorawan-devices/">LoRaWAN® Device Repository</a> or manually.</p>
-<figure><img src="adding-devices-options.png"
-         alt="Options to add devices"/>
+<figure><img src="register-devices-option.png"
+         alt="Options to register devices"/>
 </figure>
-<p>Keep reading to learn how to register devices using these methods.</p>
-<h3 id="onboarding-devices-using-qr-codes">Onboarding devices using QR codes</h3>
-<p>If your device has a <a href="https://lora-alliance.org/resource_hub/tr005-lorawan-device-identification-qr-codes/">TR005 LoRaWAN® Device Identification QR Code</a>, it is a no-brainer to onboard it on The Things Stack. Note not all QR codes on the physical device are scannable. If your device doesn&rsquo;t have a QR code or has a vendor specific QR code, you can skip this section.</p>
-<p>Click the <strong>Scan end device QR code</strong> button and allow The Things Stack to use your camera.</p>
-<figure><img src="waiting-for-camera.png"
-         alt="Waiting for camera"/>
-</figure>
-<p>Now just bring your device&rsquo;s QR code closer to your camera. A window with data found from the QR code will appear, containing your device&rsquo;s <strong>Claim authentication code</strong>, <strong>JoinEUI</strong>, <strong>DevEUI</strong> and <strong>Brand</strong>. If the data seems correct, click <strong>Apply</strong>.</p>
-<figure><img src="found-qr-data.png"
-         alt="Found QR data"/>
-</figure>
-<p>Now proceed to choose the <strong>Input Method</strong> under the <strong>End device type</strong> section below and keep following the corresponding instructions for <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#using-the-lorawan-device-repository">using the LoRaWAN Device Repository</a> or <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#manually-registering-an-end-device">manual registration</a>.</p>
-<p>The image below shows an example for when a user chooses to <strong>Enter end device specifics manually</strong>. One can notice that parameters like <strong>Frequency plan</strong>, <strong>LoRaWAN version</strong>, <strong>Regional Parameters version</strong> and <strong>AppKey</strong> have to be set manually, and some advanced settings can be adjusted, while the <strong>JoinEUI</strong> and <strong>DevEUI</strong> fields will be pre-filled from the scanned QR code.</p>
-<figure><img src="pre-filled-eui-data.png"
-         alt="Registering device with pre-filled EUI data"/>
-</figure>
-<h3 id="using-the-lorawan-device-repository">Using the LoRaWAN Device Repository</h3>
-<p>The <a href="https://github.com/TheThingsNetwork/lorawan-devices">LoRaWAN device repository</a> contains device profiles, LoRaWAN information, codecs, and more, for many LoRaWAN devices. Using the device repository to add devices in The Things Stack automatically uses the correct LoRaWAN version and regional parameters version, which means less information for you to find!</p>
-<p>If your device is not in the device repository, see <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#manually-registering-an-end-device">Manual Registration</a>.</p>
-<p>To use the device repository, make sure you choose the <strong>Select the end device in the LoRaWAN Device Repository</strong> input method. Then, select the <strong>End device brand</strong>, <strong>Model</strong>, <strong>Hardware Version</strong>, <strong>Software Version</strong>, and <strong>Profile (Region)</strong> for your device.</p>
-<p>Choose a <strong>Frequency plan</strong> appropriate for your region. Your device and gateway must use the same <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">frequency plan</a> to communicate.</p>
-<figure><img src="device-repo.png"
-         alt="Creating a new device with the Device Repository"/>
-</figure>
-<p>Enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer and click <strong>Confirm</strong>. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the <a href="https://ieee802.org/">IEEE 802 standards</a> or use all zeros, just make sure to program the same value into your device.</p>
-<p>Now enter your <strong>DevEUI</strong>. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the <strong>Generate</strong> button, and program it in your device.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Note that the <strong>JoinEUI</strong> and <strong>DevEUI</strong> fields will be pre-filled if you scanned your device&rsquo;s QR code as explained in <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#onboarding-devices-using-qr-codes">Onboarding Devices using QR Codes</a> section.
-</div>
-<p>For LoRaWAN version 1.0.x devices, you will see an <strong>AppKey</strong> field, and for LoRaWAN version 1.1.x devices you will also see a <strong>NwkKey</strong> field. If these keys are provided by your manufacturer, enter them. Otherwise, use the <strong>Generate</strong> button to create them, and program them into your device.</p>
-<figure><img src="device-repo-settings.png"
-         alt="Device information"/>
-</figure>
-<p>Finally, give your device a unique <strong>End device ID</strong>, and click the <strong>Register end device</strong> button to create the end device. See <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI constraints</a> for guidelines about choosing a unique ID.</p>
-<p>The device is now activated, and will appear as connected in The Things Stack once it sends an uplink.</p>
-<h3 id="manually-registering-a-device">Manually registering a device</h3>
-<p>If your device is not available in the device repository, you may manually register it. To do this, choose the <strong>Enter end device specifics manually</strong> input method. Please refer to your device&rsquo;s datasheet to ensure entering the following information correctly. If such sheet has not been provided, please contact the manufacturer to assist you with obtaining this data.</p>
-<p>Choose a <strong>Frequency plan</strong> appropriate for your region. Your device and gateway must use the same <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">frequency plan</a> to communicate.</p>
-<p>Select the device <strong>LoRaWAN version</strong>. This should be provided with your device as the LoRaWAN version, LoRaWAN specification, or MAC version.</p>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  Choosing the incorrect LoRaWAN version can lead to complex errors. Activation may work, but the device will not be able to communicate consistently. If you are unsure about the LoRaWAN version you have selected, watch the <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/events/">event log</a> for errors!
-</div>
-<p>Choose the <strong>Regional Parameters version</strong> provided by the manufacturer of your device. This should be specified in the data sheet as Regional Parameters or PHY version.</p>
-<figure><img src="manual.png"
-         alt="Manually create end device"/>
-</figure>
-<p>If you need to use a method of activation other than OTAA, create a multicast group, specify a Class B or Class C device, or change Rx Delay and Frequency plan settings, see the <a href="#advanced-settings">Advanced settings</a> section below. Otherwise, skip the next section and continue with filling in the <strong>Provisioning information</strong>.</p>
-<p>The information that you&rsquo;ll be providing in the <strong>Provisioning information</strong> section depends on the activation method you&rsquo;ve chosen. If you choose <strong>OTAA</strong>, follow the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#otaa-devices">OTAA Devices</a> subsection, and if you choose <strong>ABP</strong>, follow the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#abp-devices">ABP Devices</a> subsection.</p>
-<h3 id="advanced-settings">Advanced settings</h3>
-<p>To modify advanced settings, expand the <strong>Show advanced activation, LoRaWAN class and cluster settings</strong> dropdown.</p>
-<p>Here, you may choose your <strong>Activation mode</strong>. If you choose <strong>OTAA</strong>, follow the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#otaa-devices">OTAA Devices</a> subsection after this one, and if you choose <strong>ABP</strong>, follow the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#abp-devices">ABP Devices</a> subsection.</p>
-<p>If your device supports <strong>Class B</strong> or <strong>Class C</strong> features, you may enable them using the dropdown <strong>Additional LoRaWAN class capabilities</strong>.</p>
-<p>Under <strong>Network defaults</strong>, you can choose to <strong>Use network&rsquo;s default MAC settings</strong>. This option is enabled by default because for most deployments, The Things Stack defaults for Rx delay and other MAC settings will be suitable. However, if you want to modify <strong>Rx2 data rate</strong> or <strong>Rx2 frequency</strong>, uncheck this option and provide your custom values. If using <a href="#abp-devices">ABP activation mode</a>, this will also allow you to configure <strong>Rx1 data rate offset</strong>, <strong>Rx1 delay</strong>, <strong>Factory preset frequencies</strong> and to reset frame counters.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  There are lots of additional options here that aren&rsquo;t mentioned for the sake of keeping this section concise. If you want to learn more about them, see the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC Settings</a> section and/or hover over the tooltip icons on the respective inputs.
-</div>
-<p>You can also choose to <strong>Skip registration on Join Server</strong> for testing purposes. We advise not to check this option unless you&rsquo;re an expert.</p>
-<h3 id="otaa-devices">OTAA devices</h3>
-<p>Over-the-Air-Activation (OTAA) is the secure, scalable way to activate LoRaWAN devices. All commercially available LoRaWAN devices support OTAA, and it is selected by default. If you are using a custom or DIY device, and cannot use OTAA, see the <a href="#abp-devices">Activation by Personalisation</a> section.</p>
-<p>The example in this guide covers adding a device using <a href="https://www.thethingsindustries.com/docs/reference/glossary/#over-the-air-activation">OTAA</a> (the most secure and preferred activation method) and <a href="https://www.thethingsindustries.com/docs/reference/glossary/#lorawan-version">LoRaWAN version</a> MAC V1.0.2 (the most common LoRaWAN version, although newer versions are better and more secure) and RP001 Regional Parameters 1.0.2 revision B. Names and keys may vary slightly for other versions, but the process is the same and any differences are noted.</p>
-<p>First, enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the <a href="https://ieee802.org/">IEEE 802 standards</a> or use all zeros, just make sure to program the same value into your device. Then click <strong>Confirm</strong>.</p>
-<p>Enter your <strong>DevEUI</strong>. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the <strong>Generate</strong> button, and program it in your device.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Note that the <strong>JoinEUI</strong> and <strong>DevEUI</strong> fields will be pre-filled if you scanned your device&rsquo;s QR code as explained in <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#onboarding-devices-using-qr-codes">Onboarding Devices using QR Codes</a> section.
-</div>
-<p>If your manufacturer provides an <strong>AppKey</strong>, enter it. Otherwise, use the <strong>Generate</strong> button to create one, and program it into your device.</p>
-<p>Give your device a unique <strong>End device ID</strong>. See <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI constraints</a> for guidelines about choosing a unique ID.</p>
-<figure><img src="manual-network-settings-otaa.png"
-         alt="Manually create OTAA end device"/>
-</figure>
-<p>Click <strong>Register end device</strong> to create the end device.</p>
-<h3 id="abp-devices">ABP devices</h3>
-<p>If your device cannot be activated using the more secure OTAA, you may manually activate it by programming security keys it, i.e. using ABP.</p>
-<p>In the <strong>Advanced settings</strong> dropdown (see the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#advanced-settings">Advanced Settings section</a>), select <strong>Activation by Personalization (ABP)</strong>.</p>
-<p>When using ABP, it is important to make sure that the Rx1 settings in your device match those in The Things Stack. Uncheck <strong>Use network&rsquo;s Rx and frequency defaults</strong> to specify settings that match those in your device. The Things Stack recommends an Rx1 delay of <code>5</code> seconds, but this value would have to also be programmed into your device.</p>
-<p>Now proceed with <strong>Provisioning information</strong>. Enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the <a href="https://ieee802.org/">IEEE 802 standards</a> or use all zeros, just make sure to program the same value into your device. Then click <strong>Confirm</strong>.</p>
-<p>Enter your <strong>DevEUI</strong>. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the <strong>Generate</strong> button, and program it in your device.</p>
-<p>Use the <strong>Generate</strong> button to create a <strong>Device address</strong>, and program it in your device.</p>
-<p>For LoRaWAN versions 1.0.x, generate an <strong>AppSKey</strong> and <strong>NwkSKey</strong> and program them in your device.</p>
-<p>For LoRaWAN versions 1.1.x, generate an <strong>AppSKey</strong>, <strong>FNwkSIntKey</strong>, <strong>SNwkSIntKey</strong>, and <strong>NwkSEncKey</strong>, and program them in your device.</p>
-<p>Finally, give your device a unique <strong>End device ID</strong>. See <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI constraints</a> for guidelines about choosing a unique ID.</p>
-<figure><img src="manual-network-settings-abp.png"
-         alt="Manually create OTAA end device"/>
-</figure>
-<p>Click <strong>Register end device</strong> to create the end device.</p>
-</section>
-<section data-content="cli">
-  <h2 id="adding-devices-using-the-cli">Adding devices using the CLI</h2>
-<p>First, list the available frequency plans and LoRaWAN versions:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices list-frequency-plans
-</span></span><span class="line"><span class="cl">ttn-lw-cli end-devices create --help
-</span></span></code></pre></div><h3 id="over-the-air-activation-otaa-device">Over-The-Air-Activation (OTAA) device</h3>
-<p>We define some user parameters that will be used below:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">DEV_EUI</span><span class="o">=</span><span class="s2">&#34;0004A30B001C0530&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">APP_EUI</span><span class="o">=</span><span class="s2">&#34;800000000000000C&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">APP_KEY</span><span class="o">=</span><span class="s2">&#34;752BAEC23EAE7964AF27C325F4C23C9A&#34;</span>
-</span></span></code></pre></div><p>Make sure to modify these according to your setup.</p>
-<p><strong>LoRaWAN 1.0.x:</strong></p>
-<p>To create an end device using over-the-air-activation (OTAA):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dev-eui <span class="nv">$DEV_EUI</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --app-eui <span class="nv">$APP_EUI</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --root-keys.app-key.key <span class="nv">$APP_KEY</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-phy-version 1.0.3-a
-</span></span></code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.0.3 MAC version and 1.0.3-a PHY versions. Make sure to replace the LoRaWAN MAC and PHY versions according to your setup.</p>
-<p>Please note that the <code>AppEUI</code> is returned as <code>join_eui</code> (The Things Stack uses LoRaWAN 1.1 terminology).</p>
-<p>If your device does not have a JoinEUI, you can use the default Join EUI of the Join Server. To use this, leave the <code>--join-eui</code>/<code>--app-eui</code> field empty. The CLI will contact the Join Server and get its default.</p>
-<p>If your device does not have a DevEUI, set the <code>--request-dev-eui</code> flag. The CLI will contact the server and fetch a DevEUI.</p>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  You must either use the value DevEUI/JoinEUI that&rsquo;s allotted to your device or let the server define these values as described above. Do not use <code>0000000000000000</code> or other randomly generated values as this is not LoRaWAN compliant and your devices will not be interoperable with other networks in the LoRaWAN ecosystem.
-</div>
-<p>You can also pass <code>--with-root-keys</code> to have root keys generated. In this case, you do not need to specify <code>--root-keys.app-key.key</code>.</p>
-<p>The end device should now be able to join the private network.</p>
-<p><strong>LoRaWAN 1.1.x:</strong></p>
-<p>To create an end device using over-the-air-activation (OTAA):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">NWK_KEY</span><span class="o">=</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
-</span></span><span class="line"><span class="cl">ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dev-eui <span class="nv">$DEV_EUI</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --app-eui <span class="nv">$APP_EUI</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --root-keys.app-key.key <span class="nv">$APP_KEY</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --root-keys.nwk-key.key <span class="nv">$NWK_KEY</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-version 1.1.0 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-phy-version 1.1.0-b
-</span></span></code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.1.0 MAC and 1.1.0-b PHY versions. Make sure you replace these versions according to your setup.</p>
-<p>You can also pass <code>--with-root-keys</code> to have root keys generated. In this case, you do not need to specify <code>--root-keys.app-key.key</code> or <code>root-keys.nwk-key.key</code>.</p>
-<p>The end device should now be able to join the private network.</p>
-<h3 id="activation-by-personalization-abp-device">Activation By Personalization (ABP) device</h3>
-<p>For adding ABP devices, we can define the following parameters:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">DEV_ADDR</span><span class="o">=</span><span class="s2">&#34;00E4304D&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">APP_SESSION_KEY</span><span class="o">=</span><span class="s2">&#34;A0CAD5A30036DBE03096EB67CA975BAA&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">NWK_SESSION_KEY</span><span class="o">=</span><span class="s2">&#34;B7F3E161BC9D4388E6C788A0C547F255&#34;</span>
-</span></span></code></pre></div><p>Make sure you modify these according to your setup.</p>
-<p><strong>LoRaWAN 1.0.x:</strong></p>
-<p>It is also possible to register an ABP activated device using the <code>--abp</code> flag as follows:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-phy-version 1.0.3-a <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --abp <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.dev-addr <span class="nv">$DEV_ADDR</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.app-s-key.key <span class="nv">$APP_SESSION_KEY</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.nwk-s-key.key <span class="nv">$NWK_SESSION_KEY</span>
-</span></span></code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.0.3 MAC and 1.0.3-a PHY versions. Make sure you replace these versions according to your setup.</p>
-<p>Please note that the <code>NwkSKey</code> is returned as <code>f_nwk_s_int_key</code> (The Things Stack uses LoRaWAN 1.1 terminology).</p>
-<p>You can also pass <code>--with-session</code> to have a session generated.</p>
-<p><strong>LoRaWAN 1.1.x:</strong></p>
-<p>To register a LoRaWAN 1.1.x end device using ABP:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">F_NWK_SESSION_INT_KEY</span><span class="o">=</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">S_NWK_SESSION_INT_KEY</span><span class="o">=</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">NWK_SESSION_ENC_KEY</span><span class="o">=</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
-</span></span><span class="line"><span class="cl">ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-version 1.1.0 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-phy-version 1.1.0-b <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --abp <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.dev-addr <span class="nv">$DEV_ADDR</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.app-s-key.key <span class="nv">$APP_SESSION_KEY</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.nwk-s-key.key <span class="nv">$NWK_SESSION_KEY</span>
-</span></span><span class="line"><span class="cl">  --session.keys.f-nwk-s-int-key.key <span class="nv">$F_NWK_SESSION_INT_KEY</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.s-nwk-s-int-key.key <span class="nv">$S_NWK_SESSION_INT_KEY</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.nwk-s-enc-key.key <span class="nv">$NWK_SESSION_ENC_KEY</span>
-</span></span></code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.1.0 MAC and 1.1.0-b PHY versions. Make sure you replace these versions according to your setup.</p>
-<p>You can also pass <code>--with-session</code> to have a session generated.</p>
-</section>
 
-</div>
-
-<h2 id="adding-devices-in-bulk">Adding devices in bulk</h2>
-<p>It is also possible to import end devices in bulk.</p>
-<p>Devices&rsquo; descriptions need to be in a <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-json/">JSON</a> or <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-csv/">CSV</a> format. See <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/import-devices/">Import End Devices in The Things Stack</a> section for instructions on how to import devices in bulk using these files.</p>
-<p>See the following video from <a href="https://youtu.be/ouz-VuiosU4">The Things Network youtube channel</a> for instructions.</p>
-<details><summary>Show video</summary>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/ouz-VuiosU4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-</details>
-<h2 id="set-device-location">Set device location</h2>
 <div class="tabs is-boxed">
   <ul>
     
-    <li data-tab="console">
+    <li data-tab="with-qr-code">
       <a>
-        <span>Console</span>
+        <span>With QR Code</span>
       </a>
     </li>
     
-    <li data-tab="cli">
+    <li data-tab="without-qr-code">
       <a>
-        <span>CLI</span>
+        <span>Without QR Code</span>
       </a>
     </li>
     
   </ul>
 </div>
 <div class="tab-content content">
-  <section data-content="console">
-  <p>Once you have added your end device to The Things Stack, you can also set its location to be displayed on a map widget by clicking <strong>Change location settings</strong>.</p>
-<p>The end device location can be manually set by pinning on the map widget, or entering the <strong>Latitude</strong>, <strong>Longitude</strong> and <strong>Altitude</strong> values.</p>
-<figure><img src="device-location.png"
-         alt="Gateway location"/>
+  <section data-content="with-qr-code">
+  <h4 id="onboarding-devices-using-qr-codes">Onboarding devices using QR codes</h4>
+<p>If your device has a <a href="https://lora-alliance.org/resource_hub/tr005-lorawan-device-identification-qr-codes/">TR005 LoRaWAN® Device Identification QR Code</a>, adding a device is a simple process.
+Note not all QR codes on the physical device are scannable. Only TR005 LoRaWAN® Device Identification QR Codes, are supported for this method.</p>
+<p>Click the <strong>Scan end device QR code</strong> button and allow The Things Stack to use your camera.
+Now just bring your device&rsquo;s QR code closer to your camera. A window with data found from the QR code will appear, containing your device&rsquo;s <strong>Claim authentication code</strong>, <strong>JoinEUI</strong>, <strong>DevEUI</strong> and <strong>Brand</strong>.</p>
+<figure><img src="qr-data-found.png"
+         alt="Found QR data"/>
+</figure>
+<p>If the data is correct, click <strong>Apply</strong>.</p>
+<p>Now proceed to choose the <strong>Input Method</strong> under the <strong>End device type</strong> section below.</p>
+<p>Choose the <strong>Select the end device in the LoRaWAN Device Repository</strong> input method. Then, select the <strong>End device brand</strong>, <strong>Model</strong>, <strong>Hardware Version</strong>, <strong>Software Version</strong>, and <strong>Profile (Region)</strong> for your device.</p>
+<figure><img src="device-repo.png"
+         alt="Creating a new device with the Device Repository"/>
+</figure>
+<p>Choose a <strong>Frequency plan</strong> appropriate for your region. Your device and gateway must use the same <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">frequency plan</a> to communicate.</p>
+<figure><img src="fp.png"
+         alt="Choosing a frequency plan"/>
 </figure>
 </section>
-<section data-content="cli">
-  <p>Once you have added your end device to The Things Stack, you can also set its location.</p>
-<p>Set your end device&rsquo;s location with:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">LAT</span><span class="o">=</span><span class="s2">&#34;43.84&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">LONG</span><span class="o">=</span><span class="s2">&#34;18.32&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">ALT</span><span class="o">=</span><span class="s2">&#34;500&#34;</span>
-</span></span><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --location.latitude <span class="nv">$LAT</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --location.longitude <span class="nv">$LONG</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --location.altitude <span class="nv">$ALT</span> <span class="se">\
-</span></span></span></code></pre></div><p>You can also set the end device location to be updated from various sources with the <code>--location.source</code> flag.</p>
-<p>The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc. Use <code>ttn-lw-cli end-devices set $APP_ID $DEVICE_ID --help</code> command to see the full list of the available location sources and other relatable info. If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.</p>
-<p>The CLI will return something like:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0004A30B001C0530&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;800000000000000C&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-05-27T15:50:38.567Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-12-25T11:16:20.592Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;locations&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;user&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;latitude&#34;</span><span class="p">:</span> <span class="mf">43.84</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;longitude&#34;</span><span class="p">:</span> <span class="mf">18.32</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;altitude&#34;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;SOURCE_REGISTRY&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div>
+<section data-content="without-qr-code">
+  <h4 id="onboarding-devices-without-qr-codes">Onboarding devices without QR codes</h4>
+<p>If your device doesn&rsquo;t have a standard <a href="https://lora-alliance.org/resource_hub/tr005-lorawan-device-identification-qr-codes/">TR005 LoRaWAN® Device Identification QR Code</a>, or has a vendor specific QR code, then the device identification and keys have to be entered manually.</p>
+<p>First choose the <strong>Select the end device in the LoRaWAN Device Repository</strong> input method. Then, select the <strong>End device brand</strong>, <strong>Model</strong>, <strong>Hardware Version</strong>, <strong>Software Version</strong>, and <strong>Profile (Region)</strong> for your device.</p>
+<figure><img src="select-dr-non-qr.png"
+         alt="Creating a new device with the Device Repository"/>
+</figure>
+<p>Choose a <strong>Frequency plan</strong> appropriate for your region. Your device and gateway must use the same <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">frequency plan</a> to communicate. This example uses <code>Europe 863-870 MHz (SF9 for RX2 - recommended)</code>.</p>
+<figure><img src="fp-non-qr.png"
+         alt="Choosing a frequency plan"/>
+</figure>
+<p>Enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer and click <strong>Confirm</strong>. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the <a href="https://ieee802.org/">IEEE 802 standards</a> or use all zeros, just make sure to program the same value into your device.</p>
+<figure><img src="non-qr-join-eui.png"
+         alt="Set the Join EUI"/>
+</figure>
+<p>Now enter your <strong>DevEUI</strong>. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the <strong>Generate</strong> button, and program it in your device.</p>
+<p>For LoRaWAN version 1.0.x devices, you will see an <strong>AppKey</strong> field, and for LoRaWAN version 1.1.x devices you will also see a <strong>NwkKey</strong> field. If these keys are provided by your manufacturer, enter them. Otherwise, use the <strong>Generate</strong> button to create them, and program them into your device.</p>
+<figure><img src="non-qr-all-set.png"
+         alt="Set the Device EUI and Device Keys"/>
+</figure>
 </section>
 
 </div>
 
-<h2 id="application-layer-settings">Application layer settings</h2>
-<h3 id="payload-crypto-override">Payload crypto override</h3>
-<p>LoRaWAN frames are encrypted on the application layer using the AppSKey. Once the end device is registered, you can choose to enforce or skip payload encryption. Skipping payload encryption will cause the Application Server to forward messages to integrations without any processing, for example it will neglect <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatters</a>. If you choose to skip payload encryption, integrations will be responsible for processing the message in order to understand it.</p>
-<p>To configure these settings, navigate to your end device&rsquo;s <strong>General settings</strong> tab in the Console and scroll down to the <strong>Application layer</strong> section.</p>
-<p>Skipping payload encryption and decryption option is also available on an <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/#payload-encryption-and-decryption">application level</a>, so if you want the end device to inherit this setting from its application, choose <strong>Use application default</strong>.</p>
-<p>Otherwise, choose to <strong>Enforce skipping payload crypto</strong> or to <strong>Enforce payload crypto</strong> for a single device only.</p>
-<figure><img src="skip-payload-crypto.png"
-         alt="Skip payload encryption and decryption"/>
-</figure>
+<p>Finally, the console pre-fills <strong>End device ID</strong> in the format <code>eui-{Device EUI}</code> by default. You can edit this field and give the device a unique identifier. See <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI constraints</a> for guidelines about choosing a unique ID.</p>
+<p>Now verify that all the fields are filled and click the <strong>Register end device</strong> button to create the end device.</p>
+<p>The device is now registered, and will appear as connected in The Things Stack once it sends an uplink.</p>
         </div>
-        
+          <div class="columns is-multiline">
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/">Manually adding devices</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            If your devices are not yet part of the LoRaWAN® Device Repository or you want to set advanced fields, you can add devices manually in The Things Stack.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/">Adding devices in bulk</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            Instead of adding devices one by one, The Things Stack supports multiple methods of adding multiple end devices at once. Adding multiple devices is also referred to as importing devices.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/devices/adding-devices/atecc608a/">Adding devices with ATECC608 Secure Elements</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The Things Industries and Microchip developed a security solution for LoRaWAN® that enables secure key provisioning and secure cryptographic operations using secure elements.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/atecc608a/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
           <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/devices/">← Devices</a>
-<a class="button is-pulled-right" href="/docs/devices/abp-vs-otaa/">ABP vs OTAA →</a>
+<a class="button is-pulled-right" href="/docs/devices/adding-devices/manual/">Manually adding devices →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -481,25 +315,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 class="title is-size-6">On this page</h2>
     
 
-
-  <ul class="menu-list">
-    
-      
-      <li><a href='#adding-devices-using-the-console'>Adding devices using the Console</a></li>
-    
-      
-      <li><a href='#adding-devices-using-the-cli'>Adding devices using the CLI</a></li>
-    
-      
-      <li><a href='#adding-devices-in-bulk'>Adding devices in bulk</a></li>
-    
-      
-      <li><a href='#set-device-location'>Set device location</a></li>
-    
-      
-      <li><a href='#application-layer-settings'>Application layer settings</a></li>
-    
-  </ul>
 
 
   </nav>
