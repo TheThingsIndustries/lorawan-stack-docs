@@ -13,7 +13,7 @@ aliases:
 
 <!--more-->
 
-This method is useful when batches of end devices are managed as JSON files or to import end devices from {{% ttnv2 %}}, ChirpStack and other LoRaWAN® networks using a JSON file describing those devices.
+This method is useful when batches of end devices are managed as JSON files or to add end devices in bulk from {{% ttnv2 %}}, ChirpStack and other LoRaWAN® networks using a JSON file describing those devices.
 
 Using JSON file with device descriptions, you can migrate end devices with or without their existing sessions.
 
@@ -52,7 +52,7 @@ Multiple end devices can also be contained in a single `devices.json` file like 
 ```
 
 The format above is considered by the Console and CLI as a JSON stream, processing one object at a time.
-For more details in how to use the file, please refer to [Import End Devices]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}).
+For more details in how to use the file, please refer to [Adding End Devices in Bulk]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}).
 
 ## JSON End Device Format
 

@@ -12,9 +12,11 @@ If your device cannot be activated using the more secure OTAA, you may manually 
 
 {{< tabs/tab "Console" >}}
 
-In the **Advanced settings** dropdown (see the [Advanced Settings section]({{< ref "/devices/adding-devices#advanced-settings" >}})), select **Activation by Personalization (ABP)**.
+Click on the **Show advanced activation, LoRaWAN class and cluster settings** select **Activation by Personalization (ABP)**.
 
-When using ABP, it is important to make sure that the Rx1 settings in your device match those in {{% tts %}}. Uncheck **Use network's Rx and frequency defaults** to specify settings that match those in your device. {{% tts %}} recommends an Rx1 delay of `5` seconds, but this value would have to also be programmed into your device.
+Choose the appropriate **Additional LoRaWAN class capabilities**. When using ABP, it is important to make sure that the Rx1 settings in your device match those in {{% tts %}}. Uncheck **Network Defaults** to specify settings that match those in your device. {{% tts %}} recommends an Rx1 delay of `5` seconds, but this value would have to also be programmed into your device.
+
+{{< figure src="abp-network-defaults.png" alt="ABP Network Settings" >}}
 
 Now proceed with **Provisioning information**. Enter a **JoinEUI/AppEUI** if provided by your manufacturer. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the [IEEE 802 standards](https://ieee802.org/) or use all zeros, just make sure to program the same value into your device. Then click **Confirm**.
 
@@ -28,7 +30,7 @@ For LoRaWAN versions 1.1.x, generate an **AppSKey**, **FNwkSIntKey**, **SNwkSInt
 
 Finally, give your device a unique **End device ID**. See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
 
-{{< figure src="manual-network-settings-abp.png" alt="Manually create ABP end device" >}}
+{{< figure src="abp-fields-set.png" alt="ABP fields set" >}}
 
 Click **Register end device** to create the end device.
 

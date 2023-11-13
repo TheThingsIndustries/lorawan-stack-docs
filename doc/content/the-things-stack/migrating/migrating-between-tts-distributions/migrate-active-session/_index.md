@@ -48,7 +48,7 @@ ttn-lw-migrate device --source tts 'my-device' \
     --tts.delete-source-device
 ```
 
-Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [Import End Devices in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
 
 {{</ tabs/tab >}}
 
@@ -95,7 +95,7 @@ The command above will export your device's session to the `device-session.json`
 
 Before your device's session is imported in {{% tts %}} Cloud, you need to completely delete your device from {{% tts %}} Community Edition to prevent conflicts.
 
-Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [Import End Devices in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
 
 {{</ tabs/tab >}}
 

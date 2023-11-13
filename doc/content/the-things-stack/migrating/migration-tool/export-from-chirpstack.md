@@ -92,4 +92,4 @@ Please note that `MaxEIRP` parameter may not be always set properly, and that th
 
 ---
 
-After exporting, devices and applications can be imported in {{% tts %}}. See [Import End Devices in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}) for details about importing devices.
+After exporting, devices and applications can be imported in {{% tts %}}. See [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}) for details about importing devices.

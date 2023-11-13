@@ -76,11 +76,11 @@ To export all devices contained in {{% ttnv2 %}} application and clear their sec
 ttn-lw-migrate application --source ttnv2 "ttn-v2-application-ID" > devices.json
 ```
 
-## Import End Devices in {{% tts %}} Application
+## Add end devices in bulk in {{% tts %}} Application
 
 Now that you have exported one or more of your devices to a `devices.json` file, you can continue by importing this file in {{% tts %}} via Console or via CLI.
 
-> See [Import End Devices in The Things Stack]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}) for detailed instructions on how to do this.
+> See [add end devices in bulk in The Things Stack]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}) for detailed instructions on how to do this.
 
 ## Next Step - Migrate Gateways
 

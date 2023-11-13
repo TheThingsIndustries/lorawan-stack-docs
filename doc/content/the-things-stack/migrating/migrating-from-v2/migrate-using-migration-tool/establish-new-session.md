@@ -98,9 +98,9 @@ ABP devices must be completely deleted from {{% ttnv2 %}}, especially if you hav
 
 {{< /tabs/container >}}
 
-## Import End Devices in {{% tts %}} Application
+## Add end devices in bulk in {{% tts %}} Application
 
-Now that you have exported one or more of your devices to a `devices.json` file, you can continue by importing this file in {{% tts %}} via Console or via CLI. See [Import End Devices in The Things Stack]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}) for detailed instructions on how to do this.
+Now that you have exported one or more of your devices to a `devices.json` file, you can continue by importing this file in {{% tts %}} via Console or via CLI. See [add end devices in bulk in The Things Stack]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}) for detailed instructions on how to do this.
 
 {{< tabs/container "OTAA" "ABP" >}}
 
