@@ -102,6 +102,245 @@ ttn-lw-cli:
     type: bool
     usage: Do not perform version checks
     default_value: "false"
+ttn-lw-cli alert-notification-profiles:
+  path: ttn-lw-cli alert-notification-profiles
+  parent_path: ttn-lw-cli
+  name: alert-notification-profiles
+  aliases:
+  - anp
+  - alert-profiles
+  short: Alert Notification Profile commands (EXPERIMENTAL)
+ttn-lw-cli alert-notification-profiles create:
+  path: ttn-lw-cli alert-notification-profiles create
+  parent_path: ttn-lw-cli alert-notification-profiles
+  name: create
+  use: '[profile-id] [flags]'
+  aliases:
+  - add
+  - register
+  short: Create an alert notification profile (EXPERIMENTAL)
+  command_flags:
+  - name: description
+    type: string
+  - name: profile-id
+    type: string
+  - name: is-default
+    type: bool
+  - name: name
+    type: string
+  - name: receivers-ids
+    type: stringSlice
+    usage: key=value
+    default_value: '[]'
+ttn-lw-cli alert-notification-profiles get:
+  path: ttn-lw-cli alert-notification-profiles get
+  parent_path: ttn-lw-cli alert-notification-profiles
+  name: get
+  use: '[profile-id] [flags]'
+  aliases:
+  - info
+  short: Get an alert notification profile (EXPERIMENTAL)
+  command_flags:
+  - name: description
+    type: bool
+  - name: profile-id
+    type: bool
+  - name: is-default
+    type: bool
+  - name: name
+    type: bool
+  - name: receivers-ids
+    type: bool
+ttn-lw-cli alert-notification-profiles update:
+  path: ttn-lw-cli alert-notification-profiles update
+  parent_path: ttn-lw-cli alert-notification-profiles
+  name: update
+  use: '[profile-id] [flags]'
+  aliases:
+  - set
+  short: Update an alert notification profile (EXPERIMENTAL)
+  command_flags:
+  - name: description
+    type: string
+  - name: profile-id
+    type: string
+  - name: is-default
+    type: bool
+  - name: name
+    type: string
+  - name: receivers-ids
+    type: stringSlice
+    usage: key=value
+    default_value: '[]'
+ttn-lw-cli alert-notification-profiles delete:
+  path: ttn-lw-cli alert-notification-profiles delete
+  parent_path: ttn-lw-cli alert-notification-profiles
+  name: delete
+  use: '[profile-id]'
+  short: Delete an alert notification profile (EXPERIMENTAL)
+ttn-lw-cli alert-notification-profiles list:
+  path: ttn-lw-cli alert-notification-profiles list
+  parent_path: ttn-lw-cli alert-notification-profiles
+  name: list
+  use: '[flags]'
+  aliases:
+  - ls
+  short: List alert notification profiles (EXPERIMENTAL)
+  command_flags:
+  - name: description
+    type: bool
+  - name: profile-id
+    type: bool
+  - name: is-default
+    type: bool
+  - name: name
+    type: bool
+  - name: receivers-ids
+    type: bool
+  - name: limit
+    type: uint32
+    usage: maximum number of results to get
+    default_value: "50"
+  - name: order
+    type: string
+    usage: order by this field
+  - name: page
+    type: uint32
+    usage: results page number
+    default_value: "1"
+ttn-lw-cli alert-notification-profiles get-default:
+  path: ttn-lw-cli alert-notification-profiles get-default
+  parent_path: ttn-lw-cli alert-notification-profiles
+  name: get-default
+  use: '[flags]'
+  aliases:
+  - default
+  short: Get default alert notification profile (EXPERIMENTAL)
+  command_flags:
+  - name: description
+    type: bool
+  - name: profile-id
+    type: bool
+  - name: is-default
+    type: bool
+  - name: name
+    type: bool
+  - name: receivers-ids
+    type: bool
+ttn-lw-cli alert-notification-receivers:
+  path: ttn-lw-cli alert-notification-receivers
+  parent_path: ttn-lw-cli
+  name: alert-notification-receivers
+  aliases:
+  - anp
+  - alert-receivers
+  short: Alert Notification receiver commands (EXPERIMENTAL)
+ttn-lw-cli alert-notification-receivers create:
+  path: ttn-lw-cli alert-notification-receivers create
+  parent_path: ttn-lw-cli alert-notification-receivers
+  name: create
+  use: '[receiver-id] [flags]'
+  aliases:
+  - add
+  - register
+  short: Create an alert notification receiver (EXPERIMENTAL)
+  command_flags:
+  - name: contact-method.email.recipient
+    type: string
+  - name: contact-method.sms.phone-number
+    type: string
+  - name: contact-method.webhook.headers
+    type: stringToString
+  - name: contact-method.webhook.url
+    type: string
+  - name: name
+    type: string
+  - name: receiver-id
+    type: string
+ttn-lw-cli alert-notification-receivers get:
+  path: ttn-lw-cli alert-notification-receivers get
+  parent_path: ttn-lw-cli alert-notification-receivers
+  name: get
+  use: '[receiver-id] [flags]'
+  aliases:
+  - info
+  short: Get an alert notification receiver (EXPERIMENTAL)
+  command_flags:
+  - name: contact-method.email
+    type: bool
+  - name: contact-method.email.recipient
+    type: bool
+  - name: contact-method.sms
+    type: bool
+  - name: contact-method.sms.phone-number
+    type: bool
+  - name: contact-method.webhook
+    type: bool
+  - name: contact-method.webhook.headers
+    type: bool
+  - name: contact-method.webhook.url
+    type: bool
+  - name: name
+    type: bool
+  - name: receiver-id
+    type: bool
+ttn-lw-cli alert-notification-receivers update:
+  path: ttn-lw-cli alert-notification-receivers update
+  parent_path: ttn-lw-cli alert-notification-receivers
+  name: update
+  use: '[receiver-id] [flags]'
+  aliases:
+  - set
+  short: Update an alert notification receiver (EXPERIMENTAL)
+  command_flags:
+  - name: contact-method.email.recipient
+    type: string
+  - name: contact-method.sms.phone-number
+    type: string
+  - name: contact-method.webhook.headers
+    type: stringToString
+  - name: contact-method.webhook.url
+    type: string
+  - name: name
+    type: string
+  - name: receiver-id
+    type: string
+ttn-lw-cli alert-notification-receivers delete:
+  path: ttn-lw-cli alert-notification-receivers delete
+  parent_path: ttn-lw-cli alert-notification-receivers
+  name: delete
+  use: '[receiver-id]'
+  short: Delete an alert notification receiver (EXPERIMENTAL)
+ttn-lw-cli alert-notification-receivers list:
+  path: ttn-lw-cli alert-notification-receivers list
+  parent_path: ttn-lw-cli alert-notification-receivers
+  name: list
+  use: '[flags]'
+  aliases:
+  - ls
+  short: List alert notification receivers (EXPERIMENTAL)
+  command_flags:
+  - name: description
+    type: bool
+  - name: receiver-id
+    type: bool
+  - name: is-default
+    type: bool
+  - name: name
+    type: bool
+  - name: receivers-ids
+    type: bool
+  - name: limit
+    type: uint32
+    usage: maximum number of results to get
+    default_value: "50"
+  - name: order
+    type: string
+    usage: order by this field
+  - name: page
+    type: uint32
+    usage: results page number
+    default_value: "1"
 ttn-lw-cli applications:
   path: ttn-lw-cli applications
   parent_path: ttn-lw-cli

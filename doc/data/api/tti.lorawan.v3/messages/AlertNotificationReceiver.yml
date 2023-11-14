@@ -1,0 +1,43 @@
+name: AlertNotificationReceiver
+fields:
+- name: ids
+  comment: The identifiers of the receiver. These can be seen by any admin user in
+    the network.
+  message:
+    name: AlertNotificationReceiverIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: name
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: email
+  message:
+    name: AlertNotificationReceiver.Email
+  default: {}
+- name: sms
+  message:
+    name: AlertNotificationReceiver.SMS
+  default: {}
+- name: webhook
+  message:
+    name: AlertNotificationReceiver.Webhook
+  default: {}
+oneofs:
+- name: contact_method
+  field_names:
+  - email
+  - sms
+  - webhook

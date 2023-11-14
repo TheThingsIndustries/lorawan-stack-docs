@@ -1,0 +1,47 @@
+name: AlertNotificationProfile
+fields:
+- name: ids
+  comment: The identifiers of the profile. These are public and can be seen by any
+    authenticated user in the network.
+  message:
+    package: ttn.lorawan.v3
+    name: AlertNotificationProfileIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: is_default
+  comment: Whether this profile is the default alert notification profile for the
+    network.
+  message:
+    package: google.protobuf
+    name: BoolValue
+  default: null
+- name: name
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: description
+  type: string
+  rules:
+    max_len: 256
+  default: ""
+- name: receivers_ids
+  comment: List of receivers that will be notified when an alert is triggered for
+    this profile.
+  rules:
+    max_items: 20
+  repeated:
+    message:
+      name: AlertNotificationReceiverIdentifiers
+  default: []
