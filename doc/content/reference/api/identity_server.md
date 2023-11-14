@@ -3,6 +3,20 @@ title: "Identity Server APIs"
 description: ""
 ---
 
+## The `AlertNotificationProfileRegistry` service
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationProfileRegistry" method="Create" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationProfileRegistry" method="Get" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationProfileRegistry" method="Update" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationProfileRegistry" method="Delete" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationProfileRegistry" method="List" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationProfileRegistry" method="GetDefault" >}}
+
 ## The `AlertNotificationReceiverRegistry` service
 
 {{< proto/method package="tti.lorawan.v3" service="AlertNotificationReceiverRegistry" method="Create" >}}
@@ -64,6 +78,20 @@ description: ""
 {{< proto/method service="GatewayBatchRegistry" method="Delete" >}}
 
 ## Messages
+
+{{< proto/message package="tti.lorawan.v3" message="AlertNotificationProfile" >}}
+
+{{< proto/message message="AlertNotificationProfileIdentifiers" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="CreateAlertNotificationProfileRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="GetAlertNotificationProfileRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="ListAlertNotificationProfilesRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="UpdateAlertNotificationProfileRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="GetDefaultAlertNotificationProfileRequest" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="AlertNotificationReceiver" >}}
 
