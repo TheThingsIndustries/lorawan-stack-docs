@@ -24,6 +24,14 @@ rate-limiting:
       max-per-min: 30
       associations:
         - http
+    - name: User login
+      max-per-min: 10
+      associations:
+        - http:account
+    - name: Create new users
+      max-per-min: 10
+      associations:
+        - grpc:method:/ttn.lorawan.v3.UserRegistry/Create
     - name: Application downlink traffic
       max-per-min: 10
       associations:
