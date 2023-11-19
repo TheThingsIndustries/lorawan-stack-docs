@@ -82,6 +82,10 @@ stack_1      |     prefix=00000000/7
 stack_1      |     licensed=[XXXXXXXX/24] (redacted)
 ```
 
+## Database error
+
+This error has been observed when the Identity Server hasn't been initialized during {{% tts %}} installation. {{% tts %}} components are inherently stateless and depend on the underlying Postgres and Redis databases to store the data, so before running {{% tts %}}, make sure that the Identity Server database is initialized as explained in the [Initialization section]({{< ref "/the-things-stack/host/docker/running-the-stack#initialization" >}}).
+
 ## Error while parsing {{% tts %}} configuration file
 
 One of the issues that can cause parsing errors is using inappropriate indentation in {{% tts %}} configuration file, so you might end up seeing something like:
