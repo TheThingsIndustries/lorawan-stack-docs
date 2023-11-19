@@ -264,7 +264,9 @@ stack_1      |     correlation_id=47a8f405f56f45918d1277aeee8faaa7
 stack_1      | --- error:pkg/license:dev_addr_prefix_not_licensed (DevAddr prefix 00000000/7 is not included in this license)
 stack_1      |     prefix=00000000/7
 stack_1      |     licensed=[XXXXXXXX/24] (redacted)
-</code></pre><h2 id="error-while-parsing-the-things-stack-configuration-file">Error while parsing The Things Stack configuration file</h2>
+</code></pre><h2 id="database-error">Database error</h2>
+<p>This error has been observed when the Identity Server hasn&rsquo;t been initialized during The Things Stack installation. The Things Stack components are inherently stateless and depend on the underlying Postgres and Redis databases to store the data, so before running The Things Stack, make sure that the Identity Server database is initialized as explained in the <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/docker/running-the-stack/#initialization">Initialization section</a>.</p>
+<h2 id="error-while-parsing-the-things-stack-configuration-file">Error while parsing The Things Stack configuration file</h2>
 <p>One of the issues that can cause parsing errors is using inappropriate indentation in The Things Stack configuration file, so you might end up seeing something like:</p>
 <pre tabindex="0"><code>stack_1      | While parsing config: yaml: line 34: did not find expected key
 </code></pre><p>In most cases, the error will point to an exact line of your configuration file where the issue occured. To fix this, apply the correct indentation. Use <code>ttn-lw-stack config --yml</code> to see the default The Things Stack configuration with correct indentation in your terminal.</p>
@@ -331,6 +333,9 @@ stack_1     | error:cmd/internal/shared:initialize_network_operations_center (co
     
       
       <li><a href='#could-not-initialize-server'>Could not initialize Server</a></li>
+    
+      
+      <li><a href='#database-error'>Database error</a></li>
     
       
       <li><a href='#error-while-parsing-the-things-stack-configuration-file'>Error while parsing The Things Stack configuration file</a></li>
