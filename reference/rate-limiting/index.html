@@ -500,19 +500,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </table>
 </div>
 <div class="has-vertical-space">
-  <a href="#oauth-server-account-app-gateway-configuration-server-interop-server-metrics-health-pprof">
-    <h3 id="oauth-server-account-app-gateway-configuration-server-interop-server-metrics-health-pprof">OAuth Server, Account App, Gateway Configuration Server, Interop Server, Metrics, Health, pprof</h3>
+  <a href="#oauth-server-account-app-gateway-configuration-server-interop-server-metrics-health-pprof-azure-iot-central-integration">
+    <h3 id="oauth-server-account-app-gateway-configuration-server-interop-server-metrics-health-pprof-azure-iot-central-integration">OAuth Server, Account App, Gateway Configuration Server, Interop Server, Metrics, Health, pprof, Azure IoT Central integration</h3>
   </a>
   <table class="fixed">
     <tbody>
       <tr>
-        <td><b>Description</b></td><td>Limit number of HTTP requests by remote IP and request URL. `{{ Server }}` is `oauth`, `account`, `gcs`, `interop`, `metrics`, `health`, `pprof` respectively.</td>
+        <td><b>Description</b></td><td>Limit number of HTTP requests by remote IP and request URL. <code>{{ Server }}</code> is <code>oauth</code>, <code>account</code>, <code>gcs</code>, <code>interop</code>, <code>metrics</code>, <code>health</code>, <code>pprof</code> or <code>as:io:packages:azure:iotcentral</code> respectively. <code>{{ AuthInfo }}</code> is either <code>ip:{{ RemoteIP }}</code> or <code>token:{{ AuthTokenID }}</code> if the caller presents authentication information.</td>
       </tr>
       <tr>
-        <td><b>Classes</b></td><td><code>http:{{ Server }}</code> <code>http</code></td>
+        <td><b>Classes</b></td><td><code>http:{{ Server }}:{{ URLTemplate }}</code> <code>http:{{ Server }}</code> <code>http</code></td>
       </tr>
       <tr>
-        <td><b>Key</b></td><td><code>http:{{ Server }}:ip:{{ RemoteIP }}:url:{{ URL }}</code></td>
+        <td><b>Key</b></td><td><code>http:{{ Server }}:{{ AuthInfo }}:url:{{ URL }}</code></td>
       </tr>
       <tr>
         <td><b>Example</b></td><td><code>http:oauth:ip:10.10.10.10:url:/authorize</code></td>
@@ -523,7 +523,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  gRPC Requests support multiple classes. This is to enable overriding the generic rate limits for specific gRPC methods.
+  Both gRPC methods and HTTP endpoints support multiple classes. This enables overriding the generic rate limits for specific methods and endpoints.
 </div>
 
 <div class="notification is-warning is-light has-text-dark">
