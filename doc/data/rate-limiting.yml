@@ -89,10 +89,11 @@
     - http:gcs:cups
     - http
 
-- resource: OAuth Server, Account App, Gateway Configuration Server, Interop Server, Metrics, Health, pprof
-  description: Limit number of HTTP requests by remote IP and request URL. `{{ Server }}` is `oauth`, `account`, `gcs`, `interop`, `metrics`, `health`, `pprof` respectively.
-  key: http:{{ Server }}:ip:{{ RemoteIP }}:url:{{ URL }}
+- resource: OAuth Server, Account App, Gateway Configuration Server, Interop Server, Metrics, Health, pprof, Azure IoT Central integration
+  description: Limit number of HTTP requests by remote IP and request URL. `{{ Server }}` is `oauth`, `account`, `gcs`, `interop`, `metrics`, `health`, `pprof` or `as:io:packages:azure:iotcentral` respectively. `{{ AuthInfo }}` is either `ip:{{ RemoteIP }}` or `token:{{ AuthTokenID }}` if the caller presents authentication information.
+  key: http:{{ Server }}:{{ AuthInfo }}:url:{{ URL }}
   example-key: http:oauth:ip:10.10.10.10:url:/authorize
   classes:
+    - http:{{ Server }}:{{ URLTemplate }}
     - http:{{ Server }}
     - http

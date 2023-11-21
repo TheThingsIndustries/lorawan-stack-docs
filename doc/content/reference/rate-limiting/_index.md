@@ -67,7 +67,7 @@ This section lists resources of {{% tts %}} on which a maximum rate limit can be
 
 {{< rate-limiting >}}
 
-{{< note >}} gRPC Requests support multiple classes. This is to enable overriding the generic rate limits for specific gRPC methods. {{</ note >}}
+{{< note >}} Both gRPC methods and HTTP endpoints support multiple classes. This enables overriding the generic rate limits for specific methods and endpoints. {{</ note >}}
 
 {{< warning >}} When {{% tts %}} HTTP and gRPC endpoints are served behind a reverse proxy, the `X-Forwarded-For` header is respected for the remote IP. The IP address of the reverse proxy must be trusted by {{% tts %}} for this to work, see [HTTP options]({{< ref "/reference/configuration/the-things-stack#http-options" >}}) and [gRPC Options]({{< ref "/reference/configuration/the-things-stack#grpc-options" >}}). {{</ warning >}}
 
