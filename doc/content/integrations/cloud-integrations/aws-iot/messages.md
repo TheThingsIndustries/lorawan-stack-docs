@@ -52,7 +52,7 @@ Feedback events are published on the following topics:
 - `lorawan/<thing>/downlink/ack` (when the end device acknowledged the confirmed downlink message)
 - `lorawan/<thing>/downlink/nack` (when the end device did not acknowledge the confirmed downlink message)
 
-{{< note >}} Publish downlink messages from your application to IoT Core using [**AWS IoT Data Plane**](https://docs.aws.amazon.com/iot/latest/apireference/Welcome.html#Welcome_AWS_IoT_Data_Plane) using the [**Publish**](https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_Publish.html) action. {{</ note >}}
+{{< note >}} Publish downlink messages from your application to IoT Core using [**AWS IoT Data Plane**](https://docs.aws.amazon.com/iot/latest/apireference/Welcome.html#Welcome_AWS_IoT_Data_Plane) using the [**Publish**](https://docs.aws.amazon.com/iot/latest/apiapi/others/grpc/reference_iotdata_Publish.html) action. {{</ note >}}
 
 {{< note >}} This guide uses AWS IoT Core MQTT client for demonstration purposes only. {{</ note >}}
 

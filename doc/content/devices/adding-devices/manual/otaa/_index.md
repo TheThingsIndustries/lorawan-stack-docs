@@ -8,7 +8,7 @@ Over-the-Air-Activation (OTAA) is the secure, scalable way to activate LoRaWAN d
 
 <!--more-->
 
-{{< tabs/container "Console" "CLI" >}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API" >}}
 
 {{< tabs/tab "Console" >}}
 
@@ -103,6 +103,31 @@ This will create an end device `dev1` in application `app1` with the `EU_863_870
 You can also pass `--with-root-keys` to have root keys generated. In this case, you do not need to specify `--root-keys.app-key.key` or `root-keys.nwk-key.key`.
 
 The end device should now be able to join the private network.
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "HTTP (REST) API" >}}
+
+{{% tts %}} stores end device data on the Identity Server,
+
+<div class="fixed-table table-api">
+
+| Field           | Value             |
+| --------------- | ----------------- |
+| Endpoint        | `/api/v3/devices` |
+| Method          | `POST`            |
+| Headers         | `NA`              |
+| Rights required |                   |
+| Parameters      |                   |
+| Body            |                   |
+
+Via curl
+
+```bash
+curl -v
+```
+
+</div>
 
 {{< /tabs/tab >}}
 

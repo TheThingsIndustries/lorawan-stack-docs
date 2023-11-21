@@ -6,7 +6,7 @@ weight: 30
 
 The Storage Integration offers the `ApplicationUpStorage` gRPC service and the respective HTTP endpoints for retrieving historical data.
 
-See the [API Reference]({{< ref "/reference/api/storage_integration" >}}) for more details.
+See the [API Reference]({{< ref "/api/reference/grpc/storage_integration" >}}) for more details.
 
 ## Retrieve Uplinks using the HTTP API
 
@@ -35,6 +35,7 @@ curl -G "https://thethings.example.com/api/v3/as/applications/<application-id>/d
 
 {"result":{"end_device_ids":{"device_id":"dev1","application_ids":{"application_id":"app1"},"dev_eui":"1111111111111111","dev_addr":"014457CB"},"received_at":"2020-08-24T10:08:49.144907967Z","uplink_message":{"session_key_id":"AXPoziFRvbcEguvZQoCCZw==","f_port":10,"f_cnt":44,"frm_payload":"AQoBCgEKAQo=","rx_metadata":[{"gateway_ids":{"gateway_id":"gtw1"},"time":"2020-08-24T10:08:48.891099194Z","timestamp":3318834395,"uplink_token":"ChIKEAoEZ3R3MRIIEREREREREREQ28nFrgwaDAiwo476BRCoqe67AyD47sfPy2A="}],"settings":{"data_rate":{"lora":{"bandwidth":125000,"spreading_factor":12}},"coding_rate":"4/5","frequency":"868100000","timestamp":3318834395,"time":"2020-08-24T10:08:48.891099194Z"},"received_at":"2020-08-24T10:08:48.931407608Z"}}}
 ```
+
 </details>
 
 Use field masks to specify a subset of fields that should be returned by the API. For example, to retrieve the decoded payload field only, set the field mask as shown below. Note that the end device identifiers and the timestamp are always included in the message.
@@ -51,9 +52,18 @@ curl -G "https://thethings.example.com/api/v3/as/applications/<application-id>/p
 <details><summary><b>See example API response</b></summary>
 
 ```json
-{"result":{"end_device_ids":{"device_id":"dev1","application_ids":{}},"received_at":"2021-02-04T19:19:28.681910909Z","uplink_message":{"decoded_payload":{"occupied":true,"type":"parking status"},"settings":{"data_rate":{}}}}}
-
+{
+  "result": {
+    "end_device_ids": { "device_id": "dev1", "application_ids": {} },
+    "received_at": "2021-02-04T19:19:28.681910909Z",
+    "uplink_message": {
+      "decoded_payload": { "occupied": true, "type": "parking status" },
+      "settings": { "data_rate": {} }
+    }
+  }
+}
 ```
+
 </details>
 
 ## Retrieve Uplinks using the CLI
@@ -127,4 +137,5 @@ ttn-lw-cli end-devices storage get $APP_ID $DEVICE_ID --limit 2 --order "-receiv
   }
 ]
 ```
+
 </details>

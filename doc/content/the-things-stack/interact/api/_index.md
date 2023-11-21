@@ -9,9 +9,9 @@ While we recommend using the [Console]({{< ref "/the-things-stack/interact/conso
 
 <!--more-->
 
-A complete list of API endpoints is available in the [API Reference]({{< ref "reference/api" >}}). There, you can also find detailed information about [Authentication]({{< ref "reference/api/authentication" >}}) and [Field Masks]({{< ref "reference/api/field-mask" >}}).
+A complete list of API endpoints is available in the [API Reference]({{< ref "/api/reference/grpc" >}}). There, you can also find detailed information about [Authentication]({{< ref "/api/concepts/auth" >}}) and [Field Masks]({{< ref "/api/concepts/fieldmasks" >}}).
 
-{{< warning >}} If you are not getting the fields you expect in API responses, see the [Field Masks]({{< relref "field-mask" >}}) reference.
+{{< warning >}} If you are not getting the fields you expect in API responses, see the [Field Masks]({{< ref "/api/concepts/fieldmasks" >}}) reference.
 {{</ warning >}}
 
 If you are having trouble with the HTTP API, you can always inspect requests in the Console using your browser's inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.
@@ -82,7 +82,7 @@ See [here](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/U
 
 ### Schedule Downlink
 
-To schedule a downlink, you may use the `DownlinkQueuePush` or `DownlinkQueueReplace` endpoints of the [Application Server API]({{< ref "reference/api/application_server#the-appas-service" >}}). For example, to schedule a downlink queue push to device `dev1` in application `app1`:
+To schedule a downlink, you may use the `DownlinkQueuePush` or `DownlinkQueueReplace` endpoints of the [Application Server API]({{< ref "/api/reference/grpc/application_server#the-appas-service" >}}). For example, to schedule a downlink queue push to device `dev1` in application `app1`:
 
 ```bash
 curl --location \
@@ -124,13 +124,13 @@ It is also possible to [schedule downlinks using HTTP Webhooks]({{< ref "integra
 
 If you want to create a device, perform multi-step actions, or write shell scripts, it's best to use the [CLI]({{< ref "the-things-stack/interact/cli" >}}).
 
-If you want to do something like registering a device directly via the API, you need to make calls to the Identity Server, Join Server, Network Server and Application Server. See the [API Reference]({{< ref "reference/api/end_device" >}}) for detailed information about which messages go to which endpoints.
+If you want to do something like registering a device directly via the API, you need to make calls to the Identity Server, Join Server, Network Server and Application Server. See the [API Reference]({{< ref "/api/reference/grpc/end_device" >}}) for detailed information about which messages go to which endpoints.
 
 {{< tabs/container "OTAA" "ABP" >}}
 
 {{< tabs/tab "OTAA" >}}
 
-To register a device `newdev1` in application `app1`, first, register the `DevEUI`, `JoinEUI` and cluster addresses in the Identity Server. This is also where you register a friendly name, description, attributes, location, and more - see all fields in the [API Reference]({{< ref "reference/api" >}}):
+To register a device `newdev1` in application `app1`, first, register the `DevEUI`, `JoinEUI` and cluster addresses in the Identity Server. This is also where you register a friendly name, description, attributes, location, and more - see all fields in the [API Reference]({{< ref "/api/reference/grpc" >}}):
 
 ```bash
 curl --location \
@@ -267,7 +267,7 @@ curl --location \
 
 {{< tabs/tab "ABP" >}}
 
-To register a device `newdev1` in application `app1`, first, register the `DevEUI` and cluster addresses in the Identity Server. This is also where you register a friendly name, description, attributes, location, and more - see all fields in the [API Reference]({{< ref "reference/api" >}}):
+To register a device `newdev1` in application `app1`, first, register the `DevEUI` and cluster addresses in the Identity Server. This is also where you register a friendly name, description, attributes, location, and more - see all fields in the [API Reference]({{< ref "/api/reference/grpc" >}}):
 
 ```bash
 curl --location \
@@ -421,11 +421,11 @@ curl --location \
   'https://thethings.example.com/api/v3/users/user1/gateways'
 ```
 
-See [here]({{< ref "/reference/api/gateway" >}}) for more info about gateway APIs.
+See [here]({{< ref "/api/reference/grpc/gateway" >}}) for more info about gateway APIs.
 
 ### Purge Entities
 
-An admin user can [purge entities]({{< ref "/the-things-stack/management/purge" >}}) such as [applications]({{< ref "/reference/api/application" >}}), [clients]({{< ref "/reference/api/client" >}}), [gateways]({{< ref "/reference/api/gateway" >}}), [organizations]({{< ref "/reference/api/organization" >}}) or [users]({{< ref "/reference/api/user" >}}).
+An admin user can [purge entities]({{< ref "/the-things-stack/management/purge" >}}) such as [applications]({{< ref "/api/reference/grpc/application" >}}), [clients]({{< ref "/api/reference/grpc/client" >}}), [gateways]({{< ref "/api/reference/grpc/gateway" >}}), [organizations]({{< ref "/api/reference/grpc/organization" >}}) or [users]({{< ref "/api/reference/grpc/user" >}}).
 
 For example, to purge the application `app1`:
 
@@ -442,11 +442,11 @@ This section provides help for common issues and frequently asked questions you 
 
 ### "Forbidden path(s) in field mask" error
 
-This error usually occurs when wrong path(s) are specified in the `field_mask` object in the API request body. See [Fields and Field Masks]({{< ref "/reference/api/field-mask" >}}) section and make sure that paths listed under your `field_mask` are correct.
+This error usually occurs when wrong path(s) are specified in the `field_mask` object in the API request body. See [Fields and Field Masks]({{< ref "/api/concepts/fieldmasks" >}}) section and make sure that paths listed under your `field_mask` are correct.
 
 ### When adding a device, I get an "invalid end_device: embedded message failed validation" error.
 
-The most common cause for this error is not following the regex pattern in the `device_id` field. See [End Device APIs]({{< ref "/reference/api/end_device#message:EndDeviceIdentifiers" >}}) section and make sure your `device_id` is in line with the defined regex pattern. See also [ID and EUI constaints]({{< ref "/reference/id-eui-constraints" >}}) documentation.
+The most common cause for this error is not following the regex pattern in the `device_id` field. See [End Device APIs]({{< ref "/api/reference/grpc/end_device#message:EndDeviceIdentifiers" >}}) section and make sure your `device_id` is in line with the defined regex pattern. See also [ID and EUI constaints]({{< ref "/reference/id-eui-constraints" >}}) documentation.
 
 ### Listing gateways via API call works for the eu1 {{% tts %}} Cloud cluster, but won't work for the nam1 cluster.
 

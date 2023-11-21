@@ -1,0 +1,145 @@
+{{ $openapi := .Get "file" | index .Site.Data.api.openapi }} {{ $tag := .Get
+"service" }}
+<div>
+  <div class="api-page-header">
+    <h3>The Things Stack HTTP (REST) API Reference</h3>
+    <p><code> {{ $openapi.info.version }} </code></p>
+    <button
+      class="collapse-button"
+      onclick="collapseAll()"
+      title="Collapse All Services"
+    >
+      {{- $upArrow := resources.Get "/img/expand_less.svg" }}
+      <img src="{{ $upArrow.Permalink }}" alt="Collapse all" />
+    </button>
+  </div>
+  {{ range $tagDetails := $openapi.tags }} {{ $tag := $tagDetails.name }}
+  <div class="api-by-tags-container">
+    <h4 class="api-tag-header" id="{{ $tag }}">{{ $tag }}</h4>
+    <div class="api-tag-summary">
+      <p>{{ $tagDetails.description }}</p>
+      {{- $downArrow := resources.Get "/img/expand_more.svg" }} {{- $upArrow :=
+      resources.Get "/img/expand_less.svg" }}
+      <img
+        class="api-tag-summary-icon-expand"
+        src="{{ $downArrow.Permalink }}"
+        alt="Expand"
+      />
+      <img
+        class="api-tag-summary-icon-collapse"
+        src="{{ $upArrow.Permalink }}"
+        alt="Collapse"
+      />
+    </div>
+    <div class="api-items">
+      {{ range $path, $pathMethods := $openapi.paths }} {{ range $pathMethod,
+      $pathDetails := $pathMethods }}
+      <!-- Check if the tags contain the current tag -->
+      {{ if in $pathDetails.tags $tag }}
+      <div class="api-item">
+        <div class="api-item-header">
+          {{ $trimmedPath := replace $path "/" "" }} {{ $id := printf "%s-%s"
+          $trimmedPath $pathMethod }}
+          <p
+            class="api-item-header-method api-item-header-method-{{ $pathMethod }}"
+          >
+            {{ $pathMethod }}
+          </p>
+          <span class="api-item-header-path"
+            ><h6 id="{{ $id }}">{{ $path }}</h6></span
+          >
+        </div>
+        <div class="api-item-summary">
+          <p>{{ $pathDetails.summary | markdownify }}</p>
+          {{- $downArrow := resources.Get "/img/expand_more.svg" }} {{- $upArrow
+          := resources.Get "/img/expand_less.svg" }}
+          <img
+            class="api-item-summary-icon-expand"
+            src="{{ $downArrow.Permalink }}"
+            alt="Expand"
+          />
+          <img
+            class="api-item-summary-icon-collapse"
+            src="{{ $upArrow.Permalink }}"
+            alt="Collapse"
+          />
+        </div>
+        <div class="api-item-content">
+          <p>{{ $pathDetails.description}}</p>
+          {{ $body := ""}}
+          <h5 class="api-item-content-section-headers">Request Parameters</h5>
+          <table>
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{ range $parameterDetails := $pathDetails.parameters }} {{ if ne
+              $parameterDetails.in "body" }}
+              <tr>
+                <td><code>{{ $parameterDetails.name }}</code></td>
+                <td>{{ $parameterDetails.type }}</td>
+                <td>{{ $parameterDetails.required }}</td>
+                <td>{{ $parameterDetails.description }}</td>
+              </tr>
+              {{ else}} {{ $body = $parameterDetails}} {{ end }} {{ end }}
+            </tbody>
+          </table>
+          {{ if ne $body "" }}
+          <h5 class="api-item-content-section-headers">Request Body</h5>
+          {{ if isset $body.schema "properties" }}
+          <details>
+            <summary>Show Schema in JSON format</summary>
+            <pre>
+{{ $body.schema.properties |jsonify (dict "indent" "  ") }}</pre
+            >
+          </details>
+          {{ end }} {{ if isset $body.schema "$ref" }} {{ $ref := index
+          $body.schema "$ref" }} {{ $ref := replace $ref "#/definitions/" "" }}
+          {{ $ref := replace $ref "v3" "" }}
+          <a href="/api/reference/http/messages/#{{ $ref | strings.ToLower }}"
+            >{{ $ref }}</a
+          >
+          {{ end }} {{ end }}
+          <h5 class="api-item-content-section-headers">Responses</h5>
+          <table>
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Description</th>
+                <th>Return Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{ range $responseCode, $responseDetails := $pathDetails.responses
+              }}
+              <tr>
+                <td>{{ $responseCode }}</td>
+                <td>{{ $responseDetails.description }}</td>
+                <td>
+                  {{ if isset $responseDetails.schema "$ref" }} {{ $refLower :=
+                  "" }}{{ $ref := index $responseDetails.schema "$ref" }} {{
+                  $ref := replace $ref "#/definitions/" "" }} {{ $ref := replace
+                  $ref "v3" "" }} {{ $refLower := strings.ToLower $ref }}
+                  <a href="/api/reference/http/messages/#{{ $refLower }}"
+                    >{{ $ref }}</a
+                  >
+                  {{ else }} None {{ end }}
+                </td>
+              </tr>
+              {{ end }}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {{ end }} {{ end }} {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</div>
+{{- $script := resources.Get "/js/shortcodes/openapi/index.js" }}
+<script src="{{ $script.Permalink }}"></script>

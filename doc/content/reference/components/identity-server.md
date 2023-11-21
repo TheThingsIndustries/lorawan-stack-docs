@@ -32,19 +32,19 @@ If the gateway is capable of communicating with a [Gateway Configuration Server]
 
 The gateway registry also stores information about the antenna(s) of the gateway, such as location and gain.
 
-For more details, see the the [gateway API reference]({{< ref "/reference/api/gateway.md" >}}).
+For more details, see the the [gateway API reference]({{< ref "/api/reference/grpc/gateway.md" >}}).
 
 ### Applications
 
 Applications are used to organize registrations and traffic of multiple end devices in once place. An application typically corresponds to a collection of end devices that are in the same deployment, or of the same type.
 
-For more details, see the the [application API reference]({{< ref "/reference/api/application.md" >}}).
+For more details, see the the [application API reference]({{< ref "/api/reference/grpc/application.md" >}}).
 
 ### End Devices
 
 The end device registry in the Identity Server stores only metadata of end devices, allowing clients such as the Console and CLI to list end devices in an application. It typically stores metadata about the brand, model, hardware, firmware and location of the end device. It also stores addresses of the Network Server, Application Server and Join Server, so that clients such as the Console and CLI know where other properties of the end device are stored.
 
-For more details, see the the [end device API reference]({{< ref "/reference/api/end_device.md" >}}).
+For more details, see the the [end device API reference]({{< ref "/api/reference/grpc/end_device.md" >}}).
 
 ### Organizations
 

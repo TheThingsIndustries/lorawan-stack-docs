@@ -1,0 +1,108 @@
+{{ $openapi := .Get "file" | index .Site.Data.api.openapi }}
+<div>
+  <div class="api-messages-selector-container">
+    <div class="select">
+      <select id="api-messages-selector" onchange="jumpToMessage()">
+        <option value="">Select a message</option>
+        {{- range $key, $value := $openapi.definitions }} {{ $k := replace $key
+        "v3" "" }}
+        <option value="{{ $key }}">{{ $k }}</option>
+        {{- end }}
+      </select>
+    </div>
+  </div>
+  <div id="api-messages-container" class="api-messages-container">
+    {{- range $key, $value := $openapi.definitions }} {{ $k := replace $key "v3"
+    "" }} {{ $lowerKey := lower $k }}
+    <div class="api-message-container">
+      <h4 id="{{ $lowerKey }}">{{ $k }}</h4>
+      {{ if isset $value "properties"}}
+      <div class="api-message-description">{{ $value.description }}</div>
+      <h5>Fields</h5>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{- range $key, $value := $value.properties }} {{ $type :=
+            $value.type }} {{ $ref :="" }} {{ if eq $type "array" }} {{ $type =
+            $value.items.type }} {{ end }} {{ if isset $value "$ref" }} {{ $ref
+            = index $value "$ref" }} {{ $ref = replace $ref "#/definitions/" ""
+            }} {{ $ref = replace $ref "v3" ""}} {{ end }}
+            <tr>
+              <td><code>{{ $key }}</code></td>
+              {{- if ne $ref "" }}
+              <td>
+                <a href="#{{ $ref | strings.ToLower }}"
+                  >{{ $ref | strings.TrimLeft "v3" }}</a
+                >
+              </td>
+              {{- else }}
+              <td>{{ $type }}</td>
+              {{- end }}
+              <td>{{ $value.description }}</td>
+            </tr>
+            {{- end }}
+          </tbody>
+        </table>
+      </div>
+      <div class="api-message-schema">
+        <h5>Schema</h5>
+        <details>
+          <pre><code>{{ $value.properties | jsonify (dict "indent" "  ")}}</code></pre>
+          <summary>Show the schema of the message in JSON format.</summary>
+        </details>
+      </div>
+      {{ with $value.example }}
+      <div class="api-message-example">
+        <h5>Example</h5>
+        <details>
+          <pre><code>{{ . | jsonify (dict "indent" "  ")}}</code></pre>
+          <summary>Show an example of the message in JSON format.</summary>
+        </details>
+      </div>
+      {{ end }} {{ end }} {{ if isset $value "enum"}}
+      <div class="api-message-enum">
+        <h5>Supported values</h5>
+        {{ $valueFromDescriptions := false }} {{ if isset $value "description"}}
+        {{ $valueFromDescriptions = true }} {{ $lines := split
+        $value.description "\n" }}
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ range $k, $v := $lines }} {{ if strings.Contains $v ":" }} {{
+            $parts := split $v ":" }} {{ if eq (len $parts) 2 }} {{ $name :=
+            index $parts 0 }} {{ $name = replace $name "-" ""}}
+            <tr>
+              <td><code> {{ $name }}</code></td>
+              <td>{{ index $parts 1 }}</td>
+            </tr>
+            {{ end }} {{ end}} {{end }}
+          </tbody>
+        </table>
+        {{ end }} {{ if $valueFromDescriptions }} {{ else }}
+        <div class="api-message-enum-list">
+          {{ range $k, $v := $value.enum }}
+          <li><code>{{ $v }}</code></li>
+          {{end}}
+        </div>
+        <p>Default: <code>{{ $value.default}}</code></p>
+        {{ end }}
+      </div>
+      {{end}}
+    </div>
+    {{- end }}
+  </div>
+  {{- $script := resources.Get "/js/shortcodes/openapi/messages.js" }}
+  <script src="{{ $script.Permalink }}"></script>
+</div>

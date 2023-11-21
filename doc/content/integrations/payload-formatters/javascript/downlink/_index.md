@@ -25,8 +25,8 @@ function encodeDownlink(input) {
     bytes: [1, 2, 3], // FRMPayload (byte array)
     fPort: 1,
     warnings: ["warning 1", "warning 2"], // optional
-    errors: ["error 1", "error 2"] // optional (if set, the encoding failed)
-  }
+    errors: ["error 1", "error 2"], // optional (if set, the encoding failed)
+  };
 }
 
 function decodeDownlink(input) {
@@ -37,15 +37,15 @@ function decodeDownlink(input) {
   // }
   return {
     data: {
-      field: "value"
+      field: "value",
     },
     warnings: ["warning 1", "warning 2"], // optional
-    errors: ["error 1", "error 2"] // optional (if set, the decoding failed)
-  }
+    errors: ["error 1", "error 2"], // optional (if set, the decoding failed)
+  };
 }
 ```
 
-Encoded and decoded downlink payload are incorporated in the [`as.down.data.receive`]({{< ref "/reference/api/events#event:as.down.data.receive" >}}) event, where the `data` object contains:
+Encoded and decoded downlink payload are incorporated in the [`as.down.data.receive`]({{< ref "/api/reference/grpc/events#event:as.down.data.receive" >}}) event, where the `data` object contains:
 
 ```json
 {
@@ -79,16 +79,16 @@ function encodeDownlink(input) {
 
 function decodeDownlink(input) {
   switch (input.fPort) {
-  case 4:
-    return {
-      data: {
-        color: colors[input.bytes[0]]
-      }
-    }
-  default:
-    return {
-      errors: ["unknown FPort"]
-    }
+    case 4:
+      return {
+        data: {
+          color: colors[input.bytes[0]],
+        },
+      };
+    default:
+      return {
+        errors: ["unknown FPort"],
+      };
   }
 }
 ```

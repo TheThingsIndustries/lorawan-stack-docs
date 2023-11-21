@@ -138,7 +138,7 @@ Observe the following events in the Live data tab of the gateway overview in {{%
 
 - If the downlink is successfully scheduled from the Gateway Server to the gateway, the Gateway Server generates the `gs.down.send` and `gs.down.tx.success` events. This indicates that the downlink is successfully sent to the gateway and the gateway scheduled the downlink to be sent to the device. If downlink scheduling fails, the `gs.down.tx.fail` event is generated instead.
 
-> For more information on different events in TTS, read [Events API]({{< ref "/reference/api/events" >}}).
+> For more information on different events in TTS, read [Events API]({{< ref "/api/reference/grpc/events" >}}).
 
 If you did not encounter any deviations in this flow, that should be an indication of a successful downlink scheduling. However, if the downlink is not reaching your device, check the gateway packet forwarder logs and search for any errors that might help you identify the cause of the downlink failure.
 

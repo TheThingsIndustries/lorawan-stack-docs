@@ -288,13 +288,13 @@ The Gateway Server disconnects LoRa Basics Station gateways that stop sending po
 
 ## I do not see the downlink being scheduled by the Network Server. What do I do?
 
-If you notice your downlink is not being scheduled, check your gateway's Live data tab for the [`gs.down.send` event]({{< ref "/reference/api/events#event:gs.down.send" >}}). If you do not see this event, it means that the Network Server failed to schedule the downlink message to Gateway Server.
+If you notice your downlink is not being scheduled, check your gateway's Live data tab for the [`gs.down.send` event]({{< ref "/api/reference/grpc/events#event:gs.down.send" >}}). If you do not see this event, it means that the Network Server failed to schedule the downlink message to Gateway Server.
 
 You can simply try re-scheduling the downlink, and if the issue persists, check if the downlink is being properly scheduled from the Application Server to the Network Server.
 
 ## When I schedule a downlink, I see the downlink transmission failed event in the Live data tab and the downlink message fails to be transmitted. Why?
 
-Seeing the [`gs.down.tx.fail` event]({{< ref "/reference/api/events#event:gs.down.tx.fail" >}}) in the gateway's Live data tab means the downlink message has been scheduled from the Gateway Server to the gateway, but the Gateway Server did not receive the ACK for that downlink. Some common causes and solutions for this issue:
+Seeing the [`gs.down.tx.fail` event]({{< ref "/api/reference/grpc/events#event:gs.down.tx.fail" >}}) in the gateway's Live data tab means the downlink message has been scheduled from the Gateway Server to the gateway, but the Gateway Server did not receive the ACK for that downlink. Some common causes and solutions for this issue:
 
 - High latency in the gateway backhaul - high latency usually occurs if the gateway and {{% tts %}} cluster are not geographically close, or the gateway is using a cellular or satellite backhaul. Always use {{% tts %}} cluster that is closest to your gateway's location, and make sure to check your gateway's Internet connection.
 - Gateway hardware issue - if the problem persists, your gateway could be malfunctioning. Try using another gateway or contacting the gateway manufacturer.
@@ -328,9 +328,9 @@ Keep in mind that you can still set the gateway location [manually]({{< ref "/ga
 
 ## I set the gateway location manually in {{% tts %}} Console. Why can I not see it in the gateway connection statistics?
 
-The connection statistics ([Gateway Server service API]({{< ref "/reference/api/gateway_server#a-namegsthe-gs-servicea" >}})) do not store the gateway locations.
+The connection statistics ([Gateway Server service API]({{< ref "/api/reference/grpc/gateway_server#a-namegsthe-gs-servicea" >}})) do not store the gateway locations.
 
-The gateway location is stored in the Identity Server instead. The updated location can be found by querying the Identity Server [GetGateway API]({{< ref "/reference/api/gateway" >}}).
+The gateway location is stored in the Identity Server instead. The updated location can be found by querying the Identity Server [GetGateway API]({{< ref "/api/reference/grpc/gateway" >}}).
 
 For example, you can query the location with:
 
