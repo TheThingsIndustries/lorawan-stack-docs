@@ -2,10 +2,12 @@
 title: "Prerequisites"
 description: ""
 weight: 1
-aliases: [/getting-started/kubernetes/prerequisites]
+aliases: [/getting-started/kubernetes/self-managed/prerequisites]
 ---
 
 The following are required for {{% tts %}} on Kubernetes.
+
+<!--more-->
 
 ## Installation Tools
 
@@ -112,7 +114,7 @@ To use a custom proxy/load balancer, set `global.ingress.traefik.enabled` to `fa
 When Traefik is disabled, the ports and routes necessary for The Things Stack should be mapped manually by the operator.
 Check the `ingress-routes.yaml` files for each component and adapt it to your proxy. Setting up and maintaining a custom proxy is out of the scope of this document.
 
-If Traefik is not used, skip ahead to [setup TLS certificates]({{< ref "the-things-stack/host/kubernetes/prerequisites#6-tls-certificates" >}}).
+If Traefik is not used, skip ahead to [setup TLS certificates]({{< ref "the-things-stack/host/kubernetes/self-managed/prerequisites#6-tls-certificates" >}}).
 
 The simplest way to install Traefik in the kubernetes cluster is use the [official Helm charts](https://artifacthub.io/packages/helm/traefik/traefik).
 

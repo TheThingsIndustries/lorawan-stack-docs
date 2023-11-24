@@ -2,10 +2,12 @@
 title: "Troubleshooting"
 description: ""
 weight: 6
-aliases: [/getting-started/kubernetes/troubleshooting]
+aliases: [/getting-started/kubernetes/self-managed/troubleshooting]
 ---
 
 This guide contains general troubleshooting information.
+
+<!--more-->
 
 ### Why do the GS, NS, AS and JS components fail to start?
 
@@ -32,3 +34,4 @@ The Things Stack runs kubernetes jobs to initialize and migrate Postgres. This e
 ### Gateways don't work when targeting the UDP port 1700
 
 Ensure that UDP port (default 1700) is exposed outside the k8s cluster via your chosen proxy or load balancer.
+ur `docker-compose.yml` file uses [Compose file version 3.7](https://docs.docker.com/compose/compose-file/). If using a package manager to install Docker Compose, it is possible to install an old, unsupported version. See Docker's [installation instructions](https://docs.docker.com/compose/install/) to upgrade to a more recent version.
