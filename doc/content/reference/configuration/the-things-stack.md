@@ -38,9 +38,9 @@ $ echo "AzYFASd/Gcggs..." | base64 --decode > ttn-lw-stack-license.bin
 
 - `key-vault.aws.region`: AWS region
 - `key-vault.aws.secret-id-prefix`: Secret ID prefix
-- `key-vault.aws.client-certificate-secret-label`: Secret label for loading the client certificate from Secrets Manager. Conflicts with `key-vault.aws.certificate-authority-arn`. If set, the secret must contain a `certificate` and `key` field with PEM encoded values {{< new-in-version "3.24.0" >}}
-- `key-vault.aws.certificate-authority-arn`: Certificate authority ARN for issuing the client certificate from AWS Private CA. Conflicts with `key-vault.aws.client-certificate-secret-label`. If set, the client certificate is issued from AWS Private CA {{< new-in-version "3.24.0" >}}
-- `key-vault.aws.client-certificate-common-name`: Common Name for issuing the client certificate from AWS Private CA. If not set, the host name is used {{< new-in-version "3.24.0" >}}
+- `key-vault.aws.client-certificate-secret-label`: Secret label for loading the client certificate from Secrets Manager. Conflicts with `key-vault.aws.certificate-authority-arn`. If set, the secret must contain a `certificate` and `key` field with PEM encoded values
+- `key-vault.aws.certificate-authority-arn`: Certificate authority ARN for issuing the client certificate from AWS Private CA. Conflicts with `key-vault.aws.client-certificate-secret-label`. If set, the client certificate is issued from AWS Private CA
+- `key-vault.aws.client-certificate-common-name`: Common Name for issuing the client certificate from AWS Private CA. If not set, the host name is used
 
 ## TLS Options
 
