@@ -60,7 +60,7 @@ Next, recreate your device as documented in the [Using the API]({{< ref "/the-th
 
 ## I see "Unable to access the end device" error
 
-If you're facing this error, your end device has probably been configured with an incorrect server address, so {{% tts %}} Console treats and shows it as in `Other cluster`. To regain access to your end device, you should configure it with the correct server address. That can be done by accessing device's **General settings** and configuring server address, or by deleting and recreating the end device with an appropriate server address.
+If you're facing this error, your end device has probably been configured with incorrect server addresses, so {{% tts %}} Console treats and shows it as in `Other cluster`. To regain access to your end device, you should configure it with the correct server addresses. That can be done by accessing device's **General settings** and configuring server addresses, or by deleting and recreating the end device with appropriate server addresses.
  
 ## How do I see device events?
 
