@@ -31,7 +31,7 @@ You will be presented with options to easily onboard your device using its QR co
 
 {{< tabs/tab "With QR Code" >}}
 
-#### Onboarding devices using QR codes
+## Onboarding devices using QR codes
 
 If your device has a [TR005 LoRaWAN® Device Identification QR Code](https://lora-alliance.org/resource_hub/tr005-lorawan-device-identification-qr-codes/), adding a device is a simple process.
 Note not all QR codes on the physical device are scannable. Only TR005 LoRaWAN® Device Identification QR Codes, are supported for this method.
@@ -57,7 +57,7 @@ Choose a **Frequency plan** appropriate for your region. Your device and gateway
 
 {{< tabs/tab "Without QR Code" >}}
 
-#### Onboarding devices without QR codes
+## Onboarding devices without QR codes
 
 If your device doesn't have a standard [TR005 LoRaWAN® Device Identification QR Code](https://lora-alliance.org/resource_hub/tr005-lorawan-device-identification-qr-codes/), or has a vendor specific QR code, then the device identification and keys have to be entered manually.
 
