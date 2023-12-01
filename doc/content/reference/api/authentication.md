@@ -39,7 +39,7 @@ To use this authentication method, you first need to register an **OAuth client*
 - The **client ID** uniquely identifies the OAuth client. Its [restrictions]({{< ref "/reference/id-eui-constraints#requirements-of-an-id-or-eui" >}}) are the same as for any other ID in {{% tts %}}.
 - The **description** is shown to the user when you request authorization.
 - The **scope** indicates what actions your OAuth client is allowed to perform. This is shown to the user when you request authorization. You can select the actions your OAuth client needs on registration. A full list of rights can also be found in {{% tts %}} [source code]({{< tts-repo-file-url "blob" "api/rights.proto" >}}).
-- The **redirect URI** is where the user is redirected after authorizing your OAuth client.
+- The **redirect URI** is where the user is redirected after authorizing your OAuth client. At least one **redirect URI** must be configured while registering the OAuth client.
 - The **client secret** is issued when your OAuth client registration is accepted by a network admin.
 
 To register OAuth client you can use {{% tts %}} [Console]({{< ref "/the-things-stack/interact/console" >}}) or [CLI](https://www.thethingsindustries.com/docs/the-things-stack/interact/cli/).
