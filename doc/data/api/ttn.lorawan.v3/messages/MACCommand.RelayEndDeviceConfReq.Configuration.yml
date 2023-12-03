@@ -1,0 +1,35 @@
+name: MACCommand.RelayEndDeviceConfReq.Configuration
+fields:
+- name: always
+  message:
+    name: RelayEndDeviceAlwaysMode
+  default: {}
+- name: dynamic
+  message:
+    name: RelayEndDeviceDynamicMode
+  default: {}
+- name: end_device_controlled
+  message:
+    name: RelayEndDeviceControlledMode
+  default: {}
+- name: backoff
+  type: uint32
+  rules:
+    lte: 63
+  default: 0
+- name: second_channel
+  message:
+    name: RelaySecondChannel
+  default: {}
+- name: serving_device_id
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+oneofs:
+- name: mode
+  field_names:
+  - always
+  - dynamic
+  - end_device_controlled

@@ -1,0 +1,20 @@
+name: MACCommand.RelayNotifyNewEndDeviceReq
+fields:
+- name: dev_addr
+  type: bytes
+  rules:
+    len: 4
+    ignore_empty: true
+  default: ""
+- name: snr
+  type: int32
+  rules:
+    lte: 11
+    gte: -20
+  default: 0
+- name: rssi
+  type: int32
+  rules:
+    lte: -15
+    gte: -142
+  default: 0

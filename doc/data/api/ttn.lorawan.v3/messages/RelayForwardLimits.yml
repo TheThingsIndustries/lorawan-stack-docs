@@ -1,0 +1,17 @@
+name: RelayForwardLimits
+fields:
+- name: bucket_size
+  comment: |-
+    The multiplier used to compute the total bucket size for the limits.
+    The multiplier is multiplied by the reload rate in order to compute the total bucket size.
+  enum:
+    name: RelayLimitBucketSize
+  rules:
+    defined_only: true
+  default: RELAY_LIMIT_BUCKET_SIZE_1
+- name: reload_rate
+  comment: The number of tokens which are replenished in the bucket every hour.
+  type: uint32
+  rules:
+    lte: 126
+  default: 0

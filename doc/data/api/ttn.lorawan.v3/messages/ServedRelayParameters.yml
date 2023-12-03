@@ -1,0 +1,45 @@
+name: ServedRelayParameters
+fields:
+- name: always
+  comment: The end device will always attempt to use the relay mode in order to send
+    uplink messages.
+  message:
+    name: RelayEndDeviceAlwaysMode
+  default: {}
+- name: dynamic
+  comment: |-
+    The end device will attempt to use relay mode only after a number of uplink messages have been sent without
+    receiving a valid a downlink message.
+  message:
+    name: RelayEndDeviceDynamicMode
+  default: {}
+- name: end_device_controlled
+  comment: The end device will control when it uses the relay mode. This is the default
+    mode.
+  message:
+    name: RelayEndDeviceControlledMode
+  default: {}
+- name: backoff
+  comment: Number of uplinks to be sent without a wake on radio frame.
+  type: uint32
+  rules:
+    lte: 63
+  default: 0
+- name: second_channel
+  comment: Second wake on radio channel configuration.
+  message:
+    name: RelaySecondChannel
+  default: {}
+- name: serving_device_id
+  comment: End device identifier of the serving end device.
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+oneofs:
+- name: mode
+  field_names:
+  - always
+  - dynamic
+  - end_device_controlled

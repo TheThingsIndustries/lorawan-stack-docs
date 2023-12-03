@@ -1,0 +1,35 @@
+name: MACCommand.RelayUpdateUplinkListReq
+fields:
+- name: rule_index
+  type: uint32
+  rules:
+    lte: 15
+  default: 0
+- name: forward_limits
+  message:
+    name: RelayUplinkForwardLimits
+  default: {}
+- name: dev_addr
+  type: bytes
+  rules:
+    len: 4
+    ignore_empty: true
+  default: ""
+- name: w_f_cnt
+  type: uint32
+  default: 0
+- name: root_wor_s_key
+  type: bytes
+  rules:
+    len: 16
+    ignore_empty: true
+  default: ""
+- name: device_id
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+- name: session_key_id
+  type: bytes
+  default: ""

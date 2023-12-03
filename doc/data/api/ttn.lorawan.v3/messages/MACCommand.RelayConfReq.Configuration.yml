@@ -1,0 +1,17 @@
+name: MACCommand.RelayConfReq.Configuration
+fields:
+- name: second_channel
+  message:
+    name: RelaySecondChannel
+  default: {}
+- name: default_channel_index
+  type: uint32
+  rules:
+    lte: 255
+  default: 0
+- name: cad_periodicity
+  enum:
+    name: RelayCADPeriodicity
+  rules:
+    defined_only: true
+  default: RELAY_CAD_PERIODICITY_1_SECOND
