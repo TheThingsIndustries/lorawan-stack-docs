@@ -129,6 +129,8 @@ description: ""
 
 {{< proto/message message="PacketBrokerRouteHop" >}}
 
+{{< proto/message message="RelayMetadata" >}}
+
 {{< proto/message message="RxMetadata" >}}
 
 {{< proto/message message="SessionKeyRequest" >}}
@@ -146,6 +148,8 @@ description: ""
 {{< proto/enum enum="LocationSource" >}}
 
 {{< proto/enum enum="PayloadFormatter" >}}
+
+{{< proto/enum enum="RelayWORChannel" >}}
 
 {{< proto/enum enum="TxSchedulePriority" >}}
 

@@ -123,6 +123,8 @@ description: ""
 
 {{< proto/message message="RejoinRequestPayload" >}}
 
+{{< proto/message message="RelayMetadata" >}}
+
 {{< proto/message message="RxMetadata" >}}
 
 {{< proto/message message="UplinkMessage" >}}
@@ -156,6 +158,8 @@ description: ""
 {{< proto/enum enum="MType" >}}
 
 {{< proto/enum enum="RejoinRequestType" >}}
+
+{{< proto/enum enum="RelayWORChannel" >}}
 
 {{< proto/enum enum="RxDelay" >}}
 
