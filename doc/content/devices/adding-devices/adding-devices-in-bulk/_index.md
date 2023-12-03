@@ -87,3 +87,79 @@ See the following video from [The Things Network youtube channel](https://youtu.
 <details><summary>Show video</summary>
 {{< youtube "ouz-VuiosU4" >}}
 </details>
+
+## Claim devices using Claim Authentication Code
+
+Devices can be added in bulk together with their ownership information, through a process of device claiming using their claim authentication codes.
+
+Claiming devices can be done using {{% tts %}} Console or the CLI, for single or multiple devices.
+
+{{< tabs/container "Console" "CLI" >}}
+
+{{< tabs/tab "Console" >}}
+
+To claim a single device, first navigate to your application in {{% tts %}} Console and click the **+ Register end device** button.
+
+Select the **Enter end device specifics manually**, then provide **Frequency plan**, **LoRaWAN version** and **Regional Parameters version**.
+
+In the **Provisioning information** section, fill in the **JoinEUI** of The Things Join Server and **Confirm**. 
+
+Then, enter the **DevEUI**, **Claim authentication code** and **End device ID** of a device that you wish to claim.
+
+Finish by clicking **Register end device**.
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
+
+To claim a single end device via the CLI, issue the following command:
+
+```bash
+ttn-lw-cli create <application-id> <device-id> \
+    --dev-eui <dev-eui> \
+    --app-eui <app-eui> \
+    --frequency-plan-id <frequency plan> \
+    --lorawan-version <lorawan-version> \
+    --lorawan-phy-version <lorawan-phy-version> \
+    --supports-join \
+    --claim-authentication-code.value <claim-authentication-code>
+```
+
+{{< /tabs/tab >}}
+
+To claim multiple devices, you need to create a [JSON file]({{< ref "/devices/adding-devices/adding-devices-in-bulk/device-json" >}}) containing devices info with defined `claim_authentication_code`. An example of an end device object:
+
+```json
+{
+  "ids": {
+    "device_id": "my-device",
+    "dev_eui": "0102030405060708",
+    "join_eui": "0102030405060708"
+  },
+  "name": "My Device",
+  "description": "Living room temperature sensor",
+  "lorawan_version": "MAC_V1_0_2",
+  "lorawan_phy_version": "PHY_V1_0_2_REV_B",
+  "frequency_plan_id": "EU_863_870_TTN",
+  "supports_join": true,
+  "claim_authentication_code": {
+    "value": "1234"
+  }
+}
+```
+
+{{< tabs/tab "Console" >}}
+
+Then, you only need to import the JSON file as explained above in [Import devices via the Console]({{< ref "/devices/adding-devices/adding-devices-in-bulk#import-devices-via-the-console" >}}).
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI">}}
+
+Then, issue the CLI command to import the JSON file as explained above in [Import devices via the CLI]({{< ref "/devices/adding-devices/adding-devices-in-bulk#import-devices-via-the-cli" >}}).
+
+{{< note >}} The `join-server-enabled` option in the [CLI configuration]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) has to be set to `false` when claiming devices using the CLI. {{</ note >}}
+
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
