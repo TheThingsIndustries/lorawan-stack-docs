@@ -29,7 +29,7 @@ Alternatively, you can run ops commands using the AWS CLI:
 aws ecs run-task \
   --task-definition TASK_DEFINITION \
   --cluster CLUSTER_NAME \
-  --launch-type EC2 \
+  --launch-type FARGATE \
   --network-configuration '{
     "awsvpcConfiguration":{
       "subnets":[
