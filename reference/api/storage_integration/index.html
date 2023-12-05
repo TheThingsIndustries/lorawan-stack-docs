@@ -6630,6 +6630,101 @@ This value is empty if it cannot be determined by the Packet Broker Router.</p>
 
 
 
+<h3 id="message:RelayMetadata">Message <code>RelayMetadata</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "device_id": "",
+  "wor_channel": "RELAY_WOR_CHANNEL_DEFAULT",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>device_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>End device identifiers of the relay.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>wor_channel</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#enum:RelayWORChannel">
+  
+  <code>
+  
+  RelayWORChannel
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Wake on radio channel.</p>
+          <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:RxMetadata">Message <code>RxMetadata</code></h3>
 <p>Contains metadata for a received message. Each antenna that receives
 a message corresponds to one RxMetadata.</p>
@@ -6638,6 +6733,7 @@ a message corresponds to one RxMetadata.</p>
 <pre><code>{
   "gateway_ids": {},
   "packet_broker": {},
+  "relay": {},
   "antenna_index": 0,
   "time": "0001-01-01T00:00:00Z",
   "timestamp": 0,
@@ -6738,6 +6834,44 @@ a message corresponds to one RxMetadata.</p>
   <code>
     
     PacketBrokerMetadata
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>relay</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:RelayMetadata">
+  
+  <code>
+    
+    RelayMetadata
   </code>
   
     </a>
@@ -8419,6 +8553,31 @@ This field is set and used only by the Gateway Server.</p>
 
 
 
+<h3 id="enum:RelayWORChannel">Enum <code>RelayWORChannel</code></h3>
+<table class="api">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>RELAY_WOR_CHANNEL_DEFAULT</code></td>
+      <td><code>0</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RELAY_WOR_CHANNEL_SECONDARY</code></td>
+      <td><code>1</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
 <h3 id="enum:TxSchedulePriority">Enum <code>TxSchedulePriority</code></h3>
 <table class="api">
   <thead>
@@ -8470,6 +8629,10 @@ This field is set and used only by the Gateway Server.</p>
 
 
 
+
+	
+
+	
 
 	
 

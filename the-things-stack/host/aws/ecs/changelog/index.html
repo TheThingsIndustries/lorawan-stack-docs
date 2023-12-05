@@ -261,6 +261,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <h1 id="upgrading">Upgrading</h1>
 <p>All meaningful changes to templates are documented in this file.</p>
 <h2 id="unreleased">Unreleased</h2>
+<h2 id="3281">3.28.1</h2>
+<h3 id="proxy">Proxy</h3>
+<ul>
+<li>Add Console events paths.</li>
+</ul>
+<h3 id="4-2b-configuration-rate-limiting"><code>4-2b-configuration-rate-limiting</code></h3>
+<ul>
+<li>Add Console events request rate limiting.</li>
+</ul>
 <h2 id="3280">3.28.0</h2>
 <h3 id="2-3-db-redis"><code>2-3-db-redis</code></h3>
 <ul>
@@ -358,7 +367,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>The UDP target group target type has been changed from <code>instance</code> to <code>ip</code>.</li>
 </ul>
-<h3 id="4-2b-configuration-rate-limiting"><code>4-2b-configuration-rate-limiting</code></h3>
+<h3 id="4-2b-configuration-rate-limiting-1"><code>4-2b-configuration-rate-limiting</code></h3>
 <ul>
 <li>The UDP Gateway Server rate limiting configuration has been marked as deprecated. The configuration will be removed in a future version.</li>
 <li>Add NOC rate limiting configuration.</li>
@@ -374,7 +383,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>UDP Gateway Server references have been removed.</li>
 </ul>
 <h2 id="3252">3.25.2</h2>
-<h3 id="proxy">Proxy</h3>
+<h3 id="proxy-1">Proxy</h3>
 <ul>
 <li>Upgraded to Envoy 1.26.0.</li>
 </ul>
@@ -397,7 +406,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added <code>PluginsConfigBucket</code>.</li>
 </ul>
-<h3 id="proxy-1">Proxy</h3>
+<h3 id="proxy-2">Proxy</h3>
 <ul>
 <li>The Network Operations Center routes now have a 30 second timeout.</li>
 </ul>
@@ -428,7 +437,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Service deployment configuration <code>MinimumHealthyPercent</code> is now applied only to EC2 services.</li>
 </ul>
 <h2 id="3250">3.25.0</h2>
-<h3 id="proxy-2">Proxy</h3>
+<h3 id="proxy-3">Proxy</h3>
 <ul>
 <li>The NOC API is now exposed by the proxy.</li>
 </ul>
@@ -564,7 +573,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>The volumes used by the EC2 machine and by the RDS database are now <code>gp3</code> volumes.</li>
 <li>Fix Network Operation Center initialization for new deployments.</li>
 </ul>
-<h3 id="proxy-3">Proxy</h3>
+<h3 id="proxy-4">Proxy</h3>
 <ul>
 <li>Upgraded to Envoy 1.24.1.</li>
 </ul>
@@ -610,7 +619,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Store server TLS credentials in AWS Secrets Manager if <code>SupportProxyTLS</code> is enabled.</li>
 </ul>
-<h3 id="proxy-4"><code>proxy</code></h3>
+<h3 id="proxy-5"><code>proxy</code></h3>
 <ul>
 <li>Support mTLS cert forwarding and hot reloading certificates.</li>
 </ul>
@@ -701,7 +710,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added new parameters <code>TLSCertificate</code>, <code>TLSCertificateCA</code>, <code>TLSCertificateKey</code></li>
 </ul>
-<h3 id="proxy-5">Proxy</h3>
+<h3 id="proxy-6">Proxy</h3>
 <ul>
 <li>Added Notification Service routes.</li>
 <li>Added account invitations routes.</li>
@@ -802,7 +811,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added the <code>WebhooksUnhealthyAttemptsThreshold</code> and <code>WebhooksUnhealthyRetryInterval</code> parameters.</li>
 <li>Added the <code>DatabaseMaxIdleConns</code> and <code>DatabaseMaxOpenConns</code> to control the database connection pool of the Identity Server.</li>
 </ul>
-<h3 id="4-2b-configuration-rate-limiting-1"><code>4-2b-configuration-rate-limiting</code></h3>
+<h3 id="4-2b-configuration-rate-limiting-2"><code>4-2b-configuration-rate-limiting</code></h3>
 <ul>
 <li>Fixed rate limiting keys of AS RPCs.</li>
 </ul>
@@ -951,7 +960,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added the <code>ProbeHTTP</code> parameter</li>
 </ul>
-<h3 id="proxy-6">Proxy</h3>
+<h3 id="proxy-7">Proxy</h3>
 <ul>
 <li>Fixed routing of authentication providers and external users API.</li>
 <li>Updated <code>Strict-Transport-Security</code> header, increasing max-age to 2 years, including subdomains and enabling pre-loading.</li>
@@ -1016,7 +1025,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added the <code>UserCredentialsLoginDisabled</code> parameter, which disables user login with credentials, so that The Things Stack only lets users login with an external OpenID Connect provider.</li>
 <li>Removed the <code>PacketBrokerClusterID</code> parameter. Now <code>Domain</code> is used instead</li>
 </ul>
-<h3 id="proxy-7">Proxy</h3>
+<h3 id="proxy-8">Proxy</h3>
 <ul>
 <li>Fixed routing of &ldquo;related events&rdquo; API.</li>
 </ul>
@@ -1070,7 +1079,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Allowed any string matching the <code>((10)|(11))\.\d+</code> regex as Aurora version so that RDS with up-to-date minor version can be deployed.</li>
 </ul>
-<h3 id="proxy-8">Proxy</h3>
+<h3 id="proxy-9">Proxy</h3>
 <ul>
 <li>Headers with underscores are now dropped, instead of rejecting the whole request.</li>
 </ul>
@@ -1083,7 +1092,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added <code>IncludeSemtechRJSConfiguration</code> parameter to include/exclude Semtech RJS configuration. This is a bugfix, as previous version failed to deploy when Semtech RJS secrets weren&rsquo;t available.</li>
 </ul>
-<h3 id="proxy-9">Proxy</h3>
+<h3 id="proxy-10">Proxy</h3>
 <ul>
 <li>Fixed generated <code>is-proxy</code> configuration.</li>
 <li>Allow more concurrent requests (mostly event streams) to the Console.</li>
@@ -1140,7 +1149,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Upgraded image to Prometheus v2.28.1.</li>
 <li>Added discovery of Gateway Configuration Server and Device Claiming Server.</li>
 </ul>
-<h3 id="proxy-10">Proxy</h3>
+<h3 id="proxy-11">Proxy</h3>
 <ul>
 <li>Upgraded image to Envoy v1.19.0.</li>
 <li>Change log format to JSON.</li>
@@ -1158,7 +1167,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Fixed naming of security group rules for Basic Station and Interop.</li>
 <li>Added Basic Station port 1887. This is needed when a TLS-terminating load balancer preserves Client IP addresses.</li>
 </ul>
-<h3 id="proxy-11">Proxy</h3>
+<h3 id="proxy-12">Proxy</h3>
 <ul>
 <li>Added route for <code>ttn.lorawan.v3.Events</code> gRPC service.</li>
 </ul>
@@ -1167,7 +1176,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added alert for the Cluster Proxy reaching its file descriptor limit and dropping new connections.</li>
 </ul>
 <h2 id="3131">3.13.1</h2>
-<h3 id="proxy-12">Proxy</h3>
+<h3 id="proxy-13">Proxy</h3>
 <ul>
 <li>Added <code>Strict-Transport-Security</code> header when using HTTPS.</li>
 </ul>
@@ -1180,7 +1189,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added client IP preservation to the Gateway Server MQTTv2, Gateway Server MQTTv3, Gateway Server BasicStation, GatewayServer TabsHubs and Application Server MQTT target groups. Deployments which set the Application Server MQTT connection rate limits to high values to avoid throttling should consider reverting the rate limit to the default value.</li>
 </ul>
-<h3 id="4-2b-configuration-rate-limiting-2"><code>4-2b-configuration-rate-limiting</code></h3>
+<h3 id="4-2b-configuration-rate-limiting-3"><code>4-2b-configuration-rate-limiting</code></h3>
 <ul>
 <li>Updated the default Gateway Server uplink rate to 100 uplinks per second (6000 per minute).</li>
 </ul>
@@ -1202,7 +1211,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added <code>EventsStorageEnabled</code> parameter to enable storage of event history in Redis.</li>
 <li>Added <code>DevEUIBlockEnabled</code>, <code>DevEUIBlockApplicationLimit</code>, <code>DevEUIBlockPrefix</code> and <code>DevEUIBlockInitCounter</code> parameters</li>
 </ul>
-<h3 id="4-2b-configuration-rate-limiting-3"><code>4-2b-configuration-rate-limiting</code></h3>
+<h3 id="4-2b-configuration-rate-limiting-4"><code>4-2b-configuration-rate-limiting</code></h3>
 <ul>
 <li>Added new Rate Limiting Configuration definitions. Rate Limiting can be enabled/disabled independently for each service.</li>
 </ul>
@@ -1279,7 +1288,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 </li>
 </ul>
-<h3 id="proxy-13">Proxy</h3>
+<h3 id="proxy-14">Proxy</h3>
 <ul>
 <li>Removed GCS routes from the GS Service.</li>
 </ul>
@@ -1327,7 +1336,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Upgrade Prometheus to v2.26.0</li>
 </ul>
-<h2 id="proxy-14">Proxy</h2>
+<h2 id="proxy-15">Proxy</h2>
 <ul>
 <li>Added Device Claiming Server routes/servers.</li>
 </ul>
@@ -1348,7 +1357,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Increased Prometheus retention.</li>
 <li>Disabled Thanos by default.</li>
 </ul>
-<h3 id="proxy-15">Proxy</h3>
+<h3 id="proxy-16">Proxy</h3>
 <ul>
 <li>Upgraded Envoy to v1.17.1.</li>
 <li>Changed configuration for changes in Envoy v1.17.</li>
@@ -1364,7 +1373,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added TTI Root CA Support</li>
 <li>Made Certbot image consistent with other Docker Images. Use <code>thethingsindustries/lorawan-stack:3.x.x-aws-certbot</code> images.</li>
 </ul>
-<h3 id="proxy-16">Proxy</h3>
+<h3 id="proxy-17">Proxy</h3>
 <ul>
 <li>Added GCS routes to HTTP listener.</li>
 <li>Fixed wrong delimiter for GS gRPC cluster definition.</li>
@@ -1425,7 +1434,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Changed descriptions of security group ingress rules; no functional changes.</li>
 </ul>
-<h3 id="proxy-17">Proxy</h3>
+<h3 id="proxy-18">Proxy</h3>
 <ul>
 <li>Added Basic Station routes to HTTP listener.</li>
 <li>Added gRPC API routes to HTTP listener.</li>
@@ -1460,7 +1469,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added RuleRole</li>
 <li>General fixes to the Rule</li>
 </ul>
-<h3 id="proxy-18">Proxy</h3>
+<h3 id="proxy-19">Proxy</h3>
 <ul>
 <li>Added routes for Device Repository APIs.</li>
 </ul>
@@ -1543,6 +1552,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
       
       <li><a href='#unreleased'>Unreleased</a></li>
+    
+      
+      <li><a href='#3281'>3.28.1</a></li>
     
       
       <li><a href='#3280'>3.28.0</a></li>
