@@ -1,0 +1,35 @@
+name: RelayForwardUplinkReq
+fields:
+- name: data_rate
+  message:
+    name: DataRate
+  rules:
+    required: true
+  default: {}
+- name: snr
+  type: int32
+  rules:
+    lte: 11
+    gte: -20
+  default: 0
+- name: rssi
+  type: int32
+  rules:
+    lte: -15
+    gte: -142
+  default: 0
+- name: wor_channel
+  enum:
+    name: RelayWORChannel
+  rules:
+    defined_only: true
+  default: RELAY_WOR_CHANNEL_DEFAULT
+- name: frequency
+  comment: Uplink channel frequency (Hz).
+  type: uint64
+  rules:
+    gte: 100000
+  default: 0
+- name: raw_payload
+  type: bytes
+  default: ""

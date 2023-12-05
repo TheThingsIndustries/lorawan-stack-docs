@@ -65,6 +65,8 @@ description: ""
 
 {{< proto/message message="PacketBrokerRouteHop" >}}
 
+{{< proto/message message="RelayMetadata" >}}
+
 {{< proto/message message="RxMetadata" >}}
 
 {{< proto/message message="LRFHSSDataRate" >}}
@@ -82,6 +84,8 @@ description: ""
 {{< proto/enum enum="DownlinkPathConstraint" >}}
 
 {{< proto/enum enum="LocationSource" >}}
+
+{{< proto/enum enum="RelayWORChannel" >}}
 
 {{< proto/enum enum="TxSchedulePriority" >}}
 

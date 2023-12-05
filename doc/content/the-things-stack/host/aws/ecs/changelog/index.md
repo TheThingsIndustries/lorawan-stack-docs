@@ -9,6 +9,16 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.28.1
+
+### Proxy
+
+- Add Console events paths.
+
+### `4-2b-configuration-rate-limiting`
+
+- Add Console events request rate limiting.
+
 ## 3.28.0
 
 ### `2-3-db-redis`

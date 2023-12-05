@@ -1,0 +1,22 @@
+name: RelaySecondChannel
+fields:
+- name: ack_offset
+  comment: The frequency (Hz) offset used for the WOR acknowledgement.
+  enum:
+    name: RelaySecondChAckOffset
+  rules:
+    defined_only: true
+  default: RELAY_SECOND_CH_ACK_OFFSET_0
+- name: data_rate_index
+  comment: The data rate index used by the WOR and WOR acknowledgement.
+  enum:
+    name: DataRateIndex
+  rules:
+    defined_only: true
+  default: DATA_RATE_0
+- name: frequency
+  comment: The frequency (Hz) used by the wake on radio message.
+  type: uint64
+  rules:
+    gte: 100000
+  default: 0

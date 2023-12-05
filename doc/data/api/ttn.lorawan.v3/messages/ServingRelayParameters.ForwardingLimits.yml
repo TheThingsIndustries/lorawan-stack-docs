@@ -1,0 +1,37 @@
+name: ServingRelayParameters.ForwardingLimits
+fields:
+- name: reset_behavior
+  comment: Reset behavior of the buckets upon limit update.
+  enum:
+    name: RelayResetLimitCounter
+  default: RELAY_RESET_LIMIT_COUNTER_ZERO
+- name: join_requests
+  comment: |-
+    Bucket configuration for join requests.
+    If unset, no individual limits will apply to join requests, but the relay overall limitations will apply.
+  message:
+    name: RelayForwardLimits
+  default: {}
+- name: notifications
+  comment: |-
+    Bucket configuration for unknown device notifications.
+    If unset, no individual limits will apply to unknown end device notifications, but the relay overall
+    limitations will still apply.
+  message:
+    name: RelayForwardLimits
+  default: {}
+- name: uplink_messages
+  comment: |-
+    Bucket configuration for uplink messages across all served end devices.
+    If unset, no individual limits will apply to uplink messages across all served end devices, but the relay
+    overall limitations will still apply.
+  message:
+    name: RelayForwardLimits
+  default: {}
+- name: overall
+  comment: |-
+    Bucket configuration for all relay messages.
+    If unset, no overall limits will apply to the relay, but individual limitations will still apply.
+  message:
+    name: RelayForwardLimits
+  default: {}

@@ -1,0 +1,16 @@
+name: RelayMetadata
+fields:
+- name: device_id
+  comment: End device identifiers of the relay.
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+- name: wor_channel
+  comment: Wake on radio channel.
+  enum:
+    name: RelayWORChannel
+  rules:
+    defined_only: true
+  default: RELAY_WOR_CHANNEL_DEFAULT

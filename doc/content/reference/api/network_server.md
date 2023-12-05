@@ -161,9 +161,33 @@ description: ""
 
 {{< proto/message message="RejoinRequestPayload" >}}
 
+{{< proto/message message="RelayMetadata" >}}
+
+{{< proto/message message="RelayEndDeviceAlwaysMode" >}}
+
+{{< proto/message message="RelayEndDeviceDynamicMode" >}}
+
+{{< proto/message message="RelayEndDeviceControlledMode" >}}
+
+{{< proto/message message="RelaySecondChannel" >}}
+
+{{< proto/message message="RelayUplinkForwardLimits" >}}
+
+{{< proto/message message="RelayForwardLimits" >}}
+
+{{< proto/message message="RelayParameters" >}}
+
 {{< proto/message message="RxDelayValue" >}}
 
 {{< proto/message message="RxMetadata" >}}
+
+{{< proto/message message="ServedRelayParameters" >}}
+
+{{< proto/message message="ServingRelayParameters" >}}
+
+{{< proto/message message="ServingRelayParameters.UplinkForwardingRule" >}}
+
+{{< proto/message message="ServingRelayParameters.ForwardingLimits" >}}
 
 {{< proto/message message="SessionKeyRequest" >}}
 
@@ -212,6 +236,18 @@ description: ""
 {{< proto/enum enum="PingSlotPeriod" >}}
 
 {{< proto/enum enum="RejoinRequestType" >}}
+
+{{< proto/enum enum="RelayCADPeriodicity" >}}
+
+{{< proto/enum enum="RelayResetLimitCounter" >}}
+
+{{< proto/enum enum="RelayLimitBucketSize" >}}
+
+{{< proto/enum enum="RelaySecondChAckOffset" >}}
+
+{{< proto/enum enum="RelaySmartEnableLevel" >}}
+
+{{< proto/enum enum="RelayWORChannel" >}}
 
 {{< proto/enum enum="RxDelay" >}}
 

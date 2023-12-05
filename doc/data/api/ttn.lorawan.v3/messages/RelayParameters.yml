@@ -1,0 +1,20 @@
+name: RelayParameters
+comment: |-
+  RelayParameters represent the parameters of a relay.
+  This is used internally by the Network Server.
+fields:
+- name: serving
+  comment: Parameters related to a relay which is serving end devices.
+  message:
+    name: ServingRelayParameters
+  default: {}
+- name: served
+  comment: Parameters related to an end device served by a relay.
+  message:
+    name: ServedRelayParameters
+  default: {}
+oneofs:
+- name: mode
+  field_names:
+  - serving
+  - served

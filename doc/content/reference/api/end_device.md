@@ -388,6 +388,32 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="MACCommand.TxParamSetupReq" >}}
 
+{{< proto/message message="MACCommand.RelayNotifyNewEndDeviceReq" >}}
+
+{{< proto/message message="MACCommand.RelayConfigureFwdLimitAns" >}}
+
+{{< proto/message message="MACCommand.RelayConfigureFwdLimitReq" >}}
+
+{{< proto/message message="MACCommand.RelayCtrlUplinkListAns" >}}
+
+{{< proto/message message="MACCommand.RelayCtrlUplinkListReq" >}}
+
+{{< proto/message message="MACCommand.RelayUpdateUplinkListAns" >}}
+
+{{< proto/message message="MACCommand.RelayUpdateUplinkListReq" >}}
+
+{{< proto/message message="MACCommand.RelayEndDeviceConfAns" >}}
+
+{{< proto/message message="MACCommand.RelayEndDeviceConfReq" >}}
+
+{{< proto/message message="MACCommand.RelayEndDeviceConfReq.Configuration" >}}
+
+{{< proto/message message="MACCommand.RelayConfAns" >}}
+
+{{< proto/message message="MACCommand.RelayConfReq" >}}
+
+{{< proto/message message="MACCommand.RelayConfReq.Configuration" >}}
+
 {{< proto/message message="MACCommand.RekeyInd" >}}
 
 {{< proto/message message="MACCommand.RekeyConf" >}}
@@ -448,6 +474,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="MACState.UplinkMessage.RxMetadata.PacketBrokerMetadata" >}}
 
+{{< proto/message message="MACState.UplinkMessage.RxMetadata.RelayMetadata" >}}
+
 {{< proto/message message="Message" >}}
 
 {{< proto/message message="MHDR" >}}
@@ -468,6 +496,24 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="RootKeys" >}}
 
+{{< proto/message message="RelayEndDeviceAlwaysMode" >}}
+
+{{< proto/message message="RelayEndDeviceDynamicMode" >}}
+
+{{< proto/message message="RelayEndDeviceControlledMode" >}}
+
+{{< proto/message message="RelaySecondChannel" >}}
+
+{{< proto/message message="RelayUplinkForwardLimits" >}}
+
+{{< proto/message message="RelayForwardDownlinkReq" >}}
+
+{{< proto/message message="RelayForwardLimits" >}}
+
+{{< proto/message message="RelayMetadata" >}}
+
+{{< proto/message message="RelayParameters" >}}
+
 {{< proto/message message="RxDelayValue" >}}
 
 {{< proto/message message="RxMetadata" >}}
@@ -475,6 +521,14 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/message message="SearchEndDevicesRequest" >}}
 
 {{< proto/message message="Secret" >}}
+
+{{< proto/message message="ServedRelayParameters" >}}
+
+{{< proto/message message="ServingRelayParameters" >}}
+
+{{< proto/message message="ServingRelayParameters.UplinkForwardingRule" >}}
+
+{{< proto/message message="ServingRelayParameters.ForwardingLimits" >}}
 
 {{< proto/message message="Session" >}}
 
@@ -543,6 +597,20 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/enum enum="RejoinRequestType" >}}
 
 {{< proto/enum enum="RejoinPeriodExponent" >}}
+
+{{< proto/enum enum="RelayCADPeriodicity" >}}
+
+{{< proto/enum enum="RelayCtrlUplinkListAction" >}}
+
+{{< proto/enum enum="RelayResetLimitCounter" >}}
+
+{{< proto/enum enum="RelaySecondChAckOffset" >}}
+
+{{< proto/enum enum="RelaySmartEnableLevel" >}}
+
+{{< proto/enum enum="RelayLimitBucketSize" >}}
+
+{{< proto/enum enum="RelayWORChannel" >}}
 
 {{< proto/enum enum="TxSchedulePriority" >}}
 
