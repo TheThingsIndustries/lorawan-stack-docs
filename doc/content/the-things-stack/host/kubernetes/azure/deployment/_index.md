@@ -12,7 +12,7 @@ This page describes the steps for deploying {{% tts %}} on Azure Kubernetes Serv
 
 Start with the `1-infrastructure` templates that create the foundation for your deployment.
 
-If you haven't done this before create a Terraform backend configuration file `config.azurerm.tfbackend`. You can read more about it in the [**Configuration**]({{< ref "/the-things-stack/host/kubernetes/azure/configuration#terraform-backend" >}}) section.
+If you haven't done this before create a Terraform backend configuration file `config.azurerm.tfbackend`. You can read more about it in the [Configuration]({{< ref "/the-things-stack/host/kubernetes/azure/configuration#terraform-backend" >}}) section.
 
 Initialize the Terraform state.
 
@@ -57,14 +57,14 @@ $ kubectl get pods
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code xxxxxx to authenticate.
 ```
 
-Export the DNS values used for [**DNS Infrastructure**]({{< relref "#dns-infrastructure" >}}). Use the provider chosen during the [**Configuration**]({{< ref "/the-things-stack/host/kubernetes/azure/configuration#acme-configuration" >}}).
+Export the DNS values used for [DNS Infrastructure]({{< relref "#dns-infrastructure" >}}). Use the provider chosen during the [Configuration]({{< ref "/the-things-stack/host/kubernetes/azure/configuration#acme-configuration" >}}).
 
 ```bash
 $ DNS_PROVIDER='<provider>'
 $ make dns.values | jq > "$(git rev-parse --show-toplevel)/dns/${DNS_PROVIDER}/dns.auto.tfvars.json"
 ```
 
-Export the Infrastructural values used for [**Kubernetes Templates**]({{< relref "#kubernetes-templates" >}}).
+Export the Infrastructural values used for [Kubernetes Templates]({{< relref "#kubernetes-templates" >}}).
 
 ```bash
 $ make infra.values | jq > '../2-kubernetes/infra.auto.tfvars.json'
@@ -72,7 +72,7 @@ $ make infra.values | jq > '../2-kubernetes/infra.auto.tfvars.json'
 
 ## DNS Infrastructure
 
-Now we need to set up the DNS infrastructure. Head over to the directory of the provider you chose during the last steps of the [**Azure Infrastructure**]({{< relref "#azure-infrastructure" >}}) section.
+Now we need to set up the DNS infrastructure. Head over to the directory of the provider you chose during the last steps of the [Azure Infrastructure]({{< relref "#azure-infrastructure" >}}) section.
 
 If you haven't done this before create a Terraform backend configuration file `config.azurerm.tfbackend`. You can read more about it in the section ... .
 
@@ -133,6 +133,7 @@ Plan the deployment and verify everything is going to be set up correctly.
 # Example
 $ export KUBE_CONFIG_PATH='~/.kube/config'
 ```
+
 {{</ note >}}
 
 ```bash
