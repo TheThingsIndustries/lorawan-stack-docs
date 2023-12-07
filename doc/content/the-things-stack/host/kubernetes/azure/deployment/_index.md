@@ -74,7 +74,7 @@ $ make infra.values | jq > '../2-kubernetes/infra.auto.tfvars.json'
 
 Now we need to set up the DNS infrastructure. Head over to the directory of the provider you chose during the last steps of the [Azure Infrastructure]({{< relref "#azure-infrastructure" >}}) section.
 
-If you haven't done this before create a Terraform backend configuration file `config.azurerm.tfbackend`. You can read more about it in the section ... .
+If you haven't done this before create a Terraform backend configuration file `config.azurerm.tfbackend`. You can read more about it in [Terraform Backend Configuration]({{< relref "/the-things-stack/host/kubernetes/azure/configuration#terraform-backend" >}}).
 
 Initialize the Terraform state.
 
@@ -116,7 +116,7 @@ In case the certificate won't reach a ready state head over to [Troubleshooting 
 
 Head over to the `2-kubernetes` directory next.
 
-If you haven't done this before create a Terraform backend configuration file `config.azurerm.tfbackend`. You can read more about it in the section ... .
+If you haven't done this before create a Terraform backend configuration file `config.azurerm.tfbackend`. You can read more about it in [Terraform Backend Configuration]({{< relref "/the-things-stack/host/kubernetes/azure/configuration#terraform-backend" >}}).
 
 Initialize the Terraform state.
 
