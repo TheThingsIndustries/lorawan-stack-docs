@@ -145,4 +145,4 @@ Now apply the template.
 $ make apply
 ```
 
-Once all the targets are healthy and if the configuration was correct, The Things Stack console will be accessible at `https://<tenantID>.<domain>`.
+Once all the targets are healthy and if the configuration was correct, {{% tts %}} console will be accessible at `https://<tenantID>.<domain>`.

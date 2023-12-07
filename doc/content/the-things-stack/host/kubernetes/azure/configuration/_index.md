@@ -57,7 +57,7 @@ It is only required to set the `acme_email` field.
 }
 ```
 
-## The Things Stack Values
+## {{% tts %}} Values
 
 Create a `tts.values.yaml` file in the `2-kubernetes` templates directory.
 

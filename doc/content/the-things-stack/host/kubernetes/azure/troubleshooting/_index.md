@@ -15,4 +15,4 @@ Set `KUBECONFIG` and `KUBE_CONFIG_PATH` variables to the location of the `kubeco
 
 ### pkg/util/store:driver (driver error)
 
-The Things Stack runs kubernetes jobs to initialize and migrate Postgres. This error can occur if the The Things Stack is accessed either before these jobs are run or if the jobs failed to execute. Check the status of the jobs for more details on what went wrong.
+{{% tts %}} runs kubernetes jobs to initialize and migrate Postgres. This error can occur if the {{% tts %}} is accessed either before these jobs are run or if the jobs failed to execute. Check the status of the jobs for more details on what went wrong.

@@ -17,13 +17,13 @@ The following are required for {{% tts %}} on Azure Kubernetes Service.
 
 ## License
 
-The Things Stack requires a license key to run. Please [contact our sales team](mailto:sales@thethingsindustries.com) for your license key.
+{{% tts %}} requires a license key to run. Please [contact our sales team](mailto:sales@thethingsindustries.com) for your license key.
 
 ## (Optional) Packet Broker Access
 
-The Things Stack contains the Packet Broker Agent component that can communicate with [Packet Broker](https://packetbroker.net/).
+{{% tts %}} contains the Packet Broker Agent component that can communicate with [Packet Broker](https://packetbroker.net/).
 
-Packet Broker is disabled by default in the Helm charts. When enabled, it can operate either only a Forwarder or as both a Forwarder and a Home Network. Check the [The Things Stack Documentation](https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/) for more details.
+Packet Broker is disabled by default in the Helm charts. When enabled, it can operate either only a Forwarder or as both a Forwarder and a Home Network. Check the [{{% tts %}} Documentation](https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/) for more details.
 
 - If the cluster acts simply as a forwarder that forwards traffic to Packet Broker, then all that is needed are access credentials.
 - If the cluster also needs to work as a Packer Broker Home Network, in addition to the access credentials, the cluster either needs a NetID from the LoRa Alliance or The Things Industries can lease a DevAddr Block.
