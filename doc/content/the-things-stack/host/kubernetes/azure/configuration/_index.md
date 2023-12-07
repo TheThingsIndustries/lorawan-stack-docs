@@ -5,7 +5,7 @@ weight: 2
 aliases: [/getting-started/kubernetes/azure/configuration]
 ---
 
-{{% tts %}} requires a few configuration files to be prepared. In this step, we create them and store them for further use.
+{{% tts %}} requires a few configuration files to be prepared. In this section, we show how to create them and store them for further use.
 
 <!--more-->
 

@@ -5,7 +5,7 @@ weight: 2
 aliases: [/getting-started/kubernetes/self-managed/preparation]
 ---
 
-{{% tts %}} requires a few secret values to be configured. In this step, we generate them and store them for further use.
+{{% tts %}} requires a few secret values to be configured. In this section, we show how to generate them and store them for further use.
 
 <!--more-->
 

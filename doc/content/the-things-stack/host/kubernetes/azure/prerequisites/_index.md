@@ -5,11 +5,11 @@ weight: 1
 aliases: [/getting-started/kubernetes/azure/prerequisites]
 ---
 
-The following are required for {{% tts %}} on Azure Kubernetes Service.
+This section contains prerequisites for deploying {{% tts %}} on Azure Kubernetes Service.
 
 <!--more-->
 
-# Tools
+## Tools
 
 1. [Terraform](https://www.terraform.io/)
 2. [`kubectl`](https://kubernetes.io/docs/reference/kubectl/)
@@ -23,9 +23,9 @@ The following are required for {{% tts %}} on Azure Kubernetes Service.
 
 {{% tts %}} contains the Packet Broker Agent component that can communicate with [Packet Broker](https://packetbroker.net/).
 
-Packet Broker is disabled by default in the Helm charts. When enabled, it can operate either only a Forwarder or as both a Forwarder and a Home Network. Check the [{{% tts %}} Documentation](https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/) for more details.
+Packet Broker is disabled by default in the Helm charts. When enabled, it can operate either only a Forwarder or as both a Forwarder and a Home Network. Check the [Packet Broker section]({{< ref "/the-things-stack/packet-broker" >}}) for more details.
 
-- If the cluster acts simply as a forwarder that forwards traffic to Packet Broker, then all that is needed are access credentials.
+- If the cluster acts simply as a Forwarder that forwards traffic to Packet Broker, then all that is needed are access credentials.
 - If the cluster also needs to work as a Packer Broker Home Network, in addition to the access credentials, the cluster either needs a NetID from the LoRa Alliance or The Things Industries can lease a DevAddr Block.
 
 Please [contact our sales team](mailto:sales@thethingsindustries.com) for access credentials and a Device Address Block (if necessary).

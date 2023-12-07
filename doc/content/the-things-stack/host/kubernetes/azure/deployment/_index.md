@@ -46,9 +46,9 @@ $ export KUBE_CONFIG_PATH="$(pwd)/${KUBECONFIG}"
 $ az aks get-credentials --resource-group $(terraform output -raw resource_group_name) --name $(terraform output -raw aks_cluster_name)
 ```
 
-{{< warning >}}
+{{< note >}}
 If `var.allow_cluster_admin_access` is disabled, then `kubelogin` must be installed.
-{{</ warning >}}
+{{</ note >}}
 
 Follow the promp to authenticate the `kubectl`.
 
