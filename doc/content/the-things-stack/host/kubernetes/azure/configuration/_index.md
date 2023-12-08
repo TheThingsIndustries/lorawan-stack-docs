@@ -28,19 +28,19 @@ The following contains only the minimum mandatory fields for this configuration 
 
 ```
 {
-    "azure_ad_admin_group_object_id": # Object ID of the AKS admin group.
-    "deployment_name":                # Name of the deployment.
-    "environment":                    # 'prod', 'staging' or 'dev'.
-    "cluster":                        # Cluster identifier for multi-cluster deployments.
-    "location":                       # Azure location
+    "azure_ad_admin_group_object_id": <object_id>, # Object ID of the AKS admin group.
+    "deployment_name": <deployment_name>,          # Name of the deployment.
+    "environment": <environment>,                  # 'prod', 'staging' or 'dev'.
+    "cluster": <cluster>,                          # Cluster identifier for multi-cluster deployments.
+    "location": <location>,                        # Azure location
     "resource_group": {
-        "create":                     # If set to `true` a new Resource Group will be created on deployment.
-                                      # Otherwise a Resource Group is going to be imported based on "name" parameter.
-        "name":                       # Optional custom Azure Resource Group name. Mandatory when "create" is set to `false`.
+        "create": <true|false>,                    # If set to `true` a new Resource Group will be created on deployment.
+                                                   # Otherwise a Resource Group is going to be imported based on "name" parameter.
+        "name": <resource_group_name>,             # Optional custom Azure Resource Group name. Mandatory when "create" is set to `false`.
     },
     "domain": {
-        "name":                       # Domain where The Things Stack is available.
-        "dns_zone":                   # Azure DNS zone.
+        "name": <domain_name>,                     # Domain where The Things Stack is available.
+        "dns_zone": <dns_zone_name>,               # Azure DNS zone.
     }
 }
 ```
