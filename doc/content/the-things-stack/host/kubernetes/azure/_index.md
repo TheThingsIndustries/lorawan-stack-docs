@@ -9,3 +9,7 @@ weight: 1
 This guide gives an overview of the architecture and shows how to deploy your own highly available {{% tts %}} cluster.
 
 <!--more-->
+
+{{< warning >}}
+Until Azure releases a new version of their managed Redis service ([Redis 7.0 support in Azure](https://learn.microsoft.com/en-us/answers/questions/1191155/redis-7-0-support-in-azure)) this deployment uses Bitnami in-cluster Redis Helm charts. They are not recommended for production use.
+{{</ warning >}}
