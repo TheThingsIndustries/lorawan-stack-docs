@@ -26,13 +26,13 @@ Plan the deployment and verify everything is going to be set up correctly.
 $ make plan
 ```
 
-Now apply the template.
+This template will deploy the Azure Kubernetes Service cluster, Azure Storage containers and Azure Database Flexible Server for Postgres, with their supporting infrastructure. You can apply it after validating the deployment plan. The deployment should take about 10 to 15 minutes. If you encounter any issues, please refer to [Troubleshooting]({{< ref "the-things-stack/host/kubernetes/azure/troubleshooting" >}}).
 
 ```bash
 $ make apply
 ```
 
-Get the `kubeconfig` next.
+After the AKS cluster is deployed you can get the `kubeconfig` file next.
 
 ```bash
 # Set KUBECONFIG if you don't want to override the default kubeconfig.
