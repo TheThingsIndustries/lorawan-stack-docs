@@ -6,6 +6,7 @@ aliases:
   [
     /getting-started/migrating-from-v2/import-devices,
     /getting-started/migrating-from-networks/import-devices,
+    /the-things-stack/migrating/import-devices,
     /the-things-stack/migrating-from-v2/import-devices,
     /the-things-stack/migrating-from-networks/import-devices,
     /getting-started/migrating,
