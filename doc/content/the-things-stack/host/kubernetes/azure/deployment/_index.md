@@ -50,7 +50,7 @@ $ az aks get-credentials --resource-group $(terraform output -raw resource_group
 If `var.allow_cluster_admin_access` is disabled, then `kubelogin` must be installed.
 {{</ note >}}
 
-Follow the promp to authenticate the `kubectl`.
+Follow the prompt to authenticate the `kubectl`.
 
 ```bash
 $ kubectl get pods
