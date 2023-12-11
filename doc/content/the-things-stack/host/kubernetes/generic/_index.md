@@ -1,5 +1,5 @@
 ---
-title: "Self Managed"
+title: "Generic"
 description: ""
 weight: 2
 ---

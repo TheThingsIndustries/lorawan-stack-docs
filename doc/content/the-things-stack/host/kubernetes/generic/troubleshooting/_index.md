@@ -2,7 +2,7 @@
 title: "Troubleshooting"
 description: ""
 weight: 6
-aliases: [/getting-started/kubernetes/self-managed/troubleshooting]
+aliases: [/getting-started/kubernetes/generic/troubleshooting]
 ---
 
 This guide contains general troubleshooting information.
