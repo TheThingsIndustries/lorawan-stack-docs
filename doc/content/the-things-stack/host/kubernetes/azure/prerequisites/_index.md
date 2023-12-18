@@ -29,3 +29,9 @@ Packet Broker is disabled by default in the Helm charts. When enabled, it can op
 - If the cluster also needs to work as a Packer Broker Home Network, in addition to the access credentials, the cluster either needs a NetID from the LoRa Alliance or The Things Industries can lease a DevAddr Block.
 
 Please [contact our sales team](mailto:sales@thethingsindustries.com) for access credentials and a Device Address Block (if necessary).
+
+## Azure
+
+We recommend creating an Azure Resource Group (RG) for this deployment during the preparation stage. If you intend to manage the RG with Terraform you can import it into the `tfstate` later during the deployment.
+
+After creating the RG we recommend to set up Azure Storage for Terraform backend. You can read more about this in [Azure Documentation](https://learn.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage).
