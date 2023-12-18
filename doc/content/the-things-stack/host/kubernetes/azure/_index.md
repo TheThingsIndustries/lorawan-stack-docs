@@ -1,7 +1,8 @@
 ---
 title: "Azure"
 description: ""
-weight: 1
+distributions: "Enterprise"
+weight: 2
 ---
 
 {{% tts %}} can be deployed to [Azure](https://portal.azure.com/) as a set of highly available services on Azure Kubernetes Service using Terraform and Helm.
