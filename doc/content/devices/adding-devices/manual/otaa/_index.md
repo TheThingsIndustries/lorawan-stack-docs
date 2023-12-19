@@ -108,26 +108,26 @@ The end device should now be able to join the private network.
 
 {{< tabs/tab "HTTP (REST) API" >}}
 
-{{% tts %}} stores end device data on the Identity Server,
+{{% tts %}} stores end device data on the Identity Server, Application Server, Network Server and optionally the Join Server.
 
-<div class="fixed-table table-api">
+First let's create an application.
 
-| Field           | Value             |
-| --------------- | ----------------- |
-| Endpoint        | `/api/v3/devices` |
-| Method          | `POST`            |
-| Headers         | `NA`              |
-| Rights required |                   |
-| Parameters      |                   |
-| Body            |                   |
+http://localhost:1313/api/reference/http/routes/#users{collaborator.user_ids.user_id}applications-post.
 
-Via curl
-
-```bash
-curl -v
+```json
+{
+  "application": {
+    "ids": {
+      "application_id": "test-app"
+    },
+    "name": "Test Application",
+    "description": "Test Application",
+    "network_server_address": "thethings.localhost",
+    "application_server_address": "thethings.localhost",
+    "join_server_address": "thethings.localhost"
+  }
+}
 ```
-
-</div>
 
 {{< /tabs/tab >}}
 

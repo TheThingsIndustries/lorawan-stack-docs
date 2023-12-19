@@ -49,6 +49,8 @@ Fields of the JSON message are described below.
   - `attributes`: Optional error attributes.
   - `correlation_id`: ID used to correlate or trace this RPC through {{% tts %}}
 
+{{< note "Mind the `X-Warning` headers. {{% tts %}} sends responses containing this header to warn about issues that may become errors in the future." />}}
+
 ### Rate limiting
 
 API request may be subject to [rate limits]({{< ref "/reference/rate-limiting" >}}).
@@ -77,3 +79,5 @@ The message body contains information on the rate set by the server for the reso
   ]
 }
 ```
+
+{{< note "Clients must respect `X-Ratelimit-*` response Headers. {{% tts %}} sends responses containing information about how many requests your integration has made and how many are remaining, in accordance with the IETF draft spec [here](https://tools.ietf.org/id/draft-polli-ratelimit-headers-03.html)." />}}

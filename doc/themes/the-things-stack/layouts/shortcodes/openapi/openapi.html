@@ -94,6 +94,17 @@
           {{ if isset $body.schema "properties" }}
           <details>
             <summary>Show Schema in JSON format</summary>
+            {{ $properties := $body.schema.properties }}
+            <!-- Add links to items that have a ref -->
+            {{ range $propertyName, $propertyDetails := $properties }} {{ if
+            isset $propertyDetails "$ref" }} {{ $ref := index $propertyDetails
+            "$ref" }} {{ $ref := replace $ref "#/definitions/" "" }} {{ $ref :=
+            replace $ref "v3" "" }} {{ $refLower := strings.ToLower $ref }}
+            <a href="/api/reference/http/messages/#{{ $refLower }}"
+              >{{ $ref }}</a
+            >
+            {{ end }} {{ end }}
+
             <pre>
 {{ $body.schema.properties |jsonify (dict "indent" "  ") }}</pre
             >
