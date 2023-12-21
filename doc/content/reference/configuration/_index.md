@@ -9,7 +9,7 @@ aliases: [/guides/getting-started/configuration]
 <!--more-->
 
 {{< note >}}
-These configuration methods only apply to {{% tts %}} Open Source and Enterprise deployments that follow the [Installation]({{< ref "the-things-stack/host/docker" >}}) guide. AWS Launcher deployments can be configured using the [CloudFormation template settings]({{< ref "/the-things-stack/host/aws/ami/deployment-guide#deployment-using-aws-cloud-formation" >}}). Managed deployments such as Cloud and Community Edition are configured for you by The Things Industries.
+These configuration methods only apply to {{% tts %}} Open Source and Enterprise deployments that follow the [Installation]({{< ref "the-things-stack/host/docker" >}}) guide. AWS Launcher deployments can be configured using the [CloudFormation template settings]({{< ref "/the-things-stack/host/aws/ami/deployment-guide#deployment-using-aws-cloud-formation" >}}). Managed deployments such as Cloud and {{% ttss %}} are configured for you by The Things Industries.
 {{</ note >}}
 
 ## Configuration Sources
@@ -26,7 +26,7 @@ $ ttn-lw-stack start console --console.ui.canonical-url "https://thethings.examp
 
 ### Environment variables
 
-Environment variables for configuration options are very similar to the command-line flags, except that they are in uppercase, and all separators (`.` or `-`) are replaced by underscores (`_`). Environment variables are also prefixed with `TTN_LW_`. 
+Environment variables for configuration options are very similar to the command-line flags, except that they are in uppercase, and all separators (`.` or `-`) are replaced by underscores (`_`). Environment variables are also prefixed with `TTN_LW_`.
 
 {{< note >}} In many cases you'll want to use a `.env` file that is loaded using the [`dotenv` command of direnv](https://direnv.net/man/direnv-stdlib.1.html) or the [`env_file` option of Docker Compose](https://docs.docker.com/compose/compose-file/#env_file). You can also `export` each environment variable, or run `export $(grep -v '^#' .env | xargs)` to export all variables in the `.env` file. {{</ note >}}
 
@@ -43,7 +43,7 @@ You can also configure {{% tts %}} with a YAML configuration file. This is again
 ```yaml
 console:
   ui:
-    canonical-url: 'https://thethings.example.com/console'
+    canonical-url: "https://thethings.example.com/console"
     # other console UI options
   # other console options
 ```

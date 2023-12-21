@@ -12,7 +12,7 @@ This reference contains information about what access administrators and users h
 
 To understand how data is secured in {{% tts %}} it is necessary to understand some important roles:
 
-**Infrastructure Owners**: Those with access to the hardware {{% tts %}} runs on. For {{% tts %}} Cloud, Dedicated Cloud and Community Edition, this is The Things Industries. {{% tts %}} Enterprise and Open Source deployments are managed by the customer and user respectively; The Things Industries does not have any infrastructural access. Technically, **Infrastructure Owners** have access to all data stored in databases or persistent volumes. In practice, The Things Industries uses this direct data access to {{% tts %}} Cloud or Community Edition deployments only for backups.
+**Infrastructure Owners**: Those with access to the hardware {{% tts %}} runs on. For {{% tts %}} Cloud, Dedicated Cloud and {{% ttss %}}, this is The Things Industries. {{% tts %}} Enterprise and Open Source deployments are managed by the customer and user respectively; The Things Industries does not have any infrastructural access. Technically, **Infrastructure Owners** have access to all data stored in databases or persistent volumes. In practice, The Things Industries uses this direct data access to {{% tts %}} Cloud or {{% ttss %}} deployments only for backups.
 
 **Network Administrators**: Users with administrative access in a tenant. **Network Administrators** have access to all entities in a tenant, including device secrets. In multi-tenant environments, tenants are completely isolated, and **Network Administrators** of one tenant have **no access** to other tenants.
 
@@ -36,11 +36,10 @@ The Application Server stores
 
 - Recent uplink application payloads, in a Redis database
 
-- Upstream messages (only if the [Storage Integration]({{< ref "integrations/storage" >}}) is enabled) 
+- Upstream messages (only if the [Storage Integration]({{< ref "integrations/storage" >}}) is enabled)
 
 {{% tts %}} Cloud runs in isolated subnets. Databases can only be accessed from within the subnet and are not publicly accessible.
 
 {{% tts %}} uses your NwkSKey (NwkSEncKey in LoRaWAN® 1.1) to decrypt LoRaWAN network-level payload. These session keys are only known to the Network Server and are never exposed downstream (to gateways) or upstream (to applications).
 
 {{% tts %}} uses the LoRaWAN AppSKey to decrypt the application payload, which is available in the [JSON message]({{< ref "the-things-stack/concepts/data-formats" >}}). It is also possible to skip payload decryption in {{% tts %}}, and perform decryption later in your application pipeline. See instructions on how to do it on an [application level]({{< ref "/integrations/adding-applications#payload-encryption-and-decryption" >}}) or on a [device level]({{< ref "/devices/adding-devices#application-layer-settings" >}}).
-

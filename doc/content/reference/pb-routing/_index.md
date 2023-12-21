@@ -10,8 +10,8 @@ The following table explains which Forwarder Networks and Home Networks are conf
 
 To configure custom routing policies for your deployment, see the [Configure Packet Broker]({{< ref "the-things-stack/packet-broker/configure" >}}) section.
 
-|Forwarder Network | Home Network | Status|
-|--- | --- | ---|
-|TTS Community Edition | TTS Cloud | Enabled|
-|TTS Cloud | TTS Community Edition | Not Enabled|
-|TTS Cloud <TENANT X> | TTS Cloud <TENANT Y> | Not Enabled|
+| Forwarder Network    | Home Network         | Status      |
+| -------------------- | -------------------- | ----------- |
+| TTS {{% ttss %}}     | TTS Cloud            | Enabled     |
+| TTS Cloud            | TTS {{% ttss %}}     | Not Enabled |
+| TTS Cloud <TENANT X> | TTS Cloud <TENANT Y> | Not Enabled |

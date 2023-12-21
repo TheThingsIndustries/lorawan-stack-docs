@@ -13,15 +13,19 @@ aliases:
 
 This section explains how to connect {{% tts %}} to Packet Broker.
 
-{{% tts %}} Cloud and Community Edition are already connected to Packet Broker. If your deployment is already connected, proceed to [configure Packet Broker]({{< relref "configure" >}}).
+{{% tts %}} Cloud and {{% ttss %}} are already connected to Packet Broker. If your deployment is already connected, proceed to [configure Packet Broker]({{< relref "configure" >}}).
 
 ## Prerequisites
 
 1. A LoRa Alliance NetID or a tenant of a host NetID
-  - To obtain a NetID, [become a member of the LoRa Alliance](https://lora-alliance.org/become-a-member)
-  - To obtain a DevAddr block, [contact The Things Industries sales](mailto:sales@thethingsindustries.com)
+
+- To obtain a NetID, [become a member of the LoRa Alliance](https://lora-alliance.org/become-a-member)
+- To obtain a DevAddr block, [contact The Things Industries sales](mailto:sales@thethingsindustries.com)
+
 2. Access to Packet Broker with an API key
-  - To obtain access to Packet Broker, [contact The Things Industries sales](mailto:sales@thethingsindustries.com)
+
+- To obtain access to Packet Broker, [contact The Things Industries sales](mailto:sales@thethingsindustries.com)
+
 3. {{% tts %}} installed and configured. See [Getting Started]({{< ref "/getting-started" >}})
 4. Packet Broker CLI installed and configured. See [Packet Broker CLI](https://github.com/packetbroker/pb)
 
@@ -47,18 +51,18 @@ The Packet Broker Agent component of {{% tts %}} connects to Packet Broker. The 
 # Packet Broker Agent configuration
 pba:
   # See https://packetbroker.net for available hosts
-  data-plane-address: 'eu.packetbroker.io:443'
-  net-id: '000013'
-  tenant-id: 'my-tenant' # Leave empty if you own the NetID and you don't use tenants
-  cluster-id: 'my-cluster' # Unique identifier of your routing cluster
-  authentication-mode: 'oauth2'
+  data-plane-address: "eu.packetbroker.io:443"
+  net-id: "000013"
+  tenant-id: "my-tenant" # Leave empty if you own the NetID and you don't use tenants
+  cluster-id: "my-cluster" # Unique identifier of your routing cluster
+  authentication-mode: "oauth2"
   oauth2:
-    client-id: '' # API key ID
-    client-secret: '' # Secret API key value
+    client-id: "" # API key ID
+    client-secret: "" # Secret API key value
   forwarder:
     enable: true
     # generate 16 bytes (openssl rand -hex 16)
-    token-key: '00112233445566770011223344556677'
+    token-key: "00112233445566770011223344556677"
   home-network:
     enable: true
 ```
@@ -75,10 +79,10 @@ Configure the Gateway Server to forward traffic for the current network to the N
 # Gateway Server configuration
 gs:
   forward:
-  # Forward traffic to the Network Server in the cluster
-  - 'cluster=26000000/7' # Enter your DevAddr range
-  # Forward all traffic also to Packet Broker
-  - 'packetbroker=00000000/0'
+    # Forward traffic to the Network Server in the cluster
+    - "cluster=26000000/7" # Enter your DevAddr range
+    # Forward all traffic also to Packet Broker
+    - "packetbroker=00000000/0"
 ```
 
 See [Gateway Server configuration]({{< ref "/reference/configuration/gateway-server" >}}) for all configuration options.
@@ -92,7 +96,7 @@ Configure the Network Server to issue device addresses (DevAddr) that fall withi
 
 # Network Server configuration.
 ns:
-  net-id: '000013'
+  net-id: "000013"
 ```
 
 If you are using a NetID tenant with one or more DevAddr blocks, configure the Network Server to use those blocks:
@@ -100,10 +104,10 @@ If you are using a NetID tenant with one or more DevAddr blocks, configure the N
 ```yaml
 # Network Server configuration.
 ns:
-  net-id: '000013'
+  net-id: "000013"
   dev-addr-prefixes:
-  - '27111100/16'
-  - '27222200/16'
+    - "27111100/16"
+    - "27222200/16"
 ```
 
 By default, the Network Server uses NetID `000000` which is intended for experimentation purposes. Only devices that are activated with a DevAddr that refers to a NetID will have their traffic routed by Packet Broker to your network.

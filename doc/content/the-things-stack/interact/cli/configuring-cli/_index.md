@@ -17,11 +17,11 @@ To configure the CLI, you first have to create a configuration file, then make t
 
 To generate the CLI configuration file, use the following command in your terminal:
 
-{{< tabs/container "Cloud, Community Edition, and Open Source" "Enterprise" >}}
+{{< tabs/container "Cloud, {{% ttss %}}, and Open Source" "Enterprise" >}}
 
-{{< tabs/tab "Cloud, Community Edition, and Open Source" >}}
+{{< tabs/tab "Cloud, {{% ttss %}}, and Open Source" >}}
 
-If using {{% tts %}} Community Edition, use the following command as per your regional `cluster`:
+If using {{% ttss %}}, use the following command as per your regional `cluster`:
 
 ```bash
 ttn-lw-cli use <eu1/au1/nam1>.cloud.thethings.network
@@ -33,7 +33,7 @@ or on Windows, this would be:
 ttn-lw-cli.exe use <eu1/au1/nam1>.cloud.thethings.network
 ```
 
-If you are using {{% tts %}} Cloud use the following command with your `tenant id` and regional `cluster`. 
+If you are using {{% tts %}} Cloud use the following command with your `tenant id` and regional `cluster`.
 
 ```bash
 ttn-lw-cli use <tenant_id>.<eu1/eu2/au1/nam1/>.cloud.thethings.industries
@@ -102,22 +102,22 @@ To manually configure, first create a `.ttn-lw-cli.yml` file.
 Copy and paste the following contents in the `.ttn-lw-cli.yml` file, replacing `thethings.example.com` with the [server addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}) of each component:
 
 ```yaml
-oauth-server-address: 'https://thethings.example.com/oauth'
+oauth-server-address: "https://thethings.example.com/oauth"
 
-identity-server-grpc-address: 'thethings.example.com:8884'
-gateway-server-grpc-address: 'thethings.example.com:8884'
-network-server-grpc-address: 'thethings.example.com:8884'
-application-server-grpc-address: 'thethings.example.com:8884'
-join-server-grpc-address: 'thethings.example.com:8884'
-device-claiming-server-grpc-address: 'thethings.example.com:8884'
-device-template-converter-grpc-address: 'thethings.example.com:8884'
-qr-code-generator-grpc-address: 'thethings.example.com:8884'
+identity-server-grpc-address: "thethings.example.com:8884"
+gateway-server-grpc-address: "thethings.example.com:8884"
+network-server-grpc-address: "thethings.example.com:8884"
+application-server-grpc-address: "thethings.example.com:8884"
+join-server-grpc-address: "thethings.example.com:8884"
+device-claiming-server-grpc-address: "thethings.example.com:8884"
+device-template-converter-grpc-address: "thethings.example.com:8884"
+qr-code-generator-grpc-address: "thethings.example.com:8884"
 ```
 
 If you are using an `https` port other than `443` (for example if running {{% tts %}} on localhost), you need to specify that port by adding the following line in `.ttn-lw-cli.yml`:
 
 ```yaml
-oauth-server-address: 'https://thethings.example.com:8885/oauth'
+oauth-server-address: "https://thethings.example.com:8885/oauth"
 ```
 
 If your deployment uses a custom certificate authority, you will need to specify the path to the CA file by adding the following line in the configuration file:
@@ -136,11 +136,13 @@ Once you have the `.ttn-lw-cli.yml` configuration file, you have multiple option
 2. Set the environmental variable by running:
 
 **macOS and Linux:**
+
 ```bash
 export TTN_LW_CONFIG=/path/to/.ttn-lw-cli.yml
 ```
 
 **Windows:**
+
 ```bash
 set TTN_LW_CONFIG=/path/to/.ttn-lw-cli.yml
 ```

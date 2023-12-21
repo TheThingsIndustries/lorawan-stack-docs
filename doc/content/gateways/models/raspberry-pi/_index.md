@@ -18,8 +18,8 @@ For building this gateway you will need the following hardware elements:
 1. [iC880A-SPI concentrator board](https://shop.imst.de/wireless-modules/lora-products/8/ic880a-spi-lorawan-concentrator-868-mhz)
 2. 3.5dBi - 7.5dBi antenna
 3. [iC880A pigtail for antenna](https://shop.imst.de/wireless-modules/accessories/20/u.fl-to-sma-pigtail-cable-for-ic880a-spi)
-4. Raspberry Pi Model 2 or newer	
-5. 2.5A power supply with micro USB connector	
+4. Raspberry Pi Model 2 or newer
+5. 2.5A power supply with micro USB connector
 6. MicroSD Card with minimum 4GB of storage
 7. 7x dual female jumper wires
 8. Ethernet cable or WiFi dongle (if using Raspberry PI 3+ this isn't required, because it has an integrated WiFi interface)
@@ -30,15 +30,15 @@ First, attach the antenna on the iC880A board using the pigtail cable.
 
 Then use jumper cables to connect the iC880A pins to Raspberry Pi pins. Refer to the table below for connections between pins:
 
-|iC880A pin | Raspberry Pi pin | Description|
-|--- | --- | ---|
-|21 | 2 | 5V power supply|
-|22 | 6 | GND|
-|13 | 22 | Reset|
-|14 | 23 | SPI Clock|
-|15 | 21 | MISO|
-|16 | 19 | MOSI|
-|17 | 24 | NSS|
+| iC880A pin | Raspberry Pi pin | Description     |
+| ---------- | ---------------- | --------------- |
+| 21         | 2                | 5V power supply |
+| 22         | 6                | GND             |
+| 13         | 22               | Reset           |
+| 14         | 23               | SPI Clock       |
+| 15         | 21               | MISO            |
+| 16         | 19               | MOSI            |
+| 17         | 24               | NSS             |
 
 Your assembled gateway should look like on the image below.
 
@@ -166,7 +166,7 @@ On your Raspberry Pi, create a new directory:
 sudo mkdir -p /opt/ttn-station/config
 ```
 
-Create a configuration file `tc.uri` containing an LNS server address. For example, if using `eu1` cluster of {{% tts %}} Community Edition:
+Create a configuration file `tc.uri` containing an LNS server address. For example, if using `eu1` cluster of {{% ttss %}}:
 
 ```bash
 echo 'wss://eu1.cloud.thethings.network:8887' | sudo tee /opt/ttn-station/config/tc.uri

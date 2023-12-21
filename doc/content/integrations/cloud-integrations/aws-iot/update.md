@@ -23,7 +23,7 @@ Select **Replace current template**.
 
 In the **Amazon S3 URL** enter the following URL depending on your deployment:
 
-{{< tabs/container "Cloud" "Enterprise" "Community" >}}
+{{< tabs/container "Cloud" "Enterprise" "Sandbox" >}}
 {{< tabs/tab "Cloud" >}}
 `https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json`
 {{< /tabs/tab >}}
@@ -32,7 +32,7 @@ In the **Amazon S3 URL** enter the following URL depending on your deployment:
 `https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/selfhosted.template.json`
 {{< /tabs/tab >}}
 
-{{< tabs/tab "Community" >}}
+{{< tabs/tab "Sandbox" >}}
 `https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/community.template.json`
 {{< /tabs/tab >}}
 {{< /tabs/container >}}

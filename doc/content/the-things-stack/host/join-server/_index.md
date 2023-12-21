@@ -18,7 +18,7 @@ The Things Join Server is a stand-alone LoRaWAN® Join Server. The Things Join S
 
 The Things Join Server comes as a managed service by The Things Industries. Device makers and distributors can also deploy their own The Things Join Server. If you are interested in provisioning devices on the managed service or if you are interested in deploying The Things Join Server, please contact [The Things Industries sales](mailto:sales@thethingsindustries.com).
 
-The Things Join Server operated by The Things Industries is configured in {{% tts %}} Cloud and Community Edition. If you operate {{% tts %}} Enterprise or Open Source, configure the [LoRaWAN Join Server configuration]({{< ref "/reference/interop-repository" >}}) and the [Device Claiming configuration]({{< ref "/reference/device-claiming-repository" >}}) accordingly.
+The Things Join Server operated by The Things Industries is configured in {{% tts %}} Cloud and {{% ttss %}}. If you operate {{% tts %}} Enterprise or Open Source, configure the [LoRaWAN Join Server configuration]({{< ref "/reference/interop-repository" >}}) and the [Device Claiming configuration]({{< ref "/reference/device-claiming-repository" >}}) accordingly.
 
 ## Device Provisioning
 

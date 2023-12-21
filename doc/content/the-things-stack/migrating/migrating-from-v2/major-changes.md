@@ -51,7 +51,7 @@ See the [MAC settings guide]({{< ref "/devices/configuring-devices/mac-settings"
 
 [Packet Broker]({{< ref "/the-things-stack/packet-broker" >}}) enables peering between networks, so traffic received by one network (The Things Network V2) but intended for a different network ({{% tts %}}) can be forwarded to and from that network. With Packet Broker enabled on both {{% tts %}} and The Things Network V2, you can receive traffic on {{% tts %}} without having to re-configure any of your gateways.
 
-Packet Broker is already enabled on The Things Network V2 (public community network) and {{% tts %}} Cloud. For {{% tts %}} Enterprise or {{% tts %}} Open Source, see how to [Connect]({{< ref "/the-things-stack/packet-broker/connect">}}) to Packet Broker.
+Packet Broker is already enabled on The Things Network V2 and {{% tts %}} Cloud. For {{% tts %}} Enterprise or {{% tts %}} Open Source, see how to [Connect]({{< ref "/the-things-stack/packet-broker/connect">}}) to Packet Broker.
 
 For private {{% tts %}} deployments with Packet Broker disabled, you will need to re-configure your gateways to connect to {{% tts %}}, so that you can start receiving traffic from your end devices.
 
