@@ -104,57 +104,58 @@ This shows only the Home Networks that have been set to be visible to other netw
 <details><summary>Example output</summary>
 
 ```json
-[{
-  "id": {
-    "net_id": 19,
-    "tenant_id": "ttn"
-  },
-  "name": "The Things Stack Community Edition",
-  "dev_addr_blocks": [
-    {
-      "dev_addr_prefix": {
-        "dev_addr": "260B0000",
-        "length": 16
-      },
-      "home_network_cluster_id": "ttn-eu1"
+[
+  {
+    "id": {
+      "net_id": 19,
+      "tenant_id": "ttn"
     },
-    {
-      "dev_addr_prefix": {
-        "dev_addr": "260C0000",
-        "length": 16
+    "name": "{{% ttss %}}",
+    "dev_addr_blocks": [
+      {
+        "dev_addr_prefix": {
+          "dev_addr": "260B0000",
+          "length": 16
+        },
+        "home_network_cluster_id": "ttn-eu1"
       },
-      "home_network_cluster_id": "ttn-nam1"
-    },
-    {
-      "dev_addr_prefix": {
-        "dev_addr": "260D0000",
-        "length": 16
+      {
+        "dev_addr_prefix": {
+          "dev_addr": "260C0000",
+          "length": 16
+        },
+        "home_network_cluster_id": "ttn-nam1"
       },
-      "home_network_cluster_id": "ttn-au1"
-    }
-  ],
-  "contact_info": [
-    {
-      "contact_type": "CONTACT_TYPE_TECHNICAL",
-      "contact_method": "CONTACT_METHOD_EMAIL",
-      "value": "ops@thethingsnetwork.org"
-    }
-  ]
-},
-{
-  "id": {
-    "net_id": 8
-  },
-  "name": "KPN",
-  "dev_addr_blocks": [
-    {
-      "dev_addr_prefix": {
-        "dev_addr": "10000000",
-        "length": 7
+      {
+        "dev_addr_prefix": {
+          "dev_addr": "260D0000",
+          "length": 16
+        },
+        "home_network_cluster_id": "ttn-au1"
       }
-    }
-  ]
-}
+    ],
+    "contact_info": [
+      {
+        "contact_type": "CONTACT_TYPE_TECHNICAL",
+        "contact_method": "CONTACT_METHOD_EMAIL",
+        "value": "ops@thethingsnetwork.org"
+      }
+    ]
+  },
+  {
+    "id": {
+      "net_id": 8
+    },
+    "name": "KPN",
+    "dev_addr_blocks": [
+      {
+        "dev_addr_prefix": {
+          "dev_addr": "10000000",
+          "length": 7
+        }
+      }
+    ]
+  }
 ]
 ```
 
@@ -200,32 +201,33 @@ ttn-lw-cli packetbroker forwarder policies list
 
 <details><summary>Example output</summary>
 
-The following example shows that The Things Stack Community Edition forwards all messages to your network (`NetID` `000013` and tenant ID `my-company`) and that you can send all downlink messages via The Things Stack Community Edition to your end devices.
+The following example shows that {{% ttss %}} forwards all messages to your network (`NetID` `000013` and tenant ID `my-company`) and that you can send all downlink messages via {{% ttss %}} to your end devices.
 
 ```json
-[{
-  "forwarder_id": {
-    "net_id": 19,
-    "tenant_id": "ttn"
-  },
-  "home_network_id": {
-    "net_id": 19,
-    "tenant_id": "my-company"
-  },
-  "updated_at": "2021-03-23T15:14:49.614025Z",
-  "uplink": {
-    "join_request": true,
-    "mac_data": true,
-    "application_data": true,
-    "signal_quality": true,
-    "localization": true
-  },
-  "downlink": {
-    "join_accept": true,
-    "mac_data": true,
-    "application_data": true
+[
+  {
+    "forwarder_id": {
+      "net_id": 19,
+      "tenant_id": "ttn"
+    },
+    "home_network_id": {
+      "net_id": 19,
+      "tenant_id": "my-company"
+    },
+    "updated_at": "2021-03-23T15:14:49.614025Z",
+    "uplink": {
+      "join_request": true,
+      "mac_data": true,
+      "application_data": true,
+      "signal_quality": true,
+      "localization": true
+    },
+    "downlink": {
+      "join_accept": true,
+      "mac_data": true,
+      "application_data": true
+    }
   }
-}
 ]
 ```
 
@@ -255,7 +257,7 @@ ttn-lw-cli packetbroker home-networks policies get <net-id> [<tenant-id>]
 
 Replace `<net-id>` with your network's `NetID`. The `tenant-id` is optional and represents the tenant within the `NetID`.
 
-To view the routing policy configured between you (the Forwarder) and The Things Stack Community Edition (the Home Network):
+To view the routing policy configured between you (the Forwarder) and {{% ttss %}} (the Home Network):
 
 ```bash
 ttn-lw-cli packetbroker home-networks policies get 000013 ttn
@@ -271,7 +273,7 @@ ttn-lw-cli packetbroker home-network policies set <net-id> [<tenant-id>] --all
 
 To customize, see [Flags]({{< relref "#flags" >}}) below.
 
-To enable forwarding of all packets between you (the Forwarder) and The Things Stack Community Edition (the Home Network):
+To enable forwarding of all packets between you (the Forwarder) and {{% ttss %}} (the Home Network):
 
 ```bash
 ttn-lw-cli packetbroker home-network policy set 000013 ttn --all
@@ -291,20 +293,20 @@ Replace `<net-id>` with your network's `NetID`. The `tenant-id` is optional and 
 
 When setting a routing policy, you can specify a combination of the following flags:
 
-Flag | Meaning
---- | ---
-`--all` | Enable all message types
-`--join` | Enable join-request and join-accept
-`--join-request` | Enable join-request
-`--join-accept` | Enable join-accept
-`--mac-data` | Enable MAC layer data messages (`FPort` `0`)
-`--mac-data-up` | Enable MAC layer data uplink messages
-`--mac-data-down` | Enable MAC layer data downlink messages
-`--application-data` | Enable application layer data messages (`FPort` `1` or higher)
-`--application-data-up` | Enable application layer data uplink messages
-`--application-data-down` | Enable application layer data downlink messages
-`--signal-quality` | Enable RSSI and SNR metadata (to pick the best downlink path)
-`--localization` | Enable signal quality and gateway locations (for geolocation)
+| Flag                      | Meaning                                                        |
+| ------------------------- | -------------------------------------------------------------- |
+| `--all`                   | Enable all message types                                       |
+| `--join`                  | Enable join-request and join-accept                            |
+| `--join-request`          | Enable join-request                                            |
+| `--join-accept`           | Enable join-accept                                             |
+| `--mac-data`              | Enable MAC layer data messages (`FPort` `0`)                   |
+| `--mac-data-up`           | Enable MAC layer data uplink messages                          |
+| `--mac-data-down`         | Enable MAC layer data downlink messages                        |
+| `--application-data`      | Enable application layer data messages (`FPort` `1` or higher) |
+| `--application-data-up`   | Enable application layer data uplink messages                  |
+| `--application-data-down` | Enable application layer data downlink messages                |
+| `--signal-quality`        | Enable RSSI and SNR metadata (to pick the best downlink path)  |
+| `--localization`          | Enable signal quality and gateway locations (for geolocation)  |
 
 {{< /tabs/tab >}}
 

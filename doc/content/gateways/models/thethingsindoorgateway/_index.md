@@ -1,7 +1,7 @@
 ---
 title: "The Things Indoor Gateway"
 description: ""
-distributions: ["Community", "Cloud"]
+distributions: ["Sandbox", "Cloud"]
 new_in_version: 3.13.3
 aliases: [/gateways/thethingsindoorgateway]
 ---
@@ -55,7 +55,7 @@ If your inputs are correct, a new gateway will be created and you will be redire
 
 {{< tabs/tab "CLI" >}}
 
-The following example claims and configures a gateway with EUI `00800000A00009EF` and Gateway ID `gtw1` to the  {{% tts %}} Community Edition `eu1` cluster.
+The following example claims and configures a gateway with EUI `00800000A00009EF` and Gateway ID `gtw1` to the {{% ttss %}} `eu1` cluster.
 
 Please adapt the example for your specific case.
 
@@ -69,14 +69,13 @@ tti-lw-cli gateways claim 00800000A00009EF \
 --user-id user1
 ```
 
-For {{% tts %}} Cloud, you will also need to append the Tenant ID to `--target-cups-uri` and  `--target-gateway-server-address` fields.
+For {{% tts %}} Cloud, you will also need to append the Tenant ID to `--target-cups-uri` and `--target-gateway-server-address` fields.
 
 For example using `tenant1`, the `target-cups-uri` would be `https://tenant1.eu1.cloud.thethings.industries:443` and the `target-gateway-server-address` would become `tenant1.eu1.cloud.thethings.industries`.
 
 {{< /tabs/tab >}}
 
 {{< /tabs/container >}}
-
 
 ## Connecting {{% ttig %}}
 
@@ -85,6 +84,7 @@ For example using `tenant1`, the `target-cups-uri` would be `https://tenant1.eu1
 {{< note >}} This is applicable if your gateway was previously connected to The Things Network v2. {{</ note >}}
 
 If the {{% ttig %}} is currently connected to another LNS, do either of the following
+
 - Wait up to 24 hrs (this is the default action for gateways that are not physically reachable). {{% ttig %}} connects to the server every 24 hours to check for new configuration.
 - Perform a hard reset by holding down the reset button for at least 5 seconds. Then, follow the new gateway instructions below.
 
@@ -108,9 +108,10 @@ Select the WiFi network by clicking the **+** button next to the desired network
 Click **Save and Reboot** to finish.
 
 If your configuration is correct,
-  *  The gateway will blink GREEN for a few seconds until it connects to the selected WiFi network.
-  * Then, it will blink from GREEN to RED and vice versa for a few seconds while it connects to the server and fetches the necessary configuration.
-  * Please allow 5-10 minutes for the gateway to pick up the new configuration.
+
+- The gateway will blink GREEN for a few seconds until it connects to the selected WiFi network.
+- Then, it will blink from GREEN to RED and vice versa for a few seconds while it connects to the server and fetches the necessary configuration.
+- Please allow 5-10 minutes for the gateway to pick up the new configuration.
 
 If this is the first time your gateway is being powered on/connected to WiFi, it might pick up a new firmware depending on when it was last updated. This is indicated by alternating GREEN/RED blinks of the LED. Please leave the gateway powered on when this happens.
 
@@ -129,7 +130,6 @@ ttn-lw-cli gateways claim authorize <gateway-id>
 Now claim the gateway as described in the [Claiming {{% ttig %}}]({{< ref "#claiming-the-things-indoor-gateway" >}}) section.
 
 Once complete, make sure to unauthorize the gateway to prevent further claiming.
-
 
 ```bash
 ttn-lw-cli gateways claim unauthorize <gateway-id>
@@ -175,7 +175,7 @@ If the target LNS requires authenticated connections, set the **LoRa Basics Stat
 
 Either restart the {{% ttig %}} or wait upto 24 hours for it to reconnect to the CUPS server. If your configuration is correct, your {{% ttig %}} will be connected to the target LNS.
 
-{{< note >}} {{% tts %}} automatically fetches the server certificate chain of the target LNS. This chain should be a standard certificate chain trusted by most browsers. At the moment, we don't support using self-signed custom certificates in this mode of operation.  {{</ note >}}
+{{< note >}} {{% tts %}} automatically fetches the server certificate chain of the target LNS. This chain should be a standard certificate chain trusted by most browsers. At the moment, we don't support using self-signed custom certificates in this mode of operation. {{</ note >}}
 
 ## Troubleshooting
 
@@ -199,23 +199,24 @@ Reboot your {{% ttig %}}. If the gateway status is still `Disconnected` after a 
 
 ### LED States
 
-|Color(s) | Illumination Pattern |Operating Mode | Meaning|
-|---|---|---|---|
-|GREEN|Blinking (freq 1 sec)|GW| WiFi not connected (or trying to connect)|
-|GREEN|Blinking (freq 1/4 sec)|GW| Connected to WiFi, establishing connection to LNS/configuring radio|
-|GREEN|Solid|GW| Connected to WiFi, connected to LNS backend, listening for packets|
-|GREEN/RED|Alternate Blinking (freq 1/4 sec)|CONF| Scanning WiFi networks, setting up Config AP|
-|RED|Blinking (freq 1/4 sec)|CONF| Config AP active|
+| Color(s)  | Illumination Pattern              | Operating Mode | Meaning                                                             |
+| --------- | --------------------------------- | -------------- | ------------------------------------------------------------------- |
+| GREEN     | Blinking (freq 1 sec)             | GW             | WiFi not connected (or trying to connect)                           |
+| GREEN     | Blinking (freq 1/4 sec)           | GW             | Connected to WiFi, establishing connection to LNS/configuring radio |
+| GREEN     | Solid                             | GW             | Connected to WiFi, connected to LNS backend, listening for packets  |
+| GREEN/RED | Alternate Blinking (freq 1/4 sec) | CONF           | Scanning WiFi networks, setting up Config AP                        |
+| RED       | Blinking (freq 1/4 sec)           | CONF           | Config AP active                                                    |
 
 ### Button Actions
 
 There are three possible button actions on the TTIG that are listed below.
-* SETUP button pressed for 10s:
-  * Switch to CONF mode if in GW mode
-* SETUP button pressed for 5s:
-  * Reboot if in CONF mode, do nothing in GW mode
-* RESET button pressed for 5s:
-  * Factory reset (wipes out WiFi and LNS credentials, retains CUPS credentials)
+
+- SETUP button pressed for 10s:
+  - Switch to CONF mode if in GW mode
+- SETUP button pressed for 5s:
+  - Reboot if in CONF mode, do nothing in GW mode
+- RESET button pressed for 5s:
+  - Factory reset (wipes out WiFi and LNS credentials, retains CUPS credentials)
 
 ### Serial logging
 
@@ -233,9 +234,9 @@ Use a serial terminal (Ex: `PUTTY` on Windows and `screen`/`minicom` on macOS/Li
 
 The following connections must be permitted in the firewall.
 
-| IP Version | Protocol | Destination| Port | Description |
-| --- | --- | ---| ---| --- |
-| IPv4 | TCP | \<cluster\>.cloud.thethings.network | 443 | CUPS |
-| IPv4 | TCP |\<cluster\>.cloud.thethings.network | 8887 | LNS |
-| IPv4 | TCP | rjs.sm.tc | 9191 | Root CUPS |
-| IPv4 | UDP | your DNS server(s) | 53 | DNS |
+| IP Version | Protocol | Destination                         | Port | Description |
+| ---------- | -------- | ----------------------------------- | ---- | ----------- |
+| IPv4       | TCP      | \<cluster\>.cloud.thethings.network | 443  | CUPS        |
+| IPv4       | TCP      | \<cluster\>.cloud.thethings.network | 8887 | LNS         |
+| IPv4       | TCP      | rjs.sm.tc                           | 9191 | Root CUPS   |
+| IPv4       | UDP      | your DNS server(s)                  | 53   | DNS         |

@@ -1,7 +1,7 @@
 ---
 title: "AWS IoT"
 description: ""
-distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "Community"]
+distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "Sandbox"]
 aliases:
   - "/integrations/pubsub/aws-iot/"
   - "/integrations/aws-iot/default/"

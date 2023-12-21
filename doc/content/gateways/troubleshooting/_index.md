@@ -135,7 +135,7 @@ If a gateway appears in the Console with the status of "Other cluster", it means
 
 Another gateway is already registered with this ID. This gateway may have been deleted already, but {{% tts %}} reserves previously used IDs for [security reasons]({{< ref "reference/id-eui-constraints" >}}).
 
-This gateway may also be registered by another user, but you are not able to see gateways registered by other users if you are not an administrator (e.g. if you are using {{% tts %}} Community Edition).
+This gateway may also be registered by another user, but you are not able to see gateways registered by other users if you are not an administrator (e.g. if you are using {{% ttss %}}).
 
 To solve this, use a different gateway ID. If you are an administrator and wish to reuse a deleted ID, see [Purging Entities]({{< ref "/the-things-stack/management/purge" >}}).
 
@@ -143,7 +143,7 @@ If you are using {{% tts %}} Cloud or Enterprise, ask the admin of your tenant t
 
 ## I get a "Gateway with EUI is Already Registered" error when adding a gateway.
 
-Another gateway is already registered with the same Gateway EUI. This gateway may be registered by another user, but if you are not an administrator (e.g if you are using {{% tts %}} Community Edition) you will not be able to see gateways registered by other users.
+Another gateway is already registered with the same Gateway EUI. This gateway may be registered by another user, but if you are not an administrator (e.g if you are using {{% ttss %}}) you will not be able to see gateways registered by other users.
 
 If the gateway is registered with the same EUI in some other tenant, the error will reflect that as well.
 

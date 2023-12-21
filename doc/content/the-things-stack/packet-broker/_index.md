@@ -51,13 +51,13 @@ Routing policies define the rules that Forwarders configure for routing messages
 
 Forwarders can configure the following message types per direction in a routing policy:
 
-Type | Uplink | Downlink | Description
---- | :---: | :---: | ---
-Join | O | O | Join-request (uplink) and join-accept (downlink) messages
-MAC payload | O | O | Data messages with `FPort` `0` (for network layer instructions)
-Application payload | O | O | Data messages with `FPort` `1` or higher (for application layer payload)
-Signal quality | O | | RSSI and SNR information
-Localization | O | | Gateway locations, timestamps and signal quality
+| Type                | Uplink | Downlink | Description                                                              |
+| ------------------- | :----: | :------: | ------------------------------------------------------------------------ |
+| Join                |   O    |    O     | Join-request (uplink) and join-accept (downlink) messages                |
+| MAC payload         |   O    |    O     | Data messages with `FPort` `0` (for network layer instructions)          |
+| Application payload |   O    |    O     | Data messages with `FPort` `1` or higher (for application layer payload) |
+| Signal quality      |   O    |          | RSSI and SNR information                                                 |
+| Localization        |   O    |          | Gateway locations, timestamps and signal quality                         |
 
 For instance, a Forwarder may wish to configure three policies:
 
@@ -73,26 +73,26 @@ Forwarders can configure the visibility of their gateways towards the public or 
 
 Forwarders can configure the following fields:
 
-Type | Description
---- | ---
-Location | Gateway coordinates
-Antenna placement | Indoor/outdoor antenna placement
-Antenna count | Number of antennas
-Fine timestamps | Whether the gateway produces fine timestamps
-Contact information | Administrative and technical contact information of the gateway
-Status | Online/offline status
-Frequency plan | Region and channel plan with frequencies that the gateway uses
-Packet rates | Receive and transmission packet rates
+| Type                | Description                                                     |
+| ------------------- | --------------------------------------------------------------- |
+| Location            | Gateway coordinates                                             |
+| Antenna placement   | Indoor/outdoor antenna placement                                |
+| Antenna count       | Number of antennas                                              |
+| Fine timestamps     | Whether the gateway produces fine timestamps                    |
+| Contact information | Administrative and technical contact information of the gateway |
+| Status              | Online/offline status                                           |
+| Frequency plan      | Region and channel plan with frequencies that the gateway uses  |
+| Packet rates        | Receive and transmission packet rates                           |
 
 ## Getting Started
 
-{{% tts %}} Community Edition and {{% tts %}} Cloud are already connected to Packet Broker. Proceed to [Configure]({{< relref "configure" >}}) section to manage your registration and routing policies with other networks.
+{{% ttss %}} and {{% tts %}} Cloud are already connected to Packet Broker. Proceed to [Configure]({{< relref "configure" >}}) section to manage your registration and routing policies with other networks.
 
 {{< note >}}
-{{% tts %}} Community Edition and {{% tts %}} Cloud are configured for peering within the same geographical region. For example, {{% tts %}} Community Edition `eu1` cluster is configured to peer only with {{% tts %}} Cloud `eu1` deployments and vice versa. Peering between `eu1`, `au1` and `nam1` clusters is not currently enabled.
+{{% ttss %}} and {{% tts %}} Cloud are configured for peering within the same geographical region. For example, {{% ttss %}} `eu1` cluster is configured to peer only with {{% tts %}} Cloud `eu1` deployments and vice versa. Peering between `eu1`, `au1` and `nam1` clusters is not currently enabled.
 {{</ note >}}
 
-When you are using {{% tts %}} Community Edition, you cannot configure any routing policies, as {{% tts %}} Community Edition is a public network and The Things Network Foundation controls which public or private networks the traffic gets exchanged with. To manage routing policies for your gateways, upgrade to {{% tts %}} Cloud.
+When you are using {{% ttss %}}, you cannot configure any routing policies, as {{% ttss %}} is a public network and The Things Network Foundation controls which public or private networks the traffic gets exchanged with. To manage routing policies for your gateways, upgrade to {{% tts %}} Cloud.
 
 When using {{% tts %}} Enterprise of {{% tts %}} Open Source, learn to [Connect {{% tts %}} to Packet Broker]({{< relref "connect" >}}).
 
@@ -102,9 +102,9 @@ Packet Broker is a global backbone for LoRaWAN traffic. It is designed to secure
 
 Packet Broker supports LoRaWAN passive roaming, but it goes even beyond that:
 
-- Packet Broker allows for individual packet selection: networks do not get charged for traffic they did not consume. 
-- Packet Broker separates traffic routing from billing and clearing: networks are free to put commercial agreements in place to settle balances. 
-- Packet Broker separates payload from metadata: networks only get charged for the value they need. 
+- Packet Broker allows for individual packet selection: networks do not get charged for traffic they did not consume.
+- Packet Broker separates traffic routing from billing and clearing: networks are free to put commercial agreements in place to settle balances.
+- Packet Broker separates payload from metadata: networks only get charged for the value they need.
 - {{% tts %}} has native support for Packet Broker and can access the global coverage provided by The Things Network.
 
 ## Status Page

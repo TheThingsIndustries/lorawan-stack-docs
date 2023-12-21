@@ -11,7 +11,7 @@ This section contains instructions for installing the command-line interface.
 
 There are two versions of {{% tts %}} CLI: `ttn-lw-cli`and `tti-lw-cli`. For most users, `ttn-lw-cli` is sufficient, as it supports all commands to manage {{% tts %}}. `tti-lw-cli` has additional commands for tenant management and OpenID Connect but is otherwise identical.
 
-We recommend Cloud, Community Edition, and Open Source users to install `ttn-lw-cli`, and Enterprise users to install `tti-lw-cli`.
+We recommend Cloud, {{% ttss %}}, and Open Source users to install `ttn-lw-cli`, and Enterprise users to install `tti-lw-cli`.
 
 ## Installing using a package manager (recommended)
 
@@ -23,9 +23,9 @@ Read this section to find out how to install {{% tts %}} CLI on your operating s
 
 On macOS, Homebrew is the recommended package manager. See the [official Homebrew documentation](https://brew.sh/) for installation instructions.
 
-{{< tabs/container "Cloud, Community Edition, and Open Source" "Enterprise" >}}
+{{< tabs/container "Cloud, {{% ttss %}}, and Open Source" "Enterprise" >}}
 
-{{< tabs/tab "Cloud, Community Edition, and Open Source" >}}
+{{< tabs/tab "Cloud, {{% ttss %}}, and Open Source" >}}
 
 Once Homebrew is installed on your system, you can install {{% tts %}} CLI using the following command in your terminal:
 
@@ -67,9 +67,9 @@ Now you can run the CLI using `tti-lw-cli` in your terminal.
 
 On Linux, `snap` is the recommended package manager. See the [official `snap` documentation](https://snapcraft.io/docs) for installation instructions.
 
-{{< tabs/container "Cloud, Community Edition, and Open Source" "Enterprise" >}}
+{{< tabs/container "Cloud, {{% ttss %}}, and Open Source" "Enterprise" >}}
 
-{{< tabs/tab "Cloud, Community Edition, and Open Source" >}}
+{{< tabs/tab "Cloud, {{% ttss %}}, and Open Source" >}}
 
 Once `snap` is installed on your system, you can install {{% tts %}} CLI using the following command in your terminal:
 

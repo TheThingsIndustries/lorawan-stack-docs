@@ -7,7 +7,7 @@ distributions: Enterprise
 
 This section contains instructions for configuring the Storage Integration on {{% tts %}} Enterprise distributions.
 
-{{< note >}} The Storage Integration is already configured on {{% tts %}} Cloud and Community Edition distributions. To enable and use the integration for specific Applications, follow the instructions in the [Enable/Disable]({{< relref "enable" >}}) and [Retrieve Messages]({{< relref "retrieve" >}}) sections. {{</ note >}}
+{{< note >}} The Storage Integration is already configured on {{% tts %}} Cloud and {{% ttss %}} distributions. To enable and use the integration for specific Applications, follow the instructions in the [Enable/Disable]({{< relref "enable" >}}) and [Retrieve Messages]({{< relref "retrieve" >}}) sections. {{</ note >}}
 
 The Storage Integration requires configuration for the underlying storage provider used, along with a few options for tuning performance and memory usage.
 

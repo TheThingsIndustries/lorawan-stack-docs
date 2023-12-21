@@ -4,7 +4,7 @@ description: ""
 aliases: [/getting-started/ttn/addresses]
 ---
 
-The addresses where you can reach The Things Stack Community Edition consist of the cluster ID and `cloud.thethings.network`.
+The addresses where you can reach {{% ttss %}} consist of the cluster ID and `cloud.thethings.network`.
 
 You can update the examples below with your cluster ID by filling it here.
 

@@ -14,7 +14,7 @@ There are several ways to run {{% tts %}}.
 
 {{% tts %}} Open Source and Enterprise distributions are designed to run on your own hardware, which this guide covers.
 
-Alternatively, to use {{% tts %}} in the cloud without installing it on your own hardware, see [{{% tts %}} Cloud]({{< relref "cloud" >}}) (our professional, SLA-backed offering) or [Community Edition]({{< relref "ttn" >}}) (our free-to-use community edition). To spin up your own EC2 instance, there is also an [AWS Launcher]({{< relref "aws" >}}). To install using balenaCloud on a Rasperry Pi, see the [Balena]({{< relref "balena" >}}) section.
+Alternatively, to use {{% tts %}} in the cloud without installing it on your own hardware, see [{{% tts %}} Cloud]({{< relref "cloud" >}}) (our professional, SLA-backed offering) or [{{% ttss %}}]({{< relref "ttn" >}}) (our free-to-use {{% ttss %}}). To spin up your own EC2 instance, there is also an [AWS Launcher]({{< relref "aws" >}}). To install using balenaCloud on a Rasperry Pi, see the [Balena]({{< relref "balena" >}}) section.
 
 For highly available production cloud deployments with high throughput, we recommend using {{% tts %}} Cloud or AWS Launcher. All deployments of {{% tts %}} except Open Source and AWS Launcher support multi-tenancy, which allows you to create multiple private network servers within a single deployment, for example to resell to individual clients.
 
@@ -28,11 +28,11 @@ In addition to the following written instructions, video instructions for instal
 
 ## Prerequisites
 
-1. A server with a recommended 4 virtual CPUs and 16GB RAM running [Docker](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/)*
+1. A server with a recommended 4 virtual CPUs and 16GB RAM running [Docker](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/)\*
 2. DNS records pointing to your server's IP address (skip if using `localhost`)
 3. A [license](https://thethingsindustries.com/technology/pricing) for {{% tts %}} (only for Enterprise)
 
-*Benchmark for 100K devices with 12 confirmed uplinks per day. Your requirements will vary depending on your load and desired redundancy.
+\*Benchmark for 100K devices with 12 confirmed uplinks per day. Your requirements will vary depending on your load and desired redundancy.
 
 If purchasing an Enterprise license, consider setting up a multi-tenant environment from the beginning if you plan to add tenants later. Switching from a a single-tenant to multi-tenant environment requires database migration.
 

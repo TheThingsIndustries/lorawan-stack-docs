@@ -39,7 +39,7 @@ Click **Create API key**, copy the key and store it in a safe place. You need th
 
 {{% aws-region-selector %}}
 
-{{< tabs/container "Cloud" "Enterprise" "Community" >}}
+{{< tabs/container "Cloud" "Enterprise" "Sandbox" >}}
 {{< tabs/tab "Cloud" >}}
 {{% aws-deploy-cloudformation name="Deploy for The Things Stack Cloud" bucket="thethingsindustries" path="integration-aws/latest/cloudhosted.template.json" %}}
 
@@ -52,7 +52,7 @@ Click **Create API key**, copy the key and store it in a safe place. You need th
 [View template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/selfhosted.template.json)
 {{< /tabs/tab >}}
 
-{{< tabs/tab "Community" >}}
+{{< tabs/tab "Sandbox" >}}
 {{% aws-deploy-cloudformation name="Deploy for The Things Network" bucket="thethingsindustries" path="integration-aws/latest/community.template.json" %}}
 
 [View template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/community.template.json)
@@ -71,7 +71,7 @@ The parameters configure the integration:
 - **Thing Type Name**: The unique AWS IoT Core thing type name for this integration.
 - **Thing Name Scheme**: The name that is given to AWS IoT things when they are created by the integration.
   - When using `DevEUI`, the name will appear as the numeric DevEUI, i.e 1122334455667788.
-  - When using `DeviceID`, the thing name will be a combination of the CloudFormation stack name and the device ID as registered in  {{% tts %}}, i.e. `<stackName>_<DeviceID>`.
+  - When using `DeviceID`, the thing name will be a combination of the CloudFormation stack name and the device ID as registered in {{% tts %}}, i.e. `<stackName>_<DeviceID>`.
 - **Thing Shadow Metrics**: Enable or disable updating the thing shadow with metrics.
 - **Cluster Address**: The cluster address of your {{% tts %}} deployment.
   - When using **The Things Stack Cloud**, go to [The Things Stack Cloud Addresses]({{< relref "/the-things-stack/cloud/addresses" >}}) to find your cluster address
@@ -88,7 +88,7 @@ Check **I acknowledge that AWS CloudFormation might create IAM resources**.
 
 Click **Create stack**.
 
-{{< note >}} Creating all resources can take up to five minutes.  ☕ {{</ note >}}
+{{< note >}} Creating all resources can take up to five minutes. ☕ {{</ note >}}
 
 When the deployment is done, you'll see the status `CREATE_COMPLETE`.
 

@@ -7,7 +7,7 @@ aliases:
     "/getting-started/migrating-from-v2",
     "/getting-started/migrating-from-v2/configure-ttnctl",
     "/getting-started/migrating-from-v2/export-v2-devices",
-    "/getting-started/migrating/migrating-from-v2"
+    "/getting-started/migrating/migrating-from-v2",
   ]
 ---
 
@@ -15,7 +15,7 @@ This section documents the process of migrating end devices from {{% ttnv2 %}} t
 
 <!--more-->
 
-Keep in mind that {{% ttnv2 %}} (community network) machines were shut down on December 1, 2021, so devices can no longer be migrated from there. It is only possible to register them from scratch on {{% tts %}}. However, it is still possible to migrate devices from private {{% ttnv2 %}} servers, which is described in this section.
+Keep in mind that {{% ttnv2 %}} machines were shut down on December 1, 2021, so devices can no longer be migrated from there. It is only possible to register them from scratch on {{% tts %}}. However, it is still possible to migrate devices from private {{% ttnv2 %}} servers, which is described in this section.
 
 ## Prerequisites
 

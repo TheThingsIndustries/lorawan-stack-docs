@@ -1,7 +1,7 @@
 ---
 title: "The Things Network"
 description: ""
-distributions: "Community"
+distributions: "Sandbox"
 aliases: [/getting-started/ttn]
 ---
 
@@ -9,7 +9,7 @@ aliases: [/getting-started/ttn]
 
 [The Things Network](https://www.thethingsnetwork.org/) is a global collaborative Internet of Things ecosystem that creates networks, devices and solutions using LoRaWAN.
 
-The Things Network runs {{% tts %}} Community Edition, which is a crowdsourced, open and decentralized LoRaWAN® network. This network is a great way to get started testing devices, applications, and integrations, and get familiar with LoRaWAN.
+The Things Network runs {{% ttss %}}, which is a crowdsourced, open and decentralized LoRaWAN® network. This network is a great way to get started testing devices, applications, and integrations, and get familiar with LoRaWAN.
 
 <!--more-->
 
@@ -23,18 +23,18 @@ For commercial solutions, we strongly recommend using an SLA-backed network prov
 
 ## Clusters
 
-The Things Stack Community Edition (run by The Things Network) is a multi-cluster deployment. This means that while your account information is stored in a central location, you can connect your gateways to a closer cluster, and route all your IoT traffic in that cluster. This can significantly reduce latency because your traffic would not have to cross half the planet.
+{{% ttss %}} (run by The Things Industries) is a multi-cluster deployment. This means that while your account information is stored in a central location, you can connect your gateways to a closer cluster, and route all your IoT traffic in that cluster. This can significantly reduce latency because your traffic would not have to cross half the planet.
 
-{{% tts %}} Community Edition currently has the following clusters:
+{{% ttss %}} currently has the following clusters:
 
 | **Cluster ID** | **Name**        | **Location**      |
-| -------------- | --------------- | ---------------   |
+| -------------- | --------------- | ----------------- |
 | `au1`          | Australia 1     | Sydney, Australia |
 | `eu1`          | Europe 1        | Ireland           |
 | `nam1`         | North America 1 | California, USA   |
 
-If you navigate to [this link](https://console.cloud.thethings.network), you can find out which {{% tts %}} Community Edition clusters are recommended for your deployment based on the location of your devices and immediately log into its Console.
+If you navigate to [this link](https://console.cloud.thethings.network), you can find out which {{% ttss %}} clusters are recommended for your deployment based on the location of your devices and immediately log into its Console.
 
 {{< figure src="cluster-location.png" alt="Recommended clusters" >}}
 
-See the [Addresses]({{< ref "/reference/ttn/addresses" >}}) for details about cluster, Console, API endpoints and other {{% tts %}} Community Edition addresses.
+See the [Addresses]({{< ref "/reference/ttn/addresses" >}}) for details about cluster, Console, API endpoints and other {{% ttss %}} addresses.

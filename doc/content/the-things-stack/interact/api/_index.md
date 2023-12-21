@@ -14,7 +14,6 @@ A complete list of API endpoints is available in the [API Reference]({{< ref "re
 {{< warning >}} If you are not getting the fields you expect in API responses, see the [Field Masks]({{< relref "field-mask" >}}) reference.
 {{</ warning >}}
 
-
 If you are having trouble with the HTTP API, you can always inspect requests in the Console using your browser's inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.
 
 ## Best Practices
@@ -125,7 +124,7 @@ It is also possible to [schedule downlinks using HTTP Webhooks]({{< ref "integra
 
 If you want to create a device, perform multi-step actions, or write shell scripts, it's best to use the [CLI]({{< ref "the-things-stack/interact/cli" >}}).
 
-If you want to do something like registering a device directly via the API, you need to make calls to the Identity Server, Join Server, Network Server and Application Server. See the [API Reference]({{< ref "reference/api/end_device" >}}) for detailed information about which messages go to which endpoints. 
+If you want to do something like registering a device directly via the API, you need to make calls to the Identity Server, Join Server, Network Server and Application Server. See the [API Reference]({{< ref "reference/api/end_device" >}}) for detailed information about which messages go to which endpoints.
 
 {{< tabs/container "OTAA" "ABP" >}}
 
@@ -451,7 +450,7 @@ The most common cause for this error is not following the regex pattern in the `
 
 ### Listing gateways via API call works for the eu1 {{% tts %}} Cloud cluster, but won't work for the nam1 cluster.
 
-Unlike other server components, the Identity Server component of {{% tts %}} is hosted only in the `eu1` cluster for [{{% tts %}} Cloud]({{< ref "/the-things-stack/cloud/addresses#api-endpoints" >}}) and [{{% tts %}} Community Edition]({{< ref "/reference/ttn/addresses#api-endpoints" >}}). This is the reason why Identity Server API request to any cluster other than `eu1` will fail.
+Unlike other server components, the Identity Server component of {{% tts %}} is hosted only in the `eu1` cluster for [{{% tts %}} Cloud]({{< ref "/the-things-stack/cloud/addresses#api-endpoints" >}}) and [{{% ttss %}}]({{< ref "/reference/ttn/addresses#api-endpoints" >}}). This is the reason why Identity Server API request to any cluster other than `eu1` will fail.
 
 ### "426 Upgrade Required" error
 

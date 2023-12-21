@@ -4,7 +4,7 @@ description: ""
 weight: 1
 ---
 
-This section describes how to setup a Node-RED server and prepare to connect it to {{% tts %}}. 
+This section describes how to setup a Node-RED server and prepare to connect it to {{% tts %}}.
 
 ## Requirements
 
@@ -18,11 +18,11 @@ Run Node-RED in your terminal and navigate to the server address of your Node-RE
 
 {{< figure src="nodered_dashboard.png" alt="Node-RED dashboard" >}}
 
-On the left side, you can see various types of nodes that can be used in order to build flows. 
+On the left side, you can see various types of nodes that can be used in order to build flows.
 
 All nodes can be found in the [Node-RED library](https://flows.nodered.org/).
 
-{{% tts %}} Console provides the connection information needed for completing this integration. 
+{{% tts %}} Console provides the connection information needed for completing this integration.
 
 In {{% tts %}} Console, click **Applications** and choose the application you want to connect to Node-RED. Click **Integrations** in the left hand panel of the Console, and the **MQTT** submenu to view the MQTT server info:
 
@@ -30,6 +30,6 @@ In {{% tts %}} Console, click **Applications** and choose the application you wa
 
 In this example, {{% tts %}} instance is installed on `localhost` and a built-in MQTT server is configured by default on port 1883 for insecure connections and on port 8883 for TLS-secured connections.
 
-Please make sure to read a [note on using the tenant ID]({{< ref "/integrations/mqtt#note-on-using-the-tenant-id" >}}), because the MQTT server address and MQTT topics for multi-tenant {{% tts %}} deployments have a slightly different format. For example, to connect Node-RED to {{% tts %}} Community Edition (which is a multi-tenant environment) built-in MQTT server, the MQTT server address would be `eu1.cloud.thethings.network` instead of `localhost`, and the MQTT username would be `app-example@ttn` instead of `app-example`.
+Please make sure to read a [note on using the tenant ID]({{< ref "/integrations/mqtt#note-on-using-the-tenant-id" >}}), because the MQTT server address and MQTT topics for multi-tenant {{% tts %}} deployments have a slightly different format. For example, to connect Node-RED to {{% ttss %}} (which is a multi-tenant environment) built-in MQTT server, the MQTT server address would be `eu1.cloud.thethings.network` instead of `localhost`, and the MQTT username would be `app-example@ttn` instead of `app-example`.
 
 In a later step, we will use this information to connect Node-RED to {{% tts %}}.
