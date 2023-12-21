@@ -40,11 +40,11 @@ The combination of `<deployment_name>-<environment>-<cluster>` needs to be uniqu
     "resource_group": {
         "create": <true|false>,                    # If set to `true` a new Resource Group will be created on deployment.
                                                    # Otherwise a Resource Group is going to be imported based on "name" parameter.
-        "name": <resource_group_name>,             # Optional custom Azure Resource Group name. Mandatory when "create" is set to `false`.
+        "name": <resource_group_name>             # Optional custom Azure Resource Group name. Mandatory when "create" is set to `false`.
     },
     "domain": {
         "name": <domain_name>,                     # Domain where The Things Stack is available.
-        "dns_zone": <dns_zone_name>,               # Azure DNS zone.
+        "dns_zone": <dns_zone_name>               # Azure DNS zone.
     }
 }
 ```
@@ -57,7 +57,7 @@ It is only required to set the `acme_email` field.
 
 ```
 {
-    "acme_email":   # ACME email that will receive notifications about expiring Certificates.
+    "acme_email": <acme_email> # ACME email that will receive notifications about expiring Certificates.
 }
 ```
 
@@ -69,12 +69,12 @@ The following contains only the minimum mandatory fields for this values file. F
 
 ```yaml
 license:
-  key: # TTS license key
+  key: <tts_license_key>
 global:
   deployment:
     initialTenant:
-      tenantID: # Initial tenant ID
-      adminEmail: # Admin email
-      adminUserID: # Admin ID
-      adminPassword: # Admin password
+      tenantID: <initial_tenant_id>
+      adminEmail: <initial_tenant_admin_email>
+      adminUserID: <initial_tenant_admin_id>
+      adminPassword: <initial_tenant_admin_password>
 ```
