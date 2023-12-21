@@ -175,47 +175,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </h1>
         
         <div class="content">
-          <p>The Packet Broker Mapper API can help you fetch gateway locations, online status and other gateway information for The Things Stack Community Edition, Cloud, Enterprise and Open Source deployments. This section contains the reference for the Packet Broker Mapper API and examples of forming an API call.</p>
+          <p>The Packet Broker Mapper API can help you fetch gateway locations, online status and other gateway information for The Things Stack Sandbox, Cloud, Enterprise and Open Source deployments. This section contains the reference for the Packet Broker Mapper API and examples of forming an API call.</p>
 <p>The <a href="https://swagger.io/specification/">OpenAPI</a> definition of the Packet Broker Mapper API is available <a href="https://mapper.packetbroker.net/api/v2/openapi.json">here</a>.</p>
 <p>You can also use <a href="https://petstore.swagger.io/">Swagger UI</a> to explore the Mapper API. Just enter <code>https://mapper.packetbroker.net/api/v2/openapi.json</code> in the URL field on the top and click <strong>Explore</strong>.</p>
 <h2 id="examples">Examples</h2>
 <p>To get all gateways:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl https://mapper.packetbroker.net/api/v2/gateways
 </span></span></code></pre></div><p>As a result of this API call, you will get a list of all gateways connected to Packet Broker and their details (like network, tenant, cluster and gateway identifiers, activity status, location, etc.).</p>
-<p>To get info about a single gateway <code>demo-gw1</code> that&rsquo;s connected to The Things Stack Community Edition:</p>
+<p>To get info about a single gateway <code>demo-gw1</code> that&rsquo;s connected to The Things Stack Sandbox:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl https://mapper.packetbroker.net/api/v2/gateways/netID<span class="o">=</span>000013,tenantID<span class="o">=</span>ttn,id<span class="o">=</span>demo-gw1
 </span></span></code></pre></div><details><summary>Show JSON API response</summary>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;netID&#34;</span><span class="p">:</span><span class="s2">&#34;000013&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;tenantID&#34;</span><span class="p">:</span><span class="s2">&#34;ttn&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;id&#34;</span><span class="p">:</span><span class="s2">&#34;demo-gw1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;eui&#34;</span><span class="p">:</span><span class="s2">&#34;B827EBFFFE8DB885&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;clusterID&#34;</span><span class="p">:</span><span class="s2">&#34;eu1.cloud.thethings.network&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;updatedAt&#34;</span><span class="p">:</span><span class="s2">&#34;2022-05-04T14:55:35.52635Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;location&#34;</span><span class="p">:{</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;latitude&#34;</span><span class="p">:</span><span class="mf">43.856691</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;longitude&#34;</span><span class="p">:</span><span class="mf">18.382848</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;altitude&#34;</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;accuracy&#34;</span><span class="p">:</span><span class="mi">0</span>
-</span></span><span class="line"><span class="cl">	<span class="p">},</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;antennaPlacement&#34;</span><span class="p">:</span><span class="s2">&#34;INDOOR&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;antennaCount&#34;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;online&#34;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;frequencyPlan&#34;</span><span class="p">:{</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;region&#34;</span><span class="p">:</span><span class="s2">&#34;EU_863_870&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;loraMultiSFChannels&#34;</span><span class="p">:[</span>
-</span></span><span class="line"><span class="cl">			<span class="mi">868100000</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">			<span class="mi">868300000</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">			<span class="mi">868500000</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">			<span class="mi">867100000</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">			<span class="mi">867300000</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">			<span class="mi">867500000</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">			<span class="mi">867700000</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">			<span class="mi">867900000</span>
-</span></span><span class="line"><span class="cl">		<span class="p">]</span>
-</span></span><span class="line"><span class="cl">	<span class="p">},</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;rxRate&#34;</span><span class="p">:</span><span class="mf">2821.1191</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;txRate&#34;</span><span class="p">:</span><span class="mf">151.6022</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;netID&#34;</span><span class="p">:</span> <span class="s2">&#34;000013&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;tenantID&#34;</span><span class="p">:</span> <span class="s2">&#34;ttn&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;demo-gw1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;eui&#34;</span><span class="p">:</span> <span class="s2">&#34;B827EBFFFE8DB885&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;clusterID&#34;</span><span class="p">:</span> <span class="s2">&#34;eu1.cloud.thethings.network&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;updatedAt&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-05-04T14:55:35.52635Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;latitude&#34;</span><span class="p">:</span> <span class="mf">43.856691</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;longitude&#34;</span><span class="p">:</span> <span class="mf">18.382848</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;altitude&#34;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;accuracy&#34;</span><span class="p">:</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;antennaPlacement&#34;</span><span class="p">:</span> <span class="s2">&#34;INDOOR&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;antennaCount&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;online&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;frequencyPlan&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;region&#34;</span><span class="p">:</span> <span class="s2">&#34;EU_863_870&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;loraMultiSFChannels&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="mi">868100000</span><span class="p">,</span> <span class="mi">868300000</span><span class="p">,</span> <span class="mi">868500000</span><span class="p">,</span> <span class="mi">867100000</span><span class="p">,</span> <span class="mi">867300000</span><span class="p">,</span> <span class="mi">867500000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="mi">867700000</span><span class="p">,</span> <span class="mi">867900000</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;rxRate&#34;</span><span class="p">:</span> <span class="mf">2821.1191</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;txRate&#34;</span><span class="p">:</span> <span class="mf">151.6022</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div></details>
         </div>
