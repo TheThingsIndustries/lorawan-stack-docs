@@ -35,3 +35,16 @@ Please [contact our sales team](mailto:sales@thethingsindustries.com) for access
 We recommend creating an Azure Resource Group (RG) for this deployment during the preparation stage. If you intend to manage the RG with Terraform you can import it into the `tfstate` later during the deployment.
 
 After creating the RG we recommend to set up Azure Storage for Terraform backend. You can read more about this in [Azure Documentation](https://learn.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage).
+
+You need to have rights to create the following resources in the RG:
+
+- Azure Kubernetes Service
+- Azure Database for PostgreSQL Flexible Server
+- NAT Gateway
+- Private DNS Zone
+- Public IP Address
+- Public IP Prefix
+- Storage Account
+- User Assigned Managed Identity
+- Virtual Network
+- Log Analytics Workspace (optional)
