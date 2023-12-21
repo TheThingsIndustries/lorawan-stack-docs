@@ -26,6 +26,10 @@ Create a `deployment.auto.tfvars.json` file in `1-infrastructure` directory.
 
 The following contains only the minimum mandatory fields for this configuration file. For a full list of possible values check the `variables.tf` file in this directory.
 
+{{< note >}}
+The combination of `<deployment_name>-<environment>-<cluster>` needs to be unique in a Resource Group.
+{{</ note >}}
+
 ```
 {
     "azure_ad_admin_group_object_id": <object_id>, # Object ID of the AKS admin group.
@@ -65,12 +69,12 @@ The following contains only the minimum mandatory fields for this values file. F
 
 ```yaml
 license:
-  key:               # TTS license key
+  key: # TTS license key
 global:
   deployment:
     initialTenant:
-      tenantID:      # Initial tenant ID
-      adminEmail:    # Admin email
-      adminUserID:   # Admin ID
+      tenantID: # Initial tenant ID
+      adminEmail: # Admin email
+      adminUserID: # Admin ID
       adminPassword: # Admin password
 ```
