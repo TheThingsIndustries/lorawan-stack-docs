@@ -10,12 +10,8 @@ This guide is meant for users who want to deploy {{% tts %}} on Kubernetes.
 
 {{% tts %}} is currently available as two flavours for self-hosting on Kubernetes.
 
-1. Generic
+1. Generic offers {{% tts %}} packaged as a Helm Chart with no infrastructure provided.
 
-- {{% tts %}} packaged as a Helm Chart with no infrastructure provided.
-
-2. Azure
-
-- {{% tts %}} deployment on Azure Kubernetes Service with Azure supporting infrastructure.
+2. Azure is {{% tts %}} deployment on Azure Kubernetes Service with Azure supporting infrastructure.
 
 Read more in the following sections.
