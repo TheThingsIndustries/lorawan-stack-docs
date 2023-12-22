@@ -28,6 +28,6 @@ User uploads of profile pictures and end device pictures are stored in public Az
 
 ## Configuration
 
-The Azure Kubernetes deploymen of {{% tts %}} uses a combination of configuration stored as Terraform and Helm configuration files.
+The Azure Kubernetes deployment of {{% tts %}} uses a combination of configuration stored as Terraform and Helm configuration files.
 
 The configuration for interoperability with other LoRaWAN Backend Interfaces-compliant servers is stored as multiple files in a private Azure Storage Account.
