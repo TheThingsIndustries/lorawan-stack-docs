@@ -12,7 +12,7 @@ This page describes the architecture of a {{% tts %}} deployment on Azure.
 
 ## Networking
 
-The main infrastructure is contained inside a Virtual Network, grouped into separate Private Subnets. Communication with the Internet is via a Network Address Translation Gateway (NAT GW). Internal load balancer (LB) is used to handle incoming traffic.
+The [compute infrastructure]({{< ref "the-things-stack/host/kubernetes/azure/deployment#azure-infrastructure" >}}) is contained inside a Virtual Network, grouped into separate Private Subnets. Communication with the Internet is via a Network Address Translation Gateway (NAT GW). Internal load balancer (LB) is used to handle incoming traffic.
 
 The NAT GW is assigned a Public IP Address Prefix while the LB is assigned a static Public IP Address.
 
