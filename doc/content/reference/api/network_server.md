@@ -185,9 +185,9 @@ description: ""
 
 {{< proto/message message="ServingRelayParameters" >}}
 
-{{< proto/message message="ServingRelayParameters.UplinkForwardingRule" >}}
+{{< proto/message message="RelayUplinkForwardingRule" >}}
 
-{{< proto/message message="ServingRelayParameters.ForwardingLimits" >}}
+{{< proto/message message="ServingRelayForwardingLimits" >}}
 
 {{< proto/message message="SessionKeyRequest" >}}
 
