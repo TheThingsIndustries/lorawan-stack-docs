@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Database Migrations | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/database-migrations/" />
+  <title>Troubleshooting | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/troubleshooting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.de1726c1242f9c323501e9815aae8675d5d7c48960e36c2beefdc20f644452db.css" integrity="sha256-3hcmwSQvnDI1AemBWq6GddXXxIlg42wr7v3CD2REUts=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Database Migrations">
+  <meta itemprop="name" content="Troubleshooting">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Database Migrations">
+  <meta property="og:title" content="Troubleshooting">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/database-migrations/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/troubleshooting/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Database Migrations" />
+  <meta name="twitter:title" content="Troubleshooting" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -119,42 +119,61 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/prerequisites/" class="">Prerequisites</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/" class="">Generic</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/prerequisites/" class="">Prerequisites</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/preparation/" class="">Preparation</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/preparation/" class="">Preparation</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/configuration/" class="">Configuration</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/configuration/" class="">Configuration</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/install-charts/" class="">Install Charts</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/install-charts/" class="">Install Charts</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/monitoring/" class="">Monitoring</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/monitoring/" class="">Monitoring</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/troubleshooting/" class="">Troubleshooting</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/troubleshooting/" class="is-active">Troubleshooting</a>
+    
+    
+
+
+
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/database-migrations/" class="is-active">Database Migrations</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/database-migrations/" class="">Database Migrations</a>
     
+  </li>
+
+</ul>
+
+
     
+  </li>
 
-
-
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/" class="">Azure</a>
     
   </li>
 
@@ -214,59 +233,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Database Migrations
+        <h1 class="title is-size-2">Troubleshooting
           
         </h1>
         
         <div class="content">
-          <p>The Things Stack database entries are managed between minor versions using database migrations.</p>
-<p>User are informed of required migrations for each version via the <a href="https://www.thethingsindustries.com/docs/whats-new/">Release Notes</a>. It&rsquo;s mandatory to run required database migrations for The Things Stack to function properly.</p>
-<p>This page describes the steps for performing database operations on a The Things Stack Kubernetes Cluster.</p>
-<h2 id="general-procedure">General Procedure</h2>
-<ol>
-<li>Delete current Jobs (if any).</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ kubectl delete <span class="nb">jobs</span> --all<span class="o">=</span><span class="nb">true</span>
-</span></span></code></pre></div><ol start="2">
-<li>Do a <em>dry run</em> of a Helm update and store the evaluation to a file.</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ helm upgrade &lt;name&gt; oci://registry-1.docker.io/thethingsindustries/&lt;repo&gt; --version &lt;version&gt; --values &lt;deployment&gt;.values.yaml --dry-run --debug &gt; dryrun.txt
-</span></span></code></pre></div><p>You can also use a local Helm chart.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ helm upgrade &lt;name&gt; &lt;path-to-chart&gt; --values &lt;deployment&gt;.values.yaml --dry-run --debug &gt; dryrun.txt
-</span></span></code></pre></div><ol start="3">
-<li>In the <code>dryrun.txt</code> file look for a job with the name <code>&lt;name&gt;-&lt;component&gt;-migrate</code>.</li>
-</ol>
-<p>For example a migration job for the Identity Server database would look like this.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">batch/v1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Job</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;name&gt;-is-migrate</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">...</span><span class="w">
-</span></span></span></code></pre></div><ol start="4">
-<li>
-<p>Copy the entire yaml content of this <code>Job</code>; until the <code>---</code> lines to a new file <code>&lt;name&gt;-&lt;component&gt;-migrate.yaml</code>.</p>
-</li>
-<li>
-<p>Deploy this Job manually.</p>
-</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl apply -f &lt;name&gt;-&lt;component&gt;-migrate.yaml
-</span></span></code></pre></div><ol start="6">
-<li>
-<p>Wait for the Job to complete.</p>
-</li>
-<li>
-<p>Once successfully completed, this can be deleted.</p>
-</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl delete -f &lt;name&gt;-&lt;component&gt;-migrate.yaml
-</span></span></code></pre></div><p>Repeat the above process for all the components required. Currently only the IS and NOC components require migrations.</p>
+          <p>This guide contains general troubleshooting information.</p>
+<h2 id="why-do-the-gs-ns-as-and-js-components-fail-to-start">Why do the GS, NS, AS and JS components fail to start?</h2>
+<p>The one thing that is common between these four components (and not others) is that they all use Redis. Make sure to troubleshoot the Redis server that&rsquo;s used. Ensure that Redis is reachable from within the cluster. If authentication is required, make sure that the configuration works.</p>
+<p>If using the Bitnami Helm Charts for Redis, make sure to either setup TLS or disable password authentication. The latter is recommended if this database is used for testing. Check Bitnami&rsquo;s documentation on how to disable authentication. It usually involves setting <code>auth.enabled</code> to <code>false</code> for the Redis Helm charts and not using a Redis password in The Things Stack.</p>
+<h2 id="missing-tenant-id">Missing Tenant ID</h2>
+<p>This issue occurs most likely due to not setting the <code>tenancy.defaultID</code> for single tenant deployments.</p>
+<h2 id="x509_unknown_authority">x509_unknown_authority</h2>
+<p>For this error, check that the value set in <code>global.tls.rootCA</code> is base64 encoded and matches the domain where the installation is accessible.</p>
+<h2 id="x509_certificate_invalid">x509_certificate_invalid</h2>
+<p>For this error, make sure that the value set in <code>ingress.traefik.tls.secretName</code> is a valid TLS certificate.</p>
+<h2 id="pkgutilstoredriver-driver-error">pkg/util/store:driver (driver error)</h2>
+<p>The Things Stack runs Kubernetes jobs to initialize and migrate Postgres. This error can occur if the The Things Stack is accessed either before these jobs are run or if the jobs failed to execute. Check the status of the jobs for more details on what went wrong.</p>
+<h2 id="gateways-dont-work-when-targeting-the-udp-port-1700">Gateways don&rsquo;t work when targeting the UDP port 1700</h2>
+<p>Ensure that UDP port (default 1700) is exposed outside the Kubernetes cluster via your chosen proxy or load balancer.</p>
         </div>
           <div class="columns is-multiline">
 </div>
 
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/troubleshooting/">← Troubleshooting</a>
+<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/generic/monitoring/">← Monitoring</a>
+<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/generic/database-migrations/">Database Migrations →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -287,7 +279,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul class="menu-list">
     
       
-      <li><a href='#general-procedure'>General Procedure</a></li>
+      <li><a href='#why-do-the-gs-ns-as-and-js-components-fail-to-start'>Why do the GS, NS, AS and JS components fail to start?</a></li>
+    
+      
+      <li><a href='#missing-tenant-id'>Missing Tenant ID</a></li>
+    
+      
+      <li><a href='#x509_unknown_authority'>x509_unknown_authority</a></li>
+    
+      
+      <li><a href='#x509_certificate_invalid'>x509_certificate_invalid</a></li>
+    
+      
+      <li><a href='#pkgutilstoredriver-driver-error'>pkg/util/store:driver (driver error)</a></li>
+    
+      
+      <li><a href='#gateways-dont-work-when-targeting-the-udp-port-1700'>Gateways don’t work when targeting the UDP port 1700</a></li>
     
   </ul>
 

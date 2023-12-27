@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Kubernetes | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" />
+  <title>Database Migrations | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/database-migrations/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.de1726c1242f9c323501e9815aae8675d5d7c48960e36c2beefdc20f644452db.css" integrity="sha256-3hcmwSQvnDI1AemBWq6GddXXxIlg42wr7v3CD2REUts=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Kubernetes">
+  <meta itemprop="name" content="Database Migrations">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Kubernetes">
+  <meta property="og:title" content="Database Migrations">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/database-migrations/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Kubernetes" />
+  <meta name="twitter:title" content="Database Migrations" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -111,7 +111,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" class="is-active">Kubernetes</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" class="">Kubernetes</a>
     
     
 
@@ -120,6 +120,55 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/" class="">Generic</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/prerequisites/" class="">Prerequisites</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/preparation/" class="">Preparation</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/configuration/" class="">Configuration</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/install-charts/" class="">Install Charts</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/monitoring/" class="">Monitoring</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/troubleshooting/" class="">Troubleshooting</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/database-migrations/" class="is-active">Database Migrations</a>
+    
+    
+
+
+
+    
+  </li>
+
+</ul>
+
+
     
   </li>
 
@@ -184,133 +233,59 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Kubernetes
+        <h1 class="title is-size-2">Database Migrations
           
         </h1>
         
         <div class="content">
-          <p>This guide is meant for users who want to deploy The Things Stack on Kubernetes.</p>
-<p>The Things Stack is currently available as two flavours for self-hosting on Kubernetes.</p>
+          <p>The Things Stack database entries are managed between minor versions using database migrations.</p>
+<p>User are informed of required migrations for each version via the <a href="https://www.thethingsindustries.com/docs/whats-new/">Release Notes</a>. It&rsquo;s mandatory to run required database migrations for The Things Stack to function properly.</p>
+<p>This page describes the steps for performing database operations on a The Things Stack Kubernetes Cluster.</p>
+<h2 id="general-procedure">General Procedure</h2>
 <ol>
+<li>Delete current Jobs (if any).</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ kubectl delete <span class="nb">jobs</span> --all<span class="o">=</span><span class="nb">true</span>
+</span></span></code></pre></div><ol start="2">
+<li>Do a <em>dry run</em> of a Helm update and store the evaluation to a file.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ helm upgrade &lt;name&gt; oci://registry-1.docker.io/thethingsindustries/&lt;repo&gt; --version &lt;version&gt; --values &lt;deployment&gt;.values.yaml --dry-run --debug &gt; dryrun.txt
+</span></span></code></pre></div><p>You can also use a local Helm chart.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ helm upgrade &lt;name&gt; &lt;path-to-chart&gt; --values &lt;deployment&gt;.values.yaml --dry-run --debug &gt; dryrun.txt
+</span></span></code></pre></div><ol start="3">
+<li>In the <code>dryrun.txt</code> file look for a job with the name <code>&lt;name&gt;-&lt;component&gt;-migrate</code>.</li>
+</ol>
+<p>For example a migration job for the Identity Server database would look like this.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">batch/v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Job</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;name&gt;-is-migrate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">...</span><span class="w">
+</span></span></span></code></pre></div><ol start="4">
 <li>
-<p>Generic offers The Things Stack packaged as a Helm Chart with no infrastructure provided.</p>
+<p>Copy the entire yaml content of this <code>Job</code>; until the <code>---</code> lines to a new file <code>&lt;name&gt;-&lt;component&gt;-migrate.yaml</code>.</p>
 </li>
 <li>
-<p>Azure is The Things Stack deployment on Azure Kubernetes Service with Azure supporting infrastructure.</p>
+<p>Deploy this Job manually.</p>
 </li>
 </ol>
-<p>Read more in the following sections.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl apply -f &lt;name&gt;-&lt;component&gt;-migrate.yaml
+</span></span></code></pre></div><ol start="6">
+<li>
+<p>Wait for the Job to complete.</p>
+</li>
+<li>
+<p>Once successfully completed, this can be deleted.</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl delete -f &lt;name&gt;-&lt;component&gt;-migrate.yaml
+</span></span></code></pre></div><p>Repeat the above process for all the components required. Currently only the IS and NOC components require migrations.</p>
         </div>
           <div class="columns is-multiline">
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/">Generic</a>
-          </h1>
-          
-          <h2 class="subtitle">
-            
-              
-
-  
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-            
-            
-            
-            
-          </h2>
-          
-          <div class="content has-text-grey">
-            
-            The Things Stack is packaged as a Helm Chart to be run on Kubernetes Clusters. The Things Stack Helm charts are packaged and distributed as OCI packages and are published to Docker Hub.
-This guide helps the user to install and configure The Things Stack on a Kubernetes cluster.
-Operating The Things Stack on a Kubernetes cluster is only meant for advanced users with sufficient experience with the chosen infrastructure platform and with Kubernetes.
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/">Azure</a>
-          </h1>
-          
-          <h2 class="subtitle">
-            
-              
-
-  
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-            
-            
-            
-            
-          </h2>
-          
-          <div class="content has-text-grey">
-            
-            The Things Stack can be deployed to Azure as a set of highly available services on Azure Kubernetes Service using Terraform and Helm.
-This guide gives an overview of the architecture and shows how to deploy your own highly available The Things Stack cluster.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/the-things-stack/host/aws/ecs/">← AWS ECS</a>
-<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/generic/">Generic →</a>
+<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/generic/troubleshooting/">← Troubleshooting</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -327,6 +302,13 @@ This guide gives an overview of the architecture and shows how to deploy your ow
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#general-procedure'>General Procedure</a></li>
+    
+  </ul>
 
 
   </nav>

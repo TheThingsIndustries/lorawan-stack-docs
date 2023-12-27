@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Kubernetes | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" />
+  <title>Troubleshooting | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/troubleshooting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.de1726c1242f9c323501e9815aae8675d5d7c48960e36c2beefdc20f644452db.css" integrity="sha256-3hcmwSQvnDI1AemBWq6GddXXxIlg42wr7v3CD2REUts=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Kubernetes">
+  <meta itemprop="name" content="Troubleshooting">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Kubernetes">
+  <meta property="og:title" content="Troubleshooting">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/troubleshooting/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Kubernetes" />
+  <meta name="twitter:title" content="Troubleshooting" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -111,7 +111,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" class="is-active">Kubernetes</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" class="">Kubernetes</a>
     
     
 
@@ -125,6 +125,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/" class="">Azure</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/architecture/" class="">Architecture</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/prerequisites/" class="">Prerequisites</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/configuration/" class="">Configuration</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/deployment/" class="">Deployment</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/troubleshooting/" class="is-active">Troubleshooting</a>
+    
+    
+
+
+
+    
+  </li>
+
+</ul>
+
+
     
   </li>
 
@@ -184,133 +223,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Kubernetes
+        <h1 class="title is-size-2">Troubleshooting
           
         </h1>
         
         <div class="content">
-          <p>This guide is meant for users who want to deploy The Things Stack on Kubernetes.</p>
-<p>The Things Stack is currently available as two flavours for self-hosting on Kubernetes.</p>
-<ol>
-<li>
-<p>Generic offers The Things Stack packaged as a Helm Chart with no infrastructure provided.</p>
-</li>
-<li>
-<p>Azure is The Things Stack deployment on Azure Kubernetes Service with Azure supporting infrastructure.</p>
-</li>
-</ol>
-<p>Read more in the following sections.</p>
+          <p>This guide contains general troubleshooting information.</p>
+<h2 id="error-get-httplocalhostapiv1namespaces-dial-tcp-180-connect-connection-refused">Error: Get &ldquo;http://localhost/api/v1/namespaces/&hellip;&rdquo;: dial tcp [::1]:80: connect: connection refused</h2>
+<p>Set <code>KUBECONFIG</code> and <code>KUBE_CONFIG_PATH</code> variables to the location of the <code>kubeconfig</code> file. The default location is <code>~/.local/kubeconfig</code>.</p>
+<h2 id="pkgutilstoredriver-driver-error">pkg/util/store:driver (driver error)</h2>
+<p>The Things Stack runs Kubernetes jobs to initialize and migrate Postgres. This error can occur if the The Things Stack is accessed either before these jobs are run or if the jobs failed to execute. Check the status of the jobs for more details on what went wrong.</p>
         </div>
           <div class="columns is-multiline">
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/">Generic</a>
-          </h1>
-          
-          <h2 class="subtitle">
-            
-              
-
-  
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-            
-            
-            
-            
-          </h2>
-          
-          <div class="content has-text-grey">
-            
-            The Things Stack is packaged as a Helm Chart to be run on Kubernetes Clusters. The Things Stack Helm charts are packaged and distributed as OCI packages and are published to Docker Hub.
-This guide helps the user to install and configure The Things Stack on a Kubernetes cluster.
-Operating The Things Stack on a Kubernetes cluster is only meant for advanced users with sufficient experience with the chosen infrastructure platform and with Kubernetes.
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/">Azure</a>
-          </h1>
-          
-          <h2 class="subtitle">
-            
-              
-
-  
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-            
-            
-            
-            
-          </h2>
-          
-          <div class="content has-text-grey">
-            
-            The Things Stack can be deployed to Azure as a set of highly available services on Azure Kubernetes Service using Terraform and Helm.
-This guide gives an overview of the architecture and shows how to deploy your own highly available The Things Stack cluster.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/the-things-stack/host/aws/ecs/">← AWS ECS</a>
-<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/generic/">Generic →</a>
+<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/azure/deployment/">← Deployment</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -327,6 +255,16 @@ This guide gives an overview of the architecture and shows how to deploy your ow
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#error-get-httplocalhostapiv1namespaces-dial-tcp-180-connect-connection-refused'>Error: Get “http://localhost/api/v1/namespaces/…”: dial tcp [::1]:80: connect: connection refused</a></li>
+    
+      
+      <li><a href='#pkgutilstoredriver-driver-error'>pkg/util/store:driver (driver error)</a></li>
+    
+  </ul>
 
 
   </nav>

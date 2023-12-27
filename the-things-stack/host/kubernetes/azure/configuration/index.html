@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Kubernetes | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" />
+  <title>Configuration | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/configuration/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.de1726c1242f9c323501e9815aae8675d5d7c48960e36c2beefdc20f644452db.css" integrity="sha256-3hcmwSQvnDI1AemBWq6GddXXxIlg42wr7v3CD2REUts=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Kubernetes">
+  <meta itemprop="name" content="Configuration">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Kubernetes">
+  <meta property="og:title" content="Configuration">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/configuration/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Kubernetes" />
+  <meta name="twitter:title" content="Configuration" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -111,7 +111,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" class="is-active">Kubernetes</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" class="">Kubernetes</a>
     
     
 
@@ -125,6 +125,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/" class="">Azure</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/architecture/" class="">Architecture</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/prerequisites/" class="">Prerequisites</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/configuration/" class="is-active">Configuration</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/deployment/" class="">Deployment</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/troubleshooting/" class="">Troubleshooting</a>
+    
+  </li>
+
+</ul>
+
+
     
   </li>
 
@@ -184,133 +223,68 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Kubernetes
+        <h1 class="title is-size-2">Configuration
           
         </h1>
         
         <div class="content">
-          <p>This guide is meant for users who want to deploy The Things Stack on Kubernetes.</p>
-<p>The Things Stack is currently available as two flavours for self-hosting on Kubernetes.</p>
-<ol>
-<li>
-<p>Generic offers The Things Stack packaged as a Helm Chart with no infrastructure provided.</p>
-</li>
-<li>
-<p>Azure is The Things Stack deployment on Azure Kubernetes Service with Azure supporting infrastructure.</p>
-</li>
-</ol>
-<p>Read more in the following sections.</p>
+          <p>The Things Stack requires a few configuration files to be prepared. In this section, we show how to create them and store them for further use.</p>
+<h2 id="terraform-backend">Terraform Backend</h2>
+<p>Create a <code>config.azurerm.tfbackend</code> file and put it in <code>1-infrastructure</code>, <code>2-kubernetes</code> and one of the chosen DNS provider templates directories. We recommend <code>azure-dns</code> provider for this deployment.</p>
+<pre tabindex="0"><code>storage_account_name = &lt;storage_account_name&gt;
+container_name       = &lt;storage_container_name&gt;
+key                  = &lt;terraform_state_file&gt;
+use_azuread_auth     = true
+</code></pre><h2 id="deployment-configuration">Deployment Configuration</h2>
+<p>Create a <code>deployment.auto.tfvars.json</code> file in <code>1-infrastructure</code> directory.</p>
+<p>The following contains only the minimum mandatory fields for this configuration file. For a full list of possible values check the <code>variables.tf</code> file in this directory.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The combination of <code>&lt;deployment_name&gt;-&lt;environment&gt;-&lt;cluster&gt;</code> needs to be unique in a Resource Group.
+</div>
+
+<pre tabindex="0"><code>{
+    &#34;azure_ad_admin_group_object_id&#34;: &lt;object_id&gt;, # Object ID of the AKS admin group.
+    &#34;deployment_name&#34;: &lt;deployment_name&gt;,          # Name of the deployment.
+    &#34;environment&#34;: &lt;environment&gt;,                  # &#39;prod&#39;, &#39;staging&#39; or &#39;dev&#39;.
+    &#34;cluster&#34;: &lt;cluster&gt;,                          # Cluster identifier for multi-cluster deployments.
+    &#34;location&#34;: &lt;location&gt;,                        # Azure location
+    &#34;resource_group&#34;: {
+        &#34;create&#34;: &lt;true|false&gt;,                    # If set to `true` a new Resource Group will be created on deployment.
+                                                   # Otherwise a Resource Group is going to be imported based on &#34;name&#34; parameter.
+        &#34;name&#34;: &lt;resource_group_name&gt;             # Optional custom Azure Resource Group name. Mandatory when &#34;create&#34; is set to `false`.
+    },
+    &#34;domain&#34;: {
+        &#34;name&#34;: &lt;domain_name&gt;,                     # Domain where The Things Stack is available.
+        &#34;dns_zone&#34;: &lt;dns_zone_name&gt;               # Azure DNS zone.
+    }
+}
+</code></pre><h2 id="acme-configuration">ACME Configuration</h2>
+<p>Create an <code>acme.auto.tfvars.json</code> file in the DNS templates directory.</p>
+<p>It is only required to set the <code>acme_email</code> field.</p>
+<pre tabindex="0"><code>{
+    &#34;acme_email&#34;: &lt;acme_email&gt; # ACME email that will receive notifications about expiring Certificates.
+}
+</code></pre><h2 id="the-things-stack-values">The Things Stack Values</h2>
+<p>Create a <code>tts.values.yaml</code> file in the <code>2-kubernetes</code> templates directory.</p>
+<p>The following contains only the minimum mandatory fields for this values file. For a full list of possible values check the <code>values.yaml</code> file of The Things Stack Helm chart.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">license</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;tts_license_key&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">global</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deployment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">initialTenant</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">tenantID</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;initial_tenant_id&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminEmail</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;initial_tenant_admin_email&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminUserID</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;initial_tenant_admin_id&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminPassword</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;initial_tenant_admin_password&gt;</span><span class="w">
+</span></span></span></code></pre></div>
         </div>
           <div class="columns is-multiline">
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/">Generic</a>
-          </h1>
-          
-          <h2 class="subtitle">
-            
-              
-
-  
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-            
-            
-            
-            
-          </h2>
-          
-          <div class="content has-text-grey">
-            
-            The Things Stack is packaged as a Helm Chart to be run on Kubernetes Clusters. The Things Stack Helm charts are packaged and distributed as OCI packages and are published to Docker Hub.
-This guide helps the user to install and configure The Things Stack on a Kubernetes cluster.
-Operating The Things Stack on a Kubernetes cluster is only meant for advanced users with sufficient experience with the chosen infrastructure platform and with Kubernetes.
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/">Azure</a>
-          </h1>
-          
-          <h2 class="subtitle">
-            
-              
-
-  
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-            
-            
-            
-            
-          </h2>
-          
-          <div class="content has-text-grey">
-            
-            The Things Stack can be deployed to Azure as a set of highly available services on Azure Kubernetes Service using Terraform and Helm.
-This guide gives an overview of the architecture and shows how to deploy your own highly available The Things Stack cluster.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/the-things-stack/host/aws/ecs/">← AWS ECS</a>
-<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/generic/">Generic →</a>
+<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/azure/prerequisites/">← Prerequisites</a>
+<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/azure/deployment/">Deployment →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -327,6 +301,22 @@ This guide gives an overview of the architecture and shows how to deploy your ow
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#terraform-backend'>Terraform Backend</a></li>
+    
+      
+      <li><a href='#deployment-configuration'>Deployment Configuration</a></li>
+    
+      
+      <li><a href='#acme-configuration'>ACME Configuration</a></li>
+    
+      
+      <li><a href='#the-things-stack-values'>The Things Stack Values</a></li>
+    
+  </ul>
 
 
   </nav>

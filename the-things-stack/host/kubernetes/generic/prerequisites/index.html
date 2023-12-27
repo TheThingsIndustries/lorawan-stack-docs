@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Prerequisites | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/prerequisites/" />
+  <title>Prerequisites | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/prerequisites/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.de1726c1242f9c323501e9815aae8675d5d7c48960e36c2beefdc20f644452db.css" integrity="sha256-3hcmwSQvnDI1AemBWq6GddXXxIlg42wr7v3CD2REUts=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
@@ -18,7 +18,7 @@
   <meta itemprop="keywords" content="">
   <meta property="og:title" content="Prerequisites">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/prerequisites/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/prerequisites/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
   <meta name="twitter:title" content="Prerequisites" />
   <meta name="twitter:description" content="" />
@@ -119,7 +119,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/prerequisites/" class="is-active">Prerequisites</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/" class="">Generic</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/prerequisites/" class="is-active">Prerequisites</a>
     
     
 
@@ -129,32 +137,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/preparation/" class="">Preparation</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/preparation/" class="">Preparation</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/configuration/" class="">Configuration</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/configuration/" class="">Configuration</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/install-charts/" class="">Install Charts</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/install-charts/" class="">Install Charts</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/monitoring/" class="">Monitoring</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/monitoring/" class="">Monitoring</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/troubleshooting/" class="">Troubleshooting</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/troubleshooting/" class="">Troubleshooting</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/database-migrations/" class="">Database Migrations</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/database-migrations/" class="">Database Migrations</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/" class="">Azure</a>
     
   </li>
 
@@ -309,7 +328,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>To use a custom proxy/load balancer, set <code>global.ingress.traefik.enabled</code> to <code>false</code>.</p>
 <p>When Traefik is disabled, the ports and routes necessary for The Things Stack should be mapped manually by the operator.
 Check the <code>ingress-routes.yaml</code> files for each component and adapt it to your proxy. Setting up and maintaining a custom proxy is out of the scope of this document.</p>
-<p>If Traefik is not used, skip ahead to <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/prerequisites/#6-tls-certificates">setup TLS certificates</a>.</p>
+<p>If Traefik is not used, skip ahead to <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/prerequisites/#6-tls-certificates">setup TLS certificates</a>.</p>
 <p>The simplest way to install Traefik in the kubernetes cluster is use the <a href="https://artifacthub.io/packages/helm/traefik/traefik">official Helm charts</a>.</p>
 <p>The Things Stack ingress routes need to be mapped to the Traefik entry points. This can be done during installation.</p>
 <p>Save the following as a YAML file (example <code>traefik.values.yaml</code>) and use that as the values file for Helm.</p>
@@ -415,14 +434,13 @@ Check the <code>ingress-routes.yaml</code> files for each component and adapt it
 <p>For testing purposes, <a href="https://docs.timescale.com/install/latest/installation-kubernetes/">TimeScaleDB Helm Charts</a> can be installed in the Kubernetes Cluster.</p>
 <h4 id="8-optional-metrics-server">8. (Optional) Metrics Server</h4>
 <p>For Autoscaling, the Kubernetes cluster needs a <a href="https://github.com/kubernetes-sigs/metrics-server">Metrics Server</a>. This is dependent on the cluster and the cloud infrastructure and is hence left to the operator.</p>
-
         </div>
           <div class="columns is-multiline">
 </div>
 
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/">← Kubernetes</a>
-<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/preparation/">Preparation →</a>
+<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/generic/">← Generic</a>
+<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/generic/preparation/">Preparation →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>

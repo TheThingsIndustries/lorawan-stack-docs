@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Monitoring | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/monitoring/" />
+  <title>Prerequisites | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/prerequisites/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.de1726c1242f9c323501e9815aae8675d5d7c48960e36c2beefdc20f644452db.css" integrity="sha256-3hcmwSQvnDI1AemBWq6GddXXxIlg42wr7v3CD2REUts=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Monitoring">
+  <meta itemprop="name" content="Prerequisites">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Monitoring">
+  <meta property="og:title" content="Prerequisites">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/monitoring/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/prerequisites/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Monitoring" />
+  <meta name="twitter:title" content="Prerequisites" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -119,27 +119,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/prerequisites/" class="">Prerequisites</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/" class="">Generic</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/preparation/" class="">Preparation</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/" class="">Azure</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/architecture/" class="">Architecture</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/configuration/" class="">Configuration</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/install-charts/" class="">Install Charts</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/monitoring/" class="is-active">Monitoring</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/prerequisites/" class="is-active">Prerequisites</a>
     
     
 
@@ -149,12 +147,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/troubleshooting/" class="">Troubleshooting</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/configuration/" class="">Configuration</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/database-migrations/" class="">Database Migrations</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/deployment/" class="">Deployment</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/troubleshooting/" class="">Troubleshooting</a>
+    
+  </li>
+
+</ul>
+
+
     
   </li>
 
@@ -214,45 +223,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Monitoring
+        <h1 class="title is-size-2">Prerequisites
           
         </h1>
         
         <div class="content">
-          <p>The Things Stack exposes Prometheus metrics at the <code>/metrics</code> endpoint. This route is protected by Basic Auth with username <code>metrics</code> and password <code>global.http.metrics.password</code>.</p>
-<p>To scrape these metrics, you can install Prometheus in the cluster. The installation details are outside the scope of this document.</p>
-<p>The following scrape config can be used to scrape metrics from each of the components of The Things Stack.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">scrape_configs</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;name&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">metrics_path</span><span class="p">:</span><span class="w"> </span><span class="l">/metrics</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l">http</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">basic_auth</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">metrics</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;password&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># This is the cluster local endpoint of the component&#39;s service.</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">targets</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="p">[</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s2">&#34;&lt;helm_release_name&gt;-&lt;component-name&gt;.&lt;namespace&gt;.svc.cluster.local:1885&#34;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="p">]</span><span class="w">
-</span></span></span></code></pre></div><p>For example, to scrape metrics from the Identity Servers of a The Things Stack deployment named <code>mytts</code> in the <code>tts</code> namespace, use the following.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">scrape_configs</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">identity-server</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">metrics_path</span><span class="p">:</span><span class="w"> </span><span class="l">/metrics</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l">http</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">basic_auth</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">metrics</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;global.http.metrics.password&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;mytts-is.tts.svc.cluster.local:1885&#34;</span><span class="p">]</span><span class="w">
-</span></span></span></code></pre></div>
+          <p>This section contains prerequisites for deploying The Things Stack on Azure Kubernetes Service.</p>
+<h2 id="tools">Tools</h2>
+<ol>
+<li><a href="https://www.terraform.io/">Terraform</a></li>
+<li><a href="https://kubernetes.io/docs/reference/kubectl/"><code>kubectl</code></a></li>
+<li><a href="https://helm.sh/docs/intro/">Helm version 3</a>. Check the version of Helm installed using <code>helm version</code>. Helm v3.8 or above is required.</li>
+</ol>
+<h2 id="license">License</h2>
+<p>The Things Stack requires a license key to run. Please <a href="mailto:sales@thethingsindustries.com">contact our sales team</a> for your license key.</p>
+<h2 id="optional-packet-broker-access">(Optional) Packet Broker Access</h2>
+<p>The Things Stack contains the Packet Broker Agent component that can communicate with <a href="https://packetbroker.net/">Packet Broker</a>.</p>
+<p>Packet Broker is disabled by default in the Helm charts. When enabled, it can operate either only a Forwarder or as both a Forwarder and a Home Network. Check the <a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/">Packet Broker section</a> for more details.</p>
+<ul>
+<li>If the cluster acts simply as a Forwarder that forwards traffic to Packet Broker, then all that is needed are access credentials.</li>
+<li>If the cluster also needs to work as a Packer Broker Home Network, in addition to the access credentials, the cluster either needs a NetID from the LoRa Alliance or The Things Industries can lease a DevAddr Block.</li>
+</ul>
+<p>Please <a href="mailto:sales@thethingsindustries.com">contact our sales team</a> for access credentials and a Device Address Block (if necessary).</p>
+<h2 id="azure">Azure</h2>
+<p>We recommend creating an Azure Resource Group (RG) for this deployment during the preparation stage. If you intend to manage the RG with Terraform you can import it into the <code>tfstate</code> later during the deployment.</p>
+<p>After creating the RG we recommend to set up Azure Storage for Terraform backend. You can read more about this in <a href="https://learn.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage">Azure Documentation</a>.</p>
+<p>You need to have rights to create the following resources in the RG:</p>
+<ul>
+<li>Azure Kubernetes Service</li>
+<li>Azure Database for PostgreSQL Flexible Server</li>
+<li>NAT Gateway</li>
+<li>Private DNS Zone</li>
+<li>Public IP Address</li>
+<li>Public IP Prefix</li>
+<li>Storage Account</li>
+<li>User Assigned Managed Identity</li>
+<li>Virtual Network</li>
+<li>Log Analytics Workspace (optional)</li>
+</ul>
         </div>
           <div class="columns is-multiline">
 </div>
 
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/install-charts/">← Install Charts</a>
-<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/troubleshooting/">Troubleshooting →</a>
+<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/azure/architecture/">← Architecture</a>
+<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/azure/configuration/">Configuration →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -269,6 +284,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#tools'>Tools</a></li>
+    
+      
+      <li><a href='#license'>License</a></li>
+    
+      
+      <li><a href='#optional-packet-broker-access'>(Optional) Packet Broker Access</a></li>
+    
+      
+      <li><a href='#azure'>Azure</a></li>
+    
+  </ul>
 
 
   </nav>

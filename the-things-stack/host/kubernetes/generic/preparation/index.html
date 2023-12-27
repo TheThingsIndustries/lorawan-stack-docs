@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Kubernetes | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" />
+  <title>Preparation | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/preparation/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.de1726c1242f9c323501e9815aae8675d5d7c48960e36c2beefdc20f644452db.css" integrity="sha256-3hcmwSQvnDI1AemBWq6GddXXxIlg42wr7v3CD2REUts=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Kubernetes">
+  <meta itemprop="name" content="Preparation">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Kubernetes">
+  <meta property="og:title" content="Preparation">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/preparation/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Kubernetes" />
+  <meta name="twitter:title" content="Preparation" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -111,7 +111,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" class="is-active">Kubernetes</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" class="">Kubernetes</a>
     
     
 
@@ -120,6 +120,55 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/" class="">Generic</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/prerequisites/" class="">Prerequisites</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/preparation/" class="is-active">Preparation</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/configuration/" class="">Configuration</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/install-charts/" class="">Install Charts</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/monitoring/" class="">Monitoring</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/troubleshooting/" class="">Troubleshooting</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/database-migrations/" class="">Database Migrations</a>
+    
+  </li>
+
+</ul>
+
+
     
   </li>
 
@@ -184,133 +233,99 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Kubernetes
+        <h1 class="title is-size-2">Preparation
           
         </h1>
         
         <div class="content">
-          <p>This guide is meant for users who want to deploy The Things Stack on Kubernetes.</p>
-<p>The Things Stack is currently available as two flavours for self-hosting on Kubernetes.</p>
-<ol>
-<li>
-<p>Generic offers The Things Stack packaged as a Helm Chart with no infrastructure provided.</p>
-</li>
-<li>
-<p>Azure is The Things Stack deployment on Azure Kubernetes Service with Azure supporting infrastructure.</p>
-</li>
-</ol>
-<p>Read more in the following sections.</p>
+          <p>The Things Stack requires a few secret values to be configured. In this section, we show how to generate them and store them for further use.</p>
+<p>Copy each generated secret to a local file and then transfer those values later into the corresponding location in the <code>values.yaml</code> file.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Secrets are required to be hex-encoded strings of the exact length mentioned in this guide.
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Secret</th>
+<th>Description</th>
+<th>Size</th>
+<th>Setting in <code>values.yaml</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cluster Keys</td>
+<td>Key used by cluster components to communicate</td>
+<td>32</td>
+<td><code>global.cluster.keys</code></td>
+</tr>
+<tr>
+<td>HTTP Cookie Block Key</td>
+<td>Block Key for HTTP Cookies</td>
+<td>32</td>
+<td><code>global.http.cookie.blockKey</code></td>
+</tr>
+<tr>
+<td>HTTP Cookie Hash Key</td>
+<td>Hash Key for HTTP Cookies</td>
+<td>32</td>
+<td><code>global.http.cookie.hashKey</code></td>
+</tr>
+<tr>
+<td>Metrics Password</td>
+<td>Password to access exposed Prometheus metrics</td>
+<td>16</td>
+<td><code>global.http.metrics.password</code></td>
+</tr>
+<tr>
+<td>PProf Password</td>
+<td>Password to access profiling (pprof)</td>
+<td>16</td>
+<td><code>global.http.pprof.password</code></td>
+</tr>
+<tr>
+<td>Console Oauth Secret</td>
+<td>Secret used by the Console to connect to The Things Stack</td>
+<td>16</td>
+<td><code>global.console.oauth.clientSecret</code></td>
+</tr>
+<tr>
+<td>Tenant Administration Key</td>
+<td>Secret used to administer cluster tenants</td>
+<td>32</td>
+<td><code>global.tenancy.adminKey</code></td>
+</tr>
+<tr>
+<td>NOC Grafana Admin Password (optional)</td>
+<td>Grafana admin password for The Things Stack Network Operations Center</td>
+<td>24</td>
+<td><code>noc.grafana.adminPassword</code></td>
+</tr>
+<tr>
+<td>NOC Oauth Client Secret (optional)</td>
+<td>OAuth client secret for The Things Stack Network Operations Center</td>
+<td>24</td>
+<td><code>noc.oauth.clientSecret</code></td>
+</tr>
+</tbody>
+</table>
+<p>The simplest option is to use <code>openssl</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">size</span><span class="o">=</span>&lt;&gt;
+</span></span><span class="line"><span class="cl">$ openssl rand -hex <span class="si">${</span><span class="nv">size</span><span class="si">}</span>
+</span></span></code></pre></div><p>For example, to generate <code>global.http.cookie.hashKey</code> you can run the following.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">size</span><span class="o">=</span><span class="m">32</span>
+</span></span><span class="line"><span class="cl">$ openssl rand -hex <span class="si">${</span><span class="nv">size</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl">e1bf1a49ac7e1cb593f1c3afeab494ca950bba06d764110854f801da42e3d568
+</span></span></code></pre></div>
         </div>
           <div class="columns is-multiline">
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/">Generic</a>
-          </h1>
-          
-          <h2 class="subtitle">
-            
-              
-
-  
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-            
-            
-            
-            
-          </h2>
-          
-          <div class="content has-text-grey">
-            
-            The Things Stack is packaged as a Helm Chart to be run on Kubernetes Clusters. The Things Stack Helm charts are packaged and distributed as OCI packages and are published to Docker Hub.
-This guide helps the user to install and configure The Things Stack on a Kubernetes cluster.
-Operating The Things Stack on a Kubernetes cluster is only meant for advanced users with sufficient experience with the chosen infrastructure platform and with Kubernetes.
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/">Azure</a>
-          </h1>
-          
-          <h2 class="subtitle">
-            
-              
-
-  
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-            
-            
-            
-            
-          </h2>
-          
-          <div class="content has-text-grey">
-            
-            The Things Stack can be deployed to Azure as a set of highly available services on Azure Kubernetes Service using Terraform and Helm.
-This guide gives an overview of the architecture and shows how to deploy your own highly available The Things Stack cluster.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/the-things-stack/host/aws/ecs/">← AWS ECS</a>
-<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/generic/">Generic →</a>
+<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/generic/prerequisites/">← Prerequisites</a>
+<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/generic/configuration/">Configuration →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>

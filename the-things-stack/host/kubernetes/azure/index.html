@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Install Charts | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/install-charts/" />
+  <title>Azure | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.de1726c1242f9c323501e9815aae8675d5d7c48960e36c2beefdc20f644452db.css" integrity="sha256-3hcmwSQvnDI1AemBWq6GddXXxIlg42wr7v3CD2REUts=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Install Charts">
+  <meta itemprop="name" content="Azure">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Install Charts">
+  <meta property="og:title" content="Azure">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/install-charts/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Install Charts" />
+  <meta name="twitter:title" content="Azure" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -119,42 +119,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/prerequisites/" class="">Prerequisites</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/" class="">Generic</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/preparation/" class="">Preparation</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/" class="is-active">Azure</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/architecture/" class="">Architecture</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/configuration/" class="">Configuration</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/prerequisites/" class="">Prerequisites</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/install-charts/" class="is-active">Install Charts</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/configuration/" class="">Configuration</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/monitoring/" class="">Monitoring</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/deployment/" class="">Deployment</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/troubleshooting/" class="">Troubleshooting</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/troubleshooting/" class="">Troubleshooting</a>
     
   </li>
 
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/database-migrations/" class="">Database Migrations</a>
+</ul>
+
+
     
   </li>
 
@@ -214,69 +218,161 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Install Charts
+        <h1 class="title is-size-2">Azure
           
         </h1>
         
+        <h2 class="subtitle">
+          
+            
+            
+
+  
+
+
+
+
+
+  
+    
+  
+
+
+
+  
+
+<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+</a>
+
+
+          
+          
+          
+          
+        </h2>
+        
         <div class="content">
-          <p>The Things Stack Helm charts are packaged and distributed as <a href="https://helm.sh/docs/topics/registries/">OCI packages</a> and are published to <a href="https://hub.docker.com/r/thethingsindustries/lorawan-stack-helm-chart">Docker Hub</a>.</p>
-<p>Use the following steps to install the chart.</p>
-<ol>
-<li>Login to the registry. This step can be skipped if you&rsquo;ve already logged in via Docker Client.</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ helm registry login -u &lt;username&gt; registry-1.docker.io
-</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <code>registry-1</code> is the OCI registry of Docker Hub.
+          <p>The Things Stack can be deployed to <a href="https://portal.azure.com/">Azure</a> as a set of highly available services on Azure Kubernetes Service using Terraform and Helm.</p>
+<p>This guide gives an overview of the architecture and shows how to deploy your own highly available The Things Stack cluster.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Until the release of v1.0.0, all versions are considered to be in the Alpha stage and are not suitable for production use. The Things Industries does not offer any guarantees on compatibility between the Alpha versions.
 </div>
 
-<ol start="2">
-<li>Pull the OCI container.</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ helm pull oci://registry-1.docker.io/thethingsindustries/lorawan-stack-helm-chart --version &lt;version&gt;
-</span></span></code></pre></div><p>This pulls a <code>lorawan-stack-helm-chart-&lt;version&gt;.tgz</code> archive to the local directory from which the command is run.</p>
-<p>This command also downloads the Helm provenance file <code>lorawan-stack-helm-chart-&lt;version&gt;.tgz.prov</code>. This contains the signature to verify the package.</p>
-<p>Use the GPG public key <a href="https://keys.openpgp.org/vks/v1/by-fingerprint/D10BEC9FEBCDCC8DA09A45E92FC8860DA12B4C53">D10BEC9FEBCDCC8DA09A45E92FC8860DA12B4C53</a> to verify the integrity of the charts. See Helm&rsquo;s <a href="https://helm.sh/docs/topics/provenance/">docs on verification</a>. If you unpack the <code>.tgz</code> file, you can find the <code>values.yaml</code> file which contains the list of all options that can be set.</p>
-<ol start="3">
-<li>Install the chart.</li>
-</ol>
-<p>Switch the kubernetes namespace to the target context. Check the <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">kubernetes documentation</a>.</p>
-<p>Assuming that you created a deployment specific <code>values</code> file in the previous section called <code>&lt;deployment&gt;.values.yaml</code>, this chart can be installed as follows.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ helm install &lt;name&gt; oci://registry-1.docker.io/thethingsindustries/lorawan-stack-helm-chart --version &lt;version&gt; --values &lt;deployment&gt;.values.yaml
-</span></span></code></pre></div><ol start="4">
-<li>Update the chart.</li>
-</ol>
-<p>To deploy updates to the chart.</p>
-<p>The repository can be updated using the following.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ helm upgrade &lt;name&gt; oci://registry-1.docker.io/thethingsindustries/lorawan-stack-helm-chart --version &lt;version&gt; --values &lt;deployment&gt;.values.yaml
-</span></span></code></pre></div><blockquote>
-<p>Note: The <code>helm</code> CLI pulls a chart from the repository only if it&rsquo;s locally not present.</p>
-</blockquote>
-<ol start="5">
-<li>Uninstall the Chart.</li>
-</ol>
-<p>Once done, you can uninstall the chart as follows.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ helm uninstall &lt;name&gt;
-</span></span></code></pre></div><h2 id="jobs">Jobs</h2>
-<p>The Things Stack Helm Charts contain multiple <a href="https://kubernetes.io/docs/concepts/workloads/controllers/job/">Kubernetes Jobs</a> that setup various things for the cluster. These are triggered automatically during installation and no additional action by the operator is needed.</p>
-<p>Note that The Application Server Storage initialization job is triggered only if the storage integration is enabled. This is configurable via <code>as.storage.enabled</code>.
-Since this job is triggered by user action, there is currently no mechanism in Helm to automatically detect and delete this job when completed.
-You can manually do that if needed using <code>kubectl</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ kubectl get <span class="nb">jobs</span>
-</span></span><span class="line"><span class="cl">$ kubectl delete <span class="nb">jobs</span> &lt;name&gt;
-</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If you want to re-run this job for some reason at a later point, the existing job has to be first deleted.
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Until Azure releases a new version of their managed Redis service (<a href="https://learn.microsoft.com/en-us/answers/questions/1191155/redis-7-0-support-in-azure">Redis 7.0 support in Azure</a>) this deployment uses Bitnami in-cluster Redis Helm charts. They are not recommended for production use.
 </div>
-
-
         </div>
           <div class="columns is-multiline">
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/architecture/">Architecture</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            This page describes the architecture of a The Things Stack deployment on Azure.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/architecture/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/prerequisites/">Prerequisites</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            This section contains prerequisites for deploying The Things Stack on Azure Kubernetes Service.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/prerequisites/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/configuration/">Configuration</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The Things Stack requires a few configuration files to be prepared. In this section, we show how to create them and store them for further use.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/configuration/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/deployment/">Deployment</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            This page describes the steps for deploying The Things Stack on Azure Kubernetes Service.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/deployment/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/troubleshooting/">Troubleshooting</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            This guide contains general troubleshooting information.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/troubleshooting/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/configuration/">← Configuration</a>
-<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/monitoring/">Monitoring →</a>
+<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/generic/database-migrations/">← Database Migrations</a>
+<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/azure/architecture/">Architecture →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -293,13 +389,6 @@ You can manually do that if needed using <code>kubectl</code>.</p>
     <h2 class="title is-size-6">On this page</h2>
     
 
-
-  <ul class="menu-list">
-    
-      
-      <li><a href='#jobs'>Jobs</a></li>
-    
-  </ul>
 
 
   </nav>
