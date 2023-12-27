@@ -7,6 +7,8 @@ aliases: [/getting-started/kubernetes/configuration]
 
 {{% tts %}} Helm chart is configured using `yaml` files. This guide assumes that these fields are saved in a `<deployment>.values.yaml` file and used for deployment/updates.
 
+<!--more-->
+
 The following is a list of mandatory minimum fields. For a full list of possible values, check the `values.yaml` file at the root of the {{% tts %}} Helm chart.
 
 {{< warning >}} Some values in this file are secrets. Make sure to check this file into a secure repository.{{</ warning >}}
@@ -28,6 +30,7 @@ global:
       region: # region
     azure: # Set only if provider is "azure".
       accountName: # account name
+      clientID: # client ID
     gcp: # Set only if provider is "gcp".
       # Base64 encoded GCP credentials.json file.
       # One option is to run `$ cat <credentials>.json | base64`.

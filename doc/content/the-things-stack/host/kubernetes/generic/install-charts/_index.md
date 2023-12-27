@@ -9,6 +9,8 @@ aliases: [/getting-started/kubernetes/install-charts]
 
 Use the following steps to install the chart.
 
+<!--more-->
+
 1. Login to the registry. This step can be skipped if you've already logged in via Docker Client.
 
 ```bash

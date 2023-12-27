@@ -7,6 +7,8 @@ aliases: [/getting-started/kubernetes/monitoring]
 
 {{% tts %}} exposes Prometheus metrics at the `/metrics` endpoint. This route is protected by Basic Auth with username `metrics` and password `global.http.metrics.password`.
 
+<!--more-->
+
 To scrape these metrics, you can install Prometheus in the cluster. The installation details are outside the scope of this document.
 
 The following scrape config can be used to scrape metrics from each of the components of The Things Stack.
