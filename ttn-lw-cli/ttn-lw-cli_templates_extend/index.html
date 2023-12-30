@@ -5131,354 +5131,408 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Extend an end device template (EXPERIMENTAL)</p>
 <pre tabindex="0"><code>ttn-lw-cli templates extend [flags]
 </code></pre><h3 id="options">Options</h3>
-<pre tabindex="0"><code>      --activated-at timestamp                                                                          
-      --application-server-address string                                                               
-      --application-server-id string                                                                    
-      --application-server-kek-label string                                                             
-      --attributes stringToString                                                                       
-      --battery-percentage float32                                                                      
-      --claim-authentication-code.valid-from timestamp                                                  
-      --claim-authentication-code.valid-to timestamp                                                    
-      --claim-authentication-code.value string                                                          
-      --description string                                                                              
-      --downlink-margin int32                                                                           
-      --formatters.down-formatter string                                                                allowed values: FORMATTER_NONE, FORMATTER_REPOSITORY, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_CAYENNELPP
-      --formatters.down-formatter-parameter string                                                      
-      --formatters.up-formatter string                                                                  allowed values: FORMATTER_NONE, FORMATTER_REPOSITORY, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_CAYENNELPP
-      --formatters.up-formatter-parameter string                                                        
-      --frequency-plan-id string                                                                        
-  -h, --help                                                                                            help for extend
-      --join-server-address string                                                                      
-      --last-dev-nonce uint32                                                                           
-      --last-dev-status-received-at timestamp                                                           
-      --last-join-nonce uint32                                                                          
-      --last-rj-count-0 uint32                                                                          
-      --last-rj-count-1 uint32                                                                          
-      --last-seen-at timestamp                                                                          
-      --lorawan-phy-version string                                                                      allowed values: PHY_UNKNOWN, unknown, 1.0, 1.0.0, PHY_V1_0, TS001_V1_0, V1_0, 1.0.1, PHY_V1_0_1, TS001_V1_0_1, V1_0_1, 1.0.2, 1.0.2-a, PHY_V1_0_2_REV_A, RP001_V1_0_2, V1_0_2, V1_0_2_REV_A, 1.0.2-b, PHY_V1_0_2_REV_B, RP001_V1_0_2_REV_B, V1_0_2_REV_B, 1.1-a, 1.1.0-a, PHY_V1_1_REV_A, RP001_V1_1_REV_A, V1_1_REV_A, 1.1-b, 1.1.0-b, PHY_V1_1_REV_B, RP001_V1_1_REV_B, V1_1_REV_B, 1.0.3-a, PHY_V1_0_3_REV_A, RP001_V1_0_3_REV_A, V1_0_3_REV_A, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3, RP002_V1_0_4
-      --lorawan-version string                                                                          allowed values: MAC_UNKNOWN, UNKNOWN, unknown, 1.0, 1.0.0, MAC_V1_0, V1_0, 1.0.1, MAC_V1_0_1, V1_0_1, 1.0.2, MAC_V1_0_2, V1_0_2, 1.1, 1.1.0, MAC_V1_1, V1_1, 1.0.3, MAC_V1_0_3, V1_0_3, 1.0.4, MAC_V1_0_4, V1_0_4
-      --mac-settings.adr.mode.disabled                                                                  
-      --mac-settings.adr.mode.dynamic                                                                   
-      --mac-settings.adr.mode.dynamic.channel-steering.mode.disabled                                    
-      --mac-settings.adr.mode.dynamic.channel-steering.mode.lora-narrow                                 
-      --mac-settings.adr.mode.dynamic.margin float32                                                    
-      --mac-settings.adr.mode.dynamic.max-data-rate-index string                                        allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-settings.adr.mode.dynamic.max-nb-trans uint32                                               
-      --mac-settings.adr.mode.dynamic.max-tx-power-index uint32                                         
-      --mac-settings.adr.mode.dynamic.min-data-rate-index string                                        allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-settings.adr.mode.dynamic.min-nb-trans uint32                                               
-      --mac-settings.adr.mode.dynamic.min-tx-power-index uint32                                         
-      --mac-settings.adr.mode.static                                                                    
-      --mac-settings.adr.mode.static.data-rate-index string                                             allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-settings.adr.mode.static.nb-trans uint32                                                    
-      --mac-settings.adr.mode.static.tx-power-index uint32                                              
-      --mac-settings.beacon-frequency uint                                                              
-      --mac-settings.class-b-c-downlink-interval duration                                               
-      --mac-settings.class-b-timeout duration                                                           
-      --mac-settings.class-c-timeout duration                                                           
-      --mac-settings.desired-adr-ack-delay-exponent string                                              allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_2, ADR_ACK_DELAY_4, ADR_ACK_DELAY_8, ADR_ACK_DELAY_16, ADR_ACK_DELAY_32, ADR_ACK_DELAY_64, ADR_ACK_DELAY_128, ADR_ACK_DELAY_256, ADR_ACK_DELAY_512, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_8192, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_32768
-      --mac-settings.desired-adr-ack-limit-exponent string                                              allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_8192, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_32768
-      --mac-settings.desired-beacon-frequency uint                                                      
-      --mac-settings.desired-max-duty-cycle string                                                      allowed values: DUTY_CYCLE_1, DUTY_CYCLE_2, DUTY_CYCLE_4, DUTY_CYCLE_8, DUTY_CYCLE_16, DUTY_CYCLE_32, DUTY_CYCLE_64, DUTY_CYCLE_128, DUTY_CYCLE_256, DUTY_CYCLE_512, DUTY_CYCLE_1024, DUTY_CYCLE_2048, DUTY_CYCLE_4096, DUTY_CYCLE_8192, DUTY_CYCLE_16384, DUTY_CYCLE_32768
-      --mac-settings.desired-max-eirp string                                                            allowed values: DEVICE_EIRP_8, DEVICE_EIRP_10, DEVICE_EIRP_12, DEVICE_EIRP_13, DEVICE_EIRP_14, DEVICE_EIRP_16, DEVICE_EIRP_18, DEVICE_EIRP_20, DEVICE_EIRP_21, DEVICE_EIRP_24, DEVICE_EIRP_26, DEVICE_EIRP_27, DEVICE_EIRP_29, DEVICE_EIRP_30, DEVICE_EIRP_33, DEVICE_EIRP_36
-      --mac-settings.desired-ping-slot-data-rate-index string                                           allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-settings.desired-ping-slot-frequency uint                                                   
-      --mac-settings.desired-relay.mode.served                                                          
-      --mac-settings.desired-relay.mode.served.backoff uint32                                           
-      --mac-settings.desired-relay.mode.served.mode.always                                              
-      --mac-settings.desired-relay.mode.served.mode.dynamic                                             
-      --mac-settings.desired-relay.mode.served.mode.dynamic.smart-enable-level string                   allowed values: RELAY_SMART_ENABLE_LEVEL_8, RELAY_SMART_ENABLE_LEVEL_16, RELAY_SMART_ENABLE_LEVEL_32, RELAY_SMART_ENABLE_LEVEL_64
-      --mac-settings.desired-relay.mode.served.mode.end-device-controlled                               
-      --mac-settings.desired-relay.mode.served.second-channel                                           
-      --mac-settings.desired-relay.mode.served.second-channel.ack-offset string                         allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
-      --mac-settings.desired-relay.mode.served.second-channel.data-rate-index string                    allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-settings.desired-relay.mode.served.second-channel.frequency uint                            
-      --mac-settings.desired-relay.mode.served.serving-device-id string                                 
-      --mac-settings.desired-relay.mode.serving                                                         
-      --mac-settings.desired-relay.mode.serving.cad-periodicity string                                  allowed values: RELAY_CAD_PERIODICITY_1_SECOND, RELAY_CAD_PERIODICITY_500_MILLISECONDS, RELAY_CAD_PERIODICITY_250_MILLISECONDS, RELAY_CAD_PERIODICITY_100_MILLISECONDS, RELAY_CAD_PERIODICITY_50_MILLISECONDS, RELAY_CAD_PERIODICITY_20_MILLISECONDS
-      --mac-settings.desired-relay.mode.serving.default-channel-index uint32                            
-      --mac-settings.desired-relay.mode.serving.second-channel.ack-offset string                        allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
-      --mac-settings.desired-relay.mode.serving.second-channel.data-rate-index string                   allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-settings.desired-relay.mode.serving.second-channel.frequency uint                           
-      --mac-settings.desired-rx1-data-rate-offset string                                                allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
-      --mac-settings.desired-rx1-delay string                                                           allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
-      --mac-settings.desired-rx2-data-rate-index string                                                 allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-settings.desired-rx2-frequency uint                                                         
-      --mac-settings.downlink-dwell-time                                                                
-      --mac-settings.factory-preset-frequencies uint64Slice                                             
-      --mac-settings.max-duty-cycle string                                                              allowed values: DUTY_CYCLE_1, DUTY_CYCLE_2, DUTY_CYCLE_4, DUTY_CYCLE_8, DUTY_CYCLE_16, DUTY_CYCLE_32, DUTY_CYCLE_64, DUTY_CYCLE_128, DUTY_CYCLE_256, DUTY_CYCLE_512, DUTY_CYCLE_1024, DUTY_CYCLE_2048, DUTY_CYCLE_4096, DUTY_CYCLE_8192, DUTY_CYCLE_16384, DUTY_CYCLE_32768
-      --mac-settings.ping-slot-data-rate-index string                                                   allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-settings.ping-slot-frequency uint                                                           
-      --mac-settings.ping-slot-periodicity string                                                       allowed values: PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_4S, PING_EVERY_8S, PING_EVERY_16S, PING_EVERY_32S, PING_EVERY_64S, PING_EVERY_128S
-      --mac-settings.relay.mode.served                                                                  
-      --mac-settings.relay.mode.served.backoff uint32                                                   
-      --mac-settings.relay.mode.served.mode.always                                                      
-      --mac-settings.relay.mode.served.mode.dynamic                                                     
-      --mac-settings.relay.mode.served.mode.dynamic.smart-enable-level string                           allowed values: RELAY_SMART_ENABLE_LEVEL_8, RELAY_SMART_ENABLE_LEVEL_16, RELAY_SMART_ENABLE_LEVEL_32, RELAY_SMART_ENABLE_LEVEL_64
-      --mac-settings.relay.mode.served.mode.end-device-controlled                                       
-      --mac-settings.relay.mode.served.second-channel                                                   
-      --mac-settings.relay.mode.served.second-channel.ack-offset string                                 allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
-      --mac-settings.relay.mode.served.second-channel.data-rate-index string                            allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-settings.relay.mode.served.second-channel.frequency uint                                    
-      --mac-settings.relay.mode.served.serving-device-id string                                         
-      --mac-settings.relay.mode.serving                                                                 
-      --mac-settings.relay.mode.serving.cad-periodicity string                                          allowed values: RELAY_CAD_PERIODICITY_1_SECOND, RELAY_CAD_PERIODICITY_500_MILLISECONDS, RELAY_CAD_PERIODICITY_250_MILLISECONDS, RELAY_CAD_PERIODICITY_100_MILLISECONDS, RELAY_CAD_PERIODICITY_50_MILLISECONDS, RELAY_CAD_PERIODICITY_20_MILLISECONDS
-      --mac-settings.relay.mode.serving.default-channel-index uint32                                    
-      --mac-settings.relay.mode.serving.second-channel.ack-offset string                                allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
-      --mac-settings.relay.mode.serving.second-channel.data-rate-index string                           allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-settings.relay.mode.serving.second-channel.frequency uint                                   
-      --mac-settings.resets-f-cnt                                                                       
-      --mac-settings.rx1-data-rate-offset string                                                        allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
-      --mac-settings.rx1-delay string                                                                   allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
-      --mac-settings.rx2-data-rate-index string                                                         allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-settings.rx2-frequency uint                                                                 
-      --mac-settings.schedule-downlinks                                                                 
-      --mac-settings.status-count-periodicity uint32                                                    
-      --mac-settings.status-time-periodicity duration                                                   
-      --mac-settings.supports-32-bit-f-cnt                                                              
-      --mac-settings.uplink-dwell-time                                                                  
-      --mac-state.current-parameters.adr-ack-delay-exponent string                                      allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_2, ADR_ACK_DELAY_4, ADR_ACK_DELAY_8, ADR_ACK_DELAY_16, ADR_ACK_DELAY_32, ADR_ACK_DELAY_64, ADR_ACK_DELAY_128, ADR_ACK_DELAY_256, ADR_ACK_DELAY_512, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_8192, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_32768
-      --mac-state.current-parameters.adr-ack-limit-exponent string                                      allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_8192, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_32768
-      --mac-state.current-parameters.adr-data-rate-index string                                         allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-state.current-parameters.adr-nb-trans uint32                                                
-      --mac-state.current-parameters.adr-tx-power-index uint32                                          
-      --mac-state.current-parameters.beacon-frequency uint                                              
-      --mac-state.current-parameters.downlink-dwell-time                                                
-      --mac-state.current-parameters.max-duty-cycle string                                              allowed values: DUTY_CYCLE_1, DUTY_CYCLE_2, DUTY_CYCLE_4, DUTY_CYCLE_8, DUTY_CYCLE_16, DUTY_CYCLE_32, DUTY_CYCLE_64, DUTY_CYCLE_128, DUTY_CYCLE_256, DUTY_CYCLE_512, DUTY_CYCLE_1024, DUTY_CYCLE_2048, DUTY_CYCLE_4096, DUTY_CYCLE_8192, DUTY_CYCLE_16384, DUTY_CYCLE_32768
-      --mac-state.current-parameters.max-eirp float32                                                   
-      --mac-state.current-parameters.ping-slot-data-rate-index-value string                             allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-state.current-parameters.ping-slot-frequency uint                                           
-      --mac-state.current-parameters.rejoin-count-periodicity string                                    allowed values: REJOIN_COUNT_16, REJOIN_COUNT_32, REJOIN_COUNT_64, REJOIN_COUNT_128, REJOIN_COUNT_256, REJOIN_COUNT_512, REJOIN_COUNT_1024, REJOIN_COUNT_2048, REJOIN_COUNT_4096, REJOIN_COUNT_8192, REJOIN_COUNT_16384, REJOIN_COUNT_32768, REJOIN_COUNT_65536, REJOIN_COUNT_131072, REJOIN_COUNT_262144, REJOIN_COUNT_524288
-      --mac-state.current-parameters.rejoin-time-periodicity string                                     allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15
-      --mac-state.current-parameters.relay.mode.served                                                  
-      --mac-state.current-parameters.relay.mode.served.backoff uint32                                   
-      --mac-state.current-parameters.relay.mode.served.mode.always                                      
-      --mac-state.current-parameters.relay.mode.served.mode.dynamic                                     
-      --mac-state.current-parameters.relay.mode.served.mode.dynamic.smart-enable-level string           allowed values: RELAY_SMART_ENABLE_LEVEL_8, RELAY_SMART_ENABLE_LEVEL_16, RELAY_SMART_ENABLE_LEVEL_32, RELAY_SMART_ENABLE_LEVEL_64
-      --mac-state.current-parameters.relay.mode.served.mode.end-device-controlled                       
-      --mac-state.current-parameters.relay.mode.served.second-channel                                   
-      --mac-state.current-parameters.relay.mode.served.second-channel.ack-offset string                 allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
-      --mac-state.current-parameters.relay.mode.served.second-channel.data-rate-index string            allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-state.current-parameters.relay.mode.served.second-channel.frequency uint                    
-      --mac-state.current-parameters.relay.mode.served.serving-device-id string                         
-      --mac-state.current-parameters.relay.mode.serving                                                 
-      --mac-state.current-parameters.relay.mode.serving.cad-periodicity string                          allowed values: RELAY_CAD_PERIODICITY_1_SECOND, RELAY_CAD_PERIODICITY_500_MILLISECONDS, RELAY_CAD_PERIODICITY_250_MILLISECONDS, RELAY_CAD_PERIODICITY_100_MILLISECONDS, RELAY_CAD_PERIODICITY_50_MILLISECONDS, RELAY_CAD_PERIODICITY_20_MILLISECONDS
-      --mac-state.current-parameters.relay.mode.serving.default-channel-index uint32                    
-      --mac-state.current-parameters.relay.mode.serving.second-channel.ack-offset string                allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
-      --mac-state.current-parameters.relay.mode.serving.second-channel.data-rate-index string           allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-state.current-parameters.relay.mode.serving.second-channel.frequency uint                   
-      --mac-state.current-parameters.rx1-data-rate-offset string                                        allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
-      --mac-state.current-parameters.rx1-delay string                                                   allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
-      --mac-state.current-parameters.rx2-data-rate-index string                                         allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-state.current-parameters.rx2-frequency uint                                                 
-      --mac-state.current-parameters.uplink-dwell-time                                                  
-      --mac-state.desired-parameters.adr-ack-delay-exponent string                                      allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_2, ADR_ACK_DELAY_4, ADR_ACK_DELAY_8, ADR_ACK_DELAY_16, ADR_ACK_DELAY_32, ADR_ACK_DELAY_64, ADR_ACK_DELAY_128, ADR_ACK_DELAY_256, ADR_ACK_DELAY_512, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_8192, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_32768
-      --mac-state.desired-parameters.adr-ack-limit-exponent string                                      allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_8192, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_32768
-      --mac-state.desired-parameters.adr-data-rate-index string                                         allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-state.desired-parameters.adr-nb-trans uint32                                                
-      --mac-state.desired-parameters.adr-tx-power-index uint32                                          
-      --mac-state.desired-parameters.beacon-frequency uint                                              
-      --mac-state.desired-parameters.downlink-dwell-time                                                
-      --mac-state.desired-parameters.max-duty-cycle string                                              allowed values: DUTY_CYCLE_1, DUTY_CYCLE_2, DUTY_CYCLE_4, DUTY_CYCLE_8, DUTY_CYCLE_16, DUTY_CYCLE_32, DUTY_CYCLE_64, DUTY_CYCLE_128, DUTY_CYCLE_256, DUTY_CYCLE_512, DUTY_CYCLE_1024, DUTY_CYCLE_2048, DUTY_CYCLE_4096, DUTY_CYCLE_8192, DUTY_CYCLE_16384, DUTY_CYCLE_32768
-      --mac-state.desired-parameters.max-eirp float32                                                   
-      --mac-state.desired-parameters.ping-slot-data-rate-index-value string                             allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-state.desired-parameters.ping-slot-frequency uint                                           
-      --mac-state.desired-parameters.rejoin-count-periodicity string                                    allowed values: REJOIN_COUNT_16, REJOIN_COUNT_32, REJOIN_COUNT_64, REJOIN_COUNT_128, REJOIN_COUNT_256, REJOIN_COUNT_512, REJOIN_COUNT_1024, REJOIN_COUNT_2048, REJOIN_COUNT_4096, REJOIN_COUNT_8192, REJOIN_COUNT_16384, REJOIN_COUNT_32768, REJOIN_COUNT_65536, REJOIN_COUNT_131072, REJOIN_COUNT_262144, REJOIN_COUNT_524288
-      --mac-state.desired-parameters.rejoin-time-periodicity string                                     allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15
-      --mac-state.desired-parameters.relay.mode.served                                                  
-      --mac-state.desired-parameters.relay.mode.served.backoff uint32                                   
-      --mac-state.desired-parameters.relay.mode.served.mode.always                                      
-      --mac-state.desired-parameters.relay.mode.served.mode.dynamic                                     
-      --mac-state.desired-parameters.relay.mode.served.mode.dynamic.smart-enable-level string           allowed values: RELAY_SMART_ENABLE_LEVEL_8, RELAY_SMART_ENABLE_LEVEL_16, RELAY_SMART_ENABLE_LEVEL_32, RELAY_SMART_ENABLE_LEVEL_64
-      --mac-state.desired-parameters.relay.mode.served.mode.end-device-controlled                       
-      --mac-state.desired-parameters.relay.mode.served.second-channel                                   
-      --mac-state.desired-parameters.relay.mode.served.second-channel.ack-offset string                 allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
-      --mac-state.desired-parameters.relay.mode.served.second-channel.data-rate-index string            allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-state.desired-parameters.relay.mode.served.second-channel.frequency uint                    
-      --mac-state.desired-parameters.relay.mode.served.serving-device-id string                         
-      --mac-state.desired-parameters.relay.mode.serving                                                 
-      --mac-state.desired-parameters.relay.mode.serving.cad-periodicity string                          allowed values: RELAY_CAD_PERIODICITY_1_SECOND, RELAY_CAD_PERIODICITY_500_MILLISECONDS, RELAY_CAD_PERIODICITY_250_MILLISECONDS, RELAY_CAD_PERIODICITY_100_MILLISECONDS, RELAY_CAD_PERIODICITY_50_MILLISECONDS, RELAY_CAD_PERIODICITY_20_MILLISECONDS
-      --mac-state.desired-parameters.relay.mode.serving.default-channel-index uint32                    
-      --mac-state.desired-parameters.relay.mode.serving.second-channel.ack-offset string                allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
-      --mac-state.desired-parameters.relay.mode.serving.second-channel.data-rate-index string           allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-state.desired-parameters.relay.mode.serving.second-channel.frequency uint                   
-      --mac-state.desired-parameters.rx1-data-rate-offset string                                        allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
-      --mac-state.desired-parameters.rx1-delay string                                                   allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
-      --mac-state.desired-parameters.rx2-data-rate-index string                                         allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-state.desired-parameters.rx2-frequency uint                                                 
-      --mac-state.desired-parameters.uplink-dwell-time                                                  
-      --mac-state.device-class string                                                                   allowed values: CLASS_A, CLASS_B, CLASS_C
-      --mac-state.last-adr-change-f-cnt-up uint32                                                       
-      --mac-state.last-confirmed-downlink-at timestamp                                                  
-      --mac-state.last-dev-status-f-cnt-up uint32                                                       
-      --mac-state.last-downlink-at timestamp                                                            
-      --mac-state.last-network-initiated-downlink-at timestamp                                          
-      --mac-state.lorawan-version string                                                                allowed values: MAC_UNKNOWN, UNKNOWN, unknown, 1.0, 1.0.0, MAC_V1_0, V1_0, 1.0.1, MAC_V1_0_1, V1_0_1, 1.0.2, MAC_V1_0_2, V1_0_2, 1.1, 1.1.0, MAC_V1_1, V1_1, 1.0.3, MAC_V1_0_3, V1_0_3, 1.0.4, MAC_V1_0_4, V1_0_4
-      --mac-state.pending-application-downlink.class-b-c.absolute-time timestamp                        
-      --mac-state.pending-application-downlink.confirmed                                                
-      --mac-state.pending-application-downlink.correlation-ids strings                                  
-      --mac-state.pending-application-downlink.f-cnt uint32                                             
-      --mac-state.pending-application-downlink.f-port uint32                                            
-      --mac-state.pending-application-downlink.frm-payload bytesHex                                     
-      --mac-state.pending-application-downlink.priority string                                          allowed values: LOWEST, LOW, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, HIGH, HIGHEST
-      --mac-state.pending-application-downlink.session-key-id bytesHex                                  
-      --mac-state.pending-relay-downlink.raw-payload bytesBase64                                        
-      --mac-state.ping-slot-periodicity string                                                          allowed values: PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_4S, PING_EVERY_8S, PING_EVERY_16S, PING_EVERY_32S, PING_EVERY_64S, PING_EVERY_128S
-      --mac-state.recent-mac-command-identifiers strings                                                allowed values: CID_RFU_0, CID_RESET, CID_LINK_CHECK, CID_LINK_ADR, CID_DUTY_CYCLE, CID_RX_PARAM_SETUP, CID_DEV_STATUS, CID_NEW_CHANNEL, CID_RX_TIMING_SETUP, CID_TX_PARAM_SETUP, CID_DL_CHANNEL, CID_REKEY, CID_ADR_PARAM_SETUP, CID_DEVICE_TIME, CID_FORCE_REJOIN, CID_REJOIN_PARAM_SETUP, CID_PING_SLOT_INFO, CID_PING_SLOT_CHANNEL, CID_BEACON_TIMING, CID_BEACON_FREQ, CID_DEVICE_MODE, CID_RELAY_CONF, CID_RELAY_END_DEVICE_CONF, CID_RELAY_FILTER_LIST, CID_RELAY_UPDATE_UPLINK_LIST, CID_RELAY_CTRL_UPLINK_LIST, CID_RELAY_CONFIGURE_FWD_LIMIT, CID_RELAY_NOTIFY_NEW_END_DEVICE
-      --mac-state.rejected-adr-data-rate-indexes strings                                                allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --mac-state.rejected-adr-tx-power-indexes uint32Slice                                             
-      --mac-state.rejected-frequencies uint64Slice                                                      
-      --mac-state.rx-windows-available                                                                  
-      --mapping-key string                                                                              
-      --max-frequency uint                                                                              
-      --min-frequency uint                                                                              
-      --multicast                                                                                       
-      --name string                                                                                     
-      --net-id 3-bytes                                                                                  
-      --network-server-address string                                                                   
-      --network-server-kek-label string                                                                 
-      --pending-mac-state.current-parameters.adr-ack-delay-exponent string                              allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_2, ADR_ACK_DELAY_4, ADR_ACK_DELAY_8, ADR_ACK_DELAY_16, ADR_ACK_DELAY_32, ADR_ACK_DELAY_64, ADR_ACK_DELAY_128, ADR_ACK_DELAY_256, ADR_ACK_DELAY_512, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_8192, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_32768
-      --pending-mac-state.current-parameters.adr-ack-limit-exponent string                              allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_8192, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_32768
-      --pending-mac-state.current-parameters.adr-data-rate-index string                                 allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --pending-mac-state.current-parameters.adr-nb-trans uint32                                        
-      --pending-mac-state.current-parameters.adr-tx-power-index uint32                                  
-      --pending-mac-state.current-parameters.beacon-frequency uint                                      
-      --pending-mac-state.current-parameters.downlink-dwell-time                                        
-      --pending-mac-state.current-parameters.max-duty-cycle string                                      allowed values: DUTY_CYCLE_1, DUTY_CYCLE_2, DUTY_CYCLE_4, DUTY_CYCLE_8, DUTY_CYCLE_16, DUTY_CYCLE_32, DUTY_CYCLE_64, DUTY_CYCLE_128, DUTY_CYCLE_256, DUTY_CYCLE_512, DUTY_CYCLE_1024, DUTY_CYCLE_2048, DUTY_CYCLE_4096, DUTY_CYCLE_8192, DUTY_CYCLE_16384, DUTY_CYCLE_32768
-      --pending-mac-state.current-parameters.max-eirp float32                                           
-      --pending-mac-state.current-parameters.ping-slot-data-rate-index-value string                     allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --pending-mac-state.current-parameters.ping-slot-frequency uint                                   
-      --pending-mac-state.current-parameters.rejoin-count-periodicity string                            allowed values: REJOIN_COUNT_16, REJOIN_COUNT_32, REJOIN_COUNT_64, REJOIN_COUNT_128, REJOIN_COUNT_256, REJOIN_COUNT_512, REJOIN_COUNT_1024, REJOIN_COUNT_2048, REJOIN_COUNT_4096, REJOIN_COUNT_8192, REJOIN_COUNT_16384, REJOIN_COUNT_32768, REJOIN_COUNT_65536, REJOIN_COUNT_131072, REJOIN_COUNT_262144, REJOIN_COUNT_524288
-      --pending-mac-state.current-parameters.rejoin-time-periodicity string                             allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15
-      --pending-mac-state.current-parameters.relay.mode.served                                          
-      --pending-mac-state.current-parameters.relay.mode.served.backoff uint32                           
-      --pending-mac-state.current-parameters.relay.mode.served.mode.always                              
-      --pending-mac-state.current-parameters.relay.mode.served.mode.dynamic                             
-      --pending-mac-state.current-parameters.relay.mode.served.mode.dynamic.smart-enable-level string   allowed values: RELAY_SMART_ENABLE_LEVEL_8, RELAY_SMART_ENABLE_LEVEL_16, RELAY_SMART_ENABLE_LEVEL_32, RELAY_SMART_ENABLE_LEVEL_64
-      --pending-mac-state.current-parameters.relay.mode.served.mode.end-device-controlled               
-      --pending-mac-state.current-parameters.relay.mode.served.second-channel                           
-      --pending-mac-state.current-parameters.relay.mode.served.second-channel.ack-offset string         allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
-      --pending-mac-state.current-parameters.relay.mode.served.second-channel.data-rate-index string    allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --pending-mac-state.current-parameters.relay.mode.served.second-channel.frequency uint            
-      --pending-mac-state.current-parameters.relay.mode.served.serving-device-id string                 
-      --pending-mac-state.current-parameters.relay.mode.serving                                         
-      --pending-mac-state.current-parameters.relay.mode.serving.cad-periodicity string                  allowed values: RELAY_CAD_PERIODICITY_1_SECOND, RELAY_CAD_PERIODICITY_500_MILLISECONDS, RELAY_CAD_PERIODICITY_250_MILLISECONDS, RELAY_CAD_PERIODICITY_100_MILLISECONDS, RELAY_CAD_PERIODICITY_50_MILLISECONDS, RELAY_CAD_PERIODICITY_20_MILLISECONDS
-      --pending-mac-state.current-parameters.relay.mode.serving.default-channel-index uint32            
-      --pending-mac-state.current-parameters.relay.mode.serving.second-channel.ack-offset string        allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
-      --pending-mac-state.current-parameters.relay.mode.serving.second-channel.data-rate-index string   allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --pending-mac-state.current-parameters.relay.mode.serving.second-channel.frequency uint           
-      --pending-mac-state.current-parameters.rx1-data-rate-offset string                                allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
-      --pending-mac-state.current-parameters.rx1-delay string                                           allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
-      --pending-mac-state.current-parameters.rx2-data-rate-index string                                 allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --pending-mac-state.current-parameters.rx2-frequency uint                                         
-      --pending-mac-state.current-parameters.uplink-dwell-time                                          
-      --pending-mac-state.desired-parameters.adr-ack-delay-exponent string                              allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_2, ADR_ACK_DELAY_4, ADR_ACK_DELAY_8, ADR_ACK_DELAY_16, ADR_ACK_DELAY_32, ADR_ACK_DELAY_64, ADR_ACK_DELAY_128, ADR_ACK_DELAY_256, ADR_ACK_DELAY_512, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_8192, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_32768
-      --pending-mac-state.desired-parameters.adr-ack-limit-exponent string                              allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_8192, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_32768
-      --pending-mac-state.desired-parameters.adr-data-rate-index string                                 allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --pending-mac-state.desired-parameters.adr-nb-trans uint32                                        
-      --pending-mac-state.desired-parameters.adr-tx-power-index uint32                                  
-      --pending-mac-state.desired-parameters.beacon-frequency uint                                      
-      --pending-mac-state.desired-parameters.downlink-dwell-time                                        
-      --pending-mac-state.desired-parameters.max-duty-cycle string                                      allowed values: DUTY_CYCLE_1, DUTY_CYCLE_2, DUTY_CYCLE_4, DUTY_CYCLE_8, DUTY_CYCLE_16, DUTY_CYCLE_32, DUTY_CYCLE_64, DUTY_CYCLE_128, DUTY_CYCLE_256, DUTY_CYCLE_512, DUTY_CYCLE_1024, DUTY_CYCLE_2048, DUTY_CYCLE_4096, DUTY_CYCLE_8192, DUTY_CYCLE_16384, DUTY_CYCLE_32768
-      --pending-mac-state.desired-parameters.max-eirp float32                                           
-      --pending-mac-state.desired-parameters.ping-slot-data-rate-index-value string                     allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --pending-mac-state.desired-parameters.ping-slot-frequency uint                                   
-      --pending-mac-state.desired-parameters.rejoin-count-periodicity string                            allowed values: REJOIN_COUNT_16, REJOIN_COUNT_32, REJOIN_COUNT_64, REJOIN_COUNT_128, REJOIN_COUNT_256, REJOIN_COUNT_512, REJOIN_COUNT_1024, REJOIN_COUNT_2048, REJOIN_COUNT_4096, REJOIN_COUNT_8192, REJOIN_COUNT_16384, REJOIN_COUNT_32768, REJOIN_COUNT_65536, REJOIN_COUNT_131072, REJOIN_COUNT_262144, REJOIN_COUNT_524288
-      --pending-mac-state.desired-parameters.rejoin-time-periodicity string                             allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15
-      --pending-mac-state.desired-parameters.relay.mode.served                                          
-      --pending-mac-state.desired-parameters.relay.mode.served.backoff uint32                           
-      --pending-mac-state.desired-parameters.relay.mode.served.mode.always                              
-      --pending-mac-state.desired-parameters.relay.mode.served.mode.dynamic                             
-      --pending-mac-state.desired-parameters.relay.mode.served.mode.dynamic.smart-enable-level string   allowed values: RELAY_SMART_ENABLE_LEVEL_8, RELAY_SMART_ENABLE_LEVEL_16, RELAY_SMART_ENABLE_LEVEL_32, RELAY_SMART_ENABLE_LEVEL_64
-      --pending-mac-state.desired-parameters.relay.mode.served.mode.end-device-controlled               
-      --pending-mac-state.desired-parameters.relay.mode.served.second-channel                           
-      --pending-mac-state.desired-parameters.relay.mode.served.second-channel.ack-offset string         allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
-      --pending-mac-state.desired-parameters.relay.mode.served.second-channel.data-rate-index string    allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --pending-mac-state.desired-parameters.relay.mode.served.second-channel.frequency uint            
-      --pending-mac-state.desired-parameters.relay.mode.served.serving-device-id string                 
-      --pending-mac-state.desired-parameters.relay.mode.serving                                         
-      --pending-mac-state.desired-parameters.relay.mode.serving.cad-periodicity string                  allowed values: RELAY_CAD_PERIODICITY_1_SECOND, RELAY_CAD_PERIODICITY_500_MILLISECONDS, RELAY_CAD_PERIODICITY_250_MILLISECONDS, RELAY_CAD_PERIODICITY_100_MILLISECONDS, RELAY_CAD_PERIODICITY_50_MILLISECONDS, RELAY_CAD_PERIODICITY_20_MILLISECONDS
-      --pending-mac-state.desired-parameters.relay.mode.serving.default-channel-index uint32            
-      --pending-mac-state.desired-parameters.relay.mode.serving.second-channel.ack-offset string        allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
-      --pending-mac-state.desired-parameters.relay.mode.serving.second-channel.data-rate-index string   allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --pending-mac-state.desired-parameters.relay.mode.serving.second-channel.frequency uint           
-      --pending-mac-state.desired-parameters.rx1-data-rate-offset string                                allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
-      --pending-mac-state.desired-parameters.rx1-delay string                                           allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
-      --pending-mac-state.desired-parameters.rx2-data-rate-index string                                 allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --pending-mac-state.desired-parameters.rx2-frequency uint                                         
-      --pending-mac-state.desired-parameters.uplink-dwell-time                                          
-      --pending-mac-state.device-class string                                                           allowed values: CLASS_A, CLASS_B, CLASS_C
-      --pending-mac-state.last-adr-change-f-cnt-up uint32                                               
-      --pending-mac-state.last-confirmed-downlink-at timestamp                                          
-      --pending-mac-state.last-dev-status-f-cnt-up uint32                                               
-      --pending-mac-state.last-downlink-at timestamp                                                    
-      --pending-mac-state.last-network-initiated-downlink-at timestamp                                  
-      --pending-mac-state.lorawan-version string                                                        allowed values: MAC_UNKNOWN, UNKNOWN, unknown, 1.0, 1.0.0, MAC_V1_0, V1_0, 1.0.1, MAC_V1_0_1, V1_0_1, 1.0.2, MAC_V1_0_2, V1_0_2, 1.1, 1.1.0, MAC_V1_1, V1_1, 1.0.3, MAC_V1_0_3, V1_0_3, 1.0.4, MAC_V1_0_4, V1_0_4
-      --pending-mac-state.pending-join-request.cf-list.ch-masks bools                                   
-      --pending-mac-state.pending-join-request.cf-list.freq uint32Slice                                 
-      --pending-mac-state.pending-join-request.cf-list.type string                                      allowed values: FREQUENCIES, CHANNEL_MASKS
-      --pending-mac-state.pending-join-request.downlink-settings.opt-neg                                
-      --pending-mac-state.pending-join-request.downlink-settings.rx1-dr-offset string                   allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
-      --pending-mac-state.pending-join-request.downlink-settings.rx2-dr string                          allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --pending-mac-state.pending-join-request.rx-delay string                                          allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
-      --pending-mac-state.ping-slot-periodicity string                                                  allowed values: PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_4S, PING_EVERY_8S, PING_EVERY_16S, PING_EVERY_32S, PING_EVERY_64S, PING_EVERY_128S
-      --pending-mac-state.queued-join-accept.correlation-ids strings                                    
-      --pending-mac-state.queued-join-accept.dev-addr 4-bytes                                           
-      --pending-mac-state.queued-join-accept.keys.app-s-key.encrypted-key bytesHex                      
-      --pending-mac-state.queued-join-accept.keys.app-s-key.kek-label string                            
-      --pending-mac-state.queued-join-accept.keys.app-s-key.key 16-bytes                                
-      --pending-mac-state.queued-join-accept.keys.f-nwk-s-int-key.key 16-bytes                          
-      --pending-mac-state.queued-join-accept.keys.nwk-s-enc-key.key 16-bytes                            
-      --pending-mac-state.queued-join-accept.keys.s-nwk-s-int-key.key 16-bytes                          
-      --pending-mac-state.queued-join-accept.keys.session-key-id bytesBase64                            
-      --pending-mac-state.queued-join-accept.net-id 3-bytes                                             
-      --pending-mac-state.queued-join-accept.payload bytesBase64                                        
-      --pending-mac-state.queued-join-accept.request.cf-list.ch-masks bools                             
-      --pending-mac-state.queued-join-accept.request.cf-list.freq uint32Slice                           
-      --pending-mac-state.queued-join-accept.request.cf-list.type string                                allowed values: FREQUENCIES, CHANNEL_MASKS
-      --pending-mac-state.queued-join-accept.request.downlink-settings.opt-neg                          
-      --pending-mac-state.queued-join-accept.request.downlink-settings.rx1-dr-offset string             allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
-      --pending-mac-state.queued-join-accept.request.downlink-settings.rx2-dr string                    allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --pending-mac-state.queued-join-accept.request.rx-delay string                                    allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
-      --pending-mac-state.recent-mac-command-identifiers strings                                        allowed values: CID_RFU_0, CID_RESET, CID_LINK_CHECK, CID_LINK_ADR, CID_DUTY_CYCLE, CID_RX_PARAM_SETUP, CID_DEV_STATUS, CID_NEW_CHANNEL, CID_RX_TIMING_SETUP, CID_TX_PARAM_SETUP, CID_DL_CHANNEL, CID_REKEY, CID_ADR_PARAM_SETUP, CID_DEVICE_TIME, CID_FORCE_REJOIN, CID_REJOIN_PARAM_SETUP, CID_PING_SLOT_INFO, CID_PING_SLOT_CHANNEL, CID_BEACON_TIMING, CID_BEACON_FREQ, CID_DEVICE_MODE, CID_RELAY_CONF, CID_RELAY_END_DEVICE_CONF, CID_RELAY_FILTER_LIST, CID_RELAY_UPDATE_UPLINK_LIST, CID_RELAY_CTRL_UPLINK_LIST, CID_RELAY_CONFIGURE_FWD_LIMIT, CID_RELAY_NOTIFY_NEW_END_DEVICE
-      --pending-mac-state.rejected-adr-data-rate-indexes strings                                        allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
-      --pending-mac-state.rejected-adr-tx-power-indexes uint32Slice                                     
-      --pending-mac-state.rejected-frequencies uint64Slice                                              
-      --pending-mac-state.rx-windows-available                                                          
-      --pending-session.dev-addr 4-bytes                                                                
-      --pending-session.keys.f-nwk-s-int-key.key 16-bytes                                               
-      --pending-session.keys.nwk-s-enc-key.key 16-bytes                                                 
-      --pending-session.keys.s-nwk-s-int-key.key 16-bytes                                               
-      --pending-session.keys.session-key-id bytesBase64                                                 
-      --provisioner-id string                                                                           
-      --resets-join-nonces                                                                              
-      --root-keys.app-key.key 16-bytes                                                                  
-      --root-keys.nwk-key.key 16-bytes                                                                  
-      --root-keys.root-key-id string                                                                    
-      --serial-number string                                                                            
-      --service-profile-id string                                                                       
-      --session.dev-addr 4-bytes                                                                        
-      --session.keys.app-s-key.key 16-bytes                                                             
-      --session.keys.f-nwk-s-int-key.key 16-bytes                                                       
-      --session.keys.nwk-s-enc-key.key 16-bytes                                                         
-      --session.keys.s-nwk-s-int-key.key 16-bytes                                                       
-      --session.keys.session-key-id bytesBase64                                                         
-      --session.last-a-f-cnt-down uint32                                                                
-      --session.last-conf-f-cnt-down uint32                                                             
-      --session.last-f-cnt-up uint32                                                                    
-      --session.last-n-f-cnt-down uint32                                                                
-      --session.started-at timestamp                                                                    
-      --skip-payload-crypto                                                                             
-      --skip-payload-crypto-override                                                                    
-      --supports-class-b                                                                                
-      --supports-class-c                                                                                
-      --supports-join                                                                                   
-      --used-dev-nonces uint32Slice                                                                     
-      --version-ids.band-id string                                                                      
-      --version-ids.brand-id string                                                                     
-      --version-ids.firmware-version string                                                             
-      --version-ids.hardware-version string                                                             
-      --version-ids.model-id string                                                                     
+<pre tabindex="0"><code>      --activated-at timestamp                                                                              
+      --application-server-address string                                                                   
+      --application-server-id string                                                                        
+      --application-server-kek-label string                                                                 
+      --attributes stringToString                                                                           
+      --battery-percentage float32                                                                          
+      --claim-authentication-code.valid-from timestamp                                                      
+      --claim-authentication-code.valid-to timestamp                                                        
+      --claim-authentication-code.value string                                                              
+      --description string                                                                                  
+      --downlink-margin int32                                                                               
+      --formatters.down-formatter string                                                                    allowed values: FORMATTER_NONE, FORMATTER_REPOSITORY, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_CAYENNELPP
+      --formatters.down-formatter-parameter string                                                          
+      --formatters.up-formatter string                                                                      allowed values: FORMATTER_NONE, FORMATTER_REPOSITORY, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_CAYENNELPP
+      --formatters.up-formatter-parameter string                                                            
+      --frequency-plan-id string                                                                            
+  -h, --help                                                                                                help for extend
+      --join-server-address string                                                                          
+      --last-dev-nonce uint32                                                                               
+      --last-dev-status-received-at timestamp                                                               
+      --last-join-nonce uint32                                                                              
+      --last-rj-count-0 uint32                                                                              
+      --last-rj-count-1 uint32                                                                              
+      --last-seen-at timestamp                                                                              
+      --lorawan-phy-version string                                                                          allowed values: PHY_UNKNOWN, unknown, 1.0, 1.0.0, PHY_V1_0, TS001_V1_0, V1_0, 1.0.1, PHY_V1_0_1, TS001_V1_0_1, V1_0_1, 1.0.2, 1.0.2-a, PHY_V1_0_2_REV_A, RP001_V1_0_2, V1_0_2, V1_0_2_REV_A, 1.0.2-b, PHY_V1_0_2_REV_B, RP001_V1_0_2_REV_B, V1_0_2_REV_B, 1.1-a, 1.1.0-a, PHY_V1_1_REV_A, RP001_V1_1_REV_A, V1_1_REV_A, 1.1-b, 1.1.0-b, PHY_V1_1_REV_B, RP001_V1_1_REV_B, V1_1_REV_B, 1.0.3-a, PHY_V1_0_3_REV_A, RP001_V1_0_3_REV_A, V1_0_3_REV_A, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3, RP002_V1_0_4
+      --lorawan-version string                                                                              allowed values: MAC_UNKNOWN, UNKNOWN, unknown, 1.0, 1.0.0, MAC_V1_0, V1_0, 1.0.1, MAC_V1_0_1, V1_0_1, 1.0.2, MAC_V1_0_2, V1_0_2, 1.1, 1.1.0, MAC_V1_1, V1_1, 1.0.3, MAC_V1_0_3, V1_0_3, 1.0.4, MAC_V1_0_4, V1_0_4
+      --mac-settings.adr.mode.disabled                                                                      
+      --mac-settings.adr.mode.dynamic                                                                       
+      --mac-settings.adr.mode.dynamic.channel-steering.mode.disabled                                        
+      --mac-settings.adr.mode.dynamic.channel-steering.mode.lora-narrow                                     
+      --mac-settings.adr.mode.dynamic.margin float32                                                        
+      --mac-settings.adr.mode.dynamic.max-data-rate-index string                                            allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-settings.adr.mode.dynamic.max-nb-trans uint32                                                   
+      --mac-settings.adr.mode.dynamic.max-tx-power-index uint32                                             
+      --mac-settings.adr.mode.dynamic.min-data-rate-index string                                            allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-settings.adr.mode.dynamic.min-nb-trans uint32                                                   
+      --mac-settings.adr.mode.dynamic.min-tx-power-index uint32                                             
+      --mac-settings.adr.mode.static                                                                        
+      --mac-settings.adr.mode.static.data-rate-index string                                                 allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-settings.adr.mode.static.nb-trans uint32                                                        
+      --mac-settings.adr.mode.static.tx-power-index uint32                                                  
+      --mac-settings.beacon-frequency uint                                                                  
+      --mac-settings.class-b-c-downlink-interval duration                                                   
+      --mac-settings.class-b-timeout duration                                                               
+      --mac-settings.class-c-timeout duration                                                               
+      --mac-settings.desired-adr-ack-delay-exponent string                                                  allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_2, ADR_ACK_DELAY_4, ADR_ACK_DELAY_8, ADR_ACK_DELAY_16, ADR_ACK_DELAY_32, ADR_ACK_DELAY_64, ADR_ACK_DELAY_128, ADR_ACK_DELAY_256, ADR_ACK_DELAY_512, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_8192, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_32768
+      --mac-settings.desired-adr-ack-limit-exponent string                                                  allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_8192, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_32768
+      --mac-settings.desired-beacon-frequency uint                                                          
+      --mac-settings.desired-max-duty-cycle string                                                          allowed values: DUTY_CYCLE_1, DUTY_CYCLE_2, DUTY_CYCLE_4, DUTY_CYCLE_8, DUTY_CYCLE_16, DUTY_CYCLE_32, DUTY_CYCLE_64, DUTY_CYCLE_128, DUTY_CYCLE_256, DUTY_CYCLE_512, DUTY_CYCLE_1024, DUTY_CYCLE_2048, DUTY_CYCLE_4096, DUTY_CYCLE_8192, DUTY_CYCLE_16384, DUTY_CYCLE_32768
+      --mac-settings.desired-max-eirp string                                                                allowed values: DEVICE_EIRP_8, DEVICE_EIRP_10, DEVICE_EIRP_12, DEVICE_EIRP_13, DEVICE_EIRP_14, DEVICE_EIRP_16, DEVICE_EIRP_18, DEVICE_EIRP_20, DEVICE_EIRP_21, DEVICE_EIRP_24, DEVICE_EIRP_26, DEVICE_EIRP_27, DEVICE_EIRP_29, DEVICE_EIRP_30, DEVICE_EIRP_33, DEVICE_EIRP_36
+      --mac-settings.desired-ping-slot-data-rate-index string                                               allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-settings.desired-ping-slot-frequency uint                                                       
+      --mac-settings.desired-relay.mode.served                                                              
+      --mac-settings.desired-relay.mode.served.backoff uint32                                               
+      --mac-settings.desired-relay.mode.served.mode.always                                                  
+      --mac-settings.desired-relay.mode.served.mode.dynamic                                                 
+      --mac-settings.desired-relay.mode.served.mode.dynamic.smart-enable-level string                       allowed values: RELAY_SMART_ENABLE_LEVEL_8, RELAY_SMART_ENABLE_LEVEL_16, RELAY_SMART_ENABLE_LEVEL_32, RELAY_SMART_ENABLE_LEVEL_64
+      --mac-settings.desired-relay.mode.served.mode.end-device-controlled                                   
+      --mac-settings.desired-relay.mode.served.second-channel                                               
+      --mac-settings.desired-relay.mode.served.second-channel.ack-offset string                             allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
+      --mac-settings.desired-relay.mode.served.second-channel.data-rate-index string                        allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-settings.desired-relay.mode.served.second-channel.frequency uint                                
+      --mac-settings.desired-relay.mode.served.serving-device-id string                                     
+      --mac-settings.desired-relay.mode.serving                                                             
+      --mac-settings.desired-relay.mode.serving.cad-periodicity string                                      allowed values: RELAY_CAD_PERIODICITY_1_SECOND, RELAY_CAD_PERIODICITY_500_MILLISECONDS, RELAY_CAD_PERIODICITY_250_MILLISECONDS, RELAY_CAD_PERIODICITY_100_MILLISECONDS, RELAY_CAD_PERIODICITY_50_MILLISECONDS, RELAY_CAD_PERIODICITY_20_MILLISECONDS
+      --mac-settings.desired-relay.mode.serving.default-channel-index uint32                                
+      --mac-settings.desired-relay.mode.serving.limits.join-requests.bucket-size string                     allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-settings.desired-relay.mode.serving.limits.join-requests.reload-rate uint32                     
+      --mac-settings.desired-relay.mode.serving.limits.notifications.bucket-size string                     allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-settings.desired-relay.mode.serving.limits.notifications.reload-rate uint32                     
+      --mac-settings.desired-relay.mode.serving.limits.overall.bucket-size string                           allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-settings.desired-relay.mode.serving.limits.overall.reload-rate uint32                           
+      --mac-settings.desired-relay.mode.serving.limits.reset-behavior string                                allowed values: RELAY_RESET_LIMIT_COUNTER_ZERO, RELAY_RESET_LIMIT_COUNTER_RELOAD_RATE, RELAY_RESET_LIMIT_COUNTER_MAX_VALUE, RELAY_RESET_LIMIT_COUNTER_NO_RESET
+      --mac-settings.desired-relay.mode.serving.limits.uplink-messages.bucket-size string                   allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-settings.desired-relay.mode.serving.limits.uplink-messages.reload-rate uint32                   
+      --mac-settings.desired-relay.mode.serving.second-channel.ack-offset string                            allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
+      --mac-settings.desired-relay.mode.serving.second-channel.data-rate-index string                       allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-settings.desired-relay.mode.serving.second-channel.frequency uint                               
+      --mac-settings.desired-rx1-data-rate-offset string                                                    allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
+      --mac-settings.desired-rx1-delay string                                                               allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
+      --mac-settings.desired-rx2-data-rate-index string                                                     allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-settings.desired-rx2-frequency uint                                                             
+      --mac-settings.downlink-dwell-time                                                                    
+      --mac-settings.factory-preset-frequencies uint64Slice                                                 
+      --mac-settings.max-duty-cycle string                                                                  allowed values: DUTY_CYCLE_1, DUTY_CYCLE_2, DUTY_CYCLE_4, DUTY_CYCLE_8, DUTY_CYCLE_16, DUTY_CYCLE_32, DUTY_CYCLE_64, DUTY_CYCLE_128, DUTY_CYCLE_256, DUTY_CYCLE_512, DUTY_CYCLE_1024, DUTY_CYCLE_2048, DUTY_CYCLE_4096, DUTY_CYCLE_8192, DUTY_CYCLE_16384, DUTY_CYCLE_32768
+      --mac-settings.ping-slot-data-rate-index string                                                       allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-settings.ping-slot-frequency uint                                                               
+      --mac-settings.ping-slot-periodicity string                                                           allowed values: PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_4S, PING_EVERY_8S, PING_EVERY_16S, PING_EVERY_32S, PING_EVERY_64S, PING_EVERY_128S
+      --mac-settings.relay.mode.served                                                                      
+      --mac-settings.relay.mode.served.backoff uint32                                                       
+      --mac-settings.relay.mode.served.mode.always                                                          
+      --mac-settings.relay.mode.served.mode.dynamic                                                         
+      --mac-settings.relay.mode.served.mode.dynamic.smart-enable-level string                               allowed values: RELAY_SMART_ENABLE_LEVEL_8, RELAY_SMART_ENABLE_LEVEL_16, RELAY_SMART_ENABLE_LEVEL_32, RELAY_SMART_ENABLE_LEVEL_64
+      --mac-settings.relay.mode.served.mode.end-device-controlled                                           
+      --mac-settings.relay.mode.served.second-channel                                                       
+      --mac-settings.relay.mode.served.second-channel.ack-offset string                                     allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
+      --mac-settings.relay.mode.served.second-channel.data-rate-index string                                allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-settings.relay.mode.served.second-channel.frequency uint                                        
+      --mac-settings.relay.mode.served.serving-device-id string                                             
+      --mac-settings.relay.mode.serving                                                                     
+      --mac-settings.relay.mode.serving.cad-periodicity string                                              allowed values: RELAY_CAD_PERIODICITY_1_SECOND, RELAY_CAD_PERIODICITY_500_MILLISECONDS, RELAY_CAD_PERIODICITY_250_MILLISECONDS, RELAY_CAD_PERIODICITY_100_MILLISECONDS, RELAY_CAD_PERIODICITY_50_MILLISECONDS, RELAY_CAD_PERIODICITY_20_MILLISECONDS
+      --mac-settings.relay.mode.serving.default-channel-index uint32                                        
+      --mac-settings.relay.mode.serving.limits.join-requests.bucket-size string                             allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-settings.relay.mode.serving.limits.join-requests.reload-rate uint32                             
+      --mac-settings.relay.mode.serving.limits.notifications.bucket-size string                             allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-settings.relay.mode.serving.limits.notifications.reload-rate uint32                             
+      --mac-settings.relay.mode.serving.limits.overall.bucket-size string                                   allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-settings.relay.mode.serving.limits.overall.reload-rate uint32                                   
+      --mac-settings.relay.mode.serving.limits.reset-behavior string                                        allowed values: RELAY_RESET_LIMIT_COUNTER_ZERO, RELAY_RESET_LIMIT_COUNTER_RELOAD_RATE, RELAY_RESET_LIMIT_COUNTER_MAX_VALUE, RELAY_RESET_LIMIT_COUNTER_NO_RESET
+      --mac-settings.relay.mode.serving.limits.uplink-messages.bucket-size string                           allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-settings.relay.mode.serving.limits.uplink-messages.reload-rate uint32                           
+      --mac-settings.relay.mode.serving.second-channel.ack-offset string                                    allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
+      --mac-settings.relay.mode.serving.second-channel.data-rate-index string                               allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-settings.relay.mode.serving.second-channel.frequency uint                                       
+      --mac-settings.resets-f-cnt                                                                           
+      --mac-settings.rx1-data-rate-offset string                                                            allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
+      --mac-settings.rx1-delay string                                                                       allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
+      --mac-settings.rx2-data-rate-index string                                                             allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-settings.rx2-frequency uint                                                                     
+      --mac-settings.schedule-downlinks                                                                     
+      --mac-settings.status-count-periodicity uint32                                                        
+      --mac-settings.status-time-periodicity duration                                                       
+      --mac-settings.supports-32-bit-f-cnt                                                                  
+      --mac-settings.uplink-dwell-time                                                                      
+      --mac-state.current-parameters.adr-ack-delay-exponent string                                          allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_2, ADR_ACK_DELAY_4, ADR_ACK_DELAY_8, ADR_ACK_DELAY_16, ADR_ACK_DELAY_32, ADR_ACK_DELAY_64, ADR_ACK_DELAY_128, ADR_ACK_DELAY_256, ADR_ACK_DELAY_512, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_8192, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_32768
+      --mac-state.current-parameters.adr-ack-limit-exponent string                                          allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_8192, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_32768
+      --mac-state.current-parameters.adr-data-rate-index string                                             allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-state.current-parameters.adr-nb-trans uint32                                                    
+      --mac-state.current-parameters.adr-tx-power-index uint32                                              
+      --mac-state.current-parameters.beacon-frequency uint                                                  
+      --mac-state.current-parameters.downlink-dwell-time                                                    
+      --mac-state.current-parameters.max-duty-cycle string                                                  allowed values: DUTY_CYCLE_1, DUTY_CYCLE_2, DUTY_CYCLE_4, DUTY_CYCLE_8, DUTY_CYCLE_16, DUTY_CYCLE_32, DUTY_CYCLE_64, DUTY_CYCLE_128, DUTY_CYCLE_256, DUTY_CYCLE_512, DUTY_CYCLE_1024, DUTY_CYCLE_2048, DUTY_CYCLE_4096, DUTY_CYCLE_8192, DUTY_CYCLE_16384, DUTY_CYCLE_32768
+      --mac-state.current-parameters.max-eirp float32                                                       
+      --mac-state.current-parameters.ping-slot-data-rate-index-value string                                 allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-state.current-parameters.ping-slot-frequency uint                                               
+      --mac-state.current-parameters.rejoin-count-periodicity string                                        allowed values: REJOIN_COUNT_16, REJOIN_COUNT_32, REJOIN_COUNT_64, REJOIN_COUNT_128, REJOIN_COUNT_256, REJOIN_COUNT_512, REJOIN_COUNT_1024, REJOIN_COUNT_2048, REJOIN_COUNT_4096, REJOIN_COUNT_8192, REJOIN_COUNT_16384, REJOIN_COUNT_32768, REJOIN_COUNT_65536, REJOIN_COUNT_131072, REJOIN_COUNT_262144, REJOIN_COUNT_524288
+      --mac-state.current-parameters.rejoin-time-periodicity string                                         allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15
+      --mac-state.current-parameters.relay.mode.served                                                      
+      --mac-state.current-parameters.relay.mode.served.backoff uint32                                       
+      --mac-state.current-parameters.relay.mode.served.mode.always                                          
+      --mac-state.current-parameters.relay.mode.served.mode.dynamic                                         
+      --mac-state.current-parameters.relay.mode.served.mode.dynamic.smart-enable-level string               allowed values: RELAY_SMART_ENABLE_LEVEL_8, RELAY_SMART_ENABLE_LEVEL_16, RELAY_SMART_ENABLE_LEVEL_32, RELAY_SMART_ENABLE_LEVEL_64
+      --mac-state.current-parameters.relay.mode.served.mode.end-device-controlled                           
+      --mac-state.current-parameters.relay.mode.served.second-channel                                       
+      --mac-state.current-parameters.relay.mode.served.second-channel.ack-offset string                     allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
+      --mac-state.current-parameters.relay.mode.served.second-channel.data-rate-index string                allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-state.current-parameters.relay.mode.served.second-channel.frequency uint                        
+      --mac-state.current-parameters.relay.mode.served.serving-device-id string                             
+      --mac-state.current-parameters.relay.mode.serving                                                     
+      --mac-state.current-parameters.relay.mode.serving.cad-periodicity string                              allowed values: RELAY_CAD_PERIODICITY_1_SECOND, RELAY_CAD_PERIODICITY_500_MILLISECONDS, RELAY_CAD_PERIODICITY_250_MILLISECONDS, RELAY_CAD_PERIODICITY_100_MILLISECONDS, RELAY_CAD_PERIODICITY_50_MILLISECONDS, RELAY_CAD_PERIODICITY_20_MILLISECONDS
+      --mac-state.current-parameters.relay.mode.serving.default-channel-index uint32                        
+      --mac-state.current-parameters.relay.mode.serving.limits.join-requests.bucket-size string             allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-state.current-parameters.relay.mode.serving.limits.join-requests.reload-rate uint32             
+      --mac-state.current-parameters.relay.mode.serving.limits.notifications.bucket-size string             allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-state.current-parameters.relay.mode.serving.limits.notifications.reload-rate uint32             
+      --mac-state.current-parameters.relay.mode.serving.limits.overall.bucket-size string                   allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-state.current-parameters.relay.mode.serving.limits.overall.reload-rate uint32                   
+      --mac-state.current-parameters.relay.mode.serving.limits.reset-behavior string                        allowed values: RELAY_RESET_LIMIT_COUNTER_ZERO, RELAY_RESET_LIMIT_COUNTER_RELOAD_RATE, RELAY_RESET_LIMIT_COUNTER_MAX_VALUE, RELAY_RESET_LIMIT_COUNTER_NO_RESET
+      --mac-state.current-parameters.relay.mode.serving.limits.uplink-messages.bucket-size string           allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-state.current-parameters.relay.mode.serving.limits.uplink-messages.reload-rate uint32           
+      --mac-state.current-parameters.relay.mode.serving.second-channel.ack-offset string                    allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
+      --mac-state.current-parameters.relay.mode.serving.second-channel.data-rate-index string               allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-state.current-parameters.relay.mode.serving.second-channel.frequency uint                       
+      --mac-state.current-parameters.rx1-data-rate-offset string                                            allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
+      --mac-state.current-parameters.rx1-delay string                                                       allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
+      --mac-state.current-parameters.rx2-data-rate-index string                                             allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-state.current-parameters.rx2-frequency uint                                                     
+      --mac-state.current-parameters.uplink-dwell-time                                                      
+      --mac-state.desired-parameters.adr-ack-delay-exponent string                                          allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_2, ADR_ACK_DELAY_4, ADR_ACK_DELAY_8, ADR_ACK_DELAY_16, ADR_ACK_DELAY_32, ADR_ACK_DELAY_64, ADR_ACK_DELAY_128, ADR_ACK_DELAY_256, ADR_ACK_DELAY_512, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_8192, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_32768
+      --mac-state.desired-parameters.adr-ack-limit-exponent string                                          allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_8192, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_32768
+      --mac-state.desired-parameters.adr-data-rate-index string                                             allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-state.desired-parameters.adr-nb-trans uint32                                                    
+      --mac-state.desired-parameters.adr-tx-power-index uint32                                              
+      --mac-state.desired-parameters.beacon-frequency uint                                                  
+      --mac-state.desired-parameters.downlink-dwell-time                                                    
+      --mac-state.desired-parameters.max-duty-cycle string                                                  allowed values: DUTY_CYCLE_1, DUTY_CYCLE_2, DUTY_CYCLE_4, DUTY_CYCLE_8, DUTY_CYCLE_16, DUTY_CYCLE_32, DUTY_CYCLE_64, DUTY_CYCLE_128, DUTY_CYCLE_256, DUTY_CYCLE_512, DUTY_CYCLE_1024, DUTY_CYCLE_2048, DUTY_CYCLE_4096, DUTY_CYCLE_8192, DUTY_CYCLE_16384, DUTY_CYCLE_32768
+      --mac-state.desired-parameters.max-eirp float32                                                       
+      --mac-state.desired-parameters.ping-slot-data-rate-index-value string                                 allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-state.desired-parameters.ping-slot-frequency uint                                               
+      --mac-state.desired-parameters.rejoin-count-periodicity string                                        allowed values: REJOIN_COUNT_16, REJOIN_COUNT_32, REJOIN_COUNT_64, REJOIN_COUNT_128, REJOIN_COUNT_256, REJOIN_COUNT_512, REJOIN_COUNT_1024, REJOIN_COUNT_2048, REJOIN_COUNT_4096, REJOIN_COUNT_8192, REJOIN_COUNT_16384, REJOIN_COUNT_32768, REJOIN_COUNT_65536, REJOIN_COUNT_131072, REJOIN_COUNT_262144, REJOIN_COUNT_524288
+      --mac-state.desired-parameters.rejoin-time-periodicity string                                         allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15
+      --mac-state.desired-parameters.relay.mode.served                                                      
+      --mac-state.desired-parameters.relay.mode.served.backoff uint32                                       
+      --mac-state.desired-parameters.relay.mode.served.mode.always                                          
+      --mac-state.desired-parameters.relay.mode.served.mode.dynamic                                         
+      --mac-state.desired-parameters.relay.mode.served.mode.dynamic.smart-enable-level string               allowed values: RELAY_SMART_ENABLE_LEVEL_8, RELAY_SMART_ENABLE_LEVEL_16, RELAY_SMART_ENABLE_LEVEL_32, RELAY_SMART_ENABLE_LEVEL_64
+      --mac-state.desired-parameters.relay.mode.served.mode.end-device-controlled                           
+      --mac-state.desired-parameters.relay.mode.served.second-channel                                       
+      --mac-state.desired-parameters.relay.mode.served.second-channel.ack-offset string                     allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
+      --mac-state.desired-parameters.relay.mode.served.second-channel.data-rate-index string                allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-state.desired-parameters.relay.mode.served.second-channel.frequency uint                        
+      --mac-state.desired-parameters.relay.mode.served.serving-device-id string                             
+      --mac-state.desired-parameters.relay.mode.serving                                                     
+      --mac-state.desired-parameters.relay.mode.serving.cad-periodicity string                              allowed values: RELAY_CAD_PERIODICITY_1_SECOND, RELAY_CAD_PERIODICITY_500_MILLISECONDS, RELAY_CAD_PERIODICITY_250_MILLISECONDS, RELAY_CAD_PERIODICITY_100_MILLISECONDS, RELAY_CAD_PERIODICITY_50_MILLISECONDS, RELAY_CAD_PERIODICITY_20_MILLISECONDS
+      --mac-state.desired-parameters.relay.mode.serving.default-channel-index uint32                        
+      --mac-state.desired-parameters.relay.mode.serving.limits.join-requests.bucket-size string             allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-state.desired-parameters.relay.mode.serving.limits.join-requests.reload-rate uint32             
+      --mac-state.desired-parameters.relay.mode.serving.limits.notifications.bucket-size string             allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-state.desired-parameters.relay.mode.serving.limits.notifications.reload-rate uint32             
+      --mac-state.desired-parameters.relay.mode.serving.limits.overall.bucket-size string                   allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-state.desired-parameters.relay.mode.serving.limits.overall.reload-rate uint32                   
+      --mac-state.desired-parameters.relay.mode.serving.limits.reset-behavior string                        allowed values: RELAY_RESET_LIMIT_COUNTER_ZERO, RELAY_RESET_LIMIT_COUNTER_RELOAD_RATE, RELAY_RESET_LIMIT_COUNTER_MAX_VALUE, RELAY_RESET_LIMIT_COUNTER_NO_RESET
+      --mac-state.desired-parameters.relay.mode.serving.limits.uplink-messages.bucket-size string           allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --mac-state.desired-parameters.relay.mode.serving.limits.uplink-messages.reload-rate uint32           
+      --mac-state.desired-parameters.relay.mode.serving.second-channel.ack-offset string                    allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
+      --mac-state.desired-parameters.relay.mode.serving.second-channel.data-rate-index string               allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-state.desired-parameters.relay.mode.serving.second-channel.frequency uint                       
+      --mac-state.desired-parameters.rx1-data-rate-offset string                                            allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
+      --mac-state.desired-parameters.rx1-delay string                                                       allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
+      --mac-state.desired-parameters.rx2-data-rate-index string                                             allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-state.desired-parameters.rx2-frequency uint                                                     
+      --mac-state.desired-parameters.uplink-dwell-time                                                      
+      --mac-state.device-class string                                                                       allowed values: CLASS_A, CLASS_B, CLASS_C
+      --mac-state.last-adr-change-f-cnt-up uint32                                                           
+      --mac-state.last-confirmed-downlink-at timestamp                                                      
+      --mac-state.last-dev-status-f-cnt-up uint32                                                           
+      --mac-state.last-downlink-at timestamp                                                                
+      --mac-state.last-network-initiated-downlink-at timestamp                                              
+      --mac-state.lorawan-version string                                                                    allowed values: MAC_UNKNOWN, UNKNOWN, unknown, 1.0, 1.0.0, MAC_V1_0, V1_0, 1.0.1, MAC_V1_0_1, V1_0_1, 1.0.2, MAC_V1_0_2, V1_0_2, 1.1, 1.1.0, MAC_V1_1, V1_1, 1.0.3, MAC_V1_0_3, V1_0_3, 1.0.4, MAC_V1_0_4, V1_0_4
+      --mac-state.pending-application-downlink.class-b-c.absolute-time timestamp                            
+      --mac-state.pending-application-downlink.confirmed                                                    
+      --mac-state.pending-application-downlink.correlation-ids strings                                      
+      --mac-state.pending-application-downlink.f-cnt uint32                                                 
+      --mac-state.pending-application-downlink.f-port uint32                                                
+      --mac-state.pending-application-downlink.frm-payload bytesHex                                         
+      --mac-state.pending-application-downlink.priority string                                              allowed values: LOWEST, LOW, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, HIGH, HIGHEST
+      --mac-state.pending-application-downlink.session-key-id bytesHex                                      
+      --mac-state.pending-relay-downlink.raw-payload bytesBase64                                            
+      --mac-state.ping-slot-periodicity string                                                              allowed values: PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_4S, PING_EVERY_8S, PING_EVERY_16S, PING_EVERY_32S, PING_EVERY_64S, PING_EVERY_128S
+      --mac-state.recent-mac-command-identifiers strings                                                    allowed values: CID_RFU_0, CID_RESET, CID_LINK_CHECK, CID_LINK_ADR, CID_DUTY_CYCLE, CID_RX_PARAM_SETUP, CID_DEV_STATUS, CID_NEW_CHANNEL, CID_RX_TIMING_SETUP, CID_TX_PARAM_SETUP, CID_DL_CHANNEL, CID_REKEY, CID_ADR_PARAM_SETUP, CID_DEVICE_TIME, CID_FORCE_REJOIN, CID_REJOIN_PARAM_SETUP, CID_PING_SLOT_INFO, CID_PING_SLOT_CHANNEL, CID_BEACON_TIMING, CID_BEACON_FREQ, CID_DEVICE_MODE, CID_RELAY_CONF, CID_RELAY_END_DEVICE_CONF, CID_RELAY_FILTER_LIST, CID_RELAY_UPDATE_UPLINK_LIST, CID_RELAY_CTRL_UPLINK_LIST, CID_RELAY_CONFIGURE_FWD_LIMIT, CID_RELAY_NOTIFY_NEW_END_DEVICE
+      --mac-state.rejected-adr-data-rate-indexes strings                                                    allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --mac-state.rejected-adr-tx-power-indexes uint32Slice                                                 
+      --mac-state.rejected-frequencies uint64Slice                                                          
+      --mac-state.rx-windows-available                                                                      
+      --mapping-key string                                                                                  
+      --max-frequency uint                                                                                  
+      --min-frequency uint                                                                                  
+      --multicast                                                                                           
+      --name string                                                                                         
+      --net-id 3-bytes                                                                                      
+      --network-server-address string                                                                       
+      --network-server-kek-label string                                                                     
+      --pending-mac-state.current-parameters.adr-ack-delay-exponent string                                  allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_2, ADR_ACK_DELAY_4, ADR_ACK_DELAY_8, ADR_ACK_DELAY_16, ADR_ACK_DELAY_32, ADR_ACK_DELAY_64, ADR_ACK_DELAY_128, ADR_ACK_DELAY_256, ADR_ACK_DELAY_512, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_8192, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_32768
+      --pending-mac-state.current-parameters.adr-ack-limit-exponent string                                  allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_8192, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_32768
+      --pending-mac-state.current-parameters.adr-data-rate-index string                                     allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --pending-mac-state.current-parameters.adr-nb-trans uint32                                            
+      --pending-mac-state.current-parameters.adr-tx-power-index uint32                                      
+      --pending-mac-state.current-parameters.beacon-frequency uint                                          
+      --pending-mac-state.current-parameters.downlink-dwell-time                                            
+      --pending-mac-state.current-parameters.max-duty-cycle string                                          allowed values: DUTY_CYCLE_1, DUTY_CYCLE_2, DUTY_CYCLE_4, DUTY_CYCLE_8, DUTY_CYCLE_16, DUTY_CYCLE_32, DUTY_CYCLE_64, DUTY_CYCLE_128, DUTY_CYCLE_256, DUTY_CYCLE_512, DUTY_CYCLE_1024, DUTY_CYCLE_2048, DUTY_CYCLE_4096, DUTY_CYCLE_8192, DUTY_CYCLE_16384, DUTY_CYCLE_32768
+      --pending-mac-state.current-parameters.max-eirp float32                                               
+      --pending-mac-state.current-parameters.ping-slot-data-rate-index-value string                         allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --pending-mac-state.current-parameters.ping-slot-frequency uint                                       
+      --pending-mac-state.current-parameters.rejoin-count-periodicity string                                allowed values: REJOIN_COUNT_16, REJOIN_COUNT_32, REJOIN_COUNT_64, REJOIN_COUNT_128, REJOIN_COUNT_256, REJOIN_COUNT_512, REJOIN_COUNT_1024, REJOIN_COUNT_2048, REJOIN_COUNT_4096, REJOIN_COUNT_8192, REJOIN_COUNT_16384, REJOIN_COUNT_32768, REJOIN_COUNT_65536, REJOIN_COUNT_131072, REJOIN_COUNT_262144, REJOIN_COUNT_524288
+      --pending-mac-state.current-parameters.rejoin-time-periodicity string                                 allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15
+      --pending-mac-state.current-parameters.relay.mode.served                                              
+      --pending-mac-state.current-parameters.relay.mode.served.backoff uint32                               
+      --pending-mac-state.current-parameters.relay.mode.served.mode.always                                  
+      --pending-mac-state.current-parameters.relay.mode.served.mode.dynamic                                 
+      --pending-mac-state.current-parameters.relay.mode.served.mode.dynamic.smart-enable-level string       allowed values: RELAY_SMART_ENABLE_LEVEL_8, RELAY_SMART_ENABLE_LEVEL_16, RELAY_SMART_ENABLE_LEVEL_32, RELAY_SMART_ENABLE_LEVEL_64
+      --pending-mac-state.current-parameters.relay.mode.served.mode.end-device-controlled                   
+      --pending-mac-state.current-parameters.relay.mode.served.second-channel                               
+      --pending-mac-state.current-parameters.relay.mode.served.second-channel.ack-offset string             allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
+      --pending-mac-state.current-parameters.relay.mode.served.second-channel.data-rate-index string        allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --pending-mac-state.current-parameters.relay.mode.served.second-channel.frequency uint                
+      --pending-mac-state.current-parameters.relay.mode.served.serving-device-id string                     
+      --pending-mac-state.current-parameters.relay.mode.serving                                             
+      --pending-mac-state.current-parameters.relay.mode.serving.cad-periodicity string                      allowed values: RELAY_CAD_PERIODICITY_1_SECOND, RELAY_CAD_PERIODICITY_500_MILLISECONDS, RELAY_CAD_PERIODICITY_250_MILLISECONDS, RELAY_CAD_PERIODICITY_100_MILLISECONDS, RELAY_CAD_PERIODICITY_50_MILLISECONDS, RELAY_CAD_PERIODICITY_20_MILLISECONDS
+      --pending-mac-state.current-parameters.relay.mode.serving.default-channel-index uint32                
+      --pending-mac-state.current-parameters.relay.mode.serving.limits.join-requests.bucket-size string     allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --pending-mac-state.current-parameters.relay.mode.serving.limits.join-requests.reload-rate uint32     
+      --pending-mac-state.current-parameters.relay.mode.serving.limits.notifications.bucket-size string     allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --pending-mac-state.current-parameters.relay.mode.serving.limits.notifications.reload-rate uint32     
+      --pending-mac-state.current-parameters.relay.mode.serving.limits.overall.bucket-size string           allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --pending-mac-state.current-parameters.relay.mode.serving.limits.overall.reload-rate uint32           
+      --pending-mac-state.current-parameters.relay.mode.serving.limits.reset-behavior string                allowed values: RELAY_RESET_LIMIT_COUNTER_ZERO, RELAY_RESET_LIMIT_COUNTER_RELOAD_RATE, RELAY_RESET_LIMIT_COUNTER_MAX_VALUE, RELAY_RESET_LIMIT_COUNTER_NO_RESET
+      --pending-mac-state.current-parameters.relay.mode.serving.limits.uplink-messages.bucket-size string   allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --pending-mac-state.current-parameters.relay.mode.serving.limits.uplink-messages.reload-rate uint32   
+      --pending-mac-state.current-parameters.relay.mode.serving.second-channel.ack-offset string            allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
+      --pending-mac-state.current-parameters.relay.mode.serving.second-channel.data-rate-index string       allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --pending-mac-state.current-parameters.relay.mode.serving.second-channel.frequency uint               
+      --pending-mac-state.current-parameters.rx1-data-rate-offset string                                    allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
+      --pending-mac-state.current-parameters.rx1-delay string                                               allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
+      --pending-mac-state.current-parameters.rx2-data-rate-index string                                     allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --pending-mac-state.current-parameters.rx2-frequency uint                                             
+      --pending-mac-state.current-parameters.uplink-dwell-time                                              
+      --pending-mac-state.desired-parameters.adr-ack-delay-exponent string                                  allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_2, ADR_ACK_DELAY_4, ADR_ACK_DELAY_8, ADR_ACK_DELAY_16, ADR_ACK_DELAY_32, ADR_ACK_DELAY_64, ADR_ACK_DELAY_128, ADR_ACK_DELAY_256, ADR_ACK_DELAY_512, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_8192, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_32768
+      --pending-mac-state.desired-parameters.adr-ack-limit-exponent string                                  allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_8192, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_32768
+      --pending-mac-state.desired-parameters.adr-data-rate-index string                                     allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --pending-mac-state.desired-parameters.adr-nb-trans uint32                                            
+      --pending-mac-state.desired-parameters.adr-tx-power-index uint32                                      
+      --pending-mac-state.desired-parameters.beacon-frequency uint                                          
+      --pending-mac-state.desired-parameters.downlink-dwell-time                                            
+      --pending-mac-state.desired-parameters.max-duty-cycle string                                          allowed values: DUTY_CYCLE_1, DUTY_CYCLE_2, DUTY_CYCLE_4, DUTY_CYCLE_8, DUTY_CYCLE_16, DUTY_CYCLE_32, DUTY_CYCLE_64, DUTY_CYCLE_128, DUTY_CYCLE_256, DUTY_CYCLE_512, DUTY_CYCLE_1024, DUTY_CYCLE_2048, DUTY_CYCLE_4096, DUTY_CYCLE_8192, DUTY_CYCLE_16384, DUTY_CYCLE_32768
+      --pending-mac-state.desired-parameters.max-eirp float32                                               
+      --pending-mac-state.desired-parameters.ping-slot-data-rate-index-value string                         allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --pending-mac-state.desired-parameters.ping-slot-frequency uint                                       
+      --pending-mac-state.desired-parameters.rejoin-count-periodicity string                                allowed values: REJOIN_COUNT_16, REJOIN_COUNT_32, REJOIN_COUNT_64, REJOIN_COUNT_128, REJOIN_COUNT_256, REJOIN_COUNT_512, REJOIN_COUNT_1024, REJOIN_COUNT_2048, REJOIN_COUNT_4096, REJOIN_COUNT_8192, REJOIN_COUNT_16384, REJOIN_COUNT_32768, REJOIN_COUNT_65536, REJOIN_COUNT_131072, REJOIN_COUNT_262144, REJOIN_COUNT_524288
+      --pending-mac-state.desired-parameters.rejoin-time-periodicity string                                 allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15
+      --pending-mac-state.desired-parameters.relay.mode.served                                              
+      --pending-mac-state.desired-parameters.relay.mode.served.backoff uint32                               
+      --pending-mac-state.desired-parameters.relay.mode.served.mode.always                                  
+      --pending-mac-state.desired-parameters.relay.mode.served.mode.dynamic                                 
+      --pending-mac-state.desired-parameters.relay.mode.served.mode.dynamic.smart-enable-level string       allowed values: RELAY_SMART_ENABLE_LEVEL_8, RELAY_SMART_ENABLE_LEVEL_16, RELAY_SMART_ENABLE_LEVEL_32, RELAY_SMART_ENABLE_LEVEL_64
+      --pending-mac-state.desired-parameters.relay.mode.served.mode.end-device-controlled                   
+      --pending-mac-state.desired-parameters.relay.mode.served.second-channel                               
+      --pending-mac-state.desired-parameters.relay.mode.served.second-channel.ack-offset string             allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
+      --pending-mac-state.desired-parameters.relay.mode.served.second-channel.data-rate-index string        allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --pending-mac-state.desired-parameters.relay.mode.served.second-channel.frequency uint                
+      --pending-mac-state.desired-parameters.relay.mode.served.serving-device-id string                     
+      --pending-mac-state.desired-parameters.relay.mode.serving                                             
+      --pending-mac-state.desired-parameters.relay.mode.serving.cad-periodicity string                      allowed values: RELAY_CAD_PERIODICITY_1_SECOND, RELAY_CAD_PERIODICITY_500_MILLISECONDS, RELAY_CAD_PERIODICITY_250_MILLISECONDS, RELAY_CAD_PERIODICITY_100_MILLISECONDS, RELAY_CAD_PERIODICITY_50_MILLISECONDS, RELAY_CAD_PERIODICITY_20_MILLISECONDS
+      --pending-mac-state.desired-parameters.relay.mode.serving.default-channel-index uint32                
+      --pending-mac-state.desired-parameters.relay.mode.serving.limits.join-requests.bucket-size string     allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --pending-mac-state.desired-parameters.relay.mode.serving.limits.join-requests.reload-rate uint32     
+      --pending-mac-state.desired-parameters.relay.mode.serving.limits.notifications.bucket-size string     allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --pending-mac-state.desired-parameters.relay.mode.serving.limits.notifications.reload-rate uint32     
+      --pending-mac-state.desired-parameters.relay.mode.serving.limits.overall.bucket-size string           allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --pending-mac-state.desired-parameters.relay.mode.serving.limits.overall.reload-rate uint32           
+      --pending-mac-state.desired-parameters.relay.mode.serving.limits.reset-behavior string                allowed values: RELAY_RESET_LIMIT_COUNTER_ZERO, RELAY_RESET_LIMIT_COUNTER_RELOAD_RATE, RELAY_RESET_LIMIT_COUNTER_MAX_VALUE, RELAY_RESET_LIMIT_COUNTER_NO_RESET
+      --pending-mac-state.desired-parameters.relay.mode.serving.limits.uplink-messages.bucket-size string   allowed values: RELAY_LIMIT_BUCKET_SIZE_1, RELAY_LIMIT_BUCKET_SIZE_2, RELAY_LIMIT_BUCKET_SIZE_4, RELAY_LIMIT_BUCKET_SIZE_12
+      --pending-mac-state.desired-parameters.relay.mode.serving.limits.uplink-messages.reload-rate uint32   
+      --pending-mac-state.desired-parameters.relay.mode.serving.second-channel.ack-offset string            allowed values: RELAY_SECOND_CH_ACK_OFFSET_0, RELAY_SECOND_CH_ACK_OFFSET_200, RELAY_SECOND_CH_ACK_OFFSET_400, RELAY_SECOND_CH_ACK_OFFSET_800, RELAY_SECOND_CH_ACK_OFFSET_1600, RELAY_SECOND_CH_ACK_OFFSET_3200
+      --pending-mac-state.desired-parameters.relay.mode.serving.second-channel.data-rate-index string       allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --pending-mac-state.desired-parameters.relay.mode.serving.second-channel.frequency uint               
+      --pending-mac-state.desired-parameters.rx1-data-rate-offset string                                    allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
+      --pending-mac-state.desired-parameters.rx1-delay string                                               allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
+      --pending-mac-state.desired-parameters.rx2-data-rate-index string                                     allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --pending-mac-state.desired-parameters.rx2-frequency uint                                             
+      --pending-mac-state.desired-parameters.uplink-dwell-time                                              
+      --pending-mac-state.device-class string                                                               allowed values: CLASS_A, CLASS_B, CLASS_C
+      --pending-mac-state.last-adr-change-f-cnt-up uint32                                                   
+      --pending-mac-state.last-confirmed-downlink-at timestamp                                              
+      --pending-mac-state.last-dev-status-f-cnt-up uint32                                                   
+      --pending-mac-state.last-downlink-at timestamp                                                        
+      --pending-mac-state.last-network-initiated-downlink-at timestamp                                      
+      --pending-mac-state.lorawan-version string                                                            allowed values: MAC_UNKNOWN, UNKNOWN, unknown, 1.0, 1.0.0, MAC_V1_0, V1_0, 1.0.1, MAC_V1_0_1, V1_0_1, 1.0.2, MAC_V1_0_2, V1_0_2, 1.1, 1.1.0, MAC_V1_1, V1_1, 1.0.3, MAC_V1_0_3, V1_0_3, 1.0.4, MAC_V1_0_4, V1_0_4
+      --pending-mac-state.pending-join-request.cf-list.ch-masks bools                                       
+      --pending-mac-state.pending-join-request.cf-list.freq uint32Slice                                     
+      --pending-mac-state.pending-join-request.cf-list.type string                                          allowed values: FREQUENCIES, CHANNEL_MASKS
+      --pending-mac-state.pending-join-request.downlink-settings.opt-neg                                    
+      --pending-mac-state.pending-join-request.downlink-settings.rx1-dr-offset string                       allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
+      --pending-mac-state.pending-join-request.downlink-settings.rx2-dr string                              allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --pending-mac-state.pending-join-request.rx-delay string                                              allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
+      --pending-mac-state.ping-slot-periodicity string                                                      allowed values: PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_4S, PING_EVERY_8S, PING_EVERY_16S, PING_EVERY_32S, PING_EVERY_64S, PING_EVERY_128S
+      --pending-mac-state.queued-join-accept.correlation-ids strings                                        
+      --pending-mac-state.queued-join-accept.dev-addr 4-bytes                                               
+      --pending-mac-state.queued-join-accept.keys.app-s-key.encrypted-key bytesHex                          
+      --pending-mac-state.queued-join-accept.keys.app-s-key.kek-label string                                
+      --pending-mac-state.queued-join-accept.keys.app-s-key.key 16-bytes                                    
+      --pending-mac-state.queued-join-accept.keys.f-nwk-s-int-key.key 16-bytes                              
+      --pending-mac-state.queued-join-accept.keys.nwk-s-enc-key.key 16-bytes                                
+      --pending-mac-state.queued-join-accept.keys.s-nwk-s-int-key.key 16-bytes                              
+      --pending-mac-state.queued-join-accept.keys.session-key-id bytesBase64                                
+      --pending-mac-state.queued-join-accept.net-id 3-bytes                                                 
+      --pending-mac-state.queued-join-accept.payload bytesBase64                                            
+      --pending-mac-state.queued-join-accept.request.cf-list.ch-masks bools                                 
+      --pending-mac-state.queued-join-accept.request.cf-list.freq uint32Slice                               
+      --pending-mac-state.queued-join-accept.request.cf-list.type string                                    allowed values: FREQUENCIES, CHANNEL_MASKS
+      --pending-mac-state.queued-join-accept.request.downlink-settings.opt-neg                              
+      --pending-mac-state.queued-join-accept.request.downlink-settings.rx1-dr-offset string                 allowed values: 0, DATA_RATE_OFFSET_0, 1, DATA_RATE_OFFSET_1, 2, DATA_RATE_OFFSET_2, 3, DATA_RATE_OFFSET_3, 4, DATA_RATE_OFFSET_4, 5, DATA_RATE_OFFSET_5, 6, DATA_RATE_OFFSET_6, 7, DATA_RATE_OFFSET_7
+      --pending-mac-state.queued-join-accept.request.downlink-settings.rx2-dr string                        allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --pending-mac-state.queued-join-accept.request.rx-delay string                                        allowed values: 0, RX_DELAY_0, 1, RX_DELAY_1, 2, RX_DELAY_2, 3, RX_DELAY_3, 4, RX_DELAY_4, 5, RX_DELAY_5, 6, RX_DELAY_6, 7, RX_DELAY_7, 8, RX_DELAY_8, 9, RX_DELAY_9, 10, RX_DELAY_10, 11, RX_DELAY_11, 12, RX_DELAY_12, 13, RX_DELAY_13, 14, RX_DELAY_14, 15, RX_DELAY_15
+      --pending-mac-state.recent-mac-command-identifiers strings                                            allowed values: CID_RFU_0, CID_RESET, CID_LINK_CHECK, CID_LINK_ADR, CID_DUTY_CYCLE, CID_RX_PARAM_SETUP, CID_DEV_STATUS, CID_NEW_CHANNEL, CID_RX_TIMING_SETUP, CID_TX_PARAM_SETUP, CID_DL_CHANNEL, CID_REKEY, CID_ADR_PARAM_SETUP, CID_DEVICE_TIME, CID_FORCE_REJOIN, CID_REJOIN_PARAM_SETUP, CID_PING_SLOT_INFO, CID_PING_SLOT_CHANNEL, CID_BEACON_TIMING, CID_BEACON_FREQ, CID_DEVICE_MODE, CID_RELAY_CONF, CID_RELAY_END_DEVICE_CONF, CID_RELAY_FILTER_LIST, CID_RELAY_UPDATE_UPLINK_LIST, CID_RELAY_CTRL_UPLINK_LIST, CID_RELAY_CONFIGURE_FWD_LIMIT, CID_RELAY_NOTIFY_NEW_END_DEVICE
+      --pending-mac-state.rejected-adr-data-rate-indexes strings                                            allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
+      --pending-mac-state.rejected-adr-tx-power-indexes uint32Slice                                         
+      --pending-mac-state.rejected-frequencies uint64Slice                                                  
+      --pending-mac-state.rx-windows-available                                                              
+      --pending-session.dev-addr 4-bytes                                                                    
+      --pending-session.keys.f-nwk-s-int-key.key 16-bytes                                                   
+      --pending-session.keys.nwk-s-enc-key.key 16-bytes                                                     
+      --pending-session.keys.s-nwk-s-int-key.key 16-bytes                                                   
+      --pending-session.keys.session-key-id bytesBase64                                                     
+      --provisioner-id string                                                                               
+      --resets-join-nonces                                                                                  
+      --root-keys.app-key.key 16-bytes                                                                      
+      --root-keys.nwk-key.key 16-bytes                                                                      
+      --root-keys.root-key-id string                                                                        
+      --serial-number string                                                                                
+      --service-profile-id string                                                                           
+      --session.dev-addr 4-bytes                                                                            
+      --session.keys.app-s-key.key 16-bytes                                                                 
+      --session.keys.f-nwk-s-int-key.key 16-bytes                                                           
+      --session.keys.nwk-s-enc-key.key 16-bytes                                                             
+      --session.keys.s-nwk-s-int-key.key 16-bytes                                                           
+      --session.keys.session-key-id bytesBase64                                                             
+      --session.last-a-f-cnt-down uint32                                                                    
+      --session.last-conf-f-cnt-down uint32                                                                 
+      --session.last-f-cnt-up uint32                                                                        
+      --session.last-n-f-cnt-down uint32                                                                    
+      --session.started-at timestamp                                                                        
+      --skip-payload-crypto                                                                                 
+      --skip-payload-crypto-override                                                                        
+      --supports-class-b                                                                                    
+      --supports-class-c                                                                                    
+      --supports-join                                                                                       
+      --used-dev-nonces uint32Slice                                                                         
+      --version-ids.band-id string                                                                          
+      --version-ids.brand-id string                                                                         
+      --version-ids.firmware-version string                                                                 
+      --version-ids.hardware-version string                                                                 
+      --version-ids.model-id string                                                                         
 </code></pre><h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
 <pre tabindex="0"><code>      --allow-unknown-hosts                             Allow sending credentials to unknown hosts
       --application-server-enabled                      Application Server enabled (default true)
