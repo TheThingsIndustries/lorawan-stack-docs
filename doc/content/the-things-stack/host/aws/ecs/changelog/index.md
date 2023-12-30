@@ -9,6 +9,21 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.28.2
+
+### Proxy
+
+- Add Network Operations Center Grafana WebSocket paths support.
+
+### `4-2b-configuration-rate-limiting`
+
+- Add OAuth server and Account app rate limiting.
+- Add Azure IoT Hub and Central rate limiting overrides.
+
+### `5-9a-sqs`
+
+- Add new optional template for AWD SQS.
+
 ## 3.28.1
 
 ### Proxy

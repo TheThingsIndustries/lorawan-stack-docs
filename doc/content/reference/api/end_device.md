@@ -526,9 +526,9 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="ServingRelayParameters" >}}
 
-{{< proto/message message="ServingRelayParameters.UplinkForwardingRule" >}}
+{{< proto/message message="RelayUplinkForwardingRule" >}}
 
-{{< proto/message message="ServingRelayParameters.ForwardingLimits" >}}
+{{< proto/message message="ServingRelayForwardingLimits" >}}
 
 {{< proto/message message="Session" >}}
 
