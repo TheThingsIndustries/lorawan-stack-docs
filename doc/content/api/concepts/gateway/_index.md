@@ -34,8 +34,8 @@ Gateways can connect using the username `{gateway-id}@{tenant-id}` and an API ke
 
 <div class="fixed-table table-api">
 
-| Topic                                | Message                                           | Description |
-| ------------------------------------ | ------------------------------------------------- | ----------- |
+| Topic                                | Message                                           |
+| ------------------------------------ | ------------------------------------------------- |
 | `v3/{gateway-id}@{tenant-id}/up`     | Publish an uplink message to the network          |
 | `v3/{gateway-id}@{tenant-id}/status` | Publish a status message to the network           |
 | `v3/{gateway-id}@{tenant-id}/down`   | Subscribe to downlink messages                    |

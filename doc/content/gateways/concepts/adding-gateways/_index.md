@@ -2,7 +2,12 @@
 title: "Adding Gateways"
 description: ""
 weight: -2
-aliases: [/gateways/adding-gateways, /the-things-stack/interact/cli/create-gateway, /the-things-stack/interact/console/create-gateway]
+aliases:
+  [
+    /gateways/adding-gateways,
+    /the-things-stack/interact/cli/create-gateway,
+    /the-things-stack/interact/console/create-gateway,
+  ]
 ---
 
 This section contains instructions for adding Gateways in {{%tts%}}.
@@ -19,7 +24,7 @@ If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "the-thin
 
 Adding gateways using the Console or the CLI is usually most convenient, so those methods are extensively explained in this section. However, it is also possible to add gateways [using the API]({{< ref "/the-things-stack/interact/api#register-a-gateway" >}}).
 
-{{< tabs/container "Console" "CLI" >}}
+{{< tabs/container "Console" "CLI" "HTTP(REST) API">}}
 
 {{< tabs/tab "Console" >}}
 
@@ -83,6 +88,49 @@ ttn-lw-cli gateways create $GTW_ID \
 ```
 
 This creates a gateway `gtw1` with user `admin` as collaborator, frequency plan `EU_863_870`, EUI `00800000A00009EF` and respecting duty-cycle limitations. You can now connect your gateway to {{% tts %}}.
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "HTTP(REST) API" >}}
+
+## Adding Gateways using the API
+
+###### Details
+
+<div class="fixed-table table-api-item">
+
+| Item         | Value                                                                                                                                            |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| EndPoint     | [`/users/{collaborator.user_ids.user_id}/gateways`]({{< ref "/api/reference/http/routes/#users{collaborator.user_ids.user_id}gateways-post" >}}) |
+| Request type | `POST`                                                                                                                                           |
+| Body         | [`Gateway`]({{< ref "/api/reference/http/messages/#gateway" >}})                                                                                 |
+
+</br>
+</div>
+
+###### Example
+
+To create a gateway for user `user1` on `thethings.example.com`, use the following example.
+
+`https://thethings.example.com/api/v3/users/user1/gateways`.
+
+```json
+{
+  "gateway": {
+    "ids": {
+      "eui": "1111111111111111", // Optional EUI.
+      "gateway_id": "test-gateway" // ID of the gateway. This field is mandatory.
+    },
+    "name": "My Test Gateway",
+    "frequency_plan_ids": ["EU_863_870"], // List of LoRaWAN Frequency plans.
+    "require_authenticated_connection": false,
+    "status_public": false,
+    "location_public": false,
+    "gateway_server_address": "thethings.example.com", // The address of the gateway server where the gateway connects to.
+    "enforce_duty_cycle": true // Enforcing gateway duty cycle is recommended for all gateways to respect spectrum regulations.
+  }
+}
+```
 
 {{< /tabs/tab >}}
 
@@ -152,7 +200,7 @@ You can also check the **Update from status messages** box if you want to update
 
 Once you have added your gateway to {{% tts %}}, you can also set the locations of the gateway antennas.
 
-Add an antenna and set its location  with:
+Add an antenna and set its location with:
 
 ```bash
 LAT="43.84"
@@ -179,8 +227,7 @@ The CLI will return something like:
     "gateway_id": "gtw1"
   },
   "created_at": "2020-05-27T14:43:13.606Z",
-  "version_ids": {
-  },
+  "version_ids": {},
   "auto_update": true,
   "antennas": [
     {
@@ -221,8 +268,7 @@ The CLI output will be similar to:
     "gateway_id": "gtw1"
   },
   "created_at": "2020-05-27T14:43:13.606Z",
-  "version_ids": {
-  },
+  "version_ids": {},
   "auto_update": true,
   "antennas": [
     {
