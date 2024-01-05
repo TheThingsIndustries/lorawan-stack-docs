@@ -25,7 +25,7 @@ Leave the integration page open, as you will need to copy in your **Azure IoT Hu
 
 ## Deploy Azure Resource Manager Template
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fttsiothubintegration.blob.core.windows.net%2Fintegration-releases%2Flatest%2Fmain.json" target="_blank" class="button is-primary">Deploy template</a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fttsiothubintegration.blob.core.windows.net%2Fintegration-releases%2Flatest%2Fmain.json" target="_blank" class="button is-primary is-active">Deploy template</a>
 
 View template as [JSON](https://ttsiothubintegration.blob.core.windows.net/integration-releases/latest/main.json) or [Bicep](https://ttsiothubintegration.blob.core.windows.net/integration-releases/latest/main.bicep)
 
@@ -44,7 +44,7 @@ The following parameters configure the integration:
 
 Click **Review + Create**, then **Create**.
 
-{{< note >}} Creating all resources can take up to five minutes.  ☕ {{</ note >}}
+{{< note >}} Creating all resources can take up to five minutes. ☕ {{</ note >}}
 
 When the deployment is done, you'll see the status `Your deployment is complete`.
 
