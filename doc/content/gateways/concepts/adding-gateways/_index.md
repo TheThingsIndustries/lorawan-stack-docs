@@ -104,18 +104,17 @@ This creates a gateway `gtw1` with user `admin` as collaborator, frequency plan 
 | EndPoint     | [`/users/{collaborator.user_ids.user_id}/gateways`]({{< ref "/api/reference/http/routes/#users{collaborator.user_ids.user_id}gateways-post" >}}) |
 | Request type | `POST`                                                                                                                                           |
 | Body         | [`Gateway`]({{< ref "/api/reference/http/messages/#gateway" >}})                                                                                 |
+| Return       | Created [`Gateway`]({{< ref "/api/reference/http/messages/#gateway" >}})                                                                         |
 
 </br>
 </div>
 
 ###### Example
 
-To create a gateway for user `user1` on `thethings.example.com`, use the following example.
+To create a gateway for user `user1` on `thethings.example.com`, use the following example, POST the following JSON object to `https://thethings.example.com/api/v3/users/user1/gateways`.
 
-`https://thethings.example.com/api/v3/users/user1/gateways`.
-
-```json
-{
+```bash
+curl -X POST -H $API_KEY {
   "gateway": {
     "ids": {
       "eui": "1111111111111111", // Optional EUI.

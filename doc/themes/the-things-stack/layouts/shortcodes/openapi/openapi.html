@@ -13,9 +13,29 @@
       <img src="{{ $upArrow.Permalink }}" alt="Collapse all" />
     </button>
   </div>
+  <div class="api-tags-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range $tagDetails := $openapi.tags }}
+        <tr>
+          <td>
+            <a href="#{{ $tagDetails.name }}">{{ $tagDetails.name }}</a>
+          </td>
+          <td>{{ $tagDetails.description }}</td>
+        </tr>
+        {{ end }}
+      </tbody>
+    </table>
+  </div>
   {{ range $tagDetails := $openapi.tags }} {{ $tag := $tagDetails.name }}
   <div class="api-by-tags-container">
-    <h4 class="api-tag-header" id="{{ $tag }}">{{ $tag }}</h4>
+    <span><h4 class="api-tag-header" id="{{ $tag }}">{{ $tag }}</h4></span>
     <div class="api-tag-summary">
       <p>{{ $tagDetails.description }}</p>
       {{- $downArrow := resources.Get "/img/expand_more.svg" }} {{- $upArrow :=
@@ -93,18 +113,8 @@
           <h5 class="api-item-content-section-headers">Request Body</h5>
           {{ if isset $body.schema "properties" }}
           <details>
-            <summary>Show Schema in JSON format</summary>
+            <summary>Show JSON Schema</summary>
             {{ $properties := $body.schema.properties }}
-            <!-- Add links to items that have a ref -->
-            {{ range $propertyName, $propertyDetails := $properties }} {{ if
-            isset $propertyDetails "$ref" }} {{ $ref := index $propertyDetails
-            "$ref" }} {{ $ref := replace $ref "#/definitions/" "" }} {{ $ref :=
-            replace $ref "v3" "" }} {{ $refLower := strings.ToLower $ref }}
-            <a href="/api/reference/http/messages/#{{ $refLower }}"
-              >{{ $ref }}</a
-            >
-            {{ end }} {{ end }}
-
             <pre>
 {{ $body.schema.properties |jsonify (dict "indent" "  ") }}</pre
             >
@@ -132,13 +142,14 @@
                 <td>{{ $responseCode }}</td>
                 <td>{{ $responseDetails.description }}</td>
                 <td>
-                  {{ if isset $responseDetails.schema "$ref" }} {{ $refLower :=
-                  "" }}{{ $ref := index $responseDetails.schema "$ref" }} {{
-                  $ref := replace $ref "#/definitions/" "" }} {{ $ref := replace
-                  $ref "v3" "" }} {{ $refLower := strings.ToLower $ref }}
-                  <a href="/api/reference/http/messages/#{{ $refLower }}"
-                    >{{ $ref }}</a
-                  >
+                  {{ if isset $responseDetails.schema "properties" }}
+                  <details>
+                    <summary>Show JSON Schema</summary>
+                    {{ $properties := $responseDetails.schema.properties }}
+                    <pre>
+        {{ $responseDetails.schema.properties |jsonify (dict "indent" "  ") }}</pre
+                    >
+                  </details>
                   {{ else }} None {{ end }}
                 </td>
               </tr>
@@ -151,6 +162,10 @@
     </div>
   </div>
   {{ end }}
+  <a href="#" class="api-float-button">
+    {{- $up := resources.Get "/img/point-up.png" }}
+    <img src="{{ $up.Permalink }}" alt="Back to top" />
+  </a>
 </div>
 {{- $script := resources.Get "/js/shortcodes/openapi/index.js" }}
 <script src="{{ $script.Permalink }}"></script>

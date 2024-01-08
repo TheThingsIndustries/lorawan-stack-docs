@@ -14,4 +14,4 @@ This page contains a full list of all routes supported by {{% tts %}} HTTP (REST
 
 <br>
 
-{{< openapi/openapi file="combined.swagger" >}}
+{{< openapi/openapi file="tts.swagger" >}}

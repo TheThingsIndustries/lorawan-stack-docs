@@ -2,6 +2,14 @@
 const apiTagSummary = document.getElementsByClassName("api-tag-summary")
 const apiItemSummary = document.getElementsByClassName("api-item-summary")
 
+// Onload
+window.onload = function() {
+// Jump to location in hash.
+  if (location.hash) {
+    location.replace(location.hash)
+  }
+}
+
 function collapseAll() {
   // Collapse all API Tags.
   if (apiTagSummary?.length > 0) {

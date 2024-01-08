@@ -8,4 +8,4 @@ This page lists all the message definitions used by {{% tts %}} APIs.
 
 <!--more-->
 
-{{< openapi/messages file="combined.swagger" >}}
+{{< openapi/messages file="tts.swagger" >}}
