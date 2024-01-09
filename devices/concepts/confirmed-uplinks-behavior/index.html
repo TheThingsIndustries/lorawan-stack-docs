@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Confirmed Downlinks Behavior | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/concepts/confirmed-downlinks-behavior/" />
+  <title>Confirmed Uplinks Behavior | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/concepts/confirmed-uplinks-behavior/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.de1726c1242f9c323501e9815aae8675d5d7c48960e36c2beefdc20f644452db.css" integrity="sha256-3hcmwSQvnDI1AemBWq6GddXXxIlg42wr7v3CD2REUts=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Confirmed Downlinks Behavior">
+  <meta itemprop="name" content="Confirmed Uplinks Behavior">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Confirmed Downlinks Behavior">
+  <meta property="og:title" content="Confirmed Uplinks Behavior">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/concepts/confirmed-downlinks-behavior/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/concepts/confirmed-uplinks-behavior/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Confirmed Downlinks Behavior" />
+  <meta name="twitter:title" content="Confirmed Uplinks Behavior" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -116,17 +116,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/concepts/confirmed-downlinks-behavior/" class="is-active">Confirmed Downlinks Behavior</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/devices/concepts/confirmed-downlinks-behavior/" class="">Confirmed Downlinks Behavior</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/concepts/confirmed-uplinks-behavior/" class="">Confirmed Uplinks Behavior</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/concepts/confirmed-uplinks-behavior/" class="is-active">Confirmed Uplinks Behavior</a>
+    
+    
+
+
+
     
   </li>
 
@@ -168,27 +168,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Confirmed Downlinks Behavior
+        <h1 class="title is-size-2">Confirmed Uplinks Behavior
           
         </h1>
         
         <div class="content">
-          <p>This section describes differences in behavior of class A, B and C devices when scheduling confirmed downlink messages.</p>
-<p>Let&rsquo;s consider scheduling a confirmed downlink message from the Network Server. The end device that receives this downlink is requested to send a confirmation upon its reception.</p>
-<p>To confirm a reception of the above mentioned downlink, a confirmation flag is attached to device&rsquo;s next uplink message. The confirmation flag is part of the standard LoRaWAN® frame header. If the flag is an NACK, the end device indicates that it has not previously received a downlink message that required acknowledgement. If the flag is a ACK, the end device indicates that it wants to provide the acknowledgement for the previously received downlink message that requested it. This applies to all <a href="https://www.thethingsnetwork.org/docs/lorawan/classes/">device classes</a>.</p>
-<p>In general, upon receiving the next uplink message with an ACK flag, the Network Server decrypts the uplink message and generates the <code>downlink ack</code> message. The Application Server receives the <code>downlink ack</code> message and forwards it further to the integrations.</p>
-<p>Similar to that, if the next uplink message with a NACK flag is received, the Network Server decrypts the uplink, generates the <code>downlink nack</code> message and sends it to the Application Server. The Application Server then forwards the <code>downlink nack</code> to integrations and regenerates the downlink.</p>
-<p>Sending a downlink happens only after an uplink for class A devices. If a NACK is received from a class A device, the downlink will automatically be re-encrypted and resent.</p>
-<p>On the other hand, for class B and class C devices, the server behavior for confirmed downlinks is a bit different. The difference arises from the fact that downlinks for class B and class C devices can be sent as part of the network-initiated downlink slot, without previously receiving an uplink. Uplinks, that carry the ACK/NACK flag, can be sent by these devices at irregular intervals. After the confirmed downlink is transmitted to the end device, the Network Server will not generate the <code>downlink ack/nack</code> message until the next uplink arrives, so the downlink will not be automatically resent in case the end device does not reply to the transmission.</p>
-<p>Re-attempting downlinks without constraint for class B and class C devices is a bad practice, because it might cause an infinite loop if the end device is powered off or out of the gateway range. Consequences of this practice would be creating noise in the area for no good reason, and consuming gateway&rsquo;s duty cycle.</p>
-<p>Whether a confirmed downlink will be resent and how many times depends on the application. The application can conclude if the Network Server has generated the <code>downlink ack/nack</code> message using dedicated message paths - see <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#subscribing-to-upstream-traffic">MQTT</a> or <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/format/#endpoint">Webhooks</a> documentation. If the Application Server has received the <code>downlink nack</code> message, no action is required, because the Application Server will try to resend the downlink on its own. However, if the Application Server has not received the <code>downlink ack/nack</code>, it can not decide on its own if it should retry the downlink.</p>
+          <p>This section describes LoRaWAN network behavior upon receiving confirmed uplink messages.</p>
+<p>Confirmed uplink messages have a distinct frame type, i.e. have MType (first 3 bits of <a href="https://www.thethingsnetwork.org/docs/lorawan/message-types#data-messages">MHDR field</a> set to value <code>4</code> (binary <code>100</code>).</p>
+<p>Let&rsquo;s consider the Network Server has received a confirmed uplink. The end device that sends this uplink requests to receive a confirmation upon its reception by the Network Server.</p>
+<p>To confirm a reception of the above mentioned uplink, the Network Server generates a downlink message with a confirmation <code>ACK</code> flag set to <code>1</code>. The confirmation flag is part of the standard LoRaWAN® frame header. This downlink is always a class A downlink. The Network Server will send a confirmation downlink after receiving every confirmed uplink message.</p>
+<p>If the confirmation downlink successfully reaches the end device, the device considers the uplink message confirmed.</p>
+<p>If the end device doesn&rsquo;t receive the confirmation downlink or if the Network Server doesn&rsquo;t receive the previously mentioned confirmed uplink, the end device behavior might differ depending on the LoRaWAN version:</p>
+<ul>
+<li>Devices with LoRaWAN version lower than 1.0.4 may retry sending the confirmed uplink unlimited number of times.</li>
+<li>Devices with LoRaWAN version greater or equal to 1.0.4 will retry sending the confirmed uplink at most <code>NbTrans</code> humber of times.
+Regardless of which LoRaWAN version device has, the same frame counter will be used, so The Things Stack application will see the confirmed uplink message at most once, but the Network Server might see it multiple times if it has been resent.</li>
+</ul>
+<p>As mentioned in the <a href="https://www.thethingsindustries.com/docs/devices/concepts/best-practices/#limit-transmission-length-payload-size-and-duty-cycle">Best Practices</a> section, it is advised to avoid using confirmed uplink messages except in cases where 100% assurance of transmission is required, i.e. in applications such as alarms. This especially applies to large fleets of devices. This is because in LoRaWAN deployments there&rsquo;s commonly a lot less gateways than devices, and if too many end devices send confirmed uplinks very often, there&rsquo;s a possibility of consuming the gateway&rsquo;s entire duty cycle. As a consequence of gateway not confirming confirmed uplinks, the end devices will try retransmitting confirmed uplinks which again won&rsquo;t be confirmed and so on.</p>
+<p>Using confirmed uplinks is left to the user&rsquo;s responsibility since the Network Server cannot force end devices to stop using confirmed uplinks, but some end devices have application layer commands which allow confirmed uplinks to be disabled.</p>
         </div>
           <div class="columns is-multiline">
 </div>
 
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/devices/concepts/abp-vs-otaa/">← ABP vs OTAA</a>
-<a class="button is-pulled-right" href="/docs/devices/concepts/confirmed-uplinks-behavior/">Confirmed Uplinks Behavior →</a>
+<a class="button is-pulled-left" href="/docs/devices/concepts/confirmed-downlinks-behavior/">← Confirmed Downlinks Behavior</a>
+<a class="button is-pulled-right" href="/docs/devices/concepts/device-claiming/">Device Claiming →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
