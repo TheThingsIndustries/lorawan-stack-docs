@@ -18,7 +18,7 @@ The provisioning information, such as **JoinEUI** and **DevEUI**, can be found o
 
 {{< note "The sensitive information, the **AppKey**, is provided within an Excel sheet via email to the person who purchased it." />}}
 
-The TBMS100 doesn't support onboarding with a QR code. You must proceed directly to the options **Select the end device in the LoRaWAN Device Repository** or **Enter end device specifics manually**.
+The TBMS100 doesn't support onboarding with a QR code. You must proceed directly to the options [**Select the end device in the LoRaWAN Device Repository**]({{< ref "#using-the-lorawan-device-repository" >}}) or [**Enter end device specifics manually**]({{< ref "#manually" >}}).
 
 ## Using the LoRaWAN Device Repository
 
@@ -48,7 +48,7 @@ After providing all the configurations, select the **Register end device** butto
 
 {{< figure src="tbms100-manually.png" alt="Settings for manual registration" >}}
 
-# Monitoring Live Data
+## Monitoring Live Data
 
 In both registration options, after registering the device, you will be redirected to the **Overview** tab of the **End devices** page.
 
