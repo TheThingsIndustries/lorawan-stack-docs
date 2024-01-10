@@ -12,7 +12,7 @@ The Dragino [LHT52](https://www.dragino.com/products/temperature-humidity-sensor
 
 ## Provisioning Information
 
-The provisioning information (Which includes the **JoinEUI/AppEUI**, **DevEUI** and **AppKey**) can be found on a sticker inside the box. 
+Provisioning information (The **JoinEUI/AppEUI**, **DevEUI** and **AppKey**) can be found on a sticker inside the box. 
 
 {{< figure src="lht52-prov-info.png" alt="LHT52 provisioning information" width="50%">}}
 
@@ -40,7 +40,7 @@ After configuring your device, select the **Register end device** button.
 
 {{< figure src="manual-register.png" alt="Settings for manual registration" >}}
 
-### Monitoring Live Data
+## Monitoring Live Data
 
 When your device is registered, select the **Live Data** tab to view all messages exchanged between your end device and {{% tts %}}.
 
