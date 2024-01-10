@@ -2,18 +2,26 @@
 title: "Adding Applications"
 description: ""
 weight: -1
-aliases: [/getting-started/cli/create-application, /getting-started/console/create-application, /guides/getting-started/console/create-application, /the-things-stack/interact/cli/create-application, /the-things-stack/interact/console/create-application, /guides/the-things-stack/interact/console/create-application]
+aliases:
+  [
+    /getting-started/cli/create-application,
+    /getting-started/console/create-application,
+    /guides/getting-started/console/create-application,
+    /the-things-stack/interact/cli/create-application,
+    /the-things-stack/interact/console/create-application,
+    /guides/the-things-stack/interact/console/create-application,
+  ]
 ---
 
 This section contains instructions for creating an Application.
 
 <!--more-->
 
-{{< tabs/container "Console" "CLI" >}}
+{{< tabs/container "Console" "CLI" "HTTP(REST) API" >}}
 
 {{< tabs/tab "Console" >}}
 
-## Adding Applications using the Console
+#### Adding Applications using the Console
 
 In addition to the written instructions below, a video with instructions for adding an application is available on [The Things Network youtube channel](https://youtu.be/403yK_RaONE).
 
@@ -21,7 +29,7 @@ In addition to the written instructions below, a video with instructions for add
 {{< youtube "403yK_RaONE" >}}
 </details>
 
-Go to **Applications** in the top menu, and click **+ Add Application** to reach the application registration page. Fill the application ID. The other fields are optional. 
+Go to **Applications** in the top menu, and click **+ Add Application** to reach the application registration page. Fill the application ID. The other fields are optional.
 
 Click **Create Application** to create the application.
 
@@ -35,7 +43,7 @@ Your application will be created and you will be redirected to the application o
 
 {{< tabs/tab "CLI" >}}
 
-## Adding Applications using the CLI
+#### Adding Applications using the CLI
 
 Create the first application:
 
@@ -49,6 +57,52 @@ This creates an application `app1` with the `admin` user as collaborator. Make s
 
 {{< /tabs/tab >}}
 
+{{< tabs/tab "HTTP(REST) API" >}}
+
+#### Adding Applications using the HTTP(REST) API
+
+###### Details
+
+<div class="fixed-table table-api-item">
+
+| Item         | Value                                                                                                                                                    |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| EndPoint     | [`/users/{collaborator.user_ids.user_id}/applications`]({{< ref "/api/reference/http/routes/#users{collaborator.user_ids.user_id}applications-post" >}}) |
+| Request type | `POST`                                                                                                                                                   |
+
+</br>
+</div>
+
+###### Example
+
+To create an application `my-test-app` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+
+```json
+{
+  "application": {
+    "ids": {
+      "application_id": "my-test-app"
+    },
+    "name": "My Test Application",
+    "description": "Application for my test devices",
+    "network_server_address": "thethings.example.com",
+    "application_server_address": "thethings.example.com",
+    "join_server_address": "thethings.example.com"
+  }
+}
+```
+
+The request using `cURL` is as follows.
+
+```bash
+ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./req.json \
+ https://thethings.example.com/api/v3/users/testuser/applications
+{"ids":{"application_id":"my-test-app"},"created_at":"2024-01-10T09:13:34.817772Z","updated_at":"2024-01-10T09:13:34.817773Z","name":"My Test Application","description":"Application for my test devices","administrative_contact":{"user_ids":{"user_id":"testuser"}},"technical_contact":{"user_ids":{"user_id":"testuser"}},"network_server_address":"thethings.example.com","application_server_address":"thethings.example.com","join_server_address":"thethings.example.com"}
+```
+
+{{< /tabs/tab >}}
+
 {{< /tabs/container >}}
 
 Next, see [Adding Integrations]({{< ref "/integrations/adding-integrations" >}}) to proceed with using the built-in [MQTT Server]({{< ref "/integrations/mqtt" >}}) and [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) for receiving uplink and sending downlink traffic.
@@ -59,7 +113,7 @@ End devices are also created within applications. See [Adding Devices]({{< ref "
 
 Some applications require an API Key to write downlink traffic, read uplink traffic, manage integrations, etc. In this section we explain how to create an application API key on some basic examples, but this procedure is identical for any other right as well.
 
-{{< tabs/container "Console" "CLI" >}}
+{{< tabs/container "Console" "CLI" "HTTP(REST) API">}}
 
 {{< tabs/tab "Console" >}}
 
@@ -90,6 +144,43 @@ ttn-lw-cli applications api-keys create \
 The CLI will return an API key such as `NNSXS.RLA7AGGMD5ZHBH...`. This API key has only delete rights and can therefore only be used for deleting this application. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one by following this same procedure.
 
 See the [CLI Reference]({{< ref "/ttn-lw-cli/ttn-lw-cli_applications_api-keys" >}}) for details on managing application API keys using the CLI.
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "HTTP(REST) API" >}}
+
+###### Details
+
+<div class="fixed-table table-api-item">
+
+| Item         | Value                                                                                                                                           |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| EndPoint     | [`/api/v3/gateways/{gateway_ids.gateway_id}/api-keys`]({{< ref "/api/reference/http/routes/#gateways{gateway_ids.gateway_id}api-keys-post" >}}) |
+| Request type | `POST`                                                                                                                                          |
+
+</br>
+</div>
+
+###### Example
+
+To create an API Key for the application `my-test-app` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+
+```json
+{
+  "expires_at": "2024-11-07T20:33:48.000Z",
+  "name": "Test API Key",
+  "rights": ["RIGHT_APPLICATION_DELETE"]
+}
+```
+
+The request using `cURL` is as follows.
+
+```bash
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./req.json \
+ https://thethings.example.com/api/v3/applications/my-test-app/api-keys
+{"id":"H4K2ZTXEIBZERY7R55KYMO6Y2W75UQXXKEZSAOY","key":"NNSXS.H4K2ZTXEIBZERY7R55KYMO6Y2W75UQXXKEZSAOY.6SIKPRUFYNVPEI6ACIYOEL2BY4NU3EGDXAQZ4XFPFKMDPQRNCUZA","name":"Test API Key","rights":["RIGHT_APPLICATION_DELETE"],"created_at":"2024-01-10T09:16:54.435864Z","updated_at":"2024-01-10T09:16:54.435864Z","expires_at":"2024-11-07T20:33:48Z"}
+```
 
 {{< /tabs/tab >}}
 

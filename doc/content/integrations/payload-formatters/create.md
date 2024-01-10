@@ -8,7 +8,7 @@ This section explains how to set up Payload Formatters using the Console or CLI.
 
 <!--more-->
 
-{{< tabs/container "Console" "CLI" >}}
+{{< tabs/container "Console" "CLI" "HTTP(REST) API" >}}
 
 {{< tabs/tab "Console" >}}
 
@@ -20,7 +20,7 @@ Within the **Application Overview**, select the **Payload Formatters** dropdown 
 
 Choose **Uplink** or **Downlink**.
 
-Choose a **Formatter type**. 
+Choose a **Formatter type**.
 
 See the [Javascript]({{< relref "javascript" >}}), [CayenneLPP]({{< relref "cayenne" >}}), and [Device Repository]({{< relref "device-repo" >}}) payload formatter documentation for an explanation of the diffent types of payload formatters.
 
@@ -38,7 +38,7 @@ Within the **End Device Overview**, select the **Payload Formatters** tab in the
 
 Choose **Uplink** or **Downlink**.
 
-Choose a **Formatter type**. 
+Choose a **Formatter type**.
 
 See the [Javascript]({{< relref "javascript" >}}), [CayenneLPP]({{< relref "cayenne" >}}), and [Device Repository]({{< relref "device-repo" >}}) payload formatter documentation for an explanation of the diffent types of payload formatters.
 
@@ -51,7 +51,7 @@ See the [Javascript]({{< relref "javascript" >}}), [CayenneLPP]({{< relref "caye
 We define some user parameters that will be used below:
 
 ```bash
-APP_ID="app1" 
+APP_ID="app1"
 API_KEY="NNSXS.VEEBURF3KR77ZR.."
 GTW_EUI="00800000A00009EF"
 USER_ID="admin"

@@ -20,7 +20,7 @@ In the following example, there are 10 gateways accessible by the `admin` user i
 Let's list these gateways with a limit of 2 per page.
 
 ```bash
- curl -v -H "Authorization: Bearer $API_KEY" http://thethings.localhost:1885/api/v3/users/admin/gateways\?limit\=2\&page\=1
+ curl -v -H "Authorization: Bearer $API_KEY" https://thethings.example.com/api/v3/users/admin/gateways\?limit\=2\&page\=1
 ...
 < X-Total-Count: 10
 ...
@@ -34,18 +34,18 @@ The client can use `X-Total-Count` and `limit` to calculate the number of pages 
 Now let's get the next page and the last page (5).
 
 ```bash
-curl -H "Authorization: Bearer $API_KEY" http://thethings.localhost:1885/api/v3/users/admin/gateways\?limit\=2\&page\=2
+curl -H "Authorization: Bearer $API_KEY" https://thethings.example.com/api/v3/users/admin/gateways\?limit\=2\&page\=2
 {"gateways":[{"ids":{"gateway_id":"test-0003","eui":"1111111111111113"},"created_at":"2023-11-24T10:59:52.305276Z","updated_at":"2023-11-24T10:59:52.305276Z"},{"ids":{"gateway_id":"test-0004","eui":"1111111111111114"},"created_at":"2023-11-24T10:59:58.839680Z","updated_at":"2023-11-24T10:59:58.839680Z"}]}
 ```
 
 ```bash
-curl -H "Authorization: Bearer $API_KEY" http://thethings.localhost:1885/api/v3/users/admin/gateways\?limit\=2\&page\=5
+curl -H "Authorization: Bearer $API_KEY" https://thethings.example.com/api/v3/users/admin/gateways\?limit\=2\&page\=5
 {"gateways":[{"ids":{"gateway_id":"test-0009","eui":"1111111111111119"},"created_at":"2023-11-24T11:00:26.054201Z","updated_at":"2023-11-24T11:00:26.054202Z"},{"ids":{"gateway_id":"test-000a","eui":"111111111111111A"},"created_at":"2023-11-24T11:00:42.299342Z","updated_at":"2023-11-24T11:00:42.299342Z"}]}
 ```
 
 Since there are only 5 pages for the `limit` of 2, any page number above 5 will return an empty object.
 
 ```bash
-curl -H "Authorization: Bearer $API_KEY" http://thethings.localhost:1885/api/v3/users/admin/gateways\?limit\=2\&page\=6
+curl -H "Authorization: Bearer $API_KEY" https://thethings.example.com/api/v3/users/admin/gateways\?limit\=2\&page\=6
 {}
 ```
