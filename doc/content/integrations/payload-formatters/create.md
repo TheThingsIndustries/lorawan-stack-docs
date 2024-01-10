@@ -136,4 +136,104 @@ ttn-lw-cli end-devices set $APP_ID $DEVICE_ID \
 
 {{< /tabs/tab >}}
 
+{{< tabs/tab "HTTP(REST) API" >}}
+
+## Create an Application Payload Formatter
+
+###### Details
+
+<div class="fixed-table table-api-item">
+
+| Item         | Value                                                                                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| EndPoint     | [`/as/applications/{application_ids.application_id}/link`]({{< ref "/api/reference/http/routes/#asapplications{application_ids.application_id}link-put" >}}) |
+| Request type | `PUT`                                                                                                                                                        |
+
+</br>
+</div>
+
+###### Example
+
+To set a payload formatter for an application `my-test-app` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+
+Make sure properly encode the JavaScript functions.
+
+```json
+{
+  "link": {
+    "default_formatters": {
+      "up_formatter": "FORMATTER_JAVASCRIPT",
+      "up_formatter_parameter": "function decodeUplink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  };\n}",
+      "down_formatter": "FORMATTER_JAVASCRIPT",
+      "down_formatter_parameter": "function encodeDownlink(input) {\n  return {\n    bytes: [],\n    fPort: 1,\n    warnings: [],\n    errors: []\n  };\n}\n\nfunction decodeDownlink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  }\n}"
+    }
+  },
+  "field_mask": {
+    "paths": [
+      "default_formatters.up_formatter",
+      "default_formatters.up_formatter_parameter",
+      "default_formatters.down_formatter",
+      "default_formatters.down_formatter_parameter"
+    ]
+  }
+}
+```
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./req.json \
+ https://thethings.example.com/api/v3/as/applications/my-test-app/link
+{"default_formatters":{"up_formatter":"FORMATTER_JAVASCRIPT","up_formatter_parameter":"function decodeUplink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  };\n}","down_formatter":"FORMATTER_JAVASCRIPT","down_formatter_parameter":"function encodeDownlink(input) {\n  return {\n    bytes: [],\n    fPort: 1,\n    warnings: [],\n    errors: []\n  };\n}\n\nfunction decodeDownlink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  }\n}"}}
+```
+
+## Create a Device Specific Payload Formatter
+
+###### Details
+
+<div class="fixed-table table-api-item">
+
+| Item         | Value                                                                                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| EndPoint     | [`/as/applications/{application_ids.application_id}/link`]({{< ref "/api/reference/http/routes/#asapplications{application_ids.application_id}link-put" >}}) |
+| Request type | `PUT`                                                                                                                                                        |
+
+</br>
+</div>
+
+###### Example
+
+To set a payload formatter for an end device `my-test-device` on application `my-test-app` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+
+Make sure properly encode the JavaScript functions.
+
+```json
+{
+  "link": {
+    "default_formatters": {
+      "up_formatter": "FORMATTER_JAVASCRIPT",
+      "up_formatter_parameter": "function decodeUplink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  };\n}",
+      "down_formatter": "FORMATTER_JAVASCRIPT",
+      "down_formatter_parameter": "function encodeDownlink(input) {\n  return {\n    bytes: [],\n    fPort: 1,\n    warnings: [],\n    errors: []\n  };\n}\n\nfunction decodeDownlink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  }\n}"
+    }
+  },
+  "field_mask": {
+    "paths": [
+      "default_formatters.up_formatter",
+      "default_formatters.up_formatter_parameter",
+      "default_formatters.down_formatter",
+      "default_formatters.down_formatter_parameter"
+    ]
+  }
+}
+```
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./req.json \
+ https://thethings.example.com/api/v3/as/applications/my-test-app/devices/my-test-device
+{"ids":{"device_id":"my-test-device","application_ids":{"application_id":"my-test-app"}},"created_at":"2024-01-10T14:11:53.817139Z","updated_at":"2024-01-10T14:11:53.817139Z","formatters":{"up_formatter":"FORMATTER_JAVASCRIPT","up_formatter_parameter":"function decodeUplink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  };\n}","down_formatter":"FORMATTER_JAVASCRIPT","down_formatter_parameter":"function encodeDownlink(input) {\n  return {\n    bytes: [],\n    fPort: 1,\n    warnings: [],\n    errors: []\n  };\n}\n\nfunction decodeDownlink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  }\n}"}}
+```
+
+{{< /tabs/tab >}}
+
 {{< /tabs/container >}}

@@ -13,7 +13,7 @@ When registering end devices, we recommend registering them in the following ord
 - `NsEndDeviceRegistry.Set` (Network Server)
 - `AsEndDeviceRegistry.Set` (Application Server)
 
-Check out [Using the API]({{< ref "/the-things-stack/interact/api#multi-step-actions" >}}) subsection for an example on how to register a device via API.
+Check out the [devices]({{< ref "/devices/adding-devices/manual" >}}) subsection for an example on how to register a device via API.
 
 When deleting end devices, we recommend deleting them in the reverse order.
 

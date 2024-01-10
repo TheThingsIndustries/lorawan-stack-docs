@@ -97,7 +97,7 @@ Without the field masks specified, this request would not return the `name`, `de
 
 {{< note >}} Keep in mind that application ID (`application_ids.application_id`), end device ID (`device_id`), AppEUI/JoinEUI (`join_eui`), DevEUI (`dev_eui`) and API key IDs cannot be updated after creation. These fields are part of the allowed field mask, but they can only be used at creation, after which they can no longer be changed.
 
-For example, to properly register an end device in {{% tts %}} like described in the [Using the API]({{< ref "/the-things-stack/interact/api#multi-step-actions" >}}) section, it is necessary to set the `dev_eui` field to device's DevEUI. However, updating the DevEUI after device is created will not be possible, i.e. will fail with the `forbidden path(s) in field mask` error. {{</ note >}}
+For example, to properly register an end device in {{% tts %}} like described in the [devices]({{< ref "/devices/adding-devices/manual" >}}) section, it is necessary to set the `dev_eui` field to device's DevEUI. However, updating the DevEUI after device is created will not be possible, i.e. will fail with the `forbidden path(s) in field mask` error. {{</ note >}}
 
 To update fields, the field mask must also be specified in the JSON object (query parameters do not work for `PUT` requests). The field mask has the following format:
 

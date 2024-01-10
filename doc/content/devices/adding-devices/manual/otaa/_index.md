@@ -110,23 +110,147 @@ The end device should now be able to join the private network.
 
 {{% tts %}} stores end device data on the Identity Server, Application Server, Network Server and optionally the Join Server.
 
-First let's create an application.
+{{< note >}} These examples only set a few basic fields. For the full list of customization options, check the linked references. {{</ note >}}
 
-http://localhost:1313/api/reference/http/routes/#users{collaborator.user_ids.user_id}applications-post.
+Make sure to follow the same order in creating the devices across the servers.
+
+First, create the device on the Identity Server. Create an `is.json` file in the same folder.
 
 ```json
 {
-  "application": {
+  "end_device": {
     "ids": {
-      "application_id": "test-app"
+      "device_id": "test-device",
+      "dev_eui": "0000000000000011",
+      "join_eui": "1111111111111111"
     },
-    "name": "Test Application",
-    "description": "Test Application",
-    "network_server_address": "thethings.localhost",
-    "application_server_address": "thethings.localhost",
-    "join_server_address": "thethings.localhost"
+    "join_server_address": "thethings.example.com",
+    "network_server_address": "thethings.example.com",
+    "application_server_address": "thethings.example.com"
+  },
+  "field_mask": {
+    "paths": [
+      "join_server_address",
+      "network_server_address",
+      "application_server_address",
+      "ids.dev_eui",
+      "ids.join_eui"
+    ]
   }
 }
+```
+
+Then make a `POST` request to the [`/api/v3/applications/{end_device.ids.application_ids.application_id}/devices`]({{< ref "/api/reference/http/routes/#applications{end_device.ids.application_ids.application_id}devices-post" >}}) end point.
+
+```bash
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./is.json \
+ https://thethings.example.com/api/v3/applications/my-test-app/devices
+{"ids":{"device_id":"test-device","application_ids":{"application_id":"my-test-app"},"dev_eui":"0000000000000011","join_eui":"1111111111111111"},"created_at":"2024-01-10T14:26:18.084008Z","updated_at":"2024-01-10T14:26:18.084009Z","version_ids":{},"network_server_address":"thethings.example.com","application_server_address":"thethings.example.com","join_server_address":"thethings.example.com","lora_alliance_profile_ids":{}}%
+```
+
+Next create the device on the Join Server. Create a `js.json` file with the following example contents. Note that this is the only server where you should set the device root keys on.
+
+```json
+{
+  "end_device": {
+    "ids": {
+      "device_id": "test-device",
+      "dev_eui": "0000000000000011",
+      "join_eui": "1111111111111111"
+    },
+    "network_server_address": "thethings.example.com",
+    "application_server_address": "thethings.example.com",
+    "root_keys": {
+      "app_key": {
+        "key": "11223344556677881122334455667788"
+      }
+    }
+  },
+  "field_mask": {
+    "paths": [
+      "network_server_address",
+      "application_server_address",
+      "ids.device_id",
+      "ids.dev_eui",
+      "ids.join_eui",
+      "root_keys.app_key.key"
+    ]
+  }
+}
+```
+
+Make a `PUT` request to the [`/api/v3/js/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}`]({{< ref "/api/reference/http/routes/#jsapplications{end_device.ids.application_ids.application_id}devices{end_device.ids.device_id}-put" >}}) end point.
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./js.json \
+ https://thethings.example.com/api/v3/js/applications/my-test-app/devices/test-device
+{"ids":{"device_id":"test-device","application_ids":{"application_id":"my-test-app"},"dev_eui":"0000000000000011","join_eui":"1111111111111111"},"created_at":"2024-01-10T14:30:01.564243Z","updated_at":"2024-01-10T14:30:01.564243Z","network_server_address":"thethings.example.com","application_server_address":"thethings.example.com","root_keys":{"app_key":{"key":"11223344556677881122334455667788"}}}
+```
+
+Now create the device on the Network Server. Create an `ns.json` file with the following example contents. Note that you need to set the correct LoRaWAN settings for the device on the Network Server.
+
+```json
+{
+  "end_device": {
+    "supports_join": true,
+    "lorawan_version": "1.0.2",
+    "ids": {
+      "device_id": "test-device",
+      "dev_eui": "0000000000000011",
+      "join_eui": "1111111111111111"
+    },
+    "lorawan_phy_version": "1.0.2-b",
+    "frequency_plan_id": "EU_863_870_TTN"
+  },
+  "field_mask": {
+    "paths": [
+      "supports_join",
+      "lorawan_version",
+      "ids.device_id",
+      "ids.dev_eui",
+      "ids.join_eui",
+      "lorawan_phy_version",
+      "frequency_plan_id"
+    ]
+  }
+}
+```
+
+Make a `PUT` request to the [`/api/v3/ns/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}`]({{< ref "/api/reference/http/routes/#nsapplications{end_device.ids.application_ids.application_id}devices{end_device.ids.device_id}-put" >}}) end point.
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./req.json \
+ https://thethings.example.com/api/v3/ns/applications/my-test-app/devices/test-device
+{"ids":{"device_id":"test-device","application_ids":{"application_id":"my-test-app"},"dev_eui":"0000000000000011","join_eui":"1111111111111111"},"created_at":"2024-01-10T14:34:54.493279Z","updated_at":"2024-01-10T14:34:54.493279Z","lorawan_version":"MAC_V1_0_2","lorawan_phy_version":"PHY_V1_0_2_REV_B","frequency_plan_id":"EU_863_870_TTN","supports_join":true}
+```
+
+Now create the device on the Application Server. Create an `as.json` file with the following example contents.
+
+```json
+{
+  "end_device": {
+    "ids": {
+      "device_id": "test-device",
+      "dev_eui": "0000000000000011",
+      "join_eui": "1111111111111111"
+    }
+  },
+  "field_mask": {
+    "paths": ["ids.device_id", "ids.dev_eui", "ids.join_eui"]
+  }
+}
+```
+
+Make a `PUT` request to the [`/api/v3/as/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}`]({{< ref "/api/reference/http/routes/#asapplications{end_device.ids.application_ids.application_id}devices{end_device.ids.device_id}-put" >}}) end point.
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./req.json \
+ https://thethings.example.com/api/v3/as/applications/my-test-app/devices/test-device
+{"ids":{"device_id":"test-device","application_ids":{"application_id":"my-test-app"},"dev_eui":"0000000000000011","join_eui":"1111111111111111"},"created_at":"2024-01-10T14:37:56.826742Z","updated_at":"2024-01-10T14:37:56.826742Z"}%
 ```
 
 {{< /tabs/tab >}}
