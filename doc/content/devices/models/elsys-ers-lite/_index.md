@@ -11,12 +11,12 @@ The [Elsys ERS Lite](https://www.elsys.se/en/ers-lite/) is an indoor environment
 <!--more-->
 
 ## Provisioning Information
+
 The provisioning information, **DevEUI**, can be found on the back of the device. You can use all zeros as the **JoinEUI**. The **AppKey** can be generated within {{% tts %}}.
 
 {{< figure src="elsys-ers-lite-back.png" alt="Elsys ERS Lite provisioning information" >}}
 
-
-{{< note "Elsys ERS Lite doesn’t have a QR code that supports {{% tts %}} for extracting provisioning information." />}}
+{{< note "Elsys ERS Lite cannot be onboarded to {{% tts %}} using QR code." />}}
 
 ## Onboarding to {{% tts %}}
 
