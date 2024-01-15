@@ -12,7 +12,7 @@ The [Milesight EM300-TH](https://www.milesight.com/iot/product/lorawan-sensor/em
 
 ## Provisioning Information
 
-The provisioning information, **DevEUI**, can be found on the back of the device. You can use `24E124C0002A0001` as the **JoinEUI**. The **AppKey** can be auto-generated within {{% tts %}}.
+The provisioning information, **DevEUI**, can be found on the back of the device. You can use `24E124C0002A0001` as the **JoinEUI**. The **AppKey** will be received through an email after purchasing the device.
 
 {{< figure src="milesight-EM300-TH-back.png" alt="EM300-TH provisioning information" >}}
 
