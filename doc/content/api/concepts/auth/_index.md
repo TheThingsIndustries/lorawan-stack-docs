@@ -9,7 +9,7 @@ aliases: ["reference/api/concepts/authentication"]
 
 <!--more-->
 
-{{% tts %}} **API keys** are the most commonly used method to authenticate and authorize API calls. This guide how to create API keys, assign rights to them and use them to authenticate an API call. For OAuth access tokens and Session cookies, check the specific guides at the end of this page.
+{{% tts %}} **API keys** are the most commonly used method to authenticate and authorize API calls. This guide shows you how to create API keys, assign rights to them and use them to authenticate API calls. For OAuth access tokens and Session cookies, check the specific guides at the end of this page.
 
 ### What are API Keys
 
@@ -43,9 +43,9 @@ API Keys _by default do not have_ an expiry date. These have to be set explicitl
 
 Authentication is the process of verifying the _identity_ of the caller. If the caller provides a valid, non-expired API key, the caller is authenticated.
 
-Authorization is the process of determining _access rights_ of an authenticated caller. {{% tts %}} handles authorization using Rights. Each API key is assigned a set of rights and {{% tts %}} checks this against the API call being made. For example, if the API call is to update a user but the key only has rights to read users, then this call will be rejected.
+Authorization on the other hand, is the process of determining if the authenticated caller has the _necessary rights_ to perfrom the requested action. {{% tts %}} handles authorization using Rights. Each API key is assigned a set of rights and {{% tts %}} checks this against the API call being made. For example, if the API call is to update a user but the API key only has rights to read users, then this call will be rejected.
 
-For a full list of available rights, check the [reference]({{< ref "/api/reference/grpc/application" >}}).
+For a full list of available rights, check the [reference]({{< ref "/api/reference/grpc/user" >}}).
 
 ### Creating User API Keys
 
@@ -120,6 +120,6 @@ If you are using [Postman](https://www.postman.com/) to make API calls, in the *
 
 {{< figure src="postman-api-key.png" alt="Postman API key" >}}
 
-If you have now created an API Key, the you can go ahead to the [fieldmasks]({{< ref "/api/concepts/fieldmasks" >}}) section.
+Now that you have learnt about API keys, you can proceed to the [fieldmasks]({{< ref "/api/concepts/fieldmasks" >}}) section.
 
 Alternatively, look at how to work with OAuth access tokens and Session cookies in the guides below.

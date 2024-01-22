@@ -1,16 +1,5 @@
-{{ $openapi := .Get "file" | index .Site.Data.api.openapi }}
+{{ $openapi := .Get "file" | index .Site.Data.api }}
 <div>
-  <div class="api-messages-selector-container">
-    <div class="select">
-      <select id="api-messages-selector" onchange="jumpToMessage()">
-        <option value="">Select a message</option>
-        {{- range $key, $value := $openapi.definitions }} {{ $k := replace $key
-        "v3" "" }}
-        <option value="{{ $key }}">{{ $k }}</option>
-        {{- end }}
-      </select>
-    </div>
-  </div>
   <div id="api-messages-container" class="api-messages-container">
     {{- range $key, $value := $openapi.definitions }} {{ $k := replace $key "v3"
     "" }} {{ $lowerKey := lower $k }}
@@ -107,6 +96,4 @@
       <img src="{{ $up.Permalink }}" alt="Back to top" />
     </a>
   </div>
-  {{- $script := resources.Get "/js/shortcodes/openapi/messages.js" }}
-  <script src="{{ $script.Permalink }}"></script>
 </div>

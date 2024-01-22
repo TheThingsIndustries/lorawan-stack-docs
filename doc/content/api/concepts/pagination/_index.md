@@ -49,3 +49,5 @@ Since there are only 5 pages for the `limit` of 2, any page number above 5 will 
 curl -H "Authorization: Bearer $API_KEY" https://thethings.example.com/api/v3/users/admin/gateways\?limit\=2\&page\=6
 {}
 ```
+
+Next, we look at the errors that the {{% tts %}} API can return.

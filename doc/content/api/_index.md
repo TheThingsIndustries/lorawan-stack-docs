@@ -18,8 +18,8 @@ menu:
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
 | [HTTP (REST)]({{< ref "/api/reference/http" >}}) | {{% tts %}} HTTP (REST) APIs are primarily used for managing entities (ex: Devices, gateways, users, organizations etc). |
 | [gRPC]({{< ref "/api/reference/grpc" >}})        | {{% tts %}} backend components communicate with each other primarily using [gRPC](https://grpc.io/).                     |
-| [Gateway]({{< ref "/api/concepts/gateway" >}})   | APIs via with Gateways communicate with {{% tts %}}.                                                                     |
-| [Application]({{< ref "/integrations" >}})       | APIs for external services to read/receive application data and send downlinks to devices.                               |
+| [LoRaWAN® Gateway]({{< ref "/reference/lbs" >}}) | APIs for LoRaWAN® Gateways to communicate with {{% tts %}}.                                                              |
+| [Data Plane]({{< ref "/integrations" >}})        | APIs to read/receive application data and send downlinks to devices.                                                     |
 
 </div>
 

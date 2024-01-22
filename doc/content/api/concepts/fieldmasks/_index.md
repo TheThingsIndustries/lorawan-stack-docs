@@ -5,11 +5,11 @@ weight: 2
 aliases: ["reference/api/field-mask"]
 ---
 
-{{% tts %}} APIs use field masks to specify a subset of fields that should be returned by a reading request, or to specify fields that should be updated in a writing request.
+{{% tts %}} APIs use field masks (on supported APIs) to specify a subset of fields that should be returned by a reading request, or updated in a writing request.
 
 <!--more-->
 
-API request messages which support a `field_mask` field support selecting fields to operate on. By default, these API requests will not return or update most fields, unless they are specified in a field mask.
+These requests support a `field_mask` field for selecting fields to operate on. By default, these API requests will not return or update most fields, unless they are specified in a field mask.
 
 The following fields are **always returned**:
 
@@ -20,7 +20,7 @@ The following fields are **always returned**:
 
 All other fields are **not returned** and **not updated**, unless specified. Fields that are empty or zero are not returned, even if they are specified in a field mask.
 
-{{% tts %}} field masks are based on Google's [Protocol Buffers reference](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask). Note that Google's Protocol Buffers return **all** available fields if no field mask is specified, but {{% tts %}} API does **not** work this way, and no fields except the above mentioned are returned if no field mask is specified.
+{{< note "{{% tts %}} field masks are based on Google's [Protocol Buffers reference](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask). Note that Google's Protocol Buffers return **all** available fields if no field mask is specified, but {{% tts %}} API does **not** work this way, and no fields except the above mentioned are returned if no field mask is specified." />}}
 
 ## Fields and Field Masks in HTTP (REST) Queries
 
@@ -227,3 +227,5 @@ curl --location \
 {{< /tabs/tab >}}
 
 {{< /tabs/container >}}
+
+The next section explains how to control the amount of data returned by {{% tts %}} APIs using pagination.
