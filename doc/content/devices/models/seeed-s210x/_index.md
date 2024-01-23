@@ -14,13 +14,21 @@ The Seeed Studio [S210x Series](https://www.seeedstudio.com/SenseCAP-S2100-LoRaW
 
 To acquire the provisioning information and properly setup the sensor you must download the **SenseCap Mate** App from the Play Store or the App Store on your phone.
 
-After opening the app follow the instructions EXPAND ON THIS
+After opening the app it will ask you to log in/create an account, but you can click on **Skip** in the top right if you don't wish to sign up.
 
-{{< note "The S210x does not support onboarding with a QR code. You can onboard it in the section below." />}}
+Then click the device you wish to connect to (either the **S210x Sensor** or the **S2100 Data Logger**) and select configuration mode: **Advanced Configuration**. 
+
+The app then explains how to enter bluetooth pairing mode. **Press and hold the button under the device for 3 seconds and release when it starts to blink**. Once done click **Device is ready for configuration**. It will then proceed to scan for the device, and it should show up in the list. Click on **your device's serial number** to proceed.
+
+Once in the menu of the device select the tab **Settings**. After that click on the dropdown for **Platform**. Here you must select **The Things Network**. Make sure the **Frequency Plan** is correct as well. Finally, copy the **Device EUI, AppEUI and AppKey** and save them somewhere. We will need these for onboarding.
+
+{{< figure src="sensecap-app-settings.png" alt="Settings tab of the device." width="40%">}}
 
 ## Onboarding to {{% tts %}}
 
 The device can be onboarded using the **Device Repository** or by **manually** entering the specific information.
+
+{{< note "The S210x does not support onboarding with a QR code." />}}
 
 The [LoRaWAN® Device repository](https://github.com/TheThingsNetwork/lorawan-devices) comprises over 600 end-device profiles, including the Seeed Studio, which enables quick and easy registration with {{% tts %}}.
 
