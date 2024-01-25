@@ -30,7 +30,7 @@ You can find the datasheet [here](https://www.thethingsnetwork.org/docs/gateways
 {{< note >}}
 The Gateway EUI can be found on the back of your gateway, where it is the first code after the `(92)`, but you need to <u>add</u> `FFFE` <u>after the first 6 characters</u> to make it a 16 character Gateway EUI.  
 
-*Example: EUI **58A0CB123456** would become **58A0CBFFFE123456**.*
+*Example: EUI 58A0CB123456 would become 58A0CB**FFFE**123456.*
 
 The gateway EUI can later be found at the bottom in the WiFi setup screen.
 
