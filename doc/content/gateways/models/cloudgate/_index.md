@@ -1,7 +1,9 @@
 ---
 title: "CloudGate"
-description: ""
+vendor: "Option"
+description: "Option Wireless Technology’s CloudGate is the carrier-approved IoT solution platform that delivers device connectivity, security and processing power for global IoT applications."
 aliases: [/gateways/cloudgate]
+image: [./CloudGate.png]
 ---
 
 {{< figure src="CloudGate.png" alt="CloudGate Gateway" class="float plain" >}}

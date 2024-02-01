@@ -1,6 +1,9 @@
 ---
 title: COTX X1
+vendor: COTX
+description: "COTX X1 is a standard LoRaWAN® indoor gateway. It is easy to install and deploy, highly compatible and has a user-friendly interface. COTX offers rich software tools, powerful back office management and technical support."
 aliases: [/gateways/cotx/x1]
+image: [./X1_1.png]
 ---
 
 COTX X1 is a standard LoRaWAN® indoor gateway. It is easy to install and deploy, highly compatible and has a user-friendly interface. COTX offers rich software tools, powerful back office management and technical support.

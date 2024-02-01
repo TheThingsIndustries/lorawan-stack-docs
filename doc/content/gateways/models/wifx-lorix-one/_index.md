@@ -1,6 +1,8 @@
 ---
 title: "Wifx LORIX One"
-description: ""
+vendor: "Wifx"
+description: "The LORIX One is a robust and professional grade outdoor LoRaWAN® gateway in an ultra compact form factor, designed and assembled in Switzerland."
+image: [./lorix-one.png]
 ---
 
 {{< figure src="lorix-one.png" alt="LORIX One" class="plain float" >}}

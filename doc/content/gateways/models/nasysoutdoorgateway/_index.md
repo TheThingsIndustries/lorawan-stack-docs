@@ -1,8 +1,12 @@
 ---
 title: "NASys LoRaWAN Outdoor Gateway"
-description: ""
+vendor: "NASys"
+description: "NASys LoRaWAN Outdoor Gateway is an 8 Channel LoRaWAN gateway."
 aliases: [/gateways/nasysoutdoorgateway]
+image: [./IX1001.png]
 ---
+
+{{< figure src="IX1001.png" alt="NASys LoRaWAN Outdoor Gateway" class="float plain" >}}
 
 This page guides you to connect NASys LoRaWAN® Outdoor Gateway to {{% tts %}}.
 

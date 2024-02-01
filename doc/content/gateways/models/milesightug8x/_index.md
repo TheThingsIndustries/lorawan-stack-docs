@@ -1,7 +1,9 @@
 ---
 title: "Milesight UG8X LoRaWAN Gateway"
-description: ""
+vendor: "Milesight"
+description: "The Milesight UG8X is a series of 2 robust 8-channel (16-channel optional) LoRaWAN® gateways for industrial IoT applications."
 aliases: [/gateways/milesightug8x]
+image: [./ug8x.png]
 ---
 
 {{< figure src="ug8x.png" alt="Milesight IoT UG8x" class="plain float" >}}

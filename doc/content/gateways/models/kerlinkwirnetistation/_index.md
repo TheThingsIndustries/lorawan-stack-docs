@@ -1,7 +1,9 @@
 ---
 title: "Kerlink Wirnet iStation"
-description: ""
+vendor: "Kerlink"
+description: "he Kerlink Wirnet iStation is an outdoor LoRaWAN® gateway. It offers cellular (4G with 3G/2G fallback) and Ethernet backhauls, as well as fully integrated internal GPS, 4G and LoRa antennas."
 aliases: [/guides/connecting-gateways/kerlinkwirnetistation, /gateways/kerlinkwirnetistation]
+image: [./Kerlink-Wirnet-iStation.png]
 ---
 
 {{< figure src="Kerlink-Wirnet-iStation.png" alt="Kerlink Wirnet iStation" class="float plain" >}}

@@ -1,8 +1,12 @@
 ---
 title: "MikroTik Routerboard wAP LoRa8 kit"
-description: ""
+vendor: "MikroTik"
+description: "MikroTik Routerboard wAP LoRa8 kit is a LoRaWAN® gateway that contains a pre-installed UDP packet forwarder and an outdoor weatherproof wireless access point with 2.4 GHz WLAN interface and Ethernet port that could be used as a backend."
 aliases: ["/gateways/mikrotikrouterboard"]
+image: [./lr8_kit.png]
 ---
+
+{{< figure src="lr8_kit.png" alt="lr8 Kit" class="plain float" width="30%" >}}
 
 MikroTik Routerboard wAP LoRa8 kit is a LoRaWAN® gateway that contains a pre-installed UDP packet forwarder and an outdoor weatherproof wireless access point with 2.4 GHz WLAN interface and Ethernet port that could be used as a backend.
 
@@ -10,7 +14,7 @@ This guide shows how to connect this gateway to {{% tts %}}.
 
 <!--more-->
 
-Its technical specifications can be found in [the MikroTik official documentation](https://mikrotik.com/product/wap_lora8_kit).
+Its technical specifications can be found in [the MikroTik official documentation](https://mikrotik.com/product/wap_lr8_kit).
 
 {{< warning >}} Currently, this gateway does not support changing frequency channels. {{</ warning >}}
 
