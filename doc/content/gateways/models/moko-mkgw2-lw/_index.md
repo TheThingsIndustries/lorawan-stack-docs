@@ -1,7 +1,10 @@
 ---
 title: "MOKOSMART MKGW2-LW LoRaWAN® Gateway"
 vendor: "MOKOSMART"
+vendor_page: "https://www.mokosmart.com/lorawan-gateway-mkgw2-lw/"
 description: "MOKOSMART's 8 channel MKGW2 gateway is embedded with Semtech’s high performance multi-channel transceiver SX1301/SX1257 and MTK platform. It is for indoor use and is easy to install."
+ip_rating: "IP66"
+backhaul: ["Ethernet", "Wi-Fi"]
 aliases: [/gateways/moko-mkgw2-lw]
 image: [mkgw2-lw.jpg]
 ---

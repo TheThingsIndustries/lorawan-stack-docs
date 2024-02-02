@@ -1,7 +1,10 @@
 ---
 title: "CloudGate"
 vendor: "Option"
+vendor_page:
 description: "Option Wireless Technology’s CloudGate is the carrier-approved IoT solution platform that delivers device connectivity, security and processing power for global IoT applications."
+ip_rating:
+backhaul: ["Ethernet", "Wi-Fi (add-on)", "Cellular (add-on)"]
 aliases: [/gateways/cloudgate]
 image: [CloudGate.png]
 ---

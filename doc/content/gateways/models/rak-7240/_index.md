@@ -1,7 +1,10 @@
 ---
 title: "RAK7240 WisGate Edge Prime"
 vendor: [RAKwireless]
+vendor_page: "https://www.rakwireless.com/en-us/products/lpwan-gateways-and-concentrators/rak7240"
 description: "The RAK7240 (WisGate Edge Prime) is a macro outdoor LoRaWAN® gateway, ideal for large scale deployments. It is highly reliable, customizable, and offers a WiFi, LTE and Ethernet backhaul."
+ip_rating: "IP65"
+backhaul: ["Ethernet", "Wi-Fi", "Cellular"]
 aliases: [/gateways/rak-7240]
 image: [rak7240.jpg]
 ---
