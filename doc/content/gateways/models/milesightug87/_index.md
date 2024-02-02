@@ -2,7 +2,7 @@
 title: "Milesight UG87 LoRaWAN Gateway"
 vendor: "Milesight"
 description: "The Milesight UG87 industrial LoRaWAN gateway delivers tenacious connection over network with full-featured design such as automated failover/failback, extended operating temperature, dual SIM cards, hardware watchdog, VPN, Gigabit Ethernet and beyond."
-ip_rating:
+ip_rating: "IP67"
 backhaul: ["Ethernet", "Wi-Fi (optional)", "Cellular (optional)"]
 aliases: [/gateways/milesightug87]
 image: [ug87.png]
