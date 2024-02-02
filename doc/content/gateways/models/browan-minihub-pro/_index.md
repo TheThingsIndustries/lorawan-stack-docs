@@ -14,4 +14,3 @@ The [**Browan Minihub Pro**](https://www.browan.com/product/minihub-pro/detail) 
 <!--more-->
 
 The detailed guide on how to register Browan Minihub Pro on {{% tts %}} using [{{% udp-pf %}}]({{< ref "/gateways/concepts/udp" >}}) or [{{% lbs %}}]({{< ref "/gateways/concepts/lora-basics-station" >}}) are available in [this document](https://www.browan.com/download/PmN/stream).
-SS
