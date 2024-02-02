@@ -5,7 +5,7 @@ description: "The Things Indoor Gateway is an 8 Channel LoRaWAN® gateway."
 distributions: ["Sandbox", "Cloud"]
 new_in_version: 3.13.3
 aliases: [/gateways/thethingsindoorgateway]
-image: [./TTIG.jpeg]
+image: [TTIG.jpeg]
 ---
 
 {{< figure src="TTIG.jpeg" alt="{{% ttig %}}" class="plain float">}}

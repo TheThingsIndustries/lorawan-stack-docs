@@ -3,7 +3,7 @@ title: COTX X5
 vendor: COTX
 description: "The COTX X5 gateway is an outdoor gateway intended for industrial IoT use cases, with a water and dust proof aluminium case."
 aliases: [/gateways/cotx/x5]
-image: [./X5_1.png]
+image: [X5_1.png]
 ---
 
 {{< figure src="X5_1.png" alt="COTX X5" class="plain float" >}}

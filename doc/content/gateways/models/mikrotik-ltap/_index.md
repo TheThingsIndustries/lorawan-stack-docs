@@ -3,7 +3,7 @@ title: "MikroTik LtAP"
 vendor: "MikroTik"
 description: "The LtAP LTE kit is a compact weatherproof wireless access point with a built-in cellular modem that supports 4G (LTE) connectivity."
 aliases: ["/gateways/mikrotik-ltap"]
-image: [./LtaP.jpg]
+image: [LtaP.jpg]
 ---
 
 {{< figure src="LtaP.jpg" alt="LtAP" class="plain float" >}}

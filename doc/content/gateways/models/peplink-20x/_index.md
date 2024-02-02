@@ -3,7 +3,7 @@ title: "Peplink Balance 20X LoRaWAN (with FlexModule Mini)"
 vendor: "Peplink"
 description: "Peplink’s Balance 20X is an SD-WAN branch router with an option to add LoRaWAN® gateway functionality using a LoRaWAN FlexModule Mini."
 aliases: [/gateways/peplink]
-image: [./B20X_LoRa.png]
+image: [B20X_LoRa.png]
 ---
 
 [Peplink’s Balance 20X](https://www.peplink.com/products/balance-20x/) is an SD-WAN branch router with an option to add LoRaWAN® gateway functionality using a LoRaWAN FlexModule Mini.

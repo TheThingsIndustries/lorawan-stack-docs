@@ -3,7 +3,7 @@ title: "Milesight UG6X LoRaWAN Gateway"
 vendor: "Milesight"
 description: "The Milesight UG6X is a series of 2 robust 8-channel LoRaWAN® gateways for industrial IoT applications."
 aliases: [/gateways/milesightug6x]
-image: [./ug6x.png]
+image: [ug6x.png]
 ---
 
 {{< figure src="ug6x.png" alt="Milesight IoT UG6x" class="plain float" >}}

@@ -4,7 +4,7 @@ vendor: "Dragino"
 description: "The Dragino LPS8N is a LoRaWAN® indoor gateway based on the open-source OpenWrt Linux operating system. The LPS8N provides ten programmable parallel demodulation paths. The gateway can be connected to the internet using Ethernet, WiFi, or optional Cellular (3G/4G) connectivity."
 weight:
 aliases: [/gateways/dragino-lps8]
-image: [./dragino-lps8n.jpg]
+image: [dragino-lps8n.jpg]
 ---
 
 {{< figure src="dragino-lps8n.jpg" alt="Dragino LPS8N" class="float plain" >}}

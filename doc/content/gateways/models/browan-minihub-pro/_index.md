@@ -4,7 +4,7 @@ vendor: Browan
 description: "The Browan Minihub Pro is a low-cost LoRaWAN® gateway with a WiFi backhaul."
 weight:
 aliases: [/gateways/browan-minihub-pro]
-image: [./minihub-pro.png]
+image: [minihub-pro.png]
 ---
 
 {{< figure src="minihub-pro.png" alt="Browan Minihub Pro" class="float plain" >}}

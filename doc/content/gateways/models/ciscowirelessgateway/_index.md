@@ -3,7 +3,7 @@ title: "Cisco Wireless Gateway for LoRaWAN"
 vendor: "Cisco"
 description: "The Cisco LoRaWAN Gateway is carrier-grade solution suitable for users who have experience with Cisco software, and that are looking for an industrial-grade LoRaWAN gateway. It supports 16 channels, as well as geolocation."
 alias: [/gateways/ciscowirelessgateway]
-image: [./cisco.png]
+image: [cisco.png]
 ---
 
 This page guides you to connecting the Cisco Wireless Gateway for LoRaWAN® to {{% tts %}}.

@@ -3,7 +3,7 @@ title: "The Things Outdoor Gateway"
 vendor: "The Things Industries"
 description: "The Things Outdoor Gateway (TTOG) is an industrial, outdoor and fully compliant gateway at a very low cost."
 aliases: [/gateways/thethingsoutdoor]
-image: [./TTOG.png]
+image: [TTOG.png]
 ---
 
 This guide contains instructions for connecting The Things Outdoor Gateway to {{% tts %}}.

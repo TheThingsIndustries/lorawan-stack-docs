@@ -4,7 +4,7 @@ vendor: "Laird"
 description: "The Laird Sentrius™ RG1xx is a secure, scalable, robust LoRaWAN-Enabled Gateway that supports Wi-Fi, Ethernet, and LTE backends.
 "
 aliases: [/gateways/laird-sentrius]
-image: [./laird.png]
+image: [laird.png]
 ---
 
 {{< figure src="laird.png" alt="Laird RG1xx" class="float plain" >}}

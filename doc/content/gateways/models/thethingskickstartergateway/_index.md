@@ -3,7 +3,7 @@ title: "The Things Kickstarter Gateway"
 vendor: "The Things Industries"
 description: "The Things Kickstarter Gateway is a LoRaWAN gateway."
 aliases: [/gateways/thethingskickstartergateway]
-image: [./TTKG.png]
+image: [TTKG.png]
 ---
 
 {{< figure src="TTKG.png" alt="The Things Kickstarter Gateway" class="plain float" width="50%">}}
