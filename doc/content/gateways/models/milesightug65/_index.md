@@ -1,7 +1,7 @@
 ---
 title: "Milesight UG65 LoRaWAN Gateway"
 vendor: "Milesight"
-vendor_page: "https://www.milesight.com/iot/#lorawan-gateway"
+vendor_page: "https://www.milesight.com/iot/product/lorawan-gateway/ug65"
 description: "The Milesight UG65 is a high-performance 8-channel LoRaWAN® gateway that offers reliable connectivity for industrial applications."
 ip_rating: "IP65"
 backhaul: ["Ethernet", "Wi-Fi", "Cellular (optional)"]

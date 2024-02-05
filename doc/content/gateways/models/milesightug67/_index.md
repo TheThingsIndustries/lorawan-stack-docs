@@ -1,7 +1,7 @@
 ---
 title: "Milesight UG67 LoRaWAN Gateway"
 vendor: "Milesight"
-vendor_page: "https://www.milesight.com/iot/#lorawan-gateway"
+vendor_page: "https://www.milesight.com/iot/product/lorawan-gateway/ug67"
 description: "The Milesight UG67 is a robust outdoor LoRaWAN® gateway designed for outdoor deployments. Powered by the SX1302 LoRa chip and a high-performance quad-core CPU, the UG67 can support connectivity with over 2000 nodes."
 ip_rating: "IP67"
 backhaul: ["Ethernet", "Cellular (optional)"]
