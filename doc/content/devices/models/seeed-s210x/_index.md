@@ -6,7 +6,7 @@ weight:
 
 {{< figure src="s210x.png" alt="Generic Node Sensor Edition" class="float plain" width="80%">}}
 
-The Seeed Studio [S210x Series](https://www.seeedstudio.com/SenseCAP-S2100-LoRaWAN-Data-Logger-p-5361.html) offers users’ industrial long-distance data acquisition via LoRaWAN. This series is suitable for a wide variety of different industries such as smart agriculture, smart buildings and industrial control. 
+The Seeed Studio [S210x Series](https://www.seeedstudio.com/SenseCAP-S2100-LoRaWAN-Data-Logger-p-5361.html) offers users industrial long-distance data acquisition via LoRaWAN. This series is suitable for a wide variety of different industries such as smart agriculture, smart buildings and industrial control. 
 
 <!--more-->
 
@@ -18,15 +18,15 @@ After opening the app it will ask you to log in/create an account, but you can c
 
 Then click the device you wish to connect to (either the **S210x Sensor** or the **S2100 Data Logger**) and select configuration mode: **Advanced Configuration**. 
 
-The app then explains how to enter bluetooth pairing mode. **Press and hold the button under the device for 3 seconds and release when it starts to blink**. Once done click **Device is ready for configuration**. It will then proceed to scan for the device, and it should show up in the list. Click on **your device's serial number** to proceed.
+The app then explains how to enter Bluetooth pairing mode. Press and hold the button under the device for 3 seconds and release when it starts to blink. Once done click **Device is ready for configuration**. It will then proceed to scan for the device, and it should show up in the list. Click on **your device's serial number** to proceed.
 
-Once in the menu of the device select the tab **Settings**. After that click on the dropdown for **Platform**. Here you must select **The Things Network**. Make sure the **Frequency Plan** is correct as well. Finally, copy the **Device EUI, AppEUI and AppKey** and save them somewhere. We will need these for onboarding.
+Once you reach the menu of the device, select the **Settings** tab. After that click **Platform** on the dropdown menu. There you need to select **The Things Network**. Make sure the **Frequency Plan** is correct as well. Finally, copy the **Device EUI**, **AppEUI** and **AppKey** and save them as they will be needed later for onboarding.
 
 {{< figure src="sensecap-app-settings.png" alt="Settings tab of the device." width="40%">}}
 
 ## Onboarding to {{% tts %}}
 
-The device can be onboarded using the **Device Repository** or by **manually** entering the specific information.
+The device can be onboarded using the **Device Repository** or **manually**.
 
 {{< note "The S210x does not support onboarding with a QR code." />}}
 
