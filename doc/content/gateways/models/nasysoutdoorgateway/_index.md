@@ -4,7 +4,7 @@ vendor: "NASys"
 vendor_page: "https://www.nasys.no/product/lorawan-gateway/"
 description: "NASys LoRaWAN Outdoor Gateway is an 8 Channel LoRaWAN gateway."
 ip_rating: "IP67"
-backhaul: ["Ethernet", "Cellular (optional)"]
+backhaul: [Ethernet, Cellular (optional)]
 aliases: [/gateways/nasysoutdoorgateway]
 image: [IX1001.png]
 ---

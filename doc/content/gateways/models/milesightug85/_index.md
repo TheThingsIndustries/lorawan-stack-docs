@@ -4,7 +4,7 @@ vendor: "Milesight"
 vendor_page: "https://resource.milesight.com/milesight/iot/document/ug85_user_guide_en.pdf"
 description: "The Milesight UG85 industrial LoRaWAN gateway delivers tenacious connection over network with full-featured design such as automated failover/failback, extended operating temperature, dual SIM cards, hardware watchdog, VPN, Gigabit Ethernet and beyond."
 ip_rating: "IP30"
-backhaul: ["Ethernet", "Wi-Fi (optional)", "Cellular (optional)"]
+backhaul: [Ethernet, Wi-Fi (optional), Cellular (optional)]
 aliases: [/gateways/milesightug85]
 image: [ug85.png]
 ---

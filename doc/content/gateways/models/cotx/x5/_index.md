@@ -5,7 +5,7 @@ vendor_page: "https://www.cotxnetworks.com/hotspot/cotx-x5/"
 description: "The COTX X5 gateway is an outdoor gateway intended for industrial IoT use cases, with a water and dust proof aluminium case."
 aliases: [/gateways/cotx/x5]
 ip_rating: "IP67"
-backhaul: ["Ethernet", "Wi-Fi", "Cellular"]
+backhaul: [Ethernet, Wi-Fi, Cellular]
 image: [X5_1.png]
 ---
 

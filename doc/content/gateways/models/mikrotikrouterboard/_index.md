@@ -4,7 +4,7 @@ vendor: "MikroTik"
 vendor_page: "https://mikrotik.com/product/wap_lr8_kit"
 description: "MikroTik Routerboard wAP LoRa8 kit is a LoRaWAN® gateway that contains a pre-installed UDP packet forwarder and an outdoor weatherproof wireless access point with 2.4 GHz WLAN interface and Ethernet port that could be used as a backend."
 ip_rating: "IP54"
-backhaul: ["Ethernet", "Wi-Fi", "Cellular"]
+backhaul: [Ethernet, Wi-Fi, Cellular]
 aliases: ["/gateways/mikrotikrouterboard"]
 image: [lr8_kit.png]
 ---

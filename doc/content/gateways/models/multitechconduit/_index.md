@@ -4,7 +4,7 @@ vendor: "MultiTech"
 vendor_page: "http://www.multitech.net/developer/products/multiconnect-Conduit-platform/"
 description: "The MultiTech MultiConnect® Conduit™ is a configurable, scalable cellular communications gateway for industrial IoT applications."
 ip_rating: "IP30"
-backhaul: ["Ethernet", "Wi-Fi (optional)", "Cellular (optional)"]
+backhaul: [Ethernet, Wi-Fi (optional), Cellular (optional)]
 aliases: [/guides/connecting-gateways/multitechconduit, /gateways/multitechconduit]
 image: [multitech-conduit.png]
 ---

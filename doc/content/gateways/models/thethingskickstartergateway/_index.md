@@ -4,7 +4,7 @@ vendor: "The Things Industries"
 vendor_page: "https://www.thethingsnetwork.org/docs/gateways/gateway/"
 description: "The Things Kickstarter Gateway is a LoRaWAN gateway."
 ip_rating:
-backhaul: ["Ethernet", "Wi-Fi"]
+backhaul: [Ethernet, Wi-Fi]
 aliases: [/gateways/thethingskickstartergateway]
 image: [TTKG.png]
 ---

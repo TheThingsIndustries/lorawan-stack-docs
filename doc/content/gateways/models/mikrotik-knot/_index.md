@@ -4,7 +4,7 @@ vendor: "MikroTik"
 vendor_page: "https://mikrotik.com/product/knot"
 description: "The MikroTik KNOT LR8/LR9 kit is a universal device with exceptional connectivity options and protocol support. It is an IoT Gateway which can use ethernet or LTE-M (also known as CAT-M) technology as the gateway backhaul."
 ip_rating: "IP20"
-backhaul: ["Ethernet", "Wi-Fi", "Cellular"]
+backhaul: [Ethernet, Wi-Fi, Cellular]
 aliases: ["/gateways/mikrotik-knot"]
 image: [mikrotik-knot.jpeg]
 ---

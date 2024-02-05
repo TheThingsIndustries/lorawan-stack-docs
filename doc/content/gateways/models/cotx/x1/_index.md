@@ -4,7 +4,7 @@ vendor: COTX
 vendor_page: "https://www.cotxnetworks.com/hotspot/cotx-x1"
 description: "COTX X1 is a standard LoRaWAN® indoor gateway. It is easy to install and deploy, highly compatible and has a user-friendly interface. COTX offers rich software tools, powerful back office management and technical support."
 ip_rating:
-backhaul: ["Ethernet", "Wi-Fi", "Cellular (optional)"]
+backhaul: [Ethernet, Wi-Fi, Cellular (optional)]
 aliases: [/gateways/cotx/x1]
 image: [X1_1.png]
 ---

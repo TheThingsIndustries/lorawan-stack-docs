@@ -4,7 +4,7 @@ vendor: "The Things Industries"
 vendor_page: "https://www.thethingsnetwork.org/docs/gateways/thethingsoutdoor/"
 description: "The Things Outdoor Gateway (TTOG) is an industrial, outdoor and fully compliant gateway at a very low cost."
 ip_rating: "IP67"
-backhaul: ["Ethernet", "Cellular"]
+backhaul: [Ethernet, Cellular]
 aliases: [/gateways/thethingsoutdoor]
 image: [TTOG.png]
 ---

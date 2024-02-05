@@ -4,7 +4,7 @@ vendor: "Laird"
 vendor_page: "https://www.lairdconnect.com/iot-devices/lorawan-iot-devices/sentrius-rg1xx-lorawan-gateway-wi-fi-ethernet-optional-lte-us-only"
 description: "The Laird Sentrius™ RG1xx is a secure, scalable, robust LoRaWAN-Enabled Gateway that supports Wi-Fi, Ethernet, and LTE backends."
 ip_rating: "IP67 (optional)"
-backhaul: ["Ethernet", "Wi-Fi", "Cellular (optional)"]
+backhaul: [Ethernet, Wi-Fi, Cellular (optional)]
 aliases: [/gateways/laird-sentrius]
 image: [laird.png]
 ---

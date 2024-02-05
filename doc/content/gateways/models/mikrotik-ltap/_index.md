@@ -4,7 +4,7 @@ vendor: "MikroTik"
 vendor_page: "https://mikrotik.com/product/ltap_lte_kit"
 description: "The LtAP LTE kit is a compact weatherproof wireless access point with a built-in cellular modem that supports 4G (LTE) connectivity."
 ip_rating: "IP54"
-backhaul: ["Ethernet", "Wi-Fi", "Cellular"]
+backhaul: [Ethernet, Wi-Fi, Cellular]
 aliases: ["/gateways/mikrotik-ltap"]
 image: [LtaP.jpg]
 ---

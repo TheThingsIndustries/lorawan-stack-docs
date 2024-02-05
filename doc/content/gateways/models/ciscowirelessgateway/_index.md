@@ -4,7 +4,7 @@ vendor: "Cisco"
 vendor_page: "https://www.cisco.com/c/en/us/products/routers/wireless-gateway-lorawan/"
 description: "The Cisco LoRaWAN Gateway is carrier-grade solution suitable for users who have experience with Cisco software, and that are looking for an industrial-grade LoRaWAN gateway. It supports 16 channels, as well as geolocation."
 ip_rating: "IP67"
-backhaul: ["Ethernet", "Wi-Fi (add-on)", "Cellular (add-on)"]
+backhaul: [Ethernet, Wi-Fi (add-on), Cellular (add-on)]
 alias: [/gateways/ciscowirelessgateway]
 image: [cisco.png]
 ---
