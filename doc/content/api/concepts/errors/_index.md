@@ -16,7 +16,7 @@ For HTTP (REST) API, conventional HTTP response codes are returned along with an
 - `4xx` range: client/request errors.
 - `5xx` range: errors with {{% tts %}} servers. Such errors are quite rare and require you contact the administrator if persistent.
 
-### Error Details
+## Error Details
 
 4xx response messages contain a body with a JSON object that explains the error.
 
@@ -51,7 +51,7 @@ Fields of the JSON message are described below.
 
 {{< note "Mind the `X-Warning` headers. {{% tts %}} sends responses containing this header to warn about issues that may become errors in the future." />}}
 
-### Rate limiting
+## Rate limiting
 
 API request may be subject to [rate limits]({{< ref "/reference/rate-limiting" >}}).
 
