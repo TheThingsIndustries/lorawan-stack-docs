@@ -6,7 +6,7 @@ weight:
 
 {{< figure src="lw001-bg-pro.png" alt="Moko Smart LW001-BG Pro" class="float plain" width="50%">}}
 
-The Moko Smart [LW001-BG Pro](https://www.mokosmart.com/lorawan-tracker-lw001-bg-pro/) is a LoRaWAN Tracker. It integrates GPS positioning, Bluetooth positioning and WiFi positioning and supports multiple detection methods, like an anti-demolition alarm, motion detection and vibration detection.  
+The Moko Smart [LW001-BG Pro](https://www.mokosmart.com/lorawan-tracker-lw001-bg-pro/) is a LoRaWAN tracker. It integrates GPS positioning, Bluetooth positioning and WiFi positioning and supports multiple detection methods, such as anti-demolition alarm, motion detection and vibration detection.  
 
 The device supports a variety of working modes as well and is suitable for most tracking applications.
 
@@ -14,10 +14,10 @@ The device supports a variety of working modes as well and is suitable for most 
 
 ## Turning on the device
 
-To access the provisioning information (the **JoinEUI/AppEUI**, **DevEUI** and **AppKey**) we will need to turn on the device first and connect to it. Before continuing make sure to download the **MKLoRa** app on the Play Store or the App Store.
+To access the provisioning information (the **JoinEUI/AppEUI**, **DevEUI** and **AppKey**) you need to turn on the device first and connect to it. Before continuing make sure to download the **MKLoRa** app on the [Play Store](https://play.google.com/store/apps/details?id=com.moko.mklora) or the [App Store](https://apps.apple.com/us/app/mklora/id1562806152).
 
-To turn on the device, **approach the hall sensor area with a magnet and quickly move it away 3 times.**
-When the power indicator lights up **solid green for 3 seconds**, the device will have turned on. Use the illustration for guidance:
+To turn on the device, **approach the Hall sensor area with a magnet and quickly move it away 3 times.**
+When the power indicator lights up **solid green for 3 seconds**, the device is turned on. The image below illustrates this process.
 
 {{< figure src="lw001-bg-pro-turn-on.jpg" alt="Turning on the LW001-BG Pro" class="plain">}}
 
@@ -25,19 +25,19 @@ When the power indicator lights up **solid green for 3 seconds**, the device wil
 
 ## Provisioning Information
 
-Open the **MKLoRa** app, select device type (In this case, the LW001-BG PRO) and you should then see the device show up. If not click on the refresh icon in the top right and make sure your bluetooth is on.
+Open the **MKLoRa** app, select device type (in this case, the LW001-BG PRO) and you should then see the device show up. If not, click on the refresh icon in the top right and make sure that Bluetooth on your phone is on.
 
-Click on **connect** and enter the default password: **Moko4321**.
+Click on **connect** and enter the default password: `Moko4321`.
 
 {{< figure src="moko-app-list.png" alt="Device showing up inside of the app" width="40%">}}
 
-Once you're on the main page, click on **Connection Settings**. In here you can find the provisioning information and configure other LoRa-related settings. Make sure to write down or copy the **DevEUI, AppEUI and AppKey**, since we will need those when onboarding.
+Once you're on the main page, click on **Connection Settings**. Here you can find the provisioning information and configure other LoRa-related settings. The **DevEUI, AppEUI and AppKey** are needed in the next step when onboarding the device to {{% tts %}}.
 
 {{< figure src="moko-app-connection.png" alt="Provisioning information inside app" width="40%">}}
 
 ## Onboarding to {{% tts %}}
 
-The device can be onboarded using the **Device Repository** or by **manually** entering the specific information.
+The device can be onboarded using the **Device Repository** or **manually**.
 
 {{< note "The LW001-BG Pro does not support onboarding with a QR code." />}}
 
