@@ -4,6 +4,10 @@ description: ""
 aliases: ["/reference/api/application_server"]
 ---
 
+List of Application Server APIs.
+
+<!--more-->
+
 ## The `As` service
 
 {{< proto/method service="As" method="SetLink" >}}

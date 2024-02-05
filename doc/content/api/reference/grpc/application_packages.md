@@ -4,6 +4,8 @@ description: ""
 aliases: ["/reference/api/application_packages"]
 ---
 
+List of Application Package APIs.
+
 <!--more-->
 
 ## The `ApplicationPackageRegistry` service

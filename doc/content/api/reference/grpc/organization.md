@@ -4,6 +4,10 @@ description: ""
 aliases: ["/reference/api/organization"]
 ---
 
+List of Organization APIs.
+
+<!--more-->
+
 ## The `OrganizationRegistry` service
 
 {{< proto/method service="OrganizationRegistry" method="Create" >}}

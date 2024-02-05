@@ -4,6 +4,10 @@ description: ""
 aliases: ["/reference/api/gateway"]
 ---
 
+List of LoRaWAN® Gateway APIs.
+
+<!--more-->
+
 ## The `GatewayRegistry` service
 
 {{< proto/method service="GatewayRegistry" method="Create" >}}

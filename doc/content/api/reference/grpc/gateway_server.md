@@ -4,6 +4,10 @@ description: ""
 aliases: ["/reference/api/gateway_server"]
 ---
 
+List of Gateway Server APIs.
+
+<!--more-->
+
 ## The `Gs` service
 
 {{< proto/method service="Gs" method="GetGatewayConnectionStats" >}}

@@ -4,6 +4,10 @@ description: ""
 aliases: ["/reference/api/join_server"]
 ---
 
+List of Join Server APIs.
+
+<!--more-->
+
 ## The `Js` service
 
 {{< proto/method service="Js" method="GetJoinEUIPrefixes" >}}

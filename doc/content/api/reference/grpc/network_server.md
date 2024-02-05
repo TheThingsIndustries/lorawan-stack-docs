@@ -4,6 +4,10 @@ description: ""
 aliases: ["/reference/api/network_server"]
 ---
 
+List of Network Server APIs.
+
+<!--more-->
+
 ## The `Ns` service
 
 {{< proto/method service="Ns" method="GenerateDevAddr" >}}

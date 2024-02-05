@@ -4,6 +4,10 @@ description: ""
 aliases: ["/reference/api/application_pub_sub"]
 ---
 
+List of Application Pub/Sub APIs.
+
+<!--more-->
+
 ## The `ApplicationPubSubRegistry` service
 
 {{< proto/method service="ApplicationPubSubRegistry" method="GetFormats" >}}

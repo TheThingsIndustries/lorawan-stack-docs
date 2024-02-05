@@ -4,6 +4,10 @@ description: ""
 aliases: ["/reference/api/identity_server"]
 ---
 
+List of Identity Server APIs.
+
+<!--more-->
+
 ## The `AuthenticationProviderRegistry` service
 
 {{< proto/method package="tti.lorawan.v3" service="AuthenticationProviderRegistry" method="Create" >}}

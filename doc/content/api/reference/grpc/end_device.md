@@ -4,6 +4,10 @@ description: ""
 aliases: ["/reference/api/end_device"]
 ---
 
+List of end device APIs.
+
+<!--more-->
+
 End devices are registered in multiple registries. The Identity Server has a registry with end device metadata, the Network Server's registry contains the MAC configuration, MAC state and network session keys, the Application Server keeps payload formatters and application session keys, the Join Server keeps the root keys.
 
 When registering end devices, we recommend registering them in the following order:

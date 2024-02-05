@@ -5,6 +5,10 @@ distributions: ["Enterprise", "Cloud"]
 aliases: ["/reference/api/tenant"]
 ---
 
+List of Tenant APIs.
+
+<!--more-->
+
 ## Authentication
 
 Unlike the other services, the tenant services do **not** accept API keys or OAuth access tokens. Instead, authentication is done with a "tenant admin key" that is [configured in the Identity Server]({{< relref "/reference/configuration/identity-server#tenant-administration-options" >}})

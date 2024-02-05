@@ -4,6 +4,10 @@ description: ""
 aliases: ["/reference/api/events"]
 ---
 
+List of Events APIs.
+
+<!--more-->
+
 ## The `Events` service
 
 {{< proto/method service="Events" method="Stream" >}}

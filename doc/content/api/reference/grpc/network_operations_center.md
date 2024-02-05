@@ -5,6 +5,10 @@ distributions: ["Enterprise", "Cloud"]
 aliases: ["/reference/api/network_operations_center"]
 ---
 
+List of Network Operations Center APIs.
+
+<!--more-->
+
 ## The `Noc` service
 
 {{< proto/method package="tti.lorawan.v3" service="Noc" method="QueryApplicationsActiveMetrics" >}}

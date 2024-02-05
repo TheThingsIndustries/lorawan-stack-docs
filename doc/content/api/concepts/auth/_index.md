@@ -11,7 +11,7 @@ aliases: ["reference/api/concepts/authentication"]
 
 {{% tts %}} **API keys** are the most commonly used method to authenticate and authorize API calls. This guide shows you how to create API keys, assign rights to them and use them to authenticate API calls. For OAuth access tokens and Session cookies, check the specific guides at the end of this page.
 
-### What are API Keys
+## What are API Keys
 
 {{% tts %}} API keys are strings that have three parts separated by a dot (`.`). The format of an API key is shown below.
 
@@ -39,7 +39,7 @@ NNSXS.U4H3ZFFCMSR42BUAZPW2UWGFBV4WCNI5EXDJXDY.SHIF3PP5PBMJNZESN5XLR5TZJTJUIGKVUT
 
 API Keys _by default do not have_ an expiry date. These have to be set explicitly while creating or updating them. API keys can be revoked by _simply deleting them_.
 
-### Authorization
+## Authorization
 
 Authentication is the process of verifying the _identity_ of the caller. If the caller provides a valid, non-expired API key, the caller is authenticated.
 
@@ -47,7 +47,7 @@ Authorization on the other hand, is the process of determining if the authentica
 
 For a full list of available rights, check the [reference]({{< ref "/api/reference/grpc/user" >}}).
 
-### Creating User API Keys
+## Creating User API Keys
 
 API keys have other purposes such as authenticating gateways when they connect to {{% tts %}} or authenticating external integrations to send downlinks to devices.
 
@@ -106,9 +106,9 @@ Now make sure to copy this API key as you will not be able to retrieve it again.
 
 {{< /tabs/container >}}
 
-### Using API Keys
+## Using API Keys
 
-The API key that you generated earlier can be used as follows for the HTTP (REST) APIs for other APIs such as gRPC or MQTT, the individual sections.
+This sections shows how you can use API keys to authenticate HTTP (REST) API calls. For other APIs (gRPC, MQTT), check the corresponding sections.
 
 For HTTP (REST) API calls, this API key has to be presented to the server as a `Bearer` token in the HTTP `Authorization` header. The following example uses [curl](https://curl.se/) to make an HTTP API request using the example API key.
 

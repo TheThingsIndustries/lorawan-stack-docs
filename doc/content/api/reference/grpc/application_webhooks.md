@@ -4,6 +4,10 @@ description: ""
 aliases: ["/reference/api/application_webhooks"]
 ---
 
+List of Application Webhook APIs.
+
+<!--more-->
+
 ## The `ApplicationWebhookRegistry` service
 
 {{< proto/method service="ApplicationWebhookRegistry" method="Get" >}}

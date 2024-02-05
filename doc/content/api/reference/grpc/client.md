@@ -4,6 +4,10 @@ description: ""
 aliases: ["/reference/api/client"]
 ---
 
+List of Client APIs.
+
+<!--more-->
+
 ## The `ClientRegistry` service
 
 {{< proto/method service="ClientRegistry" method="Create" >}}

@@ -4,6 +4,10 @@ description: ""
 aliases: ["/reference/api/application"]
 ---
 
+List of Application APIs.
+
+<!--more-->
+
 ## The `ApplicationRegistry` service
 
 {{< proto/method service="ApplicationRegistry" method="Create" >}}

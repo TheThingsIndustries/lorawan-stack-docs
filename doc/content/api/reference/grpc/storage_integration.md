@@ -5,6 +5,10 @@ distributions: ["Enterprise", "Cloud"]
 aliases: ["/reference/api/storage_integration"]
 ---
 
+List of Storage Integration APIs.
+
+<!--more-->
+
 ## The `ApplicationUpStorage` Service
 
 {{< proto/method service="ApplicationUpStorage" method="GetStoredApplicationUp" >}}
