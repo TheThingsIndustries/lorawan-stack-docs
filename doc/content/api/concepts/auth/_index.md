@@ -23,7 +23,7 @@ aliases: ["reference/api/concepts/authentication"]
 
 | Item           | Length | Value                                              |
 | -------------- | ------ | -------------------------------------------------- |
-| `token-type`   | 5      | Fixed to `NNSXS` ("key" as base64 encoded string ) |
+| `token-type`   | 5      | Fixed to `NNSXS` ("key" as base32 encoded string ) |
 | `token-id`     | 24     | Unique identifier of the key, randomly generated   |
 | `token-secret` | 32     | The secret value of they key, randomly generated   |
 
@@ -77,7 +77,7 @@ Now make sure to copy this API key as you will not be able to retrieve it again.
 
 {{< tabs/tab "CLI" >}}
 
-To create an API key for the gateway with the **Link as Gateway Server for traffic exchange, i.e. write uplink and read downlink** right:
+To create a user API key from the Command Line Interface, run the following command.
 
 ```bash
 API_KEY_NAME="User API Key"
@@ -120,6 +120,6 @@ If you are using [Postman](https://www.postman.com/) to make API calls, in the *
 
 {{< figure src="postman-api-key.png" alt="Postman API key" >}}
 
-Now that you have learnt about API keys, you can proceed to the [fieldmasks]({{< ref "/api/concepts/fieldmasks" >}}) section.
+Now that you have learnt about API keys, you can proceed to the [field masks]({{< ref "/api/concepts/fieldmasks" >}}) section.
 
 Alternatively, look at how to work with OAuth access tokens and Session cookies in the guides below.

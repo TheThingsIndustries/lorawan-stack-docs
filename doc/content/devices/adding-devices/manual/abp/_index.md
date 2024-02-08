@@ -8,7 +8,7 @@ If your device cannot be activated using the more secure OTAA, you may manually 
 
 <!--more-->
 
-{{< tabs/container "Console" "CLI" "HTTP(REST) API">}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API">}}
 
 {{< tabs/tab "Console" >}}
 
@@ -106,7 +106,7 @@ You can also pass `--with-session` to have a session generated.
 
 {{< /tabs/tab >}}
 
-{{< tabs/tab "HTTP(REST) API" >}}
+{{< tabs/tab "HTTP (REST) API" >}}
 
 {{% tts %}} stores end device data on the Identity Server, Application Server, Network Server. Since ABP devices do not have the concept of join, the Join Server is not used.
 

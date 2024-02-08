@@ -1,10 +1,10 @@
 ---
-title: "LoRaWAN® Gateway specific APIs"
+title: "LoRa® Gateway specific APIs"
 description: ""
 weight: 5
 ---
 
-{{% tts %}} supports multiple LoRaWAN® gateway protocols which communicate the respective APIs.
+{{% tts %}} supports multiple LoRa® gateway protocols which communicate the respective APIs.
 
 <!--more-->
 
@@ -36,15 +36,13 @@ To communicate with the MQTT protocol, the Gateway Server and the gateway are ex
 
 ### MQTT v2
 
-The MQTT v2 gateway APIs follows the [multi packet forwarder](https://github.com/kersing/packet_forwarder) reference.
-
-Check the [protocol reference](https://github.com/kersing/packet_forwarder/blob/master/PROTOCOL.TXT) for more details.
+The MQTT v2 gateway APIs are used by [The Things Kickstarter Gateway]({{< ref "/gateways/models/thethingskickstartergateway">}}) and use the [TTN v2 MQTT](https://github.com/TheThingsNetwork/lorawan-stack/blob/master/pkg/gatewayserver/io/mqtt/format_protobufv2.go) format.
 
 ### MQTT v3
 
 The MQTT v3 protocol uses the {{% tts %}} v3 messages definitions.
 
-Gateways can connect using the username `{gateway-id}@{tenant-id}` and an API key as the password. Check how to [register a gateway and create an API key]({{< ref "http://localhost:1313/gateways/concepts/adding-gateways/">}}).
+Gateways can connect using the username `{gateway-id}@{tenant-id}` and an API key as the password. Check how to [register a gateway and create an API key]({{< ref "/gateways/concepts/adding-gateways/">}}).
 
 <div class="fixed-table table-api">
 

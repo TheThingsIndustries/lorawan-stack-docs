@@ -1,5 +1,5 @@
 ---
-title: "Fieldmasks"
+title: "Field masks"
 description: ""
 weight: 2
 aliases: ["reference/api/field-mask"]

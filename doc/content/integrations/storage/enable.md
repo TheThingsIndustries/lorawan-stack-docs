@@ -11,7 +11,7 @@ The Storage Integration is implemented as an [Application Package]({{< ref "/ref
 
 Note that the instructions for CLI here are following generic instructions for [using the CLI]({{< ref "/reference/application-packages/using-the-cli" >}}) to manage application packages, just specified for the `storage-integration` application package. {{</ note >}}
 
-{{< tabs/container "Console" "CLI" "HTTP(REST) API">}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API">}}
 
 {{< tabs/tab "Console" >}}
 
@@ -132,7 +132,7 @@ ttn-lw-cli applications packages associations delete <application-id> <device-id
 
 {{< /tabs/tab >}}
 
-{{< tabs/tab "HTTP(REST) API" >}}
+{{< tabs/tab "HTTP (REST) API" >}}
 
 #### Enable for an Application
 
@@ -142,7 +142,7 @@ ttn-lw-cli applications packages associations delete <application-id> <device-id
 
 | Item         | Value                                                                                                                                                                                                                                                                 |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| EndPoint     | [`/api/v3/as/applications/{default.ids.application_ids.application_id}/packages/associations/{default.ids.f_port}`]({{< ref "/api/reference/http/routes/#asapplications{default.ids.application_ids.application_id}packagesassociations{default.ids.f_port}-put" >}}) |
+| Endpoint     | [`/api/v3/as/applications/{default.ids.application_ids.application_id}/packages/associations/{default.ids.f_port}`]({{< ref "/api/reference/http/routes/#asapplications{default.ids.application_ids.application_id}packagesassociations{default.ids.f_port}-put" >}}) |
 | Request type | `PUT`                                                                                                                                                                                                                                                                 |
 
 </br>
@@ -180,7 +180,7 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_K
 
 | Item         | Value                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| EndPoint     | [`/api/v3/as/applications/{association.ids.end_device_ids.application_ids.application_id}/devices/{association.ids.end_device_ids.device_id}/packages/associations/{association.ids.f_port}`]({{< ref "/api/reference/http/routes/#asapplications{association.ids.end_device_ids.application_ids.application_id}devices{association.ids.end_device_ids.device_id}packagesassociations{association.ids.f_port}-put" >}}) |
+| Endpoint     | [`/api/v3/as/applications/{association.ids.end_device_ids.application_ids.application_id}/devices/{association.ids.end_device_ids.device_id}/packages/associations/{association.ids.f_port}`]({{< ref "/api/reference/http/routes/#asapplications{association.ids.end_device_ids.application_ids.application_id}devices{association.ids.end_device_ids.device_id}packagesassociations{association.ids.f_port}-put" >}}) |
 | Request type | `PUT`                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 </br>
@@ -218,7 +218,7 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_K
 
 | Item         | Value                                                                                                                                                                                                                    |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| EndPoint     | [`/api/v3/as/applications/{application_ids.application_id}/packages/associations/{f_port}`]({{< ref "/api/reference/http/routes/#asapplications{application_ids.application_id}packagesassociations{f_port}-delete" >}}) |
+| Endpoint     | [`/api/v3/as/applications/{application_ids.application_id}/packages/associations/{f_port}`]({{< ref "/api/reference/http/routes/#asapplications{application_ids.application_id}packagesassociations{f_port}-delete" >}}) |
 | Request type | `DELETE`                                                                                                                                                                                                                 |
 
 </br>
@@ -243,7 +243,7 @@ curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer $AP
 
 | Item         | Value                                                                                                                                                                                                                                                                                                                      |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| EndPoint     | [`/api/v3/as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/packages/associations/{f_port}`]({{< ref "/api/reference/http/routes/#asapplications{end_device_ids.application_ids.application_id}devices{end_device_ids.device_id}packagesassociations{f_port}-delete" >}}) |
+| Endpoint     | [`/api/v3/as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/packages/associations/{f_port}`]({{< ref "/api/reference/http/routes/#asapplications{end_device_ids.application_ids.application_id}devices{end_device_ids.device_id}packagesassociations{f_port}-delete" >}}) |
 | Request type | `DELETE`                                                                                                                                                                                                                                                                                                                   |
 
 </br>

@@ -19,7 +19,7 @@ If `debug_conf.json` exists, the other files are ignored - otherwise, the parame
 
 An example `global_conf.json` is available in the [{{% udp-pf %}} Github repository](https://github.com/Lora-net/packet_forwarder/blob/master/lora_pkt_fwd/global_conf.json). It is also possible to download a `global_conf.json` configured with your Gateway EUI and Frequency Plan directly from {{% tts %}}.
 
-{{< tabs/container "Console" "HTTP(REST) API" >}}
+{{< tabs/container "Console" "HTTP (REST) API" >}}
 
 {{< tabs/tab "Console" >}}
 
@@ -31,7 +31,7 @@ To download a `global_conf.json` file for your gateway, open the Gateway overvie
 
 {{< /tabs/tab >}}
 
-{{< tabs/tab "HTTP(REST) API" >}}
+{{< tabs/tab "HTTP (REST) API" >}}
 
 ## Download Configuration via Terminal
 

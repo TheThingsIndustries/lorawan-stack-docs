@@ -8,7 +8,7 @@ This section explains how to set up Payload Formatters using the Console or CLI.
 
 <!--more-->
 
-{{< tabs/container "Console" "CLI" "HTTP(REST) API" >}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API" >}}
 
 {{< tabs/tab "Console" >}}
 
@@ -136,7 +136,7 @@ ttn-lw-cli end-devices set $APP_ID $DEVICE_ID \
 
 {{< /tabs/tab >}}
 
-{{< tabs/tab "HTTP(REST) API" >}}
+{{< tabs/tab "HTTP (REST) API" >}}
 
 ## Create an Application Payload Formatter
 
@@ -146,7 +146,7 @@ ttn-lw-cli end-devices set $APP_ID $DEVICE_ID \
 
 | Item         | Value                                                                                                                                                        |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| EndPoint     | [`/as/applications/{application_ids.application_id}/link`]({{< ref "/api/reference/http/routes/#asapplications{application_ids.application_id}link-put" >}}) |
+| Endpoint     | [`/as/applications/{application_ids.application_id}/link`]({{< ref "/api/reference/http/routes/#asapplications{application_ids.application_id}link-put" >}}) |
 | Request type | `PUT`                                                                                                                                                        |
 
 </br>
@@ -194,7 +194,7 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_K
 
 | Item         | Value                                                                                                                                                        |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| EndPoint     | [`/as/applications/{application_ids.application_id}/link`]({{< ref "/api/reference/http/routes/#asapplications{application_ids.application_id}link-put" >}}) |
+| Endpoint     | [`/as/applications/{application_ids.application_id}/link`]({{< ref "/api/reference/http/routes/#asapplications{application_ids.application_id}link-put" >}}) |
 | Request type | `PUT`                                                                                                                                                        |
 
 </br>

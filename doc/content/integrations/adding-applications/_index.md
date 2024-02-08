@@ -17,7 +17,7 @@ This section contains instructions for creating an Application.
 
 <!--more-->
 
-{{< tabs/container "Console" "CLI" "HTTP(REST) API" >}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API" >}}
 
 {{< tabs/tab "Console" >}}
 
@@ -57,9 +57,9 @@ This creates an application `app1` with the `admin` user as collaborator. Make s
 
 {{< /tabs/tab >}}
 
-{{< tabs/tab "HTTP(REST) API" >}}
+{{< tabs/tab "HTTP (REST) API" >}}
 
-#### Adding Applications using the HTTP(REST) API
+#### Adding Applications using the HTTP (REST) API
 
 ###### Details
 
@@ -67,7 +67,7 @@ This creates an application `app1` with the `admin` user as collaborator. Make s
 
 | Item         | Value                                                                                                                                                    |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| EndPoint     | [`/users/{collaborator.user_ids.user_id}/applications`]({{< ref "/api/reference/http/routes/#users{collaborator.user_ids.user_id}applications-post" >}}) |
+| Endpoint     | [`/users/{collaborator.user_ids.user_id}/applications`]({{< ref "/api/reference/http/routes/#users{collaborator.user_ids.user_id}applications-post" >}}) |
 | Request type | `POST`                                                                                                                                                   |
 
 </br>
@@ -113,7 +113,7 @@ End devices are also created within applications. See [Adding Devices]({{< ref "
 
 Some applications require an API Key to write downlink traffic, read uplink traffic, manage integrations, etc. In this section we explain how to create an application API key on some basic examples, but this procedure is identical for any other right as well.
 
-{{< tabs/container "Console" "CLI" "HTTP(REST) API">}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API">}}
 
 {{< tabs/tab "Console" >}}
 
@@ -147,7 +147,7 @@ See the [CLI Reference]({{< ref "/ttn-lw-cli/ttn-lw-cli_applications_api-keys" >
 
 {{< /tabs/tab >}}
 
-{{< tabs/tab "HTTP(REST) API" >}}
+{{< tabs/tab "HTTP (REST) API" >}}
 
 ###### Details
 
@@ -155,7 +155,7 @@ See the [CLI Reference]({{< ref "/ttn-lw-cli/ttn-lw-cli_applications_api-keys" >
 
 | Item         | Value                                                                                                                                           |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| EndPoint     | [`/api/v3/gateways/{gateway_ids.gateway_id}/api-keys`]({{< ref "/api/reference/http/routes/#gateways{gateway_ids.gateway_id}api-keys-post" >}}) |
+| Endpoint     | [`/api/v3/gateways/{gateway_ids.gateway_id}/api-keys`]({{< ref "/api/reference/http/routes/#gateways{gateway_ids.gateway_id}api-keys-post" >}}) |
 | Request type | `POST`                                                                                                                                          |
 
 </br>

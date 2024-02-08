@@ -24,17 +24,17 @@ Unlike other server components, the Identity Server component of {{% tts %}} is 
 
 This error indicates that the client HTTP protocol version is old, so the server refuses to perform the request and requires a client update to HTTP 1.1 version or higher.
 
-###### "No_application_rights" or "No_user_rights" error
+###### "no_application_rights" or "no_user_rights" error
 
 The API key you are using doesn't have sufficient rights to perform the desired API request. It might also be caused by a missing `Bearer` keyword in the `Authorization` header used in the API call.
 
 To resolve this issue, make sure your API key has necessary rights to interact with the desired entity. Also, make sure to use the `Bearer` keyword when specifying the `Authorization` header.
 
-###### "Api_key_not_found" error
+###### "api_key_not_found" error
 
 This error indicates that the specified API key used for the API call is not valid or doesn't exist at all. Double-check that the API key you provided is correct and still valid. If it is expired, you can generate a new API key and update your API call request with the new one.
 
-###### "Unauthenticated" error
+###### "unauthenticated" error
 
 This error occurs when the API request is made without proper authentication credentials. Make sure to include the correct API key in the authentication request header.
 

@@ -22,7 +22,7 @@ Do not follow this guide for a [The Things Indoor Gateway]({{< ref "/gateways/mo
 
 If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "the-things-stack/packet-broker" >}}), you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced [TTN Mapper](ttnmapper.org) to find out if your location has nearby gateways.
 
-{{< tabs/container "Console" "CLI" "HTTP(REST) API">}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API">}}
 
 {{< tabs/tab "Console" >}}
 
@@ -89,7 +89,7 @@ This creates a gateway `gtw1` with user `admin` as collaborator, frequency plan 
 
 {{< /tabs/tab >}}
 
-{{< tabs/tab "HTTP(REST) API" >}}
+{{< tabs/tab "HTTP (REST) API" >}}
 
 #### Adding Gateways using the API
 
@@ -99,7 +99,7 @@ This creates a gateway `gtw1` with user `admin` as collaborator, frequency plan 
 
 | Item         | Value                                                                                                                                                   |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| EndPoint     | [`/api/v3/users/{collaborator.user_ids.user_id}/gateways`]({{< ref "/api/reference/http/routes/#users{collaborator.user_ids.user_id}gateways-post" >}}) |
+| Endpoint     | [`/api/v3/users/{collaborator.user_ids.user_id}/gateways`]({{< ref "/api/reference/http/routes/#users{collaborator.user_ids.user_id}gateways-post" >}}) |
 | Request type | `POST`                                                                                                                                                  |
 
 </br>
@@ -143,7 +143,7 @@ curl -v -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" 
 
 Some gateways require an API Key with Link Gateway Rights to be able to connect to {{% tts %}}. In this section we explain how to create an API key with this right, but the procedure of creating an API key is identical for any other right as well.
 
-{{< tabs/container "Console" "CLI" "HTTP(REST) API" >}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API" >}}
 
 {{< tabs/tab "Console" >}}
 
@@ -177,7 +177,7 @@ See the [CLI Reference]({{< ref "/ttn-lw-cli/ttn-lw-cli_gateways_api-keys" >}}) 
 
 {{< /tabs/tab >}}
 
-{{< tabs/tab "HTTP(REST) API" >}}
+{{< tabs/tab "HTTP (REST) API" >}}
 
 ###### Details
 
@@ -185,7 +185,7 @@ See the [CLI Reference]({{< ref "/ttn-lw-cli/ttn-lw-cli_gateways_api-keys" >}}) 
 
 | Item         | Value                                                                                                                                           |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| EndPoint     | [`/api/v3/gateways/{gateway_ids.gateway_id}/api-keys`]({{< ref "/api/reference/http/routes/#gateways{gateway_ids.gateway_id}api-keys-post" >}}) |
+| Endpoint     | [`/api/v3/gateways/{gateway_ids.gateway_id}/api-keys`]({{< ref "/api/reference/http/routes/#gateways{gateway_ids.gateway_id}api-keys-post" >}}) |
 | Request type | `POST`                                                                                                                                          |
 
 </br>
@@ -218,7 +218,7 @@ curl -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
 
 ## Set Gateway Location
 
-{{< tabs/container "Console" "CLI" "HTTP(REST) API"  >}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API"  >}}
 
 {{< tabs/tab "Console" >}}
 
@@ -285,7 +285,7 @@ The CLI will return something like:
 
 {{< /tabs/tab >}}
 
-{{< tabs/tab "HTTP(REST) API" >}}
+{{< tabs/tab "HTTP (REST) API" >}}
 
 ###### Details
 
@@ -293,7 +293,7 @@ The CLI will return something like:
 
 | Item         | Value                                                                                                                         |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| EndPoint     | [`/api/v3/gateways/{gateway.ids.gateway_id}`]({{< ref "/api/reference/http/routes/#gateways{gateway.ids.gateway_id}-put" >}}) |
+| Endpoint     | [`/api/v3/gateways/{gateway.ids.gateway_id}`]({{< ref "/api/reference/http/routes/#gateways{gateway.ids.gateway_id}-put" >}}) |
 | Request type | `PUT`                                                                                                                         |
 
 </br>
@@ -344,7 +344,7 @@ Keep in mind that if you change the physical location of your gateway, the locat
 
 A preffered way for adjusting a downlink path gain is setting the gateway antenna gain, instead of changing the gateway Tx power.
 
-{{< tabs/container "CLI" "HTTP(REST) API"  >}}
+{{< tabs/container "CLI" "HTTP (REST) API"  >}}
 
 {{< tabs/tab "CLI" >}}
 
@@ -382,7 +382,7 @@ The CLI output will be similar to:
 
 {{< /tabs/container >}}
 
-{{< tabs/tab "HTTP(REST) API" >}}
+{{< tabs/tab "HTTP (REST) API" >}}
 
 ###### Details
 
@@ -390,7 +390,7 @@ The CLI output will be similar to:
 
 | Item         | Value                                                                                                                         |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| EndPoint     | [`/api/v3/gateways/{gateway.ids.gateway_id}`]({{< ref "/api/reference/http/routes/#gateways{gateway.ids.gateway_id}-put" >}}) |
+| Endpoint     | [`/api/v3/gateways/{gateway.ids.gateway_id}`]({{< ref "/api/reference/http/routes/#gateways{gateway.ids.gateway_id}-put" >}}) |
 | Request type | `PUT`                                                                                                                         |
 
 </br>
@@ -412,7 +412,7 @@ To adjust the antenna gain of a gateway with ID `my-test-gateway` on `thethings.
   "field_mask": {
     "paths": ["antennas"]
   }
-
+}
 ```
 
 The request using `cURL` is as follows.
@@ -436,7 +436,7 @@ Once a gateway has been added, get started with [Adding Devices]({{< ref "/devic
 
 In deployments connected to [Packet Broker]({{< ref "/the-things-stack/packet-broker" >}}), you can control if you want uplinks received by your gateway to be forwarded to Packet Broker or not. In these deployments, uplinks received by your gateway are being forwarded to Packet Broker by default, but you can choose to disable this behavior.
 
-{{< tabs/container "Console" "CLI" "HTTP(REST) API"  >}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API"  >}}
 
 {{< tabs/tab "Console" >}}
 
@@ -455,7 +455,7 @@ ttn-lw-cli gateways set $GTW_ID --disable-packet-broker-forwarding
 
 {{< /tabs/tab >}}
 
-{{< tabs/tab "HTTP(REST) API" >}}
+{{< tabs/tab "HTTP (REST) API" >}}
 
 ###### Details
 
@@ -463,7 +463,7 @@ ttn-lw-cli gateways set $GTW_ID --disable-packet-broker-forwarding
 
 | Item         | Value                                                                                                                         |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| EndPoint     | [`/api/v3/gateways/{gateway.ids.gateway_id}`]({{< ref "/api/reference/http/routes/#gateways{gateway.ids.gateway_id}-put" >}}) |
+| Endpoint     | [`/api/v3/gateways/{gateway.ids.gateway_id}`]({{< ref "/api/reference/http/routes/#gateways{gateway.ids.gateway_id}-put" >}}) |
 | Request type | `PUT`                                                                                                                         |
 
 </br>
