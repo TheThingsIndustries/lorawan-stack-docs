@@ -32,7 +32,7 @@
 
 {{- $script := resources.Get "js/vendor/basicLightbox.min.js" }}
 <script src="{{ $script.Permalink }}"></script>
-{{- $script := resources.Get "js/theme.js" | js.Build | resources.Minify | resources.Fingerprint }}
+{{- $script := resources.Get "js/theme.js" | js.Build  }}
 <script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
 
 {{- partial "intercom.html" . -}}
