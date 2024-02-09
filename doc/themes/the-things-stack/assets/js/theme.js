@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import "@ttui/design/ui/ttui-vendor.js";
-import "@ttui/design/ui/main.js";
-import "@ttui/design/ui/components/heading-expanded/index.js";
+import "@tti/design/ui/ttui-vendor.js";
+import "@tti/design/ui/main.js";
+import "@tti/design/ui/components/ttui-header";
 
 function addNavBarBurgers(){
   var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0)

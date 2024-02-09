@@ -1,60 +1,36 @@
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-  <div class="container is-fluid">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="{{ relURL "" }}">
-        <img class="logo" src="{{ "img/TTS-logo.svg" | relURL }}">
-      </a>
-      {{- if .Site.Params.search.enabled -}}
-          <div class="navbar-item navbar-search-menu" id="search-input-menu">
-          </div>
-        {{- end -}}
-      {{- $currentPage := . -}}
-      {{- range .Site.Menus.brand }}
-      <a class="navbar-item{{ if $currentPage.IsMenuCurrent "brand" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
+<div class="theme-tts">
+  <ttui-header>
+    <nav slot="nav">
+      {{- range .Site.Menus.main }}
+      <a href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
       {{- end }}
-      <span class="navbar-burger burger" data-target="topMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-    </div>
-    <div id="topMenu" class="navbar-menu">
-      <div class="navbar-start">
-        {{- $currentPage := . -}}
-        {{- range .Site.Menus.main }}
-        <a class="navbar-item{{ if $currentPage.IsMenuCurrent "main" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
-        {{- end }}
-
-      </div>
-      <div class="navbar-end">
-        {{- if .Site.Menus.right }}
-        {{- range .Site.Menus.right }}
-        <a class="navbar-item{{ if $currentPage.IsMenuCurrent "right" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
-        {{- end }}
-        {{- end }}
-        {{- if .Site.Menus.buttons }}
-          {{- if not .Params.hidebuttons -}}
-          <div class="navbar-item">
-            {{- range .Site.Menus.buttons }}
-            <a class="button is-primary{{ if $currentPage.IsMenuCurrent "buttons" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
-            {{- end }}
-          </div>
-          {{- end -}}
+    </nav>
+    <div slot="right">
+      {{- if .Site.Params.search.enabled -}}
+      <div class="navbar-item navbar-search-menu" id="search-input-menu"></div>
+      {{- end -}} {{- if .Site.Menus.buttons }} {{- if not .Params.hidebuttons
+      -}}
+      <div class="navbar-item">
+        {{- range .Site.Menus.buttons }}
+        <a class="ttui-btn ttui-btn--primary md:d-none" href="{{ .URL }}"
+          >{{ .Pre }}{{ .Name }}</a
+        >
         {{- end }}
       </div>
+      {{- end -}} {{- end }}
     </div>
-  </div>
-</nav>
+  </ttui-header>
+</div>
 
 {{- if .Site.Params.search.enabled -}}
-  <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-  <script type="text/javascript">
-    docsearch({
-      appId: {{ .Site.Params.search.appid }},
-      apiKey: {{ .Site.Params.search.apikey }},
-      indexName: {{ .Site.Params.search.index }},
-      container: '#search-input-menu',
-      debug: false, // Set debug to true if you want to inspect the dropdown.
-    });
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+  docsearch({
+    appId: {{ .Site.Params.search.appid }},
+    apiKey: {{ .Site.Params.search.apikey }},
+    indexName: {{ .Site.Params.search.index }},
+    container: '#search-input-menu',
+    debug: false, // Set debug to true if you want to inspect the dropdown.
+  });
+</script>
 {{- end -}}
