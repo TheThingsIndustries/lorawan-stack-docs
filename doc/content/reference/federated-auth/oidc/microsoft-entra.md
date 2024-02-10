@@ -38,7 +38,7 @@ Add a new registration with the following values.
 
 Select **Register**.
 
-Open your app registration. Note the **Directory (tenant) ID**. This will be of the format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
+Open your app registration. Note the **Directory (tenant) ID**. This will be of the format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. Also, note the **Application (client) ID**.
 
 In the registration, navigate to the **Authentication** panel. For the `Select the tokens you would like to be issued by the authorization endpoint:` section, choose `ID tokens (used for implicit and hybrid flows)`.
 
@@ -55,8 +55,8 @@ Register the provider. Set the following values
 ```bash
 OIDC_PROVIDER_ID="provider ID"                                # Provider ID from above.
 OIDC_PROVIDER_NAME="My OIDC Provider"                         # Name used to display on the Console.
-OIDC_CLIENT_ID="client123"                                    # Client ID is the Secret ID above.
-OIDC_CLIENT_SECRET="secret123"                                # Client Secret is the secret Value from above..
+OIDC_CLIENT_ID="client123"                                    # Client ID is the Application (client)ID from above.
+OIDC_CLIENT_SECRET="secret123"                                # Client Secret is the secret Value from above.
 OIDC_MICROSOFT_TENANT="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 OIDC_ALLOWED_EMAIL_DOMAINS="example.com"                      # This is a required field to skip email verification.
 ```
