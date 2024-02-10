@@ -69,6 +69,8 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 
 ## Messages
 
+{{< proto/message message="AlertNotificationProfileIdentifiers" >}}
+
 {{< proto/message message="APIKey" >}}
 
 {{< proto/message message="APIKeys" >}}
