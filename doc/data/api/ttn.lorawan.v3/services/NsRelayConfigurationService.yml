@@ -1,0 +1,94 @@
+name: NsRelayConfigurationService
+comment: The NsRelayConfigurationService provides configuration management capabilities
+  for relays.
+methods:
+  CreateRelay:
+    name: CreateRelay
+    comment: Create a relay.
+    input:
+      name: CreateRelayRequest
+    output:
+      name: CreateRelayResponse
+    http:
+    - method: POST
+      path: /ns/applications/{end_device_ids.application_ids.application_id}/relays
+  GetRelay:
+    name: GetRelay
+    comment: Get a relay.
+    input:
+      name: GetRelayRequest
+    output:
+      name: GetRelayResponse
+    http:
+    - method: GET
+      path: /ns/applications/{end_device_ids.application_ids.application_id}/relays/{end_device_ids.device_id}
+  UpdateRelay:
+    name: UpdateRelay
+    comment: Update a relay.
+    input:
+      name: UpdateRelayRequest
+    output:
+      name: UpdateRelayResponse
+    http:
+    - method: PUT
+      path: /ns/applications/{end_device_ids.application_ids.application_id}/relays/{end_device_ids.device_id}
+  DeleteRelay:
+    name: DeleteRelay
+    comment: Delete a relay.
+    input:
+      name: DeleteRelayRequest
+    output:
+      name: DeleteRelayResponse
+    http:
+    - method: DELETE
+      path: /ns/applications/{end_device_ids.application_ids.application_id}/relays/{end_device_ids.device_id}
+  CreateRelayUplinkForwardingRule:
+    name: CreateRelayUplinkForwardingRule
+    comment: Create an uplink forwarding rule.
+    input:
+      name: CreateRelayUplinkForwardingRuleRequest
+    output:
+      name: CreateRelayUplinkForwardingRuleResponse
+    http:
+    - method: POST
+      path: /ns/applications/{end_device_ids.application_ids.application_id}/relays/{end_device_ids.device_id}/uplink-forwarding-rules
+  GetRelayUplinkForwardingRule:
+    name: GetRelayUplinkForwardingRule
+    comment: Get an uplink forwarding rule.
+    input:
+      name: GetRelayUplinkForwardingRuleRequest
+    output:
+      name: GetRelayUplinkForwardingRuleResponse
+    http:
+    - method: GET
+      path: /ns/applications/{end_device_ids.application_ids.application_id}/relays/{end_device_ids.device_id}/uplink-forwarding-rules/{index}
+  ListRelayUplinkForwardingRules:
+    name: ListRelayUplinkForwardingRules
+    comment: List uplink forwarding rules.
+    input:
+      name: ListRelayUplinkForwardingRulesRequest
+    output:
+      name: ListRelayUplinkForwardingRulesResponse
+    http:
+    - method: GET
+      path: /ns/applications/{end_device_ids.application_ids.application_id}/relays/{end_device_ids.device_id}/uplink-forwarding-rules
+  UpdateRelayUplinkForwardingRule:
+    name: UpdateRelayUplinkForwardingRule
+    comment: Update an uplink forwarding rule.
+    input:
+      name: UpdateRelayUplinkForwardingRuleRequest
+    output:
+      name: UpdateRelayUplinkForwardingRuleResponse
+    http:
+    - method: PUT
+      path: /ns/applications/{end_device_ids.application_ids.application_id}/relays/{end_device_ids.device_id}/uplink-forwarding-rules/{index}
+  DeleteRelayUplinkForwardingRule:
+    name: DeleteRelayUplinkForwardingRule
+    comment: Delete an uplink forwarding rule.
+    input:
+      name: DeleteRelayUplinkForwardingRuleRequest
+    output:
+      name: DeleteRelayUplinkForwardingRuleResponse
+    http:
+    - method: DELETE
+      path: /ns/applications/{end_device_ids.application_ids.application_id}/relays/{end_device_ids.device_id}/uplink-forwarding-rules/{index}

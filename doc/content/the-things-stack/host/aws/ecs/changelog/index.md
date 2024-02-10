@@ -9,6 +9,26 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.29.0
+
+### `2-1-db-aurora-master`, `2-2-db-aurora-replica`
+
+- Update the default database engine version to `13.8`.
+- Engine versions `14`, `15` and `16` are now supported.
+
+### `2-5-db-timescale`
+
+- Updated the default `node_exporter` version to `1.7.0`.
+- Updated the default `postgres_exporter` version to `1.5.0`.
+- Extension version `2.13.1` is now supported.
+- Engine version `16` is now supported, but note that this requires an extension version of at least `2.13.1`.
+- The default extension version is now `2.10.1`.
+- The default engine version is now `15`.
+
+### `5-4-ecs-cluster`
+
+- Updated the default `node_exporter` version to `1.7.0`.
+
 ## 3.28.2
 
 ### Proxy

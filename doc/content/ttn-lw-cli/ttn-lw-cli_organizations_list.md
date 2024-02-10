@@ -27,6 +27,7 @@ ttn-lw-cli organizations list [flags]
       --deleted                                                       
       --deleted-at                                                    select the deleted_at field
       --description                                                   select the description field
+      --fanout-notifications                                          select the fanout_notifications field
       --field-mask strings                                            
       --gateway-limit                                                 select the gateway_limit field
   -h, --help                                                          help for list

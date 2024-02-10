@@ -1,0 +1,20 @@
+name: AlertNotificationReceiver.Webhook
+fields:
+- name: url
+  type: string
+  rules:
+    uri: true
+  default: ""
+- name: headers
+  rules:
+    max_pairs: 50
+    ignore_empty: true
+  map_key:
+    type: string
+    rules:
+      max_len: 64
+  map_value:
+    type: string
+    rules:
+      max_len: 4096
+  default: {}

@@ -26,6 +26,7 @@ ttn-lw-cli organizations get [organization-id] [flags]
       --contact-info                                                  select the contact_info field
       --deleted-at                                                    select the deleted_at field
       --description                                                   select the description field
+      --fanout-notifications                                          select the fanout_notifications field
       --gateway-limit                                                 select the gateway_limit field
   -h, --help                                                          help for get
       --name                                                          select the name field

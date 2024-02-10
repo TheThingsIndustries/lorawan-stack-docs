@@ -47,6 +47,8 @@ The Things Industries Command-line Interface
 
 ### SEE ALSO
 
+* [ttn-lw-cli alert-notification-profiles]({{< relref "ttn-lw-cli_alert-notification-profiles" >}})	 - Alert Notification Profile commands (EXPERIMENTAL)
+* [ttn-lw-cli alert-notification-receivers]({{< relref "ttn-lw-cli_alert-notification-receivers" >}})	 - Alert Notification Receiver commands (EXPERIMENTAL)
 * [ttn-lw-cli applications]({{< relref "ttn-lw-cli_applications" >}})	 - Application commands
 * [ttn-lw-cli authentication-providers]({{< relref "ttn-lw-cli_authentication-providers" >}})	 - Authentication Provider commands
 * [ttn-lw-cli clients]({{< relref "ttn-lw-cli_clients" >}})	 - Client commands
@@ -61,6 +63,7 @@ The Things Industries Command-line Interface
 * [ttn-lw-cli notifications]({{< relref "ttn-lw-cli_notifications" >}})	 - Manage notifications
 * [ttn-lw-cli organizations]({{< relref "ttn-lw-cli_organizations" >}})	 - Organization commands
 * [ttn-lw-cli packetbroker]({{< relref "ttn-lw-cli_packetbroker" >}})	 - Packet Broker commands
+* [ttn-lw-cli relays]({{< relref "ttn-lw-cli_relays" >}})	 - Relay commands (EXPERIMENTAL)
 * [ttn-lw-cli simulate]({{< relref "ttn-lw-cli_simulate" >}})	 - Simulation commands
 * [ttn-lw-cli templates]({{< relref "ttn-lw-cli_templates" >}})	 - End Device template commands
 * [ttn-lw-cli tenants]({{< relref "ttn-lw-cli_tenants" >}})	 - Tenant commands

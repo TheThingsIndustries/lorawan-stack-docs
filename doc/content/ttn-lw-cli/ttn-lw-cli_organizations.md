@@ -55,7 +55,6 @@ Organization commands
 * [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Industries Command-line Interface
 * [ttn-lw-cli organizations api-keys]({{< relref "ttn-lw-cli_organizations_api-keys" >}})	 - Manage organization API keys
 * [ttn-lw-cli organizations collaborators]({{< relref "ttn-lw-cli_organizations_collaborators" >}})	 - Manage organization collaborators
-* [ttn-lw-cli organizations contact-info]({{< relref "ttn-lw-cli_organizations_contact-info" >}})	 - Manage organization contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of organization)
 * [ttn-lw-cli organizations create]({{< relref "ttn-lw-cli_organizations_create" >}})	 - Create an organization
 * [ttn-lw-cli organizations delete]({{< relref "ttn-lw-cli_organizations_delete" >}})	 - Delete an organization
 * [ttn-lw-cli organizations get]({{< relref "ttn-lw-cli_organizations_get" >}})	 - Get an organization
