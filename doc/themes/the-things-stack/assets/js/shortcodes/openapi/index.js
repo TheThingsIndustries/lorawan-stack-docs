@@ -7,6 +7,8 @@ window.onload = function() {
 // Jump to location in hash.
   if (location.hash) {
     location.replace(location.hash)
+    // Compensate for the fixed header.
+    window.scrollTo(window.scrollX, window.scrollY - 125);
   }
 }
 

@@ -27,7 +27,7 @@
   </div>
   {{ range $tagDetails := $openapi.tags }} {{ $tag := $tagDetails.name }}
   <div class="api-by-tags-container">
-    <span><h4 class="api-tag-header" id="{{ $tag }}">{{ $tag }}</h4></span>
+    <h4 class="api-tag-header" id="{{ $tag }}">{{ $tag }}</h4>
     <div class="api-tag-summary">
       <p>{{ $tagDetails.description }}</p>
       {{- $downArrow := resources.Get "/img/expand_more.svg" }} {{- $upArrow :=
@@ -57,9 +57,7 @@
           >
             {{ $pathMethod }}
           </p>
-          <span class="api-item-header-path"
-            ><h6 id="{{ $id }}">{{ $path }}</h6></span
-          >
+          <h6 id="{{ $id }}" class="api-item-header-path">{{ $path }}</h6>
         </div>
         <div class="api-item-summary">
           <p>{{ $pathDetails.summary | markdownify }}</p>
