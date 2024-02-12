@@ -2,7 +2,8 @@
 title: "Authentication"
 description: ""
 weight: 1
-aliases: ["reference/api/concepts/authentication"]
+aliases:
+  ["/reference/api/concepts/authentication", "/reference/api/authentication"]
 ---
 
 {{% tts %}} supports authentication using API keys, OAuth access tokens and Session cookies.

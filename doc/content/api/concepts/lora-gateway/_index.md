@@ -2,6 +2,7 @@
 title: "LoRa® Gateway specific APIs"
 description: ""
 weight: 5
+aliases: ["/reference/api/gateway_server_mqtt"]
 ---
 
 {{% tts %}} supports multiple LoRa® gateway protocols which communicate the respective APIs.

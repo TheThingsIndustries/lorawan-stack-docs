@@ -2,7 +2,7 @@
 title: "Field masks"
 description: ""
 weight: 2
-aliases: ["reference/api/field-mask"]
+aliases: ["/reference/api/field-mask"]
 ---
 
 {{% tts %}} APIs use field masks (on supported APIs) to specify a subset of fields that should be returned by a reading request, or updated in a writing request.

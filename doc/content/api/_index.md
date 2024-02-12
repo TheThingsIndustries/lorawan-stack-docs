@@ -1,7 +1,8 @@
 ---
 title: "API"
 description: ""
-aliases: ["/api/reference/grpc"]
+aliases:
+  ["/api/reference/grpc", "/the-things-stack/interact/api/", "/reference/api"]
 weight: 7
 menu:
   main:
@@ -19,7 +20,7 @@ menu:
 | [HTTP (REST)]({{< ref "/api/reference/http" >}})          | {{% tts %}} HTTP (REST) APIs are primarily used for managing entities (ex: Devices, gateways, users, organizations etc). |
 | [gRPC]({{< ref "/api/reference/grpc" >}})                 | {{% tts %}} backend components communicate with each other primarily using [gRPC](https://grpc.io/).                     |
 | [LoRa® Gateway]({{< ref "/api/concepts/lora-gateway" >}}) | APIs for LoRa® Gateways to communicate with {{% tts %}}.                                                                 |
-| [Data Plane]({{< ref "/integrations" >}})                 | APIs to read/receive application data and send downlinks to devices.                                                     |
+| [Application Integrations]({{< ref "/integrations" >}})   | APIs to read/receive application data and send downlinks to devices.                                                     |
 
 </div>
 
