@@ -55,7 +55,7 @@ Register the provider. Set the following values
 ```bash
 OIDC_PROVIDER_ID="provider ID"                                # Provider ID from above.
 OIDC_PROVIDER_NAME="My OIDC Provider"                         # Name used to display on the Console.
-OIDC_CLIENT_ID="client123"                                    # Client ID is the Application (client)ID from above.
+OIDC_CLIENT_ID="client123"                                    # Client ID is the Application (client) ID from above.
 OIDC_CLIENT_SECRET="secret123"                                # Client Secret is the secret Value from above.
 OIDC_MICROSOFT_TENANT="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 OIDC_ALLOWED_EMAIL_DOMAINS="example.com"                      # This is a required field to skip email verification.
