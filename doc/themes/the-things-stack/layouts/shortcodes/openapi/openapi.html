@@ -14,12 +14,12 @@
         </tr>
       </thead>
       <tbody>
-        {{ range $tagDetails := $openapi.tags }}
+        {{ range sort $openapi.tags "name" }}
         <tr>
           <td>
-            <a href="#{{ $tagDetails.name }}">{{ $tagDetails.name }}</a>
+            <a href="#{{ .name }}">{{ .name }}</a>
           </td>
-          <td>{{ $tagDetails.description }}</td>
+          <td>{{ .description }}</td>
         </tr>
         {{ end }}
       </tbody>
