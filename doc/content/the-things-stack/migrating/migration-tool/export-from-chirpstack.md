@@ -1,7 +1,7 @@
 ---
 title: "Export End Devices from ChirpStack"
 description: ""
-weight: 3
+weight: 2
 aliases:
   [
     /the-things-stack/migrating-from-networks/migrate-from-chirpstack,
