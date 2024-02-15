@@ -77,5 +77,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: public
+      - name: Make gateways.csv
+        run: make gateways.csv
       - name: Sync gateways.csv to airtable
-        run: make gateways.csv && curl -X POST ${AIRTABLE_GATEWAYS_API_ENDPOINT} -H "Authorization: Bearer ${AIRTABLE_GATEWAYS_API_KEY}" -H "Content-Type: text/csv" --data-binary "@gateways.csv"
+        run: |
+          curl -X POST ${{ secrets.AIRTABLE_GATEWAYS_API_ENDPOINT }} -H "Authorization: Bearer ${{ secrets.AIRTABLE_GATEWAYS_API_KEY }}" -H "Content-Type: text/csv" --data-binary "@gateways.csv"
