@@ -1,9 +1,14 @@
 ---
 title: "The Things Indoor Gateway"
-description: ""
+vendor: "The Things Industries"
+vendor_page: "https://www.thethingsshop.com/products/the-things-indoor-gateway"
+description: "The Things Indoor Gateway is an 8 Channel LoRaWAN® gateway."
+ip_rating: 
+backhaul: [Wi-Fi]
 distributions: ["Sandbox", "Cloud"]
 new_in_version: 3.13.3
 aliases: [/gateways/thethingsindoorgateway]
+image: [TTIG.png]
 ---
 
 {{< figure src="TTIG.jpeg" alt="{{% ttig %}}" class="plain float">}}

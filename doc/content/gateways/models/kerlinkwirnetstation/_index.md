@@ -1,7 +1,12 @@
 ---
 title: "Kerlink Wirnet Station"
-description: ""
+vendor: "Kerlink"
+vendor_page: "https://www.kerlink.com/product/wirnet-station/"
+description: "The Kerlink Wirnet Station is a robust and highly reliable outdoor LoRaWAN gateway. It was the first commercially available LoRaWAN® gateway on the global market. It offers Ethernet and cellular (3G/2G) backhauls."
+ip_rating:
+backhaul: [Ethernet, Wi-Fi, Cellular (optional)]
 aliases: [/gateways/kerlinkwirnetstation]
+image: [wirnet-station.png]
 ---
 
 {{< warning >}} Kerlink announced the [Product End of Life](https://www.kerlink.com/wp-content/uploads/2020/01/Product-End-of-Life-Wirnet-Station.pdf) in January 2020 for Wirnet Station, so using [Kerlink Wirnet iStation]({{< ref "/gateways/models/kerlinkwirnetistation" >}}) is highly recommended. {{</ warning >}}

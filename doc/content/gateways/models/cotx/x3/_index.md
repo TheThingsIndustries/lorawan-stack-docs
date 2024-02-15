@@ -1,6 +1,12 @@
 ---
 title: COTX X3
+vendor: COTX
+vendor_page: "https://www.cotxnetworks.com/hotspot/cotx-x3/"
+description: "The COTX X3 gateway has similar characteristics to the COTX X1 gateway, only with additional features like outdoor support, BLE support, a small screen for easy monitoring and more."
+ip_rating:
+backhaul: [Ethernet, Wi-Fi]
 aliases: [/gateways/cotx/x3]
+image: [X3_1.png]
 ---
 
 {{< figure src="X3_1.png" alt="COTX X3" class="plain float" >}}

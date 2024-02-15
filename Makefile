@@ -92,3 +92,6 @@ endif
 
 .PHONY: init
 init: deps
+
+gateways.csv:
+	go run frontmatter.go

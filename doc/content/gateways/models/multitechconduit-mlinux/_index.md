@@ -1,6 +1,6 @@
 ---
 title: "MultiTech Conduit mLinux"
-description: ""
+description: "The MultiTech MultiConnect® Conduit™ is a configurable, scalable cellular communications gateway for industrial IoT applications."
 aliases: [/gateways/multitechconduit-mlinux]
 ---
 

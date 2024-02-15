@@ -1,6 +1,11 @@
 ---
 title: "Wifx L1"
-description: ""
+vendor: "Wifx"
+vendor_page: "https://iot.wifx.net/en/products/wifx-l1/"
+description: "The Wifx L1 is a robust and professional grade outdoor LoRaWAN® gateway in an ultra compact form factor, designed and assembled in Switzerland. It is the successor of the Wifx LORIX One."
+ip_rating: "IP65"
+backhaul: [Ethernet]
+image: [wifx-l1.png]
 ---
 
 {{< figure src="wifx-l1.png" alt="Wifx L1" class="plain float" >}}

@@ -1,8 +1,15 @@
 ---
 title: "The Things Kickstarter Gateway"
-description: ""
+vendor: "The Things Industries"
+vendor_page: "https://www.thethingsnetwork.org/docs/gateways/gateway/"
+description: "The Things Kickstarter Gateway is a LoRaWAN gateway."
+ip_rating:
+backhaul: [Ethernet, Wi-Fi]
 aliases: [/gateways/thethingskickstartergateway]
+image: [TTKG.png]
 ---
+
+{{< figure src="TTKG.png" alt="The Things Kickstarter Gateway" class="plain float" width="50%">}}
 
 This page guides you to connect The Things Kickstarter Gateway to {{% tts %}}.
 
