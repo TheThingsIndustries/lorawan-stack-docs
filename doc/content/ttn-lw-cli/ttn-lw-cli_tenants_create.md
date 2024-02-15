@@ -23,6 +23,7 @@ ttn-lw-cli tenants create [tenant-id] [flags]
       --billing.provider.stripe.plan-id string                                                          
       --billing.provider.stripe.subscription-id string                                                  
       --billing.provider.stripe.subscription-item-id string                                             
+      --configuration.default-cluster.ars.routing.enabled                                               
       --configuration.default-cluster.is.admin-rights.all                                               
       --configuration.default-cluster.is.email.network.branding-base-url string                         
       --configuration.default-cluster.is.end-device-picture.disable-upload                              

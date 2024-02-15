@@ -1,0 +1,11 @@
+name: AlertNotificationReceiver.SMS
+fields:
+- name: phone_number
+  comment: |-
+    According to the international phone numbering plan (ITU-T E. 164)
+    phone numbers cannot contain less than 7 digits and more than 15 digits.
+    The validation is done via an regex and accounts for the '+' formating character.
+  type: string
+  rules:
+    pattern: ^[+]?[0-9]{7,15}$
+  default: ""

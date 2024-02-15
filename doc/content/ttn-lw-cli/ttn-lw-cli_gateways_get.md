@@ -19,6 +19,8 @@ ttn-lw-cli gateways get [gateway-id] [flags]
       --administrative-contact.ids.organization-ids.organization-id   select the administrative_contact.ids.organization_ids.organization_id field
       --administrative-contact.ids.user-ids                           select the administrative_contact.ids.user_ids field and all allowed sub-fields
       --administrative-contact.ids.user-ids.user-id                   select the administrative_contact.ids.user_ids.user_id field
+      --alert-notification-profile-ids                                select the alert_notification_profile_ids field and all allowed sub-fields
+      --alert-notification-profile-ids.profile-id                     select the alert_notification_profile_ids.profile_id field
       --all                                                           select all gateway fields
       --antennas                                                      select the antennas field
       --attributes                                                    select the attributes field

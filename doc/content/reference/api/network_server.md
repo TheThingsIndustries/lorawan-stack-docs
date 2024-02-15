@@ -171,6 +171,8 @@ description: ""
 
 {{< proto/message message="RelaySecondChannel" >}}
 
+{{< proto/message message="RelaySettings" >}}
+
 {{< proto/message message="RelayUplinkForwardLimits" >}}
 
 {{< proto/message message="RelayForwardLimits" >}}
@@ -181,7 +183,11 @@ description: ""
 
 {{< proto/message message="RxMetadata" >}}
 
+{{< proto/message message="ServedRelaySettings" >}}
+
 {{< proto/message message="ServedRelayParameters" >}}
+
+{{< proto/message message="ServingRelaySettings" >}}
 
 {{< proto/message message="ServingRelayParameters" >}}
 

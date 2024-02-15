@@ -1,0 +1,39 @@
+name: ServingRelaySettings
+fields:
+- name: second_channel
+  comment: Second wake on radio channel configuration.
+  message:
+    name: RelaySecondChannel
+  default: {}
+- name: default_channel_index
+  comment: |-
+    Index of the default wake on radio channel.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    package: google.protobuf
+    name: UInt32Value
+  rules:
+    lte: 255
+  default: null
+- name: cad_periodicity
+  comment: Channel activity detection periodicity.
+  enum:
+    name: RelayCADPeriodicity
+  rules:
+    defined_only: true
+  default: RELAY_CAD_PERIODICITY_1_SECOND
+- name: uplink_forwarding_rules
+  comment: Configured uplink forwarding rules.
+  rules:
+    max_items: 16
+  repeated:
+    message:
+      name: RelayUplinkForwardingRule
+  default: []
+- name: limits
+  comment: |-
+    Configured forwarding limits.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: ServingRelayForwardingLimits
+  default: {}

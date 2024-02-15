@@ -522,7 +522,11 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="Secret" >}}
 
+{{< proto/message message="ServedRelaySettings" >}}
+
 {{< proto/message message="ServedRelayParameters" >}}
+
+{{< proto/message message="ServingRelaySettings" >}}
 
 {{< proto/message message="ServingRelayParameters" >}}
 
@@ -605,6 +609,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/enum enum="RelayResetLimitCounter" >}}
 
 {{< proto/enum enum="RelaySecondChAckOffset" >}}
+
+{{< proto/message message="RelaySettings" >}}
 
 {{< proto/enum enum="RelaySmartEnableLevel" >}}
 

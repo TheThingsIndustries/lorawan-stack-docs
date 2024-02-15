@@ -3,6 +3,62 @@
     "short": "The Things Industries Command-line Interface",
     "path": "ttn-lw-cli",
     "subCommands": {
+      "alert-notification-profiles": {
+        "short": "Alert Notification Profile commands (EXPERIMENTAL)",
+        "path": "ttn-lw-cli alert-notification-profiles",
+        "subCommands": {
+          "create": {
+            "short": "Create an alert notification profile (EXPERIMENTAL)",
+            "path": "ttn-lw-cli alert-notification-profiles create"
+          },
+          "delete": {
+            "short": "Delete an alert notification profile (EXPERIMENTAL)",
+            "path": "ttn-lw-cli alert-notification-profiles delete"
+          },
+          "get": {
+            "short": "Get an alert notification profile (EXPERIMENTAL)",
+            "path": "ttn-lw-cli alert-notification-profiles get"
+          },
+          "get-default": {
+            "short": "Get default alert notification profile (EXPERIMENTAL)",
+            "path": "ttn-lw-cli alert-notification-profiles get-default"
+          },
+          "list": {
+            "short": "List alert notification profiles (EXPERIMENTAL)",
+            "path": "ttn-lw-cli alert-notification-profiles list"
+          },
+          "update": {
+            "short": "Update an alert notification profile (EXPERIMENTAL)",
+            "path": "ttn-lw-cli alert-notification-profiles update"
+          }
+        }
+      },
+      "alert-notification-receivers": {
+        "short": "Alert Notification Receiver commands (EXPERIMENTAL)",
+        "path": "ttn-lw-cli alert-notification-receivers",
+        "subCommands": {
+          "create": {
+            "short": "Create an alert notification receiver (EXPERIMENTAL)",
+            "path": "ttn-lw-cli alert-notification-receivers create"
+          },
+          "delete": {
+            "short": "Delete an alert notification receiver (EXPERIMENTAL)",
+            "path": "ttn-lw-cli alert-notification-receivers delete"
+          },
+          "get": {
+            "short": "Get an alert notification receiver (EXPERIMENTAL)",
+            "path": "ttn-lw-cli alert-notification-receivers get"
+          },
+          "list": {
+            "short": "List alert notification receivers (EXPERIMENTAL)",
+            "path": "ttn-lw-cli alert-notification-receivers list"
+          },
+          "update": {
+            "short": "Update an alert notification receiver (EXPERIMENTAL)",
+            "path": "ttn-lw-cli alert-notification-receivers update"
+          }
+        }
+      },
       "applications": {
         "short": "Application commands",
         "path": "ttn-lw-cli applications",
@@ -70,20 +126,6 @@
               "set": {
                 "short": "Set properties of an application collaborator",
                 "path": "ttn-lw-cli applications collaborators set"
-              }
-            }
-          },
-          "contact-info": {
-            "short": "Manage application contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of application)",
-            "path": "ttn-lw-cli applications contact-info",
-            "subCommands": {
-              "request-validation": {
-                "short": "Request validation for entity contact info",
-                "path": "ttn-lw-cli applications contact-info request-validation"
-              },
-              "validate": {
-                "short": "Validate contact info",
-                "path": "ttn-lw-cli applications contact-info validate"
               }
             }
           },
@@ -320,20 +362,6 @@
               "set": {
                 "short": "Set a client collaborator",
                 "path": "ttn-lw-cli clients collaborators set"
-              }
-            }
-          },
-          "contact-info": {
-            "short": "Manage client contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of client)",
-            "path": "ttn-lw-cli clients contact-info",
-            "subCommands": {
-              "request-validation": {
-                "short": "Request validation for entity contact info",
-                "path": "ttn-lw-cli clients contact-info request-validation"
-              },
-              "validate": {
-                "short": "Validate contact info",
-                "path": "ttn-lw-cli clients contact-info validate"
               }
             }
           },
@@ -621,20 +649,6 @@
               }
             }
           },
-          "contact-info": {
-            "short": "Manage gateway contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of gateway)",
-            "path": "ttn-lw-cli gateways contact-info",
-            "subCommands": {
-              "request-validation": {
-                "short": "Request validation for entity contact info",
-                "path": "ttn-lw-cli gateways contact-info request-validation"
-              },
-              "validate": {
-                "short": "Validate contact info",
-                "path": "ttn-lw-cli gateways contact-info validate"
-              }
-            }
-          },
           "create": {
             "short": "Create a gateway",
             "path": "ttn-lw-cli gateways create"
@@ -762,20 +776,6 @@
               "set": {
                 "short": "Set an organization collaborator",
                 "path": "ttn-lw-cli organizations collaborators set"
-              }
-            }
-          },
-          "contact-info": {
-            "short": "Manage organization contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of organization)",
-            "path": "ttn-lw-cli organizations contact-info",
-            "subCommands": {
-              "request-validation": {
-                "short": "Request validation for entity contact info",
-                "path": "ttn-lw-cli organizations contact-info request-validation"
-              },
-              "validate": {
-                "short": "Validate contact info",
-                "path": "ttn-lw-cli organizations contact-info validate"
               }
             }
           },
@@ -911,6 +911,54 @@
           }
         }
       },
+      "relays": {
+        "short": "Relay commands (EXPERIMENTAL)",
+        "path": "ttn-lw-cli relays",
+        "subCommands": {
+          "create": {
+            "short": "Create a relay (EXPERIMENTAL)",
+            "path": "ttn-lw-cli relays create"
+          },
+          "delete": {
+            "short": "Delete a relay (EXPERIMENTAL)",
+            "path": "ttn-lw-cli relays delete"
+          },
+          "get": {
+            "short": "Get a relay (EXPERIMENTAL)",
+            "path": "ttn-lw-cli relays get"
+          },
+          "update": {
+            "short": "Update a relay (EXPERIMENTAL)",
+            "path": "ttn-lw-cli relays update"
+          },
+          "uplink-forwarding-rules": {
+            "short": "Uplink forwarding rules commands (EXPERIMENTAL)",
+            "path": "ttn-lw-cli relays uplink-forwarding-rules",
+            "subCommands": {
+              "create": {
+                "short": "Create an uplink forwarding rule (EXPERIMENTAL)",
+                "path": "ttn-lw-cli relays uplink-forwarding-rules create"
+              },
+              "delete": {
+                "short": "Delete an uplink forwarding rule (EXPERIMENTAL)",
+                "path": "ttn-lw-cli relays uplink-forwarding-rules delete"
+              },
+              "get": {
+                "short": "Get an uplink forwarding rule (EXPERIMENTAL)",
+                "path": "ttn-lw-cli relays uplink-forwarding-rules get"
+              },
+              "list": {
+                "short": "List uplink forwarding rules (EXPERIMENTAL)",
+                "path": "ttn-lw-cli relays uplink-forwarding-rules list"
+              },
+              "update": {
+                "short": "Update an uplink forwarding rule (EXPERIMENTAL)",
+                "path": "ttn-lw-cli relays uplink-forwarding-rules update"
+              }
+            }
+          }
+        }
+      },
       "simulate": {
         "short": "Simulation commands",
         "path": "ttn-lw-cli simulate",
@@ -1035,20 +1083,6 @@
               }
             }
           },
-          "contact-info": {
-            "short": "Manage user contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of user)",
-            "path": "ttn-lw-cli users contact-info",
-            "subCommands": {
-              "request-validation": {
-                "short": "Request validation for entity contact info",
-                "path": "ttn-lw-cli users contact-info request-validation"
-              },
-              "validate": {
-                "short": "Validate contact info",
-                "path": "ttn-lw-cli users contact-info validate"
-              }
-            }
-          },
           "create": {
             "short": "Create a user",
             "path": "ttn-lw-cli users create"
@@ -1060,6 +1094,20 @@
           "delete": {
             "short": "Delete a user",
             "path": "ttn-lw-cli users delete"
+          },
+          "email-validations": {
+            "short": "Email validations commands",
+            "path": "ttn-lw-cli users email-validations",
+            "subCommands": {
+              "request": {
+                "short": "Request validation for an user's email address",
+                "path": "ttn-lw-cli users email-validations request"
+              },
+              "validate": {
+                "short": "Validate an user's email address",
+                "path": "ttn-lw-cli users email-validations validate"
+              }
+            }
           },
           "forgot-password": {
             "short": "Request a temporary user password",

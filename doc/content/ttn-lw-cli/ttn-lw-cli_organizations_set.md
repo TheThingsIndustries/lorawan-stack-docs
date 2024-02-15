@@ -20,6 +20,7 @@ ttn-lw-cli organizations set [organization-id] [flags]
       --attributes stringToString                                            
       --client-limit uint                                                    
       --description string                                                   
+      --fanout-notifications                                                 
       --gateway-limit uint                                                   
   -h, --help                                                                 help for set
       --name string                                                          

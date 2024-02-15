@@ -51,7 +51,53 @@ description: ""
 
 {{< proto/method service="GatewayBatchRegistry" method="Delete" >}}
 
+## The `AlertNotificationProfileRegistry` service
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationProfileRegistry" method="Create" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationProfileRegistry" method="Get" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationProfileRegistry" method="List" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationProfileRegistry" method="Update" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationProfileRegistry" method="Delete" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationProfileRegistry" method="GetDefault" >}}
+
+## The `AlertNotificationReceiverRegistry` service
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationReceiverRegistry" method="Create" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationReceiverRegistry" method="Get" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationReceiverRegistry" method="List" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationReceiverRegistry" method="Update" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationReceiverRegistry" method="Delete" >}}
+
+## The `Ars` service
+
+{{< proto/method package="tti.lorawan.v3" service="Ars" method="GetConfiguration" >}}
+
 ## Messages
+
+{{< proto/message package="tti.lorawan.v3" message="AlertNotificationProfile" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="AlertNotificationReceiverIdentifiers" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="AlertNotificationReceiver" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="AlertNotificationReceiver.Email" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="AlertNotificationReceiver.SMS" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="AlertNotificationReceiver.Webhook" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="ArsConfiguration" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="ArsConfiguration.Routing" >}}
 
 {{< proto/message message="AssertGatewayRightsRequest" >}}
 
@@ -70,6 +116,10 @@ description: ""
 {{< proto/message message="ContactInfo" >}}
 
 {{< proto/message message="ContactInfoValidation" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="CreateAlertNotificationProfileRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="CreateAlertNotificationReceiverRequest" >}}
 
 {{< proto/message message="EndDeviceIdentifiers" >}}
 
@@ -97,6 +147,16 @@ description: ""
 
 {{< proto/message message="GatewayIdentifiers" >}}
 
+{{< proto/message package="tti.lorawan.v3" message="GetArsConfigurationRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="GetArsConfigurationResponse" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="GetAlertNotificationProfileRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="GetDefaultAlertNotificationProfileRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="GetAlertNotificationReceiverRequest" >}}
+
 {{< proto/message message="GetIsConfigurationRequest" >}}
 
 {{< proto/message message="GetIsConfigurationRequest" >}}
@@ -106,6 +166,10 @@ description: ""
 {{< proto/message message="ListOAuthClientAuthorizationsRequest" >}}
 
 {{< proto/message message="ListOAuthAccessTokensRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="ListAlertNotificationProfilesRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="ListAlertNotificationReceiversRequest" >}}
 
 {{< proto/message message="OAuthAccessToken" >}}
 
@@ -130,6 +194,10 @@ description: ""
 {{< proto/message message="SearchAccountsRequest" >}}
 
 {{< proto/message message="SearchAccountsResponse" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="UpdateAlertNotificationProfileRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="UpdateAlertNotificationReceiverRequest" >}}
 
 <!-- ## Enums -->
 

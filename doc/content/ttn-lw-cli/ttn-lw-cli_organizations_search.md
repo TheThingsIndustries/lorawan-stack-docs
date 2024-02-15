@@ -29,6 +29,7 @@ ttn-lw-cli organizations search [flags]
       --deleted-at                                                    select the deleted_at field
       --description                                                   select the description field
       --description-contains string                                   
+      --fanout-notifications                                          select the fanout_notifications field
       --field-mask strings                                            
       --gateway-limit                                                 select the gateway_limit field
   -h, --help                                                          help for search

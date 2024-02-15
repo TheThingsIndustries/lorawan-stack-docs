@@ -16,6 +16,7 @@ ttn-lw-cli gateways create [gateway-id] [flags]
 ```
       --administrative-contact.ids.organization-ids.organization-id string   
       --administrative-contact.ids.user-ids.user-id string                   
+      --alert-notification-profile-ids.profile-id string                     
       --antenna.attributes stringToString                                    
       --antenna.gain float32                                                 
       --antenna.location.accuracy int32                                      

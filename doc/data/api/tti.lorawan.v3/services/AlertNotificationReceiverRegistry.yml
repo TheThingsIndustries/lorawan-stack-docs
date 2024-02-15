@@ -1,0 +1,57 @@
+name: AlertNotificationReceiverRegistry
+comment: |-
+  The AlertNotificationReceiverRegistry service, exposed by the Identity Server.
+  Is used to manage alert notification receivers.
+methods:
+  Create:
+    name: Create
+    comment: Create a new alert notification receiver.
+    input:
+      name: CreateAlertNotificationReceiverRequest
+    output:
+      name: AlertNotificationReceiver
+    http:
+    - method: POST
+      path: /alerts/notifications/receivers
+  Get:
+    name: Get
+    comment: Get an existing alert notification receiver.
+    input:
+      name: GetAlertNotificationReceiverRequest
+    output:
+      name: AlertNotificationReceiver
+    http:
+    - method: GET
+      path: /alerts/notifications/receivers/{ids.receiver_id}
+  List:
+    name: List
+    comment: List existing alert notification receivers. Returns all receivers if
+      no identifiers are provided.
+    input:
+      name: ListAlertNotificationReceiversRequest
+    output:
+      name: AlertNotificationReceivers
+    http:
+    - method: GET
+      path: /alerts/notifications/receivers
+  Update:
+    name: Update
+    comment: Update an existing alert notification receiver.
+    input:
+      name: UpdateAlertNotificationReceiverRequest
+    output:
+      name: AlertNotificationReceiver
+    http:
+    - method: PUT
+      path: /alerts/notifications/receivers/{receiver.ids.receiver_id}
+  Delete:
+    name: Delete
+    comment: Delete an existing alert notification receiver.
+    input:
+      name: AlertNotificationReceiverIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /alerts/notifications/receivers/{receiver_id}

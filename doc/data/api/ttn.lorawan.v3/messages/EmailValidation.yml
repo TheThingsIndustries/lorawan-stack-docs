@@ -1,0 +1,34 @@
+name: EmailValidation
+fields:
+- name: id
+  type: string
+  rules:
+    min_len: 1
+    max_len: 64
+  default: ""
+- name: token
+  type: string
+  rules:
+    min_len: 1
+    max_len: 64
+  default: ""
+- name: address
+  type: string
+  rules:
+    email: true
+  default: ""
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: expires_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"

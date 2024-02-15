@@ -1,0 +1,69 @@
+name: AlertNotificationProfileRegistry
+comment: |-
+  The AlertNotificationProfileRegistry service, exposed by the Identity Server.
+  Is used to manage alert notification profiles.
+methods:
+  Create:
+    name: Create
+    comment: Create a new alert notification profile.
+    input:
+      name: CreateAlertNotificationProfileRequest
+    output:
+      name: AlertNotificationProfile
+    http:
+    - method: POST
+      path: /alerts/notifications/profiles
+  Get:
+    name: Get
+    comment: Get an existing alert notification profile.
+    input:
+      name: GetAlertNotificationProfileRequest
+    output:
+      name: AlertNotificationProfile
+    http:
+    - method: GET
+      path: /alerts/notifications/profiles/{ids.profile_id}
+  List:
+    name: List
+    comment: |-
+      List existing alert notification profiles. Returns all profiles if no identifiers are provided.
+      If provided, the identifiers are used to filter which profiles are returned.
+    input:
+      name: ListAlertNotificationProfilesRequest
+    output:
+      name: AlertNotificationProfiles
+    http:
+    - method: GET
+      path: /alerts/notifications/profiles
+  Update:
+    name: Update
+    comment: Update an existing alert notification profile.
+    input:
+      name: UpdateAlertNotificationProfileRequest
+    output:
+      name: AlertNotificationProfile
+    http:
+    - method: PUT
+      path: /alerts/notifications/profiles/{profile.ids.profile_id}
+  Delete:
+    name: Delete
+    comment: Delete an existing alert notification profile.
+    input:
+      package: ttn.lorawan.v3
+      name: AlertNotificationProfileIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /alerts/notifications/profiles/{profile_id}
+  GetDefault:
+    name: GetDefault
+    comment: Get the default alert notification profile.
+    input:
+      name: GetDefaultAlertNotificationProfileRequest
+    output:
+      name: AlertNotificationProfile
+    http:
+    - method: GET
+      path: /alerts/notifications/profiles/default
