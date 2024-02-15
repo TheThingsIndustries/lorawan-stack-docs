@@ -22067,11 +22067,11 @@ of downlink messages: data and MAC downlinks, and join accepts.</p>
         
   
     
-    <a href="#message:RelayParameters">
+    <a href="#message:RelaySettings">
   
   <code>
     
-    RelayParameters
+    RelaySettings
   </code>
   
     </a>
@@ -22084,7 +22084,7 @@ of downlink messages: data and MAC downlinks, and join accepts.</p>
         Description
       </th>
       <td>
-          <p>The relay parameters the end device is using.
+          <p>The relay settings the end device is using.
 If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
       </td>
     </tr>
@@ -22115,11 +22115,11 @@ If unset, the default value from Network Server configuration or regional parame
         
   
     
-    <a href="#message:RelayParameters">
+    <a href="#message:RelaySettings">
   
   <code>
     
-    RelayParameters
+    RelaySettings
   </code>
   
     </a>
@@ -22132,7 +22132,7 @@ If unset, the default value from Network Server configuration or regional parame
         Description
       </th>
       <td>
-          <p>The relay parameters the Network Server should configure device to use via MAC commands.
+          <p>The relay settings the Network Server should configure device to use via MAC commands.
 If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
       </td>
     </tr>
@@ -28461,6 +28461,294 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
 
 
 
+<h3 id="message:ServedRelaySettings">Message <code>ServedRelaySettings</code></h3>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>always</code>, <code>dynamic</code>, <code>end_device_controlled</code> can be set.</li>
+</ul>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "always": {},
+  "dynamic": {},
+  "end_device_controlled": {},
+  "backoff": null,
+  "second_channel": {},
+  "serving_device_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>always</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:RelayEndDeviceAlwaysMode">
+  
+  <code>
+    
+    RelayEndDeviceAlwaysMode
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The end device will always attempt to use the relay mode in order to send uplink messages.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>dynamic</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:RelayEndDeviceDynamicMode">
+  
+  <code>
+    
+    RelayEndDeviceDynamicMode
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The end device will attempt to use relay mode only after a number of uplink messages have been sent without
+receiving a valid a downlink message.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>end_device_controlled</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:RelayEndDeviceControlledMode">
+  
+  <code>
+    
+    RelayEndDeviceControlledMode
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The end device will control when it uses the relay mode. This is the default mode.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>backoff</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    UInt32Value
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Number of wake on radio frames to be sent without an acknowledgement before sending the uplink message directly.
+If unset, the default value from Network Server configuration will be used.</p>
+          <p><code>lte</code>: <code>63</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>second_channel</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:RelaySecondChannel">
+  
+  <code>
+    
+    RelaySecondChannel
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Second wake on radio channel configuration.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>serving_device_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>End device identifier of the serving end device.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:ServedRelayParameters">Message <code>ServedRelayParameters</code></h3>
 <b>Restrictions:</b>
 <ul>
@@ -28647,7 +28935,7 @@ receiving a valid a downlink message.</p>
         Description
       </th>
       <td>
-          <p>Number of uplinks to be sent without a wake on radio frame.</p>
+          <p>Number of wake on radio frames to be sent without an acknowledgement before sending the uplink message directly.</p>
           <p><code>lte</code>: <code>63</code></p>
       </td>
     </tr>
@@ -28731,6 +29019,259 @@ receiving a valid a downlink message.</p>
           <p>End device identifier of the serving end device.</p>
           <p><code>max_len</code>: <code>36</code></p>
           <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ServingRelaySettings">Message <code>ServingRelaySettings</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "second_channel": {},
+  "default_channel_index": null,
+  "cad_periodicity": "RELAY_CAD_PERIODICITY_1_SECOND",
+  "uplink_forwarding_rules": [],
+  "limits": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>second_channel</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:RelaySecondChannel">
+  
+  <code>
+    
+    RelaySecondChannel
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Second wake on radio channel configuration.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>default_channel_index</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    UInt32Value
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Index of the default wake on radio channel.
+If unset, the default value from Network Server configuration will be used.</p>
+          <p><code>lte</code>: <code>255</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>cad_periodicity</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#enum:RelayCADPeriodicity">
+  
+  <code>
+  
+  RelayCADPeriodicity
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Channel activity detection periodicity.</p>
+          <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>uplink_forwarding_rules</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:RelayUplinkForwardingRule">
+  
+  <code>
+    
+    RelayUplinkForwardingRule
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Configured uplink forwarding rules.</p>
+          <p><code>max_items</code>: <code>16</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>limits</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ServingRelayForwardingLimits">
+  
+  <code>
+    
+    ServingRelayForwardingLimits
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Configured forwarding limits.
+If unset, the default value from Network Server configuration will be used.</p>
       </td>
     </tr>
     
@@ -33316,6 +33857,100 @@ If set to false, this message should not be processed.</p>
 </table>
 
 
+<h3 id="message:RelaySettings">Message <code>RelaySettings</code></h3>
+<p>RelaySettings represent the settings of a relay.
+This is used internally by the Network Server.</p>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>serving</code>, <code>served</code> can be set.</li>
+</ul>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "serving": {},
+  "served": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>serving</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ServingRelaySettings">
+  
+  <code>
+    
+    ServingRelaySettings
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>served</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ServedRelaySettings">
+  
+  <code>
+    
+    ServedRelaySettings
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 
 <h3 id="enum:RelaySmartEnableLevel">Enum <code>RelaySmartEnableLevel</code></h3>
 <table class="api">
@@ -33463,6 +34098,12 @@ If set to false, this message should not be processed.</p>
 
 
 
+
+	
+
+	
+
+	
 
 	
 
