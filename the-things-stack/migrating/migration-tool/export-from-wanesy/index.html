@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Export End Devices from Firefly | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-firefly/" />
+  <title>Export End Devices from Wanesy | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-wanesy/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.352ede3cf707e33d0e7305991a2a3d6da56e6f8a602acb8c295497963535ecdc.css" integrity="sha256-NS7ePPcH4z0OcwWZGio9baVub4pgKsuMKVSXljU17Nw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Export End Devices from Firefly">
+  <meta itemprop="name" content="Export End Devices from Wanesy">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Export End Devices from Firefly">
+  <meta property="og:title" content="Export End Devices from Wanesy">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-firefly/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-wanesy/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Export End Devices from Firefly" />
+  <meta name="twitter:title" content="Export End Devices from Wanesy" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -138,17 +138,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-wanesy/" class="">Export End Devices from Wanesy</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-wanesy/" class="is-active">Export End Devices from Wanesy</a>
+    
+    
+
+
+
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-firefly/" class="is-active">Export End Devices from Firefly</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-firefly/" class="">Export End Devices from Firefly</a>
     
   </li>
 
@@ -209,14 +209,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Export End Devices from Firefly
+        <h1 class="title is-size-2">Export End Devices from Wanesy
           
         </h1>
         
         <h2 class="subtitle">
           
           
-            <span class="tag is-light">New in v0.10.0</span>
+            <span class="tag is-light">New in v0.11.0</span>
 
           
           
@@ -224,22 +224,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </h2>
         
         <div class="content">
-          <p>This section contains instructions on how to configure migration tool and use it to export end devices from Firefly, that can later be imported in The Things Stack.</p>
+          <p>This section contains instructions on how to configure migration tool and use it to convert end device information exported from <a href="https://www.kerlink.com/">Kerlink&rsquo;s Wanesy Management Center</a>, into The Things Stack end device format.</p>
 <h3 id="before-you-begin">Before you begin</h3>
-<ul>
+<p>Reach out to Kerlink for a CSV file that contains exported device data. The following is an example.</p>
+<pre tabindex="0"><code class="language-csv" data-lang="csv">devEui,clusterId,clusterName,name,classType,rfRegion,country,macVersion,regParamsRevision,profile,adrEnabled,activation,appEui,appKey,fcntDown,fcntUp,devNonceCounter,fNwkSIntKey,sNwkSIntKey,rx1Delay,rx1DrOffset,rx2Dr,rx2Freq,rxWindows,cfList,dwellTime,pingSlotDr,pingSlotFreq,geolocation,latitude,longitude,altitude,status,lastDataUpMessage,lastDataDownMessage,lastDataUpDr,device_profile,dev_addr,NwkSKey,AppSKey
+1111111111111111,0001,Test,Test,A,EU868,,1.0.2,A,STATIC,True,OTAA,1111111111111111,22222222222222222222222222222222,10,20,False,,,,,,,,,,,,,,,,,,,SF7BW125,,1234567,33333333333333333333333333333333,44444444444444444444444444444444
+</code></pre><ul>
 <li>The export process will halt if any error occurs.</li>
-<li>Use the <code>--invalidate-keys</code> option to invalidate the root and/or session keys of the devices on the Firefly server. This is necessary to prevent both networks from communicating with the same device. The last byte of the keys will be incremented by 0x01. This enables an easy rollback if necessary. Setting this flag to false (default) would result in a &ldquo;dry run&rdquo;, where the devices are exported but they will still be able to communicate with the Firefly server.</li>
+<li>Since the migration tool uses a CSV file that&rsquo;s exported from WMC and does not interact with the API, make sure to remove/clean up the devices on WMC once the migration is completed.</li>
 </ul>
 <h3 id="configuration">Configuration</h3>
 <p>Configure with environment variables, or command-line arguments.</p>
-<p>See <code>ttn-lw-migrate firefly {device|application} --help</code> for more details.</p>
+<p>See <code>ttn-lw-migrate wanesy {device|application} --help</code> for more details.</p>
 <p>The following example shows how to set options via environment variables.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">FIREFLY_HOST</span><span class="o">=</span>example.com       <span class="c1"># Host of the Firefly API</span>
-</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">FIREFLY_API_KEY</span><span class="o">=</span>abcdefgh       <span class="c1"># Firefly API Key</span>
-</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">APP_ID</span><span class="o">=</span>my-test-app             <span class="c1"># Application ID for the exported devices</span>
-</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">JOIN_EUI</span><span class="o">=</span><span class="m">1111111111111111</span>      <span class="c1"># JoinEUI for the exported devices</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">APP_ID</span><span class="o">=</span>my-test-app             <span class="c1"># Application ID for the exported devices</span>
 </span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">FREQUENCY_PLAN_ID</span><span class="o">=</span>EU_863_870   <span class="c1"># Frequency Plan ID for the exported devices</span>
-</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">MAC_VERSION</span><span class="o">=</span>1.0.2b             <span class="c1"># LoRaWAN MAC version for the exported devices</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">CSV_PATH</span><span class="o">=</span>&lt;path&gt;                <span class="c1"># Local path to the exported CSV file.</span>
 </span></span></code></pre></div><p>The above settings are common for all the following export methods.</p>
 <h3 id="export-devices">Export Devices</h3>
 <div class="tabs is-boxed">
@@ -268,36 +268,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="tab-content content">
   <section data-content="single-device">
   <p>To export a single device using its Device EUI (e.g. <code>1111111111111112</code>):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
-</span></span><span class="line"><span class="cl">$ ttn-lw-migrate firefly device <span class="m">1111111111111112</span> --verbose &gt; devices.json
-</span></span><span class="line"><span class="cl"><span class="c1"># export device</span>
-</span></span><span class="line"><span class="cl">$ ttn-lw-migrate firefly device <span class="m">1111111111111112</span> --invalidate-keys &gt; devices.json
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Export a device from the CSV to TTS format.</span>
+</span></span><span class="line"><span class="cl">$ ttn-lw-migrate wanesy device <span class="m">1111111111111112</span> &gt; devices.json
 </span></span></code></pre></div>
 </section>
 <section data-content="multiple-devices">
-  <p>In order to export a large number of devices, create a file named <code>device_euis.txt</code> with one device EUI per line:</p>
+  <p>In order to multiple devices, create a file named <code>device_euis.txt</code> with one device EUI per line:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">1111111111111112
 </span></span><span class="line"><span class="cl">FF11111111111134
 </span></span><span class="line"><span class="cl">ABCD111111111100
 </span></span></code></pre></div><p>And then export with:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
-</span></span><span class="line"><span class="cl">$ ttn-lw-migrate firefly device --verbose &lt; device_ids.txt &gt; devices.json
-</span></span><span class="line"><span class="cl"><span class="c1"># export devices</span>
-</span></span><span class="line"><span class="cl">$ ttn-lw-migrate firefly device --invalidate-keys &lt; device_ids.txt &gt; devices.json
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Export multiple devices from the CSV.</span>
+</span></span><span class="line"><span class="cl">$ ttn-lw-migrate wanesy device &lt; device_ids.txt
 </span></span></code></pre></div>
 </section>
 <section data-content="all-devices">
-  <p>The Firefly LNS does not strictly enforce device to application relationships.</p>
-<p>Setting the <code>--all</code> flag will export <strong>all devices that are accessible by the API key</strong>.</p>
-<p>The <code>application</code> command without the <code>--all</code> flag is a no-op (does nothing).</p>
-<blockquote>
-<p>Note: Please be cautious while using this command as this might invalidate all the keys of all the devices.</p>
-</blockquote>
-<p>To export all devices accessible by the API Key,</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
-</span></span><span class="line"><span class="cl">$ ttn-lw-migrate firefly application --all --verbose &gt; devices.json
-</span></span><span class="line"><span class="cl"><span class="c1"># export all devices</span>
-</span></span><span class="line"><span class="cl">$ ttn-lw-migrate firefly application --all --invalidate-keys &gt; devices.json
+  <p>In order to export all devices from the CSV file, use the <code>application</code> command.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Export all devices from the CSV.</span>
+</span></span><span class="line"><span class="cl">$ ttn-lw-migrate wanesy application --all
 </span></span></code></pre></div>
 </section>
 
@@ -306,8 +294,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>After exporting, devices can be imported in The Things Stack. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/">add end devices in bulk in The Things Stack</a> for details about importing devices.</p>
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/the-things-stack/migrating/migration-tool/export-from-wanesy/">← Export End Devices from Wanesy</a>
-<a class="button is-pulled-right" href="/docs/the-things-stack/migrating/migrating-from-v2/">Migrating End Devices from V2 →</a>
+<a class="button is-pulled-left" href="/docs/the-things-stack/migrating/migration-tool/export-from-chirpstack/">← Export End Devices from ChirpStack</a>
+<a class="button is-pulled-right" href="/docs/the-things-stack/migrating/migration-tool/export-from-firefly/">Export End Devices from Firefly →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
