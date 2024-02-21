@@ -17,9 +17,9 @@ To configure the CLI, you first have to create a configuration file, then make t
 
 To generate the CLI configuration file, use the following command in your terminal:
 
-{{< tabs/container "Cloud, {{% ttss %}}, and Open Source" "Enterprise" >}}
+{{< tabs/container "Cloud, Sandbox, and Open Source" "Enterprise" >}}
 
-{{< tabs/tab "Cloud, {{% ttss %}}, and Open Source" >}}
+{{< tabs/tab "Cloud, Sandbox, and Open Source" >}}
 
 If using {{% ttss %}}, use the following command as per your regional `cluster`:
 

@@ -23,9 +23,9 @@ Read this section to find out how to install {{% tts %}} CLI on your operating s
 
 On macOS, Homebrew is the recommended package manager. See the [official Homebrew documentation](https://brew.sh/) for installation instructions.
 
-{{< tabs/container "Cloud, {{% ttss %}}, and Open Source" "Enterprise" >}}
+{{< tabs/container "Cloud, Sandbox, and Open Source" "Enterprise" >}}
 
-{{< tabs/tab "Cloud, {{% ttss %}}, and Open Source" >}}
+{{< tabs/tab "Cloud, Sandbox, and Open Source" >}}
 
 Once Homebrew is installed on your system, you can install {{% tts %}} CLI using the following command in your terminal:
 
@@ -67,9 +67,9 @@ Now you can run the CLI using `tti-lw-cli` in your terminal.
 
 On Linux, `snap` is the recommended package manager. See the [official `snap` documentation](https://snapcraft.io/docs) for installation instructions.
 
-{{< tabs/container "Cloud, {{% ttss %}}, and Open Source" "Enterprise" >}}
+{{< tabs/container "Cloud, Sandbox, and Open Source" "Enterprise" >}}
 
-{{< tabs/tab "Cloud, {{% ttss %}}, and Open Source" >}}
+{{< tabs/tab "Cloud, Sandbox, and Open Source" >}}
 
 Once `snap` is installed on your system, you can install {{% tts %}} CLI using the following command in your terminal:
 
