@@ -13,21 +13,21 @@ This page will guide you to connecting {{% ttig %}} to {{% tts %}}.
 <!--more-->
 
 {{% ttig %}} is an 8 Channel LoRaWAN® gateway with many features:
-- Supports the BasicStation Protocol & LBT.
-- Can connect to any network backend of choice.
-- Setup and Connectivity over WiFi.
-- Can be powered with a USB-C cable or via the wall with a plug on the back.
-- Built-in omnidirectional antenna for indoor use.
-- EU868, US915, AS923 and CN470 versions available.
-- Security via a range of modes.
+- Supports the [LoRa Basics™ Station](https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/) protocol & LBT (Listen Before Talk)
+- Can connect to any network backend of choice
+- Setup and connectivity over WiFi
+- Can be powered with a USB-C cable or into an electrical socket with a plug on the back
+- Built-in omnidirectional antenna for indoor use
+- EU868, US915, AS923 and CN470 versions available
+- Security via a range of modes
 
 You can find the datasheet [here](https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/TTIG_datasheet.pdf).
+
 ## Prerequisites
 
 1. User account on {{% tts %}} with rights to create Gateways and API Keys.
 2. The gateway EUI. 
 
-{{< note >}}
 The Gateway EUI can be found on the back of your gateway, where it is the first code after the `(92)`, but you need to <u>add</u> `FFFE` <u>after the first 6 characters</u> to make it a 16 character Gateway EUI.  
 
 *Example: EUI 58A0CB123456 would become 58A0CB**FFFE**123456.*
@@ -35,15 +35,12 @@ The Gateway EUI can be found on the back of your gateway, where it is the first 
 The gateway EUI can later be found at the bottom in the WiFi setup screen.
 
 {{< figure src="TTIG_EUI.png" alt="{{% ttig %}} EUI" >}}
-{{</ note >}}
 
-3. The WiFi password of the {{% ttig %}}, typically printed on the back of the gateway.  
-It is recommended to note it down, since you might not be able to access it easily if its plugged in.
+3. The WiFi password of the {{% ttig %}}, typically printed on the back of the gateway. It is recommended to note it down, since you might not be able to access it easily if its plugged in.
 
 ## Claiming {{% ttig %}}
 
-{{% ttig %}} is added to The Things Stack via a process called **Gateway Claiming**.  
-This process needs to be done **before** connecting the gateway to WiFi.
+{{% ttig %}} is added to The Things Stack via a process called **Gateway Claiming**. This process needs to be done **before** connecting the gateway to WiFi.
 
 {{< note >}}Claiming of gateways is not supported on {{% tts %}} Open Source.{{</ note >}}
 
