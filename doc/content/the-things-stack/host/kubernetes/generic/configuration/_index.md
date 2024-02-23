@@ -28,6 +28,8 @@ global:
     provider: "aws", "azure", "gcp" or "local"
     aws: # Set only if provider is "aws".
       region: # region
+      accessKeyID: # AWS access key ID
+      secretAccessKey: # AWS access key secret
     azure: # Set only if provider is "azure".
       accountName: # account name
       clientID: # client ID
