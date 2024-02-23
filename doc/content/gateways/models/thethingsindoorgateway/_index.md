@@ -30,7 +30,20 @@ You can find the datasheet [here](https://www.thethingsnetwork.org/docs/gateways
 
 The Gateway EUI can be found on the back of your gateway, where it is the first code after the `(92)`, but you need to <u>add</u> `FFFE` <u>after the first 6 characters</u> to make it a 16 character Gateway EUI.  
 
-*Example: EUI 58A0CB123456 would become 58A0CB**FFFE**123456.*
+As an example, the EUI
+```
+58A0CB123456
+```
+
+Would turn into
+```
+58A0CBFFFE123456
+```
+
+With the conversion like this:
+```
+58A0CB123456 => 58A0CB FFFE 123456 => 58A0CBFFFE123456
+```
 
 The gateway EUI can later be found at the bottom in the WiFi setup screen.
 
@@ -40,7 +53,7 @@ The gateway EUI can later be found at the bottom in the WiFi setup screen.
 
 ## Claiming {{% ttig %}}
 
-{{% ttig %}} is added to The Things Stack via a process called **Gateway Claiming**. This process needs to be done **before** connecting the gateway to WiFi.
+{{% ttig %}} is added to {{% tts %}} via a process called **Gateway Claiming**. This process needs to be done **before** connecting the gateway to WiFi.
 
 {{< note >}}Claiming of gateways is not supported on {{% tts %}} Open Source.{{</ note >}}
 
@@ -128,7 +141,7 @@ If your configuration is correct,
 - Then, it will blink from GREEN to RED and vice versa for a few seconds while it connects to the server and fetches the necessary configuration.
 - Please allow 5-10 minutes for the gateway to pick up the new configuration.
 
-For all the LED states and Button actions, check the [troubleshooting]({{< ref "/gateways/models/thethingsindoorgateway/#led-states" >}}) section.
+For all the LED states and button actions, check the [troubleshooting]({{< ref "/gateways/models/thethingsindoorgateway/#led-states" >}}) section.
 
 If this is the first time your gateway is being powered on/connected to WiFi, it might pick up a new firmware depending on when it was last updated. This is indicated by alternating GREEN/RED blinks of the LED. Please leave the gateway powered on when this happens.
 
@@ -234,7 +247,7 @@ There are three possible button actions on the TTIG that are listed below.
 | SETUP for 5s     | Reboot                      |                      |
 | RESET for 5s     | Factory reset               | Factory reset        |
 
-**Factory reset** wipes out WiFi and LNS credentials, but retains CUPS credentials
+Keep in mind that factory reset wipes out WiFi and LNS credentials, but retains CUPS credentials.
 
 ### Serial logging
 
