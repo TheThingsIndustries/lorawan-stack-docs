@@ -232,6 +232,16 @@ field=gateway_id
 name=GatewayIdentifiersValidationError
 reason=value does not match regex pattern &#34;^[a-z0-9](?:[-]?[a-z0-9]){2,}$&#34;
 </code></pre><p>See <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI Constraints</a> section for more info.</p>
+<h2 id="setting-multiple-boolean-parameters">Setting Multiple Boolean Parameters</h2>
+<p>When setting multiple boolean parameters within a CLI command, you need to use the equals (<code>=</code>) sign to assign values, otherwise you might be facing errors.</p>
+<p>For example, if you run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli gateways <span class="nb">set</span> &lt;gateway-id&gt; --location-public <span class="nb">false</span> --status-public <span class="nb">false</span> --auto-update <span class="nb">true</span>
+</span></span></code></pre></div><p>you would be facing the following error:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">WARN Multiple IDs found in arguments, considering the first
+</span></span><span class="line"><span class="cl">error:cmd/ttn-lw-cli/commands:invalid_gateway_eui <span class="o">(</span>invalid gateway EUI<span class="o">)</span>
+</span></span></code></pre></div><p>The <code>--location-public</code> flag would be interpreted as being <code>true</code>, and <code>false</code> as an excessive positional argument. Same goes for <code>--status-public</code> and <code>--auto-update</code> flags as well. In order for all parameters to obtain desired values, you would instead need to run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli gateways <span class="nb">set</span> &lt;gateway-id&gt; --location-public<span class="o">=</span><span class="nb">false</span> --status-public<span class="o">=</span><span class="nb">false</span> --auto-update<span class="o">=</span><span class="nb">true</span>
+</span></span></code></pre></div>
         </div>
           <div class="columns is-multiline">
 </div>
@@ -274,6 +284,9 @@ reason=value does not match regex pattern &#34;^[a-z0-9](?:[-]?[a-z0-9]){2,}$&#3
     
       
       <li><a href='#invalid-identifiers'>Invalid Identifiers</a></li>
+    
+      
+      <li><a href='#setting-multiple-boolean-parameters'>Setting Multiple Boolean Parameters</a></li>
     
   </ul>
 
