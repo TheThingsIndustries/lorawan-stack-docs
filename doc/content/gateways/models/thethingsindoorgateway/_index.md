@@ -11,28 +11,54 @@ aliases: [/gateways/thethingsindoorgateway]
 image: [TTIG.png]
 ---
 
-{{< figure src="TTIG.jpeg" alt="{{% ttig %}}" class="plain float">}}
+{{< figure src="TTIG.png" alt="{{% ttig %}}" class="plain float" width="50%">}}
 
-This page guides you to connect {{% ttig %}} to {{% tts %}}.
+This page will guide you to connecting {{% ttig %}} to {{% tts %}}.
 
 <!--more-->
 
-{{% ttig %}} is an 8 Channel LoRaWAN® gateway, whose technical specifications can be found in [the official documentation](https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/).
+{{% ttig %}} is an 8 Channel LoRaWAN® gateway with many features:
+- Supports the [LoRa Basics™ Station](https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/) protocol & LBT (Listen Before Talk)
+- Can connect to any network backend of choice
+- Setup and connectivity over WiFi
+- Can be powered with a USB-C cable or into an electrical socket with a plug on the back
+- Built-in omnidirectional antenna for indoor use
+- EU868, US915, AS923 and CN470 versions available
+- Security via a range of modes
+
+You can find the datasheet [here](https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/TTIG_datasheet.pdf).
 
 ## Prerequisites
 
 1. User account on {{% tts %}} with rights to create Gateways and API Keys.
-2. The gateway EUI. The EUI of the gateway is **not** the WiFi MAC address printed on the back of the gateway, but is derived from the first number that typically is of the form **58A0CBxxxxxx**, printed on the top of the sticker below the QR code. For example, if that number is **58A0CB800BE7**, insert **FFFE** after the first 6 characters to make it a 16 character Gateway EUI (e.g. 58A0CBFFFE800BE7).
+2. The gateway EUI. 
+
+The Gateway EUI can be found on the back of your gateway, where it is the first code after the `(92)`, but you need to <u>add</u> `FFFE` <u>after the first 6 characters</u> to make it a 16 character Gateway EUI.  
+
+As an example, the EUI
+```
+58A0CB123456
+```
+
+Would turn into
+```
+58A0CBFFFE123456
+```
+
+With the conversion like this:
+```
+58A0CB123456 => 58A0CB FFFE 123456 => 58A0CBFFFE123456
+```
 
 The gateway EUI can later be found at the bottom in the WiFi setup screen.
 
 {{< figure src="TTIG_EUI.png" alt="{{% ttig %}} EUI" >}}
 
-3. The WiFi password of the {{% ttig %}}, typically printed on the back of the gateway.
+3. The WiFi password of the {{% ttig %}}, typically printed on the back of the gateway. It is recommended to note it down, since you might not be able to access it easily if its plugged in.
 
 ## Claiming {{% ttig %}}
 
-{{% ttig %}} is added to The Things Stack via a process called **Gateway Claiming**.
+{{% ttig %}} is added to {{% tts %}} via a process called **Gateway Claiming**. This process needs to be done **before** connecting the gateway to WiFi.
 
 {{< note >}}Claiming of gateways is not supported on {{% tts %}} Open Source.{{</ note >}}
 
@@ -97,9 +123,11 @@ If the {{% ttig %}} is currently connected to another LNS, do either of the foll
 
 If your gateway has never been configured to any LNS, follow the steps below.
 
-Keep the RESET button (small button at the back of the gateway next to the USB-C port) pressed for 5 seconds until the LED blinks rapidly from GREEN to RED and vice versa for a couple of times.
+{{< note "Make sure you have claimed the device before connecting to it."/>}}
 
-Hold the SETUP button (at the top of the gateway, next to the LED) for 10 seconds until the LED rapidly blinks RED.
+Turn on the gateway and keep the **RESET** button (small button at the back of the gateway next to the USB-C port) pressed for **5 seconds** until the LED blinks rapidly from GREEN to RED and vice versa for a couple of times.
+
+Hold the **SETUP** button (at the top of the gateway, next to the LED) for **10 seconds** until the LED rapidly blinks RED.
 
 The gateway now exposes a WiFi access point whose SSID is **MINIHUB-xxxxxx**, where `xxxxxx` is the last 6 digits of the gateway EUI. The password for this network is same WiFi password from the Prerequisites.
 
@@ -117,6 +145,8 @@ If your configuration is correct,
 - The gateway will blink GREEN for a few seconds until it connects to the selected WiFi network.
 - Then, it will blink from GREEN to RED and vice versa for a few seconds while it connects to the server and fetches the necessary configuration.
 - Please allow 5-10 minutes for the gateway to pick up the new configuration.
+
+For all the LED states and button actions, check the [troubleshooting]({{< ref "/gateways/models/thethingsindoorgateway/#led-states" >}}) section.
 
 If this is the first time your gateway is being powered on/connected to WiFi, it might pick up a new firmware depending on when it was last updated. This is indicated by alternating GREEN/RED blinks of the LED. Please leave the gateway powered on when this happens.
 
@@ -216,12 +246,13 @@ Reboot your {{% ttig %}}. If the gateway status is still `Disconnected` after a 
 
 There are three possible button actions on the TTIG that are listed below.
 
-- SETUP button pressed for 10s:
-  - Switch to CONF mode if in GW mode
-- SETUP button pressed for 5s:
-  - Reboot if in CONF mode, do nothing in GW mode
-- RESET button pressed for 5s:
-  - Factory reset (wipes out WiFi and LNS credentials, retains CUPS credentials)
+| Button           | CONF (Configuration) Mode   | GW (Gateway) Mode    |
+| -----------------| ----------------------------| ---------------------|
+| SETUP for 10s    |                             | Switch to CONF mode  |
+| SETUP for 5s     | Reboot                      |                      |
+| RESET for 5s     | Factory reset               | Factory reset        |
+
+Keep in mind that factory reset wipes out WiFi and LNS credentials, but retains CUPS credentials.
 
 ### Serial logging
 
