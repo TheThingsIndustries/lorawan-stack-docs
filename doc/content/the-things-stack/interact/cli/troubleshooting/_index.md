@@ -79,3 +79,26 @@ reason=value does not match regex pattern "^[a-z0-9](?:[-]?[a-z0-9]){2,}$"
 ```
 
 See [ID and EUI Constraints]({{< ref "reference/id-eui-constraints" >}}) section for more info.
+
+## Setting Multiple Boolean Parameters
+
+When setting multiple boolean parameters within a CLI command, you need to use the equals (`=`) sign to assign values, otherwise you might be facing errors.
+
+For example, if you run:
+
+```bash
+ttn-lw-cli gateways set <gateway-id> --location-public false --status-public false --auto-update true
+```
+
+you would be facing the following error:
+
+```bash
+WARN Multiple IDs found in arguments, considering the first
+error:cmd/ttn-lw-cli/commands:invalid_gateway_eui (invalid gateway EUI)
+```
+
+The `--location-public` flag would be interpreted as being `true`, and `false` as an excessive positional argument. Same goes for `--status-public` and `--auto-update` flags as well. In order for all parameters to obtain desired values, you would instead need to run:
+
+```bash
+ttn-lw-cli gateways set <gateway-id> --location-public=false --status-public=false --auto-update=true
+```
