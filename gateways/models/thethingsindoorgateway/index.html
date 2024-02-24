@@ -318,27 +318,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </h2>
         
         <div class="content">
-          <figure class="plain float"><img src="TTIG.jpeg"
-         alt="{{% ttig %}}"/>
+          <figure class="plain float"><img src="TTIG.png"
+         alt="{{% ttig %}}" width="50%"/>
 </figure>
 
-<p>This page guides you to connect The Things Indoor Gateway to The Things Stack.</p>
-<p>The Things Indoor Gateway is an 8 Channel LoRaWAN® gateway, whose technical specifications can be found in <a href="https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/">the official documentation</a>.</p>
+<p>This page will guide you to connecting The Things Indoor Gateway to The Things Stack.</p>
+<p>The Things Indoor Gateway is an 8 Channel LoRaWAN® gateway with many features:</p>
+<ul>
+<li>Supports the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/">LoRa Basics™ Station</a> protocol &amp; LBT (Listen Before Talk)</li>
+<li>Can connect to any network backend of choice</li>
+<li>Setup and connectivity over WiFi</li>
+<li>Can be powered with a USB-C cable or into an electrical socket with a plug on the back</li>
+<li>Built-in omnidirectional antenna for indoor use</li>
+<li>EU868, US915, AS923 and CN470 versions available</li>
+<li>Security via a range of modes</li>
+</ul>
+<p>You can find the datasheet <a href="https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/TTIG_datasheet.pdf">here</a>.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>User account on The Things Stack with rights to create Gateways and API Keys.</li>
-<li>The gateway EUI. The EUI of the gateway is <strong>not</strong> the WiFi MAC address printed on the back of the gateway, but is derived from the first number that typically is of the form <strong>58A0CBxxxxxx</strong>, printed on the top of the sticker below the QR code. For example, if that number is <strong>58A0CB800BE7</strong>, insert <strong>FFFE</strong> after the first 6 characters to make it a 16 character Gateway EUI (e.g. 58A0CBFFFE800BE7).</li>
+<li>The gateway EUI.</li>
 </ol>
-<p>The gateway EUI can later be found at the bottom in the WiFi setup screen.</p>
+<p>The Gateway EUI can be found on the back of your gateway, where it is the first code after the <code>(92)</code>, but you need to <u>add</u> <code>FFFE</code> <u>after the first 6 characters</u> to make it a 16 character Gateway EUI.</p>
+<p>As an example, the EUI</p>
+<pre tabindex="0"><code>58A0CB123456
+</code></pre><p>Would turn into</p>
+<pre tabindex="0"><code>58A0CBFFFE123456
+</code></pre><p>With the conversion like this:</p>
+<pre tabindex="0"><code>58A0CB123456 =&gt; 58A0CB FFFE 123456 =&gt; 58A0CBFFFE123456
+</code></pre><p>The gateway EUI can later be found at the bottom in the WiFi setup screen.</p>
 <figure><img src="TTIG_EUI.png"
          alt="{{% ttig %}} EUI"/>
 </figure>
 
 <ol start="3">
-<li>The WiFi password of the The Things Indoor Gateway, typically printed on the back of the gateway.</li>
+<li>The WiFi password of the The Things Indoor Gateway, typically printed on the back of the gateway. It is recommended to note it down, since you might not be able to access it easily if its plugged in.</li>
 </ol>
 <h2 id="claiming-the-things-indoor-gateway">Claiming The Things Indoor Gateway</h2>
-<p>The Things Indoor Gateway is added to The Things Stack via a process called <strong>Gateway Claiming</strong>.</p>
+<p>The Things Indoor Gateway is added to The Things Stack via a process called <strong>Gateway Claiming</strong>. This process needs to be done <strong>before</strong> connecting the gateway to WiFi.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Claiming of gateways is not supported on The Things Stack Open Source.
@@ -407,8 +424,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 <h3 id="new-gateways">New Gateways</h3>
 <p>If your gateway has never been configured to any LNS, follow the steps below.</p>
-<p>Keep the RESET button (small button at the back of the gateway next to the USB-C port) pressed for 5 seconds until the LED blinks rapidly from GREEN to RED and vice versa for a couple of times.</p>
-<p>Hold the SETUP button (at the top of the gateway, next to the LED) for 10 seconds until the LED rapidly blinks RED.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Make sure you have claimed the device before connecting to it.
+</div>
+
+<p>Turn on the gateway and keep the <strong>RESET</strong> button (small button at the back of the gateway next to the USB-C port) pressed for <strong>5 seconds</strong> until the LED blinks rapidly from GREEN to RED and vice versa for a couple of times.</p>
+<p>Hold the <strong>SETUP</strong> button (at the top of the gateway, next to the LED) for <strong>10 seconds</strong> until the LED rapidly blinks RED.</p>
 <p>The gateway now exposes a WiFi access point whose SSID is <strong>MINIHUB-xxxxxx</strong>, where <code>xxxxxx</code> is the last 6 digits of the gateway EUI. The password for this network is same WiFi password from the Prerequisites.</p>
 <p>After connecting to this network go to <code>192.168.4.1</code> using a web browser to access the WiFi config page.
 <figure><img src="TTIG_WiFi_Setup.png"
@@ -428,6 +450,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Then, it will blink from GREEN to RED and vice versa for a few seconds while it connects to the server and fetches the necessary configuration.</li>
 <li>Please allow 5-10 minutes for the gateway to pick up the new configuration.</li>
 </ul>
+<p>For all the LED states and button actions, check the <a href="https://www.thethingsindustries.com/docs/gateways/models/thethingsindoorgateway/#led-states">troubleshooting</a> section.</p>
 <p>If this is the first time your gateway is being powered on/connected to WiFi, it might pick up a new firmware depending on when it was last updated. This is indicated by alternating GREEN/RED blinks of the LED. Please leave the gateway powered on when this happens.</p>
 <h2 id="existing-gateways">Existing Gateways</h2>
 <p>You can also claim gateways that have been previously claimed or registered to The Things Stack.</p>
@@ -534,23 +557,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </table>
 <h3 id="button-actions">Button Actions</h3>
 <p>There are three possible button actions on the TTIG that are listed below.</p>
-<ul>
-<li>SETUP button pressed for 10s:
-<ul>
-<li>Switch to CONF mode if in GW mode</li>
-</ul>
-</li>
-<li>SETUP button pressed for 5s:
-<ul>
-<li>Reboot if in CONF mode, do nothing in GW mode</li>
-</ul>
-</li>
-<li>RESET button pressed for 5s:
-<ul>
-<li>Factory reset (wipes out WiFi and LNS credentials, retains CUPS credentials)</li>
-</ul>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>CONF (Configuration) Mode</th>
+<th>GW (Gateway) Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SETUP for 10s</td>
+<td></td>
+<td>Switch to CONF mode</td>
+</tr>
+<tr>
+<td>SETUP for 5s</td>
+<td>Reboot</td>
+<td></td>
+</tr>
+<tr>
+<td>RESET for 5s</td>
+<td>Factory reset</td>
+<td>Factory reset</td>
+</tr>
+</tbody>
+</table>
+<p>Keep in mind that factory reset wipes out WiFi and LNS credentials, but retains CUPS credentials.</p>
 <h3 id="serial-logging">Serial logging</h3>
 <p>It is possible to read debug messages of the gateway but it requires opening its casing.</p>
 <div class="notification is-warning is-light has-text-dark">
