@@ -72,7 +72,15 @@ ttn-lw-cli users delete --user-id <user-id>
 
 {{</ tabs/container >}}
 
-When entities are deleted, there is a default time period of 24h when an administrator can restore them. For {{% tts %}} Enterprise deployments, it is possible to configure this restoration period. For more info, check [Identity Server Options]({{< ref "/reference/configuration/identity-server#general-options" >}}).
+When entities are deleted from {{% tts %}} Cloud, there is a default time period of 24h when an administrator can restore them. If restoration is attempted after these 24h, the following error will occur:
+
+```bash
+error:pkg/identityserver:restore_window_expired (this entity can no longer be restored)
+``` 
+
+In this case, entity can only be purged by an administrator and then recreated.
+
+For {{% tts %}} Enterprise deployments, it is possible to configure the restoration period. For more info, check [Identity Server Options]({{< ref "/reference/configuration/identity-server#general-options" >}}).
 
 Note again that restoring entities is not possible if they have been purged.
 
