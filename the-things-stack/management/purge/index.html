@@ -243,7 +243,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 </div>
 
-<p>When entities are deleted, there is a default time period of 24h when an administrator can restore them. For The Things Stack Enterprise deployments, it is possible to configure this restoration period. For more info, check <a href="https://www.thethingsindustries.com/docs/reference/configuration/identity-server/#general-options">Identity Server Options</a>.</p>
+<p>When entities are deleted from The Things Stack Cloud, there is a default time period of 24h when an administrator can restore them. If restoration is attempted after these 24h, the following error will occur:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">error:pkg/identityserver:restore_window_expired <span class="o">(</span>this entity can no longer be restored<span class="o">)</span>
+</span></span></code></pre></div><p>In this case, entity can only be purged by an administrator and then recreated.</p>
+<p>For The Things Stack Enterprise deployments, it is possible to configure the restoration period. For more info, check <a href="https://www.thethingsindustries.com/docs/reference/configuration/identity-server/#general-options">Identity Server Options</a>.</p>
 <p>Note again that restoring entities is not possible if they have been purged.</p>
 <div class="tabs is-boxed">
   <ul>
