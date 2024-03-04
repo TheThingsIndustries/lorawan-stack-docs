@@ -10,7 +10,7 @@
   <title>Creating Payload Formatters | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/create/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.352ede3cf707e33d0e7305991a2a3d6da56e6f8a602acb8c295497963535ecdc.css" integrity="sha256-NS7ePPcH4z0OcwWZGio9baVub4pgKsuMKVSXljU17Nw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Creating Payload Formatters">
@@ -63,6 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -200,6 +201,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </a>
     </li>
     
+    <li data-tab="http-rest-api">
+      <a>
+        <span>HTTP (REST) API</span>
+      </a>
+    </li>
+    
   </ul>
 </div>
 <div class="tab-content content">
@@ -227,7 +234,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 <section data-content="cli">
   <p>We define some user parameters that will be used below:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">GTW_EUI</span><span class="o">=</span><span class="s2">&#34;00800000A00009EF&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">USER_ID</span><span class="o">=</span><span class="s2">&#34;admin&#34;</span>
@@ -279,6 +286,105 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --unset <span class="s2">&#34;formatters.up-formatter,formatters.up-formatter-parameter&#34;</span>
 </span></span></code></pre></div>
 </section>
+<section data-content="http-rest-api">
+  <h2 id="create-an-application-payload-formatter">Create an Application Payload Formatter</h2>
+<h6 id="details">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#asapplications%7Bapplication_ids.application_id%7Dlink-put"><code>/as/applications/{application_ids.application_id}/link</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>PUT</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<h6 id="example">Example</h6>
+<p>To set a payload formatter for an application <code>my-test-app</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
+<p>Make sure properly encode the JavaScript functions.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;link&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;default_formatters&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;up_formatter&#34;</span><span class="p">:</span> <span class="s2">&#34;FORMATTER_JAVASCRIPT&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;up_formatter_parameter&#34;</span><span class="p">:</span> <span class="s2">&#34;function decodeUplink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  };\n}&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;down_formatter&#34;</span><span class="p">:</span> <span class="s2">&#34;FORMATTER_JAVASCRIPT&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;down_formatter_parameter&#34;</span><span class="p">:</span> <span class="s2">&#34;function encodeDownlink(input) {\n  return {\n    bytes: [],\n    fPort: 1,\n    warnings: [],\n    errors: []\n  };\n}\n\nfunction decodeDownlink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  }\n}&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field_mask&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;default_formatters.up_formatter&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;default_formatters.up_formatter_parameter&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;default_formatters.down_formatter&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;default_formatters.down_formatter_parameter&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X PUT -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/as/applications/my-test-app/link
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;default_formatters&#34;</span>:<span class="o">{</span><span class="s2">&#34;up_formatter&#34;</span>:<span class="s2">&#34;FORMATTER_JAVASCRIPT&#34;</span>,<span class="s2">&#34;up_formatter_parameter&#34;</span>:<span class="s2">&#34;function decodeUplink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  };\n}&#34;</span>,<span class="s2">&#34;down_formatter&#34;</span>:<span class="s2">&#34;FORMATTER_JAVASCRIPT&#34;</span>,<span class="s2">&#34;down_formatter_parameter&#34;</span>:<span class="s2">&#34;function encodeDownlink(input) {\n  return {\n    bytes: [],\n    fPort: 1,\n    warnings: [],\n    errors: []\n  };\n}\n\nfunction decodeDownlink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  }\n}&#34;</span><span class="o">}}</span>
+</span></span></code></pre></div><h2 id="create-a-device-specific-payload-formatter">Create a Device Specific Payload Formatter</h2>
+<h6 id="details-1">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#asapplications%7Bapplication_ids.application_id%7Dlink-put"><code>/as/applications/{application_ids.application_id}/link</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>PUT</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<h6 id="example-1">Example</h6>
+<p>To set a payload formatter for an end device <code>my-test-device</code> on application <code>my-test-app</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
+<p>Make sure properly encode the JavaScript functions.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;link&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;default_formatters&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;up_formatter&#34;</span><span class="p">:</span> <span class="s2">&#34;FORMATTER_JAVASCRIPT&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;up_formatter_parameter&#34;</span><span class="p">:</span> <span class="s2">&#34;function decodeUplink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  };\n}&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;down_formatter&#34;</span><span class="p">:</span> <span class="s2">&#34;FORMATTER_JAVASCRIPT&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;down_formatter_parameter&#34;</span><span class="p">:</span> <span class="s2">&#34;function encodeDownlink(input) {\n  return {\n    bytes: [],\n    fPort: 1,\n    warnings: [],\n    errors: []\n  };\n}\n\nfunction decodeDownlink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  }\n}&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field_mask&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;default_formatters.up_formatter&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;default_formatters.up_formatter_parameter&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;default_formatters.down_formatter&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;default_formatters.down_formatter_parameter&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X PUT -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/as/applications/my-test-app/devices/my-test-device
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;device_id&#34;</span>:<span class="s2">&#34;my-test-device&#34;</span>,<span class="s2">&#34;application_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;application_id&#34;</span>:<span class="s2">&#34;my-test-app&#34;</span><span class="o">}}</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-01-10T14:11:53.817139Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-01-10T14:11:53.817139Z&#34;</span>,<span class="s2">&#34;formatters&#34;</span>:<span class="o">{</span><span class="s2">&#34;up_formatter&#34;</span>:<span class="s2">&#34;FORMATTER_JAVASCRIPT&#34;</span>,<span class="s2">&#34;up_formatter_parameter&#34;</span>:<span class="s2">&#34;function decodeUplink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  };\n}&#34;</span>,<span class="s2">&#34;down_formatter&#34;</span>:<span class="s2">&#34;FORMATTER_JAVASCRIPT&#34;</span>,<span class="s2">&#34;down_formatter_parameter&#34;</span>:<span class="s2">&#34;function encodeDownlink(input) {\n  return {\n    bytes: [],\n    fPort: 1,\n    warnings: [],\n    errors: []\n  };\n}\n\nfunction decodeDownlink(input) {\n  return {\n    data: {\n      bytes: input.bytes\n    },\n    warnings: [],\n    errors: []\n  }\n}&#34;</span><span class="o">}}</span>
+</span></span></code></pre></div>
+</section>
 
 </div>
         </div>
@@ -319,6 +425,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <li><a href='#edit-a-device-specific-payload-formatter'>Edit a Device Specific Payload Formatter</a></li>
     
+      
+      <li><a href='#create-an-application-payload-formatter'>Create an Application Payload Formatter</a></li>
+    
+      
+      <li><a href='#create-a-device-specific-payload-formatter'>Create a Device Specific Payload Formatter</a></li>
+    
   </ul>
 
 
@@ -342,6 +454,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

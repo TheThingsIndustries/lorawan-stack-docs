@@ -10,7 +10,7 @@
   <title>Adding Applications | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.352ede3cf707e33d0e7305991a2a3d6da56e6f8a602acb8c295497963535ecdc.css" integrity="sha256-NS7ePPcH4z0OcwWZGio9baVub4pgKsuMKVSXljU17Nw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Adding Applications">
@@ -63,6 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -171,11 +172,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </a>
     </li>
     
+    <li data-tab="http-rest-api">
+      <a>
+        <span>HTTP (REST) API</span>
+      </a>
+    </li>
+    
   </ul>
 </div>
 <div class="tab-content content">
   <section data-content="console">
-  <h2 id="adding-applications-using-the-console">Adding Applications using the Console</h2>
+  <h4 id="adding-applications-using-the-console">Adding Applications using the Console</h4>
 <p>In addition to the written instructions below, a video with instructions for adding an application is available on <a href="https://youtu.be/403yK_RaONE">The Things Network youtube channel</a>.</p>
 <details><summary>Show video</summary>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -193,12 +200,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </figure>
 </section>
 <section data-content="cli">
-  <h2 id="adding-applications-using-the-cli">Adding Applications using the CLI</h2>
+  <h4 id="adding-applications-using-the-cli">Adding Applications using the CLI</h4>
 <p>Create the first application:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">USER_ID</span><span class="o">=</span><span class="s2">&#34;admin&#34;</span>
 </span></span><span class="line"><span class="cl">ttn-lw-cli applications create <span class="nv">$APP_ID</span> --user-id <span class="nv">$USER_ID</span>
 </span></span></code></pre></div><p>This creates an application <code>app1</code> with the <code>admin</code> user as collaborator. Make sure to modify user parameters according to your setup.</p>
+</section>
+<section data-content="http-rest-api">
+  <h4 id="adding-applications-using-the-http-rest-api">Adding Applications using the HTTP (REST) API</h4>
+<h6 id="details">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#users%7Bcollaborator.user_ids.user_id%7Dapplications-post"><code>/users/{collaborator.user_ids.user_id}/applications</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>POST</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<h6 id="example">Example</h6>
+<p>To create an application <code>my-test-app</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;application&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;my-test-app&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;My Test Application&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Application for my test devices&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;network_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;thethings.example.com&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;application_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;thethings.example.com&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;join_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;thethings.example.com&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> curl -X POST -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/users/testuser/applications
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;application_id&#34;</span>:<span class="s2">&#34;my-test-app&#34;</span><span class="o">}</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-01-10T09:13:34.817772Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-01-10T09:13:34.817773Z&#34;</span>,<span class="s2">&#34;name&#34;</span>:<span class="s2">&#34;My Test Application&#34;</span>,<span class="s2">&#34;description&#34;</span>:<span class="s2">&#34;Application for my test devices&#34;</span>,<span class="s2">&#34;administrative_contact&#34;</span>:<span class="o">{</span><span class="s2">&#34;user_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;user_id&#34;</span>:<span class="s2">&#34;testuser&#34;</span><span class="o">}}</span>,<span class="s2">&#34;technical_contact&#34;</span>:<span class="o">{</span><span class="s2">&#34;user_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;user_id&#34;</span>:<span class="s2">&#34;testuser&#34;</span><span class="o">}}</span>,<span class="s2">&#34;network_server_address&#34;</span>:<span class="s2">&#34;thethings.example.com&#34;</span>,<span class="s2">&#34;application_server_address&#34;</span>:<span class="s2">&#34;thethings.example.com&#34;</span>,<span class="s2">&#34;join_server_address&#34;</span>:<span class="s2">&#34;thethings.example.com&#34;</span><span class="o">}</span>
+</span></span></code></pre></div>
 </section>
 
 </div>
@@ -219,6 +271,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li data-tab="cli">
       <a>
         <span>CLI</span>
+      </a>
+    </li>
+    
+    <li data-tab="http-rest-api">
+      <a>
+        <span>HTTP (REST) API</span>
       </a>
     </li>
     
@@ -245,6 +303,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --right-application-delete
 </span></span></code></pre></div><p>The CLI will return an API key such as <code>NNSXS.RLA7AGGMD5ZHBH...</code>. This API key has only delete rights and can therefore only be used for deleting this application. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one by following this same procedure.</p>
 <p>See the <a href="https://www.thethingsindustries.com/docs/ttn-lw-cli/ttn-lw-cli_applications_api-keys/">CLI Reference</a> for details on managing application API keys using the CLI.</p>
+</section>
+<section data-content="http-rest-api">
+  <h6 id="details">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#gateways%7Bgateway_ids.gateway_id%7Dapi-keys-post"><code>/api/v3/gateways/{gateway_ids.gateway_id}/api-keys</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>POST</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<h6 id="example">Example</h6>
+<p>To create an API Key for the application <code>my-test-app</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;expires_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2024-11-07T20:33:48.000Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Test API Key&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;rights&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;RIGHT_APPLICATION_DELETE&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X POST -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/applications/my-test-app/api-keys
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;id&#34;</span>:<span class="s2">&#34;H4K2ZTXEIBZERY7R55KYMO6Y2W75UQXXKEZSAOY&#34;</span>,<span class="s2">&#34;key&#34;</span>:<span class="s2">&#34;NNSXS.H4K2ZTXEIBZERY7R55KYMO6Y2W75UQXXKEZSAOY.6SIKPRUFYNVPEI6ACIYOEL2BY4NU3EGDXAQZ4XFPFKMDPQRNCUZA&#34;</span>,<span class="s2">&#34;name&#34;</span>:<span class="s2">&#34;Test API Key&#34;</span>,<span class="s2">&#34;rights&#34;</span>:<span class="o">[</span><span class="s2">&#34;RIGHT_APPLICATION_DELETE&#34;</span><span class="o">]</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-01-10T09:16:54.435864Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-01-10T09:16:54.435864Z&#34;</span>,<span class="s2">&#34;expires_at&#34;</span>:<span class="s2">&#34;2024-11-07T20:33:48Z&#34;</span><span class="o">}</span>
+</span></span></code></pre></div>
 </section>
 
 </div>
@@ -288,12 +383,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul class="menu-list">
     
       
-      <li><a href='#adding-applications-using-the-console'>Adding Applications using the Console</a></li>
-    
-      
-      <li><a href='#adding-applications-using-the-cli'>Adding Applications using the CLI</a></li>
-    
-      
       <li><a href='#create-application-api-key'>Create Application API Key</a></li>
     
       
@@ -322,6 +411,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

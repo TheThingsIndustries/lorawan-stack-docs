@@ -10,7 +10,7 @@
   <title>Adding Gateways | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.352ede3cf707e33d0e7305991a2a3d6da56e6f8a602acb8c295497963535ecdc.css" integrity="sha256-NS7ePPcH4z0OcwWZGio9baVub4pgKsuMKVSXljU17Nw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Adding Gateways">
@@ -63,6 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -165,7 +166,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <p>If your The Things Stack deployment is connected to <a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/">Packet Broker</a>, you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced <a href="ttnmapper.org">TTN Mapper</a> to find out if your location has nearby gateways.</p>
-<p>Adding gateways using the Console or the CLI is usually most convenient, so those methods are extensively explained in this section. However, it is also possible to add gateways <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/api/#register-a-gateway">using the API</a>.</p>
 <div class="tabs is-boxed">
   <ul>
     
@@ -181,11 +181,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </a>
     </li>
     
+    <li data-tab="http-rest-api">
+      <a>
+        <span>HTTP (REST) API</span>
+      </a>
+    </li>
+    
   </ul>
 </div>
 <div class="tab-content content">
   <section data-content="console">
-  <h2 id="adding-gateways-using-the-console">Adding Gateways using the Console</h2>
+  <h4 id="adding-gateways-using-the-console">Adding Gateways using the Console</h4>
 <p>Go to <strong>Gateways</strong> in the top menu, and click <strong>+ Register Gateway</strong> to reach the gateway registration page.</p>
 <p>Fill the <strong>Gateway EUI</strong> and click <strong>Confirm</strong>. Some gateways do not use a <strong>Gateway EUI</strong> (e.g. The Things Kickstarter Gateway), in which case you can just click on <strong>Continue without EUI</strong>.</p>
 <p>Depending on whether the <strong>Gateway EUI</strong> is claimable you will either be shown the claiming form or the manual registration form.</p>
@@ -211,7 +217,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>You can now connect your gateway to The Things Stack.</p>
 </section>
 <section data-content="cli">
-  <h2 id="adding-gateways-using-the-cli">Adding Gateways using the CLI</h2>
+  <h4 id="adding-gateways-using-the-cli">Adding Gateways using the CLI</h4>
 <p>We define some user parameters that will be used below:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">GTW_ID</span><span class="o">=</span><span class="s2">&#34;gtw1&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
@@ -227,6 +233,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --gateway-eui <span class="nv">$GTW_EUI</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --enforce-duty-cycle
 </span></span></code></pre></div><p>This creates a gateway <code>gtw1</code> with user <code>admin</code> as collaborator, frequency plan <code>EU_863_870</code>, EUI <code>00800000A00009EF</code> and respecting duty-cycle limitations. You can now connect your gateway to The Things Stack.</p>
+</section>
+<section data-content="http-rest-api">
+  <h4 id="adding-gateways-using-the-api">Adding Gateways using the API</h4>
+<h6 id="details">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#users%7Bcollaborator.user_ids.user_id%7Dgateways-post"><code>/api/v3/users/{collaborator.user_ids.user_id}/gateways</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>POST</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<h6 id="example">Example</h6>
+<p>To create a gateway for user <code>user1</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;gateway&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;eui&#34;</span><span class="p">:</span> <span class="s2">&#34;1111111111111111&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-gateway&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;My Test Gateway&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;frequency_plan_ids&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;EU_863_870&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;require_authenticated_connection&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;status_public&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;location_public&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;gateway_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;thethings.example.com&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;enforce_duty_cycle&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -v -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json https://thethings.example.com/api/v3/users/testuser/gateways
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;gateway_id&#34;</span>:<span class="s2">&#34;my-test-gateway&#34;</span>,<span class="s2">&#34;eui&#34;</span>:<span class="s2">&#34;1111111111111111&#34;</span><span class="o">}</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-01-09T13:29:22.468006Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-01-09T13:29:22.468007Z&#34;</span>,<span class="s2">&#34;name&#34;</span>:<span class="s2">&#34;My Test Gateway&#34;</span>,<span class="s2">&#34;administrative_contact&#34;</span>:<span class="o">{</span><span class="s2">&#34;user_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;user_id&#34;</span>:<span class="s2">&#34;testuser&#34;</span><span class="o">}}</span>,<span class="s2">&#34;technical_contact&#34;</span>:<span class="o">{</span><span class="s2">&#34;user_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;user_id&#34;</span>:<span class="s2">&#34;testuser&#34;</span><span class="o">}}</span>,<span class="s2">&#34;version_ids&#34;</span>:<span class="o">{}</span>,<span class="s2">&#34;gateway_server_address&#34;</span>:<span class="s2">&#34;thethings.example.com&#34;</span>,<span class="s2">&#34;frequency_plan_ids&#34;</span>:<span class="o">[</span><span class="s2">&#34;EU_863_870&#34;</span><span class="o">]</span>,<span class="s2">&#34;enforce_duty_cycle&#34;</span>:true,<span class="s2">&#34;schedule_anytime_delay&#34;</span>:<span class="s2">&#34;0s&#34;</span><span class="o">}</span>
+</span></span></code></pre></div>
 </section>
 
 </div>
@@ -245,6 +298,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li data-tab="cli">
       <a>
         <span>CLI</span>
+      </a>
+    </li>
+    
+    <li data-tab="http-rest-api">
+      <a>
+        <span>HTTP (REST) API</span>
       </a>
     </li>
     
@@ -272,6 +331,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></code></pre></div><p>The CLI will return an API key such as <code>NNSXS.VEEBURF3KR77ZR...</code>. This API key has only link rights and can therefore only be used for linking this gateway. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.</p>
 <p>See the <a href="https://www.thethingsindustries.com/docs/ttn-lw-cli/ttn-lw-cli_gateways_api-keys/">CLI Reference</a> for details on managing gateway API keys using the CLI.</p>
 </section>
+<section data-content="http-rest-api">
+  <h6 id="details">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#gateways%7Bgateway_ids.gateway_id%7Dapi-keys-post"><code>/api/v3/gateways/{gateway_ids.gateway_id}/api-keys</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>POST</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<h6 id="example">Example</h6>
+<p>To create an API Key for gateway <code>my-test-gateway</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;expires_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2024-11-07T20:33:48.000Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Test API Key&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;rights&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;RIGHT_GATEWAY_LINK&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/gateways/my-test-gateway/api-keys
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;id&#34;</span>:<span class="s2">&#34;KS7BFCW5TUTMVA3WBN5GSQVTTYVQVR5FRH54C7A&#34;</span>,<span class="s2">&#34;key&#34;</span>:<span class="s2">&#34;NNSXS.KS7BFCW5TUTMVA3WBN5GSQVTTYVQVR5FRH54C7A.Z3YH2OFUTBBAOUJBCJWSUGKFFQWGSDXG5JHNHMEU4DYYLO6JK7AQ&#34;</span>,<span class="s2">&#34;name&#34;</span>:<span class="s2">&#34;Test API Key&#34;</span>,<span class="s2">&#34;rights&#34;</span>:<span class="o">[</span><span class="s2">&#34;RIGHT_GATEWAY_LINK&#34;</span><span class="o">]</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-01-09T13:42:55.276762Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-01-09T13:42:55.276763Z&#34;</span>,<span class="s2">&#34;expires_at&#34;</span>:<span class="s2">&#34;2024-11-07T20:33:48Z&#34;</span><span class="o">}</span>
+</span></span></code></pre></div>
+</section>
 
 </div>
 
@@ -288,6 +384,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li data-tab="cli">
       <a>
         <span>CLI</span>
+      </a>
+    </li>
+    
+    <li data-tab="http-rest-api">
+      <a>
+        <span>HTTP (REST) API</span>
       </a>
     </li>
     
@@ -309,7 +411,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 <section data-content="cli">
   <p>Once you have added your gateway to The Things Stack, you can also set the locations of the gateway antennas.</p>
-<p>Add an antenna and set its location  with:</p>
+<p>Add an antenna and set its location with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">LAT</span><span class="o">=</span><span class="s2">&#34;43.84&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">LONG</span><span class="o">=</span><span class="s2">&#34;18.32&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">ALT</span><span class="o">=</span><span class="s2">&#34;500&#34;</span>
@@ -327,8 +429,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gtw1&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">},</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-05-27T14:43:13.606Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{},</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;auto_update&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;antennas&#34;</span><span class="p">:</span> <span class="p">[</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
@@ -344,19 +445,83 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div>
 </section>
+<section data-content="http-rest-api">
+  <h6 id="details">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#gateways%7Bgateway.ids.gateway_id%7D-put"><code>/api/v3/gateways/{gateway.ids.gateway_id}</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>PUT</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<h6 id="example">Example</h6>
+<p>To set the location of a gateway with ID <code>my-test-gateway</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;gateway&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;antennas&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;placement&#34;</span><span class="p">:</span> <span class="s2">&#34;PLACEMENT_UNKNOWN&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;latitude&#34;</span><span class="p">:</span> <span class="mf">48.40627905572619</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;longitude&#34;</span><span class="p">:</span> <span class="mf">24.851562500000004</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;altitude&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;accuracy&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;SOURCE_REGISTRY&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field_mask&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;antennas&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X PUT -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/gateways/my-test-gateway
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;gateway_id&#34;</span>:<span class="s2">&#34;my-test-gateway&#34;</span>,<span class="s2">&#34;eui&#34;</span>:<span class="s2">&#34;1111111111111111&#34;</span><span class="o">}</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-01-09T13:29:22.468006Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-01-09T13:57:17.484187Z&#34;</span>,<span class="s2">&#34;antennas&#34;</span>:<span class="o">[{</span><span class="s2">&#34;location&#34;</span>:<span class="o">{</span><span class="s2">&#34;latitude&#34;</span>:48.40627905572619,<span class="s2">&#34;longitude&#34;</span>:24.851562500000004,<span class="s2">&#34;source&#34;</span>:<span class="s2">&#34;SOURCE_REGISTRY&#34;</span><span class="o">}}]}</span>
+</span></span></code></pre></div>
+</section>
 
 </div>
 
 <p>Keep in mind that if you change the physical location of your gateway, the location update in The Things Stack will take place only after you restart the gateway.</p>
 <h2 id="set-gateway-antenna-gain">Set Gateway Antenna Gain</h2>
-<div class="notification is-primary is-light has-text-dark">
-  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
-  <p>The instructions below use the command-line interface (CLI).</p>
-  <div class="buttons">
-    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/the-things-stack/interact/cli/installing-cli/">Learn how to install the CLI</a>
-  </div>
+<p>A preffered way for adjusting a downlink path gain is setting the gateway antenna gain, instead of changing the gateway Tx power.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+    <li data-tab="http-rest-api">
+      <a>
+        <span>HTTP (REST) API</span>
+      </a>
+    </li>
+    
+  </ul>
 </div>
-<p>A preffered way for adjusting a downlink path gain is setting the gateway antenna gain, instead of changing the gateway Tx power. The following command will set the gateway antenna gain to 3 dB:</p>
+<div class="tab-content content">
+  <section data-content="cli">
+  <p>The following command will set the gateway antenna gain to 3 dB:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">GAIN</span><span class="o">=</span><span class="s2">&#34;3&#34;</span>
 </span></span><span class="line"><span class="cl">ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> --antenna.gain <span class="nv">$GAIN</span>
 </span></span></code></pre></div><p>The CLI output will be similar to:</p>
@@ -365,8 +530,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gtw1&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">},</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-05-27T14:43:13.606Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{},</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;auto_update&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;antennas&#34;</span><span class="p">:</span> <span class="p">[</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
@@ -381,18 +545,138 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">  <span class="p">],</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;location_public&#34;</span><span class="p">:</span> <span class="kc">true</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>Keep in mind that the <code>antennas.location</code> object will be empty if you have not previously set the gateway antenna location.</p>
+</span></span></code></pre></div>
+</section>
+<section data-content="http-rest-api">
+  <h6 id="details">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#gateways%7Bgateway.ids.gateway_id%7D-put"><code>/api/v3/gateways/{gateway.ids.gateway_id}</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>PUT</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<h6 id="example">Example</h6>
+<p>To adjust the antenna gain of a gateway with ID <code>my-test-gateway</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;gateway&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;antennas&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;gain&#34;</span><span class="p">:</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field_mask&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;antennas&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X PUT -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/gateways/my-test-gateway
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;gateway_id&#34;</span>:<span class="s2">&#34;my-test-gateway&#34;</span>,<span class="s2">&#34;eui&#34;</span>:<span class="s2">&#34;1111111111111111&#34;</span><span class="o">}</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-01-09T13:29:22.468006Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-01-09T14:11:10.062055Z&#34;</span>,<span class="s2">&#34;antennas&#34;</span>:<span class="o">[{</span><span class="s2">&#34;gain&#34;</span>:3<span class="o">}]}</span>
+</span></span></code></pre></div>
+</section>
+
+</div>
+
+<p>Keep in mind that the <code>antennas.location</code> object will be cleared if previously set since it&rsquo;s only possible to set entire <code>antennas</code> object. Combine this with setting the location if both values need to persist.</p>
 <p>Once a gateway has been added, get started with <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> and <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations</a> to process and act on data.</p>
 <h2 id="forwarding-uplinks-to-packet-broker">Forwarding Uplinks to Packet Broker</h2>
 <p>In deployments connected to <a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/">Packet Broker</a>, you can control if you want uplinks received by your gateway to be forwarded to Packet Broker or not. In these deployments, uplinks received by your gateway are being forwarded to Packet Broker by default, but you can choose to disable this behavior.</p>
-<p>To disable forwarding uplink messages from your gateway to Packet Broker in The Things Stack Console, navigate to the <strong>General settings</strong> tab on the left hand menu in your gateway&rsquo;s overview, scroll to the bottom of the <strong>Basic settings</strong> section and tick the <strong>Disabled</strong> box under <strong>Packet Broker</strong> option.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+    <li data-tab="http-rest-api">
+      <a>
+        <span>HTTP (REST) API</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <p>To disable forwarding uplink messages from your gateway to Packet Broker in The Things Stack Console, navigate to the <strong>General settings</strong> tab on the left hand menu in your gateway&rsquo;s overview, scroll to the bottom of the <strong>Basic settings</strong> section and tick the <strong>Disabled</strong> box under <strong>Packet Broker</strong> option.</p>
 <figure><img src="pb-forwarding.png"
          alt="Forwarding uplinks to Packet Broker"/>
 </figure>
-
-<p>To disable forwarding uplink messages from your gateways to Packet Broker using the CLI, use the following command:</p>
+</section>
+<section data-content="cli">
+  <p>To disable forwarding uplink messages from your gateways to Packet Broker using the CLI, use the following command:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> --disable-packet-broker-forwarding
-</span></span></code></pre></div><p>Keep in mind that changes will apply only after restarting the gateway.</p>
+</span></span></code></pre></div>
+</section>
+<section data-content="http-rest-api">
+  <h6 id="details">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#gateways%7Bgateway.ids.gateway_id%7D-put"><code>/api/v3/gateways/{gateway.ids.gateway_id}</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>PUT</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<h6 id="example">Example</h6>
+<p>To disable forwarding to Packet Broker for the gateway <code>my-test-gateway</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;gateway&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;disable_packet_broker_forwarding&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field_mask&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;disable_packet_broker_forwarding&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X PUT -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/gateways/my-test-gateway
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;gateway_id&#34;</span>:<span class="s2">&#34;my-test-gateway&#34;</span>,<span class="s2">&#34;eui&#34;</span>:<span class="s2">&#34;1111111111111111&#34;</span><span class="o">}</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-01-09T13:29:22.468006Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-01-09T14:17:19.314981Z&#34;</span>,<span class="s2">&#34;disable_packet_broker_forwarding&#34;</span>:true<span class="o">}</span>
+</span></span></code></pre></div>
+</section>
+
+</div>
+
+<p>Keep in mind that changes will apply only after restarting the gateway.</p>
         </div>
           <div class="columns is-multiline">
 </div>
@@ -418,12 +702,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <ul class="menu-list">
-    
-      
-      <li><a href='#adding-gateways-using-the-console'>Adding Gateways using the Console</a></li>
-    
-      
-      <li><a href='#adding-gateways-using-the-cli'>Adding Gateways using the CLI</a></li>
     
       
       <li><a href='#create-gateway-api-key'>Create Gateway API Key</a></li>
@@ -460,6 +738,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

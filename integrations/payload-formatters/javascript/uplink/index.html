@@ -10,7 +10,7 @@
   <title>Uplink | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/uplink/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.352ede3cf707e33d0e7305991a2a3d6da56e6f8a602acb8c295497963535ecdc.css" integrity="sha256-NS7ePPcH4z0OcwWZGio9baVub4pgKsuMKVSXljU17Nw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Uplink">
@@ -63,6 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -213,13 +214,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// }
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">return</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">bytes</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">bytes</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;warning 1&#34;</span><span class="p">,</span> <span class="s2">&#34;warning 2&#34;</span><span class="p">],</span> <span class="c1">// optional
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">errors</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;error 1&#34;</span><span class="p">,</span> <span class="s2">&#34;error 2&#34;</span><span class="p">]</span> <span class="c1">// optional (if set, the decoding failed)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">errors</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;error 1&#34;</span><span class="p">,</span> <span class="s2">&#34;error 2&#34;</span><span class="p">],</span> <span class="c1">// optional (if set, the decoding failed)
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>The decoder function&rsquo;s output shown above is incorporated in the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:as.up.data.forward"><code>as.up.data.forward</code></a> event, where the <code>data.uplink_message</code> object contains:</p>
+</span></span></code></pre></div><p>The decoder function&rsquo;s output shown above is incorporated in the <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/events/#event:as.up.data.forward"><code>as.up.data.forward</code></a> event, where the <code>data.uplink_message</code> object contains:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;AQID&#34;</span><span class="p">,</span>
@@ -250,17 +251,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">return</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">air</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">temperature</span><span class="o">:</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="o">/</span><span class="mi">9</span> <span class="c1">// Fahrenheit to Celsius 
+</span></span><span class="line"><span class="cl">        <span class="nx">temperature</span><span class="o">:</span> <span class="p">((</span><span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">9</span><span class="p">,</span> <span class="c1">// Fahrenheit to Celsius
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">},</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">wind</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">speed</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">windSpeed</span> <span class="o">*</span> <span class="mf">0.5144</span> <span class="c1">// knots to m/s
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">speed</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">windSpeed</span> <span class="o">*</span> <span class="mf">0.5144</span><span class="p">,</span> <span class="c1">// knots to m/s
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;warning 1&#34;</span><span class="p">,</span> <span class="s2">&#34;warning 2&#34;</span><span class="p">],</span> <span class="c1">// optional
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">errors</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;error 1&#34;</span><span class="p">,</span> <span class="s2">&#34;error 2&#34;</span><span class="p">]</span> <span class="c1">// optional (if set, the normalization failed)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">errors</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;error 1&#34;</span><span class="p">,</span> <span class="s2">&#34;error 2&#34;</span><span class="p">],</span> <span class="c1">// optional (if set, the normalization failed)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>The normalizer function&rsquo;s output shown above is incorporated in the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:as.up.data.forward"><code>as.up.data.forward</code></a> event, where the <code>data.uplink_message</code> object contains:</p>
+</span></span></code></pre></div><p>The normalizer function&rsquo;s output shown above is incorporated in the <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/events/#event:as.up.data.forward"><code>as.up.data.forward</code></a> event, where the <code>data.uplink_message</code> object contains:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;temperature&#34;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
@@ -277,7 +278,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>The Application Server also publishes an event for each returned normalized payload, in the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:as.up.normalized.forward"><code>as.up.normalized.forward</code></a> event, where the <code>data.uplink_normalized</code> object contains:</p>
+</span></span></code></pre></div><p>The Application Server also publishes an event for each returned normalized payload, in the <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/events/#event:as.up.normalized.forward"><code>as.up.normalized.forward</code></a> event, where the <code>data.uplink_normalized</code> object contains:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;normalized_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;air&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -324,13 +325,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">readings</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">air</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">temperature</span><span class="o">:</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">readings</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">temperature</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="o">/</span><span class="mi">9</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">temperature</span><span class="o">:</span> <span class="p">((</span><span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">readings</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">temperature</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">9</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="p">});</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span> <span class="c1">// this is now an array: [ { air: { temperature: ... } }, ... ]
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span> <span class="c1">// this is now an array: [ { air: { temperature: ... } }, ... ]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>When the normalizer function returns an array of measurements, Application Server publishes a normalized uplink event for each measurement, while there is still one uplink message event.</p>
 <h2 id="uplink-example-the-things-node">Uplink Example: The Things Node</h2>
@@ -341,19 +342,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">    <span class="mi">1</span><span class="o">:</span> <span class="s2">&#34;setup&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="mi">2</span><span class="o">:</span> <span class="s2">&#34;interval&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="mi">3</span><span class="o">:</span> <span class="s2">&#34;motion&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">4</span><span class="o">:</span> <span class="s2">&#34;button&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">4</span><span class="o">:</span> <span class="s2">&#34;button&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="p">};</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">event</span> <span class="o">=</span> <span class="nx">events</span><span class="p">[</span><span class="nx">input</span><span class="p">.</span><span class="nx">fPort</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">battery</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">light</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">=</span> <span class="p">(((</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x80</span> <span class="o">?</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="mh">0x100</span> <span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(((</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x80</span> <span class="o">?</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="mh">0x100</span> <span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">/</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">100</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">warnings</span> <span class="o">=</span> <span class="p">[];</span>
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&#34;it&#39;s cold&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="o">:</span> <span class="nx">warnings</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="o">:</span> <span class="nx">warnings</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -361,10 +365,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">air</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">temperature</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">temperature</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>For example, the end device observed an event and performed some measurements. The end device transmitted the following binary payload: <code>0C B2 04 80 F7 AE</code> (hex encoded) on FPort 4. The Base64 equivalent of that binary payload is <code>DLIEgPeu</code> and the JavaScript byte array is <code>[ 12, 178, 4, 128, 247, 174 ]</code>. This is all the same, just a different representation.</p>
 <p>The uplink decoder gets the JavaScript byte array of the binary payload and FPort as input. The Things Stack sets <code>frm_payload</code> to the Base64 representation of the binary payload, and <code>decoded_payload</code> to the output <code>data</code> of the uplink decoder. If there are warnings, they are set in <code>decoded_payload_warnings</code>.</p>
@@ -459,6 +463,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

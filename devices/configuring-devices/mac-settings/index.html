@@ -10,7 +10,7 @@
   <title>MAC Settings | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/configuring-devices/mac-settings/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.352ede3cf707e33d0e7305991a2a3d6da56e6f8a602acb8c295497963535ecdc.css" integrity="sha256-NS7ePPcH4z0OcwWZGio9baVub4pgKsuMKVSXljU17Nw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="MAC Settings">
@@ -63,6 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -223,7 +224,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="available-mac-settings">Available MAC Settings</h2>
 <p>Run the following command to get a list of all available MAC settings and available parameter values:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --help
-</span></span></code></pre></div><p>You can also refer to the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">End Device API Reference page</a> for documentation on the available MAC settings and MAC state parameters.</p>
+</span></span></code></pre></div><p>You can also refer to the <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#message:MACSettings">End Device API Reference page</a> for documentation on the available MAC settings and MAC state parameters.</p>
 <h2 id="class-specific-settings">Class Specific Settings</h2>
 <p>Settings that are useful based on device class are:</p>
 <p>All devices:</p>
@@ -254,7 +255,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li><code>mac-settings.class-c-timeout</code></li>
 </ul>
-<p>Some additional examples are included below. All settings are available at the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">End Device API Reference page</a> and can be viewed using the <code>ttn-lw-cli end-devices set --help</code> command.</p>
+<p>Some additional examples are included below. All settings are available at the <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#message:MACSettings">End Device API Reference page</a> and can be viewed using the <code>ttn-lw-cli end-devices set --help</code> command.</p>
 <h2 id="examples">Examples</h2>
 <h3 id="configure-factory-preset-frequencies-for-abp-devices">Configure Factory Preset Frequencies for ABP Devices</h3>
 <p>To tell The Things Stack which frequencies are configured in an ABP device, set the <code>mac-settings.factory-preset-frequencies</code> parameter. For example, to configure a device using the default EU868 frequencies, use the following command:</p>
@@ -267,7 +268,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h3 id="set-duty-cycle">Set Duty Cycle</h3>
 <p>To change the duty cycle, set the <code>desired-max-duty-cycle</code> parameter. For example, to set the duty cycle to 0.098%, use the following command:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.desired-max-duty-cycle DUTY_CYCLE_1024
-</span></span></code></pre></div><p>See the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">End Device API Reference</a> for available fields and definitions of constants. <code>DUTY_CYCLE_1024</code> represents 1/1024 ≈ 0.098%.</p>
+</span></span></code></pre></div><p>See the <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#message:MACSettings">End Device API Reference</a> for available fields and definitions of constants. <code>DUTY_CYCLE_1024</code> represents 1/1024 ≈ 0.098%.</p>
 <h3 id="enable-adr">Enable ADR</h3>
 <p>To enable ADR, set the <code>mac-settings.use-adr</code> parameter:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.use-adr<span class="o">=</span><span class="nb">true</span>
@@ -348,6 +349,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

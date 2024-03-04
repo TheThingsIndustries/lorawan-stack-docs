@@ -10,7 +10,7 @@
   <title>Telemetry and Device Twin | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-central/device-twin/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.352ede3cf707e33d0e7305991a2a3d6da56e6f8a602acb8c295497963535ecdc.css" integrity="sha256-NS7ePPcH4z0OcwWZGio9baVub4pgKsuMKVSXljU17Nw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Telemetry and Device Twin">
@@ -63,6 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -387,7 +388,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
          alt="Raw Data"/>
 </figure>
 
-<p>Telemetry messages will always contain to the The Things Stack application uplink format, serialized as a JSON. You can find the formal message definition <a href="https://www.thethingsindustries.com/docs/reference/api/storage_integration/#message:ApplicationUp">here</a>.</p>
+<p>Telemetry messages will always contain to the The Things Stack application uplink format, serialized as a JSON. You can find the formal message definition <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/storage_integration/#message:ApplicationUp">here</a>.</p>
 <h2 id="properties">Properties</h2>
 <p>The reported properties which the integration will generate are as follows:</p>
 <ul>
@@ -417,7 +418,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;_timestamp&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-05-05T12:59:42.619Z&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><ul>
-<li><code>location</code> - Object mapping between the service (name) which has located the end device and the location of the end device. You can find the formal definition of a singular location <a href="https://www.thethingsindustries.com/docs/reference/api/storage_integration/#message:Location">here</a>.</li>
+<li><code>location</code> - Object mapping between the service (name) which has located the end device and the location of the end device. You can find the formal definition of a singular location <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/storage_integration/#message:Location">here</a>.</li>
 </ul>
 <p>An example of this property as unmodeled data would look as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
@@ -443,15 +444,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 <p>An example of this property as unmodeled data would look as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;decodedPayload&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;reported&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">				<span class="nt">&#34;ledState&#34;</span><span class="p">:</span> <span class="s2">&#34;off&#34;</span>
-</span></span><span class="line"><span class="cl">			<span class="p">}</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="p">},</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;_eventtype&#34;</span><span class="p">:</span> <span class="s2">&#34;Property&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;_timestamp&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-05-05T12:59:42.619Z&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;decodedPayload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;reported&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;ledState&#34;</span><span class="p">:</span> <span class="s2">&#34;off&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;_eventtype&#34;</span><span class="p">:</span> <span class="s2">&#34;Property&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;_timestamp&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-05-05T12:59:42.619Z&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>The desired properties which the integration will process are as follows:</p>
 <ul>
@@ -510,6 +511,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

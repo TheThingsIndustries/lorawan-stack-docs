@@ -10,7 +10,7 @@
   <title>Troubleshooting Gateways | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/troubleshooting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.352ede3cf707e33d0e7305991a2a3d6da56e6f8a602acb8c295497963535ecdc.css" integrity="sha256-NS7ePPcH4z0OcwWZGio9baVub4pgKsuMKVSXljU17Nw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Troubleshooting Gateways">
@@ -63,6 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -296,10 +297,10 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
 <h2 id="im-seeing-the-gateway-missed-too-many-pongs-warnings-in-the-gateway-live-data-events-whats-causing-this">I&rsquo;m seeing the &ldquo;Gateway missed too many pongs” warnings in the Gateway Live data events. What&rsquo;s causing this?</h2>
 <p>The Gateway Server disconnects LoRa Basics Station gateways that stop sending pongs to pings that the server is sending, so the gateway might get disconnected after failing to send two or more pongs. Gateways that don&rsquo;t send pongs to server pings will probably face this issue.</p>
 <h2 id="i-do-not-see-the-downlink-being-scheduled-by-the-network-server-what-do-i-do">I do not see the downlink being scheduled by the Network Server. What do I do?</h2>
-<p>If you notice your downlink is not being scheduled, check your gateway&rsquo;s Live data tab for the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:gs.down.send"><code>gs.down.send</code> event</a>. If you do not see this event, it means that the Network Server failed to schedule the downlink message to Gateway Server.</p>
+<p>If you notice your downlink is not being scheduled, check your gateway&rsquo;s Live data tab for the <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/events/#event:gs.down.send"><code>gs.down.send</code> event</a>. If you do not see this event, it means that the Network Server failed to schedule the downlink message to Gateway Server.</p>
 <p>You can simply try re-scheduling the downlink, and if the issue persists, check if the downlink is being properly scheduled from the Application Server to the Network Server.</p>
 <h2 id="when-i-schedule-a-downlink-i-see-the-downlink-transmission-failed-event-in-the-live-data-tab-and-the-downlink-message-fails-to-be-transmitted-why">When I schedule a downlink, I see the downlink transmission failed event in the Live data tab and the downlink message fails to be transmitted. Why?</h2>
-<p>Seeing the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:gs.down.tx.fail"><code>gs.down.tx.fail</code> event</a> in the gateway&rsquo;s Live data tab means the downlink message has been scheduled from the Gateway Server to the gateway, but the Gateway Server did not receive the ACK for that downlink. Some common causes and solutions for this issue:</p>
+<p>Seeing the <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/events/#event:gs.down.tx.fail"><code>gs.down.tx.fail</code> event</a> in the gateway&rsquo;s Live data tab means the downlink message has been scheduled from the Gateway Server to the gateway, but the Gateway Server did not receive the ACK for that downlink. Some common causes and solutions for this issue:</p>
 <ul>
 <li>High latency in the gateway backhaul - high latency usually occurs if the gateway and The Things Stack cluster are not geographically close, or the gateway is using a cellular or satellite backhaul. Always use The Things Stack cluster that is closest to your gateway&rsquo;s location, and make sure to check your gateway&rsquo;s Internet connection.</li>
 <li>Gateway hardware issue - if the problem persists, your gateway could be malfunctioning. Try using another gateway or contacting the gateway manufacturer.</li>
@@ -321,8 +322,8 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
 <p>Updating gateway location from status messages in supported only for gateways that establish authenticated connections (Basic Station and MQTT gateways), i.e. it is not supported for <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/">UDP</a> gateways.</p>
 <p>Keep in mind that you can still set the gateway location <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/#set-gateway-location">manually</a> from The Things Stack Console.</p>
 <h2 id="i-set-the-gateway-location-manually-in-the-things-stack-console-why-can-i-not-see-it-in-the-gateway-connection-statistics">I set the gateway location manually in The Things Stack Console. Why can I not see it in the gateway connection statistics?</h2>
-<p>The connection statistics (<a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server/#a-namegsthe-gs-servicea">Gateway Server service API</a>) do not store the gateway locations.</p>
-<p>The gateway location is stored in the Identity Server instead. The updated location can be found by querying the Identity Server <a href="https://www.thethingsindustries.com/docs/reference/api/gateway/">GetGateway API</a>.</p>
+<p>The connection statistics (<a href="https://www.thethingsindustries.com/docs/api/reference/grpc/gateway_server/#a-namegsthe-gs-servicea">Gateway Server service API</a>) do not store the gateway locations.</p>
+<p>The gateway location is stored in the Identity Server instead. The updated location can be found by querying the Identity Server <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/gateway/">GetGateway API</a>.</p>
 <p>For example, you can query the location with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -H <span class="s2">&#34;Authorization: Bearer &lt;api-key&gt;&#34;</span> https://example.thethings.com/api/v3/gateways/&lt;gateway-id&gt;?field_mask<span class="o">=</span>antennas
 </span></span></code></pre></div><h2 id="my-gateway-backhaul-consumes-a-lot-of-data-is-there-any-way-i-can-optimize-it">My gateway backhaul consumes a lot of data. Is there any way I can optimize it?</h2>
@@ -505,6 +506,7 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

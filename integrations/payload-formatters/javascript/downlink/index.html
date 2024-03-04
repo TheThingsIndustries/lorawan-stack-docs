@@ -10,7 +10,7 @@
   <title>Downlink | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/downlink/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.352ede3cf707e33d0e7305991a2a3d6da56e6f8a602acb8c295497963535ecdc.css" integrity="sha256-NS7ePPcH4z0OcwWZGio9baVub4pgKsuMKVSXljU17Nw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Downlink">
@@ -63,6 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -215,8 +216,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">    <span class="nx">bytes</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="c1">// FRMPayload (byte array)
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">fPort</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;warning 1&#34;</span><span class="p">,</span> <span class="s2">&#34;warning 2&#34;</span><span class="p">],</span> <span class="c1">// optional
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">errors</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;error 1&#34;</span><span class="p">,</span> <span class="s2">&#34;error 2&#34;</span><span class="p">]</span> <span class="c1">// optional (if set, the encoding failed)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">errors</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;error 1&#34;</span><span class="p">,</span> <span class="s2">&#34;error 2&#34;</span><span class="p">],</span> <span class="c1">// optional (if set, the encoding failed)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeDownlink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
@@ -227,13 +228,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// }
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">return</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">field</span><span class="o">:</span> <span class="s2">&#34;value&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">field</span><span class="o">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;warning 1&#34;</span><span class="p">,</span> <span class="s2">&#34;warning 2&#34;</span><span class="p">],</span> <span class="c1">// optional
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">errors</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;error 1&#34;</span><span class="p">,</span> <span class="s2">&#34;error 2&#34;</span><span class="p">]</span> <span class="c1">// optional (if set, the decoding failed)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">errors</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;error 1&#34;</span><span class="p">,</span> <span class="s2">&#34;error 2&#34;</span><span class="p">],</span> <span class="c1">// optional (if set, the decoding failed)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>Encoded and decoded downlink payload are incorporated in the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:as.down.data.receive"><code>as.down.data.receive</code></a> event, where the <code>data</code> object contains:</p>
+</span></span></code></pre></div><p>Encoded and decoded downlink payload are incorporated in the <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/events/#event:as.down.data.receive"><code>as.down.data.receive</code></a> event, where the <code>data</code> object contains:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;AQID&#34;</span><span class="p">,</span>
@@ -261,16 +262,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeDownlink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">fPort</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">color</span><span class="o">:</span> <span class="nx">colors</span><span class="p">[</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="k">default</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">errors</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;unknown FPort&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">color</span><span class="o">:</span> <span class="nx">colors</span><span class="p">[</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">errors</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;unknown FPort&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="p">};</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>If the downlink with the following JSON payload is sent by the application:</p>
@@ -346,6 +347,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

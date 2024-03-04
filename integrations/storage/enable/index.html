@@ -10,7 +10,7 @@
   <title>Enable/Disable | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/storage/enable/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.352ede3cf707e33d0e7305991a2a3d6da56e6f8a602acb8c295497963535ecdc.css" integrity="sha256-NS7ePPcH4z0OcwWZGio9baVub4pgKsuMKVSXljU17Nw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Enable/Disable">
@@ -63,6 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -187,7 +188,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 </div>
 
-<h2 id="enable-for-an-application">Enable for an Application</h2>
 <div class="tabs is-boxed">
   <ul>
     
@@ -203,18 +203,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </a>
     </li>
     
+    <li data-tab="http-rest-api">
+      <a>
+        <span>HTTP (REST) API</span>
+      </a>
+    </li>
+    
   </ul>
 </div>
 <div class="tab-content content">
   <section data-content="console">
-  <p>Navigate to <strong>Applications</strong> in the top menu and then select your application. On the left side, click <strong>Integrations</strong> and then <strong>Storage Integration</strong>.</p>
+  <div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  It&rsquo;s currently only possible to enable/disable storage integration for an application via the Console. To do this for end devices, use the CLI or API option.
+</div>
+<h4 id="enable-for-an-application">Enable for an Application</h4>
+<p>Navigate to <strong>Applications</strong> in the top menu and then select your application. On the left side, click <strong>Integrations</strong> and then <strong>Storage Integration</strong>.</p>
 <p>Click on <strong>Activate Storage Integration</strong> to enable the storage integration for your application.</p>
 <figure><img src="activate-storage-integration.png"
          alt="Activate Storage Integration screen"/>
 </figure>
+<h4 id="disable-for-an-application">Disable for an Application</h4>
+<p>To disable the integration, you only need to click the <strong>Deactivate Storage Integration</strong> button:</p>
+<figure><img src="activated-storage-integration.png"
+         alt="Activated Storage Integration screen"/>
+</figure>
 </section>
 <section data-content="cli">
-  <p>Set up a default association between the desired application and the <code>storage-integration</code> package.</p>
+  <h4 id="enable-for-an-application">Enable for an Application</h4>
+<p>Set up a default association between the desired application and the <code>storage-integration</code> package.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli applications packages default-associations <span class="nb">set</span> &lt;application-id&gt; &lt;f_port&gt; --package-name storage-integration
 </span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -224,62 +241,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   Do not configure more than one default association for the same application, since that will lead to storing duplicate messages in the persistent storage.
 </div>
-</section>
-
-</div>
-
-<h2 id="enable-for-an-end-device">Enable for an End Device</h2>
-<div class="notification is-primary is-light has-text-dark">
-  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
-  <p>The instructions below use the command-line interface (CLI).</p>
-  
-  <p>Make sure that the CLI is up-to-date and uses an updated configuration file: <code>ttn-lw-cli use...</code></p>
-  
-  
-  <div class="buttons">
-    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/the-things-stack/interact/cli/installing-cli/">Learn how to install or upgrade the CLI</a>
-  </div>
-</div>
-
+<h4 id="enable-for-an-end-device">Enable for an End Device</h4>
 <p>Set up an association between the desired end device and the <code>storage-integration</code> package.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli applications packages associations <span class="nb">set</span> &lt;application-id&gt; &lt;device-id&gt; &lt;f_port&gt; --package-name storage-integration
-</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The <code>f_port</code> value is irrelevant.
-</div>
-
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  Do not configure multiple associations for the same end device, since that will lead to storing duplicate uplinks in the persistent storage.
-</div>
-
-<h2 id="disable-for-an-application">Disable for an Application</h2>
-<div class="tabs is-boxed">
-  <ul>
-    
-    <li data-tab="console">
-      <a>
-        <span>Console</span>
-      </a>
-    </li>
-    
-    <li data-tab="cli">
-      <a>
-        <span>CLI</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-<div class="tab-content content">
-  <section data-content="console">
-  <p>To disable the integration, you only need to click the <strong>Deactivate Storage Integration</strong> button:</p>
-<figure><img src="activated-storage-integration.png"
-         alt="Activated Storage Integration screen"/>
-</figure>
-</section>
-<section data-content="cli">
-  <p>To disable the integration, delete the package association or the default association.</p>
+</span></span></code></pre></div><h4 id="disable-for-application">Disable for Application</h4>
+<p>To disable the integration, delete the package association or the default association.</p>
 <p>To list associations:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli applications packages default-associations list <span class="nv">$APP_ID</span>
 </span></span></code></pre></div><p>The output will be something like:</p>
@@ -300,22 +266,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><p>Then delete the association with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli applications packages default-associations delete &lt;application-id&gt; &lt;f_port&gt;
-</span></span></code></pre></div>
-</section>
-
-</div>
-
-<h2 id="disable-for-an-end-device">Disable for an End Device</h2>
-<div class="notification is-primary is-light has-text-dark">
-  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
-  <p>The instructions below use the command-line interface (CLI).</p>
-  
-  
-  <div class="buttons">
-    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/the-things-stack/interact/cli/installing-cli/">Learn how to install the CLI</a>
-  </div>
-</div>
-
+</span></span></code></pre></div><h4 id="disable-for-end-device">Disable for End Device</h4>
 <p>To disable the integration, delete the association.</p>
 <p>To list associations:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli applications packages associations list <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span>
@@ -340,8 +291,148 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><p>Delete the association with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli applications packages associations delete &lt;application-id&gt; &lt;device-id&gt; &lt;f_port&gt;
-</span></span></code></pre></div><h2 id="enable-and-disable-using-the-api">Enable and Disable using the API</h2>
-<p>See instructions on how to create/delete associations and default associations with the <code>storage-integration</code> application package <a href="https://www.thethingsindustries.com/docs/reference/application-packages/using-the-api/">using the API</a>.</p>
+</span></span></code></pre></div>
+</section>
+<section data-content="http-rest-api">
+  <h4 id="enable-for-an-application">Enable for an Application</h4>
+<h6 id="details">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#asapplications%7Bdefault.ids.application_ids.application_id%7Dpackagesassociations%7Bdefault.ids.f_port%7D-put"><code>/api/v3/as/applications/{default.ids.application_ids.application_id}/packages/associations/{default.ids.f_port}</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>PUT</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<h6 id="example">Example</h6>
+<p>To set an association for the application <code>my-test-app</code> on the FPORT <code>10</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;default&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;package_name&#34;</span><span class="p">:</span> <span class="s2">&#34;storage-integration&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field_mask&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;package_name&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X PUT -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/as/applications/my-test-app/packages/associations/10
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;application_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;application_id&#34;</span>:<span class="s2">&#34;my-test-app&#34;</span><span class="o">}</span>,<span class="s2">&#34;f_port&#34;</span>:10<span class="o">}</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-01-10T10:59:21.398555Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-01-10T10:59:21.398555Z&#34;</span>,<span class="s2">&#34;package_name&#34;</span>:<span class="s2">&#34;storage-integration&#34;</span><span class="o">}</span>%
+</span></span></code></pre></div><h4 id="enable-for-an-end-device">Enable for an End Device</h4>
+<h6 id="details-1">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#asapplications%7Bassociation.ids.end_device_ids.application_ids.application_id%7Ddevices%7Bassociation.ids.end_device_ids.device_id%7Dpackagesassociations%7Bassociation.ids.f_port%7D-put"><code>/api/v3/as/applications/{association.ids.end_device_ids.application_ids.application_id}/devices/{association.ids.end_device_ids.device_id}/packages/associations/{association.ids.f_port}</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>PUT</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<h6 id="example-1">Example</h6>
+<p>To set an association for the device <code>my-test-dev</code> in the application <code>my-test-app</code> with FPORT <code>10</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;association&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;package_name&#34;</span><span class="p">:</span> <span class="s2">&#34;storage-integration&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field_mask&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;package_name&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X PUT -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/as/applications/my-test-app/devices/my-test-dev/packages/associations/10
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;end_device_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;device_id&#34;</span>:<span class="s2">&#34;my-test-dev&#34;</span>,<span class="s2">&#34;application_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;application_id&#34;</span>:<span class="s2">&#34;my-test-app&#34;</span><span class="o">}}</span>,<span class="s2">&#34;f_port&#34;</span>:10<span class="o">}</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-01-10T11:06:46.806972Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-01-10T11:06:46.806972Z&#34;</span>,<span class="s2">&#34;package_name&#34;</span>:<span class="s2">&#34;storage-integration&#34;</span><span class="o">}</span>
+</span></span></code></pre></div><h4 id="disable-for-an-application">Disable for an Application</h4>
+<h6 id="details-2">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#asapplications%7Bapplication_ids.application_id%7Dpackagesassociations%7Bf_port%7D-delete"><code>/api/v3/as/applications/{application_ids.application_id}/packages/associations/{f_port}</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>DELETE</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<h6 id="example-2">Example</h6>
+<p>To delete an association the application <code>my-test-app</code> with FPORT <code>10</code> on <code>thethings.example.com</code>, run the following request.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X DELETE -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/as/applications/my-test-app/packages/associations/10
+</span></span><span class="line"><span class="cl"><span class="o">{}</span>
+</span></span></code></pre></div><h4 id="disable-for-an-end-device">Disable for an End Device</h4>
+<h6 id="details-3">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#asapplications%7Bend_device_ids.application_ids.application_id%7Ddevices%7Bend_device_ids.device_id%7Dpackagesassociations%7Bf_port%7D-delete"><code>/api/v3/as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/packages/associations/{f_port}</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>DELETE</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<h6 id="example-3">Example</h6>
+<p>To delete an association for the device <code>my-test-device</code> on the application <code>my-test-app</code> with FPORT <code>10</code> on <code>thethings.example.com</code>, run the following request.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X DELETE -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/as/applications/my-test-app/devices/my-test-device/packages/associations/10
+</span></span><span class="line"><span class="cl"><span class="o">{}</span>
+</span></span></code></pre></div>
+</section>
+
+</div>
+
 
         </div>
         <div class="is-clearfix">
@@ -364,25 +455,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
 
 
-  <ul class="menu-list">
-    
-      
-      <li><a href='#enable-for-an-application'>Enable for an Application</a></li>
-    
-      
-      <li><a href='#enable-for-an-end-device'>Enable for an End Device</a></li>
-    
-      
-      <li><a href='#disable-for-an-application'>Disable for an Application</a></li>
-    
-      
-      <li><a href='#disable-for-an-end-device'>Disable for an End Device</a></li>
-    
-      
-      <li><a href='#enable-and-disable-using-the-api'>Enable and Disable using the API</a></li>
-    
-  </ul>
-
 
   </nav>
 
@@ -404,6 +476,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

@@ -10,7 +10,7 @@
   <title>Troubleshooting Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/troubleshooting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.352ede3cf707e33d0e7305991a2a3d6da56e6f8a602acb8c295497963535ecdc.css" integrity="sha256-NS7ePPcH4z0OcwWZGio9baVub4pgKsuMKVSXljU17Nw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Troubleshooting Devices">
@@ -63,6 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -155,7 +156,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></code></pre></div></li>
 </ul>
 <h2 id="i-cannot-access-my-device-in-the-things-stack-console">I cannot access my device in The Things Stack Console.</h2>
-<p>If you cannot access your device in the Console, i.e. you&rsquo;re seeing the <code>An unknown error occured. Please try again later...</code> error, your device is probably not properly provisioned in all The Things Stack components (Identity Server, Join Server, Network Server and Application Server). For example, this might happen if you tried to create your device <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/api/#multi-step-actions">using the API</a>, but you haven&rsquo;t created it properly in all four server components.</p>
+<p>If you cannot access your device in the Console, i.e. you&rsquo;re seeing the <code>An unknown error occured. Please try again later...</code> error, your device is probably not properly provisioned in all The Things Stack components (Identity Server, Join Server, Network Server and Application Server). For example, this might happen if you tried to create your device <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/">Using the API</a>, but you haven&rsquo;t created it properly in all four server components.</p>
 <p>This error can be resolved if you delete your device from all four above mentioned server components, and recreate it from scratch.</p>
 <p>To check if your device is present in the Identity Server component:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X <span class="s1">&#39;GET&#39;</span> <span class="s1">&#39;https://thethings.example.com/api/v3/applications/&lt;application_id&gt;/devices/&lt;device_id&gt;&#39;</span> -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
@@ -165,7 +166,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X DELETE <span class="s1">&#39;https://thethings.example.com/api/v3/applications/&lt;application_id&gt;/devices/&lt;device_id&gt;&#39;</span> -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
 </span></span></code></pre></div><p>To delete your device from Join Server, Network Server and/or Application Server:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X DELETE <span class="s1">&#39;https://thethings.example.com/api/v3/&lt;js/ns/as&gt;/applications/&lt;application_id&gt;/devices/&lt;device_id&gt;&#39;</span> -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
-</span></span></code></pre></div><p>Next, recreate your device as documented in the <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/api/#multi-step-actions">Using the API</a> section.</p>
+</span></span></code></pre></div><p>Next, recreate your device as documented in the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/">Using the API</a>.</p>
 <h2 id="i-see-unable-to-access-the-end-device-error">I see &ldquo;Unable to access the end device&rdquo; error</h2>
 <p>If you&rsquo;re facing this error, your end device has probably been configured with incorrect server addresses, so The Things Stack Console treats and shows it as in <code>Other cluster</code>. To regain access to your end device, you should configure it with the correct server addresses. That can be done by accessing device&rsquo;s <strong>General settings</strong> and configuring server addresses, or by deleting and recreating the end device with appropriate server addresses.</p>
 <h2 id="how-do-i-see-device-events">How do I see device events?</h2>
@@ -243,7 +244,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>If the downlink is successfully scheduled from the Gateway Server to the gateway, the Gateway Server generates the <code>gs.down.send</code> and <code>gs.down.tx.success</code> events. This indicates that the downlink is successfully sent to the gateway and the gateway scheduled the downlink to be sent to the device. If downlink scheduling fails, the <code>gs.down.tx.fail</code> event is generated instead.</li>
 </ul>
 <blockquote>
-<p>For more information on different events in TTS, read <a href="https://www.thethingsindustries.com/docs/reference/api/events/">Events API</a>.</p>
+<p>For more information on different events in TTS, read <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/events/">Events API</a>.</p>
 </blockquote>
 <p>If you did not encounter any deviations in this flow, that should be an indication of a successful downlink scheduling. However, if the downlink is not reaching your device, check the gateway packet forwarder logs and search for any errors that might help you identify the cause of the downlink failure.</p>
 <h2 id="when-i-schedule-a-downlink-i-see-the-nsdowndataschedulefail-event-in-the-live-data-tab-and-the-downlink-message-fails-to-be-transmitted">When I schedule a downlink, I see the <code>ns.down.data.schedule.fail</code> event in the Live data tab and the downlink message fails to be transmitted.</h2>
@@ -438,6 +439,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

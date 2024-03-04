@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.112.3">
+  <title>OAuth access tokens | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/api/concepts/auth/oauth-access-tokens/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="OAuth access tokens">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="OAuth access tokens">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/api/concepts/auth/oauth-access-tokens/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="OAuth access tokens" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.7.2/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://accounts.thethingsindustries.com/fee-calculator">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">API</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/api/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/" class="">Concepts</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/auth/" class="">Authentication</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/auth/oauth-access-tokens/" class="is-active">OAuth access tokens</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/auth/session-tokens/" class="">Session tokens</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/fieldmasks/" class="">Field masks</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/pagination/" class="">Pagination</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/errors/" class="">Errors</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/lora-gateway/" class="">LoRa® Gateway specific APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/troubleshooting/" class="">Troubleshooting</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/" class="">Reference</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">OAuth access tokens
+          
+        </h1>
+        
+        <div class="content">
+          <p>The Things Stack uses the <a href="https://oauth.net/">OAuth 2.0 protocol</a> for authentication and authorization.</p>
+<p>To use this authentication method, you first need to register an <strong>OAuth client</strong>. A few parameters listed below are usually used to describe an OAuth client.</p>
+<ul>
+<li>The <strong>client ID</strong> uniquely identifies the OAuth client. Its <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/#requirements-of-an-id-or-eui">restrictions</a> are the same as for any other ID in The Things Stack.</li>
+<li>The <strong>description</strong> is shown to the user when you request authorization.</li>
+<li>The <strong>scope</strong> indicates what actions your OAuth client is allowed to perform. This is shown to the user when you request authorization. You can select the actions your OAuth client needs on registration. A full list of rights can also be found in the <a href="https://www.thethingsindustries.com/docs/api/reference/http/messages/#right">message reference</a>.</li>
+<li>The <strong>redirect URI</strong> is where the user is redirected after authorizing your OAuth client. At least one <strong>redirect URI</strong> must be configured while registering the OAuth client.</li>
+<li>The <strong>client secret</strong> is issued when your OAuth client registration is accepted by a network admin.</li>
+</ul>
+<p>To register OAuth client you can use The Things Stack <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/console/">Console</a> or <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/cli/">CLI</a>.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <p>To register an OAuth client using the Console, first navigate to <code>https://&lt;HOSTNAME&gt;/oauth</code> in your web browser to log into your Account App. When logged in, switch to the <strong>OAuth Clients</strong> tab on the top menu and click the <strong>Add OAuth Client</strong> button.</p>
+<p>Enter the <strong>OAuth Client ID</strong>, <strong>Name</strong> and <strong>Description</strong> for your OAuth client. You can also add the <strong>Redirect URLs</strong> against which authorization requests will be checked, and <strong>Logout redirect URLs</strong> agains which client initiated requests are checked.</p>
+<figure><img src="create-oauth-client.png"
+         alt="Create an OAuth client"/>
+</figure>
+<p>Some <strong>Advanced admin options</strong> are also available to set the state of the OAuth client, skip the authorization page or indicate endorsement.</p>
+<p>You can choose multiple <strong>Grant types</strong>, i.e. multiple OAuth flows that can be used for the client to obtain an OAuth token: <strong>Authorization code</strong>, <strong>Refresh token</strong> and <strong>Password</strong>.</p>
+<p>You also need to grant rights for your OAuth client. Keep in mind that, to provide the functionality of the application, a minimum set of rights has to be requested.</p>
+<figure><img src="grant-rights-for-oauth-client.png"
+         alt="Grant rights for an OAuth client"/>
+</figure>
+</section>
+<section data-content="cli">
+  <p>To register an OAuth client using the CLI, use the following command:</p>
+<pre tabindex="0"><code>ttn-lw-cli clients create \
+  --client-id &lt;CLIENT-ID&gt; \
+  --name &lt;CLIENT-NAME&gt; \
+  --description &#34;My new OAuth client&#34; \
+  --redirect-uris &lt;REDIRECT-URI&gt; \
+  --grants GRANT_AUTHORIZATION_CODE \
+  --rights RIGHT_GATEWAY_ALL,RIGHT_ORGANIZATION_GATEWAYS_CREATE,RIGHT_ORGANIZATION_GATEWAYS_LIST,RIGHT_ORGANIZATION_INFO,RIGHT_USER_GATEWAYS_CREATE,RIGHT_USER_GATEWAYS_LIST,RIGHT_USER_INFO,RIGHT_USER_ORGANIZATIONS_LIST
+</code></pre>
+</section>
+
+</div>
+
+<p>After your OAuth client registration is accepted, you can <strong>request authorization</strong> by sending the user to the <strong>authorization URL</strong>:</p>
+<pre tabindex="0"><code>https://&lt;HOSTNAME&gt;/oauth/authorize?client_id=&lt;CLIENT-ID&gt;&amp;redirect_uri=&lt;REDIRECT-URI&gt;&amp;state=&lt;STATE&gt;&amp;response_type=code
+</code></pre><ul>
+<li>The <code>HOSTNAME</code> is the hostname of the Identity Server.</li>
+<li>The <code>client_id</code> is the <strong>client ID</strong> of your OAuth client.</li>
+<li>The <code>response_type</code> is always <code>code</code>.</li>
+<li>The <code>redirect_uri</code> must exactly match the <strong>redirect URI</strong> of your OAuth client registration if supplied.
+<ul>
+<li>We allow multiple <strong>redirect URIs</strong> in your OAuth client registration in the future, in which case the <code>REDIRECT-URI</code> must exactly match one of those.</li>
+</ul>
+</li>
+<li>The optional <code>scope</code> is ignored by the Identity Server. All scopes defined in your OAuth client registration will be requested.</li>
+<li>The optional <code>state</code> can be used to mitigate CSRF attacks. It is recommended to supply this.</li>
+</ul>
+<p>The Identity Server will prompt the user with a view asking to authorize your OAuth client. They will see the <strong>client ID</strong>, <strong>description</strong>, requested <strong>scope</strong> and <strong>redirect URI</strong>. If they accept the authorization, they will be redirected to your <strong>redirect URI</strong> with an <strong>authorization code</strong>:</p>
+<pre tabindex="0"><code>https://&lt;REDIRECT-URI&gt;/?code=&lt;AUTHORIZATION-CODE&gt;
+</code></pre><p>Your OAuth client can exchange this <strong>authorization code</strong>, which is valid for 5 minutes, for an <strong>OAuth access token</strong> by making a <code>POST</code> request to the <strong>token URL</strong>:</p>
+<pre tabindex="0"><code>https://&lt;HOSTNAME&gt;/oauth/token
+</code></pre><p>The request must use <strong>Basic Auth</strong> (<a href="https://tools.ietf.org/html/rfc7617">RFC7617</a>) with the <strong>client ID</strong> as username and the <strong>client secret</strong> as password.</p>
+<p>The <strong>authorization code</strong> is sent in the request payload:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;AUTHORIZATION-CODE&gt;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;grant_type&#34;</span><span class="p">:</span> <span class="s2">&#34;authorization_code&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The response contains the <strong>OAuth access token</strong>, which is valid for 60 minutes. If the network admin gave your OAuth client the <strong>refresh token</strong> grant, the response also contains a <strong>refresh token</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;access_token&#34;</span><span class="p">:</span> <span class="s2">&#34;XXXXX&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;token_type&#34;</span><span class="p">:</span> <span class="s2">&#34;bearer&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;expires_in&#34;</span><span class="p">:</span> <span class="s2">&#34;3600&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;refresh_token&#34;</span><span class="p">:</span> <span class="s2">&#34;YYYYY&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>You can now use the <strong>OAuth access token</strong> until it expires.</p>
+<p>If you have a <strong>refresh token</strong>, you can exchange this for a new <strong>OAuth access token</strong> after the old one expires by making another <code>POST</code> request to the <strong>token URL</strong>, similar to the exchange of the <strong>authorization code</strong> you did before:</p>
+<pre tabindex="0"><code>https://&lt;HOSTNAME&gt;/oauth/token
+</code></pre><p>The request must use <strong>Basic Auth</strong> (<a href="https://tools.ietf.org/html/rfc7617">RFC7617</a>) with the <strong>client ID</strong> as username and the <strong>client secret</strong> as password.</p>
+<p>The <strong>refresh token</strong> is sent in the request payload:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;REFRESH-TOKEN&gt;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;grant_type&#34;</span><span class="p">:</span> <span class="s2">&#34;refresh_token&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The response again contains the <strong>OAuth access token</strong> and an indication of when it expires. The response also contains a new <strong>refresh token</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;access_token&#34;</span><span class="p">:</span> <span class="s2">&#34;XXXXX&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;token_type&#34;</span><span class="p">:</span> <span class="s2">&#34;bearer&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;expires_in&#34;</span><span class="p">:</span> <span class="s2">&#34;3600&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;refresh_token&#34;</span><span class="p">:</span> <span class="s2">&#34;YYYYY&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
+        </div>
+          <div class="columns is-multiline">
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/api/concepts/auth/">← Authentication</a>
+<a class="button is-pulled-right" href="/docs/api/concepts/auth/session-tokens/">Session tokens →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.4a22f0dea0620048bc258cf6dedbdfbec40f3b5dba1dcdc6536e61e7bc20a5bf.js" integrity="sha256-SiLw3qBiAEi8JYz23tvfvsQPO126Hc3GU25h57wgpb8=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

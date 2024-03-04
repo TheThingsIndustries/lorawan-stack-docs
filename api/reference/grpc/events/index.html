@@ -1,0 +1,3830 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.112.3">
+  <title>Events API | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/api/reference/grpc/events/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Events API">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Events API">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/api/reference/grpc/events/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Events API" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.7.2/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://accounts.thethingsindustries.com/fee-calculator">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">API</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/api/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/" class="">Concepts</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/" class="">Reference</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/http/" class="">HTTP(REST)</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/" class="">gRPC</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/application/" class="">Application APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/application_packages/" class="">Application Package APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/application_pub_sub/" class="">Application Pub/Sub APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/application_server/" class="">Application Server APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/application_webhooks/" class="">Application Webhook APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/client/" class="">Client APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/crypto_operations/" class="">Crypto Operations APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/" class="">End Device APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/events/" class="is-active">Events API</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/gateway/" class="">Gateway APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/gateway_server/" class="">Gateway Server APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/identity_server/" class="">Identity Server APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/join_server/" class="">Join Server APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/network_operations_center/" class="">Network Operations Center APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/network_server/" class="">Network Server APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/organization/" class="">Organization APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/packet_broker/" class="">Packet Broker APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/storage_integration/" class="">Storage Integration API</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/tenant/" class="">Tenant APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/user/" class="">User APIs</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">Events API
+          
+        </h1>
+        
+        <div class="content">
+          <p>List of Events APIs.</p>
+<h2 id="the-events-service">The <code>Events</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Events.Stream</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Stream live events, optionally with a tail of historical events (depending on server support and retention policy).
+Events may arrive out-of-order.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:StreamEventsRequest"><code>StreamEventsRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        Stream of <a href="#message:Event"><code>Event</code></a>
+        <br>The HTTP API uses <code>Content-Type: text/event-stream</code><br>and a response body of newline-delimited JSON.<br>Make sure to send <code>Accept: text/event-stream</code> in the request.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/events</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Events.FindRelated</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:FindRelatedEventsRequest"><code>FindRelatedEventsRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:FindRelatedEventsResponse"><code>FindRelatedEventsResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/events/related</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="messages">Messages</h2>
+
+<h3 id="message:EntityIdentifiers">Message <code>EntityIdentifiers</code></h3>
+<p>EntityIdentifiers contains one of the possible entity identifiers.</p>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>application_ids</code>, <code>client_ids</code>, <code>device_ids</code>, <code>gateway_ids</code>, <code>organization_ids</code>, <code>user_ids</code> can be set.</li>
+</ul>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "application_ids": {},
+  "client_ids": {},
+  "device_ids": {},
+  "gateway_ids": {},
+  "organization_ids": {},
+  "user_ids": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationIdentifiers">
+  
+  <code>
+    
+    ApplicationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>client_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ClientIdentifiers">
+  
+  <code>
+    
+    ClientIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>device_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:EndDeviceIdentifiers">
+  
+  <code>
+    
+    EndDeviceIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:GatewayIdentifiers">
+  
+  <code>
+    
+    GatewayIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:UserIdentifiers">
+  
+  <code>
+    
+    UserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ApplicationIdentifiers">Message <code>ApplicationIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "application_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ClientIdentifiers">Message <code>ClientIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "client_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>client_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:EndDeviceIdentifiers">Message <code>EndDeviceIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "device_id": "",
+  "application_ids": {},
+  "dev_eui": "",
+  "join_eui": "",
+  "dev_addr": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>device_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationIdentifiers">
+  
+  <code>
+    
+    ApplicationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>dev_eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The LoRaWAN DevEUI.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>join_eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The LoRaWAN JoinEUI (AppEUI until LoRaWAN 1.0.3 end devices).</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>dev_addr</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The LoRaWAN DevAddr.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>4</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:FindRelatedEventsRequest">Message <code>FindRelatedEventsRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "correlation_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>correlation_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>100</code></p>
+          <p><code>min_len</code>: <code>1</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:FindRelatedEventsResponse">Message <code>FindRelatedEventsResponse</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "events": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>events</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:Event">
+  
+  <code>
+    
+    Event
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GatewayIdentifiers">Message <code>GatewayIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "gateway_id": "",
+  "eui": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Secondary identifier, which can only be used in specific requests.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:OrganizationIdentifiers">Message <code>OrganizationIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>This ID shares namespace with user IDs.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:UserIdentifiers">Message <code>UserIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "user_id": "",
+  "email": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>This ID shares namespace with organization IDs.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){1,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>email</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Secondary identifier, which can only be used in specific requests.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:Event">Message <code>Event</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "name": "",
+  "time": "0001-01-01T00:00:00Z",
+  "identifiers": [],
+  "data": null,
+  "correlation_ids": [],
+  "origin": "",
+  "context": {},
+  "visibility": {},
+  "authentication": {},
+  "remote_ip": "",
+  "user_agent": "",
+  "unique_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>name</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Name of the event. This can be used to find the (localized) event description.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>time</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Time at which the event was triggered.</p>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>identifiers</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:EntityIdentifiers">
+  
+  <code>
+    
+    EntityIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Identifiers of the entity (or entities) involved.</p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>data</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Any
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Optional data attached to the event.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>correlation_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+        
+        repeated 
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Correlation IDs can be used to find related events and actions such as API calls.</p>
+            <p><code>max_len</code>: <code>100</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>origin</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The origin of the event. Typically the hostname of the server that created it.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>context</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        map of 
+  <code>string</code>
+ to 
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Event context, internal use only.</p>
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>visibility</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:Rights">
+  
+  <code>
+    
+    Rights
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The event will be visible to a caller that has any of these rights.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>authentication</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:Event.Authentication">
+  
+  <code>
+    
+    Event.Authentication
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Details on the authentication provided by the caller that triggered this event.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>remote_ip</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The IP address of the caller that triggered this event.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_agent</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The IP address of the caller that triggered this event.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>unique_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The unique identifier of the event, assigned on creation.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:Event.Authentication">Message <code>Event.Authentication</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "type": "",
+  "token_type": "",
+  "token_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>type</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The type of authentication that was used. This is typically a bearer token.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>token_type</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The type of token that was used. Common types are APIKey, AccessToken and SessionToken.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>token_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The ID of the token that was used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:StreamEventsRequest">Message <code>StreamEventsRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "identifiers": [],
+  "tail": 0,
+  "after": "0001-01-01T00:00:00Z",
+  "names": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>identifiers</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:EntityIdentifiers">
+  
+  <code>
+    
+    EntityIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>tail</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>If greater than zero, this will return historical events, up to this maximum when the stream starts.
+If used in combination with &ldquo;after&rdquo;, the limit that is reached first, is used.
+The availability of historical events depends on server support and retention policy.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>after</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>If not empty, this will return historical events after the given time when the stream starts.
+If used in combination with &ldquo;tail&rdquo;, the limit that is reached first, is used.
+The availability of historical events depends on server support and retention policy.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>names</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+        
+        repeated 
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>If provided, this will filter events, so that only events with the given names are returned.
+Names can be provided as either exact event names (e.g. &lsquo;gs.up.receive&rsquo;),
+or as regular expressions (e.g. &lsquo;/^gs..+/&rsquo;).</p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:Rights">Message <code>Rights</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "rights": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rights</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#enum:Right">
+  
+  <code>
+  
+  Right
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+            <p><code>defined_only</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<h2 id="enums">Enums</h2>
+
+
+<h3 id="enum:Right">Enum <code>Right</code></h3>
+<p>Right is the enum that defines all the different rights to do something in the network.</p>
+<table class="api">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>right_invalid</code></td>
+      <td><code>0</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_INFO</code></td>
+      <td><code>1</code></td>
+      <td> The right to view user information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_SETTINGS_BASIC</code></td>
+      <td><code>2</code></td>
+      <td> The right to edit basic user settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_SETTINGS_API_KEYS</code></td>
+      <td><code>3</code></td>
+      <td> The right to view and edit user API keys.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_DELETE</code></td>
+      <td><code>4</code></td>
+      <td> The right to delete user account.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_AUTHORIZED_CLIENTS</code></td>
+      <td><code>5</code></td>
+      <td> The right to view and edit authorized OAuth clients of the user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_APPLICATIONS_LIST</code></td>
+      <td><code>6</code></td>
+      <td> The right to list applications the user is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_APPLICATIONS_CREATE</code></td>
+      <td><code>7</code></td>
+      <td> The right to create an application under the user account.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_GATEWAYS_LIST</code></td>
+      <td><code>8</code></td>
+      <td> The right to list gateways the user is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_GATEWAYS_CREATE</code></td>
+      <td><code>9</code></td>
+      <td> The right to create a gateway under the account of the user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_CLIENTS_LIST</code></td>
+      <td><code>10</code></td>
+      <td> The right to list OAuth clients the user is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_CLIENTS_CREATE</code></td>
+      <td><code>11</code></td>
+      <td> The right to create an OAuth client under the account of the user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_ORGANIZATIONS_LIST</code></td>
+      <td><code>12</code></td>
+      <td> The right to list organizations the user is a member of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_ORGANIZATIONS_CREATE</code></td>
+      <td><code>13</code></td>
+      <td> The right to create an organization under the user account.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_NOTIFICATIONS_READ</code></td>
+      <td><code>59</code></td>
+      <td> The right to read notifications sent to the user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_ALL</code></td>
+      <td><code>14</code></td>
+      <td> The pseudo-right for all (current and future) user rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_INFO</code></td>
+      <td><code>15</code></td>
+      <td> The right to view application information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_SETTINGS_BASIC</code></td>
+      <td><code>16</code></td>
+      <td> The right to edit basic application settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_SETTINGS_API_KEYS</code></td>
+      <td><code>17</code></td>
+      <td> The right to view and edit application API keys.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_SETTINGS_COLLABORATORS</code></td>
+      <td><code>18</code></td>
+      <td> The right to view and edit application collaborators.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_SETTINGS_PACKAGES</code></td>
+      <td><code>56</code></td>
+      <td> The right to view and edit application packages and associations.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DELETE</code></td>
+      <td><code>19</code></td>
+      <td> The right to delete application.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DEVICES_READ</code></td>
+      <td><code>20</code></td>
+      <td> The right to view devices in application.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DEVICES_WRITE</code></td>
+      <td><code>21</code></td>
+      <td> The right to create devices in application.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DEVICES_READ_KEYS</code></td>
+      <td><code>22</code></td>
+      <td> The right to view device keys in application.
+Note that keys may not be stored in a way that supports viewing them.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DEVICES_WRITE_KEYS</code></td>
+      <td><code>23</code></td>
+      <td> The right to edit device keys in application.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_TRAFFIC_READ</code></td>
+      <td><code>24</code></td>
+      <td> The right to read application traffic (uplink and downlink).</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_TRAFFIC_UP_WRITE</code></td>
+      <td><code>25</code></td>
+      <td> The right to write uplink application traffic.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_TRAFFIC_DOWN_WRITE</code></td>
+      <td><code>26</code></td>
+      <td> The right to write downlink application traffic.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_LINK</code></td>
+      <td><code>27</code></td>
+      <td> The right to link as Application to a Network Server for traffic exchange,
+i.e. read uplink and write downlink (API keys only).
+This right is typically only given to an Application Server.
+This right implies RIGHT_APPLICATION_INFO, RIGHT_APPLICATION_TRAFFIC_READ,
+and RIGHT_APPLICATION_TRAFFIC_DOWN_WRITE.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_ALL</code></td>
+      <td><code>28</code></td>
+      <td> The pseudo-right for all (current and future) application rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_ALL</code></td>
+      <td><code>29</code></td>
+      <td> The pseudo-right for all (current and future) OAuth client rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_INFO</code></td>
+      <td><code>60</code></td>
+      <td> The right to read client information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_SETTINGS_BASIC</code></td>
+      <td><code>61</code></td>
+      <td> The right to edit basic client settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_SETTINGS_COLLABORATORS</code></td>
+      <td><code>62</code></td>
+      <td> The right to view and edit client collaborators.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_DELETE</code></td>
+      <td><code>63</code></td>
+      <td> The right to delete a client.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_INFO</code></td>
+      <td><code>30</code></td>
+      <td> The right to view gateway information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_SETTINGS_BASIC</code></td>
+      <td><code>31</code></td>
+      <td> The right to edit basic gateway settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_SETTINGS_API_KEYS</code></td>
+      <td><code>32</code></td>
+      <td> The right to view and edit gateway API keys.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_SETTINGS_COLLABORATORS</code></td>
+      <td><code>33</code></td>
+      <td> The right to view and edit gateway collaborators.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_DELETE</code></td>
+      <td><code>34</code></td>
+      <td> The right to delete gateway.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_TRAFFIC_READ</code></td>
+      <td><code>35</code></td>
+      <td> The right to read gateway traffic.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_TRAFFIC_DOWN_WRITE</code></td>
+      <td><code>36</code></td>
+      <td> The right to write downlink gateway traffic.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_LINK</code></td>
+      <td><code>37</code></td>
+      <td> The right to link as Gateway to a Gateway Server for traffic exchange,
+i.e. write uplink and read downlink (API keys only)
+This right is typically only given to a gateway.
+This right implies RIGHT_GATEWAY_INFO.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_STATUS_READ</code></td>
+      <td><code>38</code></td>
+      <td> The right to view gateway status.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_LOCATION_READ</code></td>
+      <td><code>39</code></td>
+      <td> The right to view view gateway location.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_WRITE_SECRETS</code></td>
+      <td><code>57</code></td>
+      <td> The right to store secrets associated with this gateway.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_READ_SECRETS</code></td>
+      <td><code>58</code></td>
+      <td> The right to retrieve secrets associated with this gateway.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_ALL</code></td>
+      <td><code>40</code></td>
+      <td> The pseudo-right for all (current and future) gateway rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_INFO</code></td>
+      <td><code>41</code></td>
+      <td> The right to view organization information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_SETTINGS_BASIC</code></td>
+      <td><code>42</code></td>
+      <td> The right to edit basic organization settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_SETTINGS_API_KEYS</code></td>
+      <td><code>43</code></td>
+      <td> The right to view and edit organization API keys.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_SETTINGS_MEMBERS</code></td>
+      <td><code>44</code></td>
+      <td> The right to view and edit organization members.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_DELETE</code></td>
+      <td><code>45</code></td>
+      <td> The right to delete organization.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_APPLICATIONS_LIST</code></td>
+      <td><code>46</code></td>
+      <td> The right to list the applications the organization is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_APPLICATIONS_CREATE</code></td>
+      <td><code>47</code></td>
+      <td> The right to create an application under the organization.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_GATEWAYS_LIST</code></td>
+      <td><code>48</code></td>
+      <td> The right to list the gateways the organization is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_GATEWAYS_CREATE</code></td>
+      <td><code>49</code></td>
+      <td> The right to create a gateway under the organization.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_CLIENTS_LIST</code></td>
+      <td><code>50</code></td>
+      <td> The right to list the OAuth clients the organization is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_CLIENTS_CREATE</code></td>
+      <td><code>51</code></td>
+      <td> The right to create an OAuth client under the organization.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_ADD_AS_COLLABORATOR</code></td>
+      <td><code>52</code></td>
+      <td> The right to add the organization as a collaborator on an existing entity.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_ALL</code></td>
+      <td><code>53</code></td>
+      <td> The pseudo-right for all (current and future) organization rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_SEND_INVITES</code></td>
+      <td><code>54</code></td>
+      <td> The right to send invites to new users.
+Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on the user entity.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ALL</code></td>
+      <td><code>55</code></td>
+      <td> The pseudo-right for all (current and future) possible rights.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="events">Events</h2>
+
+<h3 class="event-name" id="event:account.user.login_failed">Event <code>account.user.login_failed</code></h3>
+<p class="event-description">login user failure</p>
+<h3 class="event-name" id="event:application.api-key.create">Event <code>application.api-key.create</code></h3>
+<p class="event-description">create application API key</p>
+<h3 class="event-name" id="event:application.api-key.delete">Event <code>application.api-key.delete</code></h3>
+<p class="event-description">delete application API key</p>
+<h3 class="event-name" id="event:application.api-key.update">Event <code>application.api-key.update</code></h3>
+<p class="event-description">update application API key</p>
+<h3 class="event-name" id="event:application.collaborator.delete">Event <code>application.collaborator.delete</code></h3>
+<p class="event-description">delete application collaborator</p>
+<h3 class="event-name" id="event:application.collaborator.update">Event <code>application.collaborator.update</code></h3>
+<p class="event-description">update application collaborator</p>
+<h3 class="event-name" id="event:application.create">Event <code>application.create</code></h3>
+<p class="event-description">create application</p>
+<h3 class="event-name" id="event:application.delete">Event <code>application.delete</code></h3>
+<p class="event-description">delete application</p>
+<h3 class="event-name" id="event:application.issue_dev_eui">Event <code>application.issue_dev_eui</code></h3>
+<p class="event-description">issue DevEUI for application</p>
+<h3 class="event-name" id="event:application.purge">Event <code>application.purge</code></h3>
+<p class="event-description">purge application</p>
+<h3 class="event-name" id="event:application.restore">Event <code>application.restore</code></h3>
+<p class="event-description">restore application</p>
+<h3 class="event-name" id="event:application.update">Event <code>application.update</code></h3>
+<p class="event-description">update application</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/google.protobuf.Value",
+  "value": [
+    "list.of",
+    "updated.fields"
+  ]
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.application.subscribe">Event <code>as.application.subscribe</code></h3>
+<p class="event-description">subscribe application</p>
+<h3 class="event-name" id="event:as.application.unsubscribe">Event <code>as.application.unsubscribe</code></h3>
+<p class="event-description">unsubscribe application</p>
+<h3 class="event-name" id="event:as.down.data.decode.fail">Event <code>as.down.data.decode.fail</code></h3>
+<p class="event-description">decode downlink data message failure</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.down.data.decode.warning">Event <code>as.down.data.decode.warning</code></h3>
+<p class="event-description">decode downlink data message warning</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationDownlink"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.down.data.drop">Event <code>as.down.data.drop</code></h3>
+<p class="event-description">drop downlink data message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.down.data.encode.fail">Event <code>as.down.data.encode.fail</code></h3>
+<p class="event-description">encode downlink data message failure</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.down.data.encode.warning">Event <code>as.down.data.encode.warning</code></h3>
+<p class="event-description">encode downlink data message warning</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationDownlink"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.down.data.forward">Event <code>as.down.data.forward</code></h3>
+<p class="event-description">forward downlink data message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationDownlink"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.down.data.receive">Event <code>as.down.data.receive</code></h3>
+<p class="event-description">receive downlink data message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationDownlink"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.end_device.batch.delete">Event <code>as.end_device.batch.delete</code></h3>
+<p class="event-description">batch delete end devices</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.EndDeviceIdentifiersList"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.end_device.create">Event <code>as.end_device.create</code></h3>
+<p class="event-description">create end device</p>
+<h3 class="event-name" id="event:as.end_device.delete">Event <code>as.end_device.delete</code></h3>
+<p class="event-description">delete end device</p>
+<h3 class="event-name" id="event:as.end_device.update">Event <code>as.end_device.update</code></h3>
+<p class="event-description">update end device</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/google.protobuf.Value",
+  "value": [
+    "list.of",
+    "updated.fields"
+  ]
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.mqtt.connect.fail">Event <code>as.mqtt.connect.fail</code></h3>
+<p class="event-description">fail to connect to MQTT</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.alcsync.v1.fail">Event <code>as.packages.alcsync.v1.fail</code></h3>
+<p class="event-description">package failed due to error</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.alcsync.v1.time_correction.answer_enqueued">Event <code>as.packages.alcsync.v1.time_correction.answer_enqueued</code></h3>
+<p class="event-description">time correction command answer enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ALCSyncCommand.AppTimeAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.alcsync.v1.time_correction.cmd_received">Event <code>as.packages.alcsync.v1.time_correction.cmd_received</code></h3>
+<p class="event-description">time correction command received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ALCSyncCommand.AppTimeReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.awsiot.fail">Event <code>as.packages.awsiot.fail</code></h3>
+<p class="event-description">fail to process upstream message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.azure.iotcentral.fail">Event <code>as.packages.azure.iotcentral.fail</code></h3>
+<p class="event-description">fail to process upstream message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.azure.iothub.fail">Event <code>as.packages.azure.iothub.fail</code></h3>
+<p class="event-description">fail to process upstream message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.loraclouddmsv1.fail">Event <code>as.packages.loraclouddmsv1.fail</code></h3>
+<p class="event-description">fail to process upstream message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.loracloudglsv3.fail">Event <code>as.packages.loracloudglsv3.fail</code></h3>
+<p class="event-description">fail to process upstream message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.storage.up.drop">Event <code>as.packages.storage.up.drop</code></h3>
+<p class="event-description">drop upstream data message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.storage.up.store">Event <code>as.packages.storage.up.store</code></h3>
+<p class="event-description">store upstream data message</p>
+<h3 class="event-name" id="event:as.pubsub.delete">Event <code>as.pubsub.delete</code></h3>
+<p class="event-description">delete pub/sub</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationPubSubIdentifiers",
+  "application_ids": {
+    "application_id": "application-id"
+  },
+  "pub_sub_id": "pubsub-id"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.pubsub.fail">Event <code>as.pubsub.fail</code></h3>
+<p class="event-description">fail pub/sub</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.pubsub.set">Event <code>as.pubsub.set</code></h3>
+<p class="event-description">set pub/sub</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationPubSubIdentifiers",
+  "application_ids": {
+    "application_id": "application-id"
+  },
+  "pub_sub_id": "pubsub-id"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.pubsub.start">Event <code>as.pubsub.start</code></h3>
+<p class="event-description">start pub/sub</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationPubSubIdentifiers",
+  "application_ids": {
+    "application_id": "application-id"
+  },
+  "pub_sub_id": "pubsub-id"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.pubsub.stop">Event <code>as.pubsub.stop</code></h3>
+<p class="event-description">stop pub/sub</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationPubSubIdentifiers",
+  "application_ids": {
+    "application_id": "application-id"
+  },
+  "pub_sub_id": "pubsub-id"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.up.data.decode.fail">Event <code>as.up.data.decode.fail</code></h3>
+<p class="event-description">decode uplink data message failure</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.up.data.decode.warning">Event <code>as.up.data.decode.warning</code></h3>
+<p class="event-description">decode uplink data message warning</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUplink"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.up.data.drop">Event <code>as.up.data.drop</code></h3>
+<p class="event-description">drop uplink data message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.up.data.forward">Event <code>as.up.data.forward</code></h3>
+<p class="event-description">forward uplink data message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.up.data.normalize.warning">Event <code>as.up.data.normalize.warning</code></h3>
+<p class="event-description">normalize uplink data message warning</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUplink"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.up.data.receive">Event <code>as.up.data.receive</code></h3>
+<p class="event-description">receive uplink data message</p>
+<h3 class="event-name" id="event:as.up.join.drop">Event <code>as.up.join.drop</code></h3>
+<p class="event-description">drop join-accept message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.up.join.forward">Event <code>as.up.join.forward</code></h3>
+<p class="event-description">forward join-accept message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.up.join.receive">Event <code>as.up.join.receive</code></h3>
+<p class="event-description">receive join-accept message</p>
+<h3 class="event-name" id="event:as.up.location.forward">Event <code>as.up.location.forward</code></h3>
+<p class="event-description">forward location solved message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.up.normalized.forward">Event <code>as.up.normalized.forward</code></h3>
+<p class="event-description">forward normalized uplink message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.up.service.forward">Event <code>as.up.service.forward</code></h3>
+<p class="event-description">forward service data message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.webhook.fail">Event <code>as.webhook.fail</code></h3>
+<p class="event-description">fail to send webhook</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:client.collaborator.delete">Event <code>client.collaborator.delete</code></h3>
+<p class="event-description">delete client collaborator</p>
+<h3 class="event-name" id="event:client.collaborator.update">Event <code>client.collaborator.update</code></h3>
+<p class="event-description">update client collaborator</p>
+<h3 class="event-name" id="event:client.create">Event <code>client.create</code></h3>
+<p class="event-description">create OAuth client</p>
+<h3 class="event-name" id="event:client.delete">Event <code>client.delete</code></h3>
+<p class="event-description">delete OAuth client</p>
+<h3 class="event-name" id="event:client.purge">Event <code>client.purge</code></h3>
+<p class="event-description">purge client</p>
+<h3 class="event-name" id="event:client.restore">Event <code>client.restore</code></h3>
+<p class="event-description">restore OAuth client</p>
+<h3 class="event-name" id="event:client.update">Event <code>client.update</code></h3>
+<p class="event-description">update OAuth client</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/google.protobuf.Value",
+  "value": [
+    "list.of",
+    "updated.fields"
+  ]
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:dcs.end_device.claim.abort">Event <code>dcs.end_device.claim.abort</code></h3>
+<p class="event-description">abort end device claim</p>
+<h3 class="event-name" id="event:dcs.end_device.claim.fail">Event <code>dcs.end_device.claim.fail</code></h3>
+<p class="event-description">claim end device failure</p>
+<h3 class="event-name" id="event:dcs.end_device.claim.success">Event <code>dcs.end_device.claim.success</code></h3>
+<p class="event-description">claim end device successful</p>
+<h3 class="event-name" id="event:dcs.gateway.claim.abort">Event <code>dcs.gateway.claim.abort</code></h3>
+<p class="event-description">abort gateway claim</p>
+<h3 class="event-name" id="event:dcs.gateway.claim.fail">Event <code>dcs.gateway.claim.fail</code></h3>
+<p class="event-description">claim gateway failure</p>
+<h3 class="event-name" id="event:dcs.gateway.claim.success">Event <code>dcs.gateway.claim.success</code></h3>
+<p class="event-description">claim gateway successful</p>
+<h3 class="event-name" id="event:end_device.batch.delete">Event <code>end_device.batch.delete</code></h3>
+<p class="event-description">batch delete end devices</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.EndDeviceIdentifiersList"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:end_device.create">Event <code>end_device.create</code></h3>
+<p class="event-description">create end device</p>
+<h3 class="event-name" id="event:end_device.delete">Event <code>end_device.delete</code></h3>
+<p class="event-description">delete end device</p>
+<h3 class="event-name" id="event:end_device.update">Event <code>end_device.update</code></h3>
+<p class="event-description">update end device</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/google.protobuf.Value",
+  "value": [
+    "list.of",
+    "updated.fields"
+  ]
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gateway.api-key.create">Event <code>gateway.api-key.create</code></h3>
+<p class="event-description">create gateway API key</p>
+<h3 class="event-name" id="event:gateway.api-key.delete">Event <code>gateway.api-key.delete</code></h3>
+<p class="event-description">delete gateway API key</p>
+<h3 class="event-name" id="event:gateway.api-key.update">Event <code>gateway.api-key.update</code></h3>
+<p class="event-description">update gateway API key</p>
+<h3 class="event-name" id="event:gateway.batch.delete">Event <code>gateway.batch.delete</code></h3>
+<p class="event-description">batch delete gateways</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayIdentifiersList"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gateway.collaborator.delete">Event <code>gateway.collaborator.delete</code></h3>
+<p class="event-description">delete gateway collaborator</p>
+<h3 class="event-name" id="event:gateway.collaborator.update">Event <code>gateway.collaborator.update</code></h3>
+<p class="event-description">update gateway collaborator</p>
+<h3 class="event-name" id="event:gateway.create">Event <code>gateway.create</code></h3>
+<p class="event-description">create gateway</p>
+<h3 class="event-name" id="event:gateway.delete">Event <code>gateway.delete</code></h3>
+<p class="event-description">delete gateway</p>
+<h3 class="event-name" id="event:gateway.purge">Event <code>gateway.purge</code></h3>
+<p class="event-description">purge gateway</p>
+<h3 class="event-name" id="event:gateway.restore">Event <code>gateway.restore</code></h3>
+<p class="event-description">restore gateway</p>
+<h3 class="event-name" id="event:gateway.update">Event <code>gateway.update</code></h3>
+<p class="event-description">update gateway</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/google.protobuf.Value",
+  "value": [
+    "list.of",
+    "updated.fields"
+  ]
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.down.schedule.attempt">Event <code>gs.down.schedule.attempt</code></h3>
+<p class="event-description">schedule downlink for transmission by gateway</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.DownlinkMessage"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.down.schedule.fail">Event <code>gs.down.schedule.fail</code></h3>
+<p class="event-description">schedule downlink for transmission by gateway</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.down.send">Event <code>gs.down.send</code></h3>
+<p class="event-description">send downlink message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.DownlinkMessage"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.down.tx.fail">Event <code>gs.down.tx.fail</code></h3>
+<p class="event-description">transmit downlink message failure</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/google.protobuf.Value",
+  "value": 4
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.down.tx.success">Event <code>gs.down.tx.success</code></h3>
+<p class="event-description">transmit downlink message successful</p>
+<h3 class="event-name" id="event:gs.gateway.connect">Event <code>gs.gateway.connect</code></h3>
+<p class="event-description">connect gateway</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayConnectionStats"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.gateway.connection.stats">Event <code>gs.gateway.connection.stats</code></h3>
+<p class="event-description">gateway connection statistics</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayConnectionStats"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.gateway.disconnect">Event <code>gs.gateway.disconnect</code></h3>
+<p class="event-description">disconnect gateway</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.io.status.drop">Event <code>gs.io.status.drop</code></h3>
+<p class="event-description">drop gateway status</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.io.tx.ack.drop">Event <code>gs.io.tx.ack.drop</code></h3>
+<p class="event-description">drop tx ack message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.io.up.drop">Event <code>gs.io.up.drop</code></h3>
+<p class="event-description">drop uplink message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.io.up.repeat">Event <code>gs.io.up.repeat</code></h3>
+<p class="event-description">received repeated uplink message from gateway</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayIdentifiers"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.status.drop">Event <code>gs.status.drop</code></h3>
+<p class="event-description">drop gateway status</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.status.receive">Event <code>gs.status.receive</code></h3>
+<p class="event-description">receive gateway status</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayStatus"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.txack.drop">Event <code>gs.txack.drop</code></h3>
+<p class="event-description">drop transmission acknowledgement</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.txack.forward">Event <code>gs.txack.forward</code></h3>
+<p class="event-description">forward transmission acknowledgement</p>
+<h3 class="event-name" id="event:gs.txack.receive">Event <code>gs.txack.receive</code></h3>
+<p class="event-description">receive transmission acknowledgement</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.TxAcknowledgment"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.up.drop">Event <code>gs.up.drop</code></h3>
+<p class="event-description">drop uplink message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.up.forward">Event <code>gs.up.forward</code></h3>
+<p class="event-description">forward uplink message</p>
+<h3 class="event-name" id="event:gs.up.receive">Event <code>gs.up.receive</code></h3>
+<p class="event-description">receive uplink message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayUplinkMessage"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:invitation.create">Event <code>invitation.create</code></h3>
+<p class="event-description">create invitation</p>
+<h3 class="event-name" id="event:js.end_device.batch.delete">Event <code>js.end_device.batch.delete</code></h3>
+<p class="event-description">batch delete end devices</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.EndDeviceIdentifiersList"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:js.end_device.create">Event <code>js.end_device.create</code></h3>
+<p class="event-description">create end device</p>
+<h3 class="event-name" id="event:js.end_device.delete">Event <code>js.end_device.delete</code></h3>
+<p class="event-description">delete end device</p>
+<h3 class="event-name" id="event:js.end_device.update">Event <code>js.end_device.update</code></h3>
+<p class="event-description">update end device</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/google.protobuf.Value",
+  "value": [
+    "list.of",
+    "updated.fields"
+  ]
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:js.join.accept">Event <code>js.join.accept</code></h3>
+<p class="event-description">accept join-request</p>
+<h3 class="event-name" id="event:js.join.reject">Event <code>js.join.reject</code></h3>
+<p class="event-description">reject join-request</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.class.switch.a">Event <code>ns.class.switch.a</code></h3>
+<p class="event-description">switched to class A</p>
+<h3 class="event-name" id="event:ns.class.switch.b">Event <code>ns.class.switch.b</code></h3>
+<p class="event-description">switched to class B</p>
+<h3 class="event-name" id="event:ns.class.switch.c">Event <code>ns.class.switch.c</code></h3>
+<p class="event-description">switched to class C</p>
+<h3 class="event-name" id="event:ns.down.data.schedule.attempt">Event <code>ns.down.data.schedule.attempt</code></h3>
+<p class="event-description">schedule data downlink for transmission on Gateway Server</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.DownlinkMessage"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.down.data.schedule.fail">Event <code>ns.down.data.schedule.fail</code></h3>
+<p class="event-description">schedule data downlink for transmission on Gateway Server</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.down.data.schedule.success">Event <code>ns.down.data.schedule.success</code></h3>
+<p class="event-description">successfully scheduled data downlink for transmission on Gateway Server</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ScheduleDownlinkResponse"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.down.join.schedule.attempt">Event <code>ns.down.join.schedule.attempt</code></h3>
+<p class="event-description">schedule join-accept for transmission on Gateway Server</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.DownlinkMessage"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.down.join.schedule.fail">Event <code>ns.down.join.schedule.fail</code></h3>
+<p class="event-description">schedule join-accept for transmission on Gateway Server</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.down.join.schedule.success">Event <code>ns.down.join.schedule.success</code></h3>
+<p class="event-description">successfully scheduled join-accept for transmission on Gateway Server</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ScheduleDownlinkResponse"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.down.rx.parameters.fail">Event <code>ns.down.rx.parameters.fail</code></h3>
+<p class="event-description">compute RX parameters</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.down.transmission.fail">Event <code>ns.down.transmission.fail</code></h3>
+<p class="event-description">transmit downlink</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.down.transmission.success">Event <code>ns.down.transmission.success</code></h3>
+<p class="event-description">downlink successfully transmitted</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.DownlinkMessage"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.end_device.batch.delete">Event <code>ns.end_device.batch.delete</code></h3>
+<p class="event-description">batch delete end devices</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.EndDeviceIdentifiersList"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.end_device.create">Event <code>ns.end_device.create</code></h3>
+<p class="event-description">create end device</p>
+<h3 class="event-name" id="event:ns.end_device.delete">Event <code>ns.end_device.delete</code></h3>
+<p class="event-description">delete end device</p>
+<h3 class="event-name" id="event:ns.end_device.update">Event <code>ns.end_device.update</code></h3>
+<p class="event-description">update end device</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/google.protobuf.Value",
+  "value": [
+    "list.of",
+    "updated.fields"
+  ]
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.adr_param_setup.answer">Event <code>ns.mac.adr_param_setup.answer</code></h3>
+<p class="event-description">ADR parameter setup answer received</p>
+<h3 class="event-name" id="event:ns.mac.adr_param_setup.request">Event <code>ns.mac.adr_param_setup.request</code></h3>
+<p class="event-description">ADR parameter setup request enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.ADRParamSetupReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.beacon_freq.answer.accept">Event <code>ns.mac.beacon_freq.answer.accept</code></h3>
+<p class="event-description">beacon frequency change accept received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.BeaconFreqAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.beacon_freq.answer.reject">Event <code>ns.mac.beacon_freq.answer.reject</code></h3>
+<p class="event-description">beacon frequency change rejection received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.BeaconFreqAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.beacon_freq.request">Event <code>ns.mac.beacon_freq.request</code></h3>
+<p class="event-description">beacon frequency change request enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.BeaconFreqReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.command.parse.fail">Event <code>ns.mac.command.parse.fail</code></h3>
+<p class="event-description">parse MAC command</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.command.process.fail">Event <code>ns.mac.command.process.fail</code></h3>
+<p class="event-description">process MAC command</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.command.unanswered">Event <code>ns.mac.command.unanswered</code></h3>
+<p class="event-description">MAC command answer missing</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommands"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.command.unknown">Event <code>ns.mac.command.unknown</code></h3>
+<p class="event-description">unknown MAC command</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.dev_status.answer">Event <code>ns.mac.dev_status.answer</code></h3>
+<p class="event-description">device status answer received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.DevStatusAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.dev_status.request">Event <code>ns.mac.dev_status.request</code></h3>
+<p class="event-description">device status request enqueued</p>
+<h3 class="event-name" id="event:ns.mac.device_mode.confirmation">Event <code>ns.mac.device_mode.confirmation</code></h3>
+<p class="event-description">device mode confirmation enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.DeviceModeConf"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.device_mode.indication">Event <code>ns.mac.device_mode.indication</code></h3>
+<p class="event-description">device mode indication received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.DeviceModeInd"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.device_time.answer">Event <code>ns.mac.device_time.answer</code></h3>
+<p class="event-description">device time answer enqueued</p>
+<h3 class="event-name" id="event:ns.mac.device_time.request">Event <code>ns.mac.device_time.request</code></h3>
+<p class="event-description">device time request received</p>
+<h3 class="event-name" id="event:ns.mac.dl_channel.answer.accept">Event <code>ns.mac.dl_channel.answer.accept</code></h3>
+<p class="event-description">downlink Rx1 channel frequency modification accept received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.DLChannelAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.dl_channel.answer.reject">Event <code>ns.mac.dl_channel.answer.reject</code></h3>
+<p class="event-description">downlink Rx1 channel frequency modification rejection received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.DLChannelAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.dl_channel.request">Event <code>ns.mac.dl_channel.request</code></h3>
+<p class="event-description">downlink Rx1 channel frequency modification request enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.DLChannelReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.duty_cycle.answer">Event <code>ns.mac.duty_cycle.answer</code></h3>
+<p class="event-description">maximum aggregated transmit duty-cycle change answer received</p>
+<h3 class="event-name" id="event:ns.mac.duty_cycle.request">Event <code>ns.mac.duty_cycle.request</code></h3>
+<p class="event-description">maximum aggregated transmit duty-cycle change request enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.DutyCycleReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.force_rejoin.request">Event <code>ns.mac.force_rejoin.request</code></h3>
+<p class="event-description">force rejoin request enqueued</p>
+<h3 class="event-name" id="event:ns.mac.link_adr.answer.accept">Event <code>ns.mac.link_adr.answer.accept</code></h3>
+<p class="event-description">link ADR accept received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.LinkADRAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.link_adr.answer.reject">Event <code>ns.mac.link_adr.answer.reject</code></h3>
+<p class="event-description">link ADR rejection received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.LinkADRAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.link_adr.request">Event <code>ns.mac.link_adr.request</code></h3>
+<p class="event-description">link ADR request enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.LinkADRReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.link_check.answer">Event <code>ns.mac.link_check.answer</code></h3>
+<p class="event-description">link check answer enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.LinkCheckAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.link_check.request">Event <code>ns.mac.link_check.request</code></h3>
+<p class="event-description">link check request received</p>
+<h3 class="event-name" id="event:ns.mac.new_channel.answer.accept">Event <code>ns.mac.new_channel.answer.accept</code></h3>
+<p class="event-description">new channel accept received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.NewChannelAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.new_channel.answer.reject">Event <code>ns.mac.new_channel.answer.reject</code></h3>
+<p class="event-description">new channel rejection received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.NewChannelAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.new_channel.request">Event <code>ns.mac.new_channel.request</code></h3>
+<p class="event-description">new channel request enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.NewChannelReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.ping_slot_channel.answer.accept">Event <code>ns.mac.ping_slot_channel.answer.accept</code></h3>
+<p class="event-description">ping slot channel accept received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.PingSlotChannelAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.ping_slot_channel.answer.reject">Event <code>ns.mac.ping_slot_channel.answer.reject</code></h3>
+<p class="event-description">ping slot channel rejection received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.PingSlotChannelAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.ping_slot_channel.request">Event <code>ns.mac.ping_slot_channel.request</code></h3>
+<p class="event-description">ping slot channel request enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.PingSlotChannelReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.ping_slot_info.answer">Event <code>ns.mac.ping_slot_info.answer</code></h3>
+<p class="event-description">ping slot info answer enqueued</p>
+<h3 class="event-name" id="event:ns.mac.ping_slot_info.request">Event <code>ns.mac.ping_slot_info.request</code></h3>
+<p class="event-description">ping slot info request received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.PingSlotInfoReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.proprietary.receive">Event <code>ns.mac.proprietary.receive</code></h3>
+<p class="event-description">receive proprietary MAC command</p>
+<h3 class="event-name" id="event:ns.mac.rejoin_param_setup.answer">Event <code>ns.mac.rejoin_param_setup.answer</code></h3>
+<p class="event-description">rejoin parameter setup answer received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.RejoinParamSetupAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.rejoin_param_setup.request">Event <code>ns.mac.rejoin_param_setup.request</code></h3>
+<p class="event-description">rejoin parameter setup request enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.RejoinParamSetupReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.rekey.confirmation">Event <code>ns.mac.rekey.confirmation</code></h3>
+<p class="event-description">device rekey confirmation enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.RekeyConf"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.rekey.indication">Event <code>ns.mac.rekey.indication</code></h3>
+<p class="event-description">device rekey indication received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.RekeyInd"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.reset.confirmation">Event <code>ns.mac.reset.confirmation</code></h3>
+<p class="event-description">device reset confirmation enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.ResetConf"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.reset.indication">Event <code>ns.mac.reset.indication</code></h3>
+<p class="event-description">device reset indication received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.ResetInd"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.rx_param_setup.answer.accept">Event <code>ns.mac.rx_param_setup.answer.accept</code></h3>
+<p class="event-description">Rx parameter setup accept received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.RxParamSetupAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.rx_param_setup.answer.reject">Event <code>ns.mac.rx_param_setup.answer.reject</code></h3>
+<p class="event-description">Rx parameter setup rejection received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.RxParamSetupAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.rx_param_setup.request">Event <code>ns.mac.rx_param_setup.request</code></h3>
+<p class="event-description">Rx parameter setup request enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.RxParamSetupReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.rx_timing_setup.answer">Event <code>ns.mac.rx_timing_setup.answer</code></h3>
+<p class="event-description">Rx timing setup answer received</p>
+<h3 class="event-name" id="event:ns.mac.rx_timing_setup.request">Event <code>ns.mac.rx_timing_setup.request</code></h3>
+<p class="event-description">Rx timing setup request enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.RxTimingSetupReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.tx_param_setup.answer">Event <code>ns.mac.tx_param_setup.answer</code></h3>
+<p class="event-description">Tx parameter setup answer received</p>
+<h3 class="event-name" id="event:ns.mac.tx_param_setup.request">Event <code>ns.mac.tx_param_setup.request</code></h3>
+<p class="event-description">Tx parameter setup request enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.TxParamSetupReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.data.drop">Event <code>ns.up.data.drop</code></h3>
+<p class="event-description">drop data message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.data.forward">Event <code>ns.up.data.forward</code></h3>
+<p class="event-description">forward data message to Application Server</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp",
+  "uplink_message": {}
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.data.process">Event <code>ns.up.data.process</code></h3>
+<p class="event-description">successfully processed data message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.UplinkMessage"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.data.receive">Event <code>ns.up.data.receive</code></h3>
+<p class="event-description">receive data message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.UplinkMessage"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.join.accept.forward">Event <code>ns.up.join.accept.forward</code></h3>
+<p class="event-description">forward join-accept to Application Server</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp",
+  "join_accept": {}
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.join.cluster.attempt">Event <code>ns.up.join.cluster.attempt</code></h3>
+<p class="event-description">send join-request to cluster-local Join Server</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.JoinRequest"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.join.cluster.fail">Event <code>ns.up.join.cluster.fail</code></h3>
+<p class="event-description">join-request to cluster-local Join Server failed</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.join.cluster.success">Event <code>ns.up.join.cluster.success</code></h3>
+<p class="event-description">join-request to cluster-local Join Server succeeded</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.JoinResponse"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.join.drop">Event <code>ns.up.join.drop</code></h3>
+<p class="event-description">drop join-request</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.join.interop.attempt">Event <code>ns.up.join.interop.attempt</code></h3>
+<p class="event-description">forward join-request to interoperability Join Server</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.JoinRequest"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.join.interop.fail">Event <code>ns.up.join.interop.fail</code></h3>
+<p class="event-description">join-request to interoperability Join Server failed</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.join.interop.success">Event <code>ns.up.join.interop.success</code></h3>
+<p class="event-description">join-request to interoperability Join Server succeeded</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.JoinResponse"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.join.process">Event <code>ns.up.join.process</code></h3>
+<p class="event-description">successfully processed join-request</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.UplinkMessage"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.up.join.receive">Event <code>ns.up.join.receive</code></h3>
+<p class="event-description">receive join-request</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.UplinkMessage"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:oauth.authorize">Event <code>oauth.authorize</code></h3>
+<p class="event-description">authorize OAuth client</p>
+<h3 class="event-name" id="event:oauth.session.terminated">Event <code>oauth.session.terminated</code></h3>
+<p class="event-description">terminate user session</p>
+<h3 class="event-name" id="event:oauth.token.deleted">Event <code>oauth.token.deleted</code></h3>
+<p class="event-description">delete access token</p>
+<h3 class="event-name" id="event:oauth.token.exchange">Event <code>oauth.token.exchange</code></h3>
+<p class="event-description">exchange OAuth access token</p>
+<h3 class="event-name" id="event:oauth.user.login">Event <code>oauth.user.login</code></h3>
+<p class="event-description">login user successful</p>
+<h3 class="event-name" id="event:oauth.user.logout">Event <code>oauth.user.logout</code></h3>
+<p class="event-description">logout user</p>
+<h3 class="event-name" id="event:organization.api-key.create">Event <code>organization.api-key.create</code></h3>
+<p class="event-description">create organization API key</p>
+<h3 class="event-name" id="event:organization.api-key.delete">Event <code>organization.api-key.delete</code></h3>
+<p class="event-description">delete organization API key</p>
+<h3 class="event-name" id="event:organization.api-key.update">Event <code>organization.api-key.update</code></h3>
+<p class="event-description">update organization API key</p>
+<h3 class="event-name" id="event:organization.collaborator.delete">Event <code>organization.collaborator.delete</code></h3>
+<p class="event-description">delete organization collaborator</p>
+<h3 class="event-name" id="event:organization.collaborator.update">Event <code>organization.collaborator.update</code></h3>
+<p class="event-description">update organization collaborator</p>
+<h3 class="event-name" id="event:organization.create">Event <code>organization.create</code></h3>
+<p class="event-description">create organization</p>
+<h3 class="event-name" id="event:organization.delete">Event <code>organization.delete</code></h3>
+<p class="event-description">delete organization</p>
+<h3 class="event-name" id="event:organization.purge">Event <code>organization.purge</code></h3>
+<p class="event-description">purge organization</p>
+<h3 class="event-name" id="event:organization.restore">Event <code>organization.restore</code></h3>
+<p class="event-description">restore organization</p>
+<h3 class="event-name" id="event:organization.update">Event <code>organization.update</code></h3>
+<p class="event-description">update organization</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/google.protobuf.Value",
+  "value": [
+    "list.of",
+    "updated.fields"
+  ]
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:user.api-key.create">Event <code>user.api-key.create</code></h3>
+<p class="event-description">create user API key</p>
+<h3 class="event-name" id="event:user.api-key.delete">Event <code>user.api-key.delete</code></h3>
+<p class="event-description">delete user API key</p>
+<h3 class="event-name" id="event:user.api-key.update">Event <code>user.api-key.update</code></h3>
+<p class="event-description">update user API key</p>
+<h3 class="event-name" id="event:user.create">Event <code>user.create</code></h3>
+<p class="event-description">create user</p>
+<h3 class="event-name" id="event:user.delete">Event <code>user.delete</code></h3>
+<p class="event-description">delete user</p>
+<h3 class="event-name" id="event:user.purge">Event <code>user.purge</code></h3>
+<p class="event-description">purge user</p>
+<h3 class="event-name" id="event:user.restore">Event <code>user.restore</code></h3>
+<p class="event-description">restore user</p>
+<h3 class="event-name" id="event:user.update">Event <code>user.update</code></h3>
+<p class="event-description">update user</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/google.protobuf.Value",
+  "value": [
+    "list.of",
+    "updated.fields"
+  ]
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:user.update.incorrect_password">Event <code>user.update.incorrect_password</code></h3>
+<p class="event-description">update user failure: incorrect password</p>
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/api/reference/grpc/end_device/">← End Device APIs</a>
+<a class="button is-pulled-right" href="/docs/api/reference/grpc/gateway/">Gateway APIs →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#the-events-service'>The Events service</a></li>
+    
+      
+      <li><a href='#messages'>Messages</a></li>
+    
+      
+      <li><a href='#enums'>Enums</a></li>
+    
+      
+      <li><a href='#events'>Events</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.4a22f0dea0620048bc258cf6dedbdfbec40f3b5dba1dcdc6536e61e7bc20a5bf.js" integrity="sha256-SiLw3qBiAEi8JYz23tvfvsQPO126Hc3GU25h57wgpb8=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

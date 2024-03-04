@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.112.3">
+  <title>Field masks | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/api/concepts/fieldmasks/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Field masks">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Field masks">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/api/concepts/fieldmasks/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Field masks" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.7.2/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://accounts.thethingsindustries.com/fee-calculator">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">API</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/api/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/" class="">Concepts</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/auth/" class="">Authentication</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/fieldmasks/" class="is-active">Field masks</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/pagination/" class="">Pagination</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/errors/" class="">Errors</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/lora-gateway/" class="">LoRa® Gateway specific APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/api/concepts/troubleshooting/" class="">Troubleshooting</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/api/reference/" class="">Reference</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">Field masks
+          
+        </h1>
+        
+        <div class="content">
+          <p>The Things Stack APIs use field masks (on supported APIs) to specify a subset of fields that should be returned by a reading request, or updated in a writing request.</p>
+<p>These requests support a <code>field_mask</code> field for selecting fields to operate on. By default, these API requests will not return or update most fields, unless they are specified in a field mask.</p>
+<p>The following fields are <strong>always returned</strong>:</p>
+<ul>
+<li>Fields containing <code>id</code></li>
+<li><code>created_at</code></li>
+<li><code>updated_at</code></li>
+<li><code>deleted_at</code></li>
+</ul>
+<p>All other fields are <strong>not returned</strong> and <strong>not updated</strong>, unless specified. Fields that are empty or zero are not returned, even if they are specified in a field mask.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The Things Stack field masks are based on Google&rsquo;s <a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask">Protocol Buffers reference</a>. Note that Google&rsquo;s Protocol Buffers return <strong>all</strong> available fields if no field mask is specified, but The Things Stack API does <strong>not</strong> work this way, and no fields except the above mentioned are returned if no field mask is specified.
+</div>
+
+<h2 id="fields-and-field-masks-in-http-rest-queries">Fields and Field Masks in HTTP (REST) Queries</h2>
+<p>This section explains how field masks are used in HTTP (REST) Queries. For other APIs (ex: gRPC), check the individual sections.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="get">
+      <a>
+        <span>GET</span>
+      </a>
+    </li>
+    
+    <li data-tab="put">
+      <a>
+        <span>PUT</span>
+      </a>
+    </li>
+    
+    <li data-tab="post">
+      <a>
+        <span>POST</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="get">
+  <p>HTTP <code>GET</code> requests are used to fetch resources.</p>
+<p>Fields may be specified in HTTP <code>GET</code> requests by appending them as query string parameters. For example, to request the <code>name</code>, <code>description</code>, and <code>locations</code> of devices in an <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#the-enddeviceregistry-service"><code>EndDeviceRegistry.Get</code></a> request, add these fields to the <code>field_mask</code> field. To get this data for device <code>dev1</code> in application <code>app1</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl --location --header <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> <span class="s2">&#34;https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations&#34;</span>
+</span></span></code></pre></div><p>This will return the following:</p>
+ <details><summary>Show JSON API response</summary>
+<pre tabindex="0"><code>{
+   &#34;ids&#34;:{
+      &#34;device_id&#34;:&#34;dev1&#34;,
+      &#34;application_ids&#34;:{
+         &#34;application_id&#34;:&#34;app1&#34;
+      },
+      &#34;dev_eui&#34;:&#34;46CF72F61862CBB0&#34;,
+      &#34;join_eui&#34;:&#34;66209794D18AE087&#34;
+   },
+   &#34;created_at&#34;:&#34;2020-07-31T12:17:51.645Z&#34;,
+   &#34;updated_at&#34;:&#34;2021-07-20T14:14:56.318Z&#34;,
+   &#34;name&#34;:&#34;device-name&#34;,
+   &#34;description&#34;:&#34;device-description&#34;,
+   &#34;locations&#34;:{
+      &#34;user&#34;:{
+         &#34;latitude&#34;:52.51622086393074,
+         &#34;longitude&#34;:13.39075966780985,
+         &#34;source&#34;:&#34;SOURCE_REGISTRY&#34;
+      }
+   }
+}
+</code></pre></details>
+<p>Without the field masks specified, this request would not return the <code>name</code>, <code>description</code>, and <code>locations</code> fields:</p>
+<details><summary>Show JSON API response</summary>
+<pre tabindex="0"><code>{
+   &#34;ids&#34;:{
+      &#34;device_id&#34;:&#34;ben-things-uno&#34;,
+      &#34;application_ids&#34;:{
+         &#34;application_id&#34;:&#34;tti-playground&#34;
+      },
+      &#34;dev_eui&#34;:&#34;46CF72F61862CBB0&#34;,
+      &#34;join_eui&#34;:&#34;66209794D18AE087&#34;
+   },
+   &#34;created_at&#34;:&#34;2020-07-31T12:17:51.645Z&#34;,
+   &#34;updated_at&#34;:&#34;2020-07-31T12:17:51.645Z&#34;
+}
+</code></pre></details>
+</section>
+<section data-content="put">
+  <p><code>PUT</code> requests can be used to update entities by supplying the object as JSON data.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>Keep in mind that application ID (<code>application_ids.application_id</code>), end device ID (<code>device_id</code>), AppEUI/JoinEUI (<code>join_eui</code>), DevEUI (<code>dev_eui</code>) and API key IDs cannot be updated after creation. These fields are part of the allowed field mask, but they can only be used at creation, after which they can no longer be changed.</p>
+<p>For example, to properly register an end device in The Things Stack like described in the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/">devices</a> section, it is necessary to set the <code>dev_eui</code> field to device&rsquo;s DevEUI. However, updating the DevEUI after device is created will not be possible, i.e. will fail with the <code>forbidden path(s) in field mask</code> error.</p>
+</div>
+<p>To update fields, the field mask must also be specified in the JSON object (query parameters do not work for <code>PUT</code> requests). The field mask has the following format:</p>
+<pre tabindex="0"><code>{
+  &#34;field_mask&#34;: {
+      &#34;paths&#34;: [
+        &#34;ids.device_id&#34;,
+        &#34;name&#34;,
+        &#34;description&#34;
+      ]
+    }
+}
+</code></pre><p>Where <code>ids.device_id</code>, <code>name</code>, and <code>description</code> are fields to be updated.</p>
+<p>For example, to update the <code>name</code> field of device <code>dev1</code> in application <code>app1</code>with an <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#the-enddeviceregistry-service"><code>EndDeviceRegistry.Update</code></a> request:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl --location <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --request PUT <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-raw <span class="s1">&#39;{
+</span></span></span><span class="line"><span class="cl"><span class="s1">   &#34;end_device&#34;:{
+</span></span></span><span class="line"><span class="cl"><span class="s1">      &#34;name&#34;:&#34;device-name&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">      &#34;description&#34;:&#34;device-description&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">   },
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;field_mask&#34;: {
+</span></span></span><span class="line"><span class="cl"><span class="s1">      &#34;paths&#34;: [
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;name&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">      ]
+</span></span></span><span class="line"><span class="cl"><span class="s1">    }
+</span></span></span><span class="line"><span class="cl"><span class="s1">  }&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/applications/app1/devices/dev1&#39;</span>
+</span></span></code></pre></div><p>This request will update the <code>name</code> field of the device, but will not update the <code>description</code> field because it is not specified in the <code>field_mask</code> object. The following will be returned as confirmation:</p>
+<details><summary>Show JSON API response</summary>
+<pre tabindex="0"><code>{
+   &#34;ids&#34;:{
+      &#34;device_id&#34;:&#34;dev1&#34;,
+      &#34;application_ids&#34;:{
+         &#34;application_id&#34;:&#34;app1&#34;
+      },
+      &#34;dev_eui&#34;:&#34;46CF72F61862CBB0&#34;,
+      &#34;join_eui&#34;:&#34;66209794D18AE087&#34;
+   },
+   &#34;created_at&#34;:&#34;2020-07-31T12:17:51.645Z&#34;,
+   &#34;updated_at&#34;:&#34;2021-07-20T15:04:26.339Z&#34;,
+   &#34;name&#34;:&#34;device-name&#34;
+}
+</code></pre></details>
+<p>To update both the <code>name</code> and <code>description</code> fields, the following request could be made:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl --location <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --request PUT <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-raw <span class="s1">&#39;{
+</span></span></span><span class="line"><span class="cl"><span class="s1">   &#34;end_device&#34;:{
+</span></span></span><span class="line"><span class="cl"><span class="s1">      &#34;name&#34;:&#34;device-name&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">      &#34;description&#34;:&#34;device-description&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">   },
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;field_mask&#34;: {
+</span></span></span><span class="line"><span class="cl"><span class="s1">      &#34;paths&#34;: [
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;name&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;description&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">      ]
+</span></span></span><span class="line"><span class="cl"><span class="s1">    }
+</span></span></span><span class="line"><span class="cl"><span class="s1">  }&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/applications/app1/devices/dev1&#39;</span>
+</span></span></code></pre></div><p>This would return the following confirmation:</p>
+<details><summary>Show JSON API response</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;ids&#34;</span>:<span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;device_id&#34;</span>:<span class="s2">&#34;dev1&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;application_ids&#34;</span>:<span class="o">{</span>
+</span></span><span class="line"><span class="cl">         <span class="s2">&#34;application_id&#34;</span>:<span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;dev_eui&#34;</span>:<span class="s2">&#34;46CF72F61862CBB0&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;join_eui&#34;</span>:<span class="s2">&#34;66209794D18AE087&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2020-07-31T12:17:51.645Z&#34;</span>,
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2021-07-20T15:04:26.339Z&#34;</span>,
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;name&#34;</span>:<span class="s2">&#34;device-name&#34;</span>,
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;description&#34;</span>: <span class="s2">&#34;device-description&#34;</span>,
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div></details>
+</section>
+<section data-content="post">
+  <p>Some endpoints require a message to be sent as part of the request. For example, to request an <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/events/#the-event-service">Event Stream</a>, you must <code>POST</code> a <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/events/#message:StreamEventsRequest">StreamEventsRequest message</a>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl --location <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --request POST <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-raw <span class="s1">&#39;{
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;identifiers&#34;:[{
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;device_ids&#34;:{
+</span></span></span><span class="line"><span class="cl"><span class="s1">            &#34;device_id&#34;:&#34;dev1&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">            &#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}
+</span></span></span><span class="line"><span class="cl"><span class="s1">        }
+</span></span></span><span class="line"><span class="cl"><span class="s1">    }]
+</span></span></span><span class="line"><span class="cl"><span class="s1">  }&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/events&#39;</span>
+</span></span></code></pre></div>
+</section>
+
+</div>
+
+<p>The next section explains how to control the amount of data returned by The Things Stack APIs using pagination.</p>
+        </div>
+          <div class="columns is-multiline">
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/api/concepts/auth/session-tokens/">← Session tokens</a>
+<a class="button is-pulled-right" href="/docs/api/concepts/pagination/">Pagination →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#fields-and-field-masks-in-http-rest-queries'>Fields and Field Masks in HTTP (REST) Queries</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.4a22f0dea0620048bc258cf6dedbdfbec40f3b5dba1dcdc6536e61e7bc20a5bf.js" integrity="sha256-SiLw3qBiAEi8JYz23tvfvsQPO126Hc3GU25h57wgpb8=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
