@@ -63,7 +63,7 @@ Run the following command to get a list of all available MAC settings and availa
 ttn-lw-cli end-devices set --help
 ```
 
-You can also refer to the [End Device API Reference page]({{< ref "reference/api/end_device#message:MACSettings" >}}) for documentation on the available MAC settings and MAC state parameters.
+You can also refer to the [End Device API Reference page]({{< ref "/api/reference/grpc/end_device#message:MACSettings" >}}) for documentation on the available MAC settings and MAC state parameters.
 
 ## Class Specific Settings
 
@@ -97,7 +97,7 @@ Class C:
 
 - `mac-settings.class-c-timeout`
 
-Some additional examples are included below. All settings are available at the [End Device API Reference page]({{< ref "reference/api/end_device#message:MACSettings" >}}) and can be viewed using the `ttn-lw-cli end-devices set --help` command.
+Some additional examples are included below. All settings are available at the [End Device API Reference page]({{< ref "/api/reference/grpc/end_device#message:MACSettings" >}}) and can be viewed using the `ttn-lw-cli end-devices set --help` command.
 
 ## Examples
 
@@ -119,7 +119,7 @@ To change the duty cycle, set the `desired-max-duty-cycle` parameter. For exampl
 ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.desired-max-duty-cycle DUTY_CYCLE_1024
 ```
 
-See the [End Device API Reference]({{< ref "reference/api/end_device#message:MACSettings" >}}) for available fields and definitions of constants. `DUTY_CYCLE_1024` represents 1/1024 ≈ 0.098%.
+See the [End Device API Reference]({{< ref "/api/reference/grpc/end_device#message:MACSettings" >}}) for available fields and definitions of constants. `DUTY_CYCLE_1024` represents 1/1024 ≈ 0.098%.
 
 ### Enable ADR
 

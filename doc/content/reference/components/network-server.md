@@ -10,7 +10,7 @@ The Network Server handles the LoRaWAN® network layer, including MAC commands, 
 
 ## Device Management
 
-Network Servers expose [NsEndDeviceRegistry]({{< ref "/reference/api/end_device#the-nsenddeviceregistry-service" >}}) service for end device management. Typical clients of this service are [Console]({{< relref "console.md" >}}) and [CLI]({{< relref "cli.md" >}}).
+Network Servers expose [NsEndDeviceRegistry]({{< ref "/api/reference/grpc/end_device#the-nsenddeviceregistry-service" >}}) service for end device management. Typical clients of this service are [Console]({{< relref "console.md" >}}) and [CLI]({{< relref "cli.md" >}}).
 
 Network Servers store device MAC configuration, MAC state and network session keys.
 

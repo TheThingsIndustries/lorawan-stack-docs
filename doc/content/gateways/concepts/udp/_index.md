@@ -7,7 +7,7 @@ aliases: [semtech-udp-packet-forwarder, /gateways/udp]
 
 The [{{% udp-pf %}}](https://github.com/lora-net/packet_forwarder) is the original LoRaWAN® packet forwarder, connecting to servers through the Semtech UDP protocol. Many gateways include a pre-compiled version of the {{% udp-pf %}}, often adapted to the specific gateway.
 
-{{< warning >}} The {{% udp-pf %}} has many security and scalability drawbacks, so if possible, use [{{% lbs %}}]({{< ref "/gateways/concepts/lora-basics-station" >}}) to connect your gateway to {{% tts %}}. {{</ warning >}}
+{{< warning >}} The {{% udp-pf %}} has many security and scalability drawbacks. Use [{{% lbs %}}]({{< ref "/gateways/concepts/lora-basics-station" >}}) to connect your gateway to {{% tts %}}. {{</ warning >}}
 
 <!--more-->
 
@@ -19,7 +19,7 @@ If `debug_conf.json` exists, the other files are ignored - otherwise, the parame
 
 An example `global_conf.json` is available in the [{{% udp-pf %}} Github repository](https://github.com/Lora-net/packet_forwarder/blob/master/lora_pkt_fwd/global_conf.json). It is also possible to download a `global_conf.json` configured with your Gateway EUI and Frequency Plan directly from {{% tts %}}.
 
-{{< tabs/container "Console" "CLI" >}}
+{{< tabs/container "Console" "HTTP (REST) API" >}}
 
 {{< tabs/tab "Console" >}}
 
@@ -31,7 +31,7 @@ To download a `global_conf.json` file for your gateway, open the Gateway overvie
 
 {{< /tabs/tab >}}
 
-{{< tabs/tab "CLI" >}}
+{{< tabs/tab "HTTP (REST) API" >}}
 
 ## Download Configuration via Terminal
 
@@ -51,6 +51,6 @@ curl -XGET \
 
 {{< /tabs/container >}}
 
-{{< note >}} The `global_conf.json` file you download from {{% tts %}} contains the `gateway_ID` field, that has a different value than the **Gateway ID** in {{% tts %}} Console. 
+{{< note >}} The `global_conf.json` file you download from {{% tts %}} contains the `gateway_ID` field, that has a different value than the **Gateway ID** in {{% tts %}} Console.
 
-**Gateway ID** in {{% tts %}} Console represents the name of your gateway used to register it, while the `gateway_ID` field in the `global_conf.json` file contains your gateway's EUI. {{</ note >}}
+**Gateway ID** in {{% tts %}} Console represents the name of your gateway used to register it, while the `gateway_ID` field in the `global_conf.json` file contains your gateway's EUI, which is required by the UDP packet forwarder.{{</ note >}}

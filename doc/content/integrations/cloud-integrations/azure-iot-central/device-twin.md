@@ -26,7 +26,7 @@ Clicking on a row will automatically open the payload for review.
 
 {{< figure src="../raw-unmodeled-data.png" alt="Raw Data" >}}
 
-Telemetry messages will always contain to the {{% tts %}} application uplink format, serialized as a JSON. You can find the formal message definition [here]({{< ref "/reference/api/storage_integration#message:ApplicationUp" >}}).
+Telemetry messages will always contain to the {{% tts %}} application uplink format, serialized as a JSON. You can find the formal message definition [here]({{< ref "/api/reference/grpc/storage_integration#message:ApplicationUp" >}}).
 
 ## Properties
 
@@ -35,6 +35,7 @@ The reported properties which the integration will generate are as follows:
 - `joinedAt` - Timestamp (in [RFC3339 format](https://datatracker.ietf.org/doc/html/rfc3339)) at which the end device has joined the network. It is generated when a join accept message is processed by the integration. A consequence is that devices which have joined before the integration was enabled will lack the timestamp until they join again.
 
 An example of this property as unmodeled data would look as follows:
+
 ```json
 {
   "joinedAt": {
@@ -50,6 +51,7 @@ An example of this property as unmodeled data would look as follows:
 - `lastSeenAt` - Timestamp (in [RFC3339 format](https://datatracker.ietf.org/doc/html/rfc3339)) of the last uplink message from the end device. This property exists as {{% tts %}} may generate telemetry messages for downlink queue operations, which will pollute the native Azure IoT Central last seen timestamp (since queueing a downlink message does not imply that the end device has been active).
 
 An example of this property as unmodeled data would look as follows:
+
 ```json
 {
   "lastSeenAt": {
@@ -62,9 +64,10 @@ An example of this property as unmodeled data would look as follows:
 }
 ```
 
-- `location` - Object mapping between the service (name) which has located the end device and the location of the end device. You can find the formal definition of a singular location [here]({{< ref "/reference/api/storage_integration#message:Location" >}}).
+- `location` - Object mapping between the service (name) which has located the end device and the location of the end device. You can find the formal definition of a singular location [here]({{< ref "/api/reference/grpc/storage_integration#message:Location" >}}).
 
 An example of this property as unmodeled data would look as follows:
+
 ```json
 {
   "_unmodeleddata": {
@@ -88,17 +91,18 @@ An example of this property as unmodeled data would look as follows:
 - `decodedPayload` - Decoded payload of the uplink messages, which is generated using the [Payload Formatters]({{< ref "/integrations/payload-formatters" >}}).
 
 An example of this property as unmodeled data would look as follows:
+
 ```json
 {
-	"decodedPayload": {
-		"reported": {
-			"value": {
-				"ledState": "off"
-			}
-		}
-	},
-	"_eventtype": "Property",
-	"_timestamp": "2022-05-05T12:59:42.619Z"
+  "decodedPayload": {
+    "reported": {
+      "value": {
+        "ledState": "off"
+      }
+    }
+  },
+  "_eventtype": "Property",
+  "_timestamp": "2022-05-05T12:59:42.619Z"
 }
 ```
 

@@ -28,7 +28,7 @@ Here are some common errors and solutions:
 
 ## I cannot access my device in {{% tts %}} Console.
 
-If you cannot access your device in the Console, i.e. you're seeing the `An unknown error occured. Please try again later...` error, your device is probably not properly provisioned in all {{% tts %}} components (Identity Server, Join Server, Network Server and Application Server). For example, this might happen if you tried to create your device [using the API]({{< ref "/the-things-stack/interact/api/#multi-step-actions" >}}), but you haven't created it properly in all four server components.
+If you cannot access your device in the Console, i.e. you're seeing the `An unknown error occured. Please try again later...` error, your device is probably not properly provisioned in all {{% tts %}} components (Identity Server, Join Server, Network Server and Application Server). For example, this might happen if you tried to create your device [Using the API]({{< ref "/devices/adding-devices/manual" >}}), but you haven't created it properly in all four server components.
 
 This error can be resolved if you delete your device from all four above mentioned server components, and recreate it from scratch.
 
@@ -56,7 +56,7 @@ To delete your device from Join Server, Network Server and/or Application Server
 curl -X DELETE 'https://thethings.example.com/api/v3/<js/ns/as>/applications/<application_id>/devices/<device_id>' -H 'Accept: application/json' -H 'Authorization: Bearer <api-key>'
 ```
 
-Next, recreate your device as documented in the [Using the API]({{< ref "/the-things-stack/interact/api/#multi-step-actions" >}}) section.
+Next, recreate your device as documented in the [Using the API]({{< ref "/devices/adding-devices/manual" >}}).
 
 ## I see "Unable to access the end device" error
 
@@ -138,7 +138,7 @@ Observe the following events in the Live data tab of the gateway overview in {{%
 
 - If the downlink is successfully scheduled from the Gateway Server to the gateway, the Gateway Server generates the `gs.down.send` and `gs.down.tx.success` events. This indicates that the downlink is successfully sent to the gateway and the gateway scheduled the downlink to be sent to the device. If downlink scheduling fails, the `gs.down.tx.fail` event is generated instead.
 
-> For more information on different events in TTS, read [Events API]({{< ref "/reference/api/events" >}}).
+> For more information on different events in TTS, read [Events API]({{< ref "/api/reference/grpc/events" >}}).
 
 If you did not encounter any deviations in this flow, that should be an indication of a successful downlink scheduling. However, if the downlink is not reaching your device, check the gateway packet forwarder logs and search for any errors that might help you identify the cause of the downlink failure.
 

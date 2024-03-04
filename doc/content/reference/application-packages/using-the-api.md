@@ -4,7 +4,7 @@ description: ""
 weight: 2
 ---
 
-Besides using the CLI, you can also use the [application package HTTP APIs]({{< ref "/reference/api/application_packages" >}}) exposed by {{% tts %}} to interact with the available application packages.
+Besides using the CLI, you can also use the [application package HTTP APIs]({{< ref "/api/reference/grpc/application_packages" >}}) exposed by {{% tts %}} to interact with the available application packages.
 
 <!--more-->
 
@@ -16,7 +16,7 @@ To list the available application packages for the given device `dev1` of the ap
 curl 'https://eu1.cloud.thethings.network/api/app1/devices/dev1/packages' \
   -X 'GET' \
   -H 'content-type: application/json' \
-  -H 'authorization: Bearer NNSXS.XXXXXXXXX' 
+  -H 'authorization: Bearer NNSXS.XXXXXXXXX'
 ```
 
 This gives the result in the JSON format:
@@ -78,6 +78,7 @@ The default association will associate the application package with all devices 
   "updated_at": "2021-12-30T10:26:31.302076317Z"
 }
 ```
+
 </details>
 
 To create an association between the application package and the FPort `100` of a device `dev1` of an application `app1`:
@@ -109,6 +110,7 @@ This will associate the application package with a single device within a given 
   "updated_at": "2021-12-30T10:55:09.496854413Z"
 }
 ```
+
 </details>
 
 ## Listing Associations
@@ -152,6 +154,7 @@ curl 'https://eu1.cloud.thethings.network/api/v3/as/applications/app1/packages/a
   ]
 }
 ```
+
 </details>
 
 To list all associations associated with a device `dev1` of an application `app1`:
@@ -184,6 +187,7 @@ curl 'https://eu1.cloud.thethings.network/api/v3/as/applications/app1/devices/de
   ]
 }
 ```
+
 </details>
 
 ## Retrieving Associations
@@ -211,6 +215,7 @@ curl 'https://eu1.cloud.thethings.network/api/v3/as/applications/app1/packages/a
   "updated_at": "2021-12-30T10:26:31.302076317Z"
 }
 ```
+
 </details>
 
 To retrieve an association associated with an FPort `100` of a device `dev1` of an application `app1`:
@@ -239,6 +244,7 @@ curl 'https://eu1.cloud.thethings.network/api/v3/as/applications/app1/devices/de
   "updated_at": "2021-12-30T10:55:09.496854413Z"
 }
 ```
+
 </details>
 
 ### Deleting Associations
