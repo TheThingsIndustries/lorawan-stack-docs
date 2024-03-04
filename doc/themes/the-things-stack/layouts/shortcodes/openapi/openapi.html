@@ -10,16 +10,16 @@
       <thead>
         <tr>
           <th>Service</th>
-          <th>Description</th>
+          <th>Link</th>
         </tr>
       </thead>
       <tbody>
-        {{ range sort $openapi.tags "name" }}
+        {{ range sort $openapi.tags "description" }}
         <tr>
+          <td>{{ .description }}</td>
           <td>
             <a href="#{{ .name }}">{{ .name }}</a>
           </td>
-          <td>{{ .description }}</td>
         </tr>
         {{ end }}
       </tbody>
