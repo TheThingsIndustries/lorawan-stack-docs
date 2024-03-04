@@ -12,6 +12,12 @@ window.onload = function() {
   }
 }
 
+window.addEventListener('hashchange', function() {
+  var currentHash = window.location.hash;
+  // Compensate for the fixed header.
+  setTimeout(() => window.scrollBy(0, -125), 100);
+});
+
 function collapseAll() {
   // Collapse all API Tags.
   if (apiTagSummary?.length > 0) {
