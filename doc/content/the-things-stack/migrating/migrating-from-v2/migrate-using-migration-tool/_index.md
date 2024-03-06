@@ -12,7 +12,7 @@ This section refers to migrating end devices to {{% tts %}} using [`ttn-lw-migra
 
 ## Prerequisites
 
-1. [`ttn-lw-migrate` tool](https://github.com/TheThingsNetwork/lorawan-stack-migrate) version `0.5.0` or higher installed on your system. See the [Migration Tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}) guide for detailed installation instructions.
+1. [`ttn-lw-migrate` tool](https://github.com/TheThingsNetwork/lorawan-stack-migrate) version `0.5.0` or higher installed on your system. See the [Migration Tool]({{< ref "/the-things-stack/migrating/enddevices/export" >}}) guide for detailed installation instructions.
 
 ## Configure the Environment
 

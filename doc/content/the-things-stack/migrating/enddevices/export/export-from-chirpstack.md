@@ -1,15 +1,16 @@
 ---
-title: "Export End Devices from ChirpStack"
+title: "Export End Devices from ChirpStack v4"
 description: ""
-weight: 2
+weight: 1
 aliases:
   [
     /the-things-stack/migrating-from-networks/migrate-from-chirpstack,
     /getting-started/migrating/migration-tool/export-from-chirpstack,
+    /the-things-stack/migrating/enddevices/export/export-from-chirpstack,
   ]
 ---
 
-This section contains instructions on how to configure migration tool and use it to export end devices from ChirpStack, that can later be imported in {{% tts %}}. This is a base for migrating end devices from ChirpStack to {{% tts %}}.
+This section contains instructions on how to configure migration tool and use it to export end devices from [ChirpStack v4](https://www.chirpstack.io/docs/), that can later be imported in {{% tts %}}. This is a base for migrating end devices from ChirpStack to {{% tts %}}.
 
 <!--more-->
 

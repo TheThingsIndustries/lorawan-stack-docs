@@ -14,7 +14,7 @@ Starting from {{% tts %}} version `3.12.0`, it is possible to migrate end device
 
 Active device sessions can be migrated via Packet Broker only from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, and this is achievable only on a customer request. Contact [The Things Industries support](mailto:support@thethingsindustries.com) for more information.
 
-For all other scenarios, migrating active session is achievable only if you [migrate your gateway to {{% tts %}}]({{< ref "/the-things-stack/migrating/gateway-migration" >}}) too.
+For all other scenarios, migrating active session is achievable only if you [migrate your gateway to {{% tts %}}]({{< ref "/the-things-stack/migrating/gateways" >}}) too.
 
 {{< note >}} We strongly recommend migrating end devices without persisting active sessions. {{</ note >}}
 
@@ -34,7 +34,7 @@ The **DevAddr** and some other parameters (like **RX1 Delay**) are hardcoded for
 
 {{< /tabs/container >}}
 
-Remember that if you are not migrating specifically from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, you will have to [migrate your gateway]({{< ref "/the-things-stack/migrating/gateway-migration" >}}) to successfully migrate your end device with its active session.
+Remember that if you are not migrating specifically from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, you will have to [migrate your gateway]({{< ref "/the-things-stack/migrating/gateways" >}}) to successfully migrate your end device with its active session.
 
 {{< warning >}} Exporting end devices with their active sessions will clear their root and session keys from {{% ttnv2 %}}, so these devices will automatically no longer work on {{% ttnv2 %}}. {{</ warning >}}
 
@@ -102,7 +102,7 @@ Migrating your ABP device from {{% ttnv2 %}} to {{% tts %}} with its active sess
 
 If you are migrating an end device with its active session via Packet Broker (from **The Things Industries V2** to **{{% tts %}} Cloud**), you might need to set the **RX1 Delay** of the device to 5 seconds by [configuring MAC settings]({{< ref "/the-things-stack/migrating/configure-mac-settings" >}}), otherwise the traffic might not reach {{% tts %}} in time via Packet Broker.
 
-In case you want to leave the **RX1 Delay** value as is (1 second from {{% ttnv2 %}}), you will need to [migrate your gateway to {{% tts %}}]({{< ref "/the-things-stack/migrating/gateway-migration" >}}) too.
+In case you want to leave the **RX1 Delay** value as is (1 second from {{% ttnv2 %}}), you will need to [migrate your gateway to {{% tts %}}]({{< ref "/the-things-stack/migrating/gateways" >}}) too.
 
 Even if you manage to get your end device traffic routed to {{% tts %}} by Packet Broker, we recommend to migrate your gateways as soon as possible.
 

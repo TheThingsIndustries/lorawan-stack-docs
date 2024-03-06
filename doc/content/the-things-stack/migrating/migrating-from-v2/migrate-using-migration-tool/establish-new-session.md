@@ -30,7 +30,7 @@ The **DevAddr** and some other parameters (like **RX1 Delay**) are hardcoded for
 
 If you want your end device traffic to be routed via Packet Broker to {{% tts %}}, the **DevAddr** must be routable by the Packet Broker and the **RX1 Delay** value must be 5 seconds. Note that the **DevAddr** is routable only if you are using **The Things Industries V2 (SaaS)** and migrating to **{{% tts %}} Cloud**, and even that is being achieved only on customer request by contacting [The Things Industries support](mailto:support@thethingsindustries.com).
 
-If you are not migrating from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, Packet Broker will not be able to route your ABP device's traffic properly, so you will have to [migrate your gateway]({{< ref "/the-things-stack/migrating/gateway-migration" >}}) to {{% tts %}} too. Be aware that in this case the **RX1 Delay** value of 1 second is persisted, and even if you do migrate your gateway, you could still be experiencing latency issues if your gateway has a high latency backhaul.
+If you are not migrating from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, Packet Broker will not be able to route your ABP device's traffic properly, so you will have to [migrate your gateway]({{< ref "/the-things-stack/migrating/gateways" >}}) to {{% tts %}} too. Be aware that in this case the **RX1 Delay** value of 1 second is persisted, and even if you do migrate your gateway, you could still be experiencing latency issues if your gateway has a high latency backhaul.
 
 {{< warning >}} This is **not a recommended practice**. We advise re-programming the ABP device to change the **DevAddr** to the one issued by The Things Stack and **RX1 Delay** to 5 seconds, even if you do not want your traffic to be routed by Packet Broker.
 
@@ -130,7 +130,7 @@ Instead, these Join Requests are going to be routed to {{% tts %}} via Packet Br
 
 This section implies that you are keeping the **DevAddr** and **RX1 Delay** values from {{% ttnv2 %}}, which means Packet Broker will be able to route the traffic properly only if you are migrating from **The Things Industries {{% ttnv2 %}}** to **{{% tts %}} Cloud**. This can be only achieved on a customer request, so if this is the case please contact [The Things Industries support](mailto:support@thethingsindustries.com) for more information.
 
-If you are not migrating from **The Things Industries {{% ttnv2 %}}** to **{{% tts %}} Cloud**, please follow the guide to [migrate your gateway]({{< ref "/the-things-stack/migrating/gateway-migration" >}}) to {{% tts %}}.
+If you are not migrating from **The Things Industries {{% ttnv2 %}}** to **{{% tts %}} Cloud**, please follow the guide to [migrate your gateway]({{< ref "/the-things-stack/migrating/gateways" >}}) to {{% tts %}}.
 
 {{< /tabs/tab >}}
 

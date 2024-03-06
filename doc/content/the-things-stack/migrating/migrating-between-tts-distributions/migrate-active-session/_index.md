@@ -21,19 +21,19 @@ Even though they are both connected to [Packet Broker]({{< ref "/the-things-stac
 
 When an active device session is migrated from {{% ttss %}} to {{% tts %}} Cloud, the DevAddr that the device was assigned with (OTAA) or programmed with (ABP) when it joined {{% ttss %}} will be preserved. Since Packet Broker routes traffic according to the DevAddr blocks, in case of migrating an active session to {{% tts %}} Cloud it won't be able to route your device's traffic properly, because your device still has its {{% ttss %}}-related DevAddr.
 
-Hence, to successfully migrate an active device session from {{% ttss %}} to {{% tts %}} Cloud, you also need to migrate your gateway to {{% tts %}} Cloud. See instructions for [Migrating Gateways]({{< ref "/the-things-stack/migrating/gateway-migration" >}}). The ideal scenario would be to migrate your gateway and your device simultaneously, in order to not loose any traffic.
+Hence, to successfully migrate an active device session from {{% ttss %}} to {{% tts %}} Cloud, you also need to migrate your gateway to {{% tts %}} Cloud. See instructions for [Migrating Gateways]({{< ref "/the-things-stack/migrating/gateways" >}}). The ideal scenario would be to migrate your gateway and your device simultaneously, in order to not loose any traffic.
 
 ## Migrate OTAA and ABP Devices
 
-Since migrating an active session implies migrating a large number of parameters that cannot be configured manually, it is possible to do it only using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool">}}) or the [CLI]({{< ref "/the-things-stack/interact/cli" >}}).
+Since migrating an active session implies migrating a large number of parameters that cannot be configured manually, it is possible to do it only using the [migration tool]({{< ref "/the-things-stack/migrating/enddevices/export">}}) or the [CLI]({{< ref "/the-things-stack/interact/cli" >}}).
 
 {{< tabs/container "Migration tool" "CLI">}}
 
 {{< tabs/tab "Migration tool" >}}
 
-For detailed instructions on how to configure the migration tool before exporting your device and how to adjust the following command for migrating multiple devices or whole applications, head over to [Export Devices from {{% tts %}}]({{< ref "/the-things-stack/migrating/migration-tool/export-from-tts" >}}).
+For detailed instructions on how to configure the migration tool before exporting your device and how to adjust the following command for migrating multiple devices or whole applications, head over to [Export Devices from {{% tts %}}]({{< ref "/the-things-stack/migrating/enddevices/export/export-from-tts" >}}).
 
-To export device using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}) with its active session, use the following command:
+To export device using the [migration tool]({{< ref "/the-things-stack/migrating/enddevices/export" >}}) with its active session, use the following command:
 
 ```bash
 ttn-lw-migrate device --source tts 'my-device' > devices.json

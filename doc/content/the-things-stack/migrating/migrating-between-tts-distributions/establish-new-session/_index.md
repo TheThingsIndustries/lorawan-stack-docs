@@ -27,7 +27,7 @@ ttn-lw-cli dev set --application-id <app-id> --device-id <device-id> \
 
 When the end device gets triggered to perform a new join on {{% tts %}} Cloud, the uplink traffic will still reach {{% ttss %}} until device is actually registered on Cloud. Using the command above, we make sure that we disable {{% ttss %}} Network Server to send Join Accept messages, data downlinks or MAC commands to device, i.e. we make sure that device doesn't get re-registered on {{% ttss %}}, but registered on {{% tts %}} Cloud.
 
-{{< note >}} The [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}) does this automatically when migrating devices so you don't need to worry about disabling the downlinks of exported devices. {{</ note >}}
+{{< note >}} The [migration tool]({{< ref "/the-things-stack/migrating/enddevices/export" >}}) does this automatically when migrating devices so you don't need to worry about disabling the downlinks of exported devices. {{</ note >}}
 
 Now, you can proceed with migrating your device. Read the instructions below to migrate your OTAA or ABP devices.
 
@@ -37,7 +37,7 @@ When your device is finally migrated, it will be assigned with a DevAddr issued 
 
 Migrating an OTAA device without persisting its active session means the device will establish a new session with {{% tts %}} Cloud, i.e. it will have to perform a new join on {{% tts %}} Cloud network after migration. The device will negotiate about network parameters with {{% tts %}} Cloud Network Server, and during that negotiation, the device will be assigned with a new DevAddr from {{% tts %}} Cloud DevAddr block.
 
-Since {{% ttss %}} and {{% tts %}} Cloud are both connected to Packet Broker, Packet Broker will be able to route your device's traffic to {{% tts %}} Cloud even if your gateway stays connected to {{% ttss %}}, i.e. you don't have to migrate your gateway to {{% tts %}} Cloud, only your device. However, if you want to migrate your gateway to {{% tts %}} Cloud too, see [Migrating Gateways]({{< ref "/the-things-stack/migrating/gateway-migration" >}}) for instructions.
+Since {{% ttss %}} and {{% tts %}} Cloud are both connected to Packet Broker, Packet Broker will be able to route your device's traffic to {{% tts %}} Cloud even if your gateway stays connected to {{% ttss %}}, i.e. you don't have to migrate your gateway to {{% tts %}} Cloud, only your device. However, if you want to migrate your gateway to {{% tts %}} Cloud too, see [Migrating Gateways]({{< ref "/the-things-stack/migrating/gateways" >}}) for instructions.
 
 To migrate your OTAA device from {{% ttss %}} to {{% tts %}} Cloud without an active session, choose your preferred method and follow the steps described below.
 
@@ -45,9 +45,9 @@ To migrate your OTAA device from {{% ttss %}} to {{% tts %}} Cloud without an ac
 
 {{< tabs/tab "Migration tool" >}}
 
-For detailed instructions on how to configure the migration tool before exporting your device and how to adjust the following command for migrating multiple devices or whole applications, head over to [Export Devices from {{% tts %}}]({{< ref "/the-things-stack/migrating/migration-tool/export-from-tts" >}}).
+For detailed instructions on how to configure the migration tool before exporting your device and how to adjust the following command for migrating multiple devices or whole applications, head over to [Export Devices from {{% tts %}}]({{< ref "/the-things-stack/migrating/enddevices/export/export-from-tts" >}}).
 
-To export device using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}) without persisting active session, use the `--tts.no-session` flag:
+To export device using the [migration tool]({{< ref "/the-things-stack/migrating/enddevices/export" >}}) without persisting active session, use the `--tts.no-session` flag:
 
 ```bash
 ttn-lw-migrate device --source tts 'my-device' --tts.no-session > devices.json
@@ -61,7 +61,7 @@ The process of migrating OTAA devices using the migration tool ends here and you
 
 {{< tabs/tab "Console" >}}
 
-Using the Console is convenient only when you have a few devices to migrate. For larger groups of devices, we highly recommend using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}) or CLI.
+Using the Console is convenient only when you have a few devices to migrate. For larger groups of devices, we highly recommend using the [migration tool]({{< ref "/the-things-stack/migrating/enddevices/export" >}}) or CLI.
 
 First step is to recreate your device on {{% tts %}} Cloud through the Console. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) for instructions on creating a device. You can reuse the DevEUI, AppEUI/JoinEUI and AppKey values from {{% ttss %}}. You can also generate new values for these parameters on {{% tts %}} Cloud, but then you will need to re-program your OTAA device using those values.
 
@@ -111,7 +111,7 @@ Migrating an ABP device without persisting its active session means its session 
 
 Let's first assume that you are able to re-program your ABP device with new DevAddr, NwkSKey and AppSKey issued by {{% tts %}} Cloud.
 
-Since {{% ttss %}} and {{% tts %}} Cloud are both connected to Packet Broker, and your ABP device will be re-programmed with a new DevAddr from {{% tts %}} Cloud DevAddr block, Packet Broker will be able to route your device's traffic to {{% tts %}} Cloud even if your gateway stays connected to {{% ttss %}}, i.e. you don't have to migrate your gateway to {{% tts %}} Cloud, only your device. However, if you want to migrate your gateway to {{% tts %}} Cloud too, see [Migrating Gateways]({{< ref "/the-things-stack/migrating/gateway-migration" >}}) for instructions.
+Since {{% ttss %}} and {{% tts %}} Cloud are both connected to Packet Broker, and your ABP device will be re-programmed with a new DevAddr from {{% tts %}} Cloud DevAddr block, Packet Broker will be able to route your device's traffic to {{% tts %}} Cloud even if your gateway stays connected to {{% ttss %}}, i.e. you don't have to migrate your gateway to {{% tts %}} Cloud, only your device. However, if you want to migrate your gateway to {{% tts %}} Cloud too, see [Migrating Gateways]({{< ref "/the-things-stack/migrating/gateways" >}}) for instructions.
 
 The process of migrating your ABP device from {{% ttss %}} to {{% tts %}} Cloud without its active session by re-programming it is the most straightforward if you use the {{% tts %}} Console.
 
@@ -125,7 +125,7 @@ However, if you don't want to re-program your device, i.e. you want to keep the 
 
 Now let's assume that you want to migrate your ABP device to {{% tts %}} Cloud in such manner that it keeps its DevAddr, NwkSKey and AppSKey it was programmed with upon its registration on {{% ttss %}} network.
 
-Note that {{% ttss %}} and {{% tts %}} Cloud use different DevAddr blocks. Since Packet Broker routes traffic according to the DevAddr blocks, in this case it won't be able to route your device's traffic properly, because of the {{% ttss %}}-related DevAddr. To successfully migrate your ABP device while keeping these parameters, you also need to migrate your gateway to {{% tts %}} Cloud. See instructions for [Migrating Gateways]({{< ref "/the-things-stack/migrating/gateway-migration" >}}). The ideal scenario would be to migrate your gateway and your device simultaneously.
+Note that {{% ttss %}} and {{% tts %}} Cloud use different DevAddr blocks. Since Packet Broker routes traffic according to the DevAddr blocks, in this case it won't be able to route your device's traffic properly, because of the {{% ttss %}}-related DevAddr. To successfully migrate your ABP device while keeping these parameters, you also need to migrate your gateway to {{% tts %}} Cloud. See instructions for [Migrating Gateways]({{< ref "/the-things-stack/migrating/gateways" >}}). The ideal scenario would be to migrate your gateway and your device simultaneously.
 
 To migrate your ABP device with preserving its DevAddr, NwkSKey and AppSKey, from {{% ttss %}} to {{% tts %}} Cloud, follow the steps described below. Keep in mind that the existing session will be violated because you will need to reset frame counters for your device, hence we refer to this as migrating without an active session.
 
@@ -133,9 +133,9 @@ To migrate your ABP device with preserving its DevAddr, NwkSKey and AppSKey, fro
 
 {{< tabs/tab "Migration tool" >}}
 
-For detailed instructions on how to configure the migration tool before exporting your device and how to adjust the following commands for migrating multiple devices or whole applications, head over to [Export Devices from {{% tts %}}]({{< ref "/the-things-stack/migrating/migration-tool/export-from-tts" >}}).
+For detailed instructions on how to configure the migration tool before exporting your device and how to adjust the following commands for migrating multiple devices or whole applications, head over to [Export Devices from {{% tts %}}]({{< ref "/the-things-stack/migrating/enddevices/export/export-from-tts" >}}).
 
-To export devices using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}) without persisting active session, use the `--tts.no-session` flag:
+To export devices using the [migration tool]({{< ref "/the-things-stack/migrating/enddevices/export" >}}) without persisting active session, use the `--tts.no-session` flag:
 
 ```bash
 ttn-lw-migrate device --source tts 'my-device' \

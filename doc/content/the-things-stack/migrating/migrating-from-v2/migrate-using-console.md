@@ -126,7 +126,7 @@ ABP devices do not perform the join procedure, so they do not get assigned with 
 
 As previously mentioned, routing traffic from your ABP devices to {{% tts %}} via Packet Broker will be possible only if Packet Broker requirements are met. If you want your traffic to be routed via Packet Broker, you will need to re-program your ABP device to use a **DevAddr** issued by {{% tts %}} and **RX1 Delay** of 5 seconds. Please note that this is a recommended practice. An exception to this rule is the case of migrating from **The Things Industries {{% ttnv2 %}}** to **{{% tts %}} Cloud** deployment - here you might be able to keep your device's **DevAddr**, but you will still have to adjust your device's **RX1 Delay** to 5 seconds.
 
-If you want to keep **DevAddr** and **RX1 Delay** as they were in {{% ttnv2 %}}, you will need to [migrate your gateway to {{% tts %}}]({{< ref "/the-things-stack/migrating/gateway-migration" >}}). Please note that this is not a recommended practice, because using an **RX1 Delay** of 1 second in a combination with high latency backhauls might cause your device's traffic to not reach {{% tts %}} in time, even if you migrate your gateway.
+If you want to keep **DevAddr** and **RX1 Delay** as they were in {{% ttnv2 %}}, you will need to [migrate your gateway to {{% tts %}}]({{< ref "/the-things-stack/migrating/gateways" >}}). Please note that this is not a recommended practice, because using an **RX1 Delay** of 1 second in a combination with high latency backhauls might cause your device's traffic to not reach {{% tts %}} in time, even if you migrate your gateway.
 
 {{< /tabs/tab >}}
 
