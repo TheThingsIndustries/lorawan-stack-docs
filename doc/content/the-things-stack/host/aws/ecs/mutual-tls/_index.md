@@ -73,7 +73,7 @@ But since credentials once stored in ACM cannot be retrieved (can only be refere
 
 Deploy the updated `4-1-secrets` template to create a new secret in ACM. This also generates additional keys in the KeyVault for {{% tts %}} components to exchange auth information.
 
-Then deploy the updated `5-7a-certs-le` to update the Certbot task and fetch new certificates using the [instructions]({{< relref "#lets-encrypt-certificates-optional" >}}).
+Then deploy the updated `5-8a-certs-le` to update the Certbot task and fetch new certificates using the [instructions]({{< relref "#lets-encrypt-certificates-optional" >}}).
 
 ### Step 3: Update the Load Balancer and the Proxy
 
@@ -89,17 +89,17 @@ We are now modifying the protocol of the NLB ports `443` and `8887` to TCP. This
 
 Since the Proxy service is already bound to these target groups, CloudFormation would error if you try to update this.
 
-First, make a copy of the configuration parameters in the `5-6-ecs-proxy` CloudFormation stack.
+First, make a copy of the configuration parameters in the `5-7-ecs-proxy` CloudFormation stack.
 
-Next, delete the `5-6-ecs-proxy` stack.
+Next, delete the `5-7-ecs-proxy` stack.
 
 {{< note >}}
-This will only delete the Proxy ECS containers and its related alarms. This can be easily reverted by re-deploying `5-6-ecs-proxy`.
+This will only delete the Proxy ECS containers and its related alarms. This can be easily reverted by re-deploying `5-7-ecs-proxy`.
 {{</ note >}}
 
 Deploy the `3-2-load-balancer-rules` template. AWS will now create the proper target groups with the `TCP` protocol type.
 
-Once completed, redeploy `5-6-ecs-proxy` and make sure to set `SupportProxyTLS` to `true`.
+Once completed, redeploy `5-7-ecs-proxy` and make sure to set `SupportProxyTLS` to `true`.
 
 At this point, if all the configuration is right, the proxy (Envoy) will handle TLS termination for ports `443` and `8887`.
 
@@ -117,7 +117,7 @@ Envoy (proxy) supports reloading TLS certificates without dropping active connec
 
 This is done by using the [static SDS configuration](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-three-certificate-rotation-for-xds-grpc-connection).
 
-The `5-7b-ecs-certbot-scheduled-task` runs a periodic task to fetch new server TLS credentials.
+The `5-8b-ecs-certbot-scheduled-task` runs a periodic task to fetch new server TLS credentials.
 
 If there are new credentials, they will also be stored in Secrets Manager.
 
