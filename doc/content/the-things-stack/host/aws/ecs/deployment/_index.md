@@ -217,8 +217,6 @@ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --regi
 
 As discussed in the [Architecture]({{< relref "../architecture" >}}) section, we will need the container instances for running UDP Gateway Servers. For all other services, you can consider deploying those to Fargate, in which case you won't need as much resources on the container instances.
 
-{{< note >}} All container instances will be deployed with a `schedule_gs=true` attribute which we can use as a constraint for scheduling the UDP Gateway Server in the future. {{</ note >}}
-
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-1-ecs-cluster.gen.template (replace `3.x.y` with the current minor and patch version).
 
 In addition to the re-used parameters and the name of your SSH keypair (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for an **Instance Type** and number of container instances. It is typically fine for small clusters to start with 2x `m5.large`. If you plan to use Fargate for all containers other than the UDP Gateway Server, 2x `t3.micro` may already be sufficient. Again, you can scale to more or larger instances as your network grows.
