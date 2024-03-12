@@ -277,9 +277,9 @@ For all services: the official image is `docker.io/thethingsindustries/lorawan-s
 
 ## Monitoring (optional, but recommended)
 
-We strongly recommend to monitor your deployment with [Prometheus](https://prometheus.io) and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/overview/), from where you can forward alerts to external on-call notification systems. With the `5-5-ecs-monitoring` you can deploy Prometheus to your ECS cluster.
+We strongly recommend to monitor your deployment with [Prometheus](https://prometheus.io) and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/overview/), from where you can forward alerts to external on-call notification systems. With the `5-6-ecs-monitoring` you can deploy Prometheus to your ECS cluster.
 
-**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-5-ecs-monitoring.gen.template (replace `3.x.y` with the current minor and patch version).
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-6-ecs-monitoring.gen.template (replace `3.x.y` with the current minor and patch version).
 
 Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and information about the cluster.
 
@@ -287,15 +287,15 @@ The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-pro
 
 {{< note >}} By default, Prometheus stores metrics only for a limited time. You can optionally enable long-term storage of metrics in an S3 bucket. This is done using a [Thanos](https://thanos.io/) sidecar. We do not support querying from long-term storage yet. {{</ note >}}
 
-The username for accessing Prometheus is `metrics`. Users can configure a custom `PrometheusPassword` while deploying the `5-5-ecs-monitoring.gen.template`. If this password wasn't configured during deployment, users can use `HTTPMetricsPasswordSecret` in the outputs section of the `4-1-secrets.gen.template`.
+The username for accessing Prometheus is `metrics`. Users can configure a custom `PrometheusPassword` while deploying the `5-6-ecs-monitoring.gen.template`. If this password wasn't configured during deployment, users can use `HTTPMetricsPasswordSecret` in the outputs section of the `4-1-secrets.gen.template`.
 
 We recommend to point Prometheus to an external **Alertmanager URL**, so that you can be alerted about (potential) problems with your deployment.
 
 ## HTTP and gRPC Proxy
 
-The template `5-6-ecs-proxy` deploys the proxy that routes incoming gRPC and HTTP requests from the outside world to the right service.
+The template `5-7-ecs-proxy` deploys the proxy that routes incoming gRPC and HTTP requests from the outside world to the right service.
 
-**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-6-ecs-proxy.gen.template (replace `3.x.y` with the current minor and patch version).
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-7-ecs-proxy.gen.template (replace `3.x.y` with the current minor and patch version).
 
 The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-proxy` (replace `3.x.y` with the current minor and patch version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack.
 
@@ -303,9 +303,9 @@ The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-pro
 
 ## Let's Encrypt Certificates (optional) {#lets-encrypt-certificates-optional}
 
-Unfortunately not all gateways are able to connect when using AWS-issued certificates. If this is the case in your deployment, you can use the `5-7a-certs-le` and `5-7b-ecs-certbot-scheduled-task` templates to request certificates from [Let's Encrypt](https://letsencrypt.org/).
+Unfortunately not all gateways are able to connect when using AWS-issued certificates. If this is the case in your deployment, you can use the `5-8a-certs-le` and `5-8b-ecs-certbot-scheduled-task` templates to request certificates from [Let's Encrypt](https://letsencrypt.org/).
 
-**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-7a-certs-le.gen.template (replace `3.x.y` with the current minor and patch version).
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-8a-certs-le.gen.template (replace `3.x.y` with the current minor and patch version).
 
 The Docker image we'll use is `docker.io/thethingsindustries/aws-certbot-dns-route53:latest`.
 
@@ -315,13 +315,13 @@ We need to manually request the certificates for the first time. In the CloudFor
 
 {{< note >}} If your deployment uses only the `FARGATE` launch type, then append `--launch-type FARGATE` to the command in the `RunCertbotTaskCLICommand` output. {{</ note >}}
 
-After the task succeeds, go to **Certificate Manager**, find the new certificate, and copy its ARN. Back in CloudFormation, update the stacks for templates `3-2-load-balancer-rules` and `5-7a-certs-le`, and paste that certificate ARN.
+After the task succeeds, go to **Certificate Manager**, find the new certificate, and copy its ARN. Back in CloudFormation, update the stacks for templates `3-2-load-balancer-rules` and `5-8a-certs-le`, and paste that certificate ARN.
 
 {{< note >}} If the ECS Task has been run multiple times for some reason and there are multiple certificates in ACM, then check the Task Logs for the correct ARN. {{</ note >}}
 
-To automatically renew the certificate from Let's Encrypt, we will now deploy template `5-7b-ecs-certbot-scheduled-task`.
+To automatically renew the certificate from Let's Encrypt, we will now deploy template `5-8b-ecs-certbot-scheduled-task`.
 
-**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-7b-ecs-certbot-scheduled-task.gen.template (replace `3.x.y` with the current minor and patch version).
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-8b-ecs-certbot-scheduled-task.gen.template (replace `3.x.y` with the current minor and patch version).
 
 > We recommend to schedule this task to run every 14 days.
 
