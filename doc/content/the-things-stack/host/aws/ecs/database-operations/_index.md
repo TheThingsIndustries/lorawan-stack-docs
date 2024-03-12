@@ -17,7 +17,7 @@ TASK_DEFINITION CLUSTER_NAME SUBNET_ONE SUBNET_TWO SECURITY_GROUP
 
 To run a task from the AWS Console, go to **Amazon ECS** > **Clusters** > your cluster > **Tasks**, and click **Run new Task**.
 
-For **Task Definition** select the latest version of the ops task definition (`TASK_DEFINITION` from earlier). 
+For **Task Definition** select the latest version of the ops task definition (`TASK_DEFINITION` from earlier).
 
 Select the **VPC**, and for **Subnets** the subnets `SUBNET_ONE` and `SUBNET_TWO` from the `OpsRunTaskArguments` mentioned earlier. Instead of creating a new security group, select the existing `SECURITY_GROUP` listed in `OpsRunTaskArguments`.
 
@@ -151,7 +151,7 @@ tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
 
-{{< note >}} 
+{{< note >}}
 - Replace `--tenant-id=NULL` with `--tenant-id=$TENANT_ID` in single-tenant deployments.
 - For secondary clusters (where the domain of the Console or Network Operations Center is not equal to the domain of the Identity Server), omit you can omit the `--redirect-uri` and `--logout-redirect-uri` to relative paths (only keep the URI).
 {{</ note >}}
