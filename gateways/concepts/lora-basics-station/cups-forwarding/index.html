@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>LoRa Basics™ Station | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/" />
+  <title>Using CUPS to redirect to a different LNS | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups-forwarding/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="LoRa Basics™ Station">
+  <meta itemprop="name" content="Using CUPS to redirect to a different LNS">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="LoRa Basics™ Station">
+  <meta property="og:title" content="Using CUPS to redirect to a different LNS">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups-forwarding/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="LoRa Basics™ Station" />
+  <meta name="twitter:title" content="Using CUPS to redirect to a different LNS" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -111,7 +111,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/" class="is-active">LoRa Basics™ Station</a>
+    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/" class="">LoRa Basics™ Station</a>
     
     
 
@@ -129,7 +129,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups-forwarding/" class="">Using CUPS to redirect to a different LNS</a>
+    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups-forwarding/" class="is-active">Using CUPS to redirect to a different LNS</a>
+    
+    
+
+
+
     
   </li>
 
@@ -172,101 +177,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">LoRa Basics™ Station
+        <h1 class="title is-size-2">Using CUPS to redirect to a different LNS
           
         </h1>
         
         <div class="content">
-          <p>The <a href="https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/">LoRa Basics™ Station</a> protocol simplifies management of large scale LoRaWAN® networks. LoRa Basics™ Station is the preferred way of connecting Gateways to The Things Stack.</p>
-<p>This section contains information for connecting your gateway to The Things Stack using LoRa Basics™ Station and its subprotocols.</p>
-<p>These are general instructions for all LoRa Basics™ Station gateways. For specific instructions for your gateway, look in the <a href="https://www.thethingsindustries.com/docs/gateways/">Gateways</a> section.</p>
-<h2 id="advantages-of-lora-basics-station">Advantages of LoRa Basics™ Station</h2>
-<p>Some of the advantages of LoRa Basics™ Station over the legacy UDP Packet Forwarder are:</p>
-<ul>
-<li>Centralized Update and Configuration Management</li>
-<li>TLS and Token-based Authentication</li>
-<li>Centralized Channel-Plan Management</li>
-<li>No Dependency on Local Time Keeping</li>
-</ul>
-<h2 id="authentication">Authentication</h2>
-<p>The Things Stack supports <a href="https://lora-developers.semtech.com/build/software/lora-basics/lora-basics-for-gateways/?url=authmodes.html">TLS server authentication and client token</a>. This requires a <code>*.trust</code> file and a <code>*.key</code> file. See the <a href="/docs/gateways/concepts/lora-basics-station/lns/">LNS</a> and <a href="/docs/gateways/concepts/lora-basics-station/cups/">CUPS</a> sections for information about getting these files. The Things Stack does not support TLS client authentication and does not provide a <code>*.cert</code> file.</p>
-<h2 id="lns-and-cups-sub-protocols">LNS and CUPS Sub Protocols</h2>
-<p>LoRa Basics™ Station contains two sub protocols for connecting Gateways to Network Servers, LoRaWAN Network Server (LNS) and Configuration and Update Server (CUPS).</p>
-<h3 id="lorawan-network-server-lns">LoRaWAN Network Server (LNS)</h3>
-<p>LNS establishes a data connection between a LoRa Basics™ Station gateway and a Network Server (in this case, The Things Stack). LoRa® uplink and downlink frames are exchanged through this data connection. The LNS protocol is <strong>required</strong> for sending and receiving LoRaWAN data.</p>
-<h3 id="configuration-and-update-server-cups">Configuration and Update Server (CUPS)</h3>
-<p>CUPS allows a Network Server to configure gateways remotely, and to update gateway firmware. CUPS is <strong>not required</strong> for sending and receiving LoRaWAN data, but it can greatly simplify the management of gateways. Configuring CUPS will also automatically retrieve LNS credentials and configure LNS on your gateway.</p>
-<p>More information about LoRa Basics™ Station is available at <a href="https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/">Semtech&rsquo;s Developer Portal</a></p>
-        </div>
-          <div class="columns is-multiline">
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups/">Configuration and Update Server (CUPS)</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            LoRa Basics™ Station can regularly connect to a Configuration and Update Server (CUPS) server to check for configuration and software updates. This page contains information about connecting your gateway to The Things Stack to support remote management via the CUPS Protocol.
+          <p>This section explains how redirect your gateway from one The Things Stack instance to another using CUPS, thus facilitating remote gateway management.</p>
+<p>If your gateway is using <a href="/docs/gateways/concepts/lora-basics-station/cups/">CUPS</a> to connect to The Things Stack, and you want to redirect it from one The Things Stack instance to another, just follow the steps below. As an example, we consider redirecting a gateway from The Things Stack Sandbox to The Things Stack Cloud.</p>
+<p>First, register your gateway in the target instance (The Things Stack Cloud in our example). You can choose to <strong>Generate API key for LNS</strong> upon registering, or to follow steps to create an <a href="/docs/gateways/concepts/lora-basics-station/cups/#create-separate-cups-and-lns-api-keys">LNS key</a> (gateway API key with linking rights) in the target instance after registering.</p>
+<figure><img src="../target-instance-registration.png"
+         alt="Registering gateway in the target The Things Stack instance"/>
+</figure>
 
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/lns/">LoRaWAN Network Server (LNS)</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            LNS establishes a data connection between a LoRa Basics™ Station and The Things Stack. This page contains information about connecting your gateway to The Things Stack using the LoRaWAN® Network Server (LNS) protocol.
+<p>Copy the LNS key from the target instance (that you created in previous step). In the source instance (The Things Stack Sandbox in our example), navigate to your gateway&rsquo;s <strong>General settings</strong> tab and paste the LNS key you&rsquo;ve copied in the <strong>LoRa Basics Station LNS Authentication Key</strong> field.</p>
+<p>Navigate to your gateway&rsquo;s <strong>General settings</strong> tab in the target instance, copy the <strong>Gateway Server address</strong> and paste it in the <strong>Gateway Server address</strong> field of the source instance.</p>
+<figure><img src="../change-lns-key-and-gs-addr.png"
+         alt="Changing LNS key and GS address in the source instance"/>
+</figure>
 
-            
-          </div>
+<p>You can optionally invalidate the old LNS key in the source instance, either by deleting it or by removing the linking right.</p>
+<p>Upon the next CUPS request, the gateway will connect to the target The Things Stack instance and stop sending packets to the source instance. Usually, a CUPS request is sent every 24h, but in this case, it will happen sooner. Changing the Gateway Server address forces the gateway to reconnect in about 10 minutes on average. Also, invalidating the old LNS key in the source instance results in CUPS lookup being done before the 24h window finishes, during which the gateway will redirect to the target instance.</p>
         </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/lns/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups-forwarding/">Using CUPS to redirect to a different LNS</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            This section explains how redirect your gateway from one The Things Stack instance to another using CUPS, thus facilitating remote gateway management.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups-forwarding/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/gateways/concepts/lora-basics-station/lns/">← LoRaWAN Network Server (LNS)</a>
+<a class="button is-pulled-right" href="/docs/gateways/concepts/udp/">Semtech UDP Packet Forwarder →</a>
 </div>
 
-          <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/gateways/concepts/gateway-claiming/claim-gateways/">← Claim a Gateway</a>
-<a class="button is-pulled-right" href="/docs/gateways/concepts/lora-basics-station/cups/">Configuration and Update Server (CUPS) →</a>
-</div>
-
-          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -280,19 +217,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 class="title is-size-6">On this page</h2>
     
 
-
-  <ul class="menu-list">
-    
-      
-      <li><a href='#advantages-of-lora-basics-station'>Advantages of LoRa Basics™ Station</a></li>
-    
-      
-      <li><a href='#authentication'>Authentication</a></li>
-    
-      
-      <li><a href='#lns-and-cups-sub-protocols'>LNS and CUPS Sub Protocols</a></li>
-    
-  </ul>
 
 
   </nav>
