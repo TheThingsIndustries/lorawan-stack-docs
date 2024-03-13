@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Export End Devices from ChirpStack | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-chirpstack/" />
+  <title>Export End Devices from ChirpStack v4 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-chirpstack/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Export End Devices from ChirpStack">
+  <meta itemprop="name" content="Export End Devices from ChirpStack v4">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Export End Devices from ChirpStack">
+  <meta property="og:title" content="Export End Devices from ChirpStack v4">
   <meta property="og:description" content="">
   <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-chirpstack/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Export End Devices from ChirpStack" />
+  <meta name="twitter:title" content="Export End Devices from ChirpStack v4" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -134,7 +134,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-chirpstack/" class="is-active">Export End Devices from ChirpStack</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-chirpstack-v3/" class="">Export End Devices from ChirpStack v3</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-chirpstack/" class="is-active">Export End Devices from ChirpStack v4</a>
     
     
 
@@ -210,22 +215,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Export End Devices from ChirpStack
+        <h1 class="title is-size-2">Export End Devices from ChirpStack v4
           
         </h1>
         
+        <h2 class="subtitle">
+          
+          
+            <span class="tag is-light">New in v0.12.0</span>
+
+          
+          
+          
+        </h2>
+        
         <div class="content">
-          <p>This section contains instructions on how to configure migration tool and use it to export end devices from ChirpStack, that can later be imported in The Things Stack. This is a base for migrating end devices from ChirpStack to The Things Stack.</p>
+          <p>This section contains instructions on how to configure migration tool and use it to export end devices from ChirpStack v4, that can later be imported in The Things Stack. This is a base for migrating end devices from ChirpStack to The Things Stack.</p>
+<p>This guide covers migration from ChirpStack v4. For ChirpStack v3 , see the <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/export-from-chirpstack-v3/">corresponding guide</a>.</p>
 <h2 id="configuration">Configuration</h2>
 <p>First, configure the environment with the following variables modified according to your setup. Navigate to the folder where you installed <code>ttn-lw-migrate</code> and execute:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CHIRPSTACK_API_URL</span><span class="o">=</span><span class="s2">&#34;localhost:8080&#34;</span>    <span class="c1"># ChirpStack Application Server URL</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CHIRPSTACK_API_TOKEN</span><span class="o">=</span><span class="s2">&#34;7F0as987e61...&#34;</span>  <span class="c1"># ChirpStack API key</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">JOIN_EUI</span><span class="o">=</span><span class="s2">&#34;0101010102020203&#34;</span>            <span class="c1"># Set The Things Stack JoinEUI for exported devices</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">FREQUENCY_PLAN_ID</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>         <span class="c1"># Set The Things Stack FrequencyPlanID for exported devices</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CHIRPSTACK_API_INSECURE</span><span class="o">=</span><span class="m">0</span>              <span class="c1"># Set to 1 if not using TLS on ChirpStack</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">CHIRPSTACK_API_URL</span><span class="o">=</span><span class="s2">&#34;localhost:8080&#34;</span>    <span class="c1"># ChirpStack Application Server URL</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">CHIRPSTACK_API_KEY</span><span class="o">=</span><span class="s2">&#34;eyJ0eX........&#34;</span>    <span class="c1"># Generate from ChirpStack GUI</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">JOIN_EUI</span><span class="o">=</span><span class="s2">&#34;0101010102020203&#34;</span>            <span class="c1"># JoinEUI for exported devices</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">FREQUENCY_PLAN_ID</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>         <span class="c1"># Frequency Plan for exported devices</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">CHIRPSTACK_EXPORT_SESSION</span><span class="o">=</span><span class="s2">&#34;true&#34;</span>       <span class="c1"># Set to true for session migration.</span>
 </span></span></code></pre></div><p>If using Windows OS, replace <code>export</code> with <code>set</code> and remove the double-quotes in commands above. For example, you would use:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> <span class="nv">CHIRPSTACK_API_TOKEN</span><span class="o">=</span>7F0as987e61...
 </span></span></code></pre></div><p><code>JoinEUI</code> and <code>FrequencyPlanID</code> have to be set because ChirpStack does not store these variables. See <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans</a> for a full list of frequency plans supported by The Things Stack (and their IDs).</p>
+<ul>
+<li>ABP devices without an active session are successfully exported from ChirpStack, but cannot be imported into The Things Stack.</li>
+<li>MaxEIRP may not be always set properly.</li>
+<li>ChirpStack payload formatters also accept a <code>variables</code> parameter. This will always be <code>null</code> on The Things Stack.</li>
+<li>ChirpStack v4 uses UUIDs as application ID. The migration tool uses the appends the last index of the UUID to application ID.
+<ul>
+<li>Ex: If the ChirpStack v4 application ID is <code>59459ffa-bfd3-4ef3-9cee-e1ca219397f2</code>, the tool generates <code>chirpstack-e1ca219397f2</code> as the application ID.</li>
+</ul>
+</li>
+</ul>
 <p>You can now proceed to exporting devices or applications.</p>
 <h2 id="export-devices-and-applications">Export Devices and Applications</h2>
 <div class="tabs is-boxed">
@@ -248,7 +274,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="tab-content content">
   <section data-content="export-devices">
   <p>To export a single end device to a <code>devices.json</code> file based on their <code>DevEUI</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate --source chirpstack device <span class="s2">&#34;0102030405060701&#34;</span> &gt; devices.json
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate chirpstack device <span class="s2">&#34;0102030405060701&#34;</span> &gt; devices.json
 </span></span></code></pre></div><p>To export multiple end devices, create a <code>devices.txt</code> file containing one <code>DevEUI</code> per line:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0102030405060701</span>
 </span></span><span class="line"><span class="cl"><span class="m">0102030405060702</span>
@@ -257,14 +283,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl"><span class="m">0102030405060705</span>
 </span></span><span class="line"><span class="cl"><span class="m">0102030405060706</span>
 </span></span></code></pre></div><p>To export multiple end devices to a <code>devices.json</code> file:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate --source chirpstack device &lt; devices.txt &gt; devices.json
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate chirpstack device &lt; devices.txt &gt; devices.json
 </span></span></code></pre></div>
 </section>
 <section data-content="export-applications">
   <p>To export end devices from a single application using its name (from ChirpStack):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate --source chirpstack application <span class="s2">&#34;app1&#34;</span> &gt; applications.json
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate chirpstack application <span class="s2">&#34;app1&#34;</span> &gt; applications.json
 </span></span></code></pre></div><p>To export end devices from multiple applications to an <code>applications.json</code> file, you need to create a <code>.txt</code> file containing one application name per line and run the following command in your terminal:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate --source chirpstack application &lt; applications.txt &gt; applications.json
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate chirpstack application &lt; applications.txt &gt; applications.json
 </span></span></code></pre></div>
 </section>
 
@@ -280,7 +306,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>After exporting, devices and applications can be imported in The Things Stack. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/">add end devices in bulk in The Things Stack</a> for details about importing devices.</p>
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/the-things-stack/migrating/migration-tool/export-from-tts/">← Export Devices from The Things Stack</a>
+<a class="button is-pulled-left" href="/docs/the-things-stack/migrating/migration-tool/export-from-chirpstack-v3/">← Export End Devices from ChirpStack v3</a>
 <a class="button is-pulled-right" href="/docs/the-things-stack/migrating/migration-tool/export-from-wanesy/">Export End Devices from Wanesy →</a>
 </div>
 
