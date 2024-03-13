@@ -3,11 +3,11 @@ title: "mTLS Authentication"
 description: ""
 ---
 
-{{% tts %}} supports mutual TLS to authenticate {{% lbs %}} CUPS connections in selected deployments.
+{{% tts %}} supports mutual TLS to authenticate {{% lbs %}} CUPS connections in selected deployments. This guide explains how gateway vendors/resellers and users can leverage
 
 <!--more-->
 
-{{% tts %}} does not natively terminate mTLS connections. This is done by a proxy. The proxy is expected to forward the sanitized client certificate chain as an HTTP header. To check if your deployment supports it, contact the operator.
+To check if your deployment supports it, contact the operator.
 
 ## Procedure
 
@@ -21,7 +21,7 @@ description: ""
 - The private key is the counterpart of the public certificate and is used for cryptographic operations while connecting to {{% tts %}}. Gateway vendors must ensure that this key is not easily accessible from the gateway. Anyone in possession of this key can impersonate the gateway.
 - While {{% tts %}} does not currently enforce which ciphers can be used to generate the CA and certificates and this is outside the scope of this documentation, we highly recommend picking secure ciphers.
 
-3. The gateway vendor/user sends the public certificate(s) of the CA(s) used for signing the gateway credentials to the operator of {{% tts %}} deployment. The operator will configure these CAs in {{% tts %}}. See [Mutual TLS]({{< ref "/the-things-stack/host/aws/ecs/mutual-tls" >}}) as an example.
+3. The gateway vendor/user sends the public certificate(s) of the CA(s) used for signing the gateway credentials to the operator of {{% tts %}} deployment. The operator will configure these CAs in {{% tts %}}.
 
 4. The user of the gateway registers it on a {{% tts %}} deployment. See instructions for in the [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}) guide.
 
@@ -71,7 +71,7 @@ $ openssl req -key client.key -new -out gateway.csr
 $ openssl x509 -req -CA root-ca.crt -CAkey root-ca.key -in gateway.csr -out gateway.crt -days 365 -CAcreateserial -sha256 -days 365
 ```
 
-5. This CA certificate `root-ca.crt` should be added in either the `common` or the target tenant folder where your gateway is registered in {{% tts %}}'s mTLS configuration. See the [Mutual TLS]({{< ref "/the-things-stack/host/aws/ecs/mutual-tls" >}}) page for reference.
+5. This CA certificate `root-ca.crt` should be added in either the `common` or the target tenant folder where your gateway is registered in {{% tts %}}'s mTLS configuration.
 
 Now restart the Gateway Server, Identity Server and Gateway Configuration Servers.
 

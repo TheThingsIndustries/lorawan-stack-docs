@@ -30,11 +30,25 @@ The `CN` (Common Name) field of the certificate must be the 16 digit gateway EUI
 
 ## Update Instructions
 
-The `SupportProxyTLS` and `CUPSmTLSEnabled` options are available in multiple templates.
-
-Make sure to set it to `true` in **all** the templates if the proxy should terminate CUPS mTLS Connections.
+The `SupportProxyTLS` and `LBSCUPSmTLSEnabled` options are available in multiple templates. Make sure to set it to `true` in **all** the templates if the proxy should terminate CUPS mTLS Connections.
 
 If not, it should be set to `false` in **all** the templates (this is the default). Setting it `true` in one and `false` in another will lead to to errors.
+
+### Preparation
+
+- If you are deploying TTS for the first time, complete the steps with `SupportProxyTLS` and `LBSCUPSmTLSEnabled` set to false (this is the default).
+- If you are updating to a version with `mTLS` support from a previous version, first deploy the following templates in this exact order with `SupportProxyTLS` and `LBSCUPSmTLSEnabled` set to false.
+  - `3-1-security-group-rules`: The template will be deployed with no changes.
+  - `3-2-load-balancer-rules`: The template will be deployed with no changes.
+  - `4-1-secrets`: The template will be deployed with no changes.
+  - `4-2a-configuration`: CloudFormation will mark `GSConfiguration` for a change but this is only on the template. No resources will be changed.
+  - `5-4-ecs-services`: There will be changes to the GS and GCS Task roles. The GS/GCS services/tasks will not be updated.
+  - `5-7-ecs-proxy`: The template will be deployed with no changes.
+  - `5-8a-certs-le`: The template will be deployed with no changes.
+
+### Enabling mTLS Support
+
+Once the preparation step is complete, run the following steps in the _exact same order_ as described here.
 
 ### Step 1: Configuration of the CA Certificate Store
 
@@ -72,30 +86,32 @@ But since credentials once stored in ACM cannot be retrieved (can only be refere
 
 In `4-1-secrets` template with `SupportProxyTLS` set to `true`.
 
-This creates a new secret in ACM and also a `GCS token hash key secret` in the KeyVault for {{% tts %}} components to exchange auth information.
+This creates a `ProxyTLSSecret` for the TLS server certificate/key secrets and also a `GCS token hash key secret`, which is used by the Gateway Configuration Server and the Identity Server.
 
-Update `5-7a-certs-le` to update Certbot tasks.
+Next, update `5-7a-certs-le` with the following settings:
 
 - Set ` SupportProxyTLS` to true. If `ExistingCertARN` is set, clear this before running the update.
 - Fetch new certificates using the [instructions]({{< relref "#lets-encrypt-certificates-optional" >}}).
-- When fetching the certificates, make note of the `TLSCertificateARN` where the new certificates are written.
-- Once the certificates are successfully queried, rerun the same `5-7a-certs-le` template but this time set, the `ExistingCertARN` with `TLSCertificateARN`. This ensures that Certbot renews these certificates and doesn't replace them.
+- When fetching the certificates, make note of the `CertificateArn` field from the logs where the new certificates are written.
+- Once the certificates are successfully queried, rerun the same `5-7a-certs-le` template but this time set, the `ExistingCertARN` with the `CertificateArn` value. This ensures that Certbot renews these certificates and doesn't replace them.
 
 ### Step 3: Update the Load Balancer and the Proxy
 
 We now forward traffic from `8987` on the AWS NLB to `8987` on Envoy.
 
-First update `3-1-security-group-rules`. This will allow traffic from `8987` to flow into the deployment.
+First update `3-1-security-group-rules`. Set `LBSCUPSmTLSEnabled` to `true`. This will allow traffic from `8987` to flow into the cluster.
 
 Next Update `3-2-load-balancer-rules`.
 
 - Set `SupportProxyTLS` to true.
 - Set `TLSCertificateARN` with the ARN from the previous step and update.
-- Set `CUPSmTLSEnabled` to true.
+- Set `LBSCUPSmTLSEnabled` to true.
 
 The new certificate is picked up by all TLS listeners and new listener and target group for CUPS mTLS is created.
 
-Now, update `5-6-ecs-proxy`. Set `SupportProxyTLS` and `CUPSmTLSEnabled` to true.
+Now, update `5-6-ecs-proxy`. Set `SupportProxyTLS` and `LBSCUPSmTLSEnabled` to true.
+
+Make sure that the image of the proxy is minimum `v3.30.0`. Images from earlier releases do not contain changes necessary for mTLS support.
 
 You can check if the connection is successful by querying the certificates presented by the `8987` listener.
 
@@ -113,7 +129,7 @@ Once that is completed, deploy `5-4-ecs-services` with `SupportProxyTLS` set to 
 
 ### Step 5: Testing
 
-Now that the above setup is complete, we can now test if everything worked. For testing instructions check the [mTLS Authentication]({{< ref "/gateways/concepts/mtls-authentication" >}}) page.
+Now that the above setup is complete, we can now test if everything worked. For testing instructions check the [mTLS Authentication]({{< ref "/gateways/concepts/lora-basics-station/mtls-authentication" >}}) page.
 
 ## Additional Operator Notes
 
