@@ -134,3 +134,19 @@ rate-limiting:
       associations:
         - gs:up
 ```
+
+## Rate limiting providers
+
+The default rate limiting provider for {{% tts %}} is `memory`. When using this provider the state of rate limiting is stored locally on each instance. The drawback of using it is inconsistent rate limiting state. The `redis` provider eliminates this problem by storing a shared rate limiting state for all instances.
+
+| Provider | State        |
+| -------- | ------------ |
+| `memory` | per instance |
+| `redis`  | shared       |
+
+To enable `redis` rate limiting provider you can set it in rate limiting configuration.
+
+```yaml
+rate-limiting:
+  provider: `redis`
+```
