@@ -2,8 +2,8 @@
 title: "Milesight UG56 LoRaWAN Gateway"
 vendor: "Milesight"
 vendor_page: "https://www.milesight.com/iot/product/lorawan-gateway/ug56"
-description: "The Milesight UG56 is a robust outdoor LoRaWAN® gateway designed for outdoor deployments. Powered by the SX1302 LoRa chip and a high-performance quad-core CPU, the UG56 can support connectivity with over 2000 nodes."
-ip_rating: "IP67"
+description: "The Milesight UG56 is a robust 8-channel indoor LoRaWAN® gateway. Adopting SX1302 chip and high-performance quad-core CPU, UG56 supports connection with more than 2000 nodes."
+ip_rating: "IP30"
 backhaul: [Ethernet, Cellular (optional)]
 aliases: [/gateways/milesightug56]
 image: [ug56.png]
