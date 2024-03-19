@@ -11,7 +11,7 @@ This section shows how to buy {{% tts %}} subscription, and to perform subscript
 
 ## Purchasing {{% tts %}} Subscription
 
-Navigate to the [{{% tts %}} Plans](https://accounts.thethingsindustries.com/fee-calculator) page.
+Navigate to the [{{% tts %}} Plans](https://www.thethingsindustries.com/stack/plans/) page.
 
 First, you need to choose your entry level.
 
@@ -107,7 +107,7 @@ Under **Invoice History** section on the bottom, you will be able to see and dow
 
 {{< note >}} If you change your billing information, it will be applied only on newly created invoices. Invoices that have been created before that cannot be changed. {{</ note >}}
 
-If you want to cancel your subscription, click the **Cancel subscription** button in the upper right of your subscription preview (below **Expected next invoice amount**). 
+If you want to cancel your subscription, click the **Cancel subscription** button in the upper right of your subscription preview (below **Expected next invoice amount**).
 
 {{< warning >}} Please note that the action of cancelling subscription cannot be undone. You will loose access to your tenant/network and all the data stored in it. It will also not be possible to reuse the associated Network ID. All registered end devices and gateways will be **locked** to this tenant unless deregistered/unclaimed and purged first. {{</ warning >}}
 
