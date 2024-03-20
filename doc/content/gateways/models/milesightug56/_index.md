@@ -17,7 +17,7 @@ The **Milesight UG56** is a robust 8-channel indoor LoRaWAN® gateway. Adopting 
 
 The technical specifications can be found in Milesight's official [UG56](https://www.milesight-iot.com/lorawan/gateway/ug56/) pages.
 
-The Milesight UG56 LoRaWAN gateways support two ways of connecting {{% tts %}}, using the {{% udp-pf %}} or {{% lbs %}}.
+The Milesight UG56 LoRaWAN gateways support two ways of connecting to {{% tts %}}, using the {{% udp-pf %}} or {{% lbs %}}.
 
 ## Requirements
 
@@ -29,7 +29,7 @@ The Milesight UG56 LoRaWAN gateways support two ways of connecting {{% tts %}}, 
 
 [Add a gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) by following the instructions for the [Console]({{< ref "/the-things-stack/interact/console#create-gateway" >}}) or the [CLI]({{< ref "/the-things-stack/interact/cli#create-gateway" >}}).
 
-The **Gateway EUI** of the gateway can be found on the gateway's configuration web page. See [Configuration via Browser section]({{< ref "#configuration-via-browser" >}}) below for instructions to access the configuration page.
+The **Gateway EUI** can be found on the gateway's configuration web page. See [Configuration via Browser section]({{< ref "#configuration-via-browser" >}}) below for instructions to access the configuration page.
 
 {{< figure src="eui.png" alt="Gateway EUI" >}}
 
