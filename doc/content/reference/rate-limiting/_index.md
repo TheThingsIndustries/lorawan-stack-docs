@@ -95,42 +95,18 @@ When rate limiting is enabled, the following headers are added to all HTTP and g
 - `X-Rate-Limit-Reset`: Seconds until the rate limiter resets.
 - `X-Rate-Limit-Retry`: Seconds the client should wait before retrying the request.
 
-## Example configuration
+## Rate limiting providers
 
-Enable rate limiting by adding the following configuration to your `ttn-lw-stack.yml`. Make sure to alter the values accordingly so that they match your deployment needs.
+The default rate limiting provider for {{% tts %}} is `memory`. When using this provider the state of rate limiting is stored locally on each instance. The drawback of using it is inconsistent rate limiting state. The `redis` provider eliminates this problem by storing a shared rate limiting state for all instances.
+
+| Provider | State        |
+| -------- | ------------ |
+| `memory` | per instance |
+| `redis`  | shared       |
+
+To enable `redis` rate limiting provider you can set it in rate limiting configuration.
 
 ```yaml
 rate-limiting:
-  profiles:
-    - name: HTTP servers
-      max-per-min: 30
-      associations:
-        - http
-    - name: Application downlink traffic
-      max-per-min: 10
-      associations:
-        - as:down:web
-        - as:down:mqtt
-        - grpc:method:/ttn.v3.lorawan.v3.AppAs/DownlinkQueuePush
-        - grpc:method:/ttn.v3.lorawan.v3.AppAs/DownlinkQueueReplace
-    - name: Gateway connections
-      max-per-min: 5
-      associations:
-        - gs:accept:mqtt
-        - gs:accept:ws
-        - grpc:stream:accept:/ttn.lorawan.v3.GtwGs/LinkGateway
-    - name: gRPC API
-      max-per-min: 60
-      associations:
-        - grpc:method
-        - grpc:stream:accept
-    - name: Override rate for uplink simulation
-      max-per-min: 5
-      associations:
-        - grpc:method:/ttn.lorawan.v3.AppAs/SimulateUplink
-    - name: Gateway uplink traffic
-      max-per-min: 1000
-      max-burst: 1500
-      associations:
-        - gs:up
+  provider: `redis`
 ```
