@@ -585,41 +585,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li><code>X-Rate-Limit-Reset</code>: Seconds until the rate limiter resets.</li>
 <li><code>X-Rate-Limit-Retry</code>: Seconds the client should wait before retrying the request.</li>
 </ul>
-<h2 id="example-configuration-1">Example configuration</h2>
-<p>Enable rate limiting by adding the following configuration to your <code>ttn-lw-stack.yml</code>. Make sure to alter the values accordingly so that they match your deployment needs.</p>
+<h2 id="rate-limiting-providers">Rate limiting providers</h2>
+<p>The default rate limiting provider for The Things Stack is <code>memory</code>. When using this provider the state of rate limiting is stored locally on each instance. The drawback of using it is inconsistent rate limiting state. The <code>redis</code> provider eliminates this problem by storing a shared rate limiting state for all instances.</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>memory</code></td>
+<td>per instance</td>
+</tr>
+<tr>
+<td><code>redis</code></td>
+<td>shared</td>
+</tr>
+</tbody>
+</table>
+<p>To enable <code>redis</code> rate limiting provider you can set it in rate limiting configuration.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">rate-limiting</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">profiles</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HTTP servers</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">associations</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">http</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Application downlink traffic</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">associations</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">as:down:web</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">as:down:mqtt</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">grpc:method:/ttn.v3.lorawan.v3.AppAs/DownlinkQueuePush</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">grpc:method:/ttn.v3.lorawan.v3.AppAs/DownlinkQueueReplace</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Gateway connections</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">associations</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">gs:accept:mqtt</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">gs:accept:ws</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">grpc:stream:accept:/ttn.lorawan.v3.GtwGs/LinkGateway</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">gRPC API</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">60</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">associations</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">grpc:method</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">grpc:stream:accept</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Override rate for uplink simulation</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">associations</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">grpc:method:/ttn.lorawan.v3.AppAs/SimulateUplink</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Gateway uplink traffic</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">1000</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">max-burst</span><span class="p">:</span><span class="w"> </span><span class="m">1500</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">associations</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">gs:up</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">`redis`</span><span class="w">
 </span></span></span></code></pre></div>
         </div>
           <div class="columns is-multiline">
@@ -660,7 +648,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <li><a href='#rate-limiting-headers'>Rate Limiting Headers</a></li>
     
       
-      <li><a href='#example-configuration'>Example configuration</a></li>
+      <li><a href='#rate-limiting-providers'>Rate limiting providers</a></li>
     
   </ul>
 
