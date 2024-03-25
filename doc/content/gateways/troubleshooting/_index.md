@@ -224,7 +224,7 @@ This error is shown when the API key associated with the gateway has been delete
 
 This error occurs due to the incorrect API key configuration in the [**LoRa Basics Station LNS Authentication Key** field]({{< ref "/gateways/concepts/lora-basics-station/cups#configure-cups-to-send-the-lns-api-key" >}}) available in your gateway's settings in the Console. Make sure you've followed instructions to [Configure CUPS to Send the LNS API Key]({{< ref "/gateways/concepts/lora-basics-station/cups#configure-cups-to-send-the-lns-api-key" >}}).
 
-## {{% lbs %}} packet forwarder logs mention the "Send failed: X509 - Certificate verification failed, e.g. CRL, CA, or signature check failed" error. What does it mean?
+## {{% lbs %}} packet forwarder logs mention the "Send failed: X.509 - Certificate verification failed, e.g. CRL, CA, or signature check failed" error. What does it mean?
 
 The cause of this issue is that the gateway is configured with a server certificate that {{% tts %}} does not support. It is recommended to use the [Let's Encrypt ISRG Root X1 Trust certificate](https://letsencrypt.org/certs/isrgrootx1.pem.txt). Make sure to restart your gateway after changing the certificate.
 

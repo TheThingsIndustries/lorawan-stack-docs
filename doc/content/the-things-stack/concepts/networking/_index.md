@@ -24,7 +24,7 @@ The following table lists the default ports used.
 | Backend Interfaces                                       | HTTP                                                                                              | Custom             | 1886       | 8886           |
 | {{% lbs %}} LNS                                          | Web Sockets                                                                                       | Auth Token, Custom | 1887       | 8887           |
 | Tabs Hubs LNS {{< distributions "Cloud" "Enterprise" >}} | Web Sockets                                                                                       | Auth Token, Custom | 1888       | 8888           |
-| CUPS mTLS {{< distributions "Cloud" "Enterprise" >}}     | HTTP                                                                                              | mTLS               | NA         | 8987           |
+| LBS CUPS mTLS {{< distributions "Cloud" "Enterprise" >}} | HTTP                                                                                              | mTLS               | NA         | 8987           |
 
 ## Service Discovery
 
