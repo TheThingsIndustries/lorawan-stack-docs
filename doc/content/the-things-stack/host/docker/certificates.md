@@ -46,15 +46,21 @@ To use [CA certificates you already have](#certificates-from-a-certificate-autho
 {{< readfile path="/content/the-things-stack/host/docker/configuration/docker-compose-custom-certificates.yml" from=66 to=79 >}}
 {{< /highlight >}}
 
-You will also need to comment out the Let's Encrypt section of `ttn-lw-stack-docker.yml`, and uncomment the custom certificates section:
+You will also need to comment out the Let's Encrypt section of `ttn-lw-stack-docker.yml`:
 
 {{< highlight yaml "linenos=table,linenostart=48" >}}
 {{< readfile path="/content/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=48 to=55 >}}
 {{< /highlight >}}
 
+And uncomment the custom certificates section:
+
+{{< highlight yaml "linenos=table,linenostart=41" >}}
+{{< readfile path="/content/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=41 to=46 >}}
+{{< /highlight >}}
+
 ### Certificates from a Certificate Authority
 
-If you want to use the certificate (`cert.pem`) and key (`key.pem`) that you already have, you also need to set these permissions.
+In order to use the certificate (`cert.pem`) and key (`key.pem`), you also need to set these permissions.
 
 ```bash
 sudo chown 886:886 ./cert.pem ./key.pem
@@ -79,7 +85,7 @@ Be sure to configure `docker-compose.yml` and `ttn-lw-stack-docker.yml` for your
 
 To use TLS on a local or offline deployment, you can use your own Certificate Authority. In order to set that up, you can use `cfssl`, CloudFlare's PKI/TLS toolkit. The `cfssl` installation instructions can be found [here](https://github.com/cloudflare/cfssl#installation).
 
-Write the configuration for your CA to `ca.json`:
+Create a file called `ca.json` and write the following configuration to it:
 
 ```json
 {

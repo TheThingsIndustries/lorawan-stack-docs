@@ -20,10 +20,10 @@ For highly available production cloud deployments with high throughput, we recom
 
 Continue following these instructions to run {{% tts %}} Enterprise or Open Source on your own hardware, using Docker.
 
-In addition to the following written instructions, video instructions for installing {{% tts %}} are available on [The Things Network youtube channel](https://www.youtube.com/watch?v=XgPSU4UkDuE).
+In addition to the following written instructions, video instructions for installing {{% tts %}} are available on [The Things Network youtube channel](https://www.youtube.com/watch?v=DcmgJMvMfZc).
 
 <details><summary>Show video</summary>
-{{< youtube "XgPSU4UkDuE" >}}
+{{< youtube "DcmgJMvMfZc" >}}
 </details>
 
 ## Prerequisites

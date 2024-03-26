@@ -9,17 +9,47 @@ This guide shows an example of configuring {{% tts %}} using configuration files
 
 If configuring {{% tts %}} as `localhost` on a machine with no public IP or DNS address, see the [`localhost`](#running-the-things-stack-as-localhost) section.
 
-In addition to the written instructions below, video instructions for installing {{% tts %}} are available on [The Things Network youtube channel](https://www.youtube.com/c/TheThingsNetworkCommunity).
+In addition to the written instructions below, video instructions for installing {{% tts %}} are available on [The Things Network youtube channel](https://www.youtube.com/watch?v=DcmgJMvMfZc).
 
 <details><summary>Show video</summary>
-{{< youtube "XgPSU4UkDuE" >}}
+{{< youtube "DcmgJMvMfZc" >}}
 </details>
 
 ## Configuration Files
 
-{{% tts %}} requires two configuration files when installing with Docker: `docker-compose.yml` and `ttn-lw-stack-docker.yml`.
+{{< tabs/container "Enterprise" "Open Source" >}}
+{{< tabs/tab "Enterprise" >}}
 
-Example files for Enterprise and Open source are provided [below](#example-configuration-files). Note that you must replace the example server address `thethings.example.com` in `ttn-lw-stack-docker.yml`, and you should change additional settings for production deployments, which we cover below.
+{{% tts %}} requires two configuration files when installing with Docker: `docker-compose.yml` and `ttn-lw-stack-docker.yml`. The files are provided below:
+
+Download the example `docker-compose.yml` for {{% tts %}} Enterprise <a href="docker-compose-enterprise.yml" download="docker-compose.yml">here</a>.
+
+Download the example `ttn-lw-stack-docker.yml` for {{% tts %}} Enterprise <a href="ttn-lw-stack-docker-enterprise.yml" download="ttn-lw-stack-docker.yml">here</a>.
+
+{{< /tabs/tab >}}
+{{< tabs/tab "Open Source" >}}
+
+{{% tts %}} requires two configuration files when installing with Docker: `docker-compose.yml` and `ttn-lw-stack-docker.yml`. The files are provided below:
+
+Download the example `docker-compose.yml` for {{% tts %}} Open Source <a href="docker-compose-open-source.yml" download="docker-compose.yml">here</a>.
+
+Download the example `ttn-lw-stack-docker.yml` for {{% tts %}} Open Source <a href="ttn-lw-stack-docker-open-source.yml" download="ttn-lw-stack-docker.yml">here</a>.
+
+{{< /tabs/tab >}}
+{{< /tabs/container >}}
+
+After getting the files create the following folder structure with `docker-compose.yml`and `ttn-lw-stack-docker.yml`:
+
+```bash
+docker-compose.yml          # defines Docker services for running {{% tts %}}
+config/
+└── stack/
+    └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
+```
+
+Note that you must replace the example server address `thethings.example.com` in `ttn-lw-stack-docker.yml`, and you should change additional settings for production deployments, which we cover below.
+
+## Configuration Files Explained
 
 ### `docker-compose.yml`
 
@@ -30,36 +60,6 @@ Example files for Enterprise and Open source are provided [below](#example-confi
 `ttn-lw-stack-docker.yml` contains the configuration specific to {{% tts %}} deployment and is used to configure {{% tts %}}. When {{% tts %}} starts, it searches through `ttn-lw-stack-docker.yml` for component server addresses, a TLS certificate source, client authentication credentials, and other configuration parameters.
 
 The configuration options in `ttn-lw-stack-docker` can also be specified using command-line flags or environment variables. All configuration options have a corresponding environment variable and command-line flag. See the [Configuration Reference]({{< ref "reference/configuration" >}}) for more information about the configuration options.
-
-This guide assumes the following directory hierarchy. Create this folder structure with `docker-compose.yml`and `ttn-lw-stack-docker.yml`:
-
-```bash
-docker-compose.yml          # defines Docker services for running {{% tts %}}
-config/
-└── stack/
-    └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
-```
-
-## Example Configuration Files
-
-{{< tabs/container "Enterprise" "Open Source" >}}
-{{< tabs/tab "Enterprise" >}}
-
-Download the example `docker-compose.yml` for {{% tts %}} Enterprise <a href="docker-compose-enterprise.yml" download="docker-compose.yml">here</a>.
-
-Download the example `ttn-lw-stack-docker.yml` for {{% tts %}} Enterprise <a href="ttn-lw-stack-docker-enterprise.yml" download="ttn-lw-stack-docker.yml">here</a>.
-
-{{< /tabs/tab >}}
-{{< tabs/tab "Open Source" >}}
-
-Download the example `docker-compose.yml` for {{% tts %}} Open Source <a href="docker-compose-open-source.yml" download="docker-compose.yml">here</a>.
-
-Download the example `ttn-lw-stack-docker.yml` for {{% tts %}} Open Source <a href="ttn-lw-stack-docker-open-source.yml" download="ttn-lw-stack-docker.yml">here</a>.
-
-{{< /tabs/tab >}}
-{{< /tabs/container >}}
-
-These example configuration files contain all of the configuration settings you need to run {{% tts %}} for development. Be sure to update `ttn-lw-stack-docker.yml` with your server address.
 
 Settings in `docker-compose.yml` and `ttn-lw-stack-docker.yml` files are explained in detail in [Understanding Docker Configuration](#understanding-docker-configuration) and [Understanding The Things Stack Configuration](#understanding-the-things-stack-configuration) sections below. Further, we provide tips for running {{% tts %}} in production.
 

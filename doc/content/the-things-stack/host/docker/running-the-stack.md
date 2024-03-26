@@ -47,7 +47,7 @@ docker compose run --rm stack is-db create-tenant
 
 This will take the `tenancy.default-id` Tenant ID from the [configuration]({{< relref "configuration" >}}) in `ttn-lw-stack-docker.yml`. To specify another Tenant ID, use the `--id` parameter.
 
-Next, an initial `admin` user has to be created. Make sure to give it a good password.
+Next, an initial `admin` user has to be created. Make sure the user id is in lowercase and give it a good password.
 
 ```bash
 docker compose run --rm stack is-db create-admin-user \
