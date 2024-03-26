@@ -18,7 +18,7 @@ aliases: [/getting-started/aws/ecs/mutual-tls]
 
 {{% tts %}} supports mTLS authentication for {{% lbs %}} CUPS and {{% lbs %}} LNS connections (LNS-only mode) that present a client certificate.
 
-### TLS termination 
+### TLS termination
 
 In the standard deployment model, AWS Network Load Balancer (NLB) terminates TLS, and then forwards unencrypted packets to {{% tts %}} via AWS internal network.
 
@@ -73,7 +73,7 @@ But since credentials once stored in ACM cannot be retrieved (can only be refere
 
 Deploy the updated `4-1-secrets` template to create a new secret in ACM. This also generates additional keys in the KeyVault for {{% tts %}} components to exchange auth information.
 
-Then deploy the updated `5-7a-certs-le` to update the Certbot task and fetch new certificates using the [instructions]({{< relref "#lets-encrypt-certificates-optional" >}}).
+Then deploy the updated `5-8a-certs-le` to update the Certbot task and fetch new certificates using the [instructions]({{< relref "#lets-encrypt-certificates-optional" >}}).
 
 ### Step 3: Update the Load Balancer and the Proxy
 
@@ -81,7 +81,7 @@ Then deploy the updated `5-7a-certs-le` to update the Certbot task and fetch new
 This step requires brief downtime. Make sure to inform your customers.
 {{</ warning >}}
 
-The AWS NLB used by {{% tts %}} AWS ECS deployment binds listeners to Target Groups. 
+The AWS NLB used by {{% tts %}} AWS ECS deployment binds listeners to Target Groups.
 
 AWS NLB requires that the target groups and the listeners have the same protocol type (TCP/TLS/UDP).
 
@@ -89,17 +89,17 @@ We are now modifying the protocol of the NLB ports `443` and `8887` to TCP. This
 
 Since the Proxy service is already bound to these target groups, CloudFormation would error if you try to update this.
 
-First, make a copy of the configuration parameters in the `5-6-ecs-proxy` CloudFormation stack.
+First, make a copy of the configuration parameters in the `5-7-ecs-proxy` CloudFormation stack.
 
-Next, delete the `5-6-ecs-proxy` stack.
+Next, delete the `5-7-ecs-proxy` stack.
 
 {{< note >}}
-This will only delete the Proxy ECS containers and its related alarms. This can be easily reverted by re-deploying `5-6-ecs-proxy`.
+This will only delete the Proxy ECS containers and its related alarms. This can be easily reverted by re-deploying `5-7-ecs-proxy`.
 {{</ note >}}
 
 Deploy the `3-2-load-balancer-rules` template. AWS will now create the proper target groups with the `TCP` protocol type.
 
-Once completed, redeploy `5-6-ecs-proxy` and make sure to set `SupportProxyTLS` to `true`.
+Once completed, redeploy `5-7-ecs-proxy` and make sure to set `SupportProxyTLS` to `true`.
 
 At this point, if all the configuration is right, the proxy (Envoy) will handle TLS termination for ports `443` and `8887`.
 
@@ -113,11 +113,11 @@ First deploy `4-2a-configuration` which contains new configuration and then depl
 
 ### Reloading Certificates
 
-Envoy (proxy) supports reloading TLS certificates without dropping active connections. 
+Envoy (proxy) supports reloading TLS certificates without dropping active connections.
 
 This is done by using the [static SDS configuration](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-three-certificate-rotation-for-xds-grpc-connection).
 
-The `5-7b-ecs-certbot-scheduled-task` runs a periodic task to fetch new server TLS credentials.
+The `5-8b-ecs-certbot-scheduled-task` runs a periodic task to fetch new server TLS credentials.
 
 If there are new credentials, they will also be stored in Secrets Manager.
 
@@ -165,7 +165,7 @@ $ openssl req -key client.key -new -out gateway.csr
 $ openssl x509 -req -CA root-ca.crt -CAkey root-ca.key -in gateway.csr -out gateway.crt -days 365 -CAcreateserial -sha256 -days 365
 ```
 
-5. In the S3 bucket generated in Step 1, add the `root-ca.crt` in either the `common` folder or the target tenant folder where your gateway is registered. 
+5. In the S3 bucket generated in Step 1, add the `root-ca.crt` in either the `common` folder or the target tenant folder where your gateway is registered.
 
 Now restart the Gateway Server, Identity Server and Gateway Configuration Servers.
 

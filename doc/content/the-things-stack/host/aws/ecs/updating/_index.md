@@ -76,7 +76,7 @@ When updating {{% tts %}} to a newer version, the [Release Notes](https://www.th
 - `as-db`
 - `storage-db`
 
-Migrations are performed using `migrate` commands. Those can be run similarly to `init` commands during initial deployment. 
+Migrations are performed using `migrate` commands. Those can be run similarly to `init` commands during initial deployment.
 
 > See [Database Operations]({{< relref "../database-operations" >}}) for detailed info about migrations.
 
