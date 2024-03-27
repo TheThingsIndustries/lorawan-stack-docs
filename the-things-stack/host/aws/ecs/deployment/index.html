@@ -462,8 +462,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="lets-encrypt-certificates-optional">Let&rsquo;s Encrypt Certificates (optional)</h2>
 <p>Unfortunately not all gateways are able to connect when using AWS-issued certificates. If this is the case in your deployment, you can use the <code>5-7a-certs-le</code> and <code>5-7b-ecs-certbot-scheduled-task</code> templates to request certificates from <a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a>.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-7a-certs-le.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-7a-certs-le.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
-<p>The Docker image we&rsquo;ll use is <code>docker.io/thethingsindustries/aws-certbot-dns-route53:latest</code>. On the initial deployment, leave the <strong>Existing Certificate ARN</strong> blank.</p>
+<p>The Docker image we&rsquo;ll use is <code>docker.io/thethingsindustries/aws-certbot-dns-route53:latest</code>.</p>
+<p>On the initial deployment, leave the <strong>Existing Certificate ARN</strong> blank.</p>
 <p>We need to manually request the certificates for the first time. In the CloudFormation <strong>Output</strong> window, copy the value for the output <code>RunCertbotTaskCLICommand</code> and run that from a CLI.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If your deployment uses only the <code>FARGATE</code> launch type, then append <code>--launch-type FARGATE</code> to the command in the <code>RunCertbotTaskCLICommand</code> output.
+</div>
+
 <p>After the task succeeds, go to <strong>Certificate Manager</strong>, find the new certificate, and copy its ARN. Back in CloudFormation, update the stacks for templates <code>3-2-load-balancer-rules</code> and <code>5-7a-certs-le</code>, and paste that certificate ARN.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
