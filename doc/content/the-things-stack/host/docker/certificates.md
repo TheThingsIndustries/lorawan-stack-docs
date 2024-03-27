@@ -9,7 +9,13 @@ aliases: [/getting-started/installation/certificates]
 
 <!--more-->
 
-In this guide, we request a free, trusted certificate from [Let's Encrypt](https://letsencrypt.org/getting-started/), using the built in ACME support, but if you already have a certificate (`cert.pem`) and a corresponding key (`key.pem`), you can also use those. For local deployments, you can set up your own Certificate Authority and issue a certificate-key pair.
+In this guide, we request a free, trusted certificate from [Let's Encrypt](https://letsencrypt.org/getting-started/), using the built in ACME support, but if you already have a certificate (`cert.pem`) and a corresponding key (`key.pem`), you can also use those. 
+
+If you are deploying using ACME, move to the [Automatic Certificate Management](#automatic-certificate-management) section.
+
+If you already have CA certificates, move to the [Using Custom Certificates](#using-custom-certificates) section.
+
+If you are deploying locally you can set up your own Certificate Authority and issue a certificate-key pair. Move to the [Custom Certificate Authority](#custom-certificate-authority) section.
 
 ## Automatic Certificate Management
 
@@ -37,49 +43,6 @@ If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, make s
 Certificates will automatically be requested the first time you access {{% tts %}}. You will notice that the page takes some time to load while certificates are obtained in the background.
 
 Once you have created the `acme` folder and given it appropriate permissions, move on to [run {{% tts %}}]({{< ref "/the-things-stack/host/docker/running-the-stack" >}})!
-
-### Using Custom Certificates
-
-To use [CA certificates you already have](#certificates-from-a-certificate-authority) or [self-signed certificates](#custom-certificate-authority), you will need to uncomment the custom certificates section of `docker-compose.yml`:
-
-{{< highlight yaml "linenos=table,linenostart=66" >}}
-{{< readfile path="/content/the-things-stack/host/docker/configuration/docker-compose-custom-certificates.yml" from=66 to=79 >}}
-{{< /highlight >}}
-
-You will also need to comment out the Let's Encrypt section of `ttn-lw-stack-docker.yml`:
-
-{{< highlight yaml "linenos=table,linenostart=48" >}}
-{{< readfile path="/content/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=48 to=55 >}}
-{{< /highlight >}}
-
-And uncomment the custom certificates section:
-
-{{< highlight yaml "linenos=table,linenostart=41" >}}
-{{< readfile path="/content/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=41 to=46 >}}
-{{< /highlight >}}
-
-### Certificates from a Certificate Authority
-
-In order to use the certificate (`cert.pem`) and key (`key.pem`), you also need to set these permissions.
-
-```bash
-sudo chown 886:886 ./cert.pem ./key.pem
-```
-
-{{< warning >}} If you don't set these permissions, you may encounter an error resembling `/run/secrets/key.pem: permission denied`. {{</ warning >}}
-
-The directory hierarchy should look like this:
-
-```bash
-cert.pem
-key.pem
-docker-compose.yml          # defines Docker services for running {{% tts %}}
-config/
-└── stack/
-    └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
-```
-
-Be sure to configure `docker-compose.yml` and `ttn-lw-stack-docker.yml` for your custom certificates, as shown in [using custom certificates](#using-custom-certificates).
 
 ## Custom Certificate Authority
 
@@ -145,3 +108,50 @@ config/
 ```
 
 Be sure to configure `docker-compose.yml` and `ttn-lw-stack-docker.yml` for your custom certificates, as shown in [using custom certificates](#using-custom-certificates).
+
+## Using Custom Certificates
+
+To use CA certificates you already have or [self-signed certificates](#custom-certificate-authority), you will need to uncomment the custom certificates section of `docker-compose.yml`:
+
+{{< highlight yaml "linenos=table,linenostart=66" >}}
+{{< readfile path="/content/the-things-stack/host/docker/configuration/docker-compose-custom-certificates.yml" from=66 to=79 >}}
+{{< /highlight >}}
+
+You will also need to comment out the Let's Encrypt section of `ttn-lw-stack-docker.yml`:
+
+{{< highlight yaml "linenos=table,linenostart=48" >}}
+{{< readfile path="/content/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=48 to=55 >}}
+{{< /highlight >}}
+
+And uncomment the custom certificates section:
+
+{{< highlight yaml "linenos=table,linenostart=41" >}}
+{{< readfile path="/content/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=41 to=46 >}}
+{{< /highlight >}}
+
+Finally you must set the correct permissions, as shown in [Certificates from a Certificate Authority](#certificates-from-a-certificate-authority)
+
+### Certificates from a Certificate Authority
+
+In order to use the certificate (`cert.pem`) and key (`key.pem`), you also need to set these permissions.
+
+```bash
+sudo chown 886:886 ./cert.pem ./key.pem
+```
+
+{{< warning >}} If you don't set these permissions, you may encounter an error resembling `/run/secrets/key.pem: permission denied`. {{</ warning >}}
+
+The directory hierarchy should look like this:
+
+```bash
+cert.pem
+key.pem
+docker-compose.yml          # defines Docker services for running {{% tts %}}
+config/
+└── stack/
+    └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
+```
+
+Make sure you have configured `docker-compose.yml` and `ttn-lw-stack-docker.yml` for your custom certificates, as shown in [using custom certificates](#using-custom-certificates).
+
+Now that the permissions have been set you can move on to [run {{% tts %}}]({{< ref "/the-things-stack/host/docker/running-the-stack" >}})!

@@ -47,7 +47,9 @@ config/
     └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
 ```
 
-Note that you must replace the example server address `thethings.example.com` in `ttn-lw-stack-docker.yml`, and you should change additional settings for production deployments, which we cover below.
+After that make sure you replace the example server address `thethings.example.com` in `ttn-lw-stack-docker.yml` with your own. The easiest way to do this is to use the search and replace function in your preferred code editor.
+
+Next proceed to the instructions below for how to change additional settings for production deployments.
 
 ## Configuration Files Explained
 
