@@ -91,7 +91,7 @@ This creates a `ProxyTLSSecret` for the TLS server certificate/key secrets and a
 Next, update `5-7a-certs-le` with the following settings:
 
 - Set ` SupportProxyTLS` to true. If `ExistingCertARN` is set, clear this before running the update.
-- Fetch new certificates using the [instructions]({{< relref "#lets-encrypt-certificates-optional" >}}).
+- Fetch new certificates by manually requesting it using the [instructions]({{< ref "the-things-stack/host/aws/ecs/deployment/#lets-encrypt-certificates-optional" >}}).
 - When fetching the certificates, make note of the `CertificateArn` field from the logs where the new certificates are written.
 - Once the certificates are successfully queried, rerun the same `5-7a-certs-le` template but this time set, the `ExistingCertARN` with the `CertificateArn` value. This ensures that Certbot renews these certificates and doesn't replace them.
 
