@@ -261,7 +261,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h2 class="subtitle">
           
           
-            <span class="tag is-light">New in 3.22.2</span>
+            <span class="tag is-light">New in 3.29.0</span>
 
           
           
@@ -273,27 +273,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="mechanism">Mechanism</h2>
 <p>The Things Stack does not terminate mTLS connections. This is done by the proxy. The proxy is expected to forward the sanitized client certificate chain as an HTTP header.</p>
 <p>The Things Stack verifies this header with a pre-configured list of CAs.</p>
-<p>The Things Stack supports mTLS authentication for LoRa Basics™ Station CUPS and LoRa Basics™ Station LNS connections (LNS-only mode) that present a client certificate.</p>
+<p>The Things Stack supports mTLS authentication for LoRa Basics™ Station CUPS connections.</p>
 <h3 id="tls-termination">TLS termination</h3>
 <p>In the standard deployment model, AWS Network Load Balancer (NLB) terminates TLS, and then forwards unencrypted packets to The Things Stack via AWS internal network.</p>
-<p>Since the NLB does not support verifying client TLS certificates, the responsibility for terminating TLS is promoted to the proxy (only) for the the ports <strong>443</strong> (HTTPS) and <strong>8887</strong> (Web Socket with TLS).</p>
-<p>The other ports will have TLS terminated by the NLB.</p>
+<p>Since the NLB does not support verifying client TLS certificates, the responsibility for terminating TLS is promoted to the proxy (only) for the the ports <strong>8987</strong> (CUPS mTLS) port.</p>
 <h3 id="certificate-requirements">Certificate Requirements</h3>
 <p>The <code>CN</code> (Common Name) field of the certificate must be the 16 digit gateway EUI. Example: <code>1111111111111111</code></p>
 <h2 id="update-instructions">Update Instructions</h2>
-<p>The <code>SupportProxyTLS</code> option is available in all the following templates and controls where TLS is terminated.</p>
-<p>Make sure to set it to <code>true</code> in <strong>all</strong> the templates if the proxy should terminate TLS.</p>
+<p>The <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> options are available in multiple templates. Make sure to set it to <code>true</code> in <strong>all</strong> the templates if the proxy should terminate CUPS mTLS Connections.</p>
 <p>If not, it should be set to <code>false</code> in <strong>all</strong> the templates (this is the default). Setting it <code>true</code> in one and <code>false</code> in another will lead to to errors.</p>
+<h3 id="preparation">Preparation</h3>
+<ul>
+<li>If you are deploying TTS for the first time, complete the steps with <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> set to false (this is the default).</li>
+<li>If you are updating to a version with <code>mTLS</code> support from a previous version, first deploy the following templates in this exact order with <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> set to false.
+<ul>
+<li><code>3-1-security-group-rules</code>: The template will be deployed with no changes.</li>
+<li><code>3-2-load-balancer-rules</code>: The template will be deployed with no changes.</li>
+<li><code>4-1-secrets</code>: The template will be deployed with no changes.</li>
+<li><code>4-2a-configuration</code>: CloudFormation will mark <code>GSConfiguration</code> for a change but this is only on the template. No resources will be changed.</li>
+<li><code>5-4-ecs-services</code>: There will be changes to the GS and GCS Task roles. The GS/GCS services/tasks will not be updated.</li>
+<li><code>5-7-ecs-proxy</code>: The template will be deployed with no changes.</li>
+<li><code>5-8a-certs-le</code>: The template will be deployed with no changes.</li>
+</ul>
+</li>
+</ul>
+<h3 id="enabling-mtls-support">Enabling mTLS Support</h3>
+<p>Once the preparation step is complete, run the following steps in the <em>exact same order</em> as described here.</p>
 <h3 id="step-1-configuration-of-the-ca-certificate-store">Step 1: Configuration of the CA Certificate Store</h3>
 <p>First, deploy template <code>2-4c-mtls-s3</code>. This generates an S3 bucket to store CA certificates.</p>
 <p>After this template has been deployed, navigate to S3 and find the bucket that was created. You can check the <strong>Resources</strong> tab in Cloud Formation to find the bucket.</p>
 <p>Create an <code>index.yml</code> file that contains the CA store configuration and upload it to the root of the bucket.</p>
 <p>The contents of this file are as below.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">common</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">common.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">common.pem</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tenants</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">test</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">test.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">test.pem</span><span class="w">
 </span></span></span></code></pre></div><p>Create a <code>common</code> folder at the root of this repository.
 This folder contains the default certificates that are used to verify the client certificate, in case there are no tenant-specific matches.</p>
 <p>Create a folder called <code>tenants</code> in the root of the bucket. This bucket contains CA certificates per tenant.
@@ -306,31 +321,35 @@ You can now create as many folders inside <code>tenants</code> with the folder n
 <h3 id="step-2-fetch-and-store-server-tls-credentials">Step 2: Fetch and Store Server TLS Credentials</h3>
 <p>The Things Stack AWS ECS deployment uses Certbot to query Server TLS credentials from Let&rsquo;s Encrpyt and store it in the AWS Certificate Manager.</p>
 <p>But since credentials once stored in ACM cannot be retrieved (can only be referenced by NLB), we need to store a copy of these credentials in the AWS Secrets Manager.</p>
-<p>Deploy the updated <code>4-1-secrets</code> template to create a new secret in ACM. This also generates additional keys in the KeyVault for The Things Stack components to exchange auth information.</p>
-<p>Then deploy the updated <code>5-7a-certs-le</code> to update the Certbot task and fetch new certificates using the <a href="#lets-encrypt-certificates-optional">instructions</a>.</p>
+<p>In <code>4-1-secrets</code> template with <code>SupportProxyTLS</code> set to <code>true</code>.</p>
+<p>This creates a <code>ProxyTLSSecret</code> for the TLS server certificate/key secrets and also a <code>GCS token hash key secret</code>, which is used by the Gateway Configuration Server and the Identity Server.</p>
+<p>Next, update <code>5-7a-certs-le</code> with the following settings:</p>
+<ul>
+<li>Set <code> SupportProxyTLS</code> to true. If <code>ExistingCertARN</code> is set, clear this before running the update.</li>
+<li>Fetch new certificates using the <a href="#lets-encrypt-certificates-optional">instructions</a>.</li>
+<li>When fetching the certificates, make note of the <code>CertificateArn</code> field from the logs where the new certificates are written.</li>
+<li>Once the certificates are successfully queried, rerun the same <code>5-7a-certs-le</code> template but this time set, the <code>ExistingCertARN</code> with the <code>CertificateArn</code> value. This ensures that Certbot renews these certificates and doesn&rsquo;t replace them.</li>
+</ul>
 <h3 id="step-3-update-the-load-balancer-and-the-proxy">Step 3: Update the Load Balancer and the Proxy</h3>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  This step requires brief downtime. Make sure to inform your customers.
-</div>
-
-<p>The AWS NLB used by The Things Stack AWS ECS deployment binds listeners to Target Groups.</p>
-<p>AWS NLB requires that the target groups and the listeners have the same protocol type (TCP/TLS/UDP).</p>
-<p>We are now modifying the protocol of the NLB ports <code>443</code> and <code>8887</code> to TCP. This means that the target groups that these ports use must be modified.</p>
-<p>Since the Proxy service is already bound to these target groups, CloudFormation would error if you try to update this.</p>
-<p>First, make a copy of the configuration parameters in the <code>5-6-ecs-proxy</code> CloudFormation stack.</p>
-<p>Next, delete the <code>5-6-ecs-proxy</code> stack.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  This will only delete the Proxy ECS containers and its related alarms. This can be easily reverted by re-deploying <code>5-6-ecs-proxy</code>.
-</div>
-
-<p>Deploy the <code>3-2-load-balancer-rules</code> template. AWS will now create the proper target groups with the <code>TCP</code> protocol type.</p>
-<p>Once completed, redeploy <code>5-6-ecs-proxy</code> and make sure to set <code>SupportProxyTLS</code> to <code>true</code>.</p>
-<p>At this point, if all the configuration is right, the proxy (Envoy) will handle TLS termination for ports <code>443</code> and <code>8887</code>.</p>
-<h3 id="step-4-update-the-things-stack-components">Step 4: Update The Things Stack Components</h3>
-<p>Since mTLS is supported for LoRa Basics™ Station CUPS and LoRa Basics™ Station LNS connections, The Things Stack Gateway Server, Identity Server and Gateway Configuration Server components require additional configuration.</p>
-<p>First deploy <code>4-2a-configuration</code> which contains new configuration and then deploy <code>5-4-ecs-services</code> to use those changes.</p>
+<p>We now forward traffic from <code>8987</code> on the AWS NLB to <code>8987</code> on Envoy.</p>
+<p>First update <code>3-1-security-group-rules</code>. Set <code>LBSCUPSmTLSEnabled</code> to <code>true</code>. This will allow traffic from <code>8987</code> to flow into the cluster.</p>
+<p>Next Update <code>3-2-load-balancer-rules</code>.</p>
+<ul>
+<li>Set <code>SupportProxyTLS</code> to true.</li>
+<li>Set <code>TLSCertificateARN</code> with the ARN from the previous step and update.</li>
+<li>Set <code>LBSCUPSmTLSEnabled</code> to true.</li>
+</ul>
+<p>The new certificate is picked up by all TLS listeners and new listener and target group for CUPS mTLS is created.</p>
+<p>Now, update <code>5-6-ecs-proxy</code>. Set <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> to true.</p>
+<p>Make sure that the image of the proxy is minimum <code>v3.30.0</code>. Images from earlier releases do not contain changes necessary for mTLS support.</p>
+<p>You can check if the connection is successful by querying the certificates presented by the <code>8987</code> listener.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl s_client -connect &lt;domain&gt;:8987
+</span></span></code></pre></div><h3 id="step-4-update-the-things-stack-components">Step 4: Update The Things Stack Components</h3>
+<p>Since mTLS is supported for LoRa Basics™ Station CUPS , The Things Stack Identity Server and Gateway Configuration Server components require additional configuration.</p>
+<p>In <code>4-2a-configuration</code>, set <code>SupportProxyTLS</code> to true and deploy it.</p>
+<p>Once that is completed, deploy <code>5-4-ecs-services</code> with <code>SupportProxyTLS</code> set to true.</p>
+<h3 id="step-5-testing">Step 5: Testing</h3>
+<p>Now that the above setup is complete, we can now test if everything worked. For testing instructions check the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/mtls-authentication/">mTLS Authentication</a> page.</p>
 <h2 id="additional-operator-notes">Additional Operator Notes</h2>
 <h3 id="reloading-certificates">Reloading Certificates</h3>
 <p>Envoy (proxy) supports reloading TLS certificates without dropping active connections.</p>
@@ -338,50 +357,6 @@ You can now create as many folders inside <code>tenants</code> with the folder n
 <p>The <code>5-7b-ecs-certbot-scheduled-task</code> runs a periodic task to fetch new server TLS credentials.</p>
 <p>If there are new credentials, they will also be stored in Secrets Manager.</p>
 <p>The <code>-aws-proxy</code> images used for the proxy contain a cronjob that queries Secrets Manager (daily by default) and updates the proxy configuration.</p>
-<h3 id="testing-mtls-authentication">Testing mTLS authentication</h3>
-<p>In order to test mTLS authentication, you can generate self-signed certificates.</p>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  This is only for testing. Do not use this process in production.
-</div>
-
-<ol>
-<li>Create a client gateway private key. Note you can choose any length of the key.</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl genrsa -des3 -out client.key <span class="m">2048</span>
-</span></span></code></pre></div><p>Unlock the key:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl rsa -in client.key -out gateway.key
-</span></span></code></pre></div><ol start="2">
-<li>Create a Root CA:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl req -x509 -sha256 -days <span class="m">1825</span> -newkey rsa:2048 -keyout root-ca.key -out root-ca.crt
-</span></span></code></pre></div><ol start="3">
-<li>Create a Certificate Signing Request for your client (Gateways):</li>
-</ol>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The <code>CN</code> (Common Name) field must be the 16 digit gateway EUI. Example: <code>1111111111111111</code>
-</div>
-
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl req -key client.key -new -out gateway.csr
-</span></span></code></pre></div><ol start="4">
-<li>Generate the client certificate. The following generates a gateway certificate signed by the Root CA valid for 365 days.</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl x509 -req -CA root-ca.crt -CAkey root-ca.key -in gateway.csr -out gateway.crt -days <span class="m">365</span> -CAcreateserial -sha256 -days <span class="m">365</span>
-</span></span></code></pre></div><ol start="5">
-<li>In the S3 bucket generated in Step 1, add the <code>root-ca.crt</code> in either the <code>common</code> folder or the target tenant folder where your gateway is registered.</li>
-</ol>
-<p>Now restart the Gateway Server, Identity Server and Gateway Configuration Servers.</p>
-<ol start="6">
-<li>Connect using a client (e.g. <code>cURL</code>)</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -v --cert &lt;path&gt;/gateway.crt --key &lt;path&gt;/gateway.key --cacert &lt;path&gt;/root-ca.crt https://&lt;domain&gt;:443/update-info -d <span class="s1">&#39;{&#34;router&#34;:&#34;&lt;EUI in ID6&gt;&#34;}&#39;</span>
-</span></span></code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
-<h4 id="how-do-i-check-which-certificates-are-being-used">How do I check which certificates are being used?</h4>
-<p>On most web browsers, next to the server address, there would be a lock symbol. Clicking on this would lead to a menu that shows the certificates.</p>
-<p>Alternatively, this can be done via command line.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl s_client -showcerts -connect &lt;server&gt;:&lt;port&gt;
-</span></span></code></pre></div>
         </div>
           <div class="columns is-multiline">
 </div>
@@ -416,9 +391,6 @@ You can now create as many folders inside <code>tenants</code> with the folder n
     
       
       <li><a href='#additional-operator-notes'>Additional Operator Notes</a></li>
-    
-      
-      <li><a href='#troubleshooting'>Troubleshooting</a></li>
     
   </ul>
 

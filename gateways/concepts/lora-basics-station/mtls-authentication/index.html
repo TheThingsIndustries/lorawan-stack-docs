@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>LoRaWAN Network Server (LNS) | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/lns/" />
+  <title>mTLS Authentication | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/mtls-authentication/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="LoRaWAN Network Server (LNS)">
+  <meta itemprop="name" content="mTLS Authentication">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="LoRaWAN Network Server (LNS)">
+  <meta property="og:title" content="mTLS Authentication">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/lns/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/mtls-authentication/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="LoRaWAN Network Server (LNS)" />
+  <meta name="twitter:title" content="mTLS Authentication" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -124,12 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/lns/" class="is-active">LoRaWAN Network Server (LNS)</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/lns/" class="">LoRaWAN Network Server (LNS)</a>
     
   </li>
 
@@ -139,7 +134,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/mtls-authentication/" class="">mTLS Authentication</a>
+    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/mtls-authentication/" class="is-active">mTLS Authentication</a>
+    
+    
+
+
+
     
   </li>
 
@@ -182,62 +182,86 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">LoRaWAN Network Server (LNS)
+        <h1 class="title is-size-2">mTLS Authentication
           
         </h1>
         
         <div class="content">
-          <p>LNS establishes a data connection between a LoRa Basics™ Station and The Things Stack. This page contains information about connecting your gateway to The Things Stack using the LoRaWAN® Network Server
-(LNS) protocol.</p>
-<p>These are general instructions for all LoRa Basics™ Station gateways. For specific instructions for connecting your gateway via LNS, look in the <a href="https://www.thethingsindustries.com/docs/gateways/">Gateways</a> section.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The LNS protocol is <strong>required</strong> for sending and receiving LoRaWAN® data with LoRa Basics™ Station, while the CUPS protocol is not. However, configuring CUPS will automatically retrieve LNS credentials and configure LNS on your gateway, so there is no need to configure both.
+          <p>The Things Stack supports mutual TLS to authenticate LoRa Basics™ Station CUPS connections in selected deployments. This guide explains how gateway vendors/resellers and users can leverage</p>
+<p>To check if your deployment supports it, contact the operator.</p>
+<h2 id="procedure">Procedure</h2>
+<ol>
+<li>The gateway vendor or user generates a CA (Certificate Authority) credentials in a secure environment. This usually consists of a public X.509 certificate and a private key.</li>
+</ol>
+<ul>
+<li>Usually, a Root CA and one or many intermediate CAs are generated. The Root CA is typically only used generate intermediate CAs and the intermediate CAs are used to sign client/leaf certificates.</li>
+</ul>
+<ol start="2">
+<li>The gateway vendor generates <em>unique TLS client certificates for each gateway</em>.</li>
+</ol>
+<ul>
+<li>The public certificate uniquely identifies the gateway. The Common Name (CN) field of the certificate should be <strong>exactly</strong> equal to the hex encoded EUI-64 (16 digits). The other fields are left to the user.</li>
+<li>The private key is the counterpart of the public certificate and is used for cryptographic operations while connecting to The Things Stack. Gateway vendors must ensure that this key is not easily accessible from the gateway. Anyone in possession of this key can impersonate the gateway.</li>
+<li>If using RSA to generate key pairs, we recommend a minimum size of 2048 bits.</li>
+</ul>
+<ol start="3">
+<li>
+<p>The gateway vendor/user sends the CA certificate used for signing the gateway credentials to the operator of The Things Stack deployment. The operator will configure these CAs in The Things Stack.</p>
+</li>
+<li>
+<p>The user of the gateway registers it on a The Things Stack deployment. See instructions for in the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/">Adding Gateways</a> guide.</p>
+</li>
+<li>
+<p>When this gateway make a CUPS <code>/update-info</code> request to The Things Stack, it presents the client certificate. The Things Stack verifies this certificate against the configured CA certificate. If the cryptographic check is successful, The Things Stack will check rest of the CUPS request and respond with the LNS credentials.</p>
+</li>
+<li>
+<p>The gateway can now be connected to the LNS endpoint with the credentials sent by the CUPS server and if everything is successful, the gateway will connect to The Things Stack.</p>
+</li>
+</ol>
+<h2 id="testing">Testing</h2>
+<p>In order to test mTLS authentication, you can generate self-signed certificates.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  This is only for testing. Do not use this process in production.
 </div>
 
-<h2 id="requirements">Requirements</h2>
 <ol>
-<li>User account on The Things Stack with rights to create gateways.</li>
-<li>A gateway which support LoRa Basics™ Station.</li>
+<li>Create a client gateway private key. Note you can choose any length of the key.</li>
 </ol>
-<h2 id="create-a-gateway">Create a Gateway</h2>
-<p>To connect a gateway using the LNS protocol, you must first add the gateway in The Things Stack. This can be done either in the console, or via the command line. See instructions for <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/">Adding Gateways</a>.</p>
-<h2 id="create-an-api-key">Create an API Key</h2>
-<p>LNS requires an API Key with the following rights:</p>
-<ul>
-<li>Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink</li>
-</ul>
-<figure><img src="../lns-rights.png"
-         alt="LNS API Key Rights"/>
-</figure>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl genrsa -out gateway.key <span class="m">2048</span>
+</span></span></code></pre></div><ol start="2">
+<li>Create a Root CA:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl req -x509 -sha256 -days <span class="m">1825</span> -newkey rsa:2048 -keyout root-ca.key -out root-ca.crt
+</span></span></code></pre></div><ol start="3">
+<li>Create a Certificate Signing Request for your client (Gateways):</li>
+</ol>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The <code>CN</code> (Common Name) field must be the hex encoded EUI64 (16 digits). Example: <code>0123456789ABCDEF</code>
+</div>
 
-<p>To create this API key for your gateway, follow instructions for <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/#create-gateway-api-key">Creating a Gateway API key </a>.</p>
-<h2 id="configure-gateway">Configure Gateway</h2>
-<p>All LoRa Basics™ Station gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway.</p>
-<h3 id="lns-server-address">LNS Server Address</h3>
-<p>The server address is the network endpoint of The Things Stack LNS. It is a combination of the <strong>protocol</strong> (wss), the <strong>server address</strong>, and the <strong>port</strong>.</p>
-<p>Enter the following in your gateway as the LNS Server Address: <code>wss://&lt;server-address&gt;:8887</code>.</p>
-<p>The <code>&lt;server-address&gt;</code> is the address of your The Things Stack deployment. See <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/server-addresses/">Server Addresses</a> for more info.</p>
-<h3 id="lns-server-certificate--lns-trust">LNS Server Certificate / LNS Trust</h3>
-<p>This is the <a href="https://en.wikipedia.org/wiki/Certificate_authority">CA certificate</a> which secures your domain. A <code>.pem</code> file containing common certificates is available in the <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/">Root Certificates Reference</a>.</p>
-<p>Upload the <code>.pem</code> file in your gateway as the LNS Server Certificate, i.e. LNS Trust.</p>
-<h3 id="lns-key-file">LNS Key File</h3>
-<p>This is a file which The Things Stack uses to verify the identity of your gateway.</p>
-<p>Instructions below show how to create a file called <code>lns.key</code>, replacing <code>&quot;your-lns-api-key&quot;</code> with the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/lns/#create-an-api-key">LNS API key</a> you created above.</p>
-<p>On Linux or macOS use the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">LNS_KEY</span><span class="o">=</span><span class="s2">&#34;your-lns-api-key&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$LNS_KEY</span><span class="s2">&#34;</span> <span class="p">|</span> perl -p -e <span class="s1">&#39;s/\r\n|\n|\r/\r\n/g&#39;</span>  &gt; lns.key
-</span></span></code></pre></div><p>On Windows, you can use Command Prompt:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> <span class="nv">LNS_KEY</span><span class="o">=</span>your-lns-api-key
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> Authorization: Bearer %LNS_KEY% &gt; lns.key
-</span></span></code></pre></div><p>or PowerShell:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$env:LNS_KEY</span><span class="p">=</span><span class="s1">&#39;your-lns-api-key&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">write-output</span> <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$env:LNS_KEY</span><span class="s2">&#34;</span> <span class="p">|</span> <span class="nb">set-content</span> <span class="n">lns</span><span class="p">.</span><span class="py">key</span>
-</span></span></code></pre></div><p>The commands above create a file called <code>lns.key</code>, terminated with a Carriage Return Line Feed (<code>0x0D0A</code>) character. Upload this file in your gateway as the LNS key.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl req -key gateway.key -new -out gateway.csr
+</span></span></code></pre></div><ol start="4">
+<li>Generate the client certificate. The following generates a gateway certificate signed by the Root CA valid for 365 days.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl X.509 -req -CA root-ca.crt -CAkey root-ca.key -in gateway.csr -out gateway.crt -days <span class="m">365</span> -CAcreateserial -sha256 -days <span class="m">365</span>
+</span></span></code></pre></div><ol start="5">
+<li>
+<p>Send this CA certificate <code>root-ca.crt</code> to the operator of the desired The Things Stack deployment.</p>
+</li>
+<li>
+<p>Connect using a client (e.g. <code>cURL</code>):</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -v --cert &lt;path&gt;/gateway.crt --key &lt;path&gt;/gateway.key --cacert &lt;path&gt;/root-ca.crt https://&lt;domain&gt;:8987/update-info -d <span class="s1">&#39;{&#34;router&#34;:&#34;&lt;EUI in ID6&gt;&#34;}&#39;</span>
+</span></span></code></pre></div><ol start="7">
+<li>If the request is successful, you will receive an HTTP <code>200</code> response code with a binary blob containing the LNS credentials.</li>
+</ol>
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/gateways/concepts/lora-basics-station/cups/">← Configuration and Update Server (CUPS)</a>
-<a class="button is-pulled-right" href="/docs/gateways/concepts/lora-basics-station/cups-forwarding/">Using CUPS to redirect to a different LNS →</a>
+<a class="button is-pulled-left" href="/docs/gateways/concepts/lora-basics-station/cups-forwarding/">← Using CUPS to redirect to a different LNS</a>
+<a class="button is-pulled-right" href="/docs/gateways/concepts/udp/">Semtech UDP Packet Forwarder →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -258,16 +282,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul class="menu-list">
     
       
-      <li><a href='#requirements'>Requirements</a></li>
+      <li><a href='#procedure'>Procedure</a></li>
     
       
-      <li><a href='#create-a-gateway'>Create a Gateway</a></li>
-    
-      
-      <li><a href='#create-an-api-key'>Create an API Key</a></li>
-    
-      
-      <li><a href='#configure-gateway'>Configure Gateway</a></li>
+      <li><a href='#testing'>Testing</a></li>
     
   </ul>
 
