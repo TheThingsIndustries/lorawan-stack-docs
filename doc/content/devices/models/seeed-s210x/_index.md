@@ -30,7 +30,7 @@ The device can be onboarded using the **Device Repository** or **manually**.
 
 {{< note "The S210x does not support onboarding with a QR code." />}}
 
-The [LoRaWAN® Device repository](https://github.com/TheThingsNetwork/lorawan-devices) comprises over 600 end-device profiles, including the Seeed Studio, which enables quick and easy registration with {{% tts %}}.
+The [LoRaWAN® Device repository](https://github.com/TheThingsNetwork/lorawan-devices) comprises over 800 end-device profiles, including the Seeed Studio, which enables quick and easy registration with {{% tts %}}.
 
 In the **End device type** section, under **Input method**, select either the **Select the end device in the LoRaWAN Device Repository** or **Enter end device specifics manually** option. The [Onboarding devices without QR codes]({{< ref "/devices/adding-devices/#onboarding-devices-without-qr-codes" >}}) section of the [Adding Devices]({{< ref "/devices/adding-devices/" >}}) guide explains this procedure in detail. Following details are S210x-specific:
 
