@@ -17,7 +17,7 @@ The **Milesight UG65** is a high-performance 8-channel LoRaWAN® gateway that of
 
 The technical specifications can be found in Milesight's official [UG65](https://www.milesight-iot.com/lorawan/gateway/ug65/) pages.
 
-The Milesight UG65 LoRaWAN gateways support two ways of connecting {{% tts %}}, using the {{% udp-pf %}} or {{% lbs %}}.
+The Milesight UG65 LoRaWAN gateways support two ways of connecting to {{% tts %}}, using the {{% udp-pf %}} or {{% lbs %}}.
 
 ## Requirements
 

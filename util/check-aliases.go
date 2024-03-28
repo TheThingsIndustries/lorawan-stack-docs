@@ -1,3 +1,5 @@
+// Copyright © 2024 The Things Industries B.V.
+
 package main
 
 import (

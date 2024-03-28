@@ -8,7 +8,7 @@ If your device cannot be activated using the more secure OTAA, you may manually 
 
 <!--more-->
 
-{{< tabs/container "Console" "CLI" >}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API">}}
 
 {{< tabs/tab "Console" >}}
 
@@ -103,6 +103,152 @@ ttn-lw-cli end-devices create $APP_ID $DEVICE_ID \
 This will create an end device `dev1` in application `app1` with the `EU_863_870` frequency plan, that uses LoRaWAN 1.1.0 MAC and 1.1.0-b PHY versions. Make sure you replace these versions according to your setup.
 
 You can also pass `--with-session` to have a session generated.
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "HTTP (REST) API" >}}
+
+{{% tts %}} stores end device data on the Identity Server, Application Server, Network Server. Since ABP devices do not have the concept of join, the Join Server is not used.
+
+{{< note >}} These examples only set a few basic fields. For the full list of customization options, check the linked references. {{</ note >}}
+
+Make sure to follow the same order in creating the devices across the servers.
+
+First, create the device on the Identity Server. Create an `is.json` file in the same folder.
+
+```json
+{
+  "end_device": {
+    "ids": {
+      "device_id": "test-device-abp",
+      "dev_eui": "0000000000000011"
+    },
+    "join_server_address": "thethings.localhost",
+    "network_server_address": "thethings.localhost",
+    "application_server_address": "thethings.localhost"
+  },
+  "field_mask": {
+    "paths": [
+      "join_server_address",
+      "network_server_address",
+      "application_server_address",
+      "ids.dev_eui"
+    ]
+  }
+}
+```
+
+Then make a `POST` request to the [`/api/v3/applications/{end_device.ids.application_ids.application_id}/devices`]({{< ref "/api/reference/http/routes/#applications{end_device.ids.application_ids.application_id}devices-post" >}}) end point.
+
+```bash
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./is.json \
+ https://thethings.example.com/api/v3/applications/my-test-app/devices
+{"ids":{"device_id":"test-device-abp","application_ids":{"application_id":"my-test-app"},"dev_eui":"0000000000000011"},"created_at":"2024-01-10T14:51:53.281866Z","updated_at":"2024-01-10T14:51:53.281867Z","version_ids":{},"network_server_address":"thethings.localhost","application_server_address":"thethings.localhost","join_server_address":"thethings.localhost","lora_alliance_profile_ids":{}}
+```
+
+Now create the device on the Network Server. Create an `ns.json` file with the following example contents. Note that you need to set the correct LoRaWAN settings for the device on the Network Server. Also, since this is ABP, we also set the Network Session Keys.
+
+```json
+{
+  "end_device": {
+    "supports_join": false,
+    "lorawan_version": "1.0.2",
+    "ids": {
+      "device_id": "test-device-abp",
+      "dev_eui": "0000000000000011"
+    },
+    "session": {
+      "keys": {
+        "f_nwk_s_int_key": {
+          "key": "11223344556677881122334455667788"
+        }
+      },
+      "dev_addr": "12345678"
+    },
+    "mac_settings": {
+      "resets_f_cnt": true,
+      "factory_preset_frequencies": [
+        "868100000",
+        "868300000",
+        "868500000",
+        "867100000",
+        "867300000",
+        "867500000",
+        "867700000",
+        "867900000"
+      ]
+    },
+    "resets_f_cnt": false,
+    "lorawan_phy_version": "1.0.2-b",
+    "frequency_plan_id": "EU_863_870_TTN"
+  },
+  "field_mask": {
+    "paths": [
+      "supports_join",
+      "lorawan_version",
+      "ids.device_id",
+      "ids.dev_eui",
+      "session.keys.f_nwk_s_int_key.key",
+      "session.dev_addr",
+      "mac_settings.resets_f_cnt",
+      "mac_settings.factory_preset_frequencies",
+      "lorawan_phy_version",
+      "frequency_plan_id"
+    ]
+  }
+}
+```
+
+Make a `PUT` request to the [`/api/v3/ns/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}`]({{< ref "/api/reference/http/routes/#nsapplications{end_device.ids.application_ids.application_id}devices{end_device.ids.device_id}-put" >}}) end point.
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./ns.json \
+ https://thethings.example.com/api/v3/ns/applications/my-test-app/devices/test-device-abp
+{"ids":{"device_id":"test-device-abp","application_ids":{"application_id":"my-test-app"},"dev_eui":"0000000000000011","dev_addr":"12345678"},"created_at":"2024-01-10T14:53:22.649080Z","updated_at":"2024-01-10T14:53:22.649080Z","lorawan_version":"MAC_V1_0_2","lorawan_phy_version":"PHY_V1_0_2_REV_B","frequency_plan_id":"EU_863_870_TTN","mac_settings":{"factory_preset_frequencies":["868100000","868300000","868500000","867100000","867300000","867500000","867700000","867900000"],"resets_f_cnt":true},"session":{"dev_addr":"12345678","keys":{"f_nwk_s_int_key":{"key":"11223344556677881122334455667788"}}}}
+```
+
+Now create the device on the Application Server. Create an `as.json` file with the following example contents.
+We also set the application session key here.
+
+```json
+{
+  "end_device": {
+    "ids": {
+      "device_id": "test-device-abp",
+      "dev_eui": "0000000000000011"
+    },
+    "session": {
+      "keys": {
+        "app_s_key": {
+          "key": "11223344556677881122334455667788"
+        }
+      },
+      "dev_addr": "12345678"
+    },
+    "skip_payload_crypto": false
+  },
+  "field_mask": {
+    "paths": [
+      "ids.device_id",
+      "ids.dev_eui",
+      "session.keys.app_s_key.key",
+      "session.dev_addr",
+      "skip_payload_crypto"
+    ]
+  }
+}
+```
+
+Make a `PUT` request to the [`/api/v3/as/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}`]({{< ref "/api/reference/http/routes/#asapplications{end_device.ids.application_ids.application_id}devices{end_device.ids.device_id}-put" >}}) end point.
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./as.json \
+ https://thethings.example.com/api/v3/as/applications/my-test-app/devices/test-device-abp
+{"ids":{"device_id":"test-device-abp","application_ids":{"application_id":"my-test-app"},"dev_eui":"0000000000000011"},"created_at":"2024-01-10T14:55:13.479196Z","updated_at":"2024-01-10T14:55:13.479196Z","session":{"dev_addr":"12345678","keys":{"app_s_key":{"key":"11223344556677881122334455667788"}}}}
+```
 
 {{< /tabs/tab >}}
 

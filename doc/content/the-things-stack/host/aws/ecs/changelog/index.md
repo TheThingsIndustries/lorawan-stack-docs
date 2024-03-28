@@ -9,6 +9,8 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.29.1
+
 ## 3.29.0
 
 ### `2-1-db-aurora-master`, `2-2-db-aurora-replica`

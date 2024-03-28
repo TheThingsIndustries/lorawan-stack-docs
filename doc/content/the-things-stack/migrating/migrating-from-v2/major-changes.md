@@ -99,7 +99,7 @@ Read details in the [Storage Integration]({{< ref "/integrations/storage" >}}) s
 
 ## API Comparison
 
-{{% tts %}} provides multiple APIs. See the full [API documentation]({{< ref "/reference/api" >}}).
+{{% tts %}} provides multiple APIs. See the full [API documentation]({{< ref "/api/reference/grpc" >}}).
 
 For example, a comparison between The Things Industries V2 and The Things Stack MQTT API is given below.
 

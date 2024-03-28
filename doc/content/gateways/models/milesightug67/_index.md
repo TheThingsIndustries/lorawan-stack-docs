@@ -17,7 +17,7 @@ The **Milesight UG67** is a robust outdoor LoRaWAN® gateway designed for outdoo
 
 The technical specifications can be found in Milesight's official [UG67](https://www.milesight-iot.com/lorawan/gateway/ug67/) pages.
 
-The Milesight UG67 LoRaWAN gateways support two ways of connecting {{% tts %}}, using the {{% udp-pf %}} or {{% lbs %}}.
+The Milesight UG67 LoRaWAN gateways support two ways of connecting to {{% tts %}}, using the {{% udp-pf %}} or {{% lbs %}}.
 
 ## Requirements
 

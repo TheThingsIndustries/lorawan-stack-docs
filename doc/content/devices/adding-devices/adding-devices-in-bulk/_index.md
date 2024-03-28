@@ -60,8 +60,6 @@ If the import was successful, your devices are added to the list of end devices 
 
 To complete these steps, you need the have the latest version of `ttn-lw-cli` installed on your system.
 
-{{< cli-only >}}
-
 To import a file in {{% tts %}}, run the following command with `ttn-lw-cli`:
 
 ```bash
@@ -103,7 +101,7 @@ To claim a single device, first navigate to your application in {{% tts %}} Cons
 
 Select the **Enter end device specifics manually**, then provide **Frequency plan**, **LoRaWAN version** and **Regional Parameters version**.
 
-In the **Provisioning information** section, fill in the **JoinEUI** of The Things Join Server and **Confirm**. 
+In the **Provisioning information** section, fill in the **JoinEUI** of The Things Join Server and **Confirm**.
 
 Then, enter the **DevEUI**, **Claim authentication code** and **End device ID** of a device that you wish to claim.
 

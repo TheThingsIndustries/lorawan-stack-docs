@@ -1,5 +1,5 @@
 ---
-title: "Export End Devices from ChirpStack"
+title: "Export End Devices from ChirpStack v4"
 description: ""
 weight: 2
 aliases:
@@ -7,22 +7,25 @@ aliases:
     /the-things-stack/migrating-from-networks/migrate-from-chirpstack,
     /getting-started/migrating/migration-tool/export-from-chirpstack,
   ]
+new_in_version: "v0.12.0"
 ---
 
-This section contains instructions on how to configure migration tool and use it to export end devices from ChirpStack, that can later be imported in {{% tts %}}. This is a base for migrating end devices from ChirpStack to {{% tts %}}.
+This section contains instructions on how to configure migration tool and use it to export end devices from ChirpStack v4, that can later be imported in {{% tts %}}. This is a base for migrating end devices from ChirpStack to {{% tts %}}.
 
 <!--more-->
+
+This guide covers migration from ChirpStack v4. For ChirpStack v3 , see the [corresponding guide]({{< ref "/the-things-stack/migrating/migration-tool/export-from-chirpstack-v3" >}}).
 
 ## Configuration
 
 First, configure the environment with the following variables modified according to your setup. Navigate to the folder where you installed `ttn-lw-migrate` and execute:
 
 ```bash
-export CHIRPSTACK_API_URL="localhost:8080"    # ChirpStack Application Server URL
-export CHIRPSTACK_API_TOKEN="7F0as987e61..."  # ChirpStack API key
-export JOIN_EUI="0101010102020203"            # Set The Things Stack JoinEUI for exported devices
-export FREQUENCY_PLAN_ID="EU_863_870"         # Set The Things Stack FrequencyPlanID for exported devices
-export CHIRPSTACK_API_INSECURE=0              # Set to 1 if not using TLS on ChirpStack
+$ export CHIRPSTACK_API_URL="localhost:8080"    # ChirpStack Application Server URL
+$ export CHIRPSTACK_API_KEY="eyJ0eX........"    # Generate from ChirpStack GUI
+$ export JOIN_EUI="0101010102020203"            # JoinEUI for exported devices
+$ export FREQUENCY_PLAN_ID="EU_863_870"         # Frequency Plan for exported devices
+$ export CHIRPSTACK_EXPORT_SESSION="true"       # Set to true for session migration.
 ```
 
 If using Windows OS, replace `export` with `set` and remove the double-quotes in commands above. For example, you would use:
@@ -32,6 +35,12 @@ set CHIRPSTACK_API_TOKEN=7F0as987e61...
 ```
 
 `JoinEUI` and `FrequencyPlanID` have to be set because ChirpStack does not store these variables. See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) for a full list of frequency plans supported by {{% tts %}} (and their IDs).
+
+- ABP devices without an active session are successfully exported from ChirpStack, but cannot be imported into The Things Stack.
+- MaxEIRP may not be always set properly.
+- ChirpStack payload formatters also accept a `variables` parameter. This will always be `null` on The Things Stack.
+- ChirpStack v4 uses UUIDs as application ID. The migration tool uses the appends the last index of the UUID to application ID.
+  - Ex: If the ChirpStack v4 application ID is `59459ffa-bfd3-4ef3-9cee-e1ca219397f2`, the tool generates `chirpstack-e1ca219397f2` as the application ID.
 
 You can now proceed to exporting devices or applications.
 
@@ -44,7 +53,7 @@ You can now proceed to exporting devices or applications.
 To export a single end device to a `devices.json` file based on their `DevEUI`:
 
 ```bash
-ttn-lw-migrate --source chirpstack device "0102030405060701" > devices.json
+ttn-lw-migrate chirpstack device "0102030405060701" > devices.json
 ```
 
 To export multiple end devices, create a `devices.txt` file containing one `DevEUI` per line:
@@ -61,7 +70,7 @@ To export multiple end devices, create a `devices.txt` file containing one `DevE
 To export multiple end devices to a `devices.json` file:
 
 ```bash
-ttn-lw-migrate --source chirpstack device < devices.txt > devices.json
+ttn-lw-migrate chirpstack device < devices.txt > devices.json
 ```
 
 {{</ tabs/tab >}}
@@ -71,13 +80,13 @@ ttn-lw-migrate --source chirpstack device < devices.txt > devices.json
 To export end devices from a single application using its name (from ChirpStack):
 
 ```bash
-ttn-lw-migrate --source chirpstack application "app1" > applications.json
+ttn-lw-migrate chirpstack application "app1" > applications.json
 ```
 
 To export end devices from multiple applications to an `applications.json` file, you need to create a `.txt` file containing one application name per line and run the following command in your terminal:
 
 ```bash
-ttn-lw-migrate --source chirpstack application < applications.txt > applications.json
+ttn-lw-migrate chirpstack application < applications.txt > applications.json
 ```
 
 {{</ tabs/tab >}}

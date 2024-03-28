@@ -2,7 +2,12 @@
 title: "Adding Gateways"
 description: ""
 weight: -2
-aliases: [/gateways/adding-gateways, /the-things-stack/interact/cli/create-gateway, /the-things-stack/interact/console/create-gateway]
+aliases:
+  [
+    /gateways/adding-gateways,
+    /the-things-stack/interact/cli/create-gateway,
+    /the-things-stack/interact/console/create-gateway,
+  ]
 ---
 
 This section contains instructions for adding Gateways in {{%tts%}}.
@@ -17,13 +22,11 @@ Do not follow this guide for a [The Things Indoor Gateway]({{< ref "/gateways/mo
 
 If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "the-things-stack/packet-broker" >}}), you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced [TTN Mapper](ttnmapper.org) to find out if your location has nearby gateways.
 
-Adding gateways using the Console or the CLI is usually most convenient, so those methods are extensively explained in this section. However, it is also possible to add gateways [using the API]({{< ref "/the-things-stack/interact/api#register-a-gateway" >}}).
-
-{{< tabs/container "Console" "CLI" >}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API">}}
 
 {{< tabs/tab "Console" >}}
 
-## Adding Gateways using the Console
+#### Adding Gateways using the Console
 
 Go to **Gateways** in the top menu, and click **+ Register Gateway** to reach the gateway registration page.
 
@@ -53,7 +56,7 @@ You can now connect your gateway to {{% tts %}}.
 
 {{< tabs/tab "CLI" >}}
 
-## Adding Gateways using the CLI
+#### Adding Gateways using the CLI
 
 We define some user parameters that will be used below:
 
@@ -86,13 +89,61 @@ This creates a gateway `gtw1` with user `admin` as collaborator, frequency plan 
 
 {{< /tabs/tab >}}
 
+{{< tabs/tab "HTTP (REST) API" >}}
+
+#### Adding Gateways using the API
+
+###### Details
+
+<div class="fixed-table table-api-item">
+
+| Item         | Value                                                                                                                                                   |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Endpoint     | [`/api/v3/users/{collaborator.user_ids.user_id}/gateways`]({{< ref "/api/reference/http/routes/#users{collaborator.user_ids.user_id}gateways-post" >}}) |
+| Request type | `POST`                                                                                                                                                  |
+
+</br>
+</div>
+
+###### Example
+
+To create a gateway for user `user1` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+
+```json
+{
+  "gateway": {
+    "ids": {
+      "eui": "1111111111111111",
+      "gateway_id": "test-gateway"
+    },
+    "name": "My Test Gateway",
+    "frequency_plan_ids": ["EU_863_870"],
+    "require_authenticated_connection": false,
+    "status_public": false,
+    "location_public": false,
+    "gateway_server_address": "thethings.example.com",
+    "enforce_duty_cycle": true
+  }
+}
+```
+
+The request using `cURL` is as follows.
+
+```bash
+curl -v -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./req.json https://thethings.example.com/api/v3/users/testuser/gateways
+{"ids":{"gateway_id":"my-test-gateway","eui":"1111111111111111"},"created_at":"2024-01-09T13:29:22.468006Z","updated_at":"2024-01-09T13:29:22.468007Z","name":"My Test Gateway","administrative_contact":{"user_ids":{"user_id":"testuser"}},"technical_contact":{"user_ids":{"user_id":"testuser"}},"version_ids":{},"gateway_server_address":"thethings.example.com","frequency_plan_ids":["EU_863_870"],"enforce_duty_cycle":true,"schedule_anytime_delay":"0s"}
+```
+
+{{< /tabs/tab >}}
+
 {{< /tabs/container >}}
 
 ## Create Gateway API Key
 
 Some gateways require an API Key with Link Gateway Rights to be able to connect to {{% tts %}}. In this section we explain how to create an API key with this right, but the procedure of creating an API key is identical for any other right as well.
 
-{{< tabs/container "Console" "CLI" >}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API" >}}
 
 {{< tabs/tab "Console" >}}
 
@@ -126,11 +177,48 @@ See the [CLI Reference]({{< ref "/ttn-lw-cli/ttn-lw-cli_gateways_api-keys" >}}) 
 
 {{< /tabs/tab >}}
 
+{{< tabs/tab "HTTP (REST) API" >}}
+
+###### Details
+
+<div class="fixed-table table-api-item">
+
+| Item         | Value                                                                                                                                           |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Endpoint     | [`/api/v3/gateways/{gateway_ids.gateway_id}/api-keys`]({{< ref "/api/reference/http/routes/#gateways{gateway_ids.gateway_id}api-keys-post" >}}) |
+| Request type | `POST`                                                                                                                                          |
+
+</br>
+</div>
+
+###### Example
+
+To create an API Key for gateway `my-test-gateway` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+
+```json
+{
+  "expires_at": "2024-11-07T20:33:48.000Z",
+  "name": "Test API Key",
+  "rights": ["RIGHT_GATEWAY_LINK"]
+}
+```
+
+The request using `cURL` is as follows.
+
+```bash
+curl -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./req.json \
+ https://thethings.example.com/api/v3/gateways/my-test-gateway/api-keys
+{"id":"KS7BFCW5TUTMVA3WBN5GSQVTTYVQVR5FRH54C7A","key":"NNSXS.KS7BFCW5TUTMVA3WBN5GSQVTTYVQVR5FRH54C7A.Z3YH2OFUTBBAOUJBCJWSUGKFFQWGSDXG5JHNHMEU4DYYLO6JK7AQ","name":"Test API Key","rights":["RIGHT_GATEWAY_LINK"],"created_at":"2024-01-09T13:42:55.276762Z","updated_at":"2024-01-09T13:42:55.276763Z","expires_at":"2024-11-07T20:33:48Z"}
+```
+
+{{< /tabs/tab >}}
+
 {{< /tabs/container >}}
 
 ## Set Gateway Location
 
-{{< tabs/container "Console" "CLI" >}}
+{{< tabs/container "Console" "CLI" "HTTP (REST) API"  >}}
 
 {{< tabs/tab "Console" >}}
 
@@ -152,7 +240,7 @@ You can also check the **Update from status messages** box if you want to update
 
 Once you have added your gateway to {{% tts %}}, you can also set the locations of the gateway antennas.
 
-Add an antenna and set its location  with:
+Add an antenna and set its location with:
 
 ```bash
 LAT="43.84"
@@ -179,8 +267,7 @@ The CLI will return something like:
     "gateway_id": "gtw1"
   },
   "created_at": "2020-05-27T14:43:13.606Z",
-  "version_ids": {
-  },
+  "version_ids": {},
   "auto_update": true,
   "antennas": [
     {
@@ -198,15 +285,70 @@ The CLI will return something like:
 
 {{< /tabs/tab >}}
 
+{{< tabs/tab "HTTP (REST) API" >}}
+
+###### Details
+
+<div class="fixed-table table-api-item">
+
+| Item         | Value                                                                                                                         |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| Endpoint     | [`/api/v3/gateways/{gateway.ids.gateway_id}`]({{< ref "/api/reference/http/routes/#gateways{gateway.ids.gateway_id}-put" >}}) |
+| Request type | `PUT`                                                                                                                         |
+
+</br>
+</div>
+
+###### Example
+
+To set the location of a gateway with ID `my-test-gateway` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+
+```json
+{
+  "gateway": {
+    "antennas": [
+      {
+        "location": {
+          "placement": "PLACEMENT_UNKNOWN",
+          "latitude": 48.40627905572619,
+          "longitude": 24.851562500000004,
+          "altitude": 0,
+          "accuracy": 0,
+          "source": "SOURCE_REGISTRY"
+        }
+      }
+    ]
+  },
+  "field_mask": {
+    "paths": ["antennas"]
+  }
+}
+```
+
+The request using `cURL` is as follows.
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./req.json \
+ https://thethings.example.com/api/v3/gateways/my-test-gateway
+{"ids":{"gateway_id":"my-test-gateway","eui":"1111111111111111"},"created_at":"2024-01-09T13:29:22.468006Z","updated_at":"2024-01-09T13:57:17.484187Z","antennas":[{"location":{"latitude":48.40627905572619,"longitude":24.851562500000004,"source":"SOURCE_REGISTRY"}}]}
+```
+
+{{< /tabs/tab >}}
+
 {{< /tabs/container >}}
 
 Keep in mind that if you change the physical location of your gateway, the location update in {{% tts %}} will take place only after you restart the gateway.
 
 ## Set Gateway Antenna Gain
 
-{{% cli-only %}}
+A preffered way for adjusting a downlink path gain is setting the gateway antenna gain, instead of changing the gateway Tx power.
 
-A preffered way for adjusting a downlink path gain is setting the gateway antenna gain, instead of changing the gateway Tx power. The following command will set the gateway antenna gain to 3 dB:
+{{< tabs/container "CLI" "HTTP (REST) API"  >}}
+
+{{< tabs/tab "CLI" >}}
+
+The following command will set the gateway antenna gain to 3 dB:
 
 ```bash
 GAIN="3"
@@ -221,8 +363,7 @@ The CLI output will be similar to:
     "gateway_id": "gtw1"
   },
   "created_at": "2020-05-27T14:43:13.606Z",
-  "version_ids": {
-  },
+  "version_ids": {},
   "auto_update": true,
   "antennas": [
     {
@@ -239,7 +380,55 @@ The CLI output will be similar to:
 }
 ```
 
-Keep in mind that the `antennas.location` object will be empty if you have not previously set the gateway antenna location.
+{{< /tabs/container >}}
+
+{{< tabs/tab "HTTP (REST) API" >}}
+
+###### Details
+
+<div class="fixed-table table-api-item">
+
+| Item         | Value                                                                                                                         |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| Endpoint     | [`/api/v3/gateways/{gateway.ids.gateway_id}`]({{< ref "/api/reference/http/routes/#gateways{gateway.ids.gateway_id}-put" >}}) |
+| Request type | `PUT`                                                                                                                         |
+
+</br>
+</div>
+
+###### Example
+
+To adjust the antenna gain of a gateway with ID `my-test-gateway` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+
+```json
+{
+  "gateway": {
+    "antennas": [
+      {
+        "gain": 3
+      }
+    ]
+  },
+  "field_mask": {
+    "paths": ["antennas"]
+  }
+}
+```
+
+The request using `cURL` is as follows.
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./req.json \
+ https://thethings.example.com/api/v3/gateways/my-test-gateway
+{"ids":{"gateway_id":"my-test-gateway","eui":"1111111111111111"},"created_at":"2024-01-09T13:29:22.468006Z","updated_at":"2024-01-09T14:11:10.062055Z","antennas":[{"gain":3}]}
+```
+
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
+
+Keep in mind that the `antennas.location` object will be cleared if previously set since it's only possible to set entire `antennas` object. Combine this with setting the location if both values need to persist.
 
 Once a gateway has been added, get started with [Adding Devices]({{< ref "/devices/adding-devices" >}}) and [Integrations]({{< ref "/integrations" >}}) to process and act on data.
 
@@ -247,14 +436,65 @@ Once a gateway has been added, get started with [Adding Devices]({{< ref "/devic
 
 In deployments connected to [Packet Broker]({{< ref "/the-things-stack/packet-broker" >}}), you can control if you want uplinks received by your gateway to be forwarded to Packet Broker or not. In these deployments, uplinks received by your gateway are being forwarded to Packet Broker by default, but you can choose to disable this behavior.
 
+{{< tabs/container "Console" "CLI" "HTTP (REST) API"  >}}
+
+{{< tabs/tab "Console" >}}
+
 To disable forwarding uplink messages from your gateway to Packet Broker in {{% tts %}} Console, navigate to the **General settings** tab on the left hand menu in your gateway's overview, scroll to the bottom of the **Basic settings** section and tick the **Disabled** box under **Packet Broker** option.
 
 {{< figure src="pb-forwarding.png" alt="Forwarding uplinks to Packet Broker" >}}
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
 
 To disable forwarding uplink messages from your gateways to Packet Broker using the CLI, use the following command:
 
 ```bash
 ttn-lw-cli gateways set $GTW_ID --disable-packet-broker-forwarding
 ```
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "HTTP (REST) API" >}}
+
+###### Details
+
+<div class="fixed-table table-api-item">
+
+| Item         | Value                                                                                                                         |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| Endpoint     | [`/api/v3/gateways/{gateway.ids.gateway_id}`]({{< ref "/api/reference/http/routes/#gateways{gateway.ids.gateway_id}-put" >}}) |
+| Request type | `PUT`                                                                                                                         |
+
+</br>
+</div>
+
+###### Example
+
+To disable forwarding to Packet Broker for the gateway `my-test-gateway` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+
+```json
+{
+  "gateway": {
+    "disable_packet_broker_forwarding": true
+  },
+  "field_mask": {
+    "paths": ["disable_packet_broker_forwarding"]
+  }
+}
+```
+
+The request using `cURL` is as follows.
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./req.json \
+ https://thethings.example.com/api/v3/gateways/my-test-gateway
+{"ids":{"gateway_id":"my-test-gateway","eui":"1111111111111111"},"created_at":"2024-01-09T13:29:22.468006Z","updated_at":"2024-01-09T14:17:19.314981Z","disable_packet_broker_forwarding":true}
+```
+
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
 
 Keep in mind that changes will apply only after restarting the gateway.

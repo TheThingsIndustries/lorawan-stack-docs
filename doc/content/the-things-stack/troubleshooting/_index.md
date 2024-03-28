@@ -13,7 +13,7 @@ If you encounter a bug, please [file an issue](https://github.com/TheThingsNetwo
 
 ## How do I generate and authorize OAuth client keys?
 
-See the [authentication reference]({{< ref "reference/api/authentication" >}}).
+See the [authentication reference]({{< ref "/api/concepts/auth" >}}).
 
 ## How do I create and authorize new users?
 

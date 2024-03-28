@@ -50,7 +50,7 @@ When creating an application or gateway, you need to specify a user or organizat
 
 When creating an end device, you need to specify an application in which the end device should be created.
 
-All other flags correspond to the fields of the entity, as can be seen with the `--help` flag and in the [API Reference]({{< ref "/reference/api" >}}).
+All other flags correspond to the fields of the entity, as can be seen with the `--help` flag and in the [API Reference]({{< ref "/api/reference/grpc" >}}).
 
 ### Getting or Listing Entities
 

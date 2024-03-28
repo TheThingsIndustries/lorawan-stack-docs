@@ -21,15 +21,15 @@ function decodeUplink(input) {
   // }
   return {
     data: {
-      bytes: input.bytes
+      bytes: input.bytes,
     },
     warnings: ["warning 1", "warning 2"], // optional
-    errors: ["error 1", "error 2"] // optional (if set, the decoding failed)
+    errors: ["error 1", "error 2"], // optional (if set, the decoding failed)
   };
 }
 ```
 
-The decoder function's output shown above is incorporated in the [`as.up.data.forward`]({{< ref "/reference/api/events#event:as.up.data.forward" >}}) event, where the `data.uplink_message` object contains:
+The decoder function's output shown above is incorporated in the [`as.up.data.forward`]({{< ref "/api/reference/grpc/events#event:as.up.data.forward" >}}) event, where the `data.uplink_message` object contains:
 
 ```json
 {
@@ -69,19 +69,19 @@ function normalizeUplink(input) {
   return {
     data: {
       air: {
-        temperature: (input.data.temperature - 32) * 5/9 // Fahrenheit to Celsius 
+        temperature: ((input.data.temperature - 32) * 5) / 9, // Fahrenheit to Celsius
       },
       wind: {
-        speed: input.data.windSpeed * 0.5144 // knots to m/s
-      }
+        speed: input.data.windSpeed * 0.5144, // knots to m/s
+      },
     },
     warnings: ["warning 1", "warning 2"], // optional
-    errors: ["error 1", "error 2"] // optional (if set, the normalization failed)
-  }
+    errors: ["error 1", "error 2"], // optional (if set, the normalization failed)
+  };
 }
 ```
 
-The normalizer function's output shown above is incorporated in the [`as.up.data.forward`]({{< ref "/reference/api/events#event:as.up.data.forward" >}}) event, where the `data.uplink_message` object contains:
+The normalizer function's output shown above is incorporated in the [`as.up.data.forward`]({{< ref "/api/reference/grpc/events#event:as.up.data.forward" >}}) event, where the `data.uplink_message` object contains:
 
 ```json
 {
@@ -102,7 +102,7 @@ The normalizer function's output shown above is incorporated in the [`as.up.data
 }
 ```
 
-The Application Server also publishes an event for each returned normalized payload, in the [`as.up.normalized.forward`]({{< ref "/reference/api/events#event:as.up.normalized.forward" >}}) event, where the `data.uplink_normalized` object contains:
+The Application Server also publishes an event for each returned normalized payload, in the [`as.up.normalized.forward`]({{< ref "/api/reference/grpc/events#event:as.up.normalized.forward" >}}) event, where the `data.uplink_normalized` object contains:
 
 ```json
 {
@@ -158,13 +158,13 @@ function normalizeUplink(input) {
   for (var i = 0; i < input.data.readings.length; i++) {
     data.push({
       air: {
-        temperature: (input.data.readings[i].temperature - 32) * 5/9
-      }
+        temperature: ((input.data.readings[i].temperature - 32) * 5) / 9,
+      },
     });
   }
   return {
-    data: data // this is now an array: [ { air: { temperature: ... } }, ... ]
-  }
+    data: data, // this is now an array: [ { air: { temperature: ... } }, ... ]
+  };
 }
 ```
 
@@ -181,19 +181,22 @@ function decodeUplink(input) {
     1: "setup",
     2: "interval",
     3: "motion",
-    4: "button"
+    4: "button",
   };
   data.event = events[input.fPort];
   data.battery = (input.bytes[0] << 8) + input.bytes[1];
   data.light = (input.bytes[2] << 8) + input.bytes[3];
-  data.temperature = (((input.bytes[4] & 0x80 ? input.bytes[4] - 0x100 : input.bytes[4]) << 8) + input.bytes[5]) / 100;
+  data.temperature =
+    (((input.bytes[4] & 0x80 ? input.bytes[4] - 0x100 : input.bytes[4]) << 8) +
+      input.bytes[5]) /
+    100;
   var warnings = [];
   if (data.temperature < -10) {
     warnings.push("it's cold");
   }
   return {
     data: data,
-    warnings: warnings
+    warnings: warnings,
   };
 }
 
@@ -201,10 +204,10 @@ function normalizeUplink(input) {
   return {
     data: {
       air: {
-        temperature: input.data.temperature
-      }
-    }
-  }
+        temperature: input.data.temperature,
+      },
+    },
+  };
 }
 ```
 
