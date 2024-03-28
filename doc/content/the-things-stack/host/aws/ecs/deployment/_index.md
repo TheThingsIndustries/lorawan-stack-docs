@@ -21,9 +21,9 @@ In addition to the re-used parameters (see [Prerequisites]({{< relref "../prereq
 
 ## TLS Certificates
 
-Go to AWS Certificate Manager and request a certificate for your domain of choice. 
+Go to AWS Certificate Manager and request a certificate for your domain of choice.
 
-If you are deploying a multi-tenant deployment, request a certificate that contains both `domain` and `*.domain`. 
+If you are deploying a multi-tenant deployment, request a certificate that contains both `domain` and `*.domain`.
 
 Certificate Manager will give further instructions on creating the DNS records that are required for issuing the certificates.
 
@@ -37,6 +37,7 @@ Go to AWS Route 53 and create an A record that points `domain` to the Network Lo
 - **Record Name**: `domain`
 - **Value/Route traffic to**: Alias to Network Load Balancer
 - **Record Type**: A (IPv4)
+
 * **Evaluate Target Health**: **Yes**
 
 If you are deploying a multi-tenant deployment, create an similar record for `*.domain` in addition to the plain `domain` record.
@@ -45,19 +46,19 @@ If you are deploying a multi-tenant deployment, create an similar record for `*.
 
 ## Bastion Host (optional)
 
-The `1-2-bastion` template will deploy an EC2 instance in one of the public subnets of your VPC. This instance can be used to provide external access to your cluster. 
+The `1-2-bastion` template will deploy an EC2 instance in one of the public subnets of your VPC. This instance can be used to provide external access to your cluster.
 
 {{< note >}} You can also skip this template, and deploy it when you actually need external access to your cluster. {{</ note >}}
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/1-2-bastion.gen.template (replace `3.x.y` with the current minor and patch version).
 
-In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for the **Instance Type** you want to use. A small instance is typically fine, since it will only be used to provide access. 
+In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for the **Instance Type** you want to use. A small instance is typically fine, since it will only be used to provide access.
 
 The **SSH Key Name** is the name of the SSH keypair you created before (see [Prerequisites]({{< relref "../prerequisites" >}})). The IPv4 and IPv6 ranges can be used to configure the Security Group rules that allow external access to this instance.
 
 ## Opsgenie Alarms (optional)
 
-The `1-3-opsgenie` template will deploy an SNS Topic and a Subscription to receive AWS CloudWatch alarms and forward it to your Opsgenie server. An Opsgenie CloudWatch API Key is necessary. 
+The `1-3-opsgenie` template will deploy an SNS Topic and a Subscription to receive AWS CloudWatch alarms and forward it to your Opsgenie server. An Opsgenie CloudWatch API Key is necessary.
 
 Once this is deployed, you can enable alerting that's configured for particular resources.
 
@@ -71,9 +72,9 @@ The `2-1-db-aurora-master` and `2-2-db-aurora-replica` templates together create
 
 **Master Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-1-db-aurora-master.gen.template (replace `3.x.y` with the current minor and patch version).
 
-In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for the **Database Name** and **Username** you want to configure on the database (the password will be generated). 
+In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for the **Database Name** and **Username** you want to configure on the database (the password will be generated).
 
-You can select an appropriate **Instance Class** for your network. It is typically fine for small clusters to start with `db.t3.medium` and scale as you grow. 
+You can select an appropriate **Instance Class** for your network. It is typically fine for small clusters to start with `db.t3.medium` and scale as you grow.
 
 If you are migrating your database from a previous deployment, or if you are upgrading your database, you can fill the ARN of the database **Snapshot** that should be restored.
 
@@ -83,15 +84,15 @@ In addition to the re-used parameters (see [Prerequisites]({{< relref "../prereq
 
 ## Redis Database
 
-You can deploy one or multiple Redis clusters with the `2-3-db-redis` template. {{% tts %}} uses Redis for multiple purposes, and can use separate clusters for different purposes. 
+You can deploy one or multiple Redis clusters with the `2-3-db-redis` template. {{% tts %}} uses Redis for multiple purposes, and can use separate clusters for different purposes.
 
 Most deployments start with a single `general` cluster that is used for all purposes. It is also possible to use the `general` cluster for persistence only, and use a separate `cache` cluster for caching temporary data. See the [Architecture]({{< relref "../architecture" >}}) section for more information.
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-3-db-redis.gen.template (replace `3.x.y` with the current minor and patch version).
 
-In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the previously described purpose, this template asks for the **Instance Type**. It is typically fine for small clusters to start with `cache.t3.medium` and scale as you grow. 
+In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the previously described purpose, this template asks for the **Instance Type**. It is typically fine for small clusters to start with `cache.t3.medium` and scale as you grow.
 
-It is recommended to have a **Multi-AZ** cluster with automatic failover, in which case you'll need 2 **Replicas**. Since most load is read-write it is not necessary to deploy more than 2 replicas. 
+It is recommended to have a **Multi-AZ** cluster with automatic failover, in which case you'll need 2 **Replicas**. Since most load is read-write it is not necessary to deploy more than 2 replicas.
 
 If you are migrating your database from a previous deployment, or if you are upgrading your database, you can fill the name of the database **Snapshot** that should be restored.
 
@@ -124,13 +125,13 @@ aws s3 cp plugins.yml s3://${PluginsConfigBucket}/plugins.yml
 
 ## TimescaleDB (optional) {#timescaledb-optional}
 
-The template `2-5-db-timescale` is an optional template that creates an EC2 instance that runs [TimescaleDB](https://www.timescale.com/), which is used by the Storage Integration and the Network Operations Center (NOC). 
+The template `2-5-db-timescale` is an optional template that creates an EC2 instance that runs [TimescaleDB](https://www.timescale.com/), which is used by the Storage Integration and the Network Operations Center (NOC).
 
 {{< note >}} If you do not want to install the Storage Integration and NOC, you do not need to deploy this template. However, deploying this template is mandatory if you wish to install them. {{</ note >}}
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-5-db-timescale.gen.template (replace `3.x.y` with the current minor and patch version).
 
-In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template requires you to choose an **Instance type** and **SSH Key Name** to be used to login to the instance. You either need to specify the **EBS Volume Snapshot ID** to restore, or the **EBS Volume Size** for the storage volume to create. 
+In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template requires you to choose an **Instance type** and **SSH Key Name** to be used to login to the instance. You either need to specify the **EBS Volume Snapshot ID** to restore, or the **EBS Volume Size** for the storage volume to create.
 
 Finally, you need to specify the database name, username and password. If you restore from a snapshot, these must match the existing database in the snapshot.
 
@@ -156,7 +157,7 @@ The `4-1-secrets` template creates several secrets in AWS Secrets Manager
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/4-1-secrets.gen.template (replace `3.x.y` with the current minor and patch version).
 
-In addition to the re-used parameters, the **License Key**, **Cluster Secrets** and **OAuth Client Secrets** (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for login information for your email provider. Currently, only Sendgrid and SMTP are supported. 
+In addition to the re-used parameters, the **License Key**, **Cluster Secrets** and **OAuth Client Secrets** (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for login information for your email provider. Currently, only Sendgrid and SMTP are supported.
 
 For deployments that connect to Packet Broker, you need to configure your Packet Broker secrets here. If you don't have this, you can leave these parameters empty. It is possible to add or update this in the future.
 
@@ -244,15 +245,15 @@ Depending on the type of cluster you are deploying, you need to deploy either `5
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-3a-ecs-is-service.gen.template (replace `3.x.y` with the current minor and patch version).
 
-Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the Redis clusters to use. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replace `3.x.y` with the current version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack. 
+Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the Redis clusters to use. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replace `3.x.y` with the current version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack.
 
->We recommend to start with 2 instances.
+> We recommend to start with 2 instances.
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-3b-ecs-external-is-proxy.gen.template (replace `3.x.y` with the current minor and patch version).
 
-Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the domain of the cluster that contains the Identity Server. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-proxy` (replace `3.x.y` with the current version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack. 
+Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the domain of the cluster that contains the Identity Server. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-proxy` (replace `3.x.y` with the current version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack.
 
->We recommend to start with 2 instances.
+> We recommend to start with 2 instances.
 
 ## Tenant Billing Server (optional)
 
@@ -270,9 +271,9 @@ The `5-4-ecs-services` template creates all other routing services.
 
 Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the Redis clusters to use. Indicate whether the services should use the Identity Server in the current cluster, or an external one through the proxy.
 
-For all services: the official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replace `3.x.y` with the current version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack. 
+For all services: the official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replace `3.x.y` with the current version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack.
 
->We recommend to start with 2 instances of each service. For some services it is not possible (yet) to deploy more than one instance.
+> We recommend to start with 2 instances of each service. For some services it is not possible (yet) to deploy more than one instance.
 
 ## Monitoring (optional, but recommended)
 
@@ -280,7 +281,7 @@ We strongly recommend to monitor your deployment with [Prometheus](https://prome
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-5-ecs-monitoring.gen.template (replace `3.x.y` with the current minor and patch version).
 
-Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and information about the cluster. 
+Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and information about the cluster.
 
 The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-prometheus` (replace `3.x.y` with the current minor and patch version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack. Prometheus typically needs CPU=1024 and Memory=2048.
 
@@ -296,9 +297,9 @@ The template `5-6-ecs-proxy` deploys the proxy that routes incoming gRPC and HTT
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-6-ecs-proxy.gen.template (replace `3.x.y` with the current minor and patch version).
 
-The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-proxy` (replace `3.x.y` with the current minor and patch version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack. 
+The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-proxy` (replace `3.x.y` with the current minor and patch version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack.
 
->We recommend to start with 2 instances.
+> We recommend to start with 2 instances.
 
 ## Let's Encrypt Certificates (optional) {#lets-encrypt-certificates-optional}
 
@@ -306,9 +307,13 @@ Unfortunately not all gateways are able to connect when using AWS-issued certifi
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-7a-certs-le.gen.template (replace `3.x.y` with the current minor and patch version).
 
-The Docker image we'll use is `docker.io/thethingsindustries/aws-certbot-dns-route53:latest`. On the initial deployment, leave the **Existing Certificate ARN** blank.
+The Docker image we'll use is `docker.io/thethingsindustries/aws-certbot-dns-route53:latest`.
+
+On the initial deployment, leave the **Existing Certificate ARN** blank.
 
 We need to manually request the certificates for the first time. In the CloudFormation **Output** window, copy the value for the output `RunCertbotTaskCLICommand` and run that from a CLI.
+
+{{< note >}} If your deployment uses only the `FARGATE` launch type, then append `--launch-type FARGATE` to the command in the `RunCertbotTaskCLICommand` output. {{</ note >}}
 
 After the task succeeds, go to **Certificate Manager**, find the new certificate, and copy its ARN. Back in CloudFormation, update the stacks for templates `3-2-load-balancer-rules` and `5-7a-certs-le`, and paste that certificate ARN.
 
@@ -318,7 +323,7 @@ To automatically renew the certificate from Let's Encrypt, we will now deploy te
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-7b-ecs-certbot-scheduled-task.gen.template (replace `3.x.y` with the current minor and patch version).
 
->We recommend to schedule this task to run every 14 days.
+> We recommend to schedule this task to run every 14 days.
 
 ## Mutual TLS (optional)
 
