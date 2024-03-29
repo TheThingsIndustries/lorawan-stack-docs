@@ -20,9 +20,9 @@ The CloudFormation Events page contains information on the progress of the deplo
 
 ### How can I SSH into my machine?
 
-You can SSH into the EC2 machine using the public IP output value. 
+You can SSH into the EC2 machine using the public IP output value.
 
-Log in AWS Console and open the CloudFormation resource and click on your recently deployed stack. Navigate to the **Outputs** tab and copy the value of the **PublicIP** field. 
+Log in AWS Console and open the CloudFormation resource and click on your recently deployed stack. Navigate to the **Outputs** tab and copy the value of the **PublicIP** field.
 
 Now, using the private key of the **SSH Key** value that you entered during deployment, you can SSH into the machine using:
 
@@ -33,6 +33,7 @@ ssh -i <path-to-private-key> ec2-user@<PublicIP>
 ### How can I see logs of {{% tts %}}?
 
 {{% tts %}} binary runs as a `systemd` service. In order to access the logs, SSH into the machine as described above and use the following command:
+
 ```bash
 sudo journalctl -f -u lorawan-stack.service
 ```
@@ -45,6 +46,7 @@ By default, {{% tts %}} does not log detailed `DEBUG` messages. In order to enab
 log:
   level: debug
 ```
+
 Restart the service for this to take effect:
 
 ```bash
@@ -55,12 +57,12 @@ The debug logs can be read using the `journalctl`, same as above:
 
 ```bash
 sudo journalctl -f -u lorawan-stack.service
-  ```
+```
 
 ### My gateway doesn't connect. What do I do?
 
 Please check the [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}}) guide.
-  
+
 ### My device doesn't join. How do I fix this?
 
 Please check the [Troubleshooting Devices]({{< ref "/devices/troubleshooting" >}}) guide.
@@ -84,6 +86,53 @@ This means that {{% tts %}} fails to connect to the database and/or Redis. For d
 This error occurs when the stack executable doesn't properly read the configuration file.
 
 To resolve this issue, you can do `export TTN_LW_CONFIG=/tti/lorawan-stack/config.yml` before running the migration command. See [Database Schema Migrations]({{< ref "the-things-stack/host/aws/ami/updating#database-schema-migrations" >}}).
+
+### How can I use a specific {{% tts %}} binary in my deployment
+
+In order to use a specific {{% tts %}} binary in your deployment, run the following steps.
+
+1. SSH into the EC2 machine.
+
+```bash
+ssh ec2-user@<Public IP address>
+```
+
+2. Fetch the target version and replace the existing binary.
+
+```bash
+export CURRENT_VERSION=<current version without the 'v' prefix> # Example: 3.30.0
+export TARGET_VERSION=<target version without the 'v' prefix>   # Example: 3.29.0
+cd /tti/lorawan-stack
+mv tti-lw-stack tti-lw-stack-$CURRENT_VERSION
+wget https://the-things-enterprise-stack-releases.s3.eu-west-1.amazonaws.com/$TARGET_VERSION/lorawan-stack_$TARGET_VERSION_linux_amd64.tar.gz
+tar -xzvf lorawan-stack_$TARGET_VERSION_linux_amd64.tar.gz
+cp ./lorawan-stack_$TARGET_VERSION_linux_amd64/tti-lw-stack ./tti-lw-stack
+```
+
+2. If you want to run commands with the target binary (ex: database migrations), use the following.
+
+```bash
+# This assumes that you are still in the `/tti/lorawan-stack` directory.
+# Check that you are using the correct version
+./tti-lw-stack version
+# Run an Identity Server database migration.
+./tti-lw-stack is-db migrate
+```
+
+3. If you want to run the target {{% tts %}} version, use the following.
+
+```bash
+sudo systemctl restart lorawan-stack
+```
+
+4. If you want to revert to the current version, use the following.
+
+```bash
+# This assumes that you are still in the `/tti/lorawan-stack` directory.
+mv tti-lw-stack tti-lw-stack-$TARGET_VERSION
+mv tti-lw-stack-$CURRENT_VERSION tti-lw-stack
+sudo systemctl restart lorawan-stack
+```
 
 ## Professional Support
 
