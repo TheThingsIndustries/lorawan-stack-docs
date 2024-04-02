@@ -271,7 +271,42 @@ Move to generic getting started guide once ready.
 <h3 id="migration-has-failed-with-dial-tcp-1270015432-connect-connection-refused">Migration has failed with <code>dial tcp 127.0.0.1:5432: connect: connection refused</code></h3>
 <p>This error occurs when the stack executable doesn&rsquo;t properly read the configuration file.</p>
 <p>To resolve this issue, you can do <code>export TTN_LW_CONFIG=/tti/lorawan-stack/config.yml</code> before running the migration command. See <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/aws/ami/updating/#database-schema-migrations">Database Schema Migrations</a>.</p>
-<h2 id="professional-support">Professional Support</h2>
+<h3 id="how-can-i-use-a-specific-the-things-stack-binary-in-my-deployment">How can I use a specific The Things Stack binary in my deployment</h3>
+<p>In order to use a specific The Things Stack binary in your deployment, run the following steps.</p>
+<ol>
+<li>SSH into the EC2 machine.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh ec2-user@&lt;Public IP address&gt;
+</span></span></code></pre></div><ol start="2">
+<li>Fetch the target version and replace the existing binary.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CURRENT_VERSION</span><span class="o">=</span>&lt;current version without the <span class="s1">&#39;v&#39;</span> prefix&gt; <span class="c1"># Example: 3.30.0</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TARGET_VERSION</span><span class="o">=</span>&lt;target version without the <span class="s1">&#39;v&#39;</span> prefix&gt;   <span class="c1"># Example: 3.29.0</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /tti/lorawan-stack
+</span></span><span class="line"><span class="cl">mv tti-lw-stack tti-lw-stack-<span class="nv">$CURRENT_VERSION</span>
+</span></span><span class="line"><span class="cl">wget https://the-things-enterprise-stack-releases.s3.eu-west-1.amazonaws.com/<span class="nv">$TARGET_VERSION</span>/lorawan-stack_<span class="nv">$TARGET_VERSION_linux_amd64</span>.tar.gz
+</span></span><span class="line"><span class="cl">tar -xzvf lorawan-stack_<span class="nv">$TARGET_VERSION_linux_amd64</span>.tar.gz
+</span></span><span class="line"><span class="cl">cp ./lorawan-stack_<span class="nv">$TARGET_VERSION_linux_amd64</span>/tti-lw-stack ./tti-lw-stack
+</span></span></code></pre></div><ol start="2">
+<li>If you want to run commands with the target binary (ex: database migrations), use the following.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># This assumes that you are still in the `/tti/lorawan-stack` directory.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Check that you are using the correct version</span>
+</span></span><span class="line"><span class="cl">./tti-lw-stack version
+</span></span><span class="line"><span class="cl"><span class="c1"># Run an Identity Server database migration.</span>
+</span></span><span class="line"><span class="cl">./tti-lw-stack is-db migrate
+</span></span></code></pre></div><ol start="3">
+<li>If you want to run the target The Things Stack version, use the following.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart lorawan-stack
+</span></span></code></pre></div><ol start="4">
+<li>If you want to revert to the current version, use the following.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># This assumes that you are still in the `/tti/lorawan-stack` directory.</span>
+</span></span><span class="line"><span class="cl">mv tti-lw-stack tti-lw-stack-<span class="nv">$TARGET_VERSION</span>
+</span></span><span class="line"><span class="cl">mv tti-lw-stack-<span class="nv">$CURRENT_VERSION</span> tti-lw-stack
+</span></span><span class="line"><span class="cl">sudo systemctl restart lorawan-stack
+</span></span></code></pre></div><h2 id="professional-support">Professional Support</h2>
 <p>Additional paid support for this deployment is offered by The Things Industries. You can <a href="mailto:support@thethingsindustries.com">contact The Things Industries support</a> or visit <a href="https://www.thethingsindustries.com/support/">the support page</a>.</p>
         </div>
           <div class="columns is-multiline">
