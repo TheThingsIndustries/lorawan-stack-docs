@@ -1,5 +1,5 @@
 ---
-title: "Cisco Wireless Gateway for LoRaWAN"
+title: "Cisco IXM Wireless Gateway for LoRaWAN"
 vendor: "Cisco"
 vendor_page: "https://www.cisco.com/c/en/us/products/routers/wireless-gateway-lorawan/"
 description: "The Cisco LoRaWAN Gateway is carrier-grade solution suitable for users who have experience with Cisco software, and that are looking for an industrial-grade LoRaWAN gateway. It supports 16 channels, as well as geolocation."
@@ -20,7 +20,7 @@ Technical specifications for this gateway can be found in [Cisco's official docu
 ## Prerequisites
 
 1. User account on {{% tts %}} with rights to create gateways.
-2. Cisco Wireless Gateway for LoRaWAN with latest firmware (version `2.0.32` or higher), connected to the internet (or your local network) via ethernet.
+2. Cisco Wireless Gateway for LoRaWAN with latest firmware, connecte to the internet (or your local network) via ethernet. Version `2.3.0` is the minimal required for [connecting using {{% lbs %}}]({{< ref "/gateways/models/ciscowirelessgateway/lbs" >}})
 3. [Console cable from USB to RJ45](https://www.cablesandkits.com/accessories/console-cables/usb-rj45-6ft/pro-9900/).
 
 ## Registration
@@ -51,15 +51,13 @@ Use PuTTy if you are using Windows.
 
 You are now in the gateway's shell, called `standalone mode`.
 
-### System setup
-
 First you need to enable the privileged mode.
 
 ```
 Gateway> enable
 ```
 
-#### Network
+### Network
 
 To configure your Cisco Gateway to your network, type the following commands:
 
@@ -101,7 +99,7 @@ To see more information about the gateway's IP and the network, you can use:
 - `show ip interfaces FastEthernet 0/1` or
 - `show ip route`
 
-#### Date and Time
+### Date and Time
 
 To configure your system's date and time, you can use `ntp`:
 
@@ -121,7 +119,7 @@ Gateway(config)# exit
 
 If you do not have production-grade ntp servers available, you can use [pool.ntp.org](http://www.pool.ntp.org/en/use.html)'s servers.
 
-#### FPGA
+### FPGA
 
 If you needed to update your gateway firmware previously, your FPGA will need ~20 minutes to update once the new firmware is installed. The packet forwarder will not work until then, so we recommend at this point waiting until the FPGA is upgraded.To show the status of the FPGA, you can use the following command:
 
@@ -131,7 +129,7 @@ Gateway# show inventory
 
 When the **FPGAStatus** line indicates **Ready**, this means you can go forward with this guide.
 
-#### GPS
+### GPS
 
 If you have a GPS connected to your Cisco gateway, enable it with the following commands:
 
@@ -143,7 +141,7 @@ Gateway(config)# exit
 
 This command may return the message `packet-forwarder firmware is not installed`, which can be ignored.
 
-#### Enable Radio
+### Enable Radio
 
 As a final step before setting up the packet forwarder software, we are going to enable the radio. You can see radio information with the `show radio` command:
 
@@ -173,7 +171,7 @@ Gateway(config)# exit
 
 The `show radio` command also shows you more information about the LoRa concentrator powering the gateway. For example, `LORA_SKU` indicates the base frequency of the concentrator.
 
-#### Enable Authentication
+### Enable Authentication
 
 To prevent unauthorized access to the gateway, you'll want to set up user authentication. The Cisco gateway has a secret system, that requires users to enter a secret to access privileged commands.
 
@@ -187,7 +185,7 @@ To enable this secret system, you can use the following commands:
 + `Gateway(config)# exit` to exit global configuration mode.
 + `Gateway#copy running-config startup-config` to save the configuration.
 
-#### Verification
+### Verification
 
 Before we install the packet forwarder, let's run verification to ensure that the gateway is ready.
 
@@ -204,140 +202,20 @@ Then save the configuration by executing:
 Gateway# copy running-config startup-config
 ```
 
-### Packet Forwarder Configuration
+---
 
-{{< warning >}} Keep in mind that the pre-installed packet forwarder is not supported by Cisco for production purposes. {{</ warning >}}
-
-To run the packet forwarder, we'll make use of the container that is running on the gateway at all times.
-
-```
-Gateway# request shell container-console
-```
-
-You will be requested to enter the System Password. By default this is `admin`.
-
-Create the directory to store the Packet Forwarder configuration:
-
-```bash
-bash-3.2# mkdir /etc/pktfwd
-```
-
-Copy the packet forwarder to `/etc/pktfwd`:
-
-```bash
-bash-3.2# cp /tools/pkt_forwarder /etc/pktfwd/pkt_forwarder
-```
-
-#### Retrieve configuration from the Gateway Configuration Server
-
-The Gateway Configuration Server can be used to retrieve a proper `global_conf.json` configuration file for your gateway. Follow instructions [here]({{< ref "/gateways/concepts/udp" >}}).
-
-Copy the downloaded `global_conf.json` configuration template as `config.json `to `/etc/pktfwd`:
-
-```bash
-bash-3.2# cp config.json /etc/pktfwd/config.json
-```
-
-You can now test the packet forwarder by executing:
-
-```bash
-bash-3.2# /etc/pktfwd/pkt_forwarder -c /etc/pktfwd/config.json -g/dev/ttyS1
-```
-
-Your gateway will connect to {{% tts %}} after a couple of minutes.
-
-
-Now that we know the packet forwarder is running, let's make it run automatically. Use this command:
-
-```bash
-bash-3.2# vi /etc/init.d/S60pkt_forwarder
-```
-
-Press the `i` key on your keyboard to start insert mode. Once finished editing, press `ESC` and enter `:wq` to write the file and quit.
-
-Then copy paste the code below. Replace `things.example.com` with the name of your network after `nslookup`.
-
-```bash
-SCRIPT_DIR=/etc/pktfwd
-SCRIPT=$SCRIPT_DIR/pkt_forwarder
-CONFIG=$SCRIPT_DIR/config.json
-
-PIDFILE=/var/run/pkt_forwarder.pid
-LOGFILE=/var/log/pkt_forwarder.log
-
-export NETWORKIP=$(nslookup things.example.com | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | tail -1)
-sed -i 's/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}/'$NETWORKIP'/g' "$CONFIG"
-
-start() {
-  echo "Starting pkt_forwarder"
-  cd $SCRIPT_DIR
-  start-stop-daemon \
-        --start \
-        --make-pidfile \
-        --pidfile "$PIFDILE" \
-        --background \
-        --startas /bin/bash -- -c "exec $SCRIPT -- -c $CONFIG -g /dev/ttyS1 >> $LOGFILE 2>&1"
-  echo $?
-}
-
-stop() {
-  echo "Stopping pkt_forwarder"
-  start-stop-daemon \
-        --stop \
-        --oknodo \
-        --quiet \
-        --pidfile "$PIDFILE"
-}
-
-restart() {
-  stop
-  sleep 1
-  start
-}
-
-case "$1" in
-  start)
-    start
-    ;;
-  stop)
-    stop
-    ;;
-  restart|reload)
-    restart
-    ;;
-  *)
-    echo "Usage: $0 {start|stop|restart}"
-    exit 1
-esac
-
-exit $?
-
-```
-
-Then make the init script executable:
-
-```bash
-bash-3.2# chmod +x /etc/init.d/S60pkt_forwarder
-```
-
-To enable it immediately, execute:
-
-```bash
-bash-3.2# /etc/init.d/S60pkt_forwarder start
-```
-
-You can now reboot the gateway, it can take up to 4 minutes.
+After the initial gateway configuration is done, you can proceed with connecting the gateway to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/models/ciscowirelessgateway/lbs" >}}) or [{{% udp-pf %}}]({{< ref "/gateways/models/ciscowirelessgateway/udp" >}}).
 
 ## Troubleshooting
 
-If the gateway does not connect to the {{% tts %}} after a few minutes, you can check the log file to see if the packet forwarder started properly.
+Some basic commands that can be used for troublshooting:
 
 ```bash
-bash-3.2# tail -100 var/log/pkt_forwarder.log
+Gateway# show common-packet-forwarder status
+Gateway# show common-packet-forwarder info
+Gateway# show common-packet-forwarder log name config 30
+Gateway# debug cpf
+Gateway# show common-packet-forwarder log name trace 50
 ```
-
-GPS warnings may appear, which means the packet forwarder started.
-
-If the radio failed to start, disconnect and reconnect the power supply to power-cycle the gateway.
 
 For further information and troubleshooting, have a look at [Cisco's Configuration Guide](https://www.cisco.com/c/en/us/td/docs/routers/interface-module-lorawan/software/configuration/guide/b_lora_scg.pdf).
