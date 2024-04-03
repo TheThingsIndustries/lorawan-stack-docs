@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Connect Multitech Conduit with UDP Packet Forwarder | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/models/multitechconduit/udp/" />
+  <title>Connect Cisco IXM with LoRa Basics™ Station | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/models/ciscowirelessgateway/lbs/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Connect Multitech Conduit with UDP Packet Forwarder">
+  <meta itemprop="name" content="Connect Cisco IXM with LoRa Basics™ Station">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Connect Multitech Conduit with UDP Packet Forwarder">
+  <meta property="og:title" content="Connect Cisco IXM with LoRa Basics™ Station">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/models/multitechconduit/udp/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/models/ciscowirelessgateway/lbs/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Connect Multitech Conduit with UDP Packet Forwarder" />
+  <meta name="twitter:title" content="Connect Cisco IXM with LoRa Basics™ Station" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -116,6 +116,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/models/ciscowirelessgateway/" class="">Cisco IXM Wireless Gateway for LoRaWAN</a>
     
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/models/ciscowirelessgateway/lbs/" class="is-active">Connect Cisco IXM with LoRa Basics™ Station</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/models/ciscowirelessgateway/udp/" class="">Connect Cisco IXM with UDP Packet Forwarder</a>
+    
+  </li>
+
+</ul>
+
+
+    
   </li>
 
   <li>
@@ -196,30 +220,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/models/multitechconduit/" class="">MultiTech Conduit AEP</a>
     
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/models/multitechconduit/lbs/" class="">Connect Multitech Conduit with LoRa Basics™ Station</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/models/multitechconduit/udp/" class="is-active">Connect Multitech Conduit with UDP Packet Forwarder</a>
-    
-    
-
-
-
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 
   <li>
@@ -297,60 +297,39 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Connect Multitech Conduit with UDP Packet Forwarder
+        <h1 class="title is-size-2">Connect Cisco IXM with LoRa Basics™ Station
           
         </h1>
         
         <div class="content">
-          <p>This section contains instructions for connecting the Multitech Conduit AEP to The Things Stack using the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/">Semtech UDP Packet Forwarder</a>.</p>
+          <p>This section contains instructions for connecting to The Things Stack using <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/">LoRa Basics™ Station</a>.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The UDP Packet Forwarder does not correctly handle unstable connectivity and has no security. It also does not support configuration of frequency plans from the Network Server. The Things Stack supports LoRa Basics™ Station, which solves all of these problems, so please <a href="/docs/gateways/models/multitechconduit/lbs/">use that instead</a> if possible.
+  The minimal Cisco IXM gateway software version required for connecting to The Things Stack with LoRa Basics™ Station is <code>2.3.0</code>. Note that the use of the Cisco&rsquo;s Common Packet Forwarder (CPF) software is subject to a license fee.
 </div>
 
-<h2 id="configuration">Configuration</h2>
-<p>To configure the gateway for the correct channel plans, you need a <code>global_conf.json</code>.</p>
-<p>The Gateway Configuration Server can be used to retrieve a proper <code>global_conf.json</code> configuration file for your gateway. Follow instructions <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/">here</a>.</p>
-<p>Once the <code>global_conf.json</code> file is generated, you will need to add this to your gateway. In a web browser, open the gateway’s configuration page by navigating to its IP Address obtained from the network it is connected to. Once logged in, you can configure the gateway to connect to The Things Stack by following the steps below:</p>
-<p>Click on <strong>LoRaWAN<sup>®</sup></strong> in the menu on the left. It opens the Gateway's configuration page.</p>
-<figure><img src="../main-menu.png"
-         alt="MultiTech Conduit gateway home page"/>
-</figure>
-
-<p>Under <strong>Network Settings</strong>, select the mode as &quot;Packet Forwarder&quot;.</p>
-<figure><img src="../packet-forwarder-menu.png"
-         alt="MultiTech Conduit packet forwarder settings"/>
-</figure>
-
-<p>On the right side of the &quot;LoRa Packet Forwarder Configuration&quot; section, you can find &quot;Manual Configuration &quot;. Click on it to setup the channel plan manually.</p>
-<figure><img src="../manual-config.png"
-         alt="Switch to manual configuration mode"/>
-</figure>
-
-<p>The above step will lead you to the gateway configuration editor tagged as &quot;Config&quot;.</p>
-<figure><img src="../manual-config-2.png"
-         alt="Manual Configuration"/>
-</figure>
-
-<p>Copy the contents of the <code>global_conf.json</code> file downloaded earlier and paste them in the gateway console configuration editor.</p>
-<p>Once pasted, modify the value of <code>clksrc</code> to set it to <code>0</code>.</p>
-<p>Click on <strong>Submit</strong> to save the configuration.</p>
-<p>Now, click on <strong>Save and Restart</strong> from the menu.</p>
-<figure><img src="../save-and-restart.png"
-         alt="Saving the Network Interfaces Configuration"/>
-</figure>
-
-<p>You will be prompted to confirm the restart. Choose <strong>OK</strong> to proceed.</p>
-<figure><img src="../confirm.png"
-         alt="Configuration restart prompt"/>
-</figure>
-
-<p>This will apply the custom settings and reboot the gateway. If all the steps have been followed correctly, your gateway will now connect to The Things Stack.</p>
-<p>To know more about other features of the MultiTech Conduit gateway, you can refer to the mPower Edge AEP software guide on the <a href="http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/">Multitech Website</a>.</p>
+<p>To connect the gateway via LNS protocol, first follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/lns/">Connecting LNS</a>, then follow instructions below.</p>
+<p>To upload the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/lns/#lns-server-certificate--lns-trust">LNS Server Certificate</a> (<code>tc.trust</code> file) and <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/lns/#lns-key-file">LNS Key</a> (<code>tc.key</code>file) from your local IP to the Cisco IXM flash, use the following commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Gateway# copy tftp://&lt;local-IP&gt;/&lt;folder-path&gt;/tc.trust flash:
+</span></span><span class="line"><span class="cl">Gateway# copy tftp://&lt;local-IP&gt;/&lt;folder-path&gt;/tc.key flash:
+</span></span></code></pre></div><p>To install and move these files from Cisco IXM flash to secure storage execute the following commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Gateway# common-pack-forwarder cert install srv flash:tc.trust
+</span></span><span class="line"><span class="cl">Gateway# common-pack-forwarder cert install gw NA flash:tc.key
+</span></span></code></pre></div><p>Next, you need to configure the common packet forwarder profile. The example configuration assuming the use of a single 1.5 dBi antenna is shown below. Make sure to replace the <code>server-address</code> with The Things Stack Gateway Server address (e.g. <code>eu1.cloud.thethings.network</code>) and <code>gateway-EUI</code> with Cisco IXM gateway EUI as defined in <a href="https://www.thethingsindustries.com/docs/gateways/models/ciscowirelessgateway/#registration">Registration section</a>.</p>
+<pre tabindex="0"><code>Gateway# configure terminal
+Gateway(config)# common-packet-forwarder profile
+Gateway(config-cpf-profile)# ipaddr &lt;server-address&gt; 8887
+Gateway(config-cpf-profile)# antenna 1 omni gain 1.5 loss 0
+Gateway(config-cpf-profile)# gatewayid &lt;gateway-EUI&gt;
+Gateway(config-cpf-profile)# auth-mode token-server
+Gateway(config-cpf-profile)# exit
+Gateway(config)# exit
+Gateway# copy running-config startup-config
+</code></pre><p>If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds.</p>
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/gateways/models/multitechconduit/lbs/">← Connect Multitech Conduit with LoRa Basics™ Station</a>
-<a class="button is-pulled-right" href="/docs/gateways/models/multitechconduit-mlinux/">MultiTech Conduit mLinux →</a>
+<a class="button is-pulled-left" href="/docs/gateways/models/ciscowirelessgateway/">← Cisco IXM Wireless Gateway for LoRaWAN</a>
+<a class="button is-pulled-right" href="/docs/gateways/models/ciscowirelessgateway/udp/">Connect Cisco IXM with UDP Packet Forwarder →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -367,13 +346,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 class="title is-size-6">On this page</h2>
     
 
-
-  <ul class="menu-list">
-    
-      
-      <li><a href='#configuration'>Configuration</a></li>
-    
-  </ul>
 
 
   </nav>
