@@ -12,21 +12,21 @@ The RAKwireless [RAK2560 WisNode Sensor Hub](https://store.rakwireless.com/produ
 
 ## Sensor Setup
 
-To acquire the provisioning information and properly setup the sensor you must download the **WisToolBox** App from the Play Store or the App Store on your phone.
+To acquire the provisioning information and properly setup the sensor, you must download the **WisToolBox** App from the Play Store or the App Store on your phone.
 
 After opening the app it will ask you to log in/create an account, but you can click on **Skip** in the top right if you don't wish to sign up.
 
 Then press **Start**, select **NFC Activation** and follow the instructions for connecting to the device.
 
-Once you reach the menu of the device, select the **LORA & LORAWAN PARAMETERS** tab. After that open the **Global Settings** dropdown and make sure the Join mode and Region are set correctly. 
+Once you reach the device menu, select the **LORA & LORAWAN PARAMETERS** tab. Open the **Global Settings** dropdown and make sure the **Join mode** and **Region** are set correctly. 
 
 Then open the **LoRaWAN keys, ID, EUI** dropdown and copy the **Device EUI**, **AppEUI** and **AppKey** and save them somewhere as they will be needed later for onboarding.
 
 {{< figure src="wistoolbox.png" alt="Settings tab of the device." width="40%">}}
 
-Finally select the **Sensor Probe** tab up top and open the dropdowns for the respective sensors that are used. Here you can set the intervals or thresholds of when to send data.
+Finally, select the **Sensor Probe** tab up top and open the dropdowns for the sensors that are used. Here you can set the intervals or thresholds for transmitting data.
 
-Make sure you enable the **Send uplink** toggle depending on which method  you use.
+Make sure you enable the **Send uplink** toggle depending on which method you use.
 
 ## Onboarding to {{% tts %}}
 
