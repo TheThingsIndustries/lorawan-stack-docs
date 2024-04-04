@@ -16,11 +16,10 @@ In addition to the written instructions below, video instructions for installing
 </details>
 
 ## Configuration Files
+{{% tts %}} requires two configuration files when installing with Docker: `docker-compose.yml` and `ttn-lw-stack-docker.yml`. The files are provided below:
 
 {{< tabs/container "Enterprise" "Open Source" >}}
 {{< tabs/tab "Enterprise" >}}
-
-{{% tts %}} requires two configuration files when installing with Docker: `docker-compose.yml` and `ttn-lw-stack-docker.yml`. The files are provided below:
 
 Download the example `docker-compose.yml` for {{% tts %}} Enterprise <a href="docker-compose-enterprise.yml" download="docker-compose.yml">here</a>.
 
@@ -29,8 +28,6 @@ Download the example `ttn-lw-stack-docker.yml` for {{% tts %}} Enterprise <a hre
 {{< /tabs/tab >}}
 {{< tabs/tab "Open Source" >}}
 
-{{% tts %}} requires two configuration files when installing with Docker: `docker-compose.yml` and `ttn-lw-stack-docker.yml`. The files are provided below:
-
 Download the example `docker-compose.yml` for {{% tts %}} Open Source <a href="docker-compose-open-source.yml" download="docker-compose.yml">here</a>.
 
 Download the example `ttn-lw-stack-docker.yml` for {{% tts %}} Open Source <a href="ttn-lw-stack-docker-open-source.yml" download="ttn-lw-stack-docker.yml">here</a>.
@@ -38,7 +35,7 @@ Download the example `ttn-lw-stack-docker.yml` for {{% tts %}} Open Source <a hr
 {{< /tabs/tab >}}
 {{< /tabs/container >}}
 
-After getting the files create the following folder structure with `docker-compose.yml`and `ttn-lw-stack-docker.yml`:
+Create the following folder structure with `docker-compose.yml`and `ttn-lw-stack-docker.yml`:
 
 ```bash
 docker-compose.yml          # defines Docker services for running {{% tts %}}
@@ -47,9 +44,9 @@ config/
     └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
 ```
 
-After that make sure you replace the example server address `thethings.example.com` in `ttn-lw-stack-docker.yml` with your own. The easiest way to do this is to use the search and replace function in your preferred code editor.
+Make sure you replace the example server address `thethings.example.com` in `ttn-lw-stack-docker.yml` with the address of your deployment. The easiest way to do this is to use the search and replace function in your preferred code editor.
 
-Next proceed to the instructions below for how to change additional settings for production deployments.
+Next, proceed to the instructions below on how to change additional settings for production deployments.
 
 ## Configuration Files Explained
 

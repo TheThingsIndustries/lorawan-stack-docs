@@ -30,7 +30,7 @@ Ensure you have a DNS record pointing to your server's public IP address. See yo
 
 ## Key Permission Denied
 
-If you run into `/run/secrets/key.pem: permission denied`, you have probably forgotten to set the permissions. To set these permissions:
+If you run into `/run/secrets/key.pem: permission denied`, you have probably forgotten to set permissions. To set permissions:
 ```bash
 sudo chown 886:886 ./cert.pem ./key.pem
 ```

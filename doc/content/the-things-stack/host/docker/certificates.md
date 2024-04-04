@@ -48,7 +48,7 @@ Once you have created the `acme` folder and given it appropriate permissions, mo
 
 To use TLS on a local or offline deployment, you can use your own Certificate Authority. In order to set that up, you can use `cfssl`, CloudFlare's PKI/TLS toolkit. The `cfssl` installation instructions can be found [here](https://github.com/cloudflare/cfssl#installation).
 
-Create a file called `ca.json` and write the following configuration to it:
+Create a `ca.json` file and write the following configuration to it:
 
 ```json
 {
@@ -129,11 +129,7 @@ And uncomment the custom certificates section:
 {{< readfile path="/content/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=41 to=46 >}}
 {{< /highlight >}}
 
-Finally you must set the correct permissions, as shown in [Certificates from a Certificate Authority](#certificates-from-a-certificate-authority)
-
-### Certificates from a Certificate Authority
-
-In order to use the certificate (`cert.pem`) and key (`key.pem`), you also need to set these permissions.
+In order to use the certificate (`cert.pem`) and key (`key.pem`), you also need to set these permissions:
 
 ```bash
 sudo chown 886:886 ./cert.pem ./key.pem
