@@ -366,6 +366,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   While initialization alone is needed for deployment itself, creating initial resources mentioned below is required for The Things Stack to work.
 </div>
 
+<h2 id="migrate-identity-server-database">Migrate Identity Server Database</h2>
+<p>Before upgrading the Identity Server to a new minor version or deploying The Things Stack for the first time, the database may need to be migrated.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,is-db,migrate
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;migrate&#34;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  While the migration alone is sufficient for completing the deployment, creating initial resources mentioned above is required for The Things Stack to work.
+</div>
+
 <h2 id="create-a-tenant-in-the-identity-server-database-multi-tenant-only">Create a Tenant in the Identity Server Database (multi-tenant only)</h2>
 <p>If you can not, or do not want to use the Tenant Billing Server or the API to create tenants, you can create tenants directly in the database.</p>
 <p>The command for this is:</p>
@@ -561,42 +597,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   Replace <code>$TENANT_ID</code>, <code>$ADMIN_EMAIL</code> and <code>$ADMIN_PASSWORD</code> with your own.
 </div>
 
-<h2 id="migrate-identity-server-database">Migrate Identity Server Database</h2>
-<p>Before upgrading the Identity Server to a new minor version or deploying The Things Stack for the first time, the database may need to be migrated.</p>
-<div class="tabs is-boxed">
-  <ul>
-    
-    <li data-tab="aws-console">
-      <a>
-        <span>AWS Console</span>
-      </a>
-    </li>
-    
-    <li data-tab="aws-cli">
-      <a>
-        <span>AWS CLI</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-<div class="tab-content content">
-  <section data-content="aws-console">
-  <pre tabindex="0"><code>tti-lw-stack,is-db,migrate
-</code></pre>
-</section>
-<section data-content="aws-cli">
-  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;migrate&#34;]
-</code></pre>
-</section>
-
-</div>
-
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  While the migration alone is sufficient for completing the deployment, creating initial resources mentioned above is required for The Things Stack to work.
-</div>
-
 <h2 id="migrate-network-server-database">Migrate Network Server Database</h2>
 <p>Before upgrading the Network Server to a new minor version, the database may need to be migrated.</p>
 <div class="tabs is-boxed">
@@ -784,6 +784,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <li><a href='#initialize-network-operations-center-database'>Initialize Network Operations Center Database</a></li>
     
       
+      <li><a href='#migrate-identity-server-database'>Migrate Identity Server Database</a></li>
+    
+      
       <li><a href='#create-a-tenant-in-the-identity-server-database-multi-tenant-only'>Create a Tenant in the Identity Server Database (multi-tenant only)</a></li>
     
       
@@ -794,9 +797,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
       
       <li><a href='#create-admin-user'>Create Admin User</a></li>
-    
-      
-      <li><a href='#migrate-identity-server-database'>Migrate Identity Server Database</a></li>
     
       
       <li><a href='#migrate-network-server-database'>Migrate Network Server Database</a></li>
