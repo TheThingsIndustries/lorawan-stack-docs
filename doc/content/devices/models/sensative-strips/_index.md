@@ -22,7 +22,7 @@ Provisioning information (the **JoinEUI/AppEUI**, **DevEUI** and **AppKey**) can
 
 The device can be onboarded using the **Device Repository** or by **manually** entering the specific information.
 
-The [LoRaWAN® Device repository](https://github.com/TheThingsNetwork/lorawan-devices) comprises over 600 end-device profiles, including the Sensative Strips, which enables quick and easy registration with {{% tts %}}.
+The [LoRaWAN® Device repository](https://github.com/TheThingsNetwork/lorawan-devices) comprises over 800 end-device profiles, including the Sensative Strips, which enables quick and easy registration with {{% tts %}}.
 
 In the **End device type** section, under **Input method**, select either the **Select the end device in the LoRaWAN Device Repository** or **Enter end device specifics manually** option. The [Onboarding devices without QR codes]({{< ref "/devices/adding-devices/#onboarding-devices-without-qr-codes" >}}) section of the [Adding Devices]({{< ref "/devices/adding-devices/" >}}) guide explains this procedure in detail. Following details are Strips-specific:
 

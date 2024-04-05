@@ -40,7 +40,7 @@ To continue with the rest of the registration process you can choose either **Lo
 
 ### Using the LoRaWAN Device Repository
 
-The [LoRaWAN® Device repository](https://github.com/TheThingsNetwork/lorawan-devices) comprises over 600 end-device profiles, including the Generic Node Sensor Edition, which requires less information for registration with {{% tts %}}.
+The [LoRaWAN® Device repository](https://github.com/TheThingsNetwork/lorawan-devices) comprises over 800 end-device profiles, including the Generic Node Sensor Edition, which requires less information for registration with {{% tts %}}.
 
 In the **End device type** section, under **Input Method** select **Select the end device in the LoRaWAN device repository**. Then select/enter the following values:
 
