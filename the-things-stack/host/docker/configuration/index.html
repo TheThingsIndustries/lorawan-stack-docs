@@ -222,28 +222,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="content">
           <p>This guide shows an example of configuring The Things Stack using configuration files, with an example domain <code>thethings.example.com</code> and TLS certificates from Let&rsquo;s Encrypt.</p>
 <p>If configuring The Things Stack as <code>localhost</code> on a machine with no public IP or DNS address, see the <a href="#running-the-things-stack-as-localhost"><code>localhost</code></a> section.</p>
-<p>In addition to the written instructions below, video instructions for installing The Things Stack are available on <a href="https://www.youtube.com/c/TheThingsNetworkCommunity">The Things Network youtube channel</a>.</p>
+<p>In addition to the written instructions below, video instructions for installing The Things Stack are available on <a href="https://www.youtube.com/watch?v=DcmgJMvMfZc">The Things Network youtube channel</a>.</p>
 <details><summary>Show video</summary>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/XgPSU4UkDuE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/DcmgJMvMfZc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
 </details>
 <h2 id="configuration-files">Configuration Files</h2>
-<p>The Things Stack requires two configuration files when installing with Docker: <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code>.</p>
-<p>Example files for Enterprise and Open source are provided <a href="#example-configuration-files">below</a>. Note that you must replace the example server address <code>thethings.example.com</code> in <code>ttn-lw-stack-docker.yml</code>, and you should change additional settings for production deployments, which we cover below.</p>
-<h3 id="docker-composeyml"><code>docker-compose.yml</code></h3>
-<p><code>docker-compose.yml</code> defines the Docker services of The Things Stack and its dependencies, and is used to configure Docker.</p>
-<h3 id="ttn-lw-stack-dockeryml"><code>ttn-lw-stack-docker.yml</code></h3>
-<p><code>ttn-lw-stack-docker.yml</code> contains the configuration specific to The Things Stack deployment and is used to configure The Things Stack. When The Things Stack starts, it searches through <code>ttn-lw-stack-docker.yml</code> for component server addresses, a TLS certificate source, client authentication credentials, and other configuration parameters.</p>
-<p>The configuration options in <code>ttn-lw-stack-docker</code> can also be specified using command-line flags or environment variables. All configuration options have a corresponding environment variable and command-line flag. See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/">Configuration Reference</a> for more information about the configuration options.</p>
-<p>This guide assumes the following directory hierarchy. Create this folder structure with <code>docker-compose.yml</code>and <code>ttn-lw-stack-docker.yml</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
-</span></span><span class="line"><span class="cl">config/
-</span></span><span class="line"><span class="cl">└── stack/
-</span></span><span class="line"><span class="cl">    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
-</span></span></code></pre></div><h2 id="example-configuration-files">Example Configuration Files</h2>
+<p>The Things Stack requires two configuration files when installing with Docker: <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code>. The files are provided below:</p>
 <div class="tabs is-boxed">
   <ul>
     
@@ -273,7 +261,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 </div>
 
-<p>These example configuration files contain all of the configuration settings you need to run The Things Stack for development. Be sure to update <code>ttn-lw-stack-docker.yml</code> with your server address.</p>
+<p>Create the following folder structure with <code>docker-compose.yml</code>and <code>ttn-lw-stack-docker.yml</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
+</span></span><span class="line"><span class="cl">config/
+</span></span><span class="line"><span class="cl">└── stack/
+</span></span><span class="line"><span class="cl">    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
+</span></span></code></pre></div><p>Make sure you replace the example server address <code>thethings.example.com</code> in <code>ttn-lw-stack-docker.yml</code> with the address of your deployment. The easiest way to do this is to use the search and replace function in your preferred code editor.</p>
+<p>Next, proceed to the instructions below on how to change additional settings for production deployments.</p>
+<h2 id="configuration-files-explained">Configuration Files Explained</h2>
+<h3 id="docker-composeyml"><code>docker-compose.yml</code></h3>
+<p><code>docker-compose.yml</code> defines the Docker services of The Things Stack and its dependencies, and is used to configure Docker.</p>
+<h3 id="ttn-lw-stack-dockeryml"><code>ttn-lw-stack-docker.yml</code></h3>
+<p><code>ttn-lw-stack-docker.yml</code> contains the configuration specific to The Things Stack deployment and is used to configure The Things Stack. When The Things Stack starts, it searches through <code>ttn-lw-stack-docker.yml</code> for component server addresses, a TLS certificate source, client authentication credentials, and other configuration parameters.</p>
+<p>The configuration options in <code>ttn-lw-stack-docker</code> can also be specified using command-line flags or environment variables. All configuration options have a corresponding environment variable and command-line flag. See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/">Configuration Reference</a> for more information about the configuration options.</p>
 <p>Settings in <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code> files are explained in detail in <a href="#understanding-docker-configuration">Understanding Docker Configuration</a> and <a href="#understanding-the-things-stack-configuration">Understanding The Things Stack Configuration</a> sections below. Further, we provide tips for running The Things Stack in production.</p>
 <h2 id="understanding-docker-configuration">Understanding Docker Configuration</h2>
 <p>In this section, configuring Docker is explained with an example <code>docker-compose.yml</code> file.</p>
@@ -1392,7 +1392,7 @@ host, and also to use it as the default host.</p>
       <li><a href='#configuration-files'>Configuration Files</a></li>
     
       
-      <li><a href='#example-configuration-files'>Example Configuration Files</a></li>
+      <li><a href='#configuration-files-explained'>Configuration Files Explained</a></li>
     
       
       <li><a href='#understanding-docker-configuration'>Understanding Docker Configuration</a></li>

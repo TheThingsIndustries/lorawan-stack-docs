@@ -236,7 +236,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ol>
 <h2 id="cant-access-the-server">Can&rsquo;t access the server</h2>
 <p>Ensure you have a DNS record pointing to your server&rsquo;s public IP address. See your domain registrar&rsquo;s help section for instructions, or <a href="https://www.name.com/support/articles/205188538-Pointing-your-domain-to-hosting-with-A-records">name.com&rsquo;s DNS guide</a> for general information about pointing records to your IP address.</p>
-<h2 id="forbidden">Forbidden</h2>
+<h2 id="key-permission-denied">Key Permission Denied</h2>
+<p>If you run into <code>/run/secrets/key.pem: permission denied</code>, you have probably forgotten to set permissions. To set permissions:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chown 886:886 ./cert.pem ./key.pem
+</span></span></code></pre></div><h2 id="forbidden">Forbidden</h2>
 <p>If you see an error reading:</p>
 <pre tabindex="0"><code>Invalid redirect URI
 </code></pre><p>check that you entered the correct server address when <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/docker/running-the-stack/#initialization">registering the Console as an OAuth client</a>.</p>
@@ -328,6 +331,9 @@ stack_1     | error:cmd/internal/shared:initialize_network_operations_center (co
     
       
       <li><a href='#cant-access-the-server'>Can’t access the server</a></li>
+    
+      
+      <li><a href='#key-permission-denied'>Key Permission Denied</a></li>
     
       
       <li><a href='#forbidden'>Forbidden</a></li>
