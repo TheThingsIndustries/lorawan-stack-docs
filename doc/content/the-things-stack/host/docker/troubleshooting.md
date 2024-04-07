@@ -28,6 +28,13 @@ Our `docker-compose.yml` file uses [Compose file version 3.7](https://docs.docke
 
 Ensure you have a DNS record pointing to your server's public IP address. See your domain registrar's help section for instructions, or [name.com's DNS guide](https://www.name.com/support/articles/205188538-Pointing-your-domain-to-hosting-with-A-records) for general information about pointing records to your IP address.
 
+## Key Permission Denied
+
+If you run into `/run/secrets/key.pem: permission denied`, you have probably forgotten to set permissions. To set permissions:
+```bash
+sudo chown 886:886 ./cert.pem ./key.pem
+```
+
 ## Forbidden
 
 If you see an error reading:
