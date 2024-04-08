@@ -9,6 +9,8 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.29.2
+
 ## 3.29.1
 
 ## 3.29.0
