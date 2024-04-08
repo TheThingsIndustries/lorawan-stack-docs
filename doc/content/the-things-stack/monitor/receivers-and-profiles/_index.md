@@ -5,6 +5,8 @@ distributions: ["Enterprise", "Cloud"]
 weight: 2
 ---
 
+{{< new-in-version "3.30.0">}}
+
 This section explains how alert notification receivers and profiles work in {{% tts %}}.
 
 <!--more-->

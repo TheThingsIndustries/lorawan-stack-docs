@@ -5,6 +5,8 @@ distributions: ["Enterprise", "Cloud"]
 weight: 1
 ---
 
+{{< new-in-version "3.30.0">}}
+
 Alerting in {{% tts %}} refers to notifications which are sent when certain conditions are met, usually signaling anomalous behavior exhibited by end devices or gateways.
 
 <!--more-->
