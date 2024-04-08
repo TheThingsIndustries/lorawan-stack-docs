@@ -28,7 +28,7 @@ A dashboard offers many features such as time picker, alerting, etc. For more in
 
 ## Overview Dashboard
 
-The Overview dashboard provides a high-level overview of the network, focusing on the historical data for gateway, application, and device statistics for extended users. Non-extended users see only gateway statistics. 
+The Overview dashboard provides a high-level overview of the network, focusing on the historical data for gateway, application, and device statistics for extended users. Non-extended users see only gateway statistics.
 
 {{< figure src="../overview-dashboard.png" alt="overview dashboard" >}}
 
@@ -91,7 +91,7 @@ It consists of the following panels:
 
 {{< figure src="../gateway-uptime.png" alt="uptime" >}}
 
-**Lowest RSSI (LoRa)** - a graph that visualizes data about the lowest Received Signal Strength Indicator (RSSI) in dBm for each channel. 
+**Lowest RSSI (LoRa)** - a graph that visualizes data about the lowest Received Signal Strength Indicator (RSSI) in dBm for each channel.
 
 {{< figure src="../gateway-rssi.png" alt="lowest rssi" >}}
 
@@ -125,7 +125,7 @@ It consists of the following panels:
 
 {{< figure src="../gateways-seen.png" alt="" >}}
 
-**Device statistics** - a chart displaying gateway, RSSI, and packet data for each device in the application. 
+**Device statistics** - a chart displaying gateway, RSSI, and packet data for each device in the application.
 
 {{< figure src="../device-statistics.png" alt="" >}}
 
@@ -153,11 +153,11 @@ It consists of the following panels:
 
 {{< figure src="../session-age-ed.png" alt="" >}}
 
-**Best RSSI (LoRa)** - a chart displaying the RSSI for each channel. 
+**Best RSSI (LoRa)** - a chart displaying the RSSI for each channel.
 
 {{< figure src="../best-rssi-ed.png" alt="" >}}
 
-**Packet error rate** - a chart displaying the historical average error rate. 
+**Packet error rate** - a chart displaying the historical average error rate.
 
 {{< figure src="../packet-error-rate-ed.png" alt="" >}}
 
