@@ -25,8 +25,8 @@ aliases:
 | Item           | Length | Value                                              |
 | -------------- | ------ | -------------------------------------------------- |
 | `token-type`   | 5      | Fixed to `NNSXS` ("key" as base32 encoded string ) |
-| `token-id`     | 24     | Unique identifier of the key, randomly generated   |
-| `token-secret` | 32     | The secret value of they key, randomly generated   |
+| `token-id`     | 39     | Unique identifier of the key, randomly generated   |
+| `token-secret` | 52     | The secret value of they key, randomly generated   |
 
 </div>
 
@@ -44,7 +44,7 @@ API Keys _by default do not have_ an expiry date. These have to be set explicitl
 
 Authentication is the process of verifying the _identity_ of the caller. If the caller provides a valid, non-expired API key, the caller is authenticated.
 
-Authorization on the other hand, is the process of determining if the authenticated caller has the _necessary rights_ to perfrom the requested action. {{% tts %}} handles authorization using Rights. Each API key is assigned a set of rights and {{% tts %}} checks this against the API call being made. For example, if the API call is to update a user but the API key only has rights to read users, then this call will be rejected.
+Authorization on the other hand, is the process of determining if the authenticated caller has the _necessary rights_ to perform the requested action. {{% tts %}} handles authorization using Rights. Each API key is assigned a set of rights and {{% tts %}} checks this against the API call being made. For example, if the API call is to update a user but the API key only has rights to read users, then this call will be rejected.
 
 For a full list of available rights, check the [reference]({{< ref "/api/reference/grpc/user" >}}).
 

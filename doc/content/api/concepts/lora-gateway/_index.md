@@ -33,7 +33,7 @@ The Gateway Server is the MQTT server, and gateways connect to the Gateway Serve
 
 On multi-tenant environments such as Cloud, endpoints include the tenant id, e.g `gateway1@tenant1`. On single tenant environments such as Open Source, the tenant id can be removed, i.e `gateway1`.
 
-To communicate with the MQTT protocol, the Gateway Server and the gateway are exchanging [Protocol Buffers](https://developers.google.com/protocol-buffers). The definitions of the Protocol Buffers can be found at the [GitHub repository](https://github.com/TheThingsNetwork/lorawan-stack) of {{% tts %}}, under [**messages.proto**]({{< tts-repo-file-url "blob" "api/messages.proto" >}}) and [**lorawan.proto**]({{< tts-repo-file-url "blob" "api/lorawan.proto" >}}).
+To communicate with the MQTT protocol, the Gateway Server and the gateway are exchanging [Protocol Buffers](https://developers.google.com/protocol-buffers). The definitions of the Protocol Buffers can be found at the [GitHub repository](https://github.com/TheThingsNetwork/lorawan-stack) of {{% tts %}}, under [**messages.proto**]({{< tts-repo-file-url "blob" "api/ttn/lorawan/v3/messages.proto" >}}) and [**lorawan.proto**]({{< tts-repo-file-url "blob" "api/ttn/lorawan/v3/lorawan.proto" >}}).
 
 ### MQTT v2
 
