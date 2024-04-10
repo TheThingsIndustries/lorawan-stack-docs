@@ -102,3 +102,15 @@ The `--location-public` flag would be interpreted as being `true`, and `false` a
 ```bash
 ttn-lw-cli gateways set <gateway-id> --location-public=false --status-public=false --auto-update=true
 ```
+
+## Server Address Mismatch
+
+If you [configure {{% tts %}} CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) to use one cluster server address (for example `eu1`) and try to perform actions on the entities registered in other cluster (for example `au1`), you will probably face the following error:
+
+```
+error:cmd/ttn-lw-cli/commands:end_device_server_address_mismatch (Network/Application/Join Server address mismatch)
+```
+
+If you want to perform operations on the entities registered in `a certain` cluster, then you need to ensure the CLI `is configured with server addresses for that` cluster.
+
+Keep in mind that Identity Server and OAuth addresses are always in `eu1` cluster, as described [here]({{< ref "/the-things-stack/cloud/addresses#command-line-interface" >}}).
