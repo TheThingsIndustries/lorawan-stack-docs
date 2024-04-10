@@ -66,6 +66,20 @@ Federated authentication providers can be registered in the authentication provi
 
 The authentication providers are used to allow the Identity Server to obtain the identity of a user from an external identity provider, such as an [OpenID Connect](https://openid.net/connect/) provider.
 
+### Alert Notification Receivers
+
+Alert notification receivers can be registered in the alert notification receiver registries. Alert notification receivers are registered with an ID, name and receiver configuration.
+
+The alert notification receivers are used to dispatch alert notifications to user provided endpoints.
+
+### Alert Notification Profiles
+
+Alert notification profiles bundle multiple alert notification receivers in order to allow alert notifications to be dispatched. Alert notification profiles are registered with an ID, name, and alert notification receivers.
+
+The alert notification profiles are used to dispatch alert notifications to multiple receivers.
+
+It is possible to configure a default alert notification profile which is used when no profile is configured for an entity.
+
 ## Entity Access
 
 The Identity Server is responsible for access control to entities.
