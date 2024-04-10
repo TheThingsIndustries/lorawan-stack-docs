@@ -166,3 +166,8 @@ If you want to add more entities than your current limit allows you to, you will
 Generally, the first two letters of the VAT ID represent the country code, but {{% tts %}} doesn't require it during the subscription process. Therefore, please remove the first two letters at the beginning of the VAT ID and enter the remaining digits as the VAT ID while filling in the details.
 
 For example, if the VAT ID is `AB12312312312`, enter `12312312312` and try subscribing to {{% tts %}} again.
+### What happens if my subscription is past due?
+
+If your {{% tts %}} tenant subscription payment is overdue, you will first receive the `Stripe subscription past due` warning when you log into your tenant's Console. If the payment is 3 weeks past due, you will encounter the `Tenant Flagged` error in the Console. This means your tenant has entered the flagged state and further functionality will be restricted because of the automatic tenant deactivation. You will probably also receive an email notifying you about overdue payment.
+
+Once you clear all overdue pending invoices, your tenant will automatically be reactivated.
