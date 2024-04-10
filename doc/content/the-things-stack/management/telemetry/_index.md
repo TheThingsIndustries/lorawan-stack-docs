@@ -10,6 +10,8 @@ aliases: [/reference/telemetry]
 
 {{< warning >}} Metrics are not covered by our compatibility commitment. This means that metrics may be changed or removed in major, minor, or patch releases. This page only lists metrics that are considered relatively stable, but even these metrics may be changed. {{</ warning >}}
 
+{{< note >}} Metrics are exported and available only when a corresponding action takes place in {{% tts %}}. For example, to get the connected gateway's metric (`ttn_lw_gs_connected_gateways`), a gateway should be connected to propagate that metric. {{</ note >}}
+
 ## Process and Go Metrics
 
 {{% tts %}} uses the [Prometheus instrumentation library for Go](https://github.com/prometheus/client_golang/) that includes a collector for the state of the process (on Linux) and metrics from the Go runtime.
