@@ -2,10 +2,9 @@
 title: "Gateway connectivity outages"
 description: ""
 distributions: ["Enterprise", "Cloud"]
+new_in_version: "3.30.0"
 weight: 3
 ---
-
-{{< new-in-version "3.30.0">}}
 
 This section explains how gateway outage alert notifications work in {{% tts %}}.
 

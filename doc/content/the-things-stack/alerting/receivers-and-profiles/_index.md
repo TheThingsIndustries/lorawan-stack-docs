@@ -2,14 +2,15 @@
 title: "Receiving alert notifications"
 description: ""
 distributions: ["Enterprise", "Cloud"]
+new_in_version: "3.30.0"
 weight: 2
 ---
-
-{{< new-in-version "3.30.0">}}
 
 This section explains how alert notification receivers and profiles work in {{% tts %}}.
 
 <!--more-->
+
+Alert notifications are dispatched by {{% tts %}} using _alert notification receivers_ and _alert notification profiles_. The receivers and profiles can be managed only by {{% tts %}} network admins, but individual users with access to entities can choose which profile should be used to dispatch alert notifications.
 
 ## Alert Notification Receivers
 
