@@ -64,6 +64,12 @@ ttn-lw-migrate devices --source tts --dry-run --verbose < device_ids.txt > devic
 ttn-lw-migrate devices --source tts < device_ids.txt > devices.json
 ```
 
+{{< note >}} To delete devices from {{% tts %}} application simultaneously while exporting, pass the `--tts.delete-source-device` flag in the device exporting command. Below is an example migration command: 
+```bash
+ttn-lw-migrate devices --source tts 'my device' devices.json --tts.delete-source-device
+```
+{{</ note >}}
+
 {{</ tabs/tab >}}
 
 {{< tabs/tab "Export applications" >}}
