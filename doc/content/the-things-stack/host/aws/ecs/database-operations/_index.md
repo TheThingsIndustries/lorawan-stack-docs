@@ -198,7 +198,7 @@ tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--
 
 - Replace `--tenant-id=NULL` with `--tenant-id=$TENANT_ID` in single-tenant deployments.
 - For secondary clusters (where the domain of the Console or Network Operations Center is not equal to the domain of the Identity Server), omit you can omit the `--redirect-uri` and `--logout-redirect-uri` to relative paths (only keep the URI).
-  {{</ note >}}
+{{</ note >}}
 
 Set the variables as follows:
 

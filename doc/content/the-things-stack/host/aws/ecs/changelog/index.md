@@ -429,7 +429,7 @@ For mTLS termination, check the upgrading guide at https://thethingsindustries.c
 - Add two new parameters: `DBEngineVersion`, which controls the PostgreSQL engine major version, and `DBTimescaleDBExtensionVersion`, which controls the TimescaleDB extension version.
   - By default, `DBEngineVersion` is `12`, and `DBTimescaleDBExtensionVersion` is `2.7.0`.
   - Major upgrades require manual migration via `pg_upgrade`.
-  
+
 ## 3.22.1
 
 ### `2-4b-routing-s3`

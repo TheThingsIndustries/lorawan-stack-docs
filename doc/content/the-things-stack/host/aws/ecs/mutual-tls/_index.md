@@ -88,12 +88,12 @@ In `4-1-secrets` template with `SupportProxyTLS` set to `true`.
 
 This creates a `ProxyTLSSecret` for the TLS server certificate/key secrets and also a `GCS token hash key secret`, which is used by the Gateway Configuration Server and the Identity Server.
 
-Next, update `5-7a-certs-le` with the following settings:
+Next, update `5-8a-certs-le` with the following settings:
 
 - Set ` SupportProxyTLS` to true. If `ExistingCertARN` is set, clear this before running the update.
 - Fetch new certificates by manually requesting it using the [instructions]({{< ref "the-things-stack/host/aws/ecs/deployment/#lets-encrypt-certificates-optional" >}}).
 - When fetching the certificates, make note of the `CertificateArn` field from the logs where the new certificates are written.
-- Once the certificates are successfully queried, rerun the same `5-7a-certs-le` template but this time set, the `ExistingCertARN` with the `CertificateArn` value. This ensures that Certbot renews these certificates and doesn't replace them.
+- Once the certificates are successfully queried, rerun the same `5-8a-certs-le` template but this time set, the `ExistingCertARN` with the `CertificateArn` value. This ensures that Certbot renews these certificates and doesn't replace them.
 
 ### Step 3: Update the Load Balancer and the Proxy
 
@@ -109,7 +109,7 @@ Next Update `3-2-load-balancer-rules`.
 
 The new certificate is picked up by all TLS listeners and new listener and target group for CUPS mTLS is created.
 
-Now, update `5-6-ecs-proxy`. Set `SupportProxyTLS` and `LBSCUPSmTLSEnabled` to true.
+Now, update `5-7-ecs-proxy`. Set `SupportProxyTLS` and `LBSCUPSmTLSEnabled` to true.
 
 Make sure that the image of the proxy is minimum `v3.30.0`. Images from earlier releases do not contain changes necessary for mTLS support.
 
@@ -139,7 +139,7 @@ Envoy (proxy) supports reloading TLS certificates without dropping active connec
 
 This is done by using the [static SDS configuration](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-three-certificate-rotation-for-xds-grpc-connection).
 
-The `5-7b-ecs-certbot-scheduled-task` runs a periodic task to fetch new server TLS credentials.
+The `5-8b-ecs-certbot-scheduled-task` runs a periodic task to fetch new server TLS credentials.
 
 If there are new credentials, they will also be stored in Secrets Manager.
 
