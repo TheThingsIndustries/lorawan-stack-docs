@@ -326,12 +326,12 @@ You can now create as many folders inside <code>tenants</code> with the folder n
 <p>But since credentials once stored in ACM cannot be retrieved (can only be referenced by NLB), we need to store a copy of these credentials in the AWS Secrets Manager.</p>
 <p>In <code>4-1-secrets</code> template with <code>SupportProxyTLS</code> set to <code>true</code>.</p>
 <p>This creates a <code>ProxyTLSSecret</code> for the TLS server certificate/key secrets and also a <code>GCS token hash key secret</code>, which is used by the Gateway Configuration Server and the Identity Server.</p>
-<p>Next, update <code>5-7a-certs-le</code> with the following settings:</p>
+<p>Next, update <code>5-8a-certs-le</code> with the following settings:</p>
 <ul>
 <li>Set <code> SupportProxyTLS</code> to true. If <code>ExistingCertARN</code> is set, clear this before running the update.</li>
 <li>Fetch new certificates by manually requesting it using the <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/aws/ecs/deployment/#lets-encrypt-certificates-optional">instructions</a>.</li>
 <li>When fetching the certificates, make note of the <code>CertificateArn</code> field from the logs where the new certificates are written.</li>
-<li>Once the certificates are successfully queried, rerun the same <code>5-7a-certs-le</code> template but this time set, the <code>ExistingCertARN</code> with the <code>CertificateArn</code> value. This ensures that Certbot renews these certificates and doesn&rsquo;t replace them.</li>
+<li>Once the certificates are successfully queried, rerun the same <code>5-8a-certs-le</code> template but this time set, the <code>ExistingCertARN</code> with the <code>CertificateArn</code> value. This ensures that Certbot renews these certificates and doesn&rsquo;t replace them.</li>
 </ul>
 <h3 id="step-3-update-the-load-balancer-and-the-proxy">Step 3: Update the Load Balancer and the Proxy</h3>
 <p>We now forward traffic from <code>8987</code> on the AWS NLB to <code>8987</code> on Envoy.</p>
@@ -343,7 +343,7 @@ You can now create as many folders inside <code>tenants</code> with the folder n
 <li>Set <code>LBSCUPSmTLSEnabled</code> to true.</li>
 </ul>
 <p>The new certificate is picked up by all TLS listeners and new listener and target group for CUPS mTLS is created.</p>
-<p>Now, update <code>5-6-ecs-proxy</code>. Set <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> to true.</p>
+<p>Now, update <code>5-7-ecs-proxy</code>. Set <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> to true.</p>
 <p>Make sure that the image of the proxy is minimum <code>v3.30.0</code>. Images from earlier releases do not contain changes necessary for mTLS support.</p>
 <p>You can check if the connection is successful by querying the certificates presented by the <code>8987</code> listener.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl s_client -connect &lt;domain&gt;:8987
@@ -357,7 +357,7 @@ You can now create as many folders inside <code>tenants</code> with the folder n
 <h3 id="reloading-certificates">Reloading Certificates</h3>
 <p>Envoy (proxy) supports reloading TLS certificates without dropping active connections.</p>
 <p>This is done by using the <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-three-certificate-rotation-for-xds-grpc-connection">static SDS configuration</a>.</p>
-<p>The <code>5-7b-ecs-certbot-scheduled-task</code> runs a periodic task to fetch new server TLS credentials.</p>
+<p>The <code>5-8b-ecs-certbot-scheduled-task</code> runs a periodic task to fetch new server TLS credentials.</p>
 <p>If there are new credentials, they will also be stored in Secrets Manager.</p>
 <p>The <code>-aws-proxy</code> images used for the proxy contain a cronjob that queries Secrets Manager (daily by default) and updates the proxy configuration.</p>
         </div>
