@@ -32,7 +32,11 @@ You can now click on the **Generate new API key** button in order to generate an
 
 {{< figure src="mqtt-key-created.png" alt="MQTT API key created" >}}
 
-{{< note >}} Make sure to copy your API key now, since it will no longer be visible after leaving the page for security reasons. {{</ note >}}
+{{< note >}} 
+- Make sure to copy your API key now, since it will no longer be visible after leaving the page for security reasons.
+
+- If API key does not exist or has been removed, you will probably see the `as.mqtt.connect.fail` event with the `api key with id {api_key_id} not found` error in application Live events.
+{{</ note >}}
 
 Keep in mind that this example shows the MQTT Server information for {{% tts %}} Open Source. If you are using a different deployment, make sure your read a [Note on Using the tenant ID]({{< ref "/integrations/mqtt#note-on-using-the-tenant-id" >}}).
 
