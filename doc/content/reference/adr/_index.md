@@ -144,13 +144,13 @@ ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-
 
 {{< new-in-version "3.30.0">}}
 
-{{% tts %}} allows you fine-grained access to limit NbTrans per data rate. When setting this value, make sure that the minimum NbTrans is not above the maximum NbTrans or vice versa.
+{{% tts %}} allows you fine-grained access to limit NbTrans per data rate.
 
 {{< tabs/container "CLI" "HTTP (REST) API" >}}
 
 {{< tabs/tab "CLI" >}}
 
-In this example, we are setting the min NbTrans to `2` and max NbTrans to `3` for DR5.
+In this example, we are setting the min NbTrans to `2` and max NbTrans to `3` for data rate index 5 (SF7 in EU868).
 
 ```bash
 ttn-lw-cli dev set app1 eui-1231231231231231 --mac-settings.adr.mode.dynamic.overrides.data-rate-5.min-nb-trans 2  --mac-settings.adr.mode.dynamic.overrides.data-rate-5.max-nb-trans 3
@@ -180,7 +180,7 @@ ttn-lw-cli dev set app1 eui-1231231231231231 --mac-settings.adr.mode.dynamic.ove
 }
 ```
 
-Now check that the changes are made.
+We can now check that the changes are made.
 
 ```bash
 ttn-lw-cli dev get app1 eui-1231231231231231 --mac-settings
@@ -229,7 +229,7 @@ Since this override is part of the Network Server MAC Settings, we use the [NsEn
 </br>
 </div>
 
-To set the min NbTrans to `2` and max NbTrans to `3` for DR5 on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+To set the min NbTrans to `2` and max NbTrans to `3` for for data rate index 5 (SF7 in EU868) on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
 
 ```json
 {
