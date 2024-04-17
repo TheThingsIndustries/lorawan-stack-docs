@@ -58,3 +58,7 @@ It is advised to periodically perform `sudo yum update` on the machines to updat
 ## Multi-tenancy
 
 When purchasing an Enterprise license, consider setting up a multi-tenant environment from the beginning if you plan to add tenants later. Switching from a single-tenant to a multi-tenant environment requires a database migration.
+
+## RDS Auto minor version upgrade
+
+Enabling the `Auto minor version upgrade` option on AWS RDS results in automatic upgrades of RDS instances to the latest minor version, subject to AWS marking them as auto-upgradeable. These upgrades may entail minor downtime. **For precise control over downtime, it's advisable to opt for manual upgrades and disable this option.**
