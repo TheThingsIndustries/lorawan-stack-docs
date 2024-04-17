@@ -140,6 +140,130 @@ The end device can also be steered towards the 125kHz channels, which usually ar
 ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-settings.adr.mode.dynamic --mac-settings.adr.mode.dynamic.channel-steering.lora-narrow
 ```
 
+### Configure NbTrans for an End Device per data rate
+
+{{< new-in-version "3.30.0">}}
+
+{{% tts %}} allows you fine-grained access to limit NbTrans per data rate. When setting this value, make sure that the minimum NbTrans is not above the maximum NbTrans or vice versa.
+
+{{< tabs/container "CLI" "HTTP (REST) API" >}}
+
+{{< tabs/tab "CLI" >}}
+
+In this example, we are setting the min NbTrans to `2` and max NbTrans to `3` for DR5.
+
+```bash
+ttn-lw-cli dev set app1 eui-1231231231231231 --mac-settings.adr.mode.dynamic.overrides.data-rate-5.min-nb-trans 2  --mac-settings.adr.mode.dynamic.overrides.data-rate-5.max-nb-trans 3
+{
+  "ids": {
+    "device_id": "eui-1231231231231231",
+    "application_ids": {
+      "application_id": "app1"
+    },
+    "dev_eui": "1231231231231231",
+    "join_eui": "1111111111111111"
+  },
+  "created_at": "2024-02-29T19:22:43.994254Z",
+  "updated_at": "2024-02-29T19:57:36.896606Z",
+  "network_server_address": "localhost",
+  "mac_settings": {
+    "adr": {
+      "dynamic": {
+        "overrides": {
+          "data_rate_5": {
+            "min_nb_trans": 3
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Now check that the changes are made.
+
+```bash
+ttn-lw-cli dev get app1 eui-1231231231231231 --mac-settings
+{
+  "ids": {
+    "device_id": "eui-1231231231231231",
+    "application_ids": {
+      "application_id": "app1"
+    },
+    "dev_eui": "1231231231231231",
+    "join_eui": "1111111111111111"
+  },
+  "created_at": "2024-02-29T19:22:43.994254Z",
+  "updated_at": "2024-02-29T19:29:29.322193Z",
+  "network_server_address": "localhost",
+  "mac_settings": {
+    "rx2_data_rate_index": 0,
+    "rx2_frequency": "869525000",
+    "adr": {
+      "dynamic": {
+        "overrides": {
+          "data_rate_5": {
+            "min_nb_trans": 2,
+            "max_nb_trans": 3
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "HTTP (REST) API" >}}
+
+Since this override is part of the Network Server MAC Settings, we use the [NsEndDeviceRegistry API]({{< ref "/api/reference/http/routes/#NsEndDeviceRegistry" >}}) to set this value.
+
+<div>
+
+| Item         | Value                                                                                                                                                                                                                                                 |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Endpoint     | [`/ns/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}`]({{< ref "/api/reference/http/routes/#nsapplications{end_device.ids.application_ids.application_id}devices{end_device.ids.device_id}-put" >}}) |
+| Request type | `PUT`                                                                                                                                                                                                                                                 |
+
+</br>
+</div>
+
+To set the min NbTrans to `2` and max NbTrans to `3` for DR5 on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+
+```json
+{
+  "end_device": {
+    "mac_settings": {
+      "adr": {
+        "dynamic": {
+          "overrides": {
+            "data_rate_5": {
+              "min_nb_trans": 2,
+              "max_nb_trans": 3
+            }
+          }
+        }
+      }
+    }
+  },
+  "field_mask": {
+    "paths": ["mac_settings.adr.mode.dynamic.overrides"]
+  }
+}
+```
+
+The request using `cURL` is as follows.
+
+```bash
+curl -v -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./req.json https://thethings.example.com/api/v3/ns/applications/test-app/devices/eui-1231231231231231
+```
+
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
+
 ## Static Mode
 
 Besides {{% tts %}} ADR mechanism described [above]({{< ref "/reference/adr#the-things-stack-adr-algorithm" >}}), {{% tts %}} also supports using a custom ADR, meaning ADR parameters (data rate, Tx power, number of transmissions per uplink frame) can be controlled manually.
