@@ -279,7 +279,139 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-settings.adr.mode.dynamic --mac-settings.adr.mode.dynamic.channel-steering.disabled
 </span></span></code></pre></div><p>The end device can also be steered towards the 125kHz channels, which usually are 8 per frequency sub band (FSB), instead of using a singular 500kHz channel like mentioned above. This mode is called <strong>LoRa narrow</strong> and it can be enabled with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-settings.adr.mode.dynamic --mac-settings.adr.mode.dynamic.channel-steering.lora-narrow
-</span></span></code></pre></div><h2 id="static-mode">Static Mode</h2>
+</span></span></code></pre></div><h3 id="configure-nbtrans-for-an-end-device-per-data-rate">Configure NbTrans for an End Device per data rate</h3>
+<span class="tag is-light">New in 3.30.0</span>
+
+
+<p>The Things Stack allows you fine-grained access to limit NbTrans per data rate.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+    <li data-tab="http-rest-api">
+      <a>
+        <span>HTTP (REST) API</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="cli">
+  <p>In this example, we are setting the min NbTrans to <code>2</code> and max NbTrans to <code>3</code> for data rate index 5 (SF7 in EU868).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli dev <span class="nb">set</span> app1 eui-1231231231231231 --mac-settings.adr.mode.dynamic.overrides.data-rate-5.min-nb-trans <span class="m">2</span>  --mac-settings.adr.mode.dynamic.overrides.data-rate-5.max-nb-trans <span class="m">3</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;ids&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;device_id&#34;</span>: <span class="s2">&#34;eui-1231231231231231&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;application_ids&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;application_id&#34;</span>: <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;dev_eui&#34;</span>: <span class="s2">&#34;1231231231231231&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;join_eui&#34;</span>: <span class="s2">&#34;1111111111111111&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;created_at&#34;</span>: <span class="s2">&#34;2024-02-29T19:22:43.994254Z&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;updated_at&#34;</span>: <span class="s2">&#34;2024-02-29T19:57:36.896606Z&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;network_server_address&#34;</span>: <span class="s2">&#34;localhost&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;mac_settings&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;adr&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;dynamic&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;overrides&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;data_rate_5&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;min_nb_trans&#34;</span>: <span class="m">3</span>
+</span></span><span class="line"><span class="cl">          <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>We can now check that the changes are made.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli dev get app1 eui-1231231231231231 --mac-settings
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;ids&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;device_id&#34;</span>: <span class="s2">&#34;eui-1231231231231231&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;application_ids&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;application_id&#34;</span>: <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;dev_eui&#34;</span>: <span class="s2">&#34;1231231231231231&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;join_eui&#34;</span>: <span class="s2">&#34;1111111111111111&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;created_at&#34;</span>: <span class="s2">&#34;2024-02-29T19:22:43.994254Z&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;updated_at&#34;</span>: <span class="s2">&#34;2024-02-29T19:29:29.322193Z&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;network_server_address&#34;</span>: <span class="s2">&#34;localhost&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;mac_settings&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;rx2_data_rate_index&#34;</span>: 0,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;rx2_frequency&#34;</span>: <span class="s2">&#34;869525000&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;adr&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;dynamic&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;overrides&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;data_rate_5&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;min_nb_trans&#34;</span>: 2,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;max_nb_trans&#34;</span>: <span class="m">3</span>
+</span></span><span class="line"><span class="cl">          <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>
+</section>
+<section data-content="http-rest-api">
+  <p>Since this override is part of the Network Server MAC Settings, we use the <a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#NsEndDeviceRegistry">NsEndDeviceRegistry API</a> to set this value.</p>
+<div>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#nsapplications%7Bend_device.ids.application_ids.application_id%7Ddevices%7Bend_device.ids.device_id%7D-put"><code>/ns/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}</code></a></td>
+</tr>
+<tr>
+<td>Request type</td>
+<td><code>PUT</code></td>
+</tr>
+</tbody>
+</table>
+</br>
+</div>
+<p>To set the min NbTrans to <code>2</code> and max NbTrans to <code>3</code> for for data rate index 5 (SF7 in EU868) on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;end_device&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;mac_settings&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;adr&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;dynamic&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;overrides&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;data_rate_5&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;min_nb_trans&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;max_nb_trans&#34;</span><span class="p">:</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field_mask&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;mac_settings.adr.mode.dynamic.overrides&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -v -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json https://thethings.example.com/api/v3/ns/applications/test-app/devices/eui-1231231231231231
+</span></span></code></pre></div>
+</section>
+
+</div>
+
+<h2 id="static-mode">Static Mode</h2>
 <p>Besides The Things Stack ADR mechanism described <a href="https://www.thethingsindustries.com/docs/reference/adr/#the-things-stack-adr-algorithm">above</a>, The Things Stack also supports using a custom ADR, meaning ADR parameters (data rate, Tx power, number of transmissions per uplink frame) can be controlled manually.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
