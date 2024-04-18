@@ -1,0 +1,39 @@
+name: ListUserBookmarksRequest
+fields:
+- name: user_ids
+  message:
+    name: UserIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: limit
+  comment: Limit the number of results per page.
+  type: uint32
+  rules:
+    lte: 1000
+  default: 0
+- name: page
+  comment: Page number for pagination. 0 is interpreted as 1.
+  type: uint32
+  default: 0
+- name: order
+  comment: |-
+    Order the results by this field path.
+    Default ordering is by ID. Prepend with a minus (-) to reverse the order.
+  type: string
+  rules:
+    in:
+    - ""
+    - user_id
+    - -user_id
+    - entity_type
+    - -entity_type
+    - entity_id
+    - -entity_id
+    - created_at
+    - -created_at
+  default: ""
+- name: deleted
+  comment: Only return recently deleted bookmarks.
+  type: bool
+  default: false

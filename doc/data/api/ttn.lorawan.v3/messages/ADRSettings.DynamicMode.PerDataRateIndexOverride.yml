@@ -1,0 +1,25 @@
+name: ADRSettings.DynamicMode.PerDataRateIndexOverride
+comment: 'EXPERIMENTAL: Data rate index override settings.'
+fields:
+- name: min_nb_trans
+  comment: |-
+    Minimum number of retransmissions.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    package: google.protobuf
+    name: UInt32Value
+  rules:
+    lte: 3
+    gte: 1
+  default: null
+- name: max_nb_trans
+  comment: |-
+    Maximum number of retransmissions.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    package: google.protobuf
+    name: UInt32Value
+  rules:
+    lte: 3
+    gte: 1
+  default: null

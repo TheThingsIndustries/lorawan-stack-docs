@@ -34,10 +34,15 @@ fields:
   rules:
     required: true
   default: {}
-- name: labels
-  comment: Extra labels attached to an Alert
-  map_key:
-    type: string
-  map_value:
-    type: string
-  default: {}
+- name: started_at
+  comment: The time the alert was triggered.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: ended_at
+  comment: The time the alert was resolved.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"

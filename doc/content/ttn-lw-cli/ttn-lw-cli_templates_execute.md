@@ -57,6 +57,38 @@ ttn-lw-cli templates execute [flags]
       --mac-settings.adr.mode.dynamic.min-data-rate-index string                                            allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
       --mac-settings.adr.mode.dynamic.min-nb-trans uint32                                                   
       --mac-settings.adr.mode.dynamic.min-tx-power-index uint32                                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-0.max-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-0.min-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-1.max-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-1.min-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-10.max-nb-trans uint32                            
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-10.min-nb-trans uint32                            
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-11.max-nb-trans uint32                            
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-11.min-nb-trans uint32                            
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-12.max-nb-trans uint32                            
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-12.min-nb-trans uint32                            
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-13.max-nb-trans uint32                            
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-13.min-nb-trans uint32                            
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-14.max-nb-trans uint32                            
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-14.min-nb-trans uint32                            
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-15.max-nb-trans uint32                            
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-15.min-nb-trans uint32                            
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-2.max-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-2.min-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-3.max-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-3.min-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-4.max-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-4.min-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-5.max-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-5.min-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-6.max-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-6.min-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-7.max-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-7.min-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-8.max-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-8.min-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-9.max-nb-trans uint32                             
+      --mac-settings.adr.mode.dynamic.overrides.data-rate-9.min-nb-trans uint32                             
       --mac-settings.adr.mode.static                                                                        
       --mac-settings.adr.mode.static.data-rate-index string                                                 allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
       --mac-settings.adr.mode.static.nb-trans uint32                                                        
