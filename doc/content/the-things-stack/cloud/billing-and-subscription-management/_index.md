@@ -167,6 +167,7 @@ Generally, the first two letters of the VAT ID represent the country code, but {
 
 For example, if the VAT ID is `AB12312312312`, enter `12312312312` and try subscribing to {{% tts %}} again.
 
+
 ### What happens if my subscription is past due?
 
 If your {{% tts %}} tenant subscription payment is overdue, it enters the flagged state. First, you will first receive the `Stripe subscription past due` warning upon any action in your tenant's Console, and when using API or CLI. You will probably also receive an email notifying you about overdue payment.
@@ -176,3 +177,7 @@ If the payment is 3 weeks past due, automatic tenant deactivation will follow.
 {{</ warning >}}
 
 Once you clear all overdue pending invoices, your tenant will automatically be reactivated.
+
+## How many devices can I add in an application?
+
+In {{% tts %}} Cloud tenant, there's no restriction on registering number of devices within an application. This means you can register all of your devices under a single application without any data routing issues. For efficient management, group devices and register in multiple applications based on deployment sites or clients. This helps to streamline permissions and manage organizations, especially when handling multiple clients.
