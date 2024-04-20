@@ -225,3 +225,13 @@ This error indicates that your end device was added from the [Device Repository]
 The `COLLISION_PACKET` error occurs when downlink transmissions overlap - this happens when two or more packets overlap in time and use the same spreading factor, bandwith and frequency plan settings.
 
 To avoid packet collisions, users can enable server-side buffering of donwlink messages. If server-side buffering is enabled, the Gateway Server schedules the downlink message to be sent after the downlink message that was already queued but not sent yet, so that their transmissions don't overlap. To enable this, navigate to your gateway's **General settings** section, expand the **LoRaWAN** section and **Enable** the **Schedule downlink late** option by ticking the box. Note that this is a recommended setting for gateways that use [UDP packet forwarder]({{< ref "/gateways/concepts/udp" >}}).
+
+## Scheduling downlinks for a Multicast device results with "no downlink path available" error.
+
+[Multicast]({{< ref "/devices/configuring-devices/multicast" >}}) devices in {{% tts %}} do not support uplinks, confirm downlinks, or MAC commands, so a specified downlink path is required for scheduling multicast downlink messages. For example, omitting the gateway ID or selecting an inactive gateway in the downlink message causes a `No downlink path available` error.
+
+Below is an example cURL command for scheduling a downlink to a multicast device:
+
+```bash
+curl --location --header 'Authorization: Bearer NNSXS.XXXXXXXXXX' --header 'Content-Type: application/json' --request POST --data '{"downlinks": [{"frm_payload": "vu8=", "f_port": 42, "priority": "NORMAL", "class_b_c": {"gateways": [{"gateway_ids": {"gateway_id": "gtw1"}}, {"gateway_ids": {"gateway_id": "gtw2"}}], "absolute_time": "2019-07-23T13:05:00Z"}}]}' 'https://thethings.example.com/api/v3/as/applications/<application-id>/devices/<device-id>/down/push'
+```
