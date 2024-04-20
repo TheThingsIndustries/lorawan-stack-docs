@@ -150,7 +150,7 @@ ttn-lw-cli applications packages associations delete <application-id> <device-id
 
 ###### Example
 
-To set an association for the application `my-test-app` on the FPORT `10` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+To set an association for the application `my-test-app` on the FPORT `100` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
 
 ```json
 {
@@ -168,8 +168,8 @@ The request using `cURL` is as follows.
 ```bash
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
 -d @./req.json \
- https://thethings.example.com/api/v3/as/applications/my-test-app/packages/associations/10
-{"ids":{"application_ids":{"application_id":"my-test-app"},"f_port":10},"created_at":"2024-01-10T10:59:21.398555Z","updated_at":"2024-01-10T10:59:21.398555Z","package_name":"storage-integration"}%
+ https://thethings.example.com/api/v3/as/applications/my-test-app/packages/associations/100
+{"ids":{"application_ids":{"application_id":"my-test-app"},"f_port":100},"created_at":"2024-01-10T10:59:21.398555Z","updated_at":"2024-01-10T10:59:21.398555Z","package_name":"storage-integration"}%
 ```
 
 #### Enable for an End Device
@@ -188,7 +188,7 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_K
 
 ###### Example
 
-To set an association for the device `my-test-dev` in the application `my-test-app` with FPORT `10` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+To set an association for the device `my-test-dev` in the application `my-test-app` with FPORT `100` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
 
 ```json
 {
@@ -206,8 +206,8 @@ The request using `cURL` is as follows.
 ```bash
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
 -d @./req.json \
- https://thethings.example.com/api/v3/as/applications/my-test-app/devices/my-test-dev/packages/associations/10
-{"ids":{"end_device_ids":{"device_id":"my-test-dev","application_ids":{"application_id":"my-test-app"}},"f_port":10},"created_at":"2024-01-10T11:06:46.806972Z","updated_at":"2024-01-10T11:06:46.806972Z","package_name":"storage-integration"}
+ https://thethings.example.com/api/v3/as/applications/my-test-app/devices/my-test-dev/packages/associations/100
+{"ids":{"end_device_ids":{"device_id":"my-test-dev","application_ids":{"application_id":"my-test-app"}},"f_port":100},"created_at":"2024-01-10T11:06:46.806972Z","updated_at":"2024-01-10T11:06:46.806972Z","package_name":"storage-integration"}
 ```
 
 #### Disable for an Application
@@ -226,12 +226,12 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_K
 
 ###### Example
 
-To delete an association the application `my-test-app` with FPORT `10` on `thethings.example.com`, run the following request.
+To delete an association the application `my-test-app` with FPORT `100` on `thethings.example.com`, run the following request.
 
 ```bash
 curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
 -d @./req.json \
- https://thethings.example.com/api/v3/as/applications/my-test-app/packages/associations/10
+ https://thethings.example.com/api/v3/as/applications/my-test-app/packages/associations/100
 {}
 ```
 
@@ -251,12 +251,12 @@ curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer $AP
 
 ###### Example
 
-To delete an association for the device `my-test-device` on the application `my-test-app` with FPORT `10` on `thethings.example.com`, run the following request.
+To delete an association for the device `my-test-device` on the application `my-test-app` with FPORT `100` on `thethings.example.com`, run the following request.
 
 ```bash
 curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
 -d @./req.json \
- https://thethings.example.com/api/v3/as/applications/my-test-app/devices/my-test-device/packages/associations/10
+ https://thethings.example.com/api/v3/as/applications/my-test-app/devices/my-test-device/packages/associations/100
 {}
 ```
 
