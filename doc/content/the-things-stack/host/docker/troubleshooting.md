@@ -53,6 +53,16 @@ The client is not authorized to request a token using this method
 
 make sure you used the same `client-secret` in your {{% tts %}} configuration (`ttn-lw-stack-docker.yml` file) and for authorizing the Console client in [Running {{% tts %}}]({{< relref "running-the-stack" >}}).
 
+## Connection Refused
+
+This issue occurs when either the database URI is misconfigured or there are latency issues between Docker containers. It results in the database refusing connections from the stack container, leading to operational errors with the following output.
+
+```
+failed to connect to `host=postgres user=root database=ttn_lorawan`: dial error (dial tcp 127.0.0.1:5432: connect: connection refused)
+```
+
+Make sure to configure the correct database URI. Also, ensure that internet connection is stable and with minimal latency.
+
 ## Could not initialize Server
 
 The cause of this error lies in misconfiguration of {{% tts %}} server components. A few examples related to this error are listed below.
