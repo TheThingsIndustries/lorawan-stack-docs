@@ -161,11 +161,12 @@ If you've reached a limit for adding devices and/or gateways, you'll be facing t
 
 If you want to add more entities than your current limit allows you to, you will need to upgrade your subscription plan. For example above, you could upgrade your plan from Discovery to Standard or Plus. If you want to upgrade make sure to check sections above, and if you face any difficulties, feel free to reach [The Things Industries sales team](mailto:sales@thethingsindustries.com).
 
-### My VAT ID is showing as `VAT ID is not valid` while subscribing to The Things Stack.
+### My VAT ID is showing as `VAT ID is not valid` while subscribing to {{% tts %}}.
 
 Generally, the first two letters of the VAT ID represent the country code, but {{% tts %}} doesn't require it during the subscription process. Therefore, please remove the first two letters at the beginning of the VAT ID and enter the remaining digits as the VAT ID while filling in the details.
 
 For example, if the VAT ID is `AB12312312312`, enter `12312312312` and try subscribing to {{% tts %}} again.
+
 ### What happens if my subscription is past due?
 
 If your {{% tts %}} tenant subscription payment is overdue, it enters the flagged state. First, you will first receive the `Stripe subscription past due` warning upon any action in your tenant's Console, and when using API or CLI. You will probably also receive an email notifying you about overdue payment.
