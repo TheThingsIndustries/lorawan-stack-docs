@@ -212,6 +212,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 ]
 </code></pre><p>By inspecting details shown above, you can see that the Webhook failed with a status code <code>404</code>, indicating that the configured BaseURL is not found. To avoid this error, always make sure to check if the upstream endpoint URL is accessible.</p>
+<h2 id="i-see-webhooks-fail-with-x509_unknown_authority-error-what-should-i-do">I see webhooks fail with <code>x509_unknown_authority</code> error. What should I do?</h2>
+<p>The error could occur if the certificates configured to the Webhook endpoint have an incomplete certificate chain. Below is the example error message in The Things Stack console application live events:</p>
+<pre tabindex="0"><code>&#34;cause&#34;: {
+      &#34;namespace&#34;: &#34;pkg/errors&#34;,
+      &#34;name&#34;: &#34;request&#34;,
+      &#34;message_format&#34;: &#34;request to `{url}` failed&#34;,
+      &#34;attributes&#34;: {
+        &#34;op&#34;: &#34;Post&#34;,
+        &#34;url&#34;: &#34;&lt;Webhook Endpoint&gt;&#34;
+      },
+      &#34;correlation_id&#34;: &#34;d8e2065e6b924ed2ac6322979ed14997&#34;,
+      &#34;cause&#34;: {
+        &#34;namespace&#34;: &#34;pkg/errors&#34;,
+        &#34;name&#34;: &#34;x509_unknown_authority&#34;,
+        &#34;message_format&#34;: &#34;unknown certificate authority&#34;,
+        &#34;correlation_id&#34;: &#34;fc22f122d6a7406ab073925569cb7d00&#34;,
+        &#34;code&#34;: 14
+  }
+}
+</code></pre><p>We recommend checking if the webhook endpoint certificate has been generated correctly. If you face any issues, you can contact the certificate provider for further assistance. You may also use this <a href="https://www.ssllabs.com/ssltest/analyze.html">tool</a> to test the webhook endpoint certificate&rsquo;s complete chain.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/webhooks/webhook-templates/">← Webhook Templates</a>
@@ -236,6 +256,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
       
       <li><a href='#i-see-aswebhookfail-events-in-the-live-data-view-what-does-this-mean'>I see as.webhook.fail events in the Live data view. What does this mean?</a></li>
+    
+      
+      <li><a href='#i-see-webhooks-fail-with-x509_unknown_authority-error-what-should-i-do'>I see webhooks fail with x509_unknown_authority error. What should I do?</a></li>
     
   </ul>
 
