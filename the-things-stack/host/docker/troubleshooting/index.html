@@ -249,6 +249,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>If you encounter the following error while trying to long into the Console:</p>
 <pre tabindex="0"><code>The client is not authorized to request a token using this method
 </code></pre><p>make sure you used the same <code>client-secret</code> in your The Things Stack configuration (<code>ttn-lw-stack-docker.yml</code> file) and for authorizing the Console client in <a href="/docs/the-things-stack/host/docker/running-the-stack/">Running The Things Stack</a>.</p>
+<h2 id="connection-refused">Connection Refused</h2>
+<p>This issue occurs when either the database URI is misconfigured or there are latency issues between Docker containers. It results in the database refusing connections from the stack container, leading to operational errors with the following output.</p>
+<pre tabindex="0"><code>failed to connect to `host=postgres user=root database=ttn_lorawan`: dial error (dial tcp 127.0.0.1:5432: connect: connection refused)
+</code></pre><p>Make sure to configure the correct database URI. Also, ensure that internet connection is stable and with minimal latency.</p>
 <h2 id="could-not-initialize-server">Could not initialize Server</h2>
 <p>The cause of this error lies in misconfiguration of The Things Stack server components. A few examples related to this error are listed below.</p>
 <p>When an invalid tenant admin key is configured, the initialization of the Identity Server will fail with the following output:</p>
@@ -340,6 +344,9 @@ stack_1     | error:cmd/internal/shared:initialize_network_operations_center (co
     
       
       <li><a href='#forbidden'>Forbidden</a></li>
+    
+      
+      <li><a href='#connection-refused'>Connection Refused</a></li>
     
       
       <li><a href='#could-not-initialize-server'>Could not initialize Server</a></li>
