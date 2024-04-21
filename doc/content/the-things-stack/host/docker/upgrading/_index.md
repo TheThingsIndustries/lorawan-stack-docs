@@ -177,6 +177,12 @@ Migrate the Application Server Database.
 docker compose run --rm stack as-db migrate
 ```
 
+Migrate the Network Operations Center Database.
+
+```bash
+docker compose run --rm stack noc-db migrate
+```
+
 {{< /tabs/tab >}}
 {{< tabs/tab "Open Source" >}}
 
