@@ -36,9 +36,9 @@ The event details contain a detailed description of a failure cause:
 
 By inspecting details shown above, you can see that the Webhook failed with a status code `404`, indicating that the configured BaseURL is not found. To avoid this error, always make sure to check if the upstream endpoint URL is accessible.
 
-## I see webhooks fail with `x509_unknown_authority` error. What should I do?
+## I see Webhooks fail with `x509_unknown_authority` error. What should I do?
 
-The error could occur if the certificates configured to the Webhook endpoint have an incomplete certificate chain. Below is the example error message in {{% tts %}} console application live events:
+This error could occur if the certificates configured to the Webhook endpoint have an incomplete certificate chain. Below is the example error message in {{% tts %}} Console application live events:
 
 ```
 "cause": {
@@ -60,4 +60,4 @@ The error could occur if the certificates configured to the Webhook endpoint hav
 }
 ```
 
-We recommend checking if the webhook endpoint certificate has been generated correctly. If you face any issues, you can contact the certificate provider for further assistance. You may also use this [tool](https://www.ssllabs.com/ssltest/analyze.html) to test the webhook endpoint certificate's complete chain.
+We recommend checking if the Webhook endpoint certificate has been generated correctly. If you face any issues, you can contact the certificate provider for further assistance. You may also use this [tool](https://www.ssllabs.com/ssltest/analyze.html) to test the Webhook endpoint certificate's complete chain.

@@ -119,7 +119,7 @@ For **Uplink data converter** and **Downlink data converter** choose the uplink 
 
 Depending on your {{% tts %}} deployment, choose **Host type**.
 
-If you want to use TLS, enter `8883` for **Port**. Otherwise, enter `1883` and disable the `Enable SSL` button.
+If you want to use TLS, enter `8883` for **Port**. Otherwise, enter `1883` and disable the **Enable SSL** button.
 
 Use the credentials of your {{% tts %}} MQTT Server as **Username** and **Password**.
 
