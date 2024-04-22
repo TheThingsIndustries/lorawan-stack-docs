@@ -14,39 +14,43 @@ ttn-lw-cli users search [flags]
 ### Options
 
 ```
-      --admin                                select the admin field
-      --all                                  select all user fields
-      --application-limit                    select the application_limit field
-      --attributes                           select the attributes field
-      --attributes-contain stringToString    
-      --client-limit                         select the client_limit field
-      --contact-info                         select the contact_info field
-      --deleted                              
-      --deleted-at                           select the deleted_at field
-      --description                          select the description field
-      --description-contains string          
-      --field-mask strings                   
-      --gateway-limit                        select the gateway_limit field
-  -h, --help                                 help for search
-      --id-contains string                   
-      --limit uint32                         
-      --name                                 select the name field
-      --name-contains string                 
-      --order string                         
-      --organization-limit                   select the organization_limit field
-      --page uint32                          
-      --password                             select the password field
-      --password-updated-at                  select the password_updated_at field
-      --primary-email-address                select the primary_email_address field
-      --primary-email-address-validated-at   select the primary_email_address_validated_at field
-      --profile-picture                      select the profile_picture field and all allowed sub-fields
-      --query string                         
-      --require-password-update              select the require_password_update field
-      --state strings                        allowed values: STATE_REQUESTED, STATE_APPROVED, STATE_REJECTED, STATE_FLAGGED, STATE_SUSPENDED
-      --state-description                    select the state_description field
-      --temporary-password                   select the temporary_password field
-      --temporary-password-created-at        select the temporary_password_created_at field
-      --temporary-password-expires-at        select the temporary_password_expires_at field
+      --admin                                   select the admin field
+      --all                                     select all user fields
+      --application-limit                       select the application_limit field
+      --attributes                              select the attributes field
+      --attributes-contain stringToString       
+      --client-limit                            select the client_limit field
+      --console-preferences                     select the console_preferences field and all allowed sub-fields
+      --console-preferences.console-theme       select the console_preferences.console_theme field
+      --console-preferences.dashboard-layouts   select the console_preferences.dashboard_layouts field and all allowed sub-fields
+      --console-preferences.sort-by             select the console_preferences.sort_by field and all allowed sub-fields
+      --contact-info                            select the contact_info field
+      --deleted                                 
+      --deleted-at                              select the deleted_at field
+      --description                             select the description field
+      --description-contains string             
+      --field-mask strings                      
+      --gateway-limit                           select the gateway_limit field
+  -h, --help                                    help for search
+      --id-contains string                      
+      --limit uint32                            
+      --name                                    select the name field
+      --name-contains string                    
+      --order string                            
+      --organization-limit                      select the organization_limit field
+      --page uint32                             
+      --password                                select the password field
+      --password-updated-at                     select the password_updated_at field
+      --primary-email-address                   select the primary_email_address field
+      --primary-email-address-validated-at      select the primary_email_address_validated_at field
+      --profile-picture                         select the profile_picture field and all allowed sub-fields
+      --query string                            
+      --require-password-update                 select the require_password_update field
+      --state strings                           allowed values: STATE_REQUESTED, STATE_APPROVED, STATE_REJECTED, STATE_FLAGGED, STATE_SUSPENDED
+      --state-description                       select the state_description field
+      --temporary-password                      select the temporary_password field
+      --temporary-password-created-at           select the temporary_password_created_at field
+      --temporary-password-expires-at           select the temporary_password_expires_at field
 ```
 
 ### Options inherited from parent commands

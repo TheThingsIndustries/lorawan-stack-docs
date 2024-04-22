@@ -62,6 +62,7 @@ ttn-lw-cli tenants create [tenant-id] [flags]
       --initial-user.application-limit uint                                                             
       --initial-user.attributes stringToString                                                          
       --initial-user.client-limit uint                                                                  
+      --initial-user.console-preferences.console-theme string                                           allowed values: CONSOLE_THEME_SYSTEM, CONSOLE_THEME_LIGHT, CONSOLE_THEME_DARK
       --initial-user.description string                                                                 
       --initial-user.gateway-limit uint                                                                 
       --initial-user.ids.user-id string                                                                 

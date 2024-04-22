@@ -39,11 +39,21 @@ fields:
 - name: target_frequency_plan_id
   comment: |-
     Frequency plan ID of the target gateway.
-    This equals the first element of the frequency_plan_ids field.
+    TODO: Remove this field (https://github.com/TheThingsIndustries/lorawan-stack/issues/4024)
+    DEPRECATED: Use target_frequency_plan_ids instead.
   type: string
   rules:
     max_len: 64
   default: ""
+- name: target_frequency_plan_ids
+  comment: Frequency plan IDs of the target gateway.
+  rules:
+    max_items: 8
+  repeated:
+    type: string
+    rules:
+      max_len: 64
+  default: []
 oneofs:
 - name: source_gateway
   field_names:

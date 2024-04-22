@@ -176,13 +176,23 @@ List of User APIs.
 
 {{< proto/message message="Users" >}}
 
+{{< proto/message message="UserConsolePreferences" >}}
+
+{{< proto/message message="UserConsolePreferences.DashboardLayouts" >}}
+
+{{< proto/message message="UserConsolePreferences.SortBy" >}}
+
 {{< proto/message message="UserSessionIdentifiers" >}}
 
 ## Enums
 
+{{< proto/enum enum="ConsoleTheme" >}}
+
 {{< proto/enum enum="ContactType" >}}
 
 {{< proto/enum enum="ContactMethod" >}}
+
+{{< proto/enum enum="DashboardLayout" >}}
 
 {{< proto/enum enum="NotificationStatus" >}}
 

@@ -2,12 +2,67 @@
 title: "Template Changelog"
 aliases: [/getting-started/aws/ecs/changelog]
 ---
-
 # Upgrading
 
 All meaningful changes to templates are documented in this file.
 
 ## Unreleased
+
+### Proxy
+
+- Add email validation paths.
+
+## 3.30.0
+
+### `2-4c-mtls-s3`
+
+- Remove unused bucket policies and update resource tags.
+
+### `3-1-security-group-rules`
+
+- Add ingress rules for `LBSCUPSmTLS`. Only enabled if `LBSCUPSmTLSEnabled` is true.
+
+### `3-2-load-balancer-rules`
+
+- Add new listener for `LBSCUPSmTLS`.
+- Remove dependency of port `443` and `8886` on `SupportProxyTLSCondition`.
+- Update target group on Interop TLS connections when `SupportProxyTLSCondition` is true.
+
+### `4-1-secrets`
+
+- Remove `GSGatewayTokensHashKey`.
+
+### `4-2a-configuration`
+
+- Remove `GSGatewayTokensHashKey` configuration.
+
+### `5-1-ecs-cluster`
+
+- Migrated from ECS Launch Configuration to ECS Launch Templates.
+- The `c6g`, `c7g`, `m6g`, `m7g`, `t4g`, `r6g` and `r7g` families of machines are now available for hosting.
+
+### `5-4-ecs-services`
+
+- Update GCS task role and remove mTLS bucket support for GS task role.
+- The default NOC Grafana image has been updated to `ghcr.io/thethingsindustries/lorawan-stack-noc-grafana:3.30.0`.
+
+### `5-5-ecs-monitoring`
+
+- Renamed to `5-6-ecs-monitoring`.
+
+### `5-6-ecs-proxy`
+
+- Renamed to `5-7-ecs-proxy`.
+- Add conditions for `LBSCUPSmTLS`.
+
+### `5-7a-certs-le`
+
+- Renamed to `5-8a-certs-le`.
+- Updated naming of inputs related to mTLS.
+
+### `5-7b-ecs-certbot-scheduled-task`
+
+- Renamed to `5-8b-ecs-certbot-scheduled-task`.
 
 ## 3.29.2
 
@@ -29,6 +84,10 @@ All meaningful changes to templates are documented in this file.
 - The default extension version is now `2.10.1`.
 - The default engine version is now `15`.
 
+### `2-6-queue-sqs`
+
+- Renamed from `5-9a-sqs`.
+
 ### `5-4-ecs-cluster`
 
 - Updated the default `node_exporter` version to `1.7.0`.
@@ -46,7 +105,7 @@ All meaningful changes to templates are documented in this file.
 
 ### `5-9a-sqs`
 
-- Add new optional template for AWD SQS.
+- Add new optional template for AWS SQS.
 
 ## 3.28.1
 
@@ -264,16 +323,14 @@ All meaningful changes to templates are documented in this file.
 
 ## 3.24.1
 
-### `4-2a-configuration`
-
-- Added `RedisConnectionPoolMaxLifetime` parameter.
-
 ### `2-5-db-timescale`
 
 - Added support for Postgres engine version 15 and TimescaleDB 2.9.3.
+- Fixed the master configuration for new Postgres engine version 12 deployments.
 
 ### `4-2a-configuration`
 
+- Added `RedisConnectionPoolMaxLifetime` parameter.
 - Added `KeyVaultCacheSize`, `KeyVaultCacheTTL`, `KeyVaultCacheErrorTTL` parameters.
 
 ## 3.24.0
@@ -281,7 +338,7 @@ All meaningful changes to templates are documented in this file.
 ### ECS templates
 
 - Support for TLS mutual authentication terminated by The Things Stack has been removed. TLS authentication is now only terminated by the Network Load Balancer or Envoy Proxy.
-- Support for LoRaWAN® Backend Interfaces interoperability with the Join Server has been removed.
+- Support for LoRaWAN Backend Interfaces interoperability with the Join Server has been removed.
 - Crypto Server deployment has been removed.
 
 ### Upgrade procedure
@@ -339,11 +396,11 @@ All meaningful changes to templates are documented in this file.
 
 ## 3.23.1
 
-## `1-2-bastion`
+### `1-2-bastion`
 
 - The volumes used by the bastion hosts now use `gp3` volumes.
 
-## `2-5-db-timescale`
+### `2-5-db-timescale`
 
 - The volumes used by the TimescaleDB hosts now use `gp3` volumes.
 
@@ -364,7 +421,7 @@ All meaningful changes to templates are documented in this file.
 - Prometheus has been upgraded to version 2.40.5.
 - Thanos default image has been upgraded to version 0.29.0.
 
-### `AMI/BYOL` template
+### AMI/BYOL template
 
 - Fix RDS PostgreSQL 13 and 14 support for new deployments.
 - The volumes used by the EC2 machine and by the RDS database are now `gp3` volumes.
@@ -376,7 +433,7 @@ All meaningful changes to templates are documented in this file.
 
 ## 3.23.0
 
-For mTLS termination, check the upgrading guide at https://thethingsindustries.com/docs/the-things-stack/host/aws/ecs/mutual-tls/.
+For mTLS termination, check the upgrading guide at https://thethingsindustries.com/docs/getting-started/aws/ecs/mutual-tls/.
 
 ## `1-2-bastion`
 
@@ -477,6 +534,7 @@ Add versioning to S3 buckets. Versioning is enabled by default.
 ## 3.21.0
 
 ### `4-2a-configuration`
+
 - Added new `EntityLimits` parameters.
 
 ### `5-4-ecs-services`
@@ -498,74 +556,89 @@ Add versioning to S3 buckets. Versioning is enabled by default.
 ## 3.20.0
 
 ### `2-5-db-timescale`
-- Increased backup and redeployment timeout
+
+- Increased backup and redeployment timeout.
 
 ### `4-2a-configuration`
-- Added new parameters `EventsRedisPublishQueueSize`, `EventsRedisPublishMaxWorkers`, `PacketBrokerHomeNetworkWorkerCountLimit`, `PacketBrokerForwarderWorkerCountLimit`
+
+- Added new parameters `EventsRedisPublishQueueSize`, `EventsRedisPublishMaxWorkers`, `PacketBrokerHomeNetworkWorkerCountLimit`, `PacketBrokerForwarderWorkerCountLimit`.
 
 ### `5-5-ecs-monitoring`
-- Added alerts for TimescaleDB running out of storage
+
+- Added alerts for TimescaleDB running out of storage.
 
 ### `AMI/BYOL` template
-- Added new parameters `TLSCertificate`, `TLSCertificateCA`, `TLSCertificateKey`
+
+- Added new parameters `TLSCertificate`, `TLSCertificateCA`, `TLSCertificateKey`.
 
 ### Proxy
+
 - Added Notification Service routes.
 - Added account invitations routes.
 
 ## 3.19.2
 
 ### `1-1-vpc`
-- Added a hosted zone for internal use
+
+- Added a hosted zone for internal use.
 
 ### `2-5-db-timescale`
-- Added new parameter `NumReplicas`
-- Added new parameter `DeploymentName`
-- Before updating this template, please remove non-default records from the `${NetworkName}.${Environment}.${Cluster}.db.as.local` hosted zone and turn off the Application Server Storage Integration
+
+- Added new parameter `NumReplicas`.
+- Added new parameter `DeploymentName`.
+- Before updating this template, please remove non-default records from the `${NetworkName}.${Environment}.${Cluster}.db.as.local` hosted zone and turn off the Application Server Storage Integration.
 
 ### `4-1-secrets`
-- Added new parameters `IncludeNOC`, `NOCGrafanaAdminPassword`, `NOCOAuthClientIDValue`, `NOCOAuthClientSecretValue`
+
+- Added new parameters `IncludeNOC`, `NOCGrafanaAdminPassword`, `NOCOAuthClientIDValue`, `NOCOAuthClientSecretValue`.
 
 ### `4-2a-configuration`
-- Added new parameters `ConsoleURLForNOC`, `IncludeNetworkOperationsCenter`, `NOCMaxIdleConnections`, `NOCMaxOpenConnections`, `NOCRawDataRetention`, `NOCTargetInsertBatchSize`, `NOCTargetInsertBatchWindow`
+
+- Added new parameters `ConsoleURLForNOC`, `IncludeNetworkOperationsCenter`, `NOCMaxIdleConnections`, `NOCMaxOpenConnections`, `NOCRawDataRetention`, `NOCTargetInsertBatchSize`, `NOCTargetInsertBatchWindow`.
 - Added `is.email.assets-base-url` and `is.email.branding-base-url`. These options are set to the values of the existing parameters.
 
 ### `5-2-ecs-ops`
-- Added new parameters `IncludeNetworkOperationsCenter`, `NOCTimescaleDBDeploymentName`, `ApplicationServerStorageTimescaleDBDeploymentName`, `ApplicationServerStorageReplicaEnabled`
+
+- Added new parameters `IncludeNetworkOperationsCenter`, `NOCTimescaleDBDeploymentName`, `ApplicationServerStorageTimescaleDBDeploymentName`, `ApplicationServerStorageReplicaEnabled`.
 
 ### `5-4-ecs-services`
-- Added new parameter `ApplicationServerStorageTimescaleDBDeploymentName`, `ApplicationServerStorageReplicaEnabled`
-- Added new parameters `IncludeNetworkOperationsCenter`, `NOCTimescaleDBDeploymentName`, `NetworkOperationsCenter*`, `NetworkOperationsCenterGrafana*`
+
+- Added new parameter `ApplicationServerStorageTimescaleDBDeploymentName`, `ApplicationServerStorageReplicaEnabled`.
+- Added new parameters `IncludeNetworkOperationsCenter`, `NOCTimescaleDBDeploymentName`, `NetworkOperationsCenter*`, `NetworkOperationsCenterGrafana*`.
 
 ### `5-5-ecs-monitoring`
-- Added new parameter `IncludeNetworkOperationsCenter`
+
+- Added new parameter `IncludeNetworkOperationsCenter`.
 
 ### `5-6-ecs-proxy`
-- Added new parameter `IncludeNetworkOperationsCenter`
+
+- Added new parameter `IncludeNetworkOperationsCenter`.
 
 ## 3.19.1
 
 ## 3.19.0
 
 ### `4-2a-configuration`
-- Added new parameter `ConsoleStatusPageBaseURL`
-- Added new parameter `UserRightsUpdatePrimaryEmailAddress`
-- Added new parameter `UserRightsUpdateName`
-- Added the `RedisConnectionPoolSize` and `RedisConnectionPoolIdleTimeout` parameters to control the Redis connection pool of each component
-- Added new parameter `ClusterIDAddressTemplate`. For single-cluster deployments this should be equal to `Domain`
+
+- Added new parameter `ConsoleStatusPageBaseURL`.
+- Added new parameter `UserRightsUpdatePrimaryEmailAddress`.
+- Added new parameter `UserRightsUpdateName`.
+- Added the `RedisConnectionPoolSize` and `RedisConnectionPoolIdleTimeout` parameters to control the Redis connection pool of each component.
+- Added new parameter `ClusterIDAddressTemplate`. For single-cluster deployments this should be equal to `Domain`.
 
 ### Prometheus
-- Added the `ttn_lw_workerpootl_queue_latency_seconds_bucket_rate:by_pool` aggregation, which aggregates the time spent by items in the worker pool queues
+
+- Added the `ttn_lw_workerpootl_queue_latency_seconds_bucket_rate:by_pool` aggregation, which aggregates the time spent by items in the worker pool queues.
 
 ## 3.18.2
 
 ### `2-1-db-aurora-master`
 
-- It is now allowed to specify your own database password, instead of using the autogenerated one. This is done via the `AuroraPassword` parameter. If you're upgrading from a previous version, keep this parameter empty in order to keep your old, autogenerated password
+- It is now allowed to specify your own database password, instead of using the autogenerated one. This is done via the `AuroraPassword` parameter. If you're upgrading from a previous version, keep this parameter empty in order to keep your old, autogenerated password.
 
 ### `2-4b-routing-s3`
 
-- Added new bucket for DCS configuration files.  Create a `config.yml` file at the root of this bucket. This can be left empty if claiming via an external Join Server is not necessary.
+- Added new bucket for DCS configuration files. Create a `config.yml` file at the root of this bucket. This can be left empty if claiming via an external Join Server is not necessary.
 
 ### `4-2a-configuration`
 
@@ -578,74 +651,94 @@ Add versioning to S3 buckets. Versioning is enabled by default.
 ## 3.18.1
 
 ### AMI templates
+
 - Redis upgraded to version 6.2
 
 ## 3.18.0
 
 ### `1-2-bastion`
-- Connect to the RDS database using TLS
+
+- Connect to the RDS database using TLS.
 
 ### `2-1-db-aurora-master`
-- The database now expects TLS connections
-- Added support for Aurora Postgres 12 and 13
+
+- The database now expects TLS connections.
+- Added support for Aurora Postgres 12 and 13.
 
 ### `2-2-db-aurora-replica`
-- Added support for Aurora Postgres 12 and 13
+
+- Added support for Aurora Postgres 12 and 13.
 
 ### `2-3-db-redis`
+
 - Upgraded Redis to version 6.2
 
 ### `4-2a-configuration`
+
 - Added the `WebhooksUnhealthyAttemptsThreshold` and `WebhooksUnhealthyRetryInterval` parameters.
 - Added the `DatabaseMaxIdleConns` and `DatabaseMaxOpenConns` to control the database connection pool of the Identity Server.
 
 ### `4-2b-configuration-rate-limiting`
+
 - Fixed rate limiting keys of AS RPCs.
 
 ### `5-1-ecs-cluster`
+
 - New export that is required by other stacks
 
 ### `5-2-ecs-ops`
-- Fixed an issue where The Things Stack wouldn't connect to Redis when using password
-- Increased CPU/Memory used by the ops task
+
+- Fixed an issue where The Things Stack wouldn't connect to Redis when using password.
+- Increased CPU/Memory used by the ops task.
 
 ### `5-3a-is-ecs-service`
-- Fixed an issue where The Things Stack wouldn't connect to Redis when using password
-- Updated IAM role
-- Added missing `ExternalIdentityServer` parameter
+
+- Fixed an issue where The Things Stack wouldn't connect to Redis when using password.
+- Updated IAM role.
+- Added missing `ExternalIdentityServer` parameter.
 
 ### `5-3c-ecs-tbs-service`
-- Fixed an issue where The Things Stack wouldn't connect to Redis when using password
-- Updated IAM role
+
+- Fixed an issue where The Things Stack wouldn't connect to Redis when using password.
+- Updated IAM role.
 
 ### `5-4-ecs-services`
-- Fixed an issue where The Things Stack wouldn't connect to Redis when using password
-- Updated IAM role
+
+- Fixed an issue where The Things Stack wouldn't connect to Redis when using password.
+- Updated IAM role.
 
 ### `5-5-monitoring`
-- Updated IAM role
+
+- Updated IAM role.
 
 ### `200-1-crypto`
-- Updated IAM role
+
+- Updated IAM role.
 
 ## 3.17.2
 
 ### Various templates
+
 - Templates that define ECS services now got the `*RuntimePlatform` parameter. This parameter can be used to run ARM64 images using AWS Graviton2. Depending on particular use case, performance might be better or worse.
 
 ### `1-2-bastion`
-- Machine now supports connection from AWS Session Manager. Added parameter `SessionManagerLogGroup`
+
+- Machine now supports connection from AWS Session Manager. Added parameter `SessionManagerLogGroup`.
 
 ### `2-5-db-timescale`
-- Machine now supports connection from AWS Session Manager. Added parameter `SessionManagerLogGroup`
+
+- Machine now supports connection from AWS Session Manager. Added parameter `SessionManagerLogGroup`.
 
 ### `5-1-ecs-cluster`
-- Machines now support connection from AWS Session Manager. Added parameter `SessionManagerLogGroup`. You need to manually update the SSM Agent using `yum update amazon-ssm-agent`
+
+- Machines now support connection from AWS Session Manager. Added parameter `SessionManagerLogGroup`. You need to manually update the SSM Agent using `yum update amazon-ssm-agent`.
 
 ### `5-6-ecs-proxy`
-- Added parameters `EnableTLSListeners` and `EnableNonTLSListeners`
+
+- Added parameters `EnableTLSListeners` and `EnableNonTLSListeners`.
 
 ### `PAYG/BYOL`
+
 - Fixed `RedisMultiAZSupport`. Previously the parameter was always read as `false`. Before update please read the description of the new `RedisSnapshottingClusterID` parameter.
 
 ## 3.17.1
@@ -653,15 +746,19 @@ Add versioning to S3 buckets. Versioning is enabled by default.
 ## 3.17.0
 
 ### `3-2-load-balancer-rules`
-- The `InteropEnabled` parameter has different values. Deployments that used value `false` should now choose `disabled`. Deployments that used value `true` should now choose `mutual-authentication`. `server-only-authentication` is a new option, please refer to documentation: https://www.thethingsindustries.com/docs/the-things-stack/host/aws/ecs/interop/
+
+- The `InteropEnabled` parameter has different values. Deployments that used value `false` should now choose `disabled`. Deployments that used value `true` should now choose `mutual-authentication`. `server-only-authentication` is a new option, please refer to documentation: https://www.thethingsindustries.com/docs/getting-started/aws/ecs/interop/.
 
 ### `5-3a-ecs-is-service`
+
 - `InteropEnabled` parameter renamed to `InteropEnabledIS`. Deployments that used value `identity-server` should now choose `mutual-authentication`, otherwise `disable`.
 
 ### `5-4-ecs-service`
+
 - `InteropEnabled` parameter renamed to `InteropEnabledJS`. Deployments that used value `join-server` should now choose `mutual-authentication`, otherwise `disable`.
 
 ### `PAYG`/`BYOL`
+
 - Added the `CidrBlock` parameter to specify the CIDR block used by the VPC
 
 ## 3.16.3
@@ -671,97 +768,122 @@ Add versioning to S3 buckets. Versioning is enabled by default.
 ### All
 
 - All templates now have an output `VersionTag`, which contains template version. Normally, CloudFormation rejects updates that don't contain changes to Resources and Outputs, but contain changes to Parameters. Having this allows CloudFormation to accept all updates, even if changes are only in the Parameters section. It is important to keep stacks up to date.
-
 - Added ARM-based RDS and ElastiCache instance types.
 
 ### `2-1-db-aurora-master` and `2-2-db-aurora-replica`
+
 - Added missing `db.r5` instances.
 
 ### `2-3-db-redis`
-- Added `RedisKMSKeyID` parameter to specify key for at-rest encryption. Non-empty value forces replacement
+
+- Added `RedisKMSKeyID` parameter to specify key for at-rest encryption. Non-empty value forces replacement.
 
 ### `5-1-ecs-cluster`
-- ECS Container Insights may now be enabled using the `ContainerInsights` parameter
+
+- ECS Container Insights may now be enabled using the `ContainerInsights` parameter.
 
 ### `2-3-db-redis`
-- Removed `RedisPrimary*` and `RedisReplica*` parameters in the `Alerting` group, added `Redis*` parameters instead
+
+- Removed `RedisPrimary*` and `RedisReplica*` parameters in the `Alerting` group, added `Redis*` parameters instead.
 
 ### `PAYG/BYOL`
-- Added `RedisKmsKeyId` and `RedisPassword` parameters for at-rest and in-transit encryption
+
+- Added `RedisKmsKeyId` and `RedisPassword` parameters for at-rest and in-transit encryption.
 
 ### Prometheus
-- Added recording rules for tenant fetcher metrics
-- Added recording rules for Application Server metadata store and caches
+
+- Added recording rules for tenant fetcher metrics.
+- Added recording rules for Application Server metadata store and caches.
 
 ## 3.16.1
 
 ### `1-2-bastion`
-- Updated UserData to handle TLS connection to redis
+
+- Updated UserData to handle TLS connection to Redis.
 
 ### `2-3-db-redis`
-- Added `RedisTLS` parameter
+
+- Added `RedisTLS` parameter.
 
 ### `3-2-load-balancer-rules`
-- Added new `EnableNonTLSListeners` parameter
+
+- Added new `EnableNonTLSListeners` parameter.
 
 ### `5-2-ecs-ops`
-- Added `GeneralRedisTLS`, `CacheRedisTLS`, `EventsRedisTLS` parameters
+
+- Added `GeneralRedisTLS`, `CacheRedisTLS`, `EventsRedisTLS` parameters.
 
 ### `5-3a-ecs-is-service`
-- Added `GeneralRedisTLS`, `CacheRedisTLS`, `EventsRedisTLS` parameters
+
+- Added `GeneralRedisTLS`, `CacheRedisTLS`, `EventsRedisTLS` parameters.
 
 ### `5-3c-ecs-tbs-service`
-- Added `GeneralRedisTLS`, `CacheRedisTLS`, `EventsRedisTLS` parameters
+
+- Added `GeneralRedisTLS`, `CacheRedisTLS`, `EventsRedisTLS` parameters.
 
 ### `5-4-ecs-services`
-- Added `GeneralRedisTLS`, `CacheRedisTLS`, `EventsRedisTLS` parameters
+
+- Added `GeneralRedisTLS`, `CacheRedisTLS`, `EventsRedisTLS` parameters.
 
 ### `5-5-ecs-monitoring`
-- Added the `ProbeHTTP` parameter
+
+- Added the `ProbeHTTP` parameter.
 
 ### Proxy
+
 - Fixed routing of authentication providers and external users API.
 - Updated `Strict-Transport-Security` header, increasing max-age to 2 years, including subdomains and enabling pre-loading.
 - Added custom static and error responses.
 
 ### Prometheus
+
 - Added recording rules for gRPC server/client stream messages sent/received.
 
 ## 3.16.0
 
 ### `1-1-vpc`
-- Added new parameter `PeerRequesterAccountId`. Use empty value if you're not deploying external CryptoServer
+
+- Added new parameter `PeerRequesterAccountId`. Use empty value if you're not deploying external CryptoServer.
 
 ### `3-2-load-balancer-rules`
-- Added new  `SSLPolicy` parameter
-- Added new parameter `InteropEnabled`
+
+- Added new `SSLPolicy` parameter.
+- Added new parameter `InteropEnabled`.
 
 ### `4-1-secrets`
-- Added new resource `InteropTLSSecret`. This resource is a placeholder for certbot to upload TLS certificates
+
+- Added new resource `InteropTLSSecret`. This resource is a placeholder for certbot to upload TLS certificates.
 
 ### `4-2a-configuration`
-- Added the `ForwardOnlyOwnedDevAddrs` parameter
-- Added the `InteropEnabled`, `InteropPacketBrokerEnabled`, `InteropPacketBrokerTokenIssuer` and `CryptoServerDNSName` parameters.
-- Added the `PacketBrokerMapper` parameter
+
+- Added the `ForwardOnlyOwnedDevAddrs` parameter.
+- Added the `InteropEnabled`, `InteropPacketBrokerEnabled`, `InteropPacketBrokerTokenIssuer` and `CryptoServerDNSName` parameters..
+- Added the `PacketBrokerMapper` parameter.
 
 ### `5-3a-ecs-is-service`
-- Added the `InteropEnabled` parameter
+
+- Added the `InteropEnabled` parameter.
 
 ### `5-4-ecs-services`
-- Added the `InteropEnabled` parameter
+
+- Added the `InteropEnabled` parameter.
 
 ### `5-7a-certs-le`
-- Now certbot will upload the TLS certificate to AWS Secrets Manager
+
+- Now certbot will upload the TLS certificate to AWS Secrets Manager.
 
 ### `6-1-vpc-peering`
-- New template. Deploy only if you use external CryptoServer
+
+- New template. Deploy only if you use external CryptoServer.
 
 ### `200-1-crypto`
-- New template for CryptoServer
+
+- New template for CryptoServer.
 
 ## 3.15.3
 
 ### Prometheus
+
 - Added metrics for the number of currently running subscription sets, and for subscription set publishing rates.
 - Added metrics for the number dropped gateway status messages.
 - Added metrics for the number of receive/forwarded/dropped gateway transmission acknowledgements.
@@ -769,12 +891,14 @@ Add versioning to S3 buckets. Versioning is enabled by default.
 ## 3.15.2
 
 ### `4-2-configuration`
+
 - Added the `UDPConnectionExpires` and `UDPConnectionErrorExpires` parameters, which control the UDP gateway connection (error) timeouts.
 - Added the `ExperimentalFeatures` parameter, which can be used to enable experimental features of The Things Stack.
 - Added the `UserCredentialsLoginDisabled` parameter, which disables user login with credentials, so that The Things Stack only lets users login with an external OpenID Connect provider.
 - Removed the `PacketBrokerClusterID` parameter. Now `Domain` is used instead
 
 ### Proxy
+
 - Fixed routing of "related events" API.
 
 ## 3.15.1
@@ -782,11 +906,13 @@ Add versioning to S3 buckets. Versioning is enabled by default.
 ## 3.15.0
 
 ### `1-2-bastion`
+
 - Added `EBSKmsKeyId` parameter to choose EBS boot volume encryption key. From now on, EBS boot volumes are encrypted.
 
 ### `2-5-db-timescale`
-- Created a hosted zone for internal use
-- This template has been reworked so that updates are now possible. Before updating make a backup of the volume. For more information, please refer to the documentation at https://www.thethingsindustries.com/docs/the-things-stack/host/aws/ecs/updating/#2-5-db-timescale
+
+- Created a hosted zone for internal use.
+- This template has been reworked so that updates are now possible. Before updating make a backup of the volume. For more information, please refer to the documentation at https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/#2-5-db-timescale.
 - Added `EBSKmsKeyId` parameter to choose EBS volume encryption key. From now on, EBS volumes are encrypted. Previously only data volume would be encrypted using the default key. Encrypting boot drive does not significantly increase security, and is mainly targeted towards compliance with regulations. If you wish to encrypt your boot drive, please:
   1. Change the `ApplicationServerStorageEnabled` parameter in `5-2-ocs-ops` and `5-4-ecs-services` to `false`.
   2. Create a snapshot of the TimescaleDB EBS volume.
@@ -796,21 +922,26 @@ Add versioning to S3 buckets. Versioning is enabled by default.
   6. For more complex use cases, like changing encryption key, refer to AWS documentation.
 
 ### `4-2-configuration`
+
 - Added `ISSupportLink` parameter
 - Added `UplinkTasksNumConsumers` and `DownlinkTasksNumConsumers` parameters to the Network Server tasks, which allow the number of task consumers to be configured.
 - Added `SkipVersionCheck` parameter to omit version checks
 - `NetworkServerClusterID` has been renamed to `ClusterID`, as now it's a parameter accessed by all services. Make sure you enter the old value.
 
 ### `4-2c-configuration-resource-limiting`
+
 - Added a new template for resource limiting
 
 ### `5-2-ecs-ops`
+
 - This template now imports TimescaleDB address in a different way.
 
 ### `5-4-ecs-services`
+
 - This template now imports TimescaleDB address in a different way.
 
 ### Prometheus
+
 - Added recording rules for Gateway Server transmission success / failure
 - Added recording rules for Application Server worker pools, webhooks and application packages
 
@@ -831,6 +962,7 @@ Add versioning to S3 buckets. Versioning is enabled by default.
 ## 3.14.1
 
 ### `5-4-ecs-services`
+
 - Added `IncludeSemtechRJSConfiguration` parameter to include/exclude Semtech RJS configuration. This is a bugfix, as previous version failed to deploy when Semtech RJS secrets weren't available.
 
 ### Proxy
@@ -847,6 +979,7 @@ Add versioning to S3 buckets. Versioning is enabled by default.
 Certain templates have different default values for machine types/memory/CPU in order to better reflect a typical deployment. These changes have no impact on functionalities, and do not affect existing users.
 
 ### `2-1-db-aurora-master`
+
 - Allowed encryption of the Aurora database. In order to encrypt existing database:
   1. Remove the `5-3a-ecs-is-service`, `5-2-ecs-ops` and `2-2-db-aurora-replica` (NOT `master`) stacks.
   2. Create a snapshot of the database for backup purposes.
@@ -856,9 +989,11 @@ Certain templates have different default values for machine types/memory/CPU in 
   6. Recreate the `2-2-db-aurora-replica`, `5-2-ecs-ops` and `5-3a-ecs-is-service` stacks as needed.
 
 ### `3-2-load-balancer-rules`
+
 - Added alternative certificates support for all TLS listeners.
 
 ### `4-2a-configuration`
+
 - Changed log format to JSON.
 - Added `NetworkServerClusterID` which identifies cluster in the Network Server for informative purposes. Suggested value the same as `PacketBrokerClusterID`.
 - Updated `ttnv2` config. This change is not backwards compatible. This needs to be deployed before updating GS services to `v3.14` or higher.
@@ -866,9 +1001,11 @@ Certain templates have different default values for machine types/memory/CPU in 
 - Add `ApplicationPackagesWorkerCount` and `ApplicationPackagesWorkerCount` to the Application Server configuration.
 
 ### `5-4-ecs-services`
+
 - Make execution and task policies conditional. This is compatible with existing deployments.
 
 ### `5-5-monitoring`
+
 - Better control on what services Prometheus should expect to find, and what shouldn't. This change is mainly targeted to non-standard deployments. Added `Include*` parameters which tell whether given component should be expected. Please note that by default both `IncludeIdentityServer` and `IncludeIdentityServerProxy` are `true`, while actually it's one of these that is used.
 
 ### `5-7a-certs-le`
@@ -934,9 +1071,11 @@ Certain templates have different default values for machine types/memory/CPU in 
 ## 3.13.0
 
 ### build
+
 - Support injecting Rate Limiting configuration in docker containers.
 
 ### `2-3-db-redis`
+
 - Fixes for `cache` and `events` purposes. This requires replacement of redis replication groups of these purposes but does NOT affect the `general` purpose.
 
 ### `4-2-configuration`
@@ -983,6 +1122,7 @@ Certain templates have different default values for machine types/memory/CPU in 
 - Changed Console configuration (no change in parameters)
 
 ### `5-1-ecs-cluster`
+
 - Added LifecycleHook for service draining when ECS EC2 machines are terminated. Added resources `ECSAutoScalingGroupDraining*`, replacement of `ECSLaunchConfiguration`, update of `ECSAutoScalingGroup` - here it says `Conditional` replacement due to update of `LaunchConfigurationName`, but in reality there is no replacement
 
 ### `5-3a-ecs-is-service`
@@ -1073,6 +1213,7 @@ Certain templates have different default values for machine types/memory/CPU in 
 - Modified attributes of LoadBalancer to allow logging
 
 ### `4-1-configuration`
+
 - Added `UDPAddrChangeBlock`, `UDPDownlinkPathExpires` and `UDPPacketHandlers` parameters.
 - Added environment name to Sentry configuration.
 
@@ -1106,20 +1247,20 @@ Certain templates have different default values for machine types/memory/CPU in 
 ### `3-1-security-group-rules`
 
 - Added config to enable ingress ports conditionally.
-    - The default values of new parameters are compatible with existing deployments, i.e., no new parameter values are needed for existing deployments to work.
+  - The default values of new parameters are compatible with existing deployments, i.e., no new parameter values are needed for existing deployments to work.
 
 ### `3-2-load-balancer-rules`
 
 - Added support for overriding certificates for all listeners.
 - Added alternative Certificate chain support for HTTPS and Basic Station listeners.
-    - The default values of new parameters are compatible with existing deployments, i.e., no new parameter values are needed for existing deployments to work.
+  - The default values of new parameters are compatible with existing deployments, i.e., no new parameter values are needed for existing deployments to work.
 - Added option to select load balancer listeners and target groups.
-    - The default values of new parameters are compatible with existing deployments, i.e., no new parameter values are needed for existing deployments to work.
+  - The default values of new parameters are compatible with existing deployments, i.e., no new parameter values are needed for existing deployments to work.
 
 ### `4-2-configuration`
 
 - Made per-service configuration selectable.
-    - The default values of new parameters are compatible with existing deployments, i.e., no new parameter values are needed for existing deployments to work.
+  - The default values of new parameters are compatible with existing deployments, i.e., no new parameter values are needed for existing deployments to work.
 
 ### `5-3d-ecs-gcs-service`
 
@@ -1132,13 +1273,12 @@ Certain templates have different default values for machine types/memory/CPU in 
 ### `5-7a-certs-le`
 
 - Changed template to support one certificate per CFN stack.
-    - Delete the existing `5-7b-ecs-certbot-scheduled-task` stack before updating this template.
-    - When deploying `5-7a-certs-le` make sure to unset the `ExistingCertArn` parameter. This preserves existing certificates as backup if there are issues while querying new certificates.
+  - Delete the existing `5-7b-ecs-certbot-scheduled-task` stack before updating this template.
+  - When deploying `5-7a-certs-le` make sure to unset the `ExistingCertArn` parameter. This preserves existing certificates as backup if there are issues while querying new certificates.
 
 ### `5-7b-ecs-certbot-scheduled-task`
 
 - Changed template to support one certificate per CFN stack. Use the exported Task Definition ARN from `5-7a-certs-le` to renew a particular certificate.
-
 
 ## [3.11.1](https://github.com/TheThingsIndustries/lorawan-stack-aws/compare/7c4683c...474a95c)
 
@@ -1172,9 +1312,11 @@ Certain templates have different default values for machine types/memory/CPU in 
 - Changed ApplicationServerTaskDefinition to also start Device Repository component
 
 ### `5-7a-certs-le`
+
 - Changes to certbot task definition, removed `CertbotTaskDefinitionArn` output
 
 ### `5-7b-ecs-certbot-scheduled-task`
+
 - Changed default execution frequency to 2 days
 - Removed ExecutionRole
 - Added RuleRole
@@ -1185,8 +1327,8 @@ Certain templates have different default values for machine types/memory/CPU in 
 - Added routes for Device Repository APIs.
 
 ### Prometheus
-- Update base image
 
+- Update base image
 
 ## [3.10.7](https://github.com/TheThingsIndustries/lorawan-stack-aws/compare/251f9c5...e69f9ef)
 
@@ -1194,40 +1336,49 @@ no changes
 
 ## [3.10.6](https://github.com/TheThingsIndustries/lorawan-stack-aws/compare/86656ab...251f9c5)
 
-
 ### `1-2-bastion`
+
 - Added InstanceProfile to the EC2 machine, changed its UserData
 
 ### `2-5-db-timescale`
+
 - Added LifecyclePolicy to the EC2 machine's volume
 
 ### `4-1-secrets`
+
 - Added Packet Broker Agent API key ID and secret key parameters, PacketBrokerAgentSecrets
 - Removed Packet Broker Agent TLS client certificate
 
 ### `4-2-configuration`
+
 - Added AdminRightsAll, PacketBrokerIAM parameters
 - Removed PacketBrokerTenantID, PacketBrokerDevAddrPrefix, parameters
 - Changed PacketBrokerAddress parameter allowed values
 - Changed ISConfiguration and PBAConfiguration contents
 
 ### `5-4-ecs-services`
+
 - Changed PacketBrokerAgent TaskDefinition: added a secret
 - Changed tasks' execution role: added access to packet borker's secret
 
 ### `5-7a-certs-le`
+
 - Chagned certbot task's environment (RenewBeforeExpiry) and execution role (detailed access to existing certificate)
 - Added RenewBeforeExpiry parameter
 - Removed EFS filesystem and mount targets
 
 ### `BYOL` and `PAYG`
+
 - Changed EC2 machine's UserData
 
 ### `cloud/3-1-single-instance-cluster`
+
 - Changed EC2 machine's UserData
 
 ### Prometheus
+
 - New metrics and alerts
 
 ### Certbot
+
 - Added a check if certificate needs a renewal

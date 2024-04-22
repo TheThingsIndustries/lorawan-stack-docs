@@ -18,6 +18,7 @@ ttn-lw-cli users set [user-id] [flags]
       --application-limit uint                         
       --attributes stringToString                      
       --client-limit uint                              
+      --console-preferences.console-theme string       allowed values: CONSOLE_THEME_SYSTEM, CONSOLE_THEME_LIGHT, CONSOLE_THEME_DARK
       --description string                             
       --gateway-limit uint                             
   -h, --help                                           help for set

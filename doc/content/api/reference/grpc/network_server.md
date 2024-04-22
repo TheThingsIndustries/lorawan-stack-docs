@@ -54,6 +54,10 @@ List of Network Server APIs.
 
 {{< proto/message message="ADRSettings.DynamicMode.ChannelSteeringSettings.DisabledMode" >}}
 
+{{< proto/message message="ADRSettings.DynamicMode.PerDataRateIndexOverride" >}}
+
+{{< proto/message message="ADRSettings.DynamicMode.Overrides" >}}
+
 {{< proto/message message="ADRSettings.DisabledMode" >}}
 
 {{< proto/message message="AggregatedDutyCycleValue" >}}
