@@ -1,34 +1,47 @@
-<footer class="footer">
-  <div class="container">
-    <div class="columns">
-      <nav class="column is-one-third">
-        <h3 class="title is-6">The Things Stack</h3>
-        {{- $currentPage := . -}}
-        {{- range .Site.Menus.main }}
-        <p><a class="{{ if $currentPage.IsMenuCurrent "main" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a></p>
-        {{- end }}
-      </nav>
-      {{- if .Site.Menus.contributing }}
-      <nav class="column is-one-third">
-        <h3 class="title is-6">Contributing</h3>
-        {{- $currentPage := . -}}
-        {{- range .Site.Menus.contributing }}
-        <p><a class="{{ if $currentPage.IsMenuCurrent "contributing" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a></p>
-        {{- end }}
-      </nav>
-      {{ end -}}
-      {{- if .Site.Menus.about_us }}
-      <nav class="column is-one-third">
-        <h3 class="title is-6">About Us</h3>
-        {{- $currentPage := . -}}
-        {{- range .Site.Menus.about_us }}
-        <p><a class="{{ if $currentPage.IsMenuCurrent "about_us" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a></p>
-        {{- end }}
-      </nav>
-      {{ end -}}
-    </div>
-  </div>
-</footer>
+<section class="ttui-container bg-background-07 pb-ls-s pt-ls-s">
+  <ttui-footer
+    privacy-policy-url="https://www.thethingsindustries.com/document/privacypolicy/"
+    terms-url="https://www.thethingsindustries.com/document/eula/"
+  >
+    <ttui-footer-nav slot="menu" title="The Things Stack">
+      {{- range .Site.Menus.main }}
+      <ttui-footer-nav-item>
+        <a href="{{ .URL }}">{{ .Name }}</a>
+      </ttui-footer-nav-item>
+      {{- end }}
+    </ttui-footer-nav>
+    {{- if .Site.Menus.contributing }}
+    <ttui-footer-nav slot="menu" title="Contributing">
+      {{- range .Site.Menus.contributing }}
+      <ttui-footer-nav-item>
+        <a href="{{ .URL }}">{{ .Name }}</a>
+      </ttui-footer-nav-item>
+      {{- end }}
+    </ttui-footer-nav>
+    {{ end -}}
+    {{- if .Site.Menus.about_us }}
+    <ttui-footer-nav slot="menu" title="About Us">
+      {{- range .Site.Menus.about_us }}
+      <ttui-footer-nav-item>
+        <a href="{{ .URL }}">{{ .Name }}</a>
+      </ttui-footer-nav-item>
+      {{- end }}
+    </ttui-footer-nav>
+    {{ end -}}
+
+    {{- if .Site.Menus.social_media }}
+    <ttui-footer-social slot="social">
+      {{- range .Site.Menus.social_media }}
+      <ttui-footer-social-icon
+        platform="{{ .Name | lower }}"
+        url="{{ .URL }}"
+        align-left
+      ></ttui-footer-social-icon>
+      {{- end }}
+    </ttui-footer-social>
+  </ttui-footer>
+  {{ end -}}
+</section>
 
 {{- $script := resources.Get "js/vendor/basicLightbox.min.js" }}
 <script src="{{ $script.Permalink }}"></script>

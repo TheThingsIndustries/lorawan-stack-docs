@@ -15,6 +15,7 @@
 import "@tti/design/ui/ttui-vendor.js";
 import "@tti/design/ui/main.js";
 import "@tti/design/ui/components/ttui-header";
+import "@tti/design/ui/components/ttui-footer";
 
 function addNavBarBurgers(){
   var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0)
