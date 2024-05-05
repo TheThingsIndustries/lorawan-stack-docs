@@ -30,6 +30,21 @@ Since there are no uplinks in multicast groups, there is no MAC layer communicat
 
 - `mac-settings.ping-slot-periodicity.value`
 
+CLI example:
+
+```bash
+ttn-lw-cli end-devices create $APP_ID $DEVICE_ID \
+ --frequency-plan-id $FREQUENCY_PLAN \
+ --lorawan-version $LORAWAN_VERSION \
+ --lorawan-phy-version $LORAWAN_PHY_VERSION \
+ --session.dev-addr $DEV_ADDR \
+ --session.keys.app-s-key.key $APP_SESSION_KEY \
+ --session.keys.nwk-s-key.key $NWK_SESSION_KEY \
+ --multicast \
+ --supports-class-b \
+ --mac-settings.ping-slot-periodicity PING_EVERY_4S
+```
+
 See the [MAC Settings]({{< ref "/devices/configuring-devices/mac-settings" >}}) guide for more information about configuring MAC layer parameters.
 
 ## Creating a Multicast Group
