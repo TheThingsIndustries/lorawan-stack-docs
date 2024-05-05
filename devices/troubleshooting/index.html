@@ -328,6 +328,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="transmitting-downlink-message-fails-with-the-collision-packet-error">Transmitting downlink message fails with the collision packet error.</h2>
 <p>The <code>COLLISION_PACKET</code> error occurs when downlink transmissions overlap - this happens when two or more packets overlap in time and use the same spreading factor, bandwith and frequency plan settings.</p>
 <p>To avoid packet collisions, users can enable server-side buffering of donwlink messages. If server-side buffering is enabled, the Gateway Server schedules the downlink message to be sent after the downlink message that was already queued but not sent yet, so that their transmissions don&rsquo;t overlap. To enable this, navigate to your gateway&rsquo;s <strong>General settings</strong> section, expand the <strong>LoRaWAN</strong> section and <strong>Enable</strong> the <strong>Schedule downlink late</strong> option by ticking the box. Note that this is a recommended setting for gateways that use <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/">UDP packet forwarder</a>.</p>
+<h2 id="scheduling-downlinks-for-a-multicast-device-results-with-no-downlink-path-available-error">Scheduling downlinks for a Multicast device results with &ldquo;no downlink path available&rdquo; error.</h2>
+<p><a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/multicast/">Multicast</a> devices in The Things Stack do not support uplinks, confirm downlinks, or MAC commands, so a specified downlink path is required for scheduling multicast downlink messages. For example, omitting the gateway ID or selecting an inactive gateway in the downlink message causes a <code>No downlink path available</code> error.</p>
+<p>Below is an example cURL command for scheduling a downlink to a multicast device:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl --location --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXXX&#39;</span> --header <span class="s1">&#39;Content-Type: application/json&#39;</span> --request POST --data <span class="s1">&#39;{&#34;downlinks&#34;: [{&#34;frm_payload&#34;: &#34;vu8=&#34;, &#34;f_port&#34;: 42, &#34;priority&#34;: &#34;NORMAL&#34;, &#34;class_b_c&#34;: {&#34;gateways&#34;: [{&#34;gateway_ids&#34;: {&#34;gateway_id&#34;: &#34;gtw1&#34;}}, {&#34;gateway_ids&#34;: {&#34;gateway_id&#34;: &#34;gtw2&#34;}}], &#34;absolute_time&#34;: &#34;2019-07-23T13:05:00Z&#34;}}]}&#39;</span> <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/&lt;application-id&gt;/devices/&lt;device-id&gt;/down/push&#39;</span>
+</span></span></code></pre></div>
         </div>
           <div class="columns is-multiline">
 </div>
@@ -415,6 +420,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
       
       <li><a href='#transmitting-downlink-message-fails-with-the-collision-packet-error'>Transmitting downlink message fails with the collision packet error.</a></li>
+    
+      
+      <li><a href='#scheduling-downlinks-for-a-multicast-device-results-with-no-downlink-path-available-error'>Scheduling downlinks for a Multicast device results with “no downlink path available” error.</a></li>
     
   </ul>
 
