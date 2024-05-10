@@ -106,4 +106,4 @@ Then, schedule the following message to the [Application Server MQTT server]({{<
 Changing MAC settings of a Multicast device (virtual ABP device) requires performing the below steps:
 
 1. Change [MAC settings]({{< ref "/devices/configuring-devices/mac-settings" >}}).
-2. Reset the Multicast device at the Network Server end as explained [here](/devices/configuring-devices/mac-settings/#session-and-mac-state-reset) to apply above mentioned changes.
+2. Reset the Multicast device at the Network Server end as explained [here]({{< ref "/devices/configuring-devices/mac-settings#session-and-mac-state-reset" >}}) to apply above mentioned changes.
