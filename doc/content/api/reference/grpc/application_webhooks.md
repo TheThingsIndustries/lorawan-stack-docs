@@ -42,6 +42,8 @@ List of Application Webhook APIs.
 
 {{< proto/message message="ApplicationWebhookIdentifiers" >}}
 
+{{< proto/message message="ApplicationWebhookQueue" >}}
+
 {{< proto/message message="ApplicationWebhooks" >}}
 
 {{< proto/message message="ApplicationWebhookTemplateIdentifiers" >}}
@@ -52,9 +54,9 @@ List of Application Webhook APIs.
 
 {{< proto/message message="GetApplicationWebhookTemplateRequest" >}}
 
-{{< proto/message message="ListApplicationWebhookTemplatesRequest" >}}
-
 {{< proto/message message="ListApplicationWebhooksRequest" >}}
+
+{{< proto/message message="ListApplicationWebhookTemplatesRequest" >}}
 
 {{< proto/message message="SetApplicationWebhookRequest" >}}
 
