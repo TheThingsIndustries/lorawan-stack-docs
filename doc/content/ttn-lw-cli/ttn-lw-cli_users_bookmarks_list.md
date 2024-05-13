@@ -15,6 +15,7 @@ ttn-lw-cli users bookmarks list [flags]
 
 ```
       --deleted                   
+      --entity-types strings      
   -h, --help                      help for list
       --limit uint32              
       --order string              

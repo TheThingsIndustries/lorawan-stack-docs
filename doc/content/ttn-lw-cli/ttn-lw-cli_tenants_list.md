@@ -35,6 +35,10 @@ ttn-lw-cli tenants list [flags]
       --configuration.default-cluster.ars                                                        select the configuration.default_cluster.ars field and all allowed sub-fields
       --configuration.default-cluster.ars.routing                                                select the configuration.default_cluster.ars.routing field and all allowed sub-fields
       --configuration.default-cluster.ars.routing.enabled                                        select the configuration.default_cluster.ars.routing.enabled field
+      --configuration.default-cluster.as                                                         select the configuration.default_cluster.as field and all allowed sub-fields
+      --configuration.default-cluster.as.webhooks                                                select the configuration.default_cluster.as.webhooks field and all allowed sub-fields
+      --configuration.default-cluster.as.webhooks.queue                                          select the configuration.default_cluster.as.webhooks.queue field and all allowed sub-fields
+      --configuration.default-cluster.as.webhooks.queue.enabled                                  select the configuration.default_cluster.as.webhooks.queue.enabled field
       --configuration.default-cluster.is                                                         select the configuration.default_cluster.is field and all allowed sub-fields
       --configuration.default-cluster.is.admin-rights                                            select the configuration.default_cluster.is.admin_rights field and all allowed sub-fields
       --configuration.default-cluster.is.admin-rights.all                                        select the configuration.default_cluster.is.admin_rights.all field

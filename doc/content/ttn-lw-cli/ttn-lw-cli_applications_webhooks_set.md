@@ -29,6 +29,7 @@ ttn-lw-cli applications webhooks set [application-id] [webhook-id] [flags]
   -h, --help                                     help for set
       --join-accept.path string                  
       --location-solved.path string              
+      --queue.enabled                            
       --service-data.path string                 
       --template-fields stringToString           
       --template-ids.template-id string          

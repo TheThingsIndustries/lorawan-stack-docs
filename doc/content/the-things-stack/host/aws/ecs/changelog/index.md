@@ -8,6 +8,8 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.30.1
+
 ### Proxy
 
 - Add email validation paths.

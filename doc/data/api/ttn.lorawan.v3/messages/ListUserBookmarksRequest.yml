@@ -37,3 +37,20 @@ fields:
   comment: Only return recently deleted bookmarks.
   type: bool
   default: false
+- name: entity_types
+  comment: |-
+    Specifies that only bookmarks that reference the given entity type should be returned. If empty the filter is not
+    applied.
+  rules:
+    unique: true
+  repeated:
+    type: string
+    rules:
+      in:
+      - application
+      - client
+      - end device
+      - gateway
+      - organization
+      - user
+  default: []
