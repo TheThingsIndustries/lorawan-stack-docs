@@ -4,7 +4,7 @@ description: ""
 weight: 7
 ---
 
-{{% tts %}} database entries are managed between minor versions using database migrations.
+{{% tts %}} database schema is managed between minor versions using database migrations.
 
 User are informed of required migrations for each version via the [Release Notes](https://www.thethingsindustries.com/docs/whats-new/). It's mandatory to run required database migrations for {{% tts %}} to function properly.
 
@@ -14,7 +14,7 @@ This page describes the steps for performing database operations on a {{% tts %}
 
 ## General Procedure
 
-Set the respectable Helm chart values to `true` to perform database migrations during Helm chart upgrade.
+Set the respective Helm chart values to `true` to perform database migrations during Helm chart upgrade.
 
 | Service | Variable                     |
 | ------- | ---------------------------- |
