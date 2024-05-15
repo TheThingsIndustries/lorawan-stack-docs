@@ -10,6 +10,8 @@ The webhook queue feature allows webhooks to be enqueued and be retried multiple
 
 <!--more-->
 
+{{< note  "The webhook queue feature in The Things Stack is currently in beta. Please contact support@thethingsindustries.com to evaluate this feature on your {{% tts %}} Cloud tenant." />}}
+
 By default, webhook HTTP requests are tried at most once for each application uplink. This means that if the endpoint is unavailable temporarily, the HTTP requests done in this period are lost, and so is the associated traffic.
 
 Webhook queuing allows individual HTTP requests to be retried at later times, when the endpoint is hopefully back.
