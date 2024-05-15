@@ -10,4 +10,4 @@ Alerting in {{% tts %}} refers to notifications which are sent when certain cond
 
 <!--more-->
 
-{{< note  "Alerting in The Things Stack is currently in a beta. Please contact support@thethingsindustries.com to evaluate this feature on your {{% tts %}} Cloud tenant." />}}
+{{< note  "Alerting in The Things Stack is currently in beta. Please contact support@thethingsindustries.com to evaluate this feature on your {{% tts %}} Cloud tenant." />}}
