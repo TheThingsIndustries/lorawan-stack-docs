@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Webhook Queue | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/webhooks/queue/" />
+  <title>Webhook Retries | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/webhooks/retries/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Webhook Queue">
+  <meta itemprop="name" content="Webhook Retries">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Webhook Queue">
+  <meta property="og:title" content="Webhook Retries">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/webhooks/queue/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/webhooks/retries/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Webhook Queue" />
+  <meta name="twitter:title" content="Webhook Retries" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -149,7 +149,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/queue/" class="is-active">Webhook Queue</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/retries/" class="is-active">Webhook Retries</a>
     
     
 
@@ -190,7 +190,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Webhook Queue
+        <h1 class="title is-size-2">Webhook Retries
           
         </h1>
         
@@ -236,18 +236,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </h2>
         
         <div class="content">
-          <p>The webhook queue feature allows webhooks to be enqueued and be retried multiple times if the final endpoint is temporarily unavailable.</p>
+          <p>The webhook retries feature allows webhooks to be enqueued and be retried multiple times if the final endpoint is temporarily unavailable.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The webhook queue feature in The Things Stack is currently in beta. Please contact <a href="mailto:support@thethingsindustries.com">support@thethingsindustries.com</a> to evaluate this feature on your The Things Stack Cloud tenant.
+  The webhook retries feature in The Things Stack is currently in beta. Please contact <a href="mailto:support@thethingsindustries.com">support@thethingsindustries.com</a> to evaluate this feature on your The Things Stack Cloud tenant.
 </div>
 
 <p>By default, webhook HTTP requests are tried at most once for each application uplink. This means that if the endpoint is unavailable temporarily, the HTTP requests done in this period are lost, and so is the associated traffic.</p>
 <p>Webhook queuing allows individual HTTP requests to be retried at later times, when the endpoint is hopefully back.</p>
-<h2 id="enabling-webhook-queueing">Enabling webhook queueing</h2>
-<p>The webhook queue feature can be enabled on both new and existing webhooks via the Console, by ticking the <strong>Retries</strong> checkbox in the webhook settings:</p>
+<h2 id="enabling-webhook-retries">Enabling webhook retries</h2>
+<p>The webhook retries feature can be enabled on both new and existing webhooks via the Console, by ticking the <strong>Retries</strong> checkbox in the webhook settings:</p>
 <figure><img src="../webhook-queue-before.png"
-         alt="Enabling webhook queueing"/>
+         alt="Enabling webhook retries"/>
 </figure>
 
 <p>After the checkbox has been ticked, and the webhook has been saved, future requests will be enqueued and retried on failure.</p>
@@ -255,9 +255,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
          alt="Webhook queueing enabled"/>
 </figure>
 
-<h2 id="what-counts-as-a-failed-attempt-">What counts as a failed attempt ?</h2>
-<p>If the endpoint is completely unavailable (the host is down, the URL is invalid, the connection attempts time out), the attempt is considered to be failed.</p>
-<p>If the endpoint is returning a HTTP status code which is not between 200 and 299, the attempt is considered failed.</p>
+<h2 id="what-counts-as-a-failed-try-">What counts as a failed try ?</h2>
+<p>If the endpoint is completely unavailable (the host is down, the URL is invalid, the connection attempts time out), the try is considered to be failed.</p>
+<p>If the endpoint is returning a HTTP status code which is not between 200 and 299, the try is considered failed.</p>
 <h2 id="what-is-the-request-timeout-">What is the request timeout ?</h2>
 <p>A request must take less than 10 seconds from the moment the connection attempt is started until the full response is received.</p>
 <p>If longer processing times are required, a queue should be placed between the endpoint and the processing process.</p>
@@ -266,15 +266,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   This is a deployment configuration setting. The values mentioned above are the default values.
 </div>
 
-<h2 id="how-many-times-is-a-request-going-to-be-attempted-">How many times is a request going to be attempted ?</h2>
-<p>A request is going to be attempted 7 times, including the initial attempt.</p>
+<h2 id="how-many-times-is-a-request-going-to-be-retried-">How many times is a request going to be retried ?</h2>
+<p>A request is going to be retried 7 times, including the initial try.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   This is a deployment configuration setting. The values mentioned above are the default values.
 </div>
 
-<h2 id="how-often-is-a-request-going-to-be-attempted-">How often is a request going to be attempted ?</h2>
-<p>The retry intervals follow an exponential backoff pattern. The initial attempt is done as soon as the application uplink arrives. The next attempt is done 4 minutes after the first attempt fails, followed by an attempt done 8 minutes after the second attempt. The subsequent 4 attempts are done every 15 minute intervals.</p>
+<h2 id="how-often-is-a-request-going-to-be-retried-">How often is a request going to be retried ?</h2>
+<p>The retry intervals follow an exponential backoff pattern. The initial try is done as soon as the application uplink arrives. The next try is done 4 minutes after the first try fails, followed by a retry done 8 minutes after the second retry. The subsequent 4 retries are done every 15 minute intervals.</p>
 <p>In order to avoid overwhelming the endpoint, a 15% jitter is applied to these intervals. This means that the first retry interval will take between 3.4 and 4.6 minutes.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -304,19 +304,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul class="menu-list">
     
       
-      <li><a href='#enabling-webhook-queueing'>Enabling webhook queueing</a></li>
+      <li><a href='#enabling-webhook-retries'>Enabling webhook retries</a></li>
     
       
-      <li><a href='#what-counts-as-a-failed-attempt-'>What counts as a failed attempt ?</a></li>
+      <li><a href='#what-counts-as-a-failed-try-'>What counts as a failed try ?</a></li>
     
       
       <li><a href='#what-is-the-request-timeout-'>What is the request timeout ?</a></li>
     
       
-      <li><a href='#how-many-times-is-a-request-going-to-be-attempted-'>How many times is a request going to be attempted ?</a></li>
+      <li><a href='#how-many-times-is-a-request-going-to-be-retried-'>How many times is a request going to be retried ?</a></li>
     
       
-      <li><a href='#how-often-is-a-request-going-to-be-attempted-'>How often is a request going to be attempted ?</a></li>
+      <li><a href='#how-often-is-a-request-going-to-be-retried-'>How often is a request going to be retried ?</a></li>
     
   </ul>
 
