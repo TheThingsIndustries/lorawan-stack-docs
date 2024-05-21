@@ -20,27 +20,27 @@ The Arduino IDE allows you to write code using the Arduino programming language 
 
 Download the latest release of the [Arduino Software (IDE)](https://www.arduino.cc/en/Main/Software), [install](https://www.arduino.cc/en/Guide) it on your operating system and run it.
 
-First we're going to install the drivers for the board. This can be done by clicking the **second icon in the left-hand menu** or navigating to **Tools > Board > Board Manager...**. Here we need to look for the **Arduino SAMD boards (32-bits Arm® Cortex®-M0+)** and install it.
+Before we get to programming you need to install a few additional things. First is the drivers for the board. This can be done by clicking the **second icon in the left-hand menu** or navigating to **Tools > Board > Board Manager...**. Here you need to look for the **Arduino SAMD boards (32-bits ARM® Cortex®-M0+)** and install it.
 
 {{< figure src="boards-manager.png" alt="Arduino Boards Manager" >}}
 
-Then we need to install the library. To install it, click on the **third icon in the left-hand menu** or navigate to **Tools > Manage libraries..**. In here search for **MKRWAN** and install it.
+Then you need to install the library for the board. Click on the **third icon in the left-hand menu** or navigate to **Tools > Manage libraries..**. In here search for **MKRWAN** and install it.
 
 {{< figure src="library-manager.png" alt="Arduino Library Manager" >}}
 
-{{< note "You might have noticed there is also a library named MKRWAN_v2 from Arduino. We used the MKRWAN library for this tutorial, but both libraries work. As the two libraries rely on two separate firmware, it is important that your device has the correct firmware installed. Updating it is done by running the File > Examples > MKRWAN / MKRWAN_v2 > MKRWANFWUpdate_standalone example from the corresponding library. " />}}
+{{< note "You might have noticed there is also a library named MKRWAN_v2 from Arduino. We used the MKRWAN library for this tutorial, but both libraries work. As the two libraries rely on two separate firmware, it is important that your device has the correct firmware installed. Updating it is done by running the *File > Examples > MKRWAN / MKRWAN_v2 > MKRWANFWUpdate_standalone* example from the corresponding library. " />}}
 
-Once we have downloaded the library, we will need to upload an example from the **MKRWAN** library, called **FirstConfiguration**. You can find this in **File > Examples > MKRWAN > FirstConfiguration**.
+Once you have downloaded the library, you will need to upload an example code from the **MKRWAN** library, called **FirstConfiguration**. You can find this in **File > Examples > MKRWAN > FirstConfiguration**.
 
 Then plug the Arduino into your computer. In the IDE, click on **Select Board** at the top, and select your **Arduino MKR WAN 1310**.
 
 {{< figure src="select-board.png" alt="Selecting Board" >}}
 
-Once that is done you can upload the file to the board. Once the code is uploaded successfully, open the Serial Monitor. You can open it by clicking the **icon in the top-right corner**.
+Once that is done you can upload the file to the board (Using the **->** button). Once the code is uploaded successfully, open the Serial Monitor. You can open it by clicking the **icon in the top-right corner**.
 
 {{< figure src="serial-monitor.png" alt="Serial Monitor" >}}
 
-Here we will find the unique Device EUI as displayed in the picture below:
+Here you will find the unique Device EUI as displayed in the picture below:
 
 {{< figure src="device-eui.png" alt="EUI of the device in the serial monitor" >}}
 
@@ -68,23 +68,29 @@ For the Provisioning Information, enter the following details:
 
 {{< figure src="stack-prov.png" alt="" >}}
 
-In our device overview, we can now see three rows: Device EUI, Application EUI and App Key. We are going to need these values for then next steps.
+In your device overview   you can now see three rows under Activation information: **Device EUI, Application EUI and App Key**. You are going to need these values for the next steps.
 
 {{< figure src="device-overview.png" alt="" >}}
 
 ## Connecting board to Stack
 
-Now let's go back to the **FirstConfiguration** sketch again. To be safe, reset your board and open the Serial Monitor again. Once the program starts, it will start asking questions in the Serial Monitor. The first one is if we are using OTAA or ABP. We will use OTAA, so we can enter a "**1**" in the monitor and hit "**send**" (or enter).
+Now let's go back to the **FirstConfiguration** sketch again. To be safe, reset your board and open the Serial Monitor again. Once the program starts, it will start asking questions in the Serial Monitor. The first one is if you are using OTAA or ABP. We are going to use OTAA, so you can enter a "**1**" in the message field and hit enter.
 
-Now it will ask you for your **APP EUI** and **APP KEY**. Simply copy these from their respective **Activation information** fields inside {{% tts %}}. Once we have entered them, the device will try to connect to TTN.
+Then it will ask you for your **APP EUI** and **APP KEY**. First copy the **AppEUI** from it's respective **Activation information** fields inside {{% tts %}}, then enter it in the message field, hit enter, and repeat for the other one. Once you have entered them, the device will try to connect to TTN.
 
 {{< figure src="monitor-prov.png" alt="" >}}
 
-Now go to {{% tts %}}, you should see the device connecting. But we need a payload formatter.
+Now go to {{% tts %}}, you should see the device connecting. But you are going to need a payload formatter.
 
-As the payload comes in a HEX format, we will need to decode it using a **Payload Formatter**. In {{% tts %}} console, on the overview page of your device, navigate to **Payload formatters > Uplink**.
+As the payload comes in a HEX format, you will need to decode it using a **Payload Formatter**. To do this, in your application on {{% tts %}}, click on **Payload formatters**.
 
-Here, we can enter a custom code, that will convert the incoming data in HEX format to a simple text format. Below is an example written in JavaScript.
+{{< figure src="stack-pf.png" alt="Serial Monitor" width="70%" >}}
+
+Make sure that **Custom Javascript formatter** is selected here from the dropdown
+
+{{< figure src="custom-js.png" alt="Serial Monitor" width="70%"   >}}
+
+Now in the **Formatter code** field, replace it with this formatter:
 
 ```js
 function Decoder(bytes, port) {
@@ -96,6 +102,9 @@ function Decoder(bytes, port) {
 }
 ```
 
-That was it! Now go get creating or follow another example:
+That was it! Now go get creating or try an [ example project]({{< ref "/devices/models/mkr1310/temp" >}}).
 
-[Reading Temperature]({{< ref "/devices/models/mkr1310/temp" >}})
+## Troubleshoot
+
+**My Arduino does not show up in Select Board**
+- Make sure that the cable you are using can transfer data. Try a different cable.
