@@ -51,6 +51,7 @@ DHT dht(6, DHT11);
 ```
 
 In the `void setup ()` we initialize the Serial communication first. Then we set up the modem to use the correct regional band (**Note that you need to change this to whichever region you're in**). Using `dht.begin()` we initialize the dht component. Finally using `modem.joinOTAA` the device will join the LoRaWAN network.
+
 ```cpp
 void setup() {
   // put your setup code here, to run once:
@@ -98,6 +99,7 @@ void loop() {
 ```
 
 ### Entire code
+
 ```cpp
 #include <MKRWAN.h>
 #include <DHT.h>
@@ -175,7 +177,7 @@ Make sure that **Custom Javascript formatter** is selected here from the dropdow
 
 Now in the **Formatter code** field, replace it with this formatter:
 
-```javascript
+```js
 function decodeUplink(input) {
   // Read the temperature and humidity from the payload
   var t = (input.bytes[0] << 8 | input.bytes[1]) / 100;
