@@ -4,11 +4,35 @@ description: ""
 weight: 
 ---
 
-{{< figure src="kg200z.png" alt="Quectel KG200ZABTB" class="float plain" width="80%">}}
+{{< figure src="kg200z.png" alt="Quectel KG200ZABTB" class="float plain" width="60%">}}
 
-The [Quectel KG200ZABTB](https://www.quectel.com/product/lora-kg200z) is a devkit.
+The [Quectel KG200ZABTB](https://www.quectel.com/product/lora-kg200z) is a high-performance LoRa module launched by Quectel, which supports ultra-low power consumption and long-range wireless transmission applications. It integrates an ARM Cortex-M4 core with the modulations of LoRa,(G)FSK, (G)MSK and BPSK, supporting LoRaWAN standard protocol and 470–510MHz, 862–928MHz LoRa frequency bands. Additionally, it incorporates AES hardware encryption for enhanced security. KG200Z features a compact form factor of 12.0mm × 12.0mm × 1.8mm and an LGA package to ensure seamless embedding of the module into size-constrained applications and reliable connectivity for these applications.
+
+This evaluation board (EVK) allows for programming of the module.
 
 <!--more-->
+
+## Provisioning Information
+
+To get the provisioning information of the EVK we need to connect to the board via serial. On MacOS, you can use the handy `screen` command that is built-in. First though, we need to know the port of our board. You need to do this **without having the board plugged in**.
+
+Open up a terminal, and type `ls /dev/tty.*`. You should see a couple of addresses show up.
+
+{{< figure src="cmd-ls.png" class="plain    ">}}
+
+Then plug in the EVK and turn it on. When you try the command again you should see a new address show up.
+
+{{< figure src="cmd-ls-dev.png" class="plain">}}
+
+Now we are going to use the `screen` command with that address to connect to it. The command you are going to use is `screen <DEVICE-ADDRESS> 115200`.
+
+{{< figure src="cmd-screen.png" class="plain">}}
+
+Once you do that, you should see some lines show up. Now press the reset button on the EVK to have the device show it's provisioning information. Select and copy the **AppKey, DevEUI and AppEUI** and store them somewhere.
+
+{{< figure src="prov-info.png" class="plain">}}
+
+Using these values we can now register it to {{% tts %}}.
 
 {{< note "Quectel KG200ZABTB cannot be onboarded to {{% tts %}} using QR code." />}}
 
