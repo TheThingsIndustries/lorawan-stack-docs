@@ -8,7 +8,7 @@ In this section you are going to try an example project where you will connect a
 
 <!--more-->
 
-{{< figure src="../fritzing.png" alt="" class="float plain" width="90%">}}
+{{< figure src="../fritzing.png" alt="Wiring mockup of the DHT11 connected to the arduino" class="float plain" width="90%">}}
 
 ## Circuit
 
@@ -30,7 +30,7 @@ Illustration on the right displays the wiring as well.
 
 Before we continue, you need to make sure you have the **DHT sensor library by Adafruit** installed: 
 
-{{< figure src="../dht-lib.png" alt="">}}
+{{< figure src="../dht-lib.png" alt="DHT sensor library by Adafruit">}}
 
 Next let's go through the code step by step and explain what all the fields mean. The completed code can be found below it.
 
@@ -159,7 +159,7 @@ Now to upload the code to the MKR WAN 1310. First plug the Arduino into your com
 
 Once that is done you can upload the file to the board (Using the **->** button). Once the code is uploaded successfully, open the Serial Monitor. You can open it by clicking the **icon in the top-right corner**.
 
-{{< figure src="../serial-monitor.png" alt="Serial Monitor" >}}
+{{< figure src="../serial-monitor.png" alt="Serial Monitor button highlighted" >}}
 
 Here you can check if the temperature and humidity values are showing up correctly.
 
@@ -169,11 +169,11 @@ Here you can check if the temperature and humidity values are showing up correct
 
 Now that the device is working go back to {{% tts %}} and set up the payload formatter. A payload formatter will turn the hexadecimal string received into readable text. To do this, in your application on {{% tts %}}, click on **Payload formatters**.
 
-{{< figure src="../stack-pf.png" alt="Serial Monitor" width="70%" >}}
+{{< figure src="../stack-pf.png" alt="payload formatter highlighted" width="70%" >}}
 
 Make sure that **Custom Javascript formatter** is selected here from the dropdown.
 
-{{< figure src="../custom-js.png" alt="Serial Monitor" width="70%"   >}}
+{{< figure src="../custom-js.png" alt="custom javascript selected in dropdown" width="70%"   >}}
 
 Now in the **Formatter code** field, replace it with this formatter:
 
@@ -194,7 +194,7 @@ function decodeUplink(input) {
 
 Now if you go back to the **Live Data** tab you'll see the temperature and humidity show up!
 
-{{< figure src="../live-data.png" alt="Serial Monitor">}}
+{{< figure src="../live-data.png" alt="Live data tab">}}
 
 This concludes the example project. Now go create your own project!
 
