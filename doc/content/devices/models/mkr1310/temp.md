@@ -1,104 +1,42 @@
 ---
-title: "Sending Temperature with MKR WAN 1310"
+title: "Monitoring Temperature with MKR WAN 1310"
 description: ""
 weight:
 ---
 
-In this section you are going to try an example project where you will connect a Temperature and Humidity sensor to the MKR WAN 1310 to send the data over LoRaWAN and then decode it on {{% tts %}}.
+In this section we present an example project where we show how to connect a temperature and humidity sensor to the MKR WAN 1310 device to send the data to {{% tts %}} and decode it.
 
 <!--more-->
 
+The sensor we are going to be using is a DHT11, which is a Temperature and Humidity sensor. For more information on how the sensor works and how the module you are using might differ in wiring, check [this guide](https://www.circuitbasics.com/how-to-set-up-the-dht11-humidity-sensor-on-an-arduino/).
+
 {{< figure src="../fritzing.png" alt="Wiring mockup of the DHT11 connected to the arduino" class="float plain" width="90%">}}
 
-## Circuit
+## Building the Circuit
 
 For this project you are going to be needing:
-- **DHT11**
-- Some **Jumper Wires**
-- **Breadboard**
+- DHT11 sensor
+- Some jumper wires
+- Breadboard
 
-Once you have the components, wire it up like so:
+Once you have the components, wire it up like shown on the image on the right:
 - **Arduino 5V** -> **Plus DHT11**
 - **Arduino GND** -> **Minus DHT11**
 - **Arduino Pin 6** -> **Signal DHT11**
 
-Illustration on the right displays the wiring as well.
-
 {{< note "Double check your own sensor's pinout, it can vary between modules. If you are using a bare DHT11, you might need to use a resistor." />}}
 
-## Creating the code
+## Programming the MKR 1310
 
-Before we continue, you need to make sure you have the **DHT sensor library by Adafruit** installed: 
+Before we continue, you need to make sure you have the **DHT sensor library by Adafruit** installed in the Arduino IDE:  
 
 {{< figure src="../dht-lib.png" alt="DHT sensor library by Adafruit">}}
 
-Next let's go through the code step by step and explain what all the fields mean. The completed code can be found below it.
+Next is the code itself. You can find it below, but you do need to change a few things. 
 
-### The code explained
+First you have to **add the AppEUI and AppKey from {{% tts %}} between the double quotes**. 
 
-First we initialize the **MKRWAN** and **DHT** libraries we need for this code. After that is the creation of the LoRa modem. Then we set up the variables for the `AppEUI` and `AppKey`. **Note that you need to add the AppEUI and AppKey from {{% tts %}} between the double quotes**. Finally we setup the DHT component with `6` as the pin and `DHT11` as the sensor type.
-
-```cpp
-#include <MKRWAN.h>
-#include <DHT.h>
-
-LoRaModem modem(Serial1);
-
-String appEui = "";
-String appKey = "";
-
-DHT dht(6, DHT11);
-```
-
-In the `void setup ()` we initialize the Serial communication first. Then we set up the modem to use the correct regional band (**Note that you need to change this to whichever region you're in**). Using `dht.begin()` we initialize the dht component. Finally using `modem.joinOTAA` the device will join the LoRaWAN network.
-
-```cpp
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(115200);
-  while (!Serial);
-  // change this to your regional band (eg. US915, AS923, ...)
-  if (!modem.begin(EU868)) {
-    Serial.println("Failed to start module");
-    while (1) {}
-  };
-  
-  dht.begin();
-
-  int connected = modem.joinOTAA(appEui, appKey);
-  if (!connected) {
-    Serial.println("Something went wrong; are you indoor? Move near a window and retry");
-    while (1) {}
-  }
-}
-```
-
-In the `void loop()` we initialize the variables containing the values of Temperature and Humidity. We multiply these values by 100, since we can not send decimal numbers directly over LoRaWAN. Using the `byte payload` function we contain all the values we need for sending. Then using `mode.write` we finally send the package off to the network, ready to be received by {{% tts %}}.
-
-```cpp
-void loop() {
-  int t = dht.readTemperature() * 100;
-  int h = dht.readHumidity() * 100;
-
-  byte payload[4];
-  payload[0] = highByte(t);
-  payload[1] = lowByte(t);
-  payload[2] = highByte(h);
-  payload[3] = lowByte(h);
-
-  Serial.println("Temperature: ");
-  Serial.println(dht.readTemperature());
-  Serial.println("Humidity: ");
-  Serial.println(dht.readHumidity());
-
-  modem.beginPacket();
-  modem.write(payload, sizeof(payload));
-  modem.endPacket(true);
-  delay(100000);
-}
-```
-
-### Entire code
+After that you **might need to change the regional band in the void setup** at `if (!modem.begin(EU868))`.
 
 ```cpp
 #include <MKRWAN.h>
@@ -151,9 +89,8 @@ void loop() {
   delay(100000);
 }
 ```
-## Uploading the code
 
-Now to upload the code to the MKR WAN 1310. First plug the Arduino into your computer. In the IDE, click on **Select Board** at the top, and select your **Arduino MKR WAN 1310**.
+Now the code needs to be uploaded to the MKR WAN 1310. First plug the Arduino into your computer. In the IDE, click on **Select Board** at the top, and select your **Arduino MKR WAN 1310**.  
 
 {{< figure src="../select-board.png" alt="Selecting Board" >}}
 
@@ -161,22 +98,26 @@ Once that is done you can upload the file to the board (Using the **->** button)
 
 {{< figure src="../serial-monitor.png" alt="Serial Monitor button highlighted" >}}
 
-Here you can check if the temperature and humidity values are showing up correctly.
+Temperature and humidity values should be listed in the Serial Monitor.  
 
 {{< figure src="../serial-monitor-temp.png" alt="Serial Monitor" width="55%" >}}
 
-## {{% tts %}}
+{{< note >}}
+If the Arduino IDE Serial Monitor does not show DHT sensor data, make sure to double-check the wiring.
+{{</ note >}}
+
+
+## Decoding Temperature and Humidity data
 
 Now that the device is working go back to {{% tts %}} and set up the payload formatter. A payload formatter will turn the hexadecimal string received into readable text. To do this, in your application on {{% tts %}}, click on **Payload formatters**.
 
 {{< figure src="../stack-pf.png" alt="payload formatter highlighted" width="70%" >}}
 
-Make sure that **Custom Javascript formatter** is selected here from the dropdown.
+Select **Custom Javascript formatter** from the dropdown.  
 
 {{< figure src="../custom-js.png" alt="custom javascript selected in dropdown" width="70%"   >}}
 
-Now in the **Formatter code** field, replace it with this formatter:
-
+Now paste the following code in the **Formatter code** field:  
 ```js
 function decodeUplink(input) {
   // Read the temperature and humidity from the payload
@@ -192,14 +133,8 @@ function decodeUplink(input) {
 }
 ```
 
-Now if you go back to the **Live Data** tab you'll see the temperature and humidity show up!
+If you go back to the **Live Data** tab you'll see the readable temperature and humidity values showing up!  
 
 {{< figure src="../live-data.png" alt="Live data tab">}}
 
-This concludes the example project. Now go create your own project!
-
-## Troubleshoot
-
-**My DHT sensor does not display any data**
-- Make sure that you have wired it up properly.
-- If you are using a bare DHT11, make sure that it has a pull up resistor between Vcc and Signal. Consult google for more info.
+This concludes our example project. Now you can proceed with creating your own project! Make sure to check our [integrations](https://www.thethingsindustries.com/docs/integrations/) that can help you visualize your data, set up monitoring and alerting, etc.  
