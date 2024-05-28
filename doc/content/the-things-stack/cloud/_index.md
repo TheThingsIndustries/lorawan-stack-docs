@@ -24,10 +24,11 @@ After starting your {{% tts %}} Cloud subscription, you will receive an email wi
 {{% tts %}} Cloud currently has the following clusters:
 
 | **Cluster ID** | **Name**        | **Location**      |
-| -------------- | --------------- | ---------------   |
+| -------------- | --------------- | ----------------- |
+| `as1`          | Asia 1          | Japan             |
 | `au1`          | Australia 1     | Sydney, Australia |
 | `eu1`          | Europe 1        | Ireland           |
-| `eu2`          | Europe 2        | UK           |
+| `eu2`          | Europe 2        | UK                |
 | `nam1`         | North America 1 | California, USA   |
 
 If you navigate to [this link](https://console.cloud.thethings.industries), you can find out which {{% tts %}} Cloud clusters are recommended for your deployment based on the location of your devices and immediately log into its Console.
@@ -39,4 +40,3 @@ See the [Cloud Addresses]({{< ref "/the-things-stack/cloud/addresses" >}}) for d
 ## Status Page
 
 Visit [The Things Industries services status page](https://status.thethings.industries/) to check the current status of {{% tts %}} Cloud services. Be up do date with the recent {{% tts %}} Cloud upgrades, scheduled maintenances and reported incidents.
-
