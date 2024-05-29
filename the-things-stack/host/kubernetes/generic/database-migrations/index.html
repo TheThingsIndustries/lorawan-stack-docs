@@ -242,10 +242,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </h1>
         
         <div class="content">
-          <p>The Things Stack database entries are managed between minor versions using database migrations.</p>
+          <p>The Things Stack database schema is managed between minor versions using database migrations.</p>
 <p>User are informed of required migrations for each version via the <a href="https://www.thethingsindustries.com/docs/whats-new/">Release Notes</a>. It&rsquo;s mandatory to run required database migrations for The Things Stack to function properly.</p>
 <p>This page describes the steps for performing database operations on a The Things Stack Kubernetes Cluster.</p>
 <h2 id="general-procedure">General Procedure</h2>
+<p>Set the respective Helm chart values to <code>true</code> to perform database migrations during Helm chart upgrade.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IS</td>
+<td><code>is.database.migrate</code></td>
+</tr>
+<tr>
+<td>NOC</td>
+<td><code>noc.store.database.migrate</code></td>
+</tr>
+</tbody>
+</table>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>For example to migrate Identity Server use the following config.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">is</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">database</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">migrate</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div>
+</div>
+
+<p>Remember to unset the value after the upgrade is done.</p>
+<h2 id="manual-procedure">Manual Procedure</h2>
 <ol>
 <li>Delete current Jobs (if any).</li>
 </ol>
@@ -311,6 +341,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
       
       <li><a href='#general-procedure'>General Procedure</a></li>
+    
+      
+      <li><a href='#manual-procedure'>Manual Procedure</a></li>
     
   </ul>
 

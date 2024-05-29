@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Troubleshooting | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/troubleshooting/" />
+  <title>Upgrading | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/upgrading/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Troubleshooting">
+  <meta itemprop="name" content="Upgrading">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Troubleshooting">
+  <meta property="og:title" content="Upgrading">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/troubleshooting/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/upgrading/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Troubleshooting" />
+  <meta name="twitter:title" content="Upgrading" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -153,17 +153,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/upgrading/" class="">Upgrading</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/upgrading/" class="is-active">Upgrading</a>
+    
+    
+
+
+
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/troubleshooting/" class="is-active">Troubleshooting</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/azure/troubleshooting/" class="">Troubleshooting</a>
     
   </li>
 
@@ -232,22 +232,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Troubleshooting
+        <h1 class="title is-size-2">Upgrading
           
         </h1>
         
         <div class="content">
-          <p>This guide contains general troubleshooting information.</p>
-<h2 id="error-get-httplocalhostapiv1namespaces-dial-tcp-180-connect-connection-refused">Error: Get &ldquo;http://localhost/api/v1/namespaces/&hellip;&rdquo;: dial tcp [::1]:80: connect: connection refused</h2>
-<p>Set <code>KUBECONFIG</code> and <code>KUBE_CONFIG_PATH</code> variables to the location of the <code>kubeconfig</code> file. The default location is <code>~/.local/kubeconfig</code>.</p>
-<h2 id="pkgutilstoredriver-driver-error">pkg/util/store:driver (driver error)</h2>
-<p>The Things Stack runs Kubernetes jobs to initialize and migrate Postgres. This error can occur if the The Things Stack is accessed either before these jobs are run or if the jobs failed to execute. Check the status of the jobs for more details on what went wrong.</p>
+          <p>This page describes the steps for upgrading The Things Stack on Azure Kubernetes Service.</p>
+<h2 id="database-migration">Database Migration</h2>
+<p>The Things Stack database schema is managed between minor versions using database migrations.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  User are informed of required migrations for each version via the <a href="https://www.thethingsindustries.com/docs/whats-new/">Release Notes</a>. It’s mandatory to run required database migrations for The Things Stack to function properly.
+</div>
+
+<p>To migrate the database during an upgrade set the respective Terraform variables to <code>true</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IS</td>
+<td><code>is-db-migrate</code></td>
+</tr>
+<tr>
+<td>NOC</td>
+<td><code>noc-db-migrate</code></td>
+</tr>
+</tbody>
+</table>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>For example to migrate Identity Server and Network Operations Center databases run the following command.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ terraform apply -var<span class="o">=</span><span class="s1">&#39;is-db-migrate=true&#39;</span> -var<span class="o">=</span><span class="s1">&#39;noc-db-migrate=true&#39;</span>
+</span></span></code></pre></div>
+</div>
+
+<h2 id="kubernetes-version-upgrade">Kubernetes version upgrade</h2>
+<p>AKS Kubernetes version upgrades have to be performed sequentially for each minor version. For example to upgrade from <code>1.25</code> to <code>1.27</code> it&rsquo;s necessary to upgrade to version <code>1.26</code> first as an intermediate step. For more information refer to the <a href="https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions">official documentation</a>.</p>
         </div>
           <div class="columns is-multiline">
 </div>
 
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/azure/upgrading/">← Upgrading</a>
+<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/azure/deployment/">← Deployment</a>
+<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/azure/troubleshooting/">Troubleshooting →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -268,10 +300,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul class="menu-list">
     
       
-      <li><a href='#error-get-httplocalhostapiv1namespaces-dial-tcp-180-connect-connection-refused'>Error: Get “http://localhost/api/v1/namespaces/…”: dial tcp [::1]:80: connect: connection refused</a></li>
+      <li><a href='#database-migration'>Database Migration</a></li>
     
       
-      <li><a href='#pkgutilstoredriver-driver-error'>pkg/util/store:driver (driver error)</a></li>
+      <li><a href='#kubernetes-version-upgrade'>Kubernetes version upgrade</a></li>
     
   </ul>
 
