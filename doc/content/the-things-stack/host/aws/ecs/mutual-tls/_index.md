@@ -2,17 +2,17 @@
 title: "Mutual TLS"
 description: "Mutual TLS authentication"
 weight: 9
-new_in_version: 3.29.0
+new_in_version: 3.30.0
 aliases: [/getting-started/aws/ecs/mutual-tls]
 ---
 
-{{% tts %}} supports mutual TLS authentication via a supported proxy (Envoy).
+{{% tts %}} supports mutual TLS authentication via a supported proxy (Envoy and Traefik).
 
 <!--more-->
 
 ## Mechanism
 
-{{% tts %}} does not terminate mTLS connections. This is done by the proxy. The proxy is expected to forward the sanitized client certificate chain as an HTTP header.
+{{% tts %}} does not terminate mTLS connections: this is done by the proxy. The proxy is expected to forward the presented TLS client certificate via an HTTP header to {{% tts %}}.
 
 {{% tts %}} verifies this header with a pre-configured list of CAs.
 
@@ -22,22 +22,22 @@ aliases: [/getting-started/aws/ecs/mutual-tls]
 
 In the standard deployment model, AWS Network Load Balancer (NLB) terminates TLS, and then forwards unencrypted packets to {{% tts %}} via AWS internal network.
 
-Since the NLB does not support verifying client TLS certificates, the responsibility for terminating TLS is promoted to the proxy (only) for the the ports **8987** (CUPS mTLS) port.
+Since the NLB does not support verifying client TLS certificates, the proxy performs TLS termination, only on the relevant ports. This includes **8987** ({{% lbs %}} CUPS mTLS) port.
 
 ### Certificate Requirements
 
-The `CN` (Common Name) field of the certificate must be the 16 digit gateway EUI. Example: `1111111111111111`
+The `CN` (Common Name) field of the certificate must be the 16 digit gateway EUI. Example: `0123456789ABCDEF`
 
 ## Update Instructions
 
-The `SupportProxyTLS` and `LBSCUPSmTLSEnabled` options are available in multiple templates. Make sure to set it to `true` in **all** the templates if the proxy should terminate CUPS mTLS Connections.
+The `SupportProxyTLS` and `LBSCUPSmTLSEnabled` options are available in multiple templates. Make sure to set it to `true` in **all** the templates if the proxy should terminate {{% lbs %}} CUPS mTLS Connections.
 
 If not, it should be set to `false` in **all** the templates (this is the default). Setting it `true` in one and `false` in another will lead to to errors.
 
 ### Preparation
 
-- If you are deploying TTS for the first time, complete the steps with `SupportProxyTLS` and `LBSCUPSmTLSEnabled` set to false (this is the default).
-- If you are updating to a version with `mTLS` support from a previous version, first deploy the following templates in this exact order with `SupportProxyTLS` and `LBSCUPSmTLSEnabled` set to false.
+- If you are deploying TTS for the first time, complete the steps with `SupportProxyTLS` and `LBSCUPSmTLSEnabled` set to `false` (this is the default).
+- If you are updating to a version with `mTLS` support from a previous version, first deploy the following templates in this exact order with `SupportProxyTLS` and `LBSCUPSmTLSEnabled` set to `false`.
   - `3-1-security-group-rules`: The template will be deployed with no changes.
   - `3-2-load-balancer-rules`: The template will be deployed with no changes.
   - `4-1-secrets`: The template will be deployed with no changes.
@@ -80,17 +80,19 @@ If you want to set the certificates later, create an empty `index.yml` file.
 
 ### Step 2: Fetch and Store Server TLS Credentials
 
-{{% tts %}} AWS ECS deployment uses Certbot to query Server TLS credentials from Let's Encrpyt and store it in the AWS Certificate Manager.
+{{% tts %}} AWS ECS deployment uses Certbot to obtain a TLS server certificate from Let's Encrypt and stores it in AWS Certificate Manager.
 
-But since credentials once stored in ACM cannot be retrieved (can only be referenced by NLB), we need to store a copy of these credentials in the AWS Secrets Manager.
+As certificates stored in ACM cannot be retrieved, a copy of the TLS server certificate is stored in AWS Secrets Manager. The proxy loads the TLS server certificate from AWS Secrets Manager.
 
-In `4-1-secrets` template with `SupportProxyTLS` set to `true`.
+Update `4-1-secrets` with the following setting:
 
-This creates a `ProxyTLSSecret` for the TLS server certificate/key secrets and also a `GCS token hash key secret`, which is used by the Gateway Configuration Server and the Identity Server.
+- Set `SupportProxyTLS` set to `true`.
+
+This creates a `ProxyTLSSecret` for the TLS server certificate secrets and also a `GCS token hash key secret`, which is used by the Gateway Configuration Server and the Identity Server.
 
 Next, update `5-8a-certs-le` with the following settings:
 
-- Set ` SupportProxyTLS` to true. If `ExistingCertARN` is set, clear this before running the update.
+- Set ` SupportProxyTLS` to `true`. If `ExistingCertARN` is set, clear this before running the update.
 - Fetch new certificates by manually requesting it using the [instructions]({{< ref "the-things-stack/host/aws/ecs/deployment/#lets-encrypt-certificates-optional" >}}).
 - When fetching the certificates, make note of the `CertificateArn` field from the logs where the new certificates are written.
 - Once the certificates are successfully queried, rerun the same `5-8a-certs-le` template but this time set, the `ExistingCertARN` with the `CertificateArn` value. This ensures that Certbot renews these certificates and doesn't replace them.
@@ -103,13 +105,13 @@ First update `3-1-security-group-rules`. Set `LBSCUPSmTLSEnabled` to `true`. Thi
 
 Next Update `3-2-load-balancer-rules`.
 
-- Set `SupportProxyTLS` to true.
+- Set `SupportProxyTLS` to `true`.
 - Set `TLSCertificateARN` with the ARN from the previous step and update.
-- Set `LBSCUPSmTLSEnabled` to true.
+- Set `LBSCUPSmTLSEnabled` to `true`.
 
-The new certificate is picked up by all TLS listeners and new listener and target group for CUPS mTLS is created.
+The new certificate is picked up by all TLS listeners and new listener and target group for {{% lbs %}} CUPS mTLS is created.
 
-Now, update `5-7-ecs-proxy`. Set `SupportProxyTLS` and `LBSCUPSmTLSEnabled` to true.
+Now, update `5-7-ecs-proxy`. Set `SupportProxyTLS` and `LBSCUPSmTLSEnabled` to `true`.
 
 Make sure that the image of the proxy is minimum `v3.30.0`. Images from earlier releases do not contain changes necessary for mTLS support.
 
@@ -123,9 +125,9 @@ $ openssl s_client -connect <domain>:8987
 
 Since mTLS is supported for {{% lbs %}} CUPS , {{% tts %}} Identity Server and Gateway Configuration Server components require additional configuration.
 
-In `4-2a-configuration`, set `SupportProxyTLS` to true and deploy it.
+In `4-2a-configuration`, set `SupportProxyTLS` to `true` and deploy it.
 
-Once that is completed, deploy `5-4-ecs-services` with `SupportProxyTLS` set to true.
+Once that is completed, deploy `5-4-ecs-services` with `SupportProxyTLS` set to `true`.
 
 ### Step 5: Testing
 
