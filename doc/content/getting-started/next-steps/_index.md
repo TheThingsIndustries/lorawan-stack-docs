@@ -12,7 +12,7 @@ Once you have your first LoRaWAN® Network setup, here are the next steps.
 2. [Add LoRaWAN end devices]({{< ref "devices/adding-devices" >}}) to send LoRaWAN traffic to your network.
 3. [Create an integration]({{< ref "integrations" >}}) to send your LoRaWAN sensor data to external integrations or to your own private server.
 4. Learn how to get the most out of [{{% tts %}}]({{< ref "/the-things-stack/" >}}).
-5. Check out the [Glossary]({{< ref "/reference/glossary" >}}) for a disambiguation of some of these terms. You can also check [Best Practices]({{< ref "/getting-started/best-practices" >}}).
+5. Check out the [Glossary]({{< ref "/reference/glossary" >}}) for a disambiguation of some of these terms and [FAQ]({{< ref "/getting-started/faq" >}}).
 
 ## Learn more
 
