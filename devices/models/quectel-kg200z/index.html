@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Milesight EM300-TH | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/models/milesight-em300-th/" />
+  <title>Quectel KG200ZABTB | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/models/quectel-kg200z/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Milesight EM300-TH">
+  <meta itemprop="name" content="Quectel KG200ZABTB">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Milesight EM300-TH">
+  <meta property="og:title" content="Quectel KG200ZABTB">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/models/milesight-em300-th/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/models/quectel-kg200z/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Milesight EM300-TH" />
+  <meta name="twitter:title" content="Quectel KG200ZABTB" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -130,12 +130,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/models/milesight-em300-th/" class="is-active">Milesight EM300-TH</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/devices/models/milesight-em300-th/" class="">Milesight EM300-TH</a>
     
   </li>
 
@@ -145,7 +140,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/models/quectel-kg200z/" class="">Quectel KG200ZABTB</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/models/quectel-kg200z/" class="is-active">Quectel KG200ZABTB</a>
+    
+    
+
+
+
     
   </li>
 
@@ -199,55 +199,77 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Milesight EM300-TH
+        <h1 class="title is-size-2">Quectel KG200ZABTB
           
         </h1>
         
         <div class="content">
-          <figure class="float plain"><img src="milesight-EM300-TH.png"
-         alt="Milesight EM300-TH" width="75%"/>
+          <figure class="float plain"><img src="kg200z.png"
+         alt="Quectel KG200ZABTB" width="60%"/>
 </figure>
 
-<p>The <a href="https://www.milesight.com/iot/product/lorawan-sensor/em300-th">Milesight EM300-TH</a> is an environment sensor suitable for monitoring indoor and outdoor temperature and humidity. It can be widely used in office areas, greenhouses and other environments.</p>
+<p>The <a href="https://www.quectel.com/product/lora-kg200z">Quectel KG200ZABTB</a> is a high-performance LoRa module launched by Quectel, which provides ultra-low power consumption and long-range wireless transmission applications.</p>
+<p>The module integrates an ARM Cortex-M4 core with the modulations of LoRa, (G)FSK, (G)MSK and BPSK, supporting LoRaWAN standard protocol, as well as 470–510MHz and 862–928MHz LoRa frequency bands. Additionally, it incorporates AES hardware encryption for enhanced security.</p>
+<p>In this guide, we focus on connecting the evaluation board (EVK) to The Things Stack. This board can be used for programming the KG200Z module.</p>
+<!--more-->
 <h2 id="provisioning-information">Provisioning Information</h2>
-<p>The provisioning information, <strong>DevEUI</strong>, can be found on the back of the device. You can use <code>24E124C0002A0001</code> as the <strong>JoinEUI</strong>. The <strong>AppKey</strong> will be received through an email after purchasing the device.</p>
-<figure><img src="milesight-EM300-TH-back.png"
-         alt="EM300-TH provisioning information"/>
+<p>To get the provisioning information of the EVK we need to connect to the board via serial. The steps for connecting to it via serial depends on what OS you are using, <a href="#macos--linux">MacOS/Linux</a> or <a href="#windows">Windows</a>.</p>
+<h3 id="macos--linux">MacOS / Linux</h3>
+<p>On MacOS and Linux, you can use the handy built-in <code>screen</code> command.</p>
+<p>First step is to find out the board address.</p>
+<p>Before plugging in the board, open up a terminal and type <code>ls /dev/tty.*</code>. You should see a couple of addresses show up.</p>
+<figure class="plain    "><img src="cmd-ls.png"/>
 </figure>
 
+<p>Then plug in the EVK and turn it on. When you try the command again you should see a new address show up.</p>
+<figure class="plain"><img src="cmd-ls-dev.png"/>
+</figure>
+
+<p>Now use the newly discovered board address to connect to the board using the <code>screen &lt;DEVICE-ADDRESS&gt; 115200</code> command.</p>
+<figure class="plain"><img src="cmd-screen.png"/>
+</figure>
+
+<p>Once you do that, you should see some text show up in your terminal. Now press the reset button on the EVK to have the device show its provisioning information. Select and copy the <strong>AppKey</strong>, <strong>DevEUI</strong> and <strong>AppEUI</strong> and store them somewhere.</p>
+<figure class="plain"><img src="prov-info.png"/>
+</figure>
+
+<p>Using these parameters we can now proceed with <a href="#onboarding-to--tts-">onboarding the device to The Things Stack</a>.</p>
+<h3 id="windows">Windows</h3>
+<p>To connect to the EVK using Windows, a third party tool that can interface with the EVK needs to be installed first. <strong>Make sure your board isn&rsquo;t yet connected to your computer.</strong></p>
+<p>For this tutorial we use <a href="https://github.com/YaSuenag/SimpleCom/releases/latest">SimpleCom</a>, but any UART serial tool should do the trick. Download the ZIP file, unzip it and run <strong>SimpleCom.exe</strong>.</p>
+<p>When you run the tool, you will see the following screen. If you select the COM dropdown, you will probably see a couple of COM ports.</p>
+<figure class="plain    "><img src="win-com.png"/>
+</figure>
+
+<p>Now close the program (using the <strong>Cancel</strong> button), then plug in the EVK and turn it on. Run the program again, and when you select the dropdown again you should see a new COM port show up. Select that one and make sure the <strong>Baud Rate</strong> is set at <code>115200</code>.</p>
+<figure class="plain"><img src="win-com-dev.png"/>
+</figure>
+
+<p>Once that is done, hit <strong>Connect</strong> and you should see some text show up in the terminal. Now press the reset button on the EVK to have the device show its provisioning information. Select and copy the <strong>AppKey</strong>, **DevEUI and <strong>AppEUI</strong> and store them somewhere.</p>
+<figure class="plain"><img src="win-com-prov.png"/>
+</figure>
+
+<p>Using these parameters we can now proceed with <a href="#onboarding-to--tts-">onboarding the device to The Things Stack</a>.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The Milesight EM300-TH cannot be onboarded to The Things Stack using QR code.
+  Quectel KG200ZABTB cannot be onboarded to The Things Stack using QR code.
 </div>
 
 <h2 id="onboarding-to-the-things-stack">Onboarding to The Things Stack</h2>
-<p>You can onboard your EM300-TH using the <strong>LoRaWAN Device Repository</strong> or <strong>manually</strong> option.</p>
-<p>If you prefer onboarding with the <strong>LoRaWAN Device Repository</strong>, in the <strong>End device type</strong> section, under <strong>Input method</strong>, select the <strong>Select the end device in the LoRaWAN Device Repository</strong> option.</p>
-<p>The <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#onboarding-devices-without-qr-codes">Onboarding devices without QR codes</a> section of the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> guide explains this procedure in detail. Following details are EM300-TH-specific:</p>
+<p>The Quectel KG200ZABTB has to be onboarded <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/"><strong>manually</strong></a>.</p>
+<p>To do this, in the <strong>End device type</strong> section, under <strong>Input Method</strong>, select <strong>Enter end device specifics manually</strong> option. The <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/">Manually adding devices</a> and <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/otaa/">Over the Air Activation (OTAA)</a> guides explain this procedure in detail. Following details are Quectel KG200ZABTB-specific:</p>
 <ul>
-<li>End device brand: <strong>Milesight IoT Co., Ltd</strong></li>
-<li>Model: <strong>EM300-TH</strong></li>
-<li>Hardware Ver.: <strong>V2.2</strong></li>
-<li>Firmware Ver.: <strong>1.15</strong></li>
+<li>LoRaWAN version: <strong>LoRaWAN Specification 1.0.2</strong></li>
+<li>Regional parameters version: <strong>RP001 Regional Parameters 1.0.2 revision B</strong></li>
 </ul>
 <p>After configuring your device, select the <strong>Register end device</strong> button.</p>
-<figure><img src="em300-th-device-repository.png"
-         alt="Settings for registration through device repository"/>
-</figure>
-
-<p>If you prefer onboarding <strong>manually</strong>, in the <strong>End device type</strong> section, under <strong>Input Method</strong>, select <strong>Enter end device specifics manually</strong> option. The <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/">Manually adding devices</a> and <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/otaa/">Over the Air Activation (OTAA)</a> guides explain this procedure in detail. Following details are EM300-TH-specific:</p>
-<ul>
-<li>LoRaWAN version: <strong>LoRaWAN Specification 1.0.3</strong></li>
-<li>Regional parameters version: <strong>RP001 Regional Parameters 1.0.3 revision A</strong></li>
-</ul>
-<p>After configuring your device, select the <strong>Register end device</strong> button.</p>
-<figure><img src="em300-th-manually.png"
+<figure><img src="evk-manual-prov.png"
          alt="Settings for manual registration"/>
 </figure>
 
 <h2 id="monitoring-live-data">Monitoring Live Data</h2>
 <p>When your device is registered, select the <strong>Live Data</strong> tab to view all messages exchanged between the end device and The Things Stack.</p>
-<figure><img src="em300-th-live-data.png"
+<figure><img src="evk-live-data.png"
          alt="Live data tab"/>
 </figure>
         </div>
@@ -255,8 +277,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/devices/models/generic-node-se/">← Generic Node Sensor Edition</a>
-<a class="button is-pulled-right" href="/docs/devices/models/lw001-bg-pro/">Moko Smart LW001-BG Pro →</a>
+<a class="button is-pulled-left" href="/docs/devices/models/lw001-bg-pro/">← Moko Smart LW001-BG Pro</a>
+<a class="button is-pulled-right" href="/docs/devices/models/rakwireless-rak2560/">RAKwireless RAK2560 Sensor Hub →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
