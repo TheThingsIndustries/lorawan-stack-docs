@@ -32,11 +32,7 @@ Before we continue, you need to make sure you have the **DHT sensor library by A
 
 {{< figure src="../dht-lib.png" alt="DHT sensor library by Adafruit">}}
 
-Next is the code itself. You can find it below, but you do need to change a few things. 
-
-First you have to **add the AppEUI and AppKey from {{% tts %}} between the double quotes**. 
-
-After that you **might need to change the regional band in the void setup** at `if (!modem.begin(EU868))`.
+Next is the code itself. You can find it below, but you do have to change a few things. Check the in-code comments for which those are.
 
 ```cpp
 #include <MKRWAN.h>
@@ -44,13 +40,12 @@ After that you **might need to change the regional band in the void setup** at `
 
 LoRaModem modem(Serial1);
 
-String appEui = "";
-String appKey = "";
+String appEui = ""; // Add your own AppEUI here
+String appKey = ""; // Add your own AppKey here
 
 DHT dht(6, DHT11);
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(115200);
   while (!Serial);
   // change this to your regional band (eg. US915, AS923, ...)
