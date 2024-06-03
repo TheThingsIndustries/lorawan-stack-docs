@@ -23,7 +23,10 @@ This page guides you on how to configure the Dragino LPS8N for adding on {{% tts
 1. A user account on {{% tts %}} with user rights to add gateways.
 2. A computer on the same network as the LPS8N.
 3. The latest version of firmware running on the Dragino LPS8N. Read the Dragino LPS8N [user manual](http://wiki.dragino.com/xwiki/bin/view/Main/User%20Manual%20for%20All%20Gateway%20models/LPS8N%20-%20LoRaWAN%20Gateway%20User%20Manual/#H8.A0UpgradeLinuxFirmware) for instructions on firmware upgrade.
-
+4. Internet access setup for the LPS8N using one of the following methods:
+- Using the WAN port of the LPS8N
+- As a WiFi client
+- Using the built-in 4G modem
 
 ## Configuring the LPS8N
 
