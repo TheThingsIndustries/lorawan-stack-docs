@@ -43,7 +43,7 @@ rate-limiting:
       max-per-min: 5
       associations:
         - gs:accept:mqtt
-        - gs:accept:ws
+        - gs:accept:semtechws/lbslns
         - grpc:stream:accept:/ttn.lorawan.v3.GtwGs/LinkGateway
     - name: gRPC API
       max-per-min: 60
