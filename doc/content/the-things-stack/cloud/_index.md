@@ -25,7 +25,6 @@ After starting your {{% tts %}} Cloud subscription, you will receive an email wi
 
 | **Cluster ID** | **Name**        | **Location**      |
 | -------------- | --------------- | ----------------- |
-| `as1`          | Asia 1          | Tokyo, Japan      |
 | `au1`          | Australia 1     | Sydney, Australia |
 | `eu1`          | Europe 1        | Dublin, Ireland   |
 | `eu2`          | Europe 2        | London, UK        |
