@@ -23,7 +23,10 @@ This page guides you on how to configure the Dragino LPS8N for adding on {{% tts
 1. A user account on {{% tts %}} with user rights to add gateways.
 2. A computer on the same network as the LPS8N.
 3. The latest version of firmware running on the Dragino LPS8N. Read the Dragino LPS8N [user manual](http://wiki.dragino.com/xwiki/bin/view/Main/User%20Manual%20for%20All%20Gateway%20models/LPS8N%20-%20LoRaWAN%20Gateway%20User%20Manual/#H8.A0UpgradeLinuxFirmware) for instructions on firmware upgrade.
-
+4. Internet access setup for the LPS8N using one of the following methods:
+- Using the WAN port of the LPS8N
+- As a WiFi client
+- Using the built-in 4G modem
 
 ## Configuring the LPS8N
 
@@ -40,39 +43,6 @@ After signing in, you will be directed to the LPS8N's Web UI.
 
 {{< figure src="web-ui-home-lps8n.png" alt="Web UI hime" >}}
 
-Before proceeding with the next step, we assume you have set up internet access for the LPS8N using one of the following methods:
+## Connect to {{% tts %}}
 
-- Using the WAN port of the LPS8N
-- As a WiFi client
-- Using the built-in 4G modem
-
-On the Web UI, navigate to **LoRaWAN > LoRaWAN** in the menu.
-
-On the LoRaWAN Configuration page, configure the following settings:
-
-1. **Service Provider**: `The Things Network V3`
-2. **Server Address**: `eu1.cloud.thethings.network`
-3. **Gateway ID**: This is the default Gateway EUI for LPS8N. You can keep it as is.
-4. **Uplink Port**: `1700`
-5. **Downlink Port**: `1700`
-
-Copy the **Gateway ID** which you will need in the next step.
-{{< note "The LPS8N Web UI refers to Gateway EUI as the Gateway ID, which is the Gateway EUI for {{% tts %}}." />}}
-
-Select **Save & Apply**.
-
-{{< figure src="lorawan-config.png" alt="LoRaWAN Configuration" >}}
-
-## Adding LPS8N to {{% tts %}}
-
-You can add the LPS8N gateway to {{% tts %}} by following the instructions on the [ Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}) page. The **Gateway EUI** should be the **Gateway ID** that you have copied from the LPS8N's Web UI.
-
-{{< figure src="add-gateway.png" alt="Add Gateway" >}}
-
-Finally, test your connection by going to the LPS8N's **Overview** page. You should see the gateway status changed to **connected** (indicated by a blue dot) or observe the frequently updating **Last seen** time. Also, see the **Live data** section for various gateway related activities.
-
-{{< figure src="gateway-add-ok.png" alt="Gateway add OK" >}}
-
-You can also verify the presence of a green tick on the LoRa icon in the Web UI.
-
-{{< figure src="lorawan-ok.png" alt="LoRaWAN OK" >}}
+After completing the basic configuration, follow the instructions to [Connect Dragino LPS8N with {{< lbs >}}]({{< relref "lbs" >}}) or to [Connect Dragino LPS8N with {{% udp-pf %}}]({{< relref "udp" >}}).
