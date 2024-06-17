@@ -20,7 +20,7 @@ Some gateways, like [The Things Indoor Gateway]({{< ref "/gateways/models/thethi
 Do not follow this guide for a [The Things Indoor Gateway]({{< ref "/gateways/models/thethingsindoorgateway" >}}).
 {{</ note >}}
 
-If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "the-things-stack/packet-broker" >}}), you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced [TTN Mapper](ttnmapper.org) to find out if your location has nearby gateways.
+If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "the-things-stack/packet-broker" >}}), you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced [TTN Mapper](https://ttnmapper.org) to find out if your location has nearby gateways.
 
 {{< tabs/container "Console" "CLI" "HTTP (REST) API">}}
 
