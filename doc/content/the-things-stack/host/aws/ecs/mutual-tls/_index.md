@@ -63,16 +63,9 @@ The contents of this file are as below.
 ```yaml
 common:
   - common.pem
-tenants:
-  test:
-    - test.pem
 ```
 
-Create a `common` folder at the root of this repository.
-This folder contains the default certificates that are used to verify the client certificate, in case there are no tenant-specific matches.
-
-Create a folder called `tenants` in the root of the bucket. This bucket contains CA certificates per tenant.
-You can now create as many folders inside `tenants` with the folder name being the ID of a {{% tts %}} tenant. These folders would contain CA Certificates specific to that tenant.
+Create a `common` folder at the root of this repository. This folder contains the common trusted root certificates that are used to verify the client certificate. In the future, there may be specific groups of trusted root certificates for specific purposes.
 
 {{< note >}}
 If you want to set the certificates later, create an empty `index.yml` file.
