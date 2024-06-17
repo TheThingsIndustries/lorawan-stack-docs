@@ -170,6 +170,7 @@ ttn-lw-cli end-devices storage get [application-id] [device-id] [flags]
       --up.uplink-message.network-ids.tenant-id                                             select the up.uplink_message.network_ids.tenant_id field
       --up.uplink-message.normalized-payload                                                select the up.uplink_message.normalized_payload field
       --up.uplink-message.normalized-payload-warnings                                       select the up.uplink_message.normalized_payload_warnings field
+      --up.uplink-message.packet-error-rate                                                 select the up.uplink_message.packet_error_rate field
       --up.uplink-message.received-at                                                       select the up.uplink_message.received_at field
       --up.uplink-message.rx-metadata                                                       select the up.uplink_message.rx_metadata field
       --up.uplink-message.session-key-id                                                    select the up.uplink_message.session_key_id field
