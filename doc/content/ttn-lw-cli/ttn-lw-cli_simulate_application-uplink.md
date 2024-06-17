@@ -36,6 +36,7 @@ ttn-lw-cli simulate application-uplink [application-id] [device-id] [flags]
       --network-ids.tenant-address string                                     
       --network-ids.tenant-id string                                          
       --normalized-payload-warnings strings                                   
+      --packet-error-rate float32                                             
       --received-at timestamp                                                 
       --session-key-id bytesBase64                                            
       --settings.concentrator-timestamp int                                   

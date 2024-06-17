@@ -8,6 +8,30 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.30.2
+
+- TimescaleDB replicas are now split to a separate template. Previously replicas had an ephemeral disk that needed to be copied when the replica was re-deployed. This made some upgrades really long to complete. Now the replicas are standalone and have their own disk that can be reattached to a new instance. This change should make upgrades faster and more reliable.
+
+### Upgrade procedure
+
+- Disable TimescaleDB replicas in the `5-4-ecs-services` template.
+- Upgrade the `2-5-db-timescale` template. This will remove TimescaleDB replicas if there were any.
+- Deploy the `2-6-db-timescale-replica` template for each replica that was removed in the previous step.
+- Re-enable TimescaleDB replicas in the `5-4-ecs-services` template.
+
+### 2-5-db-timescale
+
+- Rename to `2-5-db-timescale-master`.
+- Remove replica configuration from the template.
+
+### 2-6-db-timescale-replica
+
+- Add new optional template for TimescaleDB replica.
+
+### `4-2a-configuration`
+
+- Add configuration parameters for the UDP rate limiting firewall (`UDPRateLimitingFirewallEnabled`/`UDPRateLimitingFirewallMessages`/`UDPRateLimitingFirewallThreshold`). Environments which use the general purpose rate limiting of the Gateway Server (via `4-2b-configuration-rate-limiting`) do not need to enable this firewall.
+
 ## 3.30.1
 
 ### Proxy
