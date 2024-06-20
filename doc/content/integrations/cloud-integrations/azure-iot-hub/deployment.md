@@ -25,7 +25,9 @@ Leave the integration page open, as you will need to copy in your **Azure IoT Hu
 
 ## Deploy Azure Resource Manager Template
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fttsiothubintegration.blob.core.windows.net%2Fintegration-releases%2Flatest%2Fmain.json" target="_blank" class="button is-primary">Deploy template</a>
+<div style="margin: 30px 0">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fttsiothubintegration.blob.core.windows.net%2Fintegration-releases%2Flatest%2Fmain.json" target="_blank" class="ttui-btn ttui-btn--primary"       style="color: white;">Deploy template</a>
+</div>
 
 View template as [JSON](https://ttsiothubintegration.blob.core.windows.net/integration-releases/latest/main.json) or [Bicep](https://ttsiothubintegration.blob.core.windows.net/integration-releases/latest/main.bicep)
 
