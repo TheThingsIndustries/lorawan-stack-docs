@@ -8,9 +8,9 @@ Check out frequently asked question about {{% tts %}} and learn how to get the m
 
 <!--more-->
 
-## Why to use LoRaWAN and {{% tts %}} for your next IoT use case?
+## Why to use LoRaWAN® and {{% tts %}} for your next IoT use case?
 
-LoRaWAN is a communication protocol that has proven advantage in transmitting small sensor data packets over long distances in comparison to other wireless technologies, which makes it great for various use cases, especially industrial deployments. {{% tts %}} is a complete LoRaWAN Network Server that enables you to easily utilize LoRaWAN features to build your use case, while being fully compliant to the LoRa Alliance specifications.
+LoRaWAN is a communication protocol that has a proven advantage in transmitting small sensor data packets over long distances in comparison to other wireless technologies, which makes it great for various use cases, especially industrial deployments. {{% tts %}} is a complete LoRaWAN Network Server that enables you to easily utilize LoRaWAN features to build your use case, while being fully compliant to the LoRa Alliance specifications.
 
 Check out [this article](https://www.thethingsindustries.com/news/why-you-should-use-lora-technology-and-lorawan-for-your-next-iot-use-case/) for more info about benefits of LoRaWAN for your use case.
 
