@@ -264,7 +264,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h2 class="subtitle">
           
           
-            <span class="tag is-light">New in 3.29.0</span>
+            <span class="tag is-light">New in 3.30.0</span>
 
           
           
@@ -272,23 +272,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </h2>
         
         <div class="content">
-          <p>The Things Stack supports mutual TLS authentication via a supported proxy (Envoy).</p>
+          <p>The Things Stack supports mutual TLS authentication via a supported proxy (Envoy and Traefik).</p>
 <h2 id="mechanism">Mechanism</h2>
-<p>The Things Stack does not terminate mTLS connections. This is done by the proxy. The proxy is expected to forward the sanitized client certificate chain as an HTTP header.</p>
+<p>The Things Stack does not terminate mTLS connections: this is done by the proxy. The proxy is expected to forward the presented TLS client certificate via an HTTP header to The Things Stack.</p>
 <p>The Things Stack verifies this header with a pre-configured list of CAs.</p>
 <p>The Things Stack supports mTLS authentication for LoRa Basics™ Station CUPS connections.</p>
 <h3 id="tls-termination">TLS termination</h3>
 <p>In the standard deployment model, AWS Network Load Balancer (NLB) terminates TLS, and then forwards unencrypted packets to The Things Stack via AWS internal network.</p>
-<p>Since the NLB does not support verifying client TLS certificates, the responsibility for terminating TLS is promoted to the proxy (only) for the the ports <strong>8987</strong> (CUPS mTLS) port.</p>
+<p>Since the NLB does not support verifying client TLS certificates, the proxy performs TLS termination, only on the relevant ports. This includes <strong>8987</strong> (LoRa Basics™ Station CUPS mTLS) port.</p>
 <h3 id="certificate-requirements">Certificate Requirements</h3>
-<p>The <code>CN</code> (Common Name) field of the certificate must be the 16 digit gateway EUI. Example: <code>1111111111111111</code></p>
+<p>The <code>CN</code> (Common Name) field of the certificate must be the 16 digit gateway EUI. Example: <code>0123456789ABCDEF</code></p>
 <h2 id="update-instructions">Update Instructions</h2>
-<p>The <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> options are available in multiple templates. Make sure to set it to <code>true</code> in <strong>all</strong> the templates if the proxy should terminate CUPS mTLS Connections.</p>
+<p>The <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> options are available in multiple templates. Make sure to set it to <code>true</code> in <strong>all</strong> the templates if the proxy should terminate LoRa Basics™ Station CUPS mTLS Connections.</p>
 <p>If not, it should be set to <code>false</code> in <strong>all</strong> the templates (this is the default). Setting it <code>true</code> in one and <code>false</code> in another will lead to to errors.</p>
 <h3 id="preparation">Preparation</h3>
 <ul>
-<li>If you are deploying TTS for the first time, complete the steps with <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> set to false (this is the default).</li>
-<li>If you are updating to a version with <code>mTLS</code> support from a previous version, first deploy the following templates in this exact order with <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> set to false.
+<li>If you are deploying TTS for the first time, complete the steps with <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> set to <code>false</code> (this is the default).</li>
+<li>If you are updating to a version with <code>mTLS</code> support from a previous version, first deploy the following templates in this exact order with <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> set to <code>false</code>.
 <ul>
 <li><code>3-1-security-group-rules</code>: The template will be deployed with no changes.</li>
 <li><code>3-2-load-balancer-rules</code>: The template will be deployed with no changes.</li>
@@ -309,26 +309,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>The contents of this file are as below.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">common</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">common.pem</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tenants</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">test</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">test.pem</span><span class="w">
-</span></span></span></code></pre></div><p>Create a <code>common</code> folder at the root of this repository.
-This folder contains the default certificates that are used to verify the client certificate, in case there are no tenant-specific matches.</p>
-<p>Create a folder called <code>tenants</code> in the root of the bucket. This bucket contains CA certificates per tenant.
-You can now create as many folders inside <code>tenants</code> with the folder name being the ID of a The Things Stack tenant. These folders would contain CA Certificates specific to that tenant.</p>
+</span></span></span></code></pre></div><p>Create a <code>common</code> folder at the root of this repository. This folder contains the common trusted root certificates that are used to verify the client certificate. In the future, there may be specific groups of trusted root certificates for specific purposes.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   If you want to set the certificates later, create an empty <code>index.yml</code> file.
 </div>
 
 <h3 id="step-2-fetch-and-store-server-tls-credentials">Step 2: Fetch and Store Server TLS Credentials</h3>
-<p>The Things Stack AWS ECS deployment uses Certbot to query Server TLS credentials from Let&rsquo;s Encrpyt and store it in the AWS Certificate Manager.</p>
-<p>But since credentials once stored in ACM cannot be retrieved (can only be referenced by NLB), we need to store a copy of these credentials in the AWS Secrets Manager.</p>
-<p>In <code>4-1-secrets</code> template with <code>SupportProxyTLS</code> set to <code>true</code>.</p>
-<p>This creates a <code>ProxyTLSSecret</code> for the TLS server certificate/key secrets and also a <code>GCS token hash key secret</code>, which is used by the Gateway Configuration Server and the Identity Server.</p>
+<p>The Things Stack AWS ECS deployment uses Certbot to obtain a TLS server certificate from Let&rsquo;s Encrypt and stores it in AWS Certificate Manager.</p>
+<p>As certificates stored in ACM cannot be retrieved, a copy of the TLS server certificate is stored in AWS Secrets Manager. The proxy loads the TLS server certificate from AWS Secrets Manager.</p>
+<p>Update <code>4-1-secrets</code> with the following setting:</p>
+<ul>
+<li>Set <code>SupportProxyTLS</code> set to <code>true</code>.</li>
+</ul>
+<p>This creates a <code>ProxyTLSSecret</code> for the TLS server certificate secrets and also a <code>GCS token hash key secret</code>, which is used by the Gateway Configuration Server and the Identity Server.</p>
 <p>Next, update <code>5-8a-certs-le</code> with the following settings:</p>
 <ul>
-<li>Set <code> SupportProxyTLS</code> to true. If <code>ExistingCertARN</code> is set, clear this before running the update.</li>
+<li>Set <code> SupportProxyTLS</code> to <code>true</code>. If <code>ExistingCertARN</code> is set, clear this before running the update.</li>
 <li>Fetch new certificates by manually requesting it using the <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/aws/ecs/deployment/#lets-encrypt-certificates-optional">instructions</a>.</li>
 <li>When fetching the certificates, make note of the <code>CertificateArn</code> field from the logs where the new certificates are written.</li>
 <li>Once the certificates are successfully queried, rerun the same <code>5-8a-certs-le</code> template but this time set, the <code>ExistingCertARN</code> with the <code>CertificateArn</code> value. This ensures that Certbot renews these certificates and doesn&rsquo;t replace them.</li>
@@ -338,19 +335,19 @@ You can now create as many folders inside <code>tenants</code> with the folder n
 <p>First update <code>3-1-security-group-rules</code>. Set <code>LBSCUPSmTLSEnabled</code> to <code>true</code>. This will allow traffic from <code>8987</code> to flow into the cluster.</p>
 <p>Next Update <code>3-2-load-balancer-rules</code>.</p>
 <ul>
-<li>Set <code>SupportProxyTLS</code> to true.</li>
+<li>Set <code>SupportProxyTLS</code> to <code>true</code>.</li>
 <li>Set <code>TLSCertificateARN</code> with the ARN from the previous step and update.</li>
-<li>Set <code>LBSCUPSmTLSEnabled</code> to true.</li>
+<li>Set <code>LBSCUPSmTLSEnabled</code> to <code>true</code>.</li>
 </ul>
-<p>The new certificate is picked up by all TLS listeners and new listener and target group for CUPS mTLS is created.</p>
-<p>Now, update <code>5-7-ecs-proxy</code>. Set <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> to true.</p>
+<p>The new certificate is picked up by all TLS listeners and new listener and target group for LoRa Basics™ Station CUPS mTLS is created.</p>
+<p>Now, update <code>5-7-ecs-proxy</code>. Set <code>SupportProxyTLS</code> and <code>LBSCUPSmTLSEnabled</code> to <code>true</code>.</p>
 <p>Make sure that the image of the proxy is minimum <code>v3.30.0</code>. Images from earlier releases do not contain changes necessary for mTLS support.</p>
 <p>You can check if the connection is successful by querying the certificates presented by the <code>8987</code> listener.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl s_client -connect &lt;domain&gt;:8987
 </span></span></code></pre></div><h3 id="step-4-update-the-things-stack-components">Step 4: Update The Things Stack Components</h3>
 <p>Since mTLS is supported for LoRa Basics™ Station CUPS , The Things Stack Identity Server and Gateway Configuration Server components require additional configuration.</p>
-<p>In <code>4-2a-configuration</code>, set <code>SupportProxyTLS</code> to true and deploy it.</p>
-<p>Once that is completed, deploy <code>5-4-ecs-services</code> with <code>SupportProxyTLS</code> set to true.</p>
+<p>In <code>4-2a-configuration</code>, set <code>SupportProxyTLS</code> to <code>true</code> and deploy it.</p>
+<p>Once that is completed, deploy <code>5-4-ecs-services</code> with <code>SupportProxyTLS</code> set to <code>true</code>.</p>
 <h3 id="step-5-testing">Step 5: Testing</h3>
 <p>Now that the above setup is complete, we can now test if everything worked. For testing instructions check the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/mtls-authentication/">mTLS Authentication</a> page.</p>
 <h2 id="additional-operator-notes">Additional Operator Notes</h2>
