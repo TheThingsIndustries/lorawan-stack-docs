@@ -69,7 +69,7 @@
   link: https://lora-developers.semtech.com/resources/tools/basic-station/welcome-basic-station/
 
 - term: Activation Mode
-  description: "**Over-the-Air Activation (OTAA)** is the preferred and most secure way to connect a device. Devices perform a join-procedure with the network, during which a dynamic Device Address is assigned and security keys are negotiated with the device. **Activation by Personalization (ABP)** requires hardcoding the Device Address as well as the security keys in the device. This strategy might seem simpler, because you skip the join procedure, but it has downsides related to security. ABP also has the downside that devices can not switch network providers without manually changing keys in the device. **Multicast** is a virtual group of ABP devices which allows all devices to receive the same downlinks. Multicast groups do not support uplinks."
+  description: "There are two methods to activate LoRaWAN devices: **Over-the-Air Activation (OTAA)** and **Activation by Personalization (ABP)**. Search through glossary for details about both methods."
 
 - term: Gateway
   description: Gateways form the bridge between [End Devices](#end-device) and Network Servers. Devices use low power networks like LoRa to connect to the Gateway, while the Gateway uses high bandwidth networks like WiFi, Ethernet or Cellular to connect to a Network Server.
@@ -89,7 +89,7 @@
     - Backend
 
 - term: Application
-  description: An Application in The Things Stack allows you to register LoRaWAN devices and manage data and integrations. Applications can be created via the Console or CLI.
+  description: An Application in The Things Stack is a logical entity that enables grouping devices, which can then be managed in bulk. Applications also allow data processing (payload decoding) and integrations with third party IoT platforms, making it easier to build an end-to-end IoT solution for your specific use case.
   link: https://www.thethingsnetwork.org/docs/applications/
 
 - term: Integration
@@ -177,8 +177,8 @@
     - SF
 
 - term: Adaptive Data Rate
-  description: A mechanism for optimizing data rates, airtime and energy consumption in the network.
-  link: https://www.thethingsnetwork.org/docs/lorawan/adaptive-data-rate.html
+  description: ADR is a mechanism that allows adjusting transmission data rate, bandwidth and power based on network conditions, resulting in optimized transmission range, battery life and enhanced network efficiency without needing manual intervention. The ultimate goal of this strategy is balancing between data delivery reliability and resource usage efficiency. ADR is advised to be enabled for stationary devices and disabled for moving ones (like asset trackers).
+  link: https://www.thethingsindustries.com/docs/reference/adr/
   abbr:
     - ADR
 
@@ -225,11 +225,11 @@
     - AppID
 
 - term: JoinEUI
-  description: The JoinEUI (formerly called AppEUI) is a 64 bit extended unique identifier used to identify the Join Server during activation. This should be provided by the device manufacturer for pre-provisioned devices, or by the owner of the Join Server you will use. If you do not have a JoinEUI, it is okay to use `0000000000000000`, but ensure that you use the same JoinEUI in your device as you enter in The Things Stack.
+  description: The JoinEUI (formerly called AppEUI) is a 64 bit extended identifier that uniquely identifies an application within a LoRaWAN network. It is one of the parameters that play a crucial role in routing and secure communication between the device and the LoRaWAN network. JoinEUI is usually provided by the device manufacturer for pre-provisioned devices, or by the owner of the Join Server used for joining the device on the network. 
   link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=33
 
 - term: AppEUI
-  description: In LoRaWAN specifications prior to 1.1, JoinEUI was called AppEUI. See JoinEUI.
+  description: In LoRaWAN specifications prior to 1.1, JoinEUI was called AppEUI. Search through glossary for **JoinEUI**.
   link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=33
   alt:
     - JoinEUI
@@ -253,13 +253,13 @@
     - AppKey
 
 - term: Over the Air Activation
-  description: The preferred method to join a LoRaWAN network, offering more flexibility, security, and scalability than ABP.
+  description: OTAA is a LoRaWAN device activation method where the LoRaWAN server and the device dinamically negotiate the Device Address and session keys during a join procedure. This activation method is a preferred one, because it offers more flexibility, scalability and better security than ABP.
   link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=34
   abbr:
     - OTAA
 
 - term: Activation by Personalisation
-  description: Manually provisioning device keys to join a LoRaWAN network. Less flexible, less secure, and less scalable than OTAA, but sometimes useful during demos, to avoid waiting for a downlink window to join a network.
+  description: ABP is a LoRaWAN device activation method where join procedure is skipped thanks to pre-configuring Device Address and session keys (NwkSKey and AppSKey) on the device itself. This activation method is less flexible, less secure and less scalable than OTAA, but it can be suitable during demos (to avoid waiting for the device to join the network), for stationary devices or situations where frequent re-activation is impractical.
   link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=37
   abbr:
     - ABP
@@ -298,9 +298,6 @@
 - term: Class C timeout
   description: Time after sending a class C confirmed downlink message to wait for an uplink message with acknowledgment that the confirmed downlink message was received. The Network Server waits for the uplink message with acknowledgment to arrive or for this class C timeout to expire before scheduling other downlink messages. The Things Stack does not schedule MAC commands in class C downlink; the only type of downlink messages that require an uplink message within this timeout are confirmed application data downlink messages.
 
-- term: ADR enabled
-  description: Whether or not Adaptive Data Rate (ADR) is enabled for the end device to optimize the data rate and power consumption based on signal strength and noise ratio. Enable this for stationary end devices and for end devices that set the LoRaWAN ADR bit in uplink messages. If this setting is enabled, but the end device does not ask for ADR in uplink messages, ADR will not be applied. Disable ADR for moving devices like asset trackers.
-
 - term: Resets FCnt
   description: Enable this to allow end devices to reset their frame counter (FCnt). This is not LoRaWAN compliant and this is not secure. This is to support ABP end devices that reset their frame counter on a power cycle. Do not use this setting in production.
 
@@ -326,10 +323,10 @@
   description: The maximum aggregated transmit duty cycle of the end device over all sub-bands. The allowed time-on-air is 1/N where N is the given value, 1 is 100%, 1024 is 0.97%, etc. This value is used for traffic shaping. All end devices must respect regional regulations regardless of this value. Changing the desired value makes the Network Server transmit the `DutyCycleReq` MAC command.
 
 - term: ADR ACK limit
-  description: This value changes the `ADR_ACK_LIMIT` value defining the ADR back-off algorithm. Changing the desired value makes the Network Server transmit the `ADRParamSetupReq` MAC command (from LoRaWAN 1.1).
+  description: The ADR ACK limit (`ADR_ACK_LIMIT`) is a configurable parameter which is a part of the ADR back-off mechanism, that refers to the maximum number of attempts made by the Network Server to send an ACK as a response to an uplink from a device. Lowering the ADR ACK limit helps preventing excessive ACK retries that could potentially increase congestion. If device fails to receive ACK within the specified limit, the Network Server may adjust ADR parameters to improve reliability.
 
 - term: ADR ACK delay
-  description: This value changes the `ADR_ACK_DELAY` value defining the ADR back-off algorithm. Changing the desired value makes the Network Server transmit the `ADRParamSetupReq` MAC command (from LoRaWAN 1.1).
+  description: The ADR ACK delay (`ADR_ACK_DELAY`) is a configurable parameter which is a part of the ADR back-off mechanism, that refers to the delay before sending an ACK as a response to an uplink from a device. A shorter ADR ACK delay allows quicker transmission confirmation, but may increase the likelihood of collisions in a high-traffic environment.
 
 - term: Ping slot data rate index
   description: The class B ping slot uses a fixed frequency and data rate. This value configures the data rate to use in class B ping slots. See LoRaWAN Regional Parameters to find the band's modulation settings for each data rate index. Changing the desired value makes the Network Server transmit the `PingSlotChannelReq` MAC command.
