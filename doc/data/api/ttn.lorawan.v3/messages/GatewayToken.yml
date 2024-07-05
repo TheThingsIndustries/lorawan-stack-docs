@@ -1,0 +1,16 @@
+name: GatewayToken
+comment: GatewayToken is a special auth token used by cluster components to authenticate
+  on behalf of gateways.
+fields:
+- name: key_id
+  comment: ID of the key used to hash the token.
+  type: string
+  default: ""
+- name: payload
+  message:
+    name: GatewayToken.Payload
+  default: {}
+- name: checksum
+  comment: Checksum of the payload to verify the authenticity of the caller.
+  type: bytes
+  default: ""
