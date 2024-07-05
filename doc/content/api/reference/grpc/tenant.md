@@ -54,6 +54,10 @@ Unlike the other services, the tenant services do **not** accept API keys or OAu
 
 {{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.AlertRoutingServer.Routing" >}}
 
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.GatewayServer" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.GatewayServer.MTLSAuthentication" >}}
+
 {{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.ApplicationLimits" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.OrganizationLimits" >}}
