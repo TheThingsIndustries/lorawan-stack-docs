@@ -34,7 +34,7 @@
 - term: Forwarding Network Session Integrity Key
   abbr:
     - FNwkSIntKey
-  description: A network session key used to calculate all or half of the message integrity code for uplink messages. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server, the value of FNwkSIntKey is used as the value of SNwkSIntKey and NwkSEncKey.
+  description: A 128-bit encryption key, derived during device activation process, used to calculate all or half of the message integrity code for uplink messages. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server, the value of FNwkSIntKey is used as the value of SNwkSIntKey and NwkSEncKey. This key may be periodically refreshed to maintain security.
   link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawantm_specification_-v1.1.pdf#page=50
 
 - term: Network Key
@@ -44,12 +44,16 @@
   link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawantm_specification_-v1.1.pdf#page=48
 
 - term: Data Rate Offset
-  description: The Data Rate Offset sets the offset between the uplink data rate and the downlink data rate used to communicate with the End Device during the first reception slot (RX1).
+  description: The Data Rate Offset shifts the device's DR Index allowing fine-tuning of transmission parameters, without changing the overall DR plan. A positive DR Offset increases the DR Index, resulting in faster data transmission but potentially reducing the range. A negative DR Offset decreses the Data Rate Index, sacrifising transmission speed for increased range. This parameter is utilized by ADR mechanism.
   link: https://lora-alliance.org/wp-content/uploads/2020/11/rp_2-1.0.1.pdf#page=27
+  abbr:
+  - DR Offset
 
 - term: Data Rate Index
-  description: The Data Rate Index specifies which data rate downlink communications will use, as given in the Regional Parameters.
+  description: The Data Rate Index is a numerical index which is a combination of the SF and Bandwidth used for transmitting data between end devices and gateways.
   link: https://lora-alliance.org/wp-content/uploads/2020/11/rp_2-1.0.1.pdf#page=25
+  abbr:
+  - DR Index
 
 - term: Packet Forwarder
   description: A Packet Forwarder is a program running on a Gateway that receives and transmits LoRa packets, and forwards these packets to and from a Network Server.
@@ -89,7 +93,7 @@
     - Backend
 
 - term: Application
-  description: An Application in The Things Stack is a logical entity that enables grouping devices, which can then be managed in bulk. Applications also allow data processing (payload decoding) and integrations with third party IoT platforms, making it easier to build an end-to-end IoT solution for your specific use case.
+  description: An Application in The Things Stack is a logical entity that enables grouping devices, which can then be managed in bulk. Applications also allow data processing (payload decoding) and integrations with third party IoT platforms, making it easier to build an end-to-end IoT solution.
   link: https://www.thethingsnetwork.org/docs/applications/
 
 - term: Integration
@@ -106,11 +110,8 @@
 
 - term: End Device
   description: A sensor or actuator with an embedded low power LoRaWAN communication module.
-  link: https://www.thethingsnetwork.org/docs/devices/
   alt:
-    - Device
-    - Node
-    - Mote
+    - Device, Node
 
 - term: LoRaWAN Version
   description: The LoRaWAN version is the LoRa Alliance LoRaWAN specification your device conforms to, which defines which Media Access Control features it supports. The LoRaWAN version for your device should be provided by the manufacturer in a datasheet as LoRaWAN version or LoRaWAN specification. The most commonly used LoRaWAN versions are v1.0.2 and v1.0.3. ({{% ttnv2 %}} uses v1.0.2 by default).
@@ -157,21 +158,19 @@
   link: https://www.thethingsnetwork.org/docs/lorawan/duty-cycle.html
 
 - term: Duty Cycle
-  description: The fraction of time a device is busy. When a single device transmits on a channel for 2 time units every 10 time units, this device has a duty cycle of 20%.
-  link: https://www.thethingsnetwork.org/docs/lorawan/duty-cycle.html
+  description: Specifies a fraction of a given time window during which a device can actively transmit data. If a single device transmits on a channel for 2 time units every 10 time units, this device has a duty cycle of 20%. Duty cycle is regulated by regional authorities that manage radio spectrum usage in order to minimize interference, so exceeding it could result in facing penalties or restrictions.
+  link: https://www.thethingsnetwork.org/docs/lorawan/duty-cycle/
 
 - term: Data Rate
-  description: A combination of Bandwidth and Spreading Factor which defines how quickly a message is transmitted.
-  link: https://www.thethingsnetwork.org/docs/lorawan/modulation-data-rate.html
+  description: Defines how quickly a message is transmitted between the end device and gateway, directly influenced by Bandwidth and SF. It can also be dynamically adjusted through ADR mechanism.
   abbr:
     - DR
 
 - term: Bandwidth
-  description: LoRaWAN can use channels with a bandwidth of either 125 kHz, 250 kHz or 500 kHz, depending on the region or the Frequency Plan. Making the bandwidth 2x wider (from BW125 to BW250) allows you to send 2x more bytes in the same time.
-  link: https://www.thethingsnetwork.org/docs/lorawan/modulation-data-rate.html
+  description: A bandwidth refers to the width of range of frequencies that is allocated for transmitting data within a specific Frequency Band. LoRaWAN can use channels with a bandwidth of either 125 kHz, 250 kHz or 500 kHz, depending on the region or the Frequency Plan. LoRaWAN networks must adhere to regulatory regulations in order to ensure interference-free operation and local laws compliance. Bandwidth directly affects the data rate and transmission efficiency. A wider bandwidth means higher data rate, but may reduce the range and increase power consumption.
 
 - term: Spreading Factor
-  description: The transmission speed or Data Rate of a LoRaWAN message, ranging from SF7 (highest Data Rate) to SF12 (lowest Data Rate). Making the spreading factor 1 step lower (from SF10 to SF9) allows you to roughly send the same amount of data use half the time on air. Lowering the spreading factor makes it more difficult for the gateway to receive a transmission, as it will be more sensitive to noise.
+  description: The transmission speed or Data Rate of a LoRaWAN message, ranging from SF7 (highest Data Rate) to SF12 (lowest Data Rate). Making the SF 1 step lower (from SF10 to SF9) allows you to roughly send the same amount of data use half the time on air. Lowering the SF makes it more difficult for the gateway to receive a transmission, as it will be more sensitive to noise.
   link: https://www.thethingsnetwork.org/docs/lorawan/modulation-data-rate.html
   abbr:
     - SF
@@ -189,38 +188,37 @@
     - SNR
 
 - term: Classes
-  description: The LoRaWAN specification defines three device types. All LoRaWAN devices must implement Class A, whereas Class B and Class C are extensions to the specification of Class A devices.
-  link: https://www.thethingsnetwork.org/docs/lorawan/classes.html
+  description: The LoRaWAN specification defines three device types, i.e. device classes. All LoRaWAN devices must implement Class A, whereas Class B and Class C are extensions to the specification of Class A devices.
+  link: https://www.thethingsnetwork.org/docs/lorawan/classes/
 
 - term: Class A
   description: Class A devices support bi-directional communication between a device and a gateway. Uplink messages (from the device to the server) can be sent at any time (randomly). The device then opens two receive windows at specified times after an uplink transmission. The first receive window (Rx1) is set to 5 seconds and can be modified. The second receive window (Rx2) always comes 1 second after Rx1.
-  link: https://www.thethingsnetwork.org/docs/lorawan/classes.html
+  link: https://www.thethingsnetwork.org/docs/lorawan/classes/#class-a
 
 - term: Class B
   description: Class B devices extend Class A by adding scheduled receive windows for downlink messages from the server. Using time-synchronized beacons transmitted by the gateway, the devices periodically open receive windows.
-  link: https://www.thethingsnetwork.org/docs/lorawan/classes.html
+  link: https://www.thethingsnetwork.org/docs/lorawan/classes/#class-b
 
 - term: Class C
   description: Class C devices extend Class A by keeping the receive windows open unless they are transmitting. This allows for low-latency communication but is many times more energy consuming than Class A devices.
-  link: https://www.thethingsnetwork.org/docs/lorawan/classes.html
+  link: https://www.thethingsnetwork.org/docs/lorawan/classes/#class-c
 
 - term: Device ID
-  description: A unique, human-readable identifier for your device. You make it up, so be creative. Device IDs can not be used by multiple devices within the same application.
+  description: A human-readable end device identifier, unique within {{% tts %}} application.
 
 - term: Device EUI
-  description: A 64 bit extended unique identifier for your device. This is programmed by the manufacturer and should not be changed. It should be provided to you by the manufacturer, or printed on the device.
-  link: https://www.thethingsnetwork.org/docs/lorawan/addressing.html
+  description: A 64-bit globally unique device identifier. DevAddr is defined by the manufacturer and should not be changed. It should be provided to you by the manufacturer, or printed on the device. DevEUI, along with the AppEUI and AppKey, is used during device activation to securely authenticate and register device on the network.
   abbr:
     - DevEUI
 
 - term: Device Address
-  description: A 32 bit non-unique identifier, assigned by the Network Server during device activation.
+  description: A 32-bit device identifier, unique within a single LoRaWAN network, assigned by the Network Server during OTAA activation, or pre-configured in ABP devices. DevAddr value is included in header data of all LoRaWAN data messages so the Network Server can uniquely identify the end device.
   link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=33
   abbr:
     - DevAddr
 
 - term: Application ID
-  description:  A unique, human-readable identifier for your application.
+  description:  A unique, human-readable identifier of your {{% tts %}} application.
   abbr:
     - AppID
 
@@ -229,13 +227,13 @@
   link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=33
 
 - term: AppEUI
-  description: In LoRaWAN specifications prior to 1.1, JoinEUI was called AppEUI. Search through glossary for **JoinEUI**.
+  description: In LoRaWAN specifications prior to 1.1, JoinEUI was called AppEUI. Search through glossary for details about **JoinEUI**.
   link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=33
   alt:
     - JoinEUI
 
 - term: Application Session Key
-  description: After activation, this encryption key is used to secure messages which carry a payload.
+  description: A unique encryption key dynamically generated during the OTAA procedure and shared between the end device and {{% tts %}} Network Server. It is used specifically to encrypt and decrypt LoRaWAN payload. It is periodically refreshed in order to minimize the risk of data compromisation.
   link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=33
   abbr:
     - AppSKey
@@ -247,7 +245,7 @@
     - NwkSKey
 
 - term: Application Key
-  description: A device specific encryption key used during OTAA to derive the AppSKey (in LoRaWAN 1.1x) or both the NwkSKey and AppSKey in LoRaWAN 1.0x. This is usually pre provisioned by the device manufacturer, but can also be created by the user.
+  description: A device-specific encryption key used during OTAA to derive session keys (AppSKey and NwkSKey). It is usually pre-provisioned by the device manufacturer, but can also be created by the user. It should never be exposed publicly or to unauthorized parties, as it is one of the critical components of ensuring authenticated and secure communication between the device and {{% tts %}} Network Server.
   link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=34
   abbr:
     - AppKey
@@ -265,16 +263,13 @@
     - ABP
 
 - term: Dwell Time
-  description: The time needed to transmit a LoRaWAN message. In some regions a maximum allowed dwell time is configured to limit transmission time, typically 400ms.
+  description: The time in which the end device is allowed to transmit data on a single frequency channel, imposed by regulatory authorities to prevent devices from occupying channels for extended time periods. Dwell Time restrictions are configurable; in some regions Dwell Time limitations are optional and in those regions they are disabled by default in {{% tts %}}. 
 
-- term: Dwell Time Configuration
-  description: The Dwell time restrictions are configurable for each Frequency Plan. In regions where dwell time limitations are optional, they're disabled by default.
-
-- term: Band
-  description: For LoRaWAN, a Band is a range of frequencies divided either in to dynamic channels (i.e. EU868) or fixed channels (i.e. US902, AU915). The LoRaWAN Regional Parameters specify which Bands are supported by LoRaWAN in a geographical area. Within a Band, there can be multiple complying Frequency Plans. Devices typically support one or more Bands in their hardware, and are configured for a particular Frequency Plan as part of activation.
+- term: Frequency Band
+  description: A Frequency Band is a range of frequencies divided either in to dynamic channels (i.e. EU868) or fixed channels (i.e. US902, AU915). LoRaWAN operates on different Frequency Bands depending on regional regulations and network deployment strategies. The LoRaWAN Regional Parameters define Frequency Bands distribution over geographical areas. Within a Frequency Band, there can be multiple complying Frequency Plans. Devices typically support one or more Frequency Bands in their hardware, and are configured for a particular Frequency Plan as part of activation.
   link: https://lora-alliance.org/wp-content/uploads/2019/11/rp_2-1.0.0_final_release.pdf
   alt:
-    - Frequency Band
+    - Band
 
 - term: Frequency Plan
   description: A Frequency Plan defines data rates and channels which comply with the LoRaWAN Regional Parameters for a band or geographical area. Devices are configured for a particular Frequency Plan as part of activation, and can use any Frequency Plan within a supported band.
@@ -285,18 +280,16 @@
     - Channel Plan
 
 - term: Dynamic Channel
-  description: A Band which uses Dynamic Channels (i.e. EU868) uses a Channel Frequency List (CFList) to communicate channels by frequency.
-  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=50
+  description: Dynamic channels are additional receive channels used for downlink communication, which enhance reliability and responsiveness of Class B and Class C devices. A Band which uses Dynamic Channels (i.e. EU868) uses a Channel Frequency List (CFList) to communicate channels by frequency.
 
 - term: Fixed Channel
-  description: A Band which uses Fixed Channels (i.e. US902, AU915) uses a Channel Mask (ChMask) to enable and disable channels.
-  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=50
+  description: Fixed channels are predefined and fixed within the LoRaWAN protocol specification. They are used for both uplink and downlink communication. Devices and gateways must support fixed channels defined for their region to ensure compliance with regulatory standards. A Band which uses Fixed Channels (i.e. US902, AU915) uses a Channel Mask (ChMask) to enable and disable channels.
 
 - term: Class B timeout
-  description: Time after sending a class B confirmed downlink message in a ping slot to wait for an uplink message with acknowledgment that the confirmed downlink message was received. The Network Server waits for the uplink message with acknowledgment to arrive or for this class B timeout to expire before scheduling other downlink messages. The Things Stack does not schedule MAC commands in class B downlink; the only type of downlink messages that require an uplink message within this timeout are confirmed application data downlink messages.
+  description: Time duration after the last receive window during which the device remains in a listening state for possible downlinks sent from the Network Server. The Network Server waits for the uplink message with acknowledgment (for previously scheduled downlink) to arrive, or for this class B timeout to expire before scheduling next downlink message. This feature enhances responsiveness of Class B devices to downlinks compared to Class A devices. {{% tts %}} does not schedule MAC commands in class B downlink; the only type of downlink messages that require an uplink message within this timeout are confirmed application data downlink messages.
 
 - term: Class C timeout
-  description: Time after sending a class C confirmed downlink message to wait for an uplink message with acknowledgment that the confirmed downlink message was received. The Network Server waits for the uplink message with acknowledgment to arrive or for this class C timeout to expire before scheduling other downlink messages. The Things Stack does not schedule MAC commands in class C downlink; the only type of downlink messages that require an uplink message within this timeout are confirmed application data downlink messages.
+  description: Time after sending a class C confirmed downlink message to wait for an uplink message with acknowledgment that the confirmed downlink message was received. The Network Server waits for the uplink message with acknowledgment to arrive, or for this class C timeout to expire before scheduling other downlink messages. {{% tts %}} does not schedule MAC commands in class C downlink; the only type of downlink messages that require an uplink message within this timeout are confirmed application data downlink messages.
 
 - term: Resets FCnt
   description: Enable this to allow end devices to reset their frame counter (FCnt). This is not LoRaWAN compliant and this is not secure. This is to support ABP end devices that reset their frame counter on a power cycle. Do not use this setting in production.
@@ -346,7 +339,7 @@
     - RSSI
 
 - term: Effective Isotropic Radiated Power
-  description: The total power radiated from a hypothetical isotropic antenna in a single direction in watts, measured in dBm. The maximum allowed EIRP differs between regions. Antenna power provides a tradeoff between range and battery life, and is one of the components of the ADR mechanism.
+  description: The total power radiated by an antenna in a specific direction, relative to the power emitted by an ideal isotropic antenna, measured in dBm. The maximum allowed EIRP differs between regions and is imposed by regulatory bodies in order to manage radio spectrum usage. Antenna power provides a tradeoff between range and battery life, and is one of the crucial components of the ADR mechanism.
   abbr:
     - EIRP
 
