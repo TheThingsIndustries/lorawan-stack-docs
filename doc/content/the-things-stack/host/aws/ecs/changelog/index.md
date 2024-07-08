@@ -10,6 +10,8 @@ All meaningful changes to templates are documented in this file.
 
 ## 3.31.0
 
+- Update ECS AMIs to the latest versions.
+
 ## 3.30.2
 
 - TimescaleDB replicas are now split to a separate template. Previously replicas had an ephemeral disk that needed to be copied when the replica was re-deployed. This made some upgrades really long to complete. Now the replicas are standalone and have their own disk that can be reattached to a new instance. This change should make upgrades faster and more reliable.
