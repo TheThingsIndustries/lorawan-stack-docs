@@ -201,6 +201,42 @@ methods:
     http:
     - method: POST
       path: /noc/application/{application_ids.application_id}/data_rates/packet-count
+  QueryApplicationEventForwardCount:
+    name: QueryApplicationEventForwardCount
+    input:
+      name: ApplicationTimeBucketQuery
+    output:
+      name: ApplicationEventsForwardCount
+    http:
+    - method: POST
+      path: /noc/application/{application_ids.application_id}/events/forward
+  QueryApplicationWebhookFailure:
+    name: QueryApplicationWebhookFailure
+    input:
+      name: ApplicationTimeBucketQuery
+    output:
+      name: ApplicationWebhookFailuresCount
+    http:
+    - method: POST
+      path: /noc/application/{application_ids.application_id}/events/webhook/failure
+  QueryApplicationWebhookFailureTopFive:
+    name: QueryApplicationWebhookFailureTopFive
+    input:
+      name: ApplicationTimeBucketQuery
+    output:
+      name: ApplicationWebhookFailuresByStatusCodeCount
+    http:
+    - method: POST
+      path: /noc/application/{application_ids.application_id}/events/webhook/failure/top-five
+  QueryApplicationWebhookFailureToForwardRatio:
+    name: QueryApplicationWebhookFailureToForwardRatio
+    input:
+      name: ApplicationTimeWindowQuery
+    output:
+      name: ApplicationWebhookFailureToForwardRatio
+    http:
+    - method: POST
+      path: /noc/application/{application_ids.application_id}/events/webhook/failure/ratio
   QueryEndDevicesActive:
     name: QueryEndDevicesActive
     input:

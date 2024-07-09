@@ -39,6 +39,9 @@ ttn-lw-cli tenants get [tenant-id] [flags]
       --configuration.default-cluster.as.webhooks                                                select the configuration.default_cluster.as.webhooks field and all allowed sub-fields
       --configuration.default-cluster.as.webhooks.queue                                          select the configuration.default_cluster.as.webhooks.queue field and all allowed sub-fields
       --configuration.default-cluster.as.webhooks.queue.enabled                                  select the configuration.default_cluster.as.webhooks.queue.enabled field
+      --configuration.default-cluster.gs                                                         select the configuration.default_cluster.gs field and all allowed sub-fields
+      --configuration.default-cluster.gs.mtls-authentication                                     select the configuration.default_cluster.gs.mtls_authentication field and all allowed sub-fields
+      --configuration.default-cluster.gs.mtls-authentication.client-ca-pool                      select the configuration.default_cluster.gs.mtls_authentication.client_ca_pool field
       --configuration.default-cluster.is                                                         select the configuration.default_cluster.is field and all allowed sub-fields
       --configuration.default-cluster.is.admin-rights                                            select the configuration.default_cluster.is.admin_rights field and all allowed sub-fields
       --configuration.default-cluster.is.admin-rights.all                                        select the configuration.default_cluster.is.admin_rights.all field
