@@ -1,12 +1,12 @@
 ---
-title: "LilyGo LoRa32"
+title: "LILYGO LoRa32"
 description: ""
 weight: 
 ---
 
 {{< figure src="lora32.png" alt="" class="float plain" width="80%">}}
 
-The [LoRa32 V2.1_1.6](https://www.lilygo.cc/products/lora3) is a development board with an ESP32 and a Semtech SX1276 transceiver. It features an OLED screen, Micro SD card slot and a JST GH for connecting a Li-Po battery.
+The [LILYGO LoRa32 V2.1_1.6](https://www.lilygo.cc/products/lora3) is a development board with an ESP32 and a Semtech SX1276 transceiver. It features an OLED screen, Micro SD card slot and a JST GH for connecting a Li-Po battery.
 
 In order to program the board we need to make use of of the [RadioLib](https://github.com/jgromes/RadioLib) library. This is a universal Arduino library created for radio modules (such as LoRa).
 
