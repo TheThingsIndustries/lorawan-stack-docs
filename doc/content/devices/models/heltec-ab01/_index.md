@@ -95,7 +95,7 @@ After configuring your device, select the **Register end device** button.
 Our device is registered with {{% tts %}}, but it still needs the correct info in order to connect.
 
 Go back to your code, and at the top you should see these lines:
-```
+```cpp
 /* OTAA para*/
 uint8_t devEui[] = { 0x22, 0x32, 0x33, 0x00, 0x00, 0x88, 0x88, 0x02 };
 uint8_t appEui[] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
