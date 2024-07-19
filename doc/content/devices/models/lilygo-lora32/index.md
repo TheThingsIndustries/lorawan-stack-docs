@@ -18,7 +18,7 @@ We will set up the Arduino IDE first, after which we will use an example code to
 
 Download the latest release of the [Arduino Software (IDE)](https://www.arduino.cc/en/Main/Software), [install](https://www.arduino.cc/en/Guide) it on your operating system and run it.
 
-Open Arduino IDE, and click `File`->`Preferences`->`Settings` and click the button next to "Additional Boards Manager URLs".
+Open Arduino IDE, and click **File -> Preferences -> Settings** and click the button next to `Additional Boards Manager URLs`.
 
 {{< figure src="boards-manager-url.png" alt="">}}
 
@@ -26,11 +26,11 @@ In a new line, enter: `https://espressif.github.io/arduino-esp32/package_esp32_i
 
 {{< figure src="esp32-url.png" alt="">}}
 
-Click the **second icon in the left-hand menu** or select `Tools`->`Board:`->`Boards Manager...`, then search `esp32` in the search field, select the latest releases and click **install**.
+Click the **second icon in the left-hand menu** or select **Tools -> Board: -> Boards Manager...**, then search `esp32` in the search field, select the latest releases and click **install**.
 
 {{< figure src="esp32-install.png" alt="">}}
 
-Then go to the **third icon in the left-hand menu** or select `Sketch`->`Include Library`->`Manage Libraries...`, then search `radiolib` in the search field, select the latest releases and click **install**.
+Then go to the **third icon in the left-hand menu** or select **Sketch -> Include Library -> Manage Libraries...**, then search `radiolib` in the search field, select the latest releases and click **install**.
 
 {{< figure src="radiolib-install.png" alt="">}}
 
@@ -42,11 +42,9 @@ Click the **Select Board** drop down (or go to the **tools** menu) and select th
 
 {{< figure src="lora32-select.png" alt="">}}
 
-Open the example sketch
+Open the example sketch by going to **File -> Examples -> RadioLib -> LoRaWAN -> LoRaWAN_Starter**
 
-Now we need the credentials to onboard it to TTS
-
-Now that we have the DevEui we can onboard it to {{% tts %}}.
+Now we need the credentials to onboard it to {{% tts %}}.
 
 ## Onboarding to {{% tts %}}
 
@@ -70,8 +68,8 @@ After configuring your device, select the **Register end device** button.
 
 Our device is registered with {{% tts %}}, but it still needs the correct info in order to connect.
 
-Go back to your code, and go to the `config.h` file. There you should see:
-```cpp
+Go back to your Arduino IDE, and go to the `config.h` file. There you should see:
+```
 // the Device EUI & two keys can be generated on the TTN console 
 #ifndef RADIOLIB_LORAWAN_DEV_EUI   // Replace with your Device EUI
 #define RADIOLIB_LORAWAN_DEV_EUI   0x---------------
@@ -98,10 +96,31 @@ const LoRaWANBand_t Region = EU868;
 const uint8_t subBand = 0;  // For US915, change this to 2, otherwise leave on 0
 ```
 
-Now upload the code to your device.
+Now upload the code to your device using the **->** button in the top-left.
 
 ## Monitoring Live Data
 
-When your device is registered, select the **Live Data** tab to view all messages exchanged between the end device and {{% tts %}}.
+As the device payload comes to {{% tts %}} in a HEX format, you will need to decode it using a [payload formatter](https://www.thethingsindustries.com/docs/integrations/payload-formatters/). To do this, in your application on {{% tts %}}, navigate to **Payload formatters**.  
+
+Select the **Custom Javascript formatter** from the **Formatter type** dropdown.  
+
+Enter the following code in the **Formatter code** field:  
+
+```js
+function decodeUplink(input) {
+  var value1 = input.bytes[0];
+  var value2 = (input.bytes[1] << 8) | input.bytes[2];
+  
+  return {
+    data: {
+      value1: value1,
+      value2: value2
+    }
+  };
+}
+
+```
+
+Now go back to the **Live Data** tab to view all messages exchanged between the end device and {{% tts %}}.
 
 {{< figure src="live-data.png" alt="Live data tab" >}}
