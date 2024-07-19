@@ -108,6 +108,8 @@ while i < 1010:
     i = i + 1
 ```
 
+Now we have our code in place, but we need credentials for connecting it to {{% tts %}}.
+
 ## Onboarding to {{% tts %}}
 
 The device has to be onboarded **manually**.
@@ -148,10 +150,4 @@ Repeat this for the **AppKey** and **NwkKey** too.
 
 {{< figure src="f1-activ-info.png" alt="" >}}
 
-Save the `main.py` file, right click the file, then **CtrlR** -> **Upload to Device**
-
-## Monitoring Live Data
-
-When your device is registered, select the **Live Data** tab to view all messages exchanged between the end device and {{% tts %}}.
-
-{{< figure src="live-data.png" alt="Live data tab" >}}
+Save the `main.py` file, right click the file, then **CtrlR** -> **Upload to Device**.
