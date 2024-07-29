@@ -241,17 +241,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <p>This section contains instructions on how to configure migration tool and use it to export end devices from Firefly, that can later be imported in The Things Stack.</p>
 <h3 id="before-you-begin">Before you begin</h3>
 <ul>
+<li>Using the actual JoinEUI of the end devices is mandatory when registering them on The Things Stack. Since Firefly does not store the JoinEUI of the device, users need to obtain this information separately, such as from the device manufacturer.</li>
 <li>The export process will halt if any error occurs.</li>
 <li>Use the <code>--invalidate-keys</code> option to invalidate the root and/or session keys of the devices on the Firefly server. This is necessary to prevent both networks from communicating with the same device. The last byte of the keys will be incremented by 0x01. This enables an easy rollback if necessary. Setting this flag to false (default) would result in a &ldquo;dry run&rdquo;, where the devices are exported but they will still be able to communicate with the Firefly server.</li>
 </ul>
 <h3 id="configuration">Configuration</h3>
 <p>Configure with environment variables, or command-line arguments.</p>
 <p>See <code>ttn-lw-migrate firefly {device|application} --help</code> for more details.</p>
-<p>The following example shows how to set options via environment variables.</p>
+<p>The following example shows how to set options via environment variables. These are example values. Please use actual ones based on your case.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">FIREFLY_HOST</span><span class="o">=</span>example.com       <span class="c1"># Host of the Firefly API</span>
 </span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">FIREFLY_API_KEY</span><span class="o">=</span>abcdefgh       <span class="c1"># Firefly API Key</span>
 </span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">APP_ID</span><span class="o">=</span>my-test-app             <span class="c1"># Application ID for the exported devices</span>
-</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">JOIN_EUI</span><span class="o">=</span><span class="m">1111111111111111</span>      <span class="c1"># JoinEUI for the exported devices</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">JOIN_EUI</span><span class="o">=</span><span class="m">1111111111111111</span>      <span class="c1"># JoinEUI for the exported devices.</span>
 </span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">FREQUENCY_PLAN_ID</span><span class="o">=</span>EU_863_870   <span class="c1"># Frequency Plan ID for the exported devices</span>
 </span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">MAC_VERSION</span><span class="o">=</span>1.0.2b             <span class="c1"># LoRaWAN MAC version for the exported devices</span>
 </span></span></code></pre></div><p>The above settings are common for all the following export methods.</p>
@@ -293,7 +294,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">1111111111111112
 </span></span><span class="line"><span class="cl">FF11111111111134
 </span></span><span class="line"><span class="cl">ABCD111111111100
-</span></span></code></pre></div><p>And then export with:</p>
+</span></span></code></pre></div><p>Please note that all these devices should have the same JoinEUI.</p>
+<p>And then export with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
 </span></span><span class="line"><span class="cl">$ ttn-lw-migrate firefly device --verbose &lt; device_ids.txt &gt; devices.json
 </span></span><span class="line"><span class="cl"><span class="c1"># export devices</span>
