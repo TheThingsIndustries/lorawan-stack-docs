@@ -10,7 +10,8 @@ The webhook retries feature allows webhooks to be enqueued and be retried multip
 
 <!--more-->
 
-{{< note  "The webhook retries feature in The Things Stack is currently in beta. Please contact support@thethingsindustries.com to evaluate this feature on your {{% tts %}} Cloud tenant." />}}
+A [{{% tts %}} Cloud Plus subscription](https://www.thethingsindustries.com/stack/plans/) is required to use this feature.
+If you would like to evaluate this feature on your {{% tts %}} Cloud tenant without a {{% tts %}} Cloud Plus subscription, please contact `support@thethingsindustries.com`.
 
 By default, webhook HTTP requests are tried at most once for each application uplink. This means that if the endpoint is unavailable temporarily, the HTTP requests done in this period are lost, and so is the associated traffic.
 
