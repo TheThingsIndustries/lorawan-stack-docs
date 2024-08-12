@@ -8,7 +8,7 @@ weight:
 
 The [Heltec HTCC-AB01 (V2) ](https://heltec.org/project/htcc-ab01-v2/) is a development board based on the ASR6052, which has an integrated PSoC® 4000 series MCU (ARM® Cortex® M0+ Core) and SX1262 transceiver. It features Arduino compatibility, an ultra low power design and an onboard SH1.25 for lithium batteries or solar panels.
 
-We will set up the module for usage in the Arduino IDE, in which we will use an example code to connect it to {{% tts %}}.
+In this guide, we set this module up for usage in the Arduino IDE and we use an example code to connect it to {{% tts %}}.
 
 <!--more-->
 
@@ -18,44 +18,42 @@ In order to use the CubeCell in Arduino, we need to install a framework created 
 
 Download the latest release of the [Arduino Software (IDE)](https://www.arduino.cc/en/Main/Software), [install](https://www.arduino.cc/en/Guide) it on your operating system and run it.
 
-Open Arduino IDE, and click `File`->`Preferences`->`Settings` and click the button next to "Additional Boards Manager URLs".
+Open Arduino IDE, and click **File**->**Preferences**->**Settings** and click the button next to **Additional Boards Manager URLs**.
 
 {{< figure src="boards-manager.png" alt="">}}
 
-In a new line, enter: `https://github.com/HelTecAutomation/CubeCell-Arduino/releases/download/V1.5.0/package_CubeCell_index.json` and click **OK**.
+In a new line, enter `https://github.com/HelTecAutomation/CubeCell-Arduino/releases/download/V1.5.0/package_CubeCell_index.json` and click **OK**.
 
 {{< figure src="board-url.png" alt="">}}
 
-Click the **second icon in the left-hand menu** or select `Tools`->`Board:`->`Boards Manager...`, then search `Heltec` in the search field, select the latest releases and click **install**.
+Click the **second icon in the left-hand menu** or select **Tools**->**Board**->**Boards Manager**, then search **Heltec** in the search field, select the latest releases and click **Install**.
 
 {{< figure src="install-board.png" alt="">}}
 
 ## Connecting the Device
 
-Connect the board to your computer with a **high quality** USB-C cable.
+Connect the board to your computer with a high quality USB-C cable.
 
-Click the **Select Board** drop down (or go to the **tools** menu) and select the right COM port and board:
+Click the **Select Board** drop down (or go to the **Tools** menu) and select the right COM port and board.
 
 {{< figure src="ab01-select.png" alt="">}}
 
 Then go to the **Tools** menu and you will see a couple of options. Let's run through the important ones that you have to check:
 
-- **LORAWAN_CLASS** – For now, we will use Class A (for more info check [here](https://www.thethingsnetwork.org/docs/lorawan/classes/)).
-- **LORAWAN_DEVEUI** – Select `Generate by ChipID`, which generates based on the ASR650x's unique Chip ID.
-- **LORAWAN_NETMODE** – Make sure it has `OTAA` selected.
+- **LORAWAN_CLASS** – For this guide we will use Class A (for more info check [here](https://www.thethingsnetwork.org/docs/lorawan/classes/)).
+- **LORAWAN_DEVEUI** – Select **Generate by ChipID**, which generates a DevEUI based on the ASR650x's unique Chip ID.
+- **LORAWAN_NETMODE** – Make sure it has **OTAA** selected.
 - **LORAWAN_REGION** – Select the region your device is operating in.
 
 If you want to know what the other options do check [here](https://docs.heltec.cn/en/node/asr650x/htcc_ab01/quick_start.html#correctly-config-the-tools-menu).
 
 Then go to **File -> Examples** and you should see a separate section for the Heltec board. Select **LoRa -> LoRaWAN -> LoRaWan**.
 
-Once the file is open, upload it and when it is done uploading, open the Serial Monitor. **Set the baud rate to 115200**. If no information shows up you might need to press the **Reset** button on the Heltec board itself.
+Once the file is open, upload it and when it is done uploading, open the Serial Monitor. Set the baud rate to `115200`. If no information shows up you might need to press the **Reset** button on the Heltec board itself.
 
 {{< figure src="ab01-serial.png" alt="">}}
 
-From the information that shows up, copy the **DevEui**. We will need this later.
-
-Now that we have the DevEui we can onboard it to {{% tts %}}.
+From the information that shows up, copy the **DevEui**, as you will need it in the next step.
 
 ## Onboarding to {{% tts %}}
 
@@ -90,11 +88,13 @@ After configuring your device, select the **Register end device** button.
 
 {{< figure src="manual-register.png" alt="Settings for manual registration" >}}
 
-## Configuring the code
 
-Our device is registered with {{% tts %}}, but it still needs the correct info in order to connect.
+## Configuring the Device
 
-Go back to your code, and at the top you should see these lines:
+The device is now registered with {{% tts %}}, but it still needs lacks the AppKey info in order to connect.  
+
+Go back to your code, and at the top you should see these lines:  
+
 ```cpp
 /* OTAA para*/
 uint8_t devEui[] = { 0x22, 0x32, 0x33, 0x00, 0x00, 0x88, 0x88, 0x02 };
@@ -104,7 +104,7 @@ uint8_t appKey[] = { 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88,
 
 In {{% tts %}}, under **Activation Information**, click the **eye** icon next to **AppKey** and then selecting the **< >** icon. Then copy the AppKey by clicking the **Copy to clipboard** button.
 
-Then replace the string between the brackets with the AppKey you just copied.
+Replace the AppKey string between the brackets in your code with the AppKey copied from {{% tts %}}.  
 
 Now upload the code again to your device.
 
