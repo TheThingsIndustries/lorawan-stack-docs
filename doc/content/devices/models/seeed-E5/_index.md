@@ -6,23 +6,23 @@ weight:
 
 {{< figure src="wio-e5-mini.png" alt="Image of the Wio-E5 mini" class="float plain" width="80%">}}
 
-The [Seeed Studio Wio-E5 module](https://www.seeedstudio.com/LoRa-LoRaWAN-Modules-c-1950.html) is embedded with the ST system-level package chip STM32WLE5JC, ARM Cortex M4 ultra-low power MCU, and Long Range SX126X. It supports EU868, US915 and more, making it suitable for wireless sensor networks and other IoT devices that require battery power, low power consumption and long range.
+The [Seeed Studio Wio-E5 module](https://www.seeedstudio.com/LoRa-LoRaWAN-Modules-c-1950.html) is embedded with the ST system-level package chip STM32WLE5JC, ARM Cortex M4 ultra-low power MCU, and long range SX126X transceiver. It supports EU868, US915 and more frequency bands. It is suitable for wireless sensor networks and other battery-powered IoT devices that require low power consumption and long transmission range.
 
 <!--more-->
 
-We will be using the Wio-E5 mini for this guide, but the process should be the same for the other Wio-E5 boards.
+In this guide, the Wio-E5 mini board is used, but the onboarding process should be the same for other Wio-E5 boards as well.
 
 ## AT Commands
 
 First connect the Wio-E5 mini to your computer via a Type-C cable.
 
-Then open a serial tool (For example the [Arduino IDE's](https://www.arduino.cc/en/software) Serial Monitor), select the correct COM port and set the baudrate to `9600`.
+Then open a serial tool (for example the [Arduino IDE's](https://www.arduino.cc/en/software) Serial Monitor), select the correct COM port and set the baud rate to `9600`.
 
 In the serial monitor's message field, type `AT` and press enter. You should see a response back.
 
 {{< figure src="AT.png" alt="Arduino's serial console with the AT command responding." >}}
 
-Now we have to create a device on {{% tts %}} first before continuing.
+Next step is to register the device on {{% tts %}}.
 
 ## Onboarding to {{% tts %}}
 
@@ -46,7 +46,7 @@ If you prefer onboarding **manually**, in the **End device type** section, under
 
 {{< figure src="manual.png" width="70%" alt="Settings for manual registration" >}}
 
-Now when you scroll down, you will see the **Provisioning Information**. We will need to get this information from the device. To do so go back to your serial monitor and send the following AT commands on the serial monitor:
+Now when you scroll down, you will see the **Provisioning Information** section where you need to enter some values; these values can be obtained from the device itself. To obtain this info from the device, go back to your serial monitor and send the following AT commands on the serial monitor:
 
 - `AT+ID=DevEui` to get your Device EUI
 - `AT+ID=AppEui` to get your App EUI
@@ -62,7 +62,7 @@ Rx: +ID: AppEui, 80:00:00:00:00:00:00:07
 
 Now return to {{% tts %}} and enter the details for your device.
 
-Finally we need to set the `AppKey`. To do this, click **Generate** next to the Appkey in {{% tts %}} and **copy** it. Then run the following AT command:
+Finally, you need to set the `AppKey`. To do this, you can generate an AppKey in {{% tts %}} and program it into the device. Click **Generate** next to the **AppKey** field in {{% tts %}} and **copy** it. Then run the following AT command to program this key into the device:
 
 - `AT+KEY=APPKEY,"generated-appkey"` to set the App Key
 
@@ -114,4 +114,4 @@ Rx: +JOIN: Start
 
 If you see `+JOIN: Network joined` on your serial console, that means your device has successfully connected to {{% tts %}}!
 
-This only explains the basics for connecting to . If you wish to know what other commands are available, check [here](https://files.seeedstudio.com/products/317990687/res/LoRa-E5%20AT%20Command%20Specification_V1.0%20.pdf). And if you wish to start developing with the Wio-E5, check the [Seeed Studio Wiki](https://wiki.seeedstudio.com/LoRa_E5_mini/#develop-with-stm32cube-mcu-package).
+This only explains the basics for connecting to {{% tts %}}. If you wish to know what other commands are available, check [here](https://files.seeedstudio.com/products/317990687/res/LoRa-E5%20AT%20Command%20Specification_V1.0%20.pdf), and if you wish to start developing with the Wio-E5, check the [Seeed Studio Wiki](https://wiki.seeedstudio.com/LoRa_E5_mini/#develop-with-stm32cube-mcu-package).
