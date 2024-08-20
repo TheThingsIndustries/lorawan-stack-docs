@@ -18,13 +18,13 @@ All of the webhook templates must contain the following fields which describe th
 - `logo-url`: The URL of the logo of the service.
 - `info-url`: The URL of the main page of the service.
 - `documentation-url`: The URL of the documentation of the service.
-- `stack-documentation-url`: The URL of the documentation of the service on `thethingsindustries.com/docs`.
+- `tts-documentation-url`: The URL of the documentation of the service on `thethingsindustries.com/docs`.
 
-Here are the differences between `info-url`, `documentation-url` and `stack-documentation-url`:
+Here are the differences between `info-url`, `documentation-url` and `tts-documentation-url`:
 
 - `info-url` should lead to the home page of the service (i.e. `https://www.thethingsnetwork.org/`).
 - `documentation-url` should be used for the location of the documentation on the service's page (i.e. `https://www.thethingsnetwork.org/docs/applications/example/`).
-- `stack-documentation-url` meanwhile should be used for the guides in our documentation (see [cloud-integrations]({{< relref "../../cloud-integrations/_index.md" >}})).
+- `tts-documentation-url` meanwhile should be used for the guides in our documentation (see [cloud-integrations]({{< relref "../../cloud-integrations/_index.md" >}})).
 
 ## Template Fields
 
