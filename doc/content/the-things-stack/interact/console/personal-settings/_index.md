@@ -33,7 +33,7 @@ Click **Save changes** to save any modified info.
 
 ### Change password
 
-To set up a new password for your account, click the **Expand** button next to the **Change password** section.
+To set up a new password for your account, click **Password** in the left-hand sidebar.
 
 Type in your **Current password**, then create a **New password** and confirm it. We highly recommend you create a strong password to enhance your profile's security.
 
@@ -51,7 +51,7 @@ In this section, we explain how to create personal API keys that grant certain r
 
 {{< tabs/tab "Console" >}}
 
-To create a personal API key, click on your avatar in the upper right corner in the Console and select **Personal API keys**.
+To create a personal API key, click on **User settings** in the left-hand sidebar and select **API keys**.
 
 Enter a **Name** for your key, set the **Expiry date**, select rights that you want to grant and then press **Create API Key**.
 
