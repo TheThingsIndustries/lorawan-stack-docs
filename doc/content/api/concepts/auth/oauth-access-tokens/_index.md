@@ -22,7 +22,9 @@ To register OAuth client you can use {{% tts %}} [Console]({{< ref "/the-things-
 
 {{< tabs/tab "Console" >}}
 
-To register an OAuth client using the Console, first navigate to `https://<HOSTNAME>/oauth` in your web browser to log into your Account App. When logged in, switch to the **OAuth Clients** tab on the top menu and click the **Add OAuth Client** button.
+To register an OAuth client using the Console, click the **User settings** dropdown in the left-hand sidebar and select **OAuth clients**. Then click **+ Add OAuth client** in the top-right.
+
+{{< figure src="oauth-client.png" alt="OAuth client" >}}
 
 Enter the **OAuth Client ID**, **Name** and **Description** for your OAuth client. You can also add the **Redirect URLs** against which authorization requests will be checked, and **Logout redirect URLs** agains which client initiated requests are checked.
 
