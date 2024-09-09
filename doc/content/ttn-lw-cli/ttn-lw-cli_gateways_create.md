@@ -63,6 +63,7 @@ ttn-lw-cli gateways create [gateway-id] [flags]
       --version-ids.firmware-version string                                  
       --version-ids.hardware-version string                                  
       --version-ids.model-id string                                          
+      --version-ids.runtime-version string                                   
 ```
 
 ### Options inherited from parent commands
