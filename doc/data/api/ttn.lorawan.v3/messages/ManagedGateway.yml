@@ -1,0 +1,48 @@
+name: ManagedGateway
+fields:
+- name: ids
+  message:
+    name: GatewayIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: version_ids
+  message:
+    name: GatewayVersionIdentifiers
+  default: {}
+- name: cellular_imei
+  type: string
+  rules:
+    pattern: ^[0-9]{15}$
+    ignore_empty: true
+  default: ""
+- name: cellular_imsi
+  type: string
+  rules:
+    pattern: ^[0-9]{15}$
+    ignore_empty: true
+  default: ""
+- name: wifi_mac_address
+  type: bytes
+  rules:
+    len: 6
+    ignore_empty: true
+  default: ""
+- name: ethernet_mac_address
+  type: bytes
+  rules:
+    len: 6
+    ignore_empty: true
+  default: ""
+- name: wifi_profile_id
+  type: string
+  rules:
+    uuid: true
+    ignore_empty: true
+  default: ""
+- name: ethernet_profile_id
+  type: string
+  rules:
+    uuid: true
+    ignore_empty: true
+  default: ""
