@@ -2,11 +2,14 @@
 title: "Template Changelog"
 aliases: [/getting-started/aws/ecs/changelog]
 ---
+
 # Upgrading
 
 All meaningful changes to templates are documented in this file.
 
 ## Unreleased
+
+## 3.32.0
 
 - Add support for managed gateways via The Things Gateway Controller. The Gateway Configuration Server and Device Claiming Server use TLS client authentication.
   - When using AWS Private CA (`CertificateAuthorityARN` in `4-2a-configuration`), the client certificate can be issued automatically.
