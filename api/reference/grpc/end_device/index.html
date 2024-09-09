@@ -2746,6 +2746,7 @@ Check the response for devices that could not be unclaimed.
           <p>The frame payload of the downlink message.
 The payload is encrypted if the skip_payload_crypto field of the EndDevice
 is true.</p>
+          <p><code>max_len</code>: <code>255</code></p>
       </td>
     </tr>
     
@@ -13407,6 +13408,7 @@ Use either EndDeviceVersionIdentifiers or EndDeviceProfileIdentifiers.</p>
   "order": "",
   "limit": 0,
   "page": 0,
+  "filters": [],
 }</code></pre>
 </details>
 
@@ -13588,6 +13590,113 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Page number for pagination. 0 is interpreted as 1.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>filters</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:ListEndDevicesRequest.Filter">
+  
+  <code>
+    
+    ListEndDevicesRequest.Filter
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ListEndDevicesRequest.Filter">Message <code>ListEndDevicesRequest.Filter</code></h3>
+<p>Filter end devices by fields.</p>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>updated_since</code> can be set.</li>
+</ul>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "updated_since": "0001-01-01T00:00:00Z",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>updated_since</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>lt_now</code></p>
       </td>
     </tr>
     

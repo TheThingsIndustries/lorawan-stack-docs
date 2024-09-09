@@ -265,6 +265,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <h1 id="upgrading">Upgrading</h1>
 <p>All meaningful changes to templates are documented in this file.</p>
 <h2 id="unreleased">Unreleased</h2>
+<h2 id="3320">3.32.0</h2>
+<ul>
+<li>Add support for managed gateways via The Things Gateway Controller. The Gateway Configuration Server and Device Claiming Server use TLS client authentication.
+<ul>
+<li>When using AWS Private CA (<code>CertificateAuthorityARN</code> in <code>4-2a-configuration</code>), the client certificate can be issued automatically.</li>
+<li>To specify a custom TLS client certificate, enable <code>EnableTTGCCustomCertificate</code> in <code>4-1-secrets</code> and specify the certificate and key according to the format in the description.</li>
+</ul>
+</li>
+<li>Add support for gateways using The Things Industries Gateway Protocol. This requires TLS mutual authentication and TLS termination by the proxy. Make sure that <code>SupportProxyTLS</code> is enabled. This adds a new public listener (port <code>8889</code>) that is mapped to the proxy that forwards traffic to the Gateway Server (port <code>1889</code>).</li>
+<li>Fixed the rate-limiting profile for the <code>ApplicationUpStorage</code> service in the Application Server.</li>
+<li>Add default values for the default and maximum page sizes in the <code>ApplicationUpStorage</code> service in the Application Server.</li>
+</ul>
 <h2 id="3311">3.31.1</h2>
 <h3 id="proxy">Proxy</h3>
 <ul>
@@ -1678,6 +1690,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
       
       <li><a href='#unreleased'>Unreleased</a></li>
+    
+      
+      <li><a href='#3320'>3.32.0</a></li>
     
       
       <li><a href='#3311'>3.31.1</a></li>

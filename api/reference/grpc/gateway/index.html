@@ -1391,6 +1391,8 @@ The caller is required to have all assigned or/and removed rights.
       </th>
       <td>
         AuthorizeGateway allows a gateway to be claimed.
+DEPRECATED: Authorizing gateways for claiming is no longer supported and will be removed in a future version of The
+Things Stack.
       </td>
     </tr>
     <tr>
@@ -1541,6 +1543,8 @@ The caller is required to have all assigned or/and removed rights.
       </th>
       <td>
         UnauthorizeGateway prevents a gateway from being claimed.
+DEPRECATED: Unauthorizing (locking) gateways for claiming is no longer supported and will be removed in a future
+version of The Things Stack.
       </td>
     </tr>
     <tr>
@@ -2298,7 +2302,8 @@ If this is not set, the target ID for the target gateway will be set to <code>&l
         Description
       </th>
       <td>
-          <p>Parameters to set CUPS redirection for the gateway.</p>
+          <p>Parameters to set CUPS redirection for the gateway.
+DEPRECATED: This field is deprecated and will be removed in a future version of The Things Stack.</p>
       </td>
     </tr>
     
@@ -3124,6 +3129,7 @@ DEPRECATED: Use target_frequency_plan_ids instead.</p>
 
 
 <h3 id="message:CUPSRedirection">Message <code>CUPSRedirection</code></h3>
+<p>DEPRECATED: This message is deprecated and will be removed in a future version of The Things Stack.</p>
 <b>Restrictions:</b>
 <ul>
   <li>Only one of <code>client_tls</code>, <code>auth_token</code> can be set.</li>
@@ -5416,6 +5422,7 @@ Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECR
   "model_id": "",
   "hardware_version": "",
   "firmware_version": "",
+  "runtime_version": "",
 }</code></pre>
 </details>
 
@@ -5531,6 +5538,39 @@ Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECR
       </th>
       <td>
         <code>firmware_version</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>32</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>runtime_version</code>
       </td>
     </tr>
     <tr>
@@ -6778,6 +6818,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   "limit": 0,
   "page": 0,
   "deleted": false,
+  "filters": [],
 }</code></pre>
 </details>
 
@@ -7002,6 +7043,113 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Only return recently deleted gateways.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>filters</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:ListGatewaysRequest.Filter">
+  
+  <code>
+    
+    ListGatewaysRequest.Filter
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ListGatewaysRequest.Filter">Message <code>ListGatewaysRequest.Filter</code></h3>
+<p>Filter gateways by fields.</p>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>updated_since</code> can be set.</li>
+</ul>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "updated_since": "0001-01-01T00:00:00Z",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>updated_since</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>lt_now</code></p>
       </td>
     </tr>
     
