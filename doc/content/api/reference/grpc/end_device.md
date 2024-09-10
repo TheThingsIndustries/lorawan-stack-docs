@@ -355,6 +355,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="ListEndDevicesRequest" >}}
 
+{{< proto/message message="ListEndDevicesRequest.Filter" >}}
+
 {{< proto/message message="Location" >}}
 
 {{< proto/message message="LoRaAllianceProfileIdentifiers" >}}

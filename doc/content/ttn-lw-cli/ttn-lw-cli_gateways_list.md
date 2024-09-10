@@ -39,6 +39,7 @@ ttn-lw-cli gateways list [flags]
       --downlink-path-constraint                                      select the downlink_path_constraint field
       --enforce-duty-cycle                                            select the enforce_duty_cycle field
       --field-mask strings                                            
+      --filter.updated-since updated_at                               filter the updated_at field by this timestamp (YYYY-MM-DDTHH:MM:SSZ)
       --frequency-plan-id                                             select the frequency_plan_id field
       --frequency-plan-ids                                            select the frequency_plan_ids field
       --gateway-server-address                                        select the gateway_server_address field
@@ -75,6 +76,7 @@ ttn-lw-cli gateways list [flags]
       --version-ids.firmware-version                                  select the version_ids.firmware_version field
       --version-ids.hardware-version                                  select the version_ids.hardware_version field
       --version-ids.model-id                                          select the version_ids.model_id field
+      --version-ids.runtime-version                                   select the version_ids.runtime_version field
 ```
 
 ### Options inherited from parent commands

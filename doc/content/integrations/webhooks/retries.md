@@ -21,11 +21,9 @@ Webhook queuing allows individual HTTP requests to be retried at later times, wh
 
 The webhook retries feature can be enabled on both new and existing webhooks via the Console, by ticking the **Retries** checkbox in the webhook settings:
 
-{{< figure src="../webhook-queue-before.png" alt="Enabling webhook retries" >}}
-
 After the checkbox has been ticked, and the webhook has been saved, future requests will be enqueued and retried on failure.
 
-{{< figure src="../webhook-queue-after.png" alt="Webhook queueing enabled" >}}
+{{< figure src="../webhook-retries.png" alt="Webhook queueing enabled" >}}
 
 ## What counts as a failed try ?
 

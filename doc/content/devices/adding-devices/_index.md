@@ -21,7 +21,7 @@ This guide assumes that your device is in the [LoRaWAN® Device Repository](http
 
 To create a device, first open the application you wish to add the device in. Go to **End devices** in the left menu and click on **+Register end device** to reach the end device registration page.
 
-{{< figure src="application-overview.png" alt="Application overview" >}}
+{{< figure src="application-end-devices.png" alt="Application overview" >}}
 
 You will be presented with options to easily onboard your device using its QR code (if you have it), and to register your end device from the [LoRaWAN® Device Repository](https://github.com/TheThingsNetwork/lorawan-devices/) or manually.
 
@@ -83,7 +83,7 @@ For LoRaWAN version 1.0.x devices, you will see an **AppKey** field, and for LoR
 
 {{< /tabs/container >}}
 
-Finally, the console pre-fills **End device ID** in the format `eui-{Device EUI}` by default. You can edit this field and give the device a unique identifier. See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
+Finally, enter an **End device ID**. Advisable is doing it in the format `eui-{Device EUI}`. You can edit this field and give the device a unique identifier. See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
 
 Now verify that all the fields are filled and click the **Register end device** button to create the end device.
 

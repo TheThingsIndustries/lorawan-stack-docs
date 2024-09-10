@@ -14,10 +14,6 @@ List of Gateway Server APIs.
 
 {{< proto/method service="Gs" method="BatchGetGatewayConnectionStats" >}}
 
-## The `GatewayConfigurator` service
-
-{{< proto/method service="GatewayConfigurator" method="PullConfiguration" >}}
-
 ## The `GatewayConfigurationService` service
 
 {{< proto/method service="GatewayConfigurationService" method="GetGatewayConfiguration" >}}

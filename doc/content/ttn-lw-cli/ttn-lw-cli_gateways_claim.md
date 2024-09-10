@@ -39,9 +39,8 @@ ttn-lw-cli gateways claim [gateway-eui] [flags]
       --gateway-id string                      
   -h, --help                                   help for claim
       --organization-id string                 
-      --target-cups-trust-local-file string    (optional) Target CUPS trust in PEM format (local file name)
-      --target-cups-uri string                 
       --target-frequency-plan-id string        
+      --target-frequency-plan-ids string       
       --target-gateway-id string               gateway ID for the claimed gateway
       --target-gateway-server-address string   
       --user-id string                         
@@ -87,7 +86,5 @@ ttn-lw-cli gateways claim [gateway-eui] [flags]
 ### SEE ALSO
 
 * [ttn-lw-cli gateways]({{< relref "ttn-lw-cli_gateways" >}})	 - Gateway commands
-* [ttn-lw-cli gateways claim authorize]({{< relref "ttn-lw-cli_gateways_claim_authorize" >}})	 - Authorize a gateway for claiming (EXPERIMENTAL)
 * [ttn-lw-cli gateways claim info]({{< relref "ttn-lw-cli_gateways_claim_info" >}})	 - Check if claiming is supported for the EUI (EXPERIMENTAL)
-* [ttn-lw-cli gateways claim unauthorize]({{< relref "ttn-lw-cli_gateways_claim_unauthorize" >}})	 - Unauthorize a gateway for claiming (EXPERIMENTAL)
 

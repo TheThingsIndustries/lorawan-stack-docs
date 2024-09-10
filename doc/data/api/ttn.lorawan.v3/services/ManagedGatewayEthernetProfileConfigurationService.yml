@@ -1,0 +1,68 @@
+name: ManagedGatewayEthernetProfileConfigurationService
+methods:
+  Create:
+    name: Create
+    input:
+      name: CreateManagedGatewayEthernetProfileRequest
+    output:
+      name: ManagedGatewayEthernetProfile
+    http:
+    - method: ""
+      path: ""
+    - method: POST
+      path: /gcs/gateways/profiles/ethernet/organizations/{collaborator.organization_ids.organization_id}
+    - method: POST
+      path: /gcs/gateways/profiles/ethernet/users/{collaborator.user_ids.user_id}
+  Update:
+    name: Update
+    input:
+      name: UpdateManagedGatewayEthernetProfileRequest
+    output:
+      name: ManagedGatewayEthernetProfile
+    http:
+    - method: ""
+      path: ""
+    - method: PUT
+      path: /gcs/gateways/profiles/ethernet/organizations/{collaborator.organization_ids.organization_id}/{profile.profile_id}
+    - method: PUT
+      path: /gcs/gateways/profiles/ethernet/users/{collaborator.user_ids.user_id}/{profile.profile_id}
+  List:
+    name: List
+    input:
+      name: ListManagedGatewayEthernetProfilesRequest
+    output:
+      name: ManagedGatewayEthernetProfiles
+    http:
+    - method: ""
+      path: ""
+    - method: GET
+      path: /gcs/gateways/profiles/ethernet/organizations/{collaborator.organization_ids.organization_id}
+    - method: GET
+      path: /gcs/gateways/profiles/ethernet/users/{collaborator.user_ids.user_id}
+  Get:
+    name: Get
+    input:
+      name: GetManagedGatewayEthernetProfileRequest
+    output:
+      name: ManagedGatewayEthernetProfile
+    http:
+    - method: ""
+      path: ""
+    - method: GET
+      path: /gcs/gateways/profiles/ethernet/organizations/{collaborator.organization_ids.organization_id}/{profile_id}
+    - method: GET
+      path: /gcs/gateways/profiles/ethernet/users/{collaborator.user_ids.user_id}/{profile_id}
+  Delete:
+    name: Delete
+    input:
+      name: DeleteManagedGatewayEthernetProfileRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: ""
+      path: ""
+    - method: DELETE
+      path: /gcs/gateways/profiles/ethernet/organizations/{collaborator.organization_ids.organization_id}/{profile_id}
+    - method: DELETE
+      path: /gcs/gateways/profiles/ethernet/users/{collaborator.user_ids.user_id}/{profile_id}
