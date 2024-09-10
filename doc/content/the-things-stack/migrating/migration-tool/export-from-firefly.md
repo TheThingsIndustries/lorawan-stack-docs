@@ -11,6 +11,7 @@ This section contains instructions on how to configure migration tool and use it
 
 ### Before you begin
 
+- Using the actual JoinEUI of the end devices is mandatory when registering them on {{% tts %}}. Since Firefly does not store the JoinEUI of the device, users need to obtain this information separately, such as from the device manufacturer.
 - The export process will halt if any error occurs.
 - Use the `--invalidate-keys` option to invalidate the root and/or session keys of the devices on the Firefly server. This is necessary to prevent both networks from communicating with the same device. The last byte of the keys will be incremented by 0x01. This enables an easy rollback if necessary. Setting this flag to false (default) would result in a "dry run", where the devices are exported but they will still be able to communicate with the Firefly server.
 
@@ -20,13 +21,13 @@ Configure with environment variables, or command-line arguments.
 
 See `ttn-lw-migrate firefly {device|application} --help` for more details.
 
-The following example shows how to set options via environment variables.
+The following example shows how to set options via environment variables. These are example values. Please use actual ones based on your case.
 
 ```bash
 $ export FIREFLY_HOST=example.com       # Host of the Firefly API
 $ export FIREFLY_API_KEY=abcdefgh       # Firefly API Key
 $ export APP_ID=my-test-app             # Application ID for the exported devices
-$ export JOIN_EUI=1111111111111111      # JoinEUI for the exported devices
+$ export JOIN_EUI=1111111111111111      # JoinEUI for the exported devices.
 $ export FREQUENCY_PLAN_ID=EU_863_870   # Frequency Plan ID for the exported devices
 $ export MAC_VERSION=1.0.2b             # LoRaWAN MAC version for the exported devices
 ```
@@ -59,6 +60,8 @@ In order to export a large number of devices, create a file named `device_euis.t
 FF11111111111134
 ABCD111111111100
 ```
+
+Please note that all these devices should have the same JoinEUI.
 
 And then export with:
 

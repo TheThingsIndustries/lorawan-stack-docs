@@ -10,7 +10,8 @@ The webhook retries feature allows webhooks to be enqueued and be retried multip
 
 <!--more-->
 
-{{< note  "The webhook retries feature in The Things Stack is currently in beta. Please contact support@thethingsindustries.com to evaluate this feature on your {{% tts %}} Cloud tenant." />}}
+A [{{% tts %}} Cloud Plus subscription](https://www.thethingsindustries.com/stack/plans/) is required to use this feature.
+If you would like to evaluate this feature on your {{% tts %}} Cloud tenant without a {{% tts %}} Cloud Plus subscription, please contact `support@thethingsindustries.com`.
 
 By default, webhook HTTP requests are tried at most once for each application uplink. This means that if the endpoint is unavailable temporarily, the HTTP requests done in this period are lost, and so is the associated traffic.
 
@@ -20,11 +21,9 @@ Webhook queuing allows individual HTTP requests to be retried at later times, wh
 
 The webhook retries feature can be enabled on both new and existing webhooks via the Console, by ticking the **Retries** checkbox in the webhook settings:
 
-{{< figure src="../webhook-queue-before.png" alt="Enabling webhook retries" >}}
-
 After the checkbox has been ticked, and the webhook has been saved, future requests will be enqueued and retried on failure.
 
-{{< figure src="../webhook-queue-after.png" alt="Webhook queueing enabled" >}}
+{{< figure src="../webhook-retries.png" alt="Webhook queueing enabled" >}}
 
 ## What counts as a failed try ?
 

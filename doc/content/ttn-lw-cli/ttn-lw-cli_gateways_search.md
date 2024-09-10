@@ -79,6 +79,7 @@ ttn-lw-cli gateways search [flags]
       --version-ids.firmware-version                                  select the version_ids.firmware_version field
       --version-ids.hardware-version                                  select the version_ids.hardware_version field
       --version-ids.model-id                                          select the version_ids.model_id field
+      --version-ids.runtime-version                                   select the version_ids.runtime_version field
 ```
 
 ### Options inherited from parent commands

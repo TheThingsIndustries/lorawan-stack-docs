@@ -222,9 +222,9 @@ curl -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
 
 {{< tabs/tab "Console" >}}
 
-Once you have added your gateway to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**.
+Once you have added your gateway to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Location** in the left-hand menu.
 
-If you do not mind your gateway's location to be publicly displayed, check the **Publish location** box.
+If you do not mind your gateway's location to be publicly displayed, check the **Share location within network** box.
 
 The gateway location can be manually set by entering the **Latitude**, **Longitude** and **Altitude** values.
 
