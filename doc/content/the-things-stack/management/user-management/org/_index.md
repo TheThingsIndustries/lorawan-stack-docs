@@ -24,7 +24,7 @@ To manage organizations, click the **Organizations** tab in the top menu.
 
 {{< figure src="orgs.png" alt="Organizations" >}}
 
-To add an organization, click **Add organization**.
+To add an organization, click **Create organization**.
 
 {{< figure src="add-org.png" alt="Add organization" >}}
 
@@ -34,7 +34,9 @@ Use the left hand menu in your organization's settings to add or remove collabor
 
 ### Create Organization API Key
 
-When a user is a member of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity. To grant rights to your organization, navigate to **API Keys** on the left hand menu of your organization's settings and select **Add API Key**.
+When a user is a member of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity. To grant rights to your organization, navigate to **API Keys** on the top hand menu of your organization's settings and select **Add API Key**.
+
+{{< figure src="organization-api-keys.png" alt="Application API Key" >}}
 
 Enter a **Name** for your key, set the **Expiry date**, select rights that you want to grant and then press **Create API Key**.
 

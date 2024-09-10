@@ -2,11 +2,31 @@
 title: "Template Changelog"
 aliases: [/getting-started/aws/ecs/changelog]
 ---
+
 # Upgrading
 
 All meaningful changes to templates are documented in this file.
 
 ## Unreleased
+
+## 3.32.0
+
+- Add support for managed gateways via The Things Gateway Controller. The Gateway Configuration Server and Device Claiming Server use TLS client authentication.
+  - When using AWS Private CA (`CertificateAuthorityARN` in `4-2a-configuration`), the client certificate can be issued automatically.
+  - To specify a custom TLS client certificate, enable `EnableTTGCCustomCertificate` in `4-1-secrets` and specify the certificate and key according to the format in the description.
+- Add support for gateways using The Things Industries Gateway Protocol. This requires TLS mutual authentication and TLS termination by the proxy. Make sure that `SupportProxyTLS` is enabled. This adds a new public listener (port `8889`) that is mapped to the proxy that forwards traffic to the Gateway Server (port `1889`).
+- Fixed the rate-limiting profile for the `ApplicationUpStorage` service in the Application Server.
+- Add default values for the default and maximum page sizes in the `ApplicationUpStorage` service in the Application Server.
+
+## 3.31.1
+
+### Proxy
+
+- Add `TenantAccess` grpc service and routes.
+
+## 3.31.0
+
+- Updated ECS AMIs to the latest versions.
 
 ## 3.30.2
 

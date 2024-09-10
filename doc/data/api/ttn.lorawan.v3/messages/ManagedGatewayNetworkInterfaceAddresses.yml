@@ -1,0 +1,30 @@
+name: ManagedGatewayNetworkInterfaceAddresses
+fields:
+- name: ip_addresses
+  rules:
+    max_items: 2
+  repeated:
+    type: string
+    rules:
+      ip: true
+  default: []
+- name: subnet_mask
+  type: string
+  rules:
+    ipv4: true
+    ignore_empty: true
+  default: ""
+- name: gateway
+  type: string
+  rules:
+    ipv4: true
+    ignore_empty: true
+  default: ""
+- name: dns_servers
+  rules:
+    max_items: 2
+  repeated:
+    type: string
+    rules:
+      ipv4: true
+  default: []

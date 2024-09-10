@@ -1,0 +1,29 @@
+name: ManagedGatewayWiFiBackhaul
+fields:
+- name: network_interface
+  message:
+    name: ManagedGatewayNetworkInterfaceInfo
+  default: {}
+- name: ssid
+  type: string
+  rules:
+    max_len: 32
+  default: ""
+- name: bssid
+  type: bytes
+  rules:
+    len: 6
+  default: ""
+- name: channel
+  type: uint32
+  rules:
+    gte: 1
+  default: 0
+- name: authentication_mode
+  type: string
+  default: ""
+- name: rssi
+  message:
+    package: google.protobuf
+    name: FloatValue
+  default: null

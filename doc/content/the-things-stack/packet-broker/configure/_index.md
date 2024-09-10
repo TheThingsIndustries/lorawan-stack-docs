@@ -39,7 +39,7 @@ Packet Broker can be configured using either the Console or the CLI.
 
 {{< tabs/tab "Console" >}}
 
-To configure Packet Broker, click the **Packet Broker** button in the top right menu.
+To configure Packet Broker, click on **Admin panel** in the left-hand menu and select **Packet Broker**.
 
 {{< figure src="pb-menu.png" alt="Packet Broker Menu Button" >}}
 
