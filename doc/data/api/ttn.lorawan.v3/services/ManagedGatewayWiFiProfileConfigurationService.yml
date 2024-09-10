@@ -1,0 +1,68 @@
+name: ManagedGatewayWiFiProfileConfigurationService
+methods:
+  Create:
+    name: Create
+    input:
+      name: CreateManagedGatewayWiFiProfileRequest
+    output:
+      name: ManagedGatewayWiFiProfile
+    http:
+    - method: ""
+      path: ""
+    - method: POST
+      path: /gcs/gateways/profiles/wifi/organizations/{collaborator.organization_ids.organization_id}
+    - method: POST
+      path: /gcs/gateways/profiles/wifi/users/{collaborator.user_ids.user_id}
+  Update:
+    name: Update
+    input:
+      name: UpdateManagedGatewayWiFiProfileRequest
+    output:
+      name: ManagedGatewayWiFiProfile
+    http:
+    - method: ""
+      path: ""
+    - method: PUT
+      path: /gcs/gateways/profiles/wifi/organizations/{collaborator.organization_ids.organization_id}/{profile.profile_id}
+    - method: PUT
+      path: /gcs/gateways/profiles/wifi/users/{collaborator.user_ids.user_id}/{profile.profile_id}
+  List:
+    name: List
+    input:
+      name: ListManagedGatewayWiFiProfilesRequest
+    output:
+      name: ManagedGatewayWiFiProfiles
+    http:
+    - method: ""
+      path: ""
+    - method: GET
+      path: /gcs/gateways/profiles/wifi/organizations/{collaborator.organization_ids.organization_id}
+    - method: GET
+      path: /gcs/gateways/profiles/wifi/users/{collaborator.user_ids.user_id}
+  Get:
+    name: Get
+    input:
+      name: GetManagedGatewayWiFiProfileRequest
+    output:
+      name: ManagedGatewayWiFiProfile
+    http:
+    - method: ""
+      path: ""
+    - method: GET
+      path: /gcs/gateways/profiles/wifi/organizations/{collaborator.organization_ids.organization_id}/{profile_id}
+    - method: GET
+      path: /gcs/gateways/profiles/wifi/users/{collaborator.user_ids.user_id}/{profile_id}
+  Delete:
+    name: Delete
+    input:
+      name: DeleteManagedGatewayWiFiProfileRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: ""
+      path: ""
+    - method: DELETE
+      path: /gcs/gateways/profiles/wifi/organizations/{collaborator.organization_ids.organization_id}/{profile_id}
+    - method: DELETE
+      path: /gcs/gateways/profiles/wifi/users/{collaborator.user_ids.user_id}/{profile_id}
