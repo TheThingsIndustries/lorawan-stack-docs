@@ -1,0 +1,16 @@
+name: ApplicationEventForwardCount
+fields:
+- name: time
+  message:
+    package: google.protobuf
+    name: Timestamp
+  rules:
+    required: true
+  default: "0001-01-01T00:00:00Z"
+- name: count
+  comment: Application Server forwarded events count per event name.
+  map_key:
+    type: string
+  map_value:
+    type: uint64
+  default: {}

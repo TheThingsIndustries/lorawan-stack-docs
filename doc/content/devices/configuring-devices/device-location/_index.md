@@ -19,6 +19,8 @@ The end device location can be manually set in two ways.
 1. Pinning the location on the map widget.
 2. Entering the **Latitude**, **Longitude** and **Altitude** values.
 
+Make sure you select **Save Changes** at the bottom of the page.
+
 {{< figure src="device-location.png" alt="Gateway location" >}}
 
 {{< /tabs/tab >}}

@@ -26,4 +26,4 @@ Choosing the incorrect LoRaWAN version can lead to complex errors. Activation ma
 
 {{< figure src="device-input-method.png" alt="ABP input method" >}}
 
-The above fields are common for both OTAA and ABP devices. Now, based on the device you are trying to add, choose the speficic guide for OTAA or ABP below.
+The above fields are common for both OTAA and ABP devices. Now, based on the device you are trying to add, choose the specific guide for OTAA or ABP below.

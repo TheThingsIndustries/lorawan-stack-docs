@@ -10,4 +10,5 @@ Alerting in {{% tts %}} refers to notifications which are sent when certain cond
 
 <!--more-->
 
-{{< note  "Alerting in The Things Stack is currently in beta. Please contact support@thethingsindustries.com to evaluate this feature on your {{% tts %}} Cloud tenant." />}}
+A [{{% tts %}} Cloud Plus subscription](https://www.thethingsindustries.com/stack/plans/) is required to use this feature.
+If you would like to evaluate this feature on your {{% tts %}} Cloud tenant without a {{% tts %}} Cloud Plus subscription, please contact `support@thethingsindustries.com`.

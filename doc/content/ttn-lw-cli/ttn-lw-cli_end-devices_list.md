@@ -24,6 +24,7 @@ ttn-lw-cli end-devices list [application-id] [flags]
       --claim-authentication-code.valid-to     select the claim_authentication_code.valid_to field
       --claim-authentication-code.value        select the claim_authentication_code.value field
       --description                            select the description field
+      --filter.updated-since updated_at        filter the updated_at field by this timestamp (YYYY-MM-DDTHH:MM:SSZ)
   -h, --help                                   help for list
       --join-server-address                    select the join_server_address field
       --last-seen-at                           select the last_seen_at field

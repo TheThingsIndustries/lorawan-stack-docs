@@ -58,10 +58,9 @@ In this section we explain how to create a _user API key_, which can be used to 
 
 {{< tabs/tab "Console" >}}
 
-In the users dropdown on the right side, select the **Personal API Keys** option and select **+Add API Key**.
+In the **User settings** dropdown on the left-hand sidebar, select the **API Keys** option and select **+ Add API Key**.
 
 {{< figure src="personal-api-keys.png" alt="Personal API key" >}}
-{{< figure src="add-api-key-button.png" alt="Add API key" >}}
 
 Choose an optional expiry date and choose the required rights.
 {{< figure src="application-rights.png" alt="Selectable rights" >}}
