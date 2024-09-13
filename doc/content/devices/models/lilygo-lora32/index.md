@@ -42,6 +42,8 @@ Click the **Select Board** drop down (or go to the **tools** menu) and select th
 
 {{< figure src="lora32-select.png" alt="">}}
 
+Then, in the **tools** menu, make sure to select the correct **Board Revision** (`TTGO LoRa32 V2.1 (1.6.1)` in our case. You can check on the board itself for which version you have) and the **Upload Speed** (`115200` is recommended).
+
 Open the example sketch by going to **File -> Examples -> RadioLib -> LoRaWAN -> LoRaWAN_Starter**
 
 Now we need the credentials to onboard it to {{% tts %}}.
@@ -57,9 +59,7 @@ To onboard **manually**, in the **End device type** section, under **Input Metho
 
 For the Provisioning information, enter the following details:
 - **JoinEUI:** `0000000000000000`
-- **DevEUI:** Generate by clicking the **Generate** button.
-- **AppKey:** Generate by clicking the **Generate** button.
-- **NwkKey:** Generate by clicking the **Generate** button.
+- **DevEUI, AppKey & NwkKey:** Generate by clicking the **Generate** button.
 
 After configuring your device, select the **Register end device** button.
 
