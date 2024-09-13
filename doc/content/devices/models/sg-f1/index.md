@@ -151,3 +151,5 @@ Repeat this for the **AppKey** and **NwkKey** too.
 {{< figure src="f1-activ-info.png" alt="" >}}
 
 Save the `main.py` file, right click the file, then **CtrlR** -> **Upload to Device**.
+
+There should be activity showing up in the console. Now that you know how to connect the device to {{% tts %}}, you can create or add your application to the device!
