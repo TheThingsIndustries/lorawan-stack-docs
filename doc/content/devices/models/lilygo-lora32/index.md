@@ -59,10 +59,11 @@ For the Provisioning information, enter the following details:
 - **JoinEUI:** `0000000000000000`
 - **DevEUI:** Generate by clicking the **Generate** button.
 - **AppKey:** Generate by clicking the **Generate** button.
+- **NwkKey:** Generate by clicking the **Generate** button.
 
 After configuring your device, select the **Register end device** button.
 
-{{< figure src="lora32-manual.png" alt="Settings for manual registration" >}}
+{{< figure src="manual-register.png" alt="Settings for manual registration" >}}
 
 ## Configuring the code
 
@@ -84,7 +85,7 @@ Go back to your Arduino IDE, and go to the `config.h` file. There you should see
 
 In {{% tts %}}, copy the **DevEUI** and replace the `0x---------------` with the devEUI you copied.
 
-For the AppKey and NwkKey, click the **eye** icon and then selecting the **< >** icon. Then copy the **AppKey** by clicking the **Copy to clipboard** button and replace the string in the config file. Repeat this for the **NwkKey**.
+For the AppKey and NwkKey, click the **eye** icon and then selecting the **</>** icon. Then copy the **AppKey** by clicking the **Copy to clipboard** button and replace the string in the config file. Repeat this for the **NwkKey**.
 
 {{< figure src="lora32-activ-info.png" alt="" >}}
 
