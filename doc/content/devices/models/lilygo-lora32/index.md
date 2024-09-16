@@ -54,12 +54,12 @@ The device has to be onboarded **manually**.
 
 To onboard **manually**, in the **End device type** section, under **Input Method**, select the **Enter end device specifics manually** option. The [Manually adding devices]({{< ref "/devices/adding-devices/manual/" >}}) and [Over the Air Activation (OTAA)]({{< ref "/devices/adding-devices/manual/otaa/" >}}) guides explain this procedure in detail. Following details are specific to the LoRa32:
 
-- **LoRaWAN version:** LoRaWAN Specification 1.1.0
-- **Regional parameters version:** RP001 Regional Parameters 1.1 revision A
+- LoRaWAN version: **LoRaWAN Specification 1.1.0**
+- Regional parameters version: **RP001 Regional Parameters 1.1 revision A**
 
 For the Provisioning information, enter the following details:
-- **JoinEUI:** `0000000000000000`
-- **DevEUI, AppKey & NwkKey:** Generate by clicking the **Generate** button.
+- JoinEUI: `0000000000000000`
+- DevEUI, AppKey & NwkKey: **Generate by clicking the Generate button.**
 
 After configuring your device, select the **Register end device** button.
 
@@ -69,7 +69,7 @@ After configuring your device, select the **Register end device** button.
 
 Our device is registered with {{% tts %}}, but it still needs the correct info in order to connect.
 
-Go back to your Arduino IDE, and go to the `config.h` file. There you should see:
+Go back to your Arduino IDE, and go to the `config.h` file. There you should see the following:
 ```
 // the Device EUI & two keys can be generated on the TTN console 
 #ifndef RADIOLIB_LORAWAN_DEV_EUI   // Replace with your Device EUI
@@ -122,6 +122,6 @@ function decodeUplink(input) {
 
 ```
 
-Now go back to the **Live Data** tab to view all messages exchanged between the end device and {{% tts %}}.
+Click **Save changes** at the bottom of the page and go back to the **Live Data** tab to view all messages exchanged between the end device and {{% tts %}}.
 
 {{< figure src="live-data.png" alt="Live data tab" >}}
