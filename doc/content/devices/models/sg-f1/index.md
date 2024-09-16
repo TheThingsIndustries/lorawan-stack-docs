@@ -12,7 +12,7 @@ The [SG Wireless F1 Starter Kit](https://eshop.sgwireless.com/bundle-f1-starter-
 
 In order to program the F1 Starter Kit, we must use Microsoft Visual Studio Code and the CtrlR plugin.
 
-You will need the latest version of Visual Studio Code to proceed, which can be downloaded and installed [here](https://code.visualstudio.com/?wt.mc_id=vscom_downloads).
+You will need the latest version of Visual Studio Code to proceed, which can be downloaded and installed [here](https://code.visualstudio.com).
 
 ## Setting up CtrlR Plugin
 
@@ -22,17 +22,17 @@ Open Visual Studio Code and navigate to **Extensions**. Search for `ctrlr` and c
 
 Connect your F1 Starter Kit to your PC and turn it on (SW200 switch from OFF to ON). 
 
-Head over to the CtrlR tab and click on the **connect device** button (lightning bolt) for the device.
+Head over to the CtrlR tab and click on the **Connect device** button (lightning bolt) for the device.
 
 {{< figure src="connect-device.png" alt="" >}}
 
 {{< note "If your PC doesn’t have the driver installed, an unknown device will be shown in your PC’s Device Manager. Download and install the [Virtual COM Port driver](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers), and the device should show up in your Device Manager." />}}
 
-Then when it's connected, click the folder button.
+Then when it's connected, click the **File explorer** button.
 
 {{< figure src="open-device.png" alt="" >}}
 
-When the Explorer opens, open the folder structure of the device and open `main.py`
+When the Explorer opens, open the folder structure of the device and open `main.py`.
 
 {{< figure src="main-file.png" alt="" >}}
 
@@ -116,14 +116,12 @@ The device has to be onboarded **manually**.
 
 To onboard **manually**, in the **End device type** section, under **Input Method**, select the **Enter end device specifics manually** option. The [Manually adding devices]({{< ref "/devices/adding-devices/manual/" >}}) and [Over the Air Activation (OTAA)]({{< ref "/devices/adding-devices/manual/otaa/" >}}) guides explain this procedure in detail. Following details are specific to the F1:
 
-- **LoRaWAN version:** LoRaWAN Specification 1.1.0
-- **Regional parameters version:** RP001 Regional Parameters 1.1 revision B
+- LoRaWAN version: **LoRaWAN Specification 1.1.0**
+- Regional parameters version: **RP001 Regional Parameters 1.1 revision B**
 
 For the Provisioning information, enter the following details:
-- **JoinEUI:** `0000000000000000`
-- **DevEUI:** Generate by clicking the **Generate** button.
-- **AppKey:** Generate by clicking the **Generate** button.
-- **NwkKey:** Generate by clicking the **Generate** button.
+- JoinEUI: `0000000000000000`
+- DevEUI, AppKey and NwkKey: **Generate by clicking the Generate button.**
 
 After configuring your device, select the **Register end device** button.
 
@@ -152,4 +150,4 @@ Repeat this for the **AppKey** and **NwkKey** too.
 
 Save the `main.py` file, right click the file, then **CtrlR** -> **Upload to Device**.
 
-There should be activity showing up in the console. Now that you know how to connect the device to {{% tts %}}, you can create or add your application to the device!
+There should be activity showing up in the console. Now that you know how to connect the device to {{% tts %}}, you can create or add your application to the device! For more information check the [SG Wireless Docs](https://docs.sgwireless.com/).
