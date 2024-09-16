@@ -41,8 +41,8 @@ To onboard with the **Device Repository**, in the **End device type** section, u
 
 If you prefer onboarding **manually**, in the **End device type** section, under **Input Method**, select the **Enter end device specifics manually** option. The [Manually adding devices]({{< ref "/devices/adding-devices/manual/" >}}) and [Over the Air Activation (OTAA)]({{< ref "/devices/adding-devices/manual/otaa/" >}}) guides explain this procedure in detail. Following details are specific to the Wio-E5 mini:
 
-- LoRaWAN version: `LoRaWAN Specification 1.0.3`
-- Regional parameters version: `RP001 Regional Parameters 1.0.3 revision A`
+- LoRaWAN version: **LoRaWAN Specification 1.0.3**
+- Regional parameters version: **RP001 Regional Parameters 1.0.3 revision A**
 
 {{< figure src="manual.png" width="70%" alt="Settings for manual registration" >}}
 
@@ -77,7 +77,7 @@ Rx: +KEY: APPKEY 2B7E151628AED2A6ABF7158809CF4F3C
 
 After configuring your device, click the **Register end device** button.
 
-Now your device is registered, but we still need to connect it to {{% tts %}}. To do so type the following AT commmands:
+Now the device is configured, but we still need to connect it to {{% tts %}}. To do so type the following AT commands:
 
 ```
 // If you are using US915
