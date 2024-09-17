@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>LILYGO LoRa32 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/models/lilygo-lora32/" />
+  <title>Heltec HTCC-AB01 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/models/heltec-ab01/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="LILYGO LoRa32">
+  <meta itemprop="name" content="Heltec HTCC-AB01">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="LILYGO LoRa32">
+  <meta property="og:title" content="Heltec HTCC-AB01">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/models/lilygo-lora32/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/models/heltec-ab01/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="LILYGO LoRa32" />
+  <meta name="twitter:title" content="Heltec HTCC-AB01" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -135,17 +135,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/models/heltec-ab01/" class="">Heltec HTCC-AB01</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/models/heltec-ab01/" class="is-active">Heltec HTCC-AB01</a>
+    
+    
+
+
+
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/models/lilygo-lora32/" class="is-active">LILYGO LoRa32</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/devices/models/lilygo-lora32/" class="">LILYGO LoRa32</a>
     
   </li>
 
@@ -219,110 +219,111 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">LILYGO LoRa32
+        <h1 class="title is-size-2">Heltec HTCC-AB01
           
         </h1>
         
         <div class="content">
-          <figure class="float plain"><img src="lora32.png" width="80%"/>
+          <figure class="float plain"><img src="ab01.png" width="80%"/>
 </figure>
 
-<p>The <a href="https://www.lilygo.cc/products/lora3">LILYGO LoRa32 V2.1_1.6</a> is a development board with an ESP32 and a Semtech SX1276 transceiver. It features an OLED screen, Micro SD card slot and a JST GH for connecting a Li-Po battery.</p>
-<p>In order to program the board we need to make use of of the <a href="https://github.com/jgromes/RadioLib">RadioLib</a> library. This is a universal Arduino library created for radio modules (such as LoRa).</p>
-<p>We will set up the Arduino IDE first, after which we will use an example code to connect it to The Things Stack.</p>
-<h2 id="installing-libraries">Installing libraries</h2>
+<p>The <a href="https://heltec.org/project/htcc-ab01-v2/">Heltec HTCC-AB01 (V2) </a> is a development board based on the ASR6052, which has an integrated PSoC® 4000 series MCU (ARM® Cortex® M0+ Core) and SX1262 transceiver. It features Arduino compatibility, an ultra low power design and an onboard SH1.25 for lithium batteries or solar panels.</p>
+<p>In this guide, we will set this module up for usage in the Arduino IDE and use an example code to connect it to The Things Stack.</p>
+<h2 id="installing-cubecell-framework">Installing CubeCell Framework</h2>
+<p>In order to use the CubeCell in Arduino, we need to install a framework created by Heltec.</p>
 <p>Download the latest release of the <a href="https://www.arduino.cc/en/Main/Software">Arduino Software (IDE)</a>, <a href="https://www.arduino.cc/en/Guide">install</a> it on your operating system and run it.</p>
-<p>Open Arduino IDE, and click <strong>File -&gt; Preferences -&gt; Settings</strong> and click the button next to <code>Additional Boards Manager URLs</code>.</p>
-<figure><img src="boards-manager-url.png"/>
+<p>Open Arduino IDE, and click <strong>File</strong>-&gt;<strong>Preferences</strong>-&gt;<strong>Settings</strong> and click the button next to <strong>Additional Boards Manager URLs</strong>.</p>
+<figure><img src="boards-manager.png"/>
 </figure>
 
-<p>In a new line, enter: <code>https://espressif.github.io/arduino-esp32/package_esp32_index.json</code> and click <strong>OK</strong>.</p>
-<figure><img src="esp32-url.png"/>
+<p>In a new line, enter <code>https://github.com/HelTecAutomation/CubeCell-Arduino/releases/download/V1.5.0/package_CubeCell_index.json</code> and click <strong>OK</strong>.</p>
+<figure><img src="board-url.png"/>
 </figure>
 
-<p>Click the <strong>second icon in the left-hand menu</strong> or select <strong>Tools -&gt; Board: -&gt; Boards Manager&hellip;</strong>, then search <code>esp32</code> in the search field, select the latest releases and click <strong>install</strong>.</p>
-<figure><img src="esp32-install.png"/>
-</figure>
-
-<p>Then go to the <strong>third icon in the left-hand menu</strong> or select <strong>Sketch -&gt; Include Library -&gt; Manage Libraries&hellip;</strong>, then search <code>radiolib</code> in the search field, select the latest releases and click <strong>install</strong>.</p>
-<figure><img src="radiolib-install.png"/>
+<p>Click the <strong>second icon in the left-hand menu</strong> or select <strong>Tools</strong>-&gt;<strong>Board</strong>-&gt;<strong>Boards Manager</strong>, then search <strong>Heltec</strong> in the search field, select the latest releases and click <strong>Install</strong>.</p>
+<figure><img src="install-board.png"/>
 </figure>
 
 <h2 id="connecting-the-device">Connecting the Device</h2>
-<p>Connect the board to your computer with a micro usb cable.</p>
-<p>Click the <strong>Select Board</strong> drop down (or go to the <strong>tools</strong> menu) and select the right COM port and board:</p>
-<figure><img src="lora32-select.png"/>
+<p>Connect the board to your computer with a high quality USB-C cable.</p>
+<p>Click the <strong>Select Board</strong> drop down (or go to the <strong>Tools</strong> menu) and select the right COM port and board.</p>
+<figure><img src="ab01-select.png"/>
 </figure>
 
-<p>Then, in the <strong>tools</strong> menu, make sure to select the correct <strong>Board Revision</strong> (<code>TTGO LoRa32 V2.1 (1.6.1)</code> in our case. You can check on the board itself for which version you have) and the <strong>Upload Speed</strong> (<code>115200</code> is recommended).</p>
-<p>Open the example sketch by going to <strong>File -&gt; Examples -&gt; RadioLib -&gt; LoRaWAN -&gt; LoRaWAN_Starter</strong></p>
-<p>Now we need the credentials to onboard it to The Things Stack.</p>
-<h2 id="onboarding-to-the-things-stack">Onboarding to The Things Stack</h2>
-<p>The device has to be onboarded <strong>manually</strong>.</p>
-<p>To onboard <strong>manually</strong>, in the <strong>End device type</strong> section, under <strong>Input Method</strong>, select the <strong>Enter end device specifics manually</strong> option. The <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/">Manually adding devices</a> and <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/otaa/">Over the Air Activation (OTAA)</a> guides explain this procedure in detail. Following details are specific to the LoRa32:</p>
+<p>Then go to the <strong>Tools</strong> menu and you will see a couple of options. Let&rsquo;s run through the important ones that you have to check:</p>
 <ul>
-<li>LoRaWAN version: <strong>LoRaWAN Specification 1.1.0</strong></li>
-<li>Regional parameters version: <strong>RP001 Regional Parameters 1.1 revision A</strong></li>
+<li>LORAWAN_CLASS – <strong>Class A</strong> (for more info check <a href="https://www.thethingsnetwork.org/docs/lorawan/classes/">here</a>)</li>
+<li>LORAWAN_DEVEUI – <strong>Generate by ChipID</strong> (which generates a DevEUI based on the ASR650x&rsquo;s unique Chip ID)</li>
+<li>LORAWAN_NETMODE – <strong>OTAA</strong></li>
+<li>LORAWAN_REGION – <strong>Select the region your device is operating in.</strong></li>
 </ul>
+<p>If you want to know what the other options do check <a href="https://docs.heltec.org/en/node/asr650x/asr650x_general_docs/running_sample.html#correctly-config-the-tools-menu">here</a>.</p>
+<p>Then go to <strong>File -&gt; Examples</strong> and you should see a separate section for the Heltec board. Select <strong>LoRa -&gt; LoRaWAN -&gt; LoRaWan</strong>.</p>
+<p>Once the file is open, upload it and when it is done uploading, open the Serial Monitor. Set the baud rate to <code>115200</code>. If no information shows up you might need to press the <strong>Reset</strong> button on the Heltec board itself.</p>
+<figure><img src="ab01-serial.png"/>
+</figure>
+
+<p>From the information that shows up, copy the <strong>DevEui</strong>, as you will need it in the next step.</p>
+<h2 id="onboarding-to-the-things-stack">Onboarding to The Things Stack</h2>
+<p>The device can be onboarded using the <strong>Device Repository</strong> or <strong>manually</strong>.</p>
+<p>The <a href="https://github.com/TheThingsNetwork/lorawan-devices">LoRaWAN® Device repository</a> comprises over 800 end-device profiles, including the AB01, which enables quick and easy registration with The Things Stack.</p>
+<p>In the <strong>End device type</strong> section, under <strong>Input method</strong>, select either the <strong>Select the end device in the LoRaWAN Device Repository</strong> or <strong>Enter end device specifics manually</strong> option. The <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#onboarding-devices-without-qr-codes">Onboarding devices without QR codes</a> section of the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> guide explains this procedure in detail. Following details are AB01-specific:</p>
+<ul>
+<li>End device brand: <strong>HelTec AutoMation</strong></li>
+<li>Model: <strong>HTCC-AB01(Class A OTAA)</strong></li>
+<li>Hardware Ver.: <strong>Unknown ver.</strong></li>
+<li>Firmware Ver.: <code>1.0</code></li>
+</ul>
+<figure><img src="ab01-register.png"
+         alt="Settings for registration through device repository"/>
+</figure>
+
 <p>For the Provisioning information, enter the following details:</p>
 <ul>
 <li>JoinEUI: <code>0000000000000000</code></li>
-<li>DevEUI, AppKey &amp; NwkKey: <strong>Generate by clicking the Generate button.</strong></li>
+<li>DevEUI: <strong>The DevEui that was previously copied from Arduino IDE Serial Monitor.</strong></li>
+<li>AppKey: <strong>Generate by clicking the Generate button.</strong></li>
+</ul>
+<figure><img src="ab01-prov-info.png"
+         alt="Settings for provisioning information"/>
+</figure>
+
+<p>After configuring your device, select the <strong>Register end device</strong> button.</p>
+<p>If you prefer onboarding <strong>manually</strong>, in the <strong>End device type</strong> section, under <strong>Input Method</strong>, select the <strong>Enter end device specifics manually</strong> option. The <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/">Manually adding devices</a> and <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/otaa/">Over the Air Activation (OTAA)</a> guides explain this procedure in detail. Following details are specific to the AB01:</p>
+<ul>
+<li>LoRaWAN version: <strong>LoRaWAN Specification 1.0.2</strong></li>
+<li>Regional parameters version: <strong>RP001 Regional Parameters 1.0.2 revision B</strong></li>
 </ul>
 <p>After configuring your device, select the <strong>Register end device</strong> button.</p>
 <figure><img src="manual-register.png"
          alt="Settings for manual registration"/>
 </figure>
 
-<h2 id="configuring-the-code">Configuring the code</h2>
-<p>Our device is registered with The Things Stack, but it still needs the correct info in order to connect.</p>
-<p>Go back to your Arduino IDE, and go to the <code>config.h</code> file. There you should see the following:</p>
-<pre tabindex="0"><code>// the Device EUI &amp; two keys can be generated on the TTN console 
-#ifndef RADIOLIB_LORAWAN_DEV_EUI   // Replace with your Device EUI
-#define RADIOLIB_LORAWAN_DEV_EUI   0x---------------
-#endif
-#ifndef RADIOLIB_LORAWAN_APP_KEY   // Replace with your App Key 
-#define RADIOLIB_LORAWAN_APP_KEY   0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x-- 
-#endif
-#ifndef RADIOLIB_LORAWAN_NWK_KEY   // Put your Nwk Key here
-#define RADIOLIB_LORAWAN_NWK_KEY   0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x--, 0x-- 
-#endif
-</code></pre><p>In The Things Stack, copy the <strong>DevEUI</strong> and replace the <code>0x---------------</code> with the devEUI you copied.</p>
-<p>For the AppKey and NwkKey, click the <strong>eye</strong> icon and then selecting the <strong>&lt;/&gt;</strong> icon. Then copy the <strong>AppKey</strong> by clicking the <strong>Copy to clipboard</strong> button and replace the string in the config file. Repeat this for the <strong>NwkKey</strong>.</p>
-<figure><img src="lora32-activ-info.png"/>
-</figure>
-
-<p>A few lines down you will see regional settings. Make sure these match your region:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// regional choices: EU868, US915, AU915, AS923, IN865, KR920, CN780, CN500
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="n">LoRaWANBand_t</span> <span class="n">Region</span> <span class="o">=</span> <span class="n">EU868</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">subBand</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// For US915, change this to 2, otherwise leave on 0
-</span></span></span></code></pre></div><p>Now upload the code to your device using the <strong>-&gt;</strong> button in the top-left.</p>
+<h2 id="configuring-the-device">Configuring the Device</h2>
+<p>The device is now registered with The Things Stack, but it still needs lacks the AppKey info in order to connect.</p>
+<p>Go back to your code, and at the top you should see these lines:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cm">/* OTAA para*/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint8_t</span> <span class="n">devEui</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0x32</span><span class="p">,</span> <span class="mh">0x33</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x02</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint8_t</span> <span class="n">appEui</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint8_t</span> <span class="n">appKey</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x66</span><span class="p">,</span> <span class="mh">0x01</span> <span class="p">};</span>
+</span></span></code></pre></div><p>In The Things Stack, under <strong>Activation Information</strong>, click the <strong>eye</strong> icon next to <strong>AppKey</strong> and then selecting the <strong>&lt;/&gt;</strong> icon. Then copy the AppKey by clicking the <strong>Copy to clipboard</strong> button.</p>
+<p>Replace the AppKey string between the brackets in your code with the AppKey copied from The Things Stack.</p>
+<p>Now upload the code again to your device.</p>
 <h2 id="monitoring-live-data">Monitoring Live Data</h2>
-<p>As the device payload comes to The Things Stack in a HEX format, you will need to decode it using a <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a>. To do this, in your application on The Things Stack, navigate to <strong>Payload formatters</strong>.</p>
-<p>Select the <strong>Custom Javascript formatter</strong> from the <strong>Formatter type</strong> dropdown.</p>
-<p>Enter the following code in the <strong>Formatter code</strong> field:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">value1</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">value2</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">value1</span><span class="o">:</span> <span class="nx">value1</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">value2</span><span class="o">:</span> <span class="nx">value2</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>Click <strong>Save changes</strong> at the bottom of the page and go back to the <strong>Live Data</strong> tab to view all messages exchanged between the end device and The Things Stack.</p>
+<p>When your device is registered, select the <strong>Live Data</strong> tab to view all messages exchanged between the end device and The Things Stack.</p>
 <figure><img src="live-data.png"
          alt="Live data tab"/>
 </figure>
         </div>
-        <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/devices/models/heltec-ab01/">← Heltec HTCC-AB01</a>
-<a class="button is-pulled-right" href="/docs/devices/models/milesight-em300-th/">Milesight EM300-TH →</a>
+          <div class="columns is-multiline">
 </div>
 
-        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/devices/models/generic-node-se/">← Generic Node Sensor Edition</a>
+<a class="button is-pulled-right" href="/docs/devices/models/lilygo-lora32/">LILYGO LoRa32 →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -340,7 +341,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul class="menu-list">
     
       
-      <li><a href='#installing-libraries'>Installing libraries</a></li>
+      <li><a href='#installing-cubecell-framework'>Installing CubeCell Framework</a></li>
     
       
       <li><a href='#connecting-the-device'>Connecting the Device</a></li>
@@ -349,7 +350,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <li><a href='#onboarding-to-the-things-stack'>Onboarding to The Things Stack</a></li>
     
       
-      <li><a href='#configuring-the-code'>Configuring the code</a></li>
+      <li><a href='#configuring-the-device'>Configuring the Device</a></li>
     
       
       <li><a href='#monitoring-live-data'>Monitoring Live Data</a></li>
