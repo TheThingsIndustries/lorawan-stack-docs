@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>ThingsBoard | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingsboard/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -388,8 +388,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
 </span></span></code></pre></div><p>You can test the decoder by clicking the <strong>Test decoder function</strong> and submitting an uplink message from The Things Stack manually.</p>
-<figure><img src="uplink-converter.png"
-         alt="Creating the uplink converter"/>
+<figure><img src="/docs/integrations/cloud-integrations/thingsboard/uplink-converter.png"
+    alt="Creating the uplink converter">
 </figure>
 
 <p>Finish by selecting <strong>Add</strong>.</p>
@@ -412,8 +412,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
 </span></span></code></pre></div><p>Replace the <code>device_id</code> in the downlink converter function with the <strong>End device ID</strong> value from The Things Stack.</p>
-<figure><img src="downlink-converter.png"
-         alt="Creating a downlink converter"/>
+<figure><img src="/docs/integrations/cloud-integrations/thingsboard/downlink-converter.png"
+    alt="Creating a downlink converter">
 </figure>
 
 <h3 id="creating-mqtt-integration">Creating MQTT Integration</h3>
@@ -425,8 +425,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>If you want to use TLS, enter <code>8883</code> for <strong>Port</strong>. Otherwise, enter <code>1883</code> and disable the <strong>Enable SSL</strong> button.</p>
 <p>Use the credentials of your The Things Stack MQTT Server as <strong>Username</strong> and <strong>Password</strong>.</p>
 <p>You can check the connection with your host via port you specified using credentials you provided by pressing the <strong>Check connection</strong> button. If it fails, make sure you fix it.</p>
-<figure><img src="creating-integration.png"
-         alt="Creating the integration"/>
+<figure><img src="/docs/integrations/cloud-integrations/thingsboard/creating-integration.png"
+    alt="Creating the integration">
 </figure>
 
 <p>Click the <strong>Add</strong> button on the bottom to finish creating the integration.</p>
@@ -437,21 +437,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>First, navigate to <strong>Rule chains</strong> on the left hand menu.</p>
 <p>Open the <strong>Root Rule Chain</strong> by clicking the <strong>Open rule chain</strong> icon next to it.</p>
 <p>In the nodes library on the left, find <strong>integration downlink</strong> node and place it on the dashboard. Give a <strong>Name</strong> to this node, choose the integration you created previously as <strong>Integration</strong> and click <strong>Add</strong> to finish.</p>
-<figure><img src="integration-downlink-node.png"
-         alt="Adding integration downlink node"/>
+<figure><img src="/docs/integrations/cloud-integrations/thingsboard/integration-downlink-node.png"
+    alt="Adding integration downlink node">
 </figure>
 
 <p>Connect the output port of the <strong>Message Type Switch</strong> node with the input port of the <strong>integration downlink</strong> node you just created, and choose <strong>Attributes Updated</strong> link label.</p>
-<figure><img src="adding-link.png"
-         alt="Adding Attributes Updated link"/>
+<figure><img src="/docs/integrations/cloud-integrations/thingsboard/adding-link.png"
+    alt="Adding Attributes Updated link">
 </figure>
 
 <p>Click <strong>Apply changes</strong> in the bottom right corner.</p>
 <p>Go back to your device&rsquo;s settings by navigating to <strong>Device groups → All</strong> and selecting your device.</p>
 <p>Switch to the <strong>Attributes</strong> tab, choose <strong>Shared attributes</strong> in the <strong>Entity attributes scope</strong> list, then click the <strong>+</strong> in the upper right corner to add a new shared attribute.</p>
 <p>Enter <code>version</code> in the <strong>Key</strong> field and <code>v.0.11</code> in the <strong>String value</strong> field. Click <strong>Add</strong> to finish.</p>
-<figure><img src="shared-attribute.png"
-         alt="Shared attribute"/>
+<figure><img src="/docs/integrations/cloud-integrations/thingsboard/shared-attribute.png"
+    alt="Shared attribute">
 </figure>
 
 <p>By updating the <strong>Value</strong> of the shared attribute, you are scheduling a downlink message to be sent to your end device. To validate this, go to The Things Stack and find downlink message appearing in the <strong>Live data</strong> tab of your end device. The <code>frm_payload</code> attribute inside the <code>data</code> object of this message will contain Base64 encoded value of the shared attribute. For example, the <code>frm_payload</code> will be <code>di4wLjEx</code> for the shared attribute value <code>v.0.11</code>.</p>
@@ -531,7 +531,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

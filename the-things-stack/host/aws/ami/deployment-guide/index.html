@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Deployment Guide | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/aws/ami/deployment-guide/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -238,14 +238,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         <div class="content">
           <p>This section contains detailed information to help you setup The Things Stack on the AWS Marketplace.</p>
-<figure class="plain"><img src="ami-architecture.jpg"
-         alt="AMI Architecture"/>
+<figure class="plain"><img src="/docs/the-things-stack/host/aws/ami/deployment-guide/ami-architecture.jpg"
+    alt="AMI Architecture">
 </figure>
 
 <h3 id="aws-deployment-architecture">AWS Deployment Architecture</h3>
 <p>The following image describes the architecture of the components that are deployed while using the <strong>default parameters</strong>.</p>
-<figure class="plain"><img src="ami-deployment-architecture.svg"
-         alt="AMI deployment Architecture"/>
+<figure class="plain"><img src="/docs/the-things-stack/host/aws/ami/deployment-guide/ami-deployment-architecture.svg"
+    alt="AMI deployment Architecture">
 </figure>
 
 <div class="notification is-info is-light has-text-dark">
@@ -287,132 +287,132 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 This template allows the user to customize the deployment. The following is a list of the supported parameters that are available to the user.</p>
 <h4 id="basic-configuration">Basic Configuration</h4>
 <table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>EC2 Instance Name</td>
-<td>Name of the EC2 instance.</td>
-<td><code>the-things-enterprise-stack</code></td>
-</tr>
-<tr>
-<td>Domain</td>
-<td>Domain name. You should be able to configure DNS for the domain. TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
-<td>-</td>
-</tr>
-<tr>
-<td>Network Title*</td>
-<td>The title of your deployment.</td>
-<td><code>The Things Stack Enterprise for LoRaWAN</code></td>
-</tr>
-<tr>
-<td>CIDR block</td>
-<td>CIDR block used by the VPC.</td>
-<td>10.0.0.0/16</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Parameter</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Default</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">EC2 Instance Name</td>
+          <td style="text-align: left">Name of the EC2 instance.</td>
+          <td style="text-align: left"><code>the-things-enterprise-stack</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Domain</td>
+          <td style="text-align: left">Domain name. You should be able to configure DNS for the domain. TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Network Title*</td>
+          <td style="text-align: left">The title of your deployment.</td>
+          <td style="text-align: left"><code>The Things Stack Enterprise for LoRaWAN</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CIDR block</td>
+          <td style="text-align: left">CIDR block used by the VPC.</td>
+          <td style="text-align: left">10.0.0.0/16</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p>* Optional field</p>
 </blockquote>
 <h4 id="security-configuration">Security Configuration</h4>
 <table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Default</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Admin Username</td>
-<td>Name of the admin user.</td>
-<td><code>admin</code></td>
-</tr>
-<tr>
-<td>Admin Email</td>
-<td>Email address of the admin user.</td>
-<td><code>admin@mycompany.com</code></td>
-</tr>
-<tr>
-<td>Initial Admin Password</td>
-<td>Initial admin password. Please choose a strong password. It is recommended to change this password upon first login.</td>
-<td>-</td>
-</tr>
-<tr>
-<td>Amazon RDS Database Username</td>
-<td>Username of the relational database.</td>
-<td><code>postgres</code></td>
-</tr>
-<tr>
-<td>Amazon RDS Database Password</td>
-<td>Password for the relational database. This password is used to access the Amazon RDS database.</td>
-<td>-</td>
-</tr>
-<tr>
-<td>SSH Key</td>
-<td>Name of an existing EC2 KeyPair to enable SSH access to your instance.</td>
-<td>-</td>
-</tr>
-<tr>
-<td>SendGrid API Key*</td>
-<td>API key for <a href="https://sendgrid.com/">SendGrid</a> to send emails.</td>
-<td>-</td>
-</tr>
-<tr>
-<td>Amazon ElastiCache KMS Key ID*</td>
-<td>Key used for Redis at-rest encryption. Leave empty to disable encryption. (Warning) A change to this field requires manual migration of the database.</td>
-<td>-</td>
-</tr>
-<tr>
-<td>Amazon ElastiCache Password*</td>
-<td>Password used to access Redis. Leave empty to disable TLS connection. (Warning) A change to this field requires manual migration of the database.</td>
-<td>-</td>
-</tr>
-<tr>
-<td>TLS Certificate</td>
-<td>TLS certificate to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
-<td>-</td>
-</tr>
-<tr>
-<td>TLS Certificate Key</td>
-<td>TLS certificate key to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
-<td>-</td>
-</tr>
-<tr>
-<td>TLS Certificate CA</td>
-<td>TLS certificate CA to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
-<td>-</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Parameter</strong></th>
+          <th style="text-align: left"><strong>Description</strong></th>
+          <th style="text-align: left"><strong>Default</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Admin Username</td>
+          <td style="text-align: left">Name of the admin user.</td>
+          <td style="text-align: left"><code>admin</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Admin Email</td>
+          <td style="text-align: left">Email address of the admin user.</td>
+          <td style="text-align: left"><code>admin@mycompany.com</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Initial Admin Password</td>
+          <td style="text-align: left">Initial admin password. Please choose a strong password. It is recommended to change this password upon first login.</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Amazon RDS Database Username</td>
+          <td style="text-align: left">Username of the relational database.</td>
+          <td style="text-align: left"><code>postgres</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Amazon RDS Database Password</td>
+          <td style="text-align: left">Password for the relational database. This password is used to access the Amazon RDS database.</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SSH Key</td>
+          <td style="text-align: left">Name of an existing EC2 KeyPair to enable SSH access to your instance.</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SendGrid API Key*</td>
+          <td style="text-align: left">API key for <a href="https://sendgrid.com/">SendGrid</a> to send emails.</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Amazon ElastiCache KMS Key ID*</td>
+          <td style="text-align: left">Key used for Redis at-rest encryption. Leave empty to disable encryption. (Warning) A change to this field requires manual migration of the database.</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Amazon ElastiCache Password*</td>
+          <td style="text-align: left">Password used to access Redis. Leave empty to disable TLS connection. (Warning) A change to this field requires manual migration of the database.</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TLS Certificate</td>
+          <td style="text-align: left">TLS certificate to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TLS Certificate Key</td>
+          <td style="text-align: left">TLS certificate key to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TLS Certificate CA</td>
+          <td style="text-align: left">TLS certificate CA to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
+          <td style="text-align: left">-</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p>* Optional field</p>
 </blockquote>
 <h4 id="external-connectivity">External Connectivity</h4>
 <table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Restrict SSH Access to IP Range</td>
-<td>The source IP address range that can be used to connect via SSH to the EC2 instances. Use 0.0.0.0/0 for global SSH access.</td>
-</tr>
-<tr>
-<td>Restrict Service Access to IP Range</td>
-<td>The source IP address range that can be used to connect to the deployed services. Use 0.0.0.0/0 for global access.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Parameter</strong></th>
+          <th style="text-align: left"><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Restrict SSH Access to IP Range</td>
+          <td style="text-align: left">The source IP address range that can be used to connect via SSH to the EC2 instances. Use 0.0.0.0/0 for global SSH access.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Restrict Service Access to IP Range</td>
+          <td style="text-align: left">The source IP address range that can be used to connect to the deployed services. Use 0.0.0.0/0 for global access.</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="user-registration">User Registration</h4>
 <div class="notification is-info is-light has-text-dark">
@@ -421,50 +421,50 @@ This template allows the user to customize the deployment. The following is a li
 </div>
 
 <table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Default</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Require Admin Approval</td>
-<td>If set to true, administrator approval is needed for creating new accounts.</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Require Email Validation</td>
-<td>If set to true, validation of contact information is necessary to create new accounts.</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Require User Invites</td>
-<td>If set to true, email invites are necessary to create new accounts.</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Minimum Length</td>
-<td>Minimum length for user passwords.</td>
-<td>8</td>
-</tr>
-<tr>
-<td>Minimum Number of Digits</td>
-<td>Minimum number of digits for user passwords.</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Minimum Number of Special Characters</td>
-<td>Minimum number of special characters for user passwords.</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Minimum Number of Uppercase Letters</td>
-<td>Minimum number of uppercase letters for user passwords.</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Parameter</strong></th>
+          <th style="text-align: left"><strong>Description</strong></th>
+          <th style="text-align: left"><strong>Default</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Require Admin Approval</td>
+          <td style="text-align: left">If set to true, administrator approval is needed for creating new accounts.</td>
+          <td style="text-align: left">false</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Require Email Validation</td>
+          <td style="text-align: left">If set to true, validation of contact information is necessary to create new accounts.</td>
+          <td style="text-align: left">false</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Require User Invites</td>
+          <td style="text-align: left">If set to true, email invites are necessary to create new accounts.</td>
+          <td style="text-align: left">false</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Minimum Length</td>
+          <td style="text-align: left">Minimum length for user passwords.</td>
+          <td style="text-align: left">8</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Minimum Number of Digits</td>
+          <td style="text-align: left">Minimum number of digits for user passwords.</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Minimum Number of Special Characters</td>
+          <td style="text-align: left">Minimum number of special characters for user passwords.</td>
+          <td style="text-align: left">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Minimum Number of Uppercase Letters</td>
+          <td style="text-align: left">Minimum number of uppercase letters for user passwords.</td>
+          <td style="text-align: left">1</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="resource-settings">Resource Settings</h4>
 <p><div class="notification is-info is-light has-text-dark">
@@ -478,65 +478,65 @@ This template allows the user to customize the deployment. The following is a li
 </div>
 </p>
 <table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Default</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>EC2 Instance Type</td>
-<td>EC2 Instance Type.</td>
-<td>t3.small</td>
-</tr>
-<tr>
-<td>Redis Backup Retention Period*</td>
-<td>The retention period for daily Redis backups (days).</td>
-<td>7</td>
-</tr>
-<tr>
-<td>Redis Instance Type</td>
-<td>The size of machine for the Redis instance.</td>
-<td>cache.t2.small</td>
-</tr>
-<tr>
-<td>Enable Multi-AZ for Redis</td>
-<td>If true, replicas of Redis are created. If true, RedisNumCacheClusters property must be greater than 1.</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Number of Redis Multi-AZ Instances</td>
-<td>The number of replicas for this replication group. If RedisMultiAZSupport is true, this value must be greater than 1. Note that this multiplies the Amazon ElastiCache Redis instance costs.</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Amazon RDS Database Name</td>
-<td>Name of the relational database. (Warning) A change to this field requires manual migration of the database.</td>
-<td>ttn_lorawan</td>
-</tr>
-<tr>
-<td>Amazon RDS Instance Type</td>
-<td>The instance type for the Amazon RDS database.</td>
-<td>db.t3.small</td>
-</tr>
-<tr>
-<td>Amazon RDS Backup Retention Period</td>
-<td>The retention period for daily Amazon RDS backups (days). (Warning) A change to this field requires manual migration of the database.</td>
-<td>7</td>
-</tr>
-<tr>
-<td>Amazon RDS Postgres Version</td>
-<td>PostgreSQL version for the Amazon RDS database.</td>
-<td>11.4</td>
-</tr>
-<tr>
-<td>Enable Multi-AZ for Amazon RDS</td>
-<td>If true, a failover instance is created in case the primary instance fails. Note that this doubles the Amazon RDS instance costs.</td>
-<td>false</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Parameter</strong></th>
+          <th style="text-align: left"><strong>Description</strong></th>
+          <th style="text-align: left"><strong>Default</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">EC2 Instance Type</td>
+          <td style="text-align: left">EC2 Instance Type.</td>
+          <td style="text-align: left">t3.small</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Redis Backup Retention Period*</td>
+          <td style="text-align: left">The retention period for daily Redis backups (days).</td>
+          <td style="text-align: left">7</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Redis Instance Type</td>
+          <td style="text-align: left">The size of machine for the Redis instance.</td>
+          <td style="text-align: left">cache.t2.small</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Enable Multi-AZ for Redis</td>
+          <td style="text-align: left">If true, replicas of Redis are created. If true, RedisNumCacheClusters property must be greater than 1.</td>
+          <td style="text-align: left">false</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Number of Redis Multi-AZ Instances</td>
+          <td style="text-align: left">The number of replicas for this replication group. If RedisMultiAZSupport is true, this value must be greater than 1. Note that this multiplies the Amazon ElastiCache Redis instance costs.</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Amazon RDS Database Name</td>
+          <td style="text-align: left">Name of the relational database. (Warning) A change to this field requires manual migration of the database.</td>
+          <td style="text-align: left">ttn_lorawan</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Amazon RDS Instance Type</td>
+          <td style="text-align: left">The instance type for the Amazon RDS database.</td>
+          <td style="text-align: left">db.t3.small</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Amazon RDS Backup Retention Period</td>
+          <td style="text-align: left">The retention period for daily Amazon RDS backups (days). (Warning) A change to this field requires manual migration of the database.</td>
+          <td style="text-align: left">7</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Amazon RDS Postgres Version</td>
+          <td style="text-align: left">PostgreSQL version for the Amazon RDS database.</td>
+          <td style="text-align: left">11.4</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Enable Multi-AZ for Amazon RDS</td>
+          <td style="text-align: left">If true, a failover instance is created in case the primary instance fails. Note that this doubles the Amazon RDS instance costs.</td>
+          <td style="text-align: left">false</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="lorawan-network-server-settings">LoRaWAN Network Server Settings</h4>
 <div class="notification is-info is-light has-text-dark">
@@ -545,47 +545,47 @@ This template allows the user to customize the deployment. The following is a li
 </div>
 
 <table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Default</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>LoRaWAN JoinEUI Prefix</td>
-<td>Prefix for the LoRaWAN JoinEUIs that are handled by this network.</td>
-<td>0000000000000000/0</td>
-</tr>
-<tr>
-<td>LoRaWAN DevAddr Prefix</td>
-<td>Prefix for the LoRaWAN DevAddrs that are handled by this network.</td>
-<td>00000000/7</td>
-</tr>
-<tr>
-<td>LoRaWAN NetID</td>
-<td>The LoRaWAN NetID that is assigned through <a href="https://lora-alliance.org/become-a-member">LoRa Alliance membership</a>. This is required if your network needs interoperability (e.g. roaming, peering, join flow) with other networks. If you do not have a NetID, please use 000000 or 000001.</td>
-<td>000000</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Parameter</strong></th>
+          <th style="text-align: left"><strong>Description</strong></th>
+          <th style="text-align: left"><strong>Default</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">LoRaWAN JoinEUI Prefix</td>
+          <td style="text-align: left">Prefix for the LoRaWAN JoinEUIs that are handled by this network.</td>
+          <td style="text-align: left">0000000000000000/0</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">LoRaWAN DevAddr Prefix</td>
+          <td style="text-align: left">Prefix for the LoRaWAN DevAddrs that are handled by this network.</td>
+          <td style="text-align: left">00000000/7</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">LoRaWAN NetID</td>
+          <td style="text-align: left">The LoRaWAN NetID that is assigned through <a href="https://lora-alliance.org/become-a-member">LoRa Alliance membership</a>. This is required if your network needs interoperability (e.g. roaming, peering, join flow) with other networks. If you do not have a NetID, please use 000000 or 000001.</td>
+          <td style="text-align: left">000000</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="aws-iot-settings">AWS IoT settings</h4>
 <table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Default</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AWS IoT Telemetry</td>
-<td>If set to true, publish all upstream messages to AWS IoT.</td>
-<td>true</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Parameter</strong></th>
+          <th style="text-align: left"><strong>Description</strong></th>
+          <th style="text-align: left"><strong>Default</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">AWS IoT Telemetry</td>
+          <td style="text-align: left">If set to true, publish all upstream messages to AWS IoT.</td>
+          <td style="text-align: left">true</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="update-from-existing-deployment">Update From Existing Deployment</h4>
 <div class="notification is-info is-light has-text-dark">
@@ -594,30 +594,30 @@ This template allows the user to customize the deployment. The following is a li
 </div>
 
 <table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amazon RDS Snapshot</td>
-<td>The ARN (Amazon Resource Name) of the Amazon RDS snapshot to restore the database from.</td>
-</tr>
-<tr>
-<td>Amazon ElastiCache Redis Snapshot</td>
-<td>The name of the Redis snapshot to restore the database from.</td>
-</tr>
-<tr>
-<td>S3 Profile Pictures Bucket Name</td>
-<td>The name of the S3 bucket for profile pictures.</td>
-</tr>
-<tr>
-<td>S3 End Device Pictures Bucket Name</td>
-<td>The name of the S3 bucket for end device pictures.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Parameter</strong></th>
+          <th style="text-align: left"><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Amazon RDS Snapshot</td>
+          <td style="text-align: left">The ARN (Amazon Resource Name) of the Amazon RDS snapshot to restore the database from.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Amazon ElastiCache Redis Snapshot</td>
+          <td style="text-align: left">The name of the Redis snapshot to restore the database from.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">S3 Profile Pictures Bucket Name</td>
+          <td style="text-align: left">The name of the S3 bucket for profile pictures.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">S3 End Device Pictures Bucket Name</td>
+          <td style="text-align: left">The name of the S3 bucket for end device pictures.</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="step-3-start-the-deployment">Step 3: Start the Deployment</h3>
 <ol>
@@ -698,7 +698,7 @@ This template allows the user to customize the deployment. The following is a li
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

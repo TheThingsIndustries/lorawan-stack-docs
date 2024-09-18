@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Blockbax | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -338,8 +338,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <p><a href="https://blockbax.com/">Blockbax</a> is a fully configurable and scalable cloud IoT platform which requires no programming.</p>
 <p>The most important concept in the Blockbax Platform is a <strong>subject</strong>. Typically this is the business object you want to monitor such as a building, but it can be a device in its own right as well. You can also relate subjects together, for example to create composite structure like a building with floors. A subject can have <strong>metrics</strong> which are the things being measured. Besides a subject can also have <strong>properties</strong> to provide extra information (metadata) about the subject. These can be used throughout the platform for filtering, creating slices, drilldowns and aggregations. In order to enforce structure and make it easy to scale there are <strong>subject types</strong> which are the templates / blueprints of your subjects.</p>
 <p>Check the <a href="https://blockbax.com/docs/">Blockbax documentation page</a> for more info and the short video below for an impression.</p>
-<figure><img src="subject-composition.gif"
-         alt="Subject composition"/>
+<figure><img src="/docs/integrations/cloud-integrations/blockbax/subject-composition.gif"
+    alt="Subject composition">
 </figure>
 
 <h2 id="prerequisites">Prerequisites</h2>
@@ -366,57 +366,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></code></pre></div><p>Optionally you can check &lsquo;Automatically create subjects&rsquo;. This will create a subject automatically if a subject does not exist.</p>
 <h2 id="create-a-webhook-in-the-things-stack">Create a webhook in The Things Stack</h2>
 <p>Use the Blockbax <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a> to create a Webhook integration on The Things Stack. Select <strong>Integrations → Webhooks</strong> on the left hand menu. Click <strong>Add webhook</strong> and select the <strong>Blockbax</strong> tile.</p>
-<figure><img src="webhook.png"
-         alt="Setting up the webhook"/>
+<figure><img src="/docs/integrations/cloud-integrations/blockbax/webhook.png"
+    alt="Setting up the webhook">
 </figure>
 
 <p>Enter an arbitrary <strong>Webhook ID</strong>, enter your <strong><a href="https://blockbax.com/docs/project-settings/#access-tokens">Access token</a></strong> and <strong>Endpoint</strong>. The endpoint you can copy from the inbound connector settings.</p>
 <h2 id="further-set-up-your-blockbax-project">Further set up your Blockbax project</h2>
 <p>Once you&rsquo;ve added the webhook, payload are sent to Blockbax. Make sure your The Things Stack device is connected and has sent at least one payload. Now we are going to create a subject type which matches your device type(s) and further align your inbound connector if necessary. As an example we use the <a href="https://www.digitalmatter.com/devices/oyster-lorawan/">Oyster</a> from <a href="https://www.digitalmatter.com/">Digital Matter</a>, but the process is similar for other devices.</p>
 <p>When you expand the executions in your inbound connector you should see something similar to the execution logs below.</p>
-<figure><img src="execution-logs.png"
-         alt="Example execution logs from an Oyster device from Digital Matter"/>
+<figure><img src="/docs/integrations/cloud-integrations/blockbax/execution-logs.png"
+    alt="Example execution logs from an Oyster device from Digital Matter">
 </figure>
 
 <p>In Blockbax ingestion IDs are used to map The Things Stack data to your subjects and metrics. By default ingestion IDs are derived from the subjects&rsquo; external IDs and metrics&rsquo; external IDs (e.g. <code>subjectExternalId$metricExternalId</code>) but you can also override these with custom ones. The inbound connector script configured in the previous step combines your device ID from The Things Stack and the property name returned by the payload formatter(s) into an ingestion ID (e.g. <code>example-device$type</code>). This allows for easy setup if you make sure your subject external IDs and metric external IDs match the ones you configure in Blockbax.</p>
 <p>Now in order to set up your Blockbax project create a <a href="https://blockbax.com/docs/subjects/#managing-subject-types">subject type</a> with a metric of the correct type for each external ID in your execution logs. For this example you would need to create ingested metrics with the following types and external IDs (highlighted also in the screenshot of the execution logs above):</p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>External ID</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Text</td>
-<td><code>type</code></td>
-</tr>
-<tr>
-<td>Number</td>
-<td><code>inTrip</code></td>
-</tr>
-<tr>
-<td>Number</td>
-<td><code>batV</code></td>
-</tr>
-<tr>
-<td>Number</td>
-<td><code>fixFailed</code></td>
-</tr>
-<tr>
-<td>Location</td>
-<td><code>latLonDeg</code>*</td>
-</tr>
-<tr>
-<td>Number</td>
-<td><code>headingDeg</code></td>
-</tr>
-<tr>
-<td>Number</td>
-<td><code>speedKmph</code></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">External ID</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Text</td>
+          <td style="text-align: left"><code>type</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Number</td>
+          <td style="text-align: left"><code>inTrip</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Number</td>
+          <td style="text-align: left"><code>batV</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Number</td>
+          <td style="text-align: left"><code>fixFailed</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Location</td>
+          <td style="text-align: left"><code>latLonDeg</code>*</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Number</td>
+          <td style="text-align: left"><code>headingDeg</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Number</td>
+          <td style="text-align: left"><code>speedKmph</code></td>
+      </tr>
+  </tbody>
 </table>
 <p>If you have enabled the setting to automatically create subjects in the inbound connector they will be created automatically when measurements are received and the metric external ID can be linked to one subject type. If you wish to <a href="https://blockbax.com/docs/subjects/#creating-subjects">create subjects</a> manually the subject&rsquo;s external IDs need to match the device IDs configured in The Things Stack. For this example that would be a subject with external ID <code>example-device</code>.</p>
 <p>(*) As you might have noted the <code>latLonDeg</code> external ID is not highlighted in the execution logs. This is because we do not to have the <code>latitudeDeg</code> and <code>longitudeDeg</code> as separate number metrics but as a location metric. In this way you are able to use the full location-based functionality in the Blockbax Platform such as viewing routes and setting geofences. You can do this by changing the conversion script to the one below.</p>
@@ -444,8 +444,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Now you are all set up, check your Blockbax project to see the measurements coming in!</p>
-<figure><img src="digital-matter-example.png"
-         alt="Digital Matter Oyster2 in Blockbax"/>
+<figure><img src="/docs/integrations/cloud-integrations/blockbax/digital-matter-example.png"
+    alt="Digital Matter Oyster2 in Blockbax">
 </figure>
 
 <div class="notification is-info is-light has-text-dark">
@@ -530,7 +530,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Amazon Cognito | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/management/sso/cognito/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -218,56 +218,56 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Configuring OpenID Connect with Amazon Cognito will allow single sign-on from any account within a Cognito user pool.</p>
 <h2 id="create-a-user-pool">Create a User Pool</h2>
 <p>From the <a href="https://console.aws.amazon.com/cognito/">Amazon Cognito Management Page</a>, choose <strong>Manage User Pools</strong>.</p>
-<figure><img src="manage-user-pools.png"/>
+<figure><img src="/docs/the-things-stack/management/sso/cognito/manage-user-pools.png">
 </figure>
 
 <p>Click <strong>Create a user pool</strong> in the top right.</p>
-<figure><img src="create-user-pool.png"/>
+<figure><img src="/docs/the-things-stack/management/sso/cognito/create-user-pool.png">
 </figure>
 
 <p>Give the user pool a name of your choosing. You will not need this later, you may pick any name.</p>
 <p>Click <strong>Review defaults</strong>.</p>
-<figure><img src="name.png"/>
+<figure><img src="/docs/the-things-stack/management/sso/cognito/name.png">
 </figure>
 
 <p>Leave all default settings, but click <strong>Add app client</strong>.</p>
-<figure><img src="add-app-client.png"/>
+<figure><img src="/docs/the-things-stack/management/sso/cognito/add-app-client.png">
 </figure>
 
 <p>Click <strong>Add an app client</strong>.</p>
-<figure><img src="add-app-client-2.png"/>
+<figure><img src="/docs/the-things-stack/management/sso/cognito/add-app-client-2.png">
 </figure>
 
 <p>Give the App Client a name and leave all settings default. Click <strong>Create app client</strong>.</p>
-<figure><img src="add-app-client-3.png"/>
+<figure><img src="/docs/the-things-stack/management/sso/cognito/add-app-client-3.png">
 </figure>
 
 <p>You will be taken back to the App Clients screen, where you should see the App Client you just added. Click <strong>Return to pool details</strong>.</p>
-<figure><img src="app-clients.png"/>
+<figure><img src="/docs/the-things-stack/management/sso/cognito/app-clients.png">
 </figure>
 
 <p>Verify that the App Client you added is listed in the pool. Click <strong>Create pool</strong>.</p>
-<figure><img src="create-pool.png"/>
+<figure><img src="/docs/the-things-stack/management/sso/cognito/create-pool.png">
 </figure>
 
 <p>In the left hand menu, choose <strong>App client settings</strong>.</p>
 <p>Ensure that <strong>Cognito User Pool</strong> is checked for <strong>Enabled Identity Providers</strong>.</p>
-<figure><img src="app-client-settings.png"/>
+<figure><img src="/docs/the-things-stack/management/sso/cognito/app-client-settings.png">
 </figure>
 
 <p>For the <strong>Callback URL</strong>, enter the <strong>OAuth Callback URL</strong> of your The Things Stack deployment. This is the <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/server-addresses/">Server Address</a> followed by the OAuth endpoint, which includes an <strong>Authentication Provider ID</strong> of your choosing:</p>
-<p><code>/oauth/login/&lt;authentication-provider-id&gt;/callback</code></p>
-<p>You will actually create the Authentication Provider in The Things Stack using this Authentication Provider ID, so remember it.</p>
+<pre tabindex="0"><code>/oauth/login/&lt;authentication-provider-id&gt;/callback
+</code></pre><p>You will actually create the Authentication Provider in The Things Stack using this Authentication Provider ID, so remember it.</p>
 <p>For example, with a tenant <code>tenant1</code> in the <code>eu1</code> cluster and an Authentication Provider ID of <code>aws-cog</code>, the OAuth Callback URL is:</p>
-<p><code>https://tenant1.eu1.cloud.thethings.industries/oauth/login/aws-cog/callback</code></p>
-<p>Additionally, ensure the following <strong>Allowed OAuth Scopes</strong> are checked:</p>
+<pre tabindex="0"><code>https://tenant1.eu1.cloud.thethings.industries/oauth/login/aws-cog/callback
+</code></pre><p>Additionally, ensure the following <strong>Allowed OAuth Scopes</strong> are checked:</p>
 <ul>
 <li>email</li>
 <li>openid</li>
 <li>profile</li>
 </ul>
 <p>Finally, click <strong>Save changes</strong>.</p>
-<figure><img src="callback.png"/>
+<figure><img src="/docs/the-things-stack/management/sso/cognito/callback.png">
 </figure>
 
 <p>Choose <strong>Domain name</strong> from the left hand menu.</p>
@@ -278,11 +278,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <p>Click <strong>Save changes</strong>.</p>
-<figure><img src="domain.png"/>
+<figure><img src="/docs/the-things-stack/management/sso/cognito/domain.png">
 </figure>
 
 <p>Finally, go to <strong>App clients</strong> and choose your <strong>App Client</strong> to view your Client ID and Client Secret.</p>
-<figure><img src="secret.png"/>
+<figure><img src="/docs/the-things-stack/management/sso/cognito/secret.png">
 </figure>
 
 <p>Proceed to <a href="/docs/the-things-stack/management/sso/#configure-the-things-stack-for-sso">Configure The Things Stack for SSO</a> using the following information:</p>
@@ -367,7 +367,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

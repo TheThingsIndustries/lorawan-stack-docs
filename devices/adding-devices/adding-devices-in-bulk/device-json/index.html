@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>JSON File Reference | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/adding-devices/adding-devices-in-bulk/device-json/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -214,157 +214,157 @@ For more details in how to use the file, please refer to <a href="https://www.th
 <p>The linked specification is quite extensive, and contains a lot of fields that are not required, or are only set and used internally by the Network Server. Below, the required and most commonly used fields are discussed.</p>
 <div class="fixed-table table-device-json">
 <table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required</th>
-<th>Type</th>
-<th>Example</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong><code>ids.device_id</code></strong></td>
-<td><strong>Always</strong></td>
-<td>string</td>
-<td><code>&quot;sensor-1&quot;</code></td>
-<td><a href="https://www.thethingsindustries.com/docs/reference/glossary/#device-id">More info</a></td>
-</tr>
-<tr>
-<td><strong><code>ids.dev_eui</code></strong></td>
-<td><strong>Always</strong></td>
-<td>string</td>
-<td><code>&quot;0102030405060708&quot;</code></td>
-<td><a href="https://www.thethingsindustries.com/docs/reference/glossary/#deveui">More info</a></td>
-</tr>
-<tr>
-<td><strong><code>ids.join_eui</code></strong></td>
-<td><strong>Always</strong></td>
-<td>string</td>
-<td><code>&quot;0102030405060708&quot;</code></td>
-<td>Also referred to as <strong>AppEUI</strong>. <a href="https://www.thethingsindustries.com/docs/reference/glossary/#joineui">More info</a></td>
-</tr>
-<tr>
-<td><strong><code>name</code></strong></td>
-<td>No</td>
-<td>string</td>
-<td><code>&quot;My Sensor&quot;</code></td>
-<td>Optional, a name for the device</td>
-</tr>
-<tr>
-<td><strong><code>description</code></strong></td>
-<td>No</td>
-<td>string</td>
-<td><code>&quot;Situated in living room&quot;</code></td>
-<td>Optional, description of the device</td>
-</tr>
-<tr>
-<td><strong><code>lorawan_version</code></strong></td>
-<td><strong>Always</strong></td>
-<td>string</td>
-<td><code>&quot;MAC_V1_0_2&quot;</code></td>
-<td>See <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#enum:MACVersion">MACVersion</a> for supported versions. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#lorawan-version">LoRaWAN Version</a> for more information.</td>
-</tr>
-<tr>
-<td><strong><code>lorawan_phy_version</code></strong></td>
-<td><strong>Always</strong></td>
-<td>string</td>
-<td><code>&quot;PHY_V1_0_2_REV_B&quot;</code></td>
-<td>See <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#enum:PHYVersion">PHYVersion</a> for supported versions. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#regional-parameters">LoRaWAN Version</a> for more information.</td>
-</tr>
-<tr>
-<td><strong><code>frequency_plan_id</code></strong></td>
-<td><strong>Always</strong></td>
-<td>string</td>
-<td><code>&quot;EU_863_870_TTN&quot;</code></td>
-<td>See <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans</a> for a list of supported frequency plans (The frequency plan <code>ID</code> is needed). See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#frequency-plan">Frequency Plan</a> for more information.</td>
-</tr>
-<tr>
-<td><strong><code>supports_join</code></strong></td>
-<td><strong>Always</strong></td>
-<td>boolean</td>
-<td><code>true</code></td>
-<td><code>true</code> for OTAA devices, <code>false</code> for ABP.</td>
-</tr>
-<tr>
-<td><strong><code>supports_class_c</code></strong></td>
-<td>No</td>
-<td>boolean</td>
-<td><code>true</code></td>
-<td><code>true</code> for Class C devices, <code>false</code> otherwise.</td>
-</tr>
-<tr>
-<td><strong><code>root_keys.app_key.key</code></strong></td>
-<td><strong>For OTAA devices</strong></td>
-<td>string</td>
-<td><code>&quot;01020304050607080102030405060708&quot;</code></td>
-<td>See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#application-key">Application Key</a> for more information.</td>
-</tr>
-<tr>
-<td><strong><code>root_keys.nwk_key.key</code></strong></td>
-<td><strong>For OTAA devices</strong></td>
-<td>string</td>
-<td><code>&quot;01020304050607080102030405060708&quot;</code></td>
-<td>For LoRaWAN version 1.1 and later only. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#network-key">Network Key</a> for more information.</td>
-</tr>
-<tr>
-<td><strong><code>mac_settings.rx1_delay</code></strong></td>
-<td>No</td>
-<td>string</td>
-<td><code>&quot;RX_DELAY_5&quot;</code></td>
-<td>Delay for the first Class A receive window (Rx1). Typical values are <code>&quot;RX_DELAY_1&quot;</code> (1 second) and <code>&quot;RX_DELAY_5&quot;</code> (5 seconds). See <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#message:MACSettings">MACSettings</a> for more information.</td>
-</tr>
-<tr>
-<td><strong><code>mac_settings.supports_32_bit_f_cnt</code></strong></td>
-<td>No</td>
-<td>boolean</td>
-<td><code>false</code></td>
-<td><code>true</code> if device supports 32-bit frame counters, <code>false</code> if device only supports 16-bit frame counters.</td>
-</tr>
-<tr>
-<td><strong><code>session.dev_addr</code></strong></td>
-<td><strong>For existing session</strong></td>
-<td>string</td>
-<td><code>&quot;01020304&quot;</code></td>
-<td><strong>Needed for ABP devices or when migrating OTAA devices with an existing session</strong>. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#device-address">Device Address</a> for more information.</td>
-</tr>
-<tr>
-<td><strong><code>session.keys.app_s_key.key</code></strong></td>
-<td><strong>For existing session</strong></td>
-<td>string</td>
-<td><code>&quot;01020304050607080102030405060708&quot;</code></td>
-<td><strong>Needed for ABP devices or when migrating OTAA devices with an existing session</strong>. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#application-session-key">Application Session Key</a> for more information.</td>
-</tr>
-<tr>
-<td><strong><code>session.keys.f_nwk_s_int_key.key</code></strong></td>
-<td><strong>For existing session</strong></td>
-<td>string</td>
-<td><code>&quot;01020304050607080102030405060708&quot;</code></td>
-<td>Forwarding Network Session Integrity Key, also referred to as <strong>Network Session Key</strong> in LoRaWAN v1.0.x compatibility mode. See <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#message:SessionKeys">SessionKeys</a> and <a href="https://www.thethingsindustries.com/docs/reference/glossary/#forwarding-network-session-integrity-key">Forwarding Network Session Integrity Key</a> for more information.</td>
-</tr>
-<tr>
-<td><strong><code>session.last_f_cnt_up</code></strong></td>
-<td><strong>For existing session</strong></td>
-<td>uint</td>
-<td><code>12</code></td>
-<td>Last uplink frame counter used.</td>
-</tr>
-<tr>
-<td><strong><code>session.last_n_f_cnt_down</code></strong></td>
-<td><strong>For existing session</strong></td>
-<td>uint</td>
-<td><code>12</code></td>
-<td>Last network downlink frame counter used.</td>
-</tr>
-<tr>
-<td><strong><code>session.last_a_f_cnt_down</code></strong></td>
-<td><strong>For existing session</strong></td>
-<td>uint</td>
-<td><code>12</code></td>
-<td>Last application downlink frame counter used.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Example</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong><code>ids.device_id</code></strong></td>
+          <td style="text-align: left"><strong>Always</strong></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;sensor-1&quot;</code></td>
+          <td style="text-align: left"><a href="https://www.thethingsindustries.com/docs/reference/glossary/#device-id">More info</a></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>ids.dev_eui</code></strong></td>
+          <td style="text-align: left"><strong>Always</strong></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;0102030405060708&quot;</code></td>
+          <td style="text-align: left"><a href="https://www.thethingsindustries.com/docs/reference/glossary/#deveui">More info</a></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>ids.join_eui</code></strong></td>
+          <td style="text-align: left"><strong>Always</strong></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;0102030405060708&quot;</code></td>
+          <td style="text-align: left">Also referred to as <strong>AppEUI</strong>. <a href="https://www.thethingsindustries.com/docs/reference/glossary/#joineui">More info</a></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>name</code></strong></td>
+          <td style="text-align: left">No</td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;My Sensor&quot;</code></td>
+          <td style="text-align: left">Optional, a name for the device</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>description</code></strong></td>
+          <td style="text-align: left">No</td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;Situated in living room&quot;</code></td>
+          <td style="text-align: left">Optional, description of the device</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>lorawan_version</code></strong></td>
+          <td style="text-align: left"><strong>Always</strong></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;MAC_V1_0_2&quot;</code></td>
+          <td style="text-align: left">See <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#enum:MACVersion">MACVersion</a> for supported versions. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#lorawan-version">LoRaWAN Version</a> for more information.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>lorawan_phy_version</code></strong></td>
+          <td style="text-align: left"><strong>Always</strong></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;PHY_V1_0_2_REV_B&quot;</code></td>
+          <td style="text-align: left">See <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#enum:PHYVersion">PHYVersion</a> for supported versions. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#regional-parameters">LoRaWAN Version</a> for more information.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>frequency_plan_id</code></strong></td>
+          <td style="text-align: left"><strong>Always</strong></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;EU_863_870_TTN&quot;</code></td>
+          <td style="text-align: left">See <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans</a> for a list of supported frequency plans (The frequency plan <code>ID</code> is needed). See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#frequency-plan">Frequency Plan</a> for more information.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>supports_join</code></strong></td>
+          <td style="text-align: left"><strong>Always</strong></td>
+          <td style="text-align: left">boolean</td>
+          <td style="text-align: left"><code>true</code></td>
+          <td style="text-align: left"><code>true</code> for OTAA devices, <code>false</code> for ABP.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>supports_class_c</code></strong></td>
+          <td style="text-align: left">No</td>
+          <td style="text-align: left">boolean</td>
+          <td style="text-align: left"><code>true</code></td>
+          <td style="text-align: left"><code>true</code> for Class C devices, <code>false</code> otherwise.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>root_keys.app_key.key</code></strong></td>
+          <td style="text-align: left"><strong>For OTAA devices</strong></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;01020304050607080102030405060708&quot;</code></td>
+          <td style="text-align: left">See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#application-key">Application Key</a> for more information.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>root_keys.nwk_key.key</code></strong></td>
+          <td style="text-align: left"><strong>For OTAA devices</strong></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;01020304050607080102030405060708&quot;</code></td>
+          <td style="text-align: left">For LoRaWAN version 1.1 and later only. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#network-key">Network Key</a> for more information.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>mac_settings.rx1_delay</code></strong></td>
+          <td style="text-align: left">No</td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;RX_DELAY_5&quot;</code></td>
+          <td style="text-align: left">Delay for the first Class A receive window (Rx1). Typical values are <code>&quot;RX_DELAY_1&quot;</code> (1 second) and <code>&quot;RX_DELAY_5&quot;</code> (5 seconds). See <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#message:MACSettings">MACSettings</a> for more information.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>mac_settings.supports_32_bit_f_cnt</code></strong></td>
+          <td style="text-align: left">No</td>
+          <td style="text-align: left">boolean</td>
+          <td style="text-align: left"><code>false</code></td>
+          <td style="text-align: left"><code>true</code> if device supports 32-bit frame counters, <code>false</code> if device only supports 16-bit frame counters.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>session.dev_addr</code></strong></td>
+          <td style="text-align: left"><strong>For existing session</strong></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;01020304&quot;</code></td>
+          <td style="text-align: left"><strong>Needed for ABP devices or when migrating OTAA devices with an existing session</strong>. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#device-address">Device Address</a> for more information.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>session.keys.app_s_key.key</code></strong></td>
+          <td style="text-align: left"><strong>For existing session</strong></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;01020304050607080102030405060708&quot;</code></td>
+          <td style="text-align: left"><strong>Needed for ABP devices or when migrating OTAA devices with an existing session</strong>. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#application-session-key">Application Session Key</a> for more information.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>session.keys.f_nwk_s_int_key.key</code></strong></td>
+          <td style="text-align: left"><strong>For existing session</strong></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left"><code>&quot;01020304050607080102030405060708&quot;</code></td>
+          <td style="text-align: left">Forwarding Network Session Integrity Key, also referred to as <strong>Network Session Key</strong> in LoRaWAN v1.0.x compatibility mode. See <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#message:SessionKeys">SessionKeys</a> and <a href="https://www.thethingsindustries.com/docs/reference/glossary/#forwarding-network-session-integrity-key">Forwarding Network Session Integrity Key</a> for more information.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>session.last_f_cnt_up</code></strong></td>
+          <td style="text-align: left"><strong>For existing session</strong></td>
+          <td style="text-align: left">uint</td>
+          <td style="text-align: left"><code>12</code></td>
+          <td style="text-align: left">Last uplink frame counter used.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>session.last_n_f_cnt_down</code></strong></td>
+          <td style="text-align: left"><strong>For existing session</strong></td>
+          <td style="text-align: left">uint</td>
+          <td style="text-align: left"><code>12</code></td>
+          <td style="text-align: left">Last network downlink frame counter used.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>session.last_a_f_cnt_down</code></strong></td>
+          <td style="text-align: left"><strong>For existing session</strong></td>
+          <td style="text-align: left">uint</td>
+          <td style="text-align: left"><code>12</code></td>
+          <td style="text-align: left">Last application downlink frame counter used.</td>
+      </tr>
+  </tbody>
 </table>
 </div>
 <br>
@@ -439,7 +439,7 @@ For more details in how to use the file, please refer to <a href="https://www.th
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Node-RED Setup for Integration with IFTTT | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/ifttt/node-red-setup/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -186,8 +186,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Select <strong>POST</strong> as a <strong>Method</strong>.</p>
 <p>In the <strong>URL</strong> field enter the arbitrary path name, e.g. <code>join</code> if you are enabling the integration for the <code>Join accept</code> messages. Keep in mind that this path name also needs to be used when creating a Webhook on The Things Stack.</p>
 <p>Click <strong>Done</strong> to finish.</p>
-<figure><img src="http-in-node.png"
-         alt="Configuring HTTP input node"/>
+<figure><img src="/docs/integrations/ifttt/node-red-setup/http-in-node.png"
+    alt="Configuring HTTP input node">
 </figure>
 
 <p>Next, add a <strong>function</strong> node to the dashboard. This node is used to define the structure of the HTTP POST request to be sent to IFTTT.</p>
@@ -200,26 +200,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">    <span class="s1">&#39;value2&#39;</span> : msg.payload.uplink_message.decoded_payload<span class="o">[</span><span class="s2">&#34;humidity&#34;</span><span class="o">]</span>
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span><span class="line"><span class="cl"><span class="k">return</span> msg<span class="p">;</span>
-</span></span></code></pre></div><figure><img src="function-node.png"
-         alt="Configuring function node"/>
+</span></span></code></pre></div><figure><img src="/docs/integrations/ifttt/node-red-setup/function-node.png"
+    alt="Configuring function node">
 </figure>
 
 <p>Place the <strong>http request</strong> node on the dashboard.</p>
 <p>In its configuration, choose <strong>set by msg.method</strong> for a <strong>Method</strong> and select <strong>Done</strong>.</p>
-<figure><img src="http-request-node.png"
-         alt="Configuring HTTP request node"/>
+<figure><img src="/docs/integrations/ifttt/node-red-setup/http-request-node.png"
+    alt="Configuring HTTP request node">
 </figure>
 
 <p>To avoid timeouts of the HTTP requests originating from The Things Stack, the <strong>http in</strong> node needs to be connected to an <strong>http response</strong> node.</p>
 <p>Add the <strong>http response</strong> node to the dashboard and configure it to reply to these requests with <code>200 OK</code>.</p>
-<figure><img src="http-response-node.png"
-         alt="Configuring HTTP response node"/>
+<figure><img src="/docs/integrations/ifttt/node-red-setup/http-response-node.png"
+    alt="Configuring HTTP response node">
 </figure>
 
 <p>Finally, add the <strong>debug</strong> node to the dashboard, configure it to display a <strong>complete msg object</strong> as an <strong>Output</strong> and finish by selecting <strong>Done</strong>.</p>
 <p>Connect these nodes as shown on the picture below and click the <strong>Deploy</strong> button in the upper right corner. Use the debug window below this button to monitor the results.</p>
-<figure><img src="final-setup.png"
-         alt="Node-RED setup"/>
+<figure><img src="/docs/integrations/ifttt/node-red-setup/final-setup.png"
+    alt="Node-RED setup">
 </figure>
         </div>
           <div class="columns is-multiline">
@@ -281,7 +281,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

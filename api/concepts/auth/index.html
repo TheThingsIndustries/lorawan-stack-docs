@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Authentication | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/api/concepts/auth/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -186,30 +186,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <pre tabindex="0"><code>&lt;token-type&gt;.&lt;token-id&gt;.&lt;token-secret&gt;
 </code></pre><div class="fixed-table table-auth-key">
 <table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Length</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>token-type</code></td>
-<td>5</td>
-<td>Fixed to <code>NNSXS</code> (&ldquo;key&rdquo; as base32 encoded string )</td>
-</tr>
-<tr>
-<td><code>token-id</code></td>
-<td>39</td>
-<td>Unique identifier of the key, randomly generated</td>
-</tr>
-<tr>
-<td><code>token-secret</code></td>
-<td>52</td>
-<td>The secret value of they key, randomly generated</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Item</th>
+          <th style="text-align: left">Length</th>
+          <th style="text-align: left">Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>token-type</code></td>
+          <td style="text-align: left">5</td>
+          <td style="text-align: left">Fixed to <code>NNSXS</code> (&ldquo;key&rdquo; as base32 encoded string )</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>token-id</code></td>
+          <td style="text-align: left">39</td>
+          <td style="text-align: left">Unique identifier of the key, randomly generated</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>token-secret</code></td>
+          <td style="text-align: left">52</td>
+          <td style="text-align: left">The secret value of they key, randomly generated</td>
+      </tr>
+  </tbody>
 </table>
 </div>
 <p>An example API Key is as follows</p>
@@ -247,20 +247,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="tab-content content">
   <section data-content="console">
   <p>In the <strong>User settings</strong> dropdown on the left-hand sidebar, select the <strong>API Keys</strong> option and select <strong>+ Add API Key</strong>.</p>
-<figure><img src="personal-api-keys.png"
-         alt="Personal API key"/>
+<figure><img src="/docs/api/concepts/auth/personal-api-keys.png"
+    alt="Personal API key">
 </figure>
 <p>Choose an optional expiry date and choose the required rights.</p>
-<figure><img src="application-rights.png"
-         alt="Selectable rights"/>
+<figure><img src="/docs/api/concepts/auth/application-rights.png"
+    alt="Selectable rights">
 </figure>
 <p>You can also choose <strong>Grant all current and future rights</strong> to this API key. Note that this gives the API Key all the access that your user has.</p>
-<figure><img src="rights-all.png"
-         alt="All rights"/>
+<figure><img src="/docs/api/concepts/auth/rights-all.png"
+    alt="All rights">
 </figure>
 <p>Now make sure to copy this API key as you will not be able to retrieve it again.</p>
-<figure><img src="copy-api-key.png"
-         alt="Copy API key"/>
+<figure><img src="/docs/api/concepts/auth/copy-api-key.png"
+    alt="Copy API key">
 </figure>
 </section>
 <section data-content="cli">
@@ -289,8 +289,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>For HTTP (REST) API calls, this API key has to be presented to the server as a <code>Bearer</code> token in the HTTP <code>Authorization</code> header. The following example uses <a href="https://curl.se/">curl</a> to make an HTTP API request using the example API key.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ curl -X <span class="s1">&#39;GET&#39;</span> -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer NNSXS.U4H3ZFFCMSR42BUAZPW2UWGFBV4WCNI5EXDJXDY.SHIF3PP5PBMJNZESN5XLR5TZJTJUIGKVUTM2I22IVBUVCD6VIQIA&#39;</span> <span class="s1">&#39;https://thethings.example.com/api/v3/applications/&lt;application_id&gt;/devices/&lt;device_id&gt;&#39;</span>
 </span></span></code></pre></div><p>If you are using <a href="https://www.postman.com/">Postman</a> to make API calls, in the <strong>Authorization</strong> tab select <strong>Bearer Token</strong> as the <strong>Type</strong> and paste the API key in the text field on the right.</p>
-<figure><img src="postman-api-key.png"
-         alt="Postman API key"/>
+<figure><img src="/docs/api/concepts/auth/postman-api-key.png"
+    alt="Postman API key">
 </figure>
 
 <p>Now that you have learnt about API keys, you can proceed to the <a href="https://www.thethingsindustries.com/docs/api/concepts/fieldmasks/">field masks</a> section.</p>
@@ -411,7 +411,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

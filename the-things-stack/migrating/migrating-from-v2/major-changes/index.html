@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Major Changes In The Things Stack | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/major-changes/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -271,314 +271,314 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>For example, a comparison between The Things Industries V2 and The Things Stack MQTT API is given below.</p>
 <h3 id="mqtt-connection-details">MQTT Connection Details</h3>
 <table>
-<thead>
-<tr>
-<th><strong>Category/Type</strong></th>
-<th><strong>The Things Industries V2</strong></th>
-<th><strong>The Things Stack</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MQTT Public Address</td>
-<td><code>{tenant_id}.thethings.industries:1883</code></td>
-<td><code>https://thethings.example.com:1883</code> (replace with the URL of your deployment)</td>
-</tr>
-<tr>
-<td>MQTT Public TLS Address</td>
-<td><code>{tenant_id}.thethings.industries:8883</code> (with using an appropriate TLS certificate)</td>
-<td><code>https://thethings.example.com:8883</code></td>
-</tr>
-<tr>
-<td>Username</td>
-<td><code>{application_id}</code></td>
-<td><code>{application_id}@{tenant_id}</code></td>
-</tr>
-<tr>
-<td>Password</td>
-<td>Application Access Key (with default rights)</td>
-<td>Application API Key (with <strong>Write downlink application traffic</strong> and <strong>Read application traffic (uplink and downlink)</strong> rights)</td>
-</tr>
-<tr>
-<td>Uplink topic (subscribe)</td>
-<td><code>{application_id}/devices/{device_id}/up</code></td>
-<td><code>v3/{application id}@{tenant id}/devices/{device id}/up</code></td>
-</tr>
-<tr>
-<td>Downlink scheduling topic (pub)</td>
-<td><code>{application_id}/devices/{device_id}/downSchedule</code> (the downlink as the first or last item in a downlink queue using <code>schedule</code> key value in the payload)</td>
-<td>Push downlink - <code>v3/{application id}@{tenant id}/devices/{device id}/down/push</code>,                                   Replace downlink queue - <code>v3/{application id}@{tenant id}/devices/{device id}/down/replace</code></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Category/Type</strong></th>
+          <th style="text-align: left"><strong>The Things Industries V2</strong></th>
+          <th style="text-align: left"><strong>The Things Stack</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">MQTT Public Address</td>
+          <td style="text-align: left"><code>{tenant_id}.thethings.industries:1883</code></td>
+          <td style="text-align: left"><code>https://thethings.example.com:1883</code> (replace with the URL of your deployment)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">MQTT Public TLS Address</td>
+          <td style="text-align: left"><code>{tenant_id}.thethings.industries:8883</code> (with using an appropriate TLS certificate)</td>
+          <td style="text-align: left"><code>https://thethings.example.com:8883</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Username</td>
+          <td style="text-align: left"><code>{application_id}</code></td>
+          <td style="text-align: left"><code>{application_id}@{tenant_id}</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Password</td>
+          <td style="text-align: left">Application Access Key (with default rights)</td>
+          <td style="text-align: left">Application API Key (with <strong>Write downlink application traffic</strong> and <strong>Read application traffic (uplink and downlink)</strong> rights)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Uplink topic (subscribe)</td>
+          <td style="text-align: left"><code>{application_id}/devices/{device_id}/up</code></td>
+          <td style="text-align: left"><code>v3/{application id}@{tenant id}/devices/{device id}/up</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Downlink scheduling topic (pub)</td>
+          <td style="text-align: left"><code>{application_id}/devices/{device_id}/downSchedule</code> (the downlink as the first or last item in a downlink queue using <code>schedule</code> key value in the payload)</td>
+          <td style="text-align: left">Push downlink - <code>v3/{application id}@{tenant id}/devices/{device id}/down/push</code>,                                   Replace downlink queue - <code>v3/{application id}@{tenant id}/devices/{device id}/down/replace</code></td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="uplinks">Uplinks</h3>
 <table>
-<thead>
-<tr>
-<th><strong>Category/Type</strong></th>
-<th><strong>The Things Industries V2</strong></th>
-<th><strong>The Things Stack</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Overall Uplink Format</td>
-<td><details><summary>Show example</summary> {<br>&ldquo;app_id&rdquo;: &ldquo;my-app-id&rdquo;, <br>&ldquo;dev_id&rdquo;: &ldquo;my-dev-id&rdquo;, <br>&ldquo;hardware_serial&rdquo;: &ldquo;0102030405060708&rdquo;,<br>&ldquo;port&rdquo;: 1, <br>&ldquo;counter&rdquo;: 2, <br>&ldquo;is_retry&rdquo;: false, <br>&ldquo;confirmed&rdquo;: false, <br>&ldquo;payload_raw&rdquo;: &ldquo;AQIDBA==&rdquo;, <br>&ldquo;payload_fields&rdquo;: {<br>&ldquo;temperature&rdquo;: 1.0,<br>&ldquo;luminosity&rdquo;: 0.64<br>},, <br>&ldquo;metadata&rdquo;: {<br>&ldquo;airtime&rdquo;: 46336000, <br>&ldquo;time&rdquo;: &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;, <br>&ldquo;frequency&rdquo;: 868.1, <br>&ldquo;modulation&rdquo;: &ldquo;LORA&rdquo;, <br>&ldquo;data_rate&rdquo;: &ldquo;SF7BW125&rdquo;,<br>&ldquo;coding_rate&rdquo;: &ldquo;4/5&rdquo;, <br>&ldquo;gateways&rdquo;: [<br>{<br>&ldquo;gtw_id&rdquo;: &ldquo;ttn-herengracht-ams&rdquo;, <br>&ldquo;timestamp&rdquo;: 12345, <br>&ldquo;time&rdquo;: &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;, <br>&ldquo;channel&rdquo;: 2, <br>&ldquo;rssi&rdquo;: -25, <br>&ldquo;snr&rdquo;: 5, <br>&ldquo;rf_chain&rdquo;: 0, <br>&ldquo;latitude&rdquo;: 52.1234, <br>&ldquo;longitude&rdquo;: 6.1234, <br>&ldquo;altitude&rdquo;: 6 <br>},<br>//&hellip;more if received by more gateways&hellip;<br>],<br>&ldquo;latitude&rdquo;: 52.2345, <br>&ldquo;longitude&rdquo;: 6.2345, <br>&ldquo;altitude&rdquo;: 2 <br>}<br>} </details></td>
-<td><details><summary>Show example</summary> {<br>&ldquo;end_device_ids&rdquo; : {<br>&ldquo;device_id&rdquo; : &ldquo;my-dev-id&rdquo;,<br>&ldquo;application_ids&rdquo; : {<br>&ldquo;application_id&rdquo; : &ldquo;my-app-id&rdquo;<br>},<br>&ldquo;dev_eui&rdquo; : &ldquo;0102030405060708&rdquo;,<br>&ldquo;join_eui&rdquo; : &ldquo;0102030405060708&rdquo;,<br>&ldquo;dev_addr&rdquo; : &ldquo;01020304&rdquo;<br>},<br>&ldquo;correlation_ids&rdquo; : [<br>// …<br>],<br>&ldquo;received_at&rdquo; : &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;,<br>&ldquo;uplink_message&rdquo; : {<br>&ldquo;session_key_id&rdquo; : &ldquo;AXA50tHUGUucuzS/bCGMNw==&rdquo;,<br>&ldquo;f_cnt&rdquo; : 1,<br>&ldquo;frm_payload&rdquo; : &ldquo;AQIDBA==&rdquo;,<br>&ldquo;decoded_payload&rdquo; : {<br>&ldquo;temperature&rdquo;: 1.0,<br>&ldquo;luminosity&rdquo;: 0.64<br>},<br>&ldquo;rx_metadata&rdquo; : [ {<br>&ldquo;gateway_ids&rdquo; : {<br>&ldquo;gateway_id&rdquo; : &ldquo;ttn-herengracht-ams&rdquo;,<br>&ldquo;eui&rdquo; : &ldquo;9C5C8E00001A05C4&rdquo;<br>},<br>&ldquo;time&rdquo; : &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;,<br>&ldquo;timestamp&rdquo; : 12345,<br>&ldquo;rssi&rdquo; : -25,<br>&ldquo;channel_rssi&rdquo; : -25,<br>&ldquo;snr&rdquo; : 5,<br>&ldquo;uplink_token&rdquo; : &ldquo;ChIKEAoEZ3R3MRIInFyOAAAaBcQQ6L3Vlgk=&rdquo;,<br>&ldquo;channel_index&rdquo; : 2<br>} ],<br>&ldquo;settings&rdquo; : {<br>&ldquo;data_rate&rdquo; : {<br>&ldquo;lora&rdquo; : {<br>&ldquo;bandwidth&rdquo; : 125000,<br>&ldquo;spreading_factor&rdquo; : 7<br>}<br>},<br>&ldquo;data_rate_index&rdquo; : 5,<br>&ldquo;coding_rate&rdquo; : &ldquo;4/5&rdquo;,<br>&ldquo;frequency&rdquo; : &ldquo;868100000&rdquo;,<br>&ldquo;timestamp&rdquo; : 12345,<br>&ldquo;time&rdquo; : &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;<br>},<br>&ldquo;received_at&rdquo; : &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;<br>,&ldquo;consumed_airtime&rdquo;: &ldquo;0.051321s&rdquo;,<br>&ldquo;locations&rdquo;: {<br>&ldquo;user&rdquo;: {<br>&ldquo;latitude&rdquo;: 37.97155556731436,<br>&ldquo;longitude&rdquo;: 23.72678801175413,<br>&ldquo;altitude&rdquo;: 10,<br>&ldquo;source&rdquo;: &ldquo;SOURCE_REGISTRY&rdquo;<br>}<br>},}<br>} </details></td>
-</tr>
-<tr>
-<td>Gateway fields</td>
-<td><code>metadata.gateways</code> - This object includes gateway details</td>
-<td><code>uplink_message.rx_metadata</code> - This object includes gateway details</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.gateways.timestamp</code> - Timestamp when the gateway received the message (microseconds)</td>
-<td><code>uplink_message.rx_metadata.timestamp</code> - Gateway concentrator timestamp when the Rx finished (microseconds)</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.gateways.time</code> - Time when the gateway received the message</td>
-<td><code>uplink_message.rx_metadata.time</code> - Time when the gateway received the message</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.gateways.channel</code> - Channel where the gateway received the message</td>
-<td>As an alternative <code>channel_index</code> is <code>available.uplink_message.rx_metadata.channel_index</code> - Index of the gateway channel that received the message</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.gateways.rssi</code> - Signal strength of the received message</td>
-<td><code>uplink_message.rx_metadata.rssi</code> - Signal strength of the received message</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.gateways.snr</code> - Signal to noise ratio of the received message</td>
-<td><code>uplink_message.rx_metadata.snr</code> - Signal to noise ratio of the received message</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.gateways.rf_chain</code> - RF chain where the gateway received the message</td>
-<td>Not available</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.gateways.latitude</code> - Latitude of the gateway reported in its status updates</td>
-<td>Not available</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.gateways.longitude</code> - Longitude of the gateway</td>
-<td>Not available</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.gateways.altitude</code> - Altitude of the gateway</td>
-<td>Not available</td>
-</tr>
-<tr>
-<td></td>
-<td>Not available</td>
-<td><code>uplink_message.rx_metadata.channel_rssi</code> - Received signal strength indicator of the channel (dBm)</td>
-</tr>
-<tr>
-<td></td>
-<td>Not available</td>
-<td><code>uplink_message.rx_metadata.uplink_token</code> - Uplink token injected by gateway, Gateway Server or Network Server</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Uplink Metadata</td>
-<td><code>metadata</code> - This object includes metadata</td>
-<td><code>uplink_message</code> - This object includes metadata</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.airtime</code></td>
-<td><code>uplink_message.consumed_airtime</code> - Formatted as a string, with a suffix for the unit used (for example, <code>&quot;0.051321s&quot;</code> is 0.051321 seconds)</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.time</code> - Time when the server received the message</td>
-<td><code>uplink_message.received_at</code> - Server time when the Application Server received the message</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.frequency</code> - Frequency at which the message was sent</td>
-<td><code>uplink_message.settings.frequency</code> - Frequency (Hz)</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.modulation</code> - Modulation that was used (LoRa or FSK)</td>
-<td>Not available, but as an alternative the modulation can be derived from <code>settings.data_rate</code></td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.data_rate</code> - Data rate that was used (LoRa only)</td>
-<td><code>uplink_message.settings.data_rate</code> - Data rate of LoRa or FSK</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.bit_rate</code> - Bit rate that was used (FSK only)</td>
-<td><code>uplink_message.settings.data_rate.fsk.bit_rate</code> - Bit rate that was used (FSK only)</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.coding_rate</code> - Coding rate that was used</td>
-<td><code>uplink_message.settings.coding_rate</code> - LoRa coding rate</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.latitude</code></td>
-<td><code>uplink_message.locations.user.latitude</code> - Latitude of the device</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.longitude</code></td>
-<td><code>uplink_message.locations.user.longitude</code> - Longitude of the device</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.altitude</code></td>
-<td><code>uplink_message.locations.user.altitude</code> - Altitude of the device</td>
-</tr>
-<tr>
-<td></td>
-<td>Not available</td>
-<td><code>uplink_message.locations.user.source</code> - Location source</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.data_rate_index</code> - Not available</td>
-<td><code>uplink_message.data_rate_index</code> - LoRaWAN data rate index</td>
-</tr>
-<tr>
-<td></td>
-<td><code>metadata.payload_raw</code> - Base64 encoded payload: [0x01, 0x02, 0x03, 0x04]</td>
-<td><code>uplink_message.frm_payload</code> - Frame payload (Base64)</td>
-</tr>
-<tr>
-<td></td>
-<td><code>port</code> - LoRaWAN FPort</td>
-<td><code>uplink_message.f_port</code> - LoRaWAN FPort</td>
-</tr>
-<tr>
-<td></td>
-<td><code>counter</code> - LoRaWAN frame counter</td>
-<td><code>uplink_message.f_cnt</code> - LoRaWAN frame counter</td>
-</tr>
-<tr>
-<td></td>
-<td>Not available</td>
-<td><code>uplink_message.session_key_id</code> - Join Server issued identifier for the session keys used by this uplink</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Common fields</td>
-<td><code>app_id</code></td>
-<td><code>end_device_ids.application_ids.application_id</code></td>
-</tr>
-<tr>
-<td></td>
-<td><code>dev_id</code></td>
-<td><code>end_device_ids.device_id</code></td>
-</tr>
-<tr>
-<td></td>
-<td><code>hardware_serial</code> - In case of LoRaWAN: the <code>DevEUI</code></td>
-<td><code>end_device_ids.dev_eui</code></td>
-</tr>
-<tr>
-<td></td>
-<td><code>confirmed</code> - <code>true</code> if this message was a confirmed message</td>
-<td>Not available</td>
-</tr>
-<tr>
-<td></td>
-<td>Not available</td>
-<td><code>end_device_ids.join_eui</code></td>
-</tr>
-<tr>
-<td></td>
-<td>Not available</td>
-<td><code>end_device_ids.dev_addr</code></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Uplink Payload fiedls</td>
-<td><code>payload_fields</code> - Object containing the results from the payload functions (left out when empty)</td>
-<td><code>uplink_message.decoded_payload</code></td>
-</tr>
-<tr>
-<td>Correlation IDs</td>
-<td>Not available</td>
-<td><code>correlation_ids</code></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Category/Type</strong></th>
+          <th style="text-align: left"><strong>The Things Industries V2</strong></th>
+          <th style="text-align: left"><strong>The Things Stack</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Overall Uplink Format</td>
+          <td style="text-align: left"><details><summary>Show example</summary> {<br>&ldquo;app_id&rdquo;: &ldquo;my-app-id&rdquo;, <br>&ldquo;dev_id&rdquo;: &ldquo;my-dev-id&rdquo;, <br>&ldquo;hardware_serial&rdquo;: &ldquo;0102030405060708&rdquo;,<br>&ldquo;port&rdquo;: 1, <br>&ldquo;counter&rdquo;: 2, <br>&ldquo;is_retry&rdquo;: false, <br>&ldquo;confirmed&rdquo;: false, <br>&ldquo;payload_raw&rdquo;: &ldquo;AQIDBA==&rdquo;, <br>&ldquo;payload_fields&rdquo;: {<br>&ldquo;temperature&rdquo;: 1.0,<br>&ldquo;luminosity&rdquo;: 0.64<br>},, <br>&ldquo;metadata&rdquo;: {<br>&ldquo;airtime&rdquo;: 46336000, <br>&ldquo;time&rdquo;: &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;, <br>&ldquo;frequency&rdquo;: 868.1, <br>&ldquo;modulation&rdquo;: &ldquo;LORA&rdquo;, <br>&ldquo;data_rate&rdquo;: &ldquo;SF7BW125&rdquo;,<br>&ldquo;coding_rate&rdquo;: &ldquo;4/5&rdquo;, <br>&ldquo;gateways&rdquo;: [<br>{<br>&ldquo;gtw_id&rdquo;: &ldquo;ttn-herengracht-ams&rdquo;, <br>&ldquo;timestamp&rdquo;: 12345, <br>&ldquo;time&rdquo;: &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;, <br>&ldquo;channel&rdquo;: 2, <br>&ldquo;rssi&rdquo;: -25, <br>&ldquo;snr&rdquo;: 5, <br>&ldquo;rf_chain&rdquo;: 0, <br>&ldquo;latitude&rdquo;: 52.1234, <br>&ldquo;longitude&rdquo;: 6.1234, <br>&ldquo;altitude&rdquo;: 6 <br>},<br>//&hellip;more if received by more gateways&hellip;<br>],<br>&ldquo;latitude&rdquo;: 52.2345, <br>&ldquo;longitude&rdquo;: 6.2345, <br>&ldquo;altitude&rdquo;: 2 <br>}<br>} </details></td>
+          <td style="text-align: left"><details><summary>Show example</summary> {<br>&ldquo;end_device_ids&rdquo; : {<br>&ldquo;device_id&rdquo; : &ldquo;my-dev-id&rdquo;,<br>&ldquo;application_ids&rdquo; : {<br>&ldquo;application_id&rdquo; : &ldquo;my-app-id&rdquo;<br>},<br>&ldquo;dev_eui&rdquo; : &ldquo;0102030405060708&rdquo;,<br>&ldquo;join_eui&rdquo; : &ldquo;0102030405060708&rdquo;,<br>&ldquo;dev_addr&rdquo; : &ldquo;01020304&rdquo;<br>},<br>&ldquo;correlation_ids&rdquo; : [<br>// …<br>],<br>&ldquo;received_at&rdquo; : &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;,<br>&ldquo;uplink_message&rdquo; : {<br>&ldquo;session_key_id&rdquo; : &ldquo;AXA50tHUGUucuzS/bCGMNw==&rdquo;,<br>&ldquo;f_cnt&rdquo; : 1,<br>&ldquo;frm_payload&rdquo; : &ldquo;AQIDBA==&rdquo;,<br>&ldquo;decoded_payload&rdquo; : {<br>&ldquo;temperature&rdquo;: 1.0,<br>&ldquo;luminosity&rdquo;: 0.64<br>},<br>&ldquo;rx_metadata&rdquo; : [ {<br>&ldquo;gateway_ids&rdquo; : {<br>&ldquo;gateway_id&rdquo; : &ldquo;ttn-herengracht-ams&rdquo;,<br>&ldquo;eui&rdquo; : &ldquo;9C5C8E00001A05C4&rdquo;<br>},<br>&ldquo;time&rdquo; : &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;,<br>&ldquo;timestamp&rdquo; : 12345,<br>&ldquo;rssi&rdquo; : -25,<br>&ldquo;channel_rssi&rdquo; : -25,<br>&ldquo;snr&rdquo; : 5,<br>&ldquo;uplink_token&rdquo; : &ldquo;ChIKEAoEZ3R3MRIInFyOAAAaBcQQ6L3Vlgk=&rdquo;,<br>&ldquo;channel_index&rdquo; : 2<br>} ],<br>&ldquo;settings&rdquo; : {<br>&ldquo;data_rate&rdquo; : {<br>&ldquo;lora&rdquo; : {<br>&ldquo;bandwidth&rdquo; : 125000,<br>&ldquo;spreading_factor&rdquo; : 7<br>}<br>},<br>&ldquo;data_rate_index&rdquo; : 5,<br>&ldquo;coding_rate&rdquo; : &ldquo;4/5&rdquo;,<br>&ldquo;frequency&rdquo; : &ldquo;868100000&rdquo;,<br>&ldquo;timestamp&rdquo; : 12345,<br>&ldquo;time&rdquo; : &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;<br>},<br>&ldquo;received_at&rdquo; : &ldquo;1970-01-01T00:00:00.000000000Z&rdquo;<br>,&ldquo;consumed_airtime&rdquo;: &ldquo;0.051321s&rdquo;,<br>&ldquo;locations&rdquo;: {<br>&ldquo;user&rdquo;: {<br>&ldquo;latitude&rdquo;: 37.97155556731436,<br>&ldquo;longitude&rdquo;: 23.72678801175413,<br>&ldquo;altitude&rdquo;: 10,<br>&ldquo;source&rdquo;: &ldquo;SOURCE_REGISTRY&rdquo;<br>}<br>},}<br>} </details></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Gateway fields</td>
+          <td style="text-align: left"><code>metadata.gateways</code> - This object includes gateway details</td>
+          <td style="text-align: left"><code>uplink_message.rx_metadata</code> - This object includes gateway details</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.gateways.timestamp</code> - Timestamp when the gateway received the message (microseconds)</td>
+          <td style="text-align: left"><code>uplink_message.rx_metadata.timestamp</code> - Gateway concentrator timestamp when the Rx finished (microseconds)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.gateways.time</code> - Time when the gateway received the message</td>
+          <td style="text-align: left"><code>uplink_message.rx_metadata.time</code> - Time when the gateway received the message</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.gateways.channel</code> - Channel where the gateway received the message</td>
+          <td style="text-align: left">As an alternative <code>channel_index</code> is <code>available.uplink_message.rx_metadata.channel_index</code> - Index of the gateway channel that received the message</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.gateways.rssi</code> - Signal strength of the received message</td>
+          <td style="text-align: left"><code>uplink_message.rx_metadata.rssi</code> - Signal strength of the received message</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.gateways.snr</code> - Signal to noise ratio of the received message</td>
+          <td style="text-align: left"><code>uplink_message.rx_metadata.snr</code> - Signal to noise ratio of the received message</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.gateways.rf_chain</code> - RF chain where the gateway received the message</td>
+          <td style="text-align: left">Not available</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.gateways.latitude</code> - Latitude of the gateway reported in its status updates</td>
+          <td style="text-align: left">Not available</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.gateways.longitude</code> - Longitude of the gateway</td>
+          <td style="text-align: left">Not available</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.gateways.altitude</code> - Altitude of the gateway</td>
+          <td style="text-align: left">Not available</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Not available</td>
+          <td style="text-align: left"><code>uplink_message.rx_metadata.channel_rssi</code> - Received signal strength indicator of the channel (dBm)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Not available</td>
+          <td style="text-align: left"><code>uplink_message.rx_metadata.uplink_token</code> - Uplink token injected by gateway, Gateway Server or Network Server</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Uplink Metadata</td>
+          <td style="text-align: left"><code>metadata</code> - This object includes metadata</td>
+          <td style="text-align: left"><code>uplink_message</code> - This object includes metadata</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.airtime</code></td>
+          <td style="text-align: left"><code>uplink_message.consumed_airtime</code> - Formatted as a string, with a suffix for the unit used (for example, <code>&quot;0.051321s&quot;</code> is 0.051321 seconds)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.time</code> - Time when the server received the message</td>
+          <td style="text-align: left"><code>uplink_message.received_at</code> - Server time when the Application Server received the message</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.frequency</code> - Frequency at which the message was sent</td>
+          <td style="text-align: left"><code>uplink_message.settings.frequency</code> - Frequency (Hz)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.modulation</code> - Modulation that was used (LoRa or FSK)</td>
+          <td style="text-align: left">Not available, but as an alternative the modulation can be derived from <code>settings.data_rate</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.data_rate</code> - Data rate that was used (LoRa only)</td>
+          <td style="text-align: left"><code>uplink_message.settings.data_rate</code> - Data rate of LoRa or FSK</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.bit_rate</code> - Bit rate that was used (FSK only)</td>
+          <td style="text-align: left"><code>uplink_message.settings.data_rate.fsk.bit_rate</code> - Bit rate that was used (FSK only)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.coding_rate</code> - Coding rate that was used</td>
+          <td style="text-align: left"><code>uplink_message.settings.coding_rate</code> - LoRa coding rate</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.latitude</code></td>
+          <td style="text-align: left"><code>uplink_message.locations.user.latitude</code> - Latitude of the device</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.longitude</code></td>
+          <td style="text-align: left"><code>uplink_message.locations.user.longitude</code> - Longitude of the device</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.altitude</code></td>
+          <td style="text-align: left"><code>uplink_message.locations.user.altitude</code> - Altitude of the device</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Not available</td>
+          <td style="text-align: left"><code>uplink_message.locations.user.source</code> - Location source</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.data_rate_index</code> - Not available</td>
+          <td style="text-align: left"><code>uplink_message.data_rate_index</code> - LoRaWAN data rate index</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>metadata.payload_raw</code> - Base64 encoded payload: [0x01, 0x02, 0x03, 0x04]</td>
+          <td style="text-align: left"><code>uplink_message.frm_payload</code> - Frame payload (Base64)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>port</code> - LoRaWAN FPort</td>
+          <td style="text-align: left"><code>uplink_message.f_port</code> - LoRaWAN FPort</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>counter</code> - LoRaWAN frame counter</td>
+          <td style="text-align: left"><code>uplink_message.f_cnt</code> - LoRaWAN frame counter</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Not available</td>
+          <td style="text-align: left"><code>uplink_message.session_key_id</code> - Join Server issued identifier for the session keys used by this uplink</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Common fields</td>
+          <td style="text-align: left"><code>app_id</code></td>
+          <td style="text-align: left"><code>end_device_ids.application_ids.application_id</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>dev_id</code></td>
+          <td style="text-align: left"><code>end_device_ids.device_id</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>hardware_serial</code> - In case of LoRaWAN: the <code>DevEUI</code></td>
+          <td style="text-align: left"><code>end_device_ids.dev_eui</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>confirmed</code> - <code>true</code> if this message was a confirmed message</td>
+          <td style="text-align: left">Not available</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Not available</td>
+          <td style="text-align: left"><code>end_device_ids.join_eui</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Not available</td>
+          <td style="text-align: left"><code>end_device_ids.dev_addr</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Uplink Payload fiedls</td>
+          <td style="text-align: left"><code>payload_fields</code> - Object containing the results from the payload functions (left out when empty)</td>
+          <td style="text-align: left"><code>uplink_message.decoded_payload</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Correlation IDs</td>
+          <td style="text-align: left">Not available</td>
+          <td style="text-align: left"><code>correlation_ids</code></td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="downlinks">Downlinks</h3>
 <table>
-<thead>
-<tr>
-<th><strong>Category/Type</strong></th>
-<th><strong>The Things Industries V2</strong></th>
-<th><strong>The Things Stack</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Downlink message overall format</td>
-<td><details><summary>Show example</summary>{<br>&ldquo;port&rdquo;: 1, <br>&ldquo;confirmed&rdquo;: false,<br>&ldquo;payload_raw&rdquo;: &ldquo;AQIDBA==&rdquo;, <br>&ldquo;schedule&rdquo;: &ldquo;replace&rdquo;,<br>}<br><br> or use payload_fields instead <br><br> {<br>&ldquo;port&rdquo;: 1,<br>&ldquo;confirmed&rdquo;: false,<br>&ldquo;payload_fields&rdquo;: {<br>&ldquo;led&rdquo;: true<br>},<br>&ldquo;schedule&rdquo;: &ldquo;replace&rdquo;, // allowed values: &ldquo;replace&rdquo; (default), &ldquo;first&rdquo;, &ldquo;last&rdquo;} </details></td>
-<td><details><summary>Show example</summary> {<br>&ldquo;downlinks&rdquo;: [{<br>&ldquo;f_port&rdquo;: 15,<br>&ldquo;frm_payload&rdquo;: &ldquo;vu8=&rdquo;,<br>&ldquo;priority&rdquo;: &ldquo;HIGH&rdquo;,<br>&ldquo;confirmed&rdquo;: true,<br>&ldquo;correlation_ids&rdquo;: [&ldquo;my-correlation-id&rdquo;]<br>}]<br>} </details></td>
-</tr>
-<tr>
-<td>Individual fields comparison</td>
-<td><code>port</code></td>
-<td><code>f_port</code></td>
-</tr>
-<tr>
-<td></td>
-<td><code>confirmed</code></td>
-<td><code>confirmed</code></td>
-</tr>
-<tr>
-<td></td>
-<td><code>payload_raw</code></td>
-<td><code>frm_payload</code></td>
-</tr>
-<tr>
-<td></td>
-<td><code>schedule</code></td>
-<td>Replace and push topics are available as an alternative</td>
-</tr>
-<tr>
-<td></td>
-<td>Not available</td>
-<td><code>priority</code> - You can specify <code>LOWEST</code>, <code>LOW</code>, <code>BELOW_NORMAL</code>, <code>NORMAL</code>, <code>ABOVE_NORMAL</code>, <code>HIGH</code> and <code>HIGHEST</code> (<code>LOWEST</code> is a default if not specified)</td>
-</tr>
-<tr>
-<td></td>
-<td>Not available</td>
-<td><code>correlation_ids</code> - You can add multiple custom correlation IDs, for example to reference events or identifiers of your application</td>
-</tr>
-<tr>
-<td></td>
-<td><code>payload_fields</code></td>
-<td>Not available</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Category/Type</strong></th>
+          <th style="text-align: left"><strong>The Things Industries V2</strong></th>
+          <th style="text-align: left"><strong>The Things Stack</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Downlink message overall format</td>
+          <td style="text-align: left"><details><summary>Show example</summary>{<br>&ldquo;port&rdquo;: 1, <br>&ldquo;confirmed&rdquo;: false,<br>&ldquo;payload_raw&rdquo;: &ldquo;AQIDBA==&rdquo;, <br>&ldquo;schedule&rdquo;: &ldquo;replace&rdquo;,<br>}<br><br> or use payload_fields instead <br><br> {<br>&ldquo;port&rdquo;: 1,<br>&ldquo;confirmed&rdquo;: false,<br>&ldquo;payload_fields&rdquo;: {<br>&ldquo;led&rdquo;: true<br>},<br>&ldquo;schedule&rdquo;: &ldquo;replace&rdquo;, // allowed values: &ldquo;replace&rdquo; (default), &ldquo;first&rdquo;, &ldquo;last&rdquo;} </details></td>
+          <td style="text-align: left"><details><summary>Show example</summary> {<br>&ldquo;downlinks&rdquo;: [{<br>&ldquo;f_port&rdquo;: 15,<br>&ldquo;frm_payload&rdquo;: &ldquo;vu8=&rdquo;,<br>&ldquo;priority&rdquo;: &ldquo;HIGH&rdquo;,<br>&ldquo;confirmed&rdquo;: true,<br>&ldquo;correlation_ids&rdquo;: [&ldquo;my-correlation-id&rdquo;]<br>}]<br>} </details></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Individual fields comparison</td>
+          <td style="text-align: left"><code>port</code></td>
+          <td style="text-align: left"><code>f_port</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>confirmed</code></td>
+          <td style="text-align: left"><code>confirmed</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>payload_raw</code></td>
+          <td style="text-align: left"><code>frm_payload</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>schedule</code></td>
+          <td style="text-align: left">Replace and push topics are available as an alternative</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Not available</td>
+          <td style="text-align: left"><code>priority</code> - You can specify <code>LOWEST</code>, <code>LOW</code>, <code>BELOW_NORMAL</code>, <code>NORMAL</code>, <code>ABOVE_NORMAL</code>, <code>HIGH</code> and <code>HIGHEST</code> (<code>LOWEST</code> is a default if not specified)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Not available</td>
+          <td style="text-align: left"><code>correlation_ids</code> - You can add multiple custom correlation IDs, for example to reference events or identifiers of your application</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>payload_fields</code></td>
+          <td style="text-align: left">Not available</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="references">References</h3>
 <p><a href="https://www.thethingsnetwork.org/docs/applications/mqtt/api.html">The Things Industries V2 MQTT API Documentation</a></p>
@@ -666,7 +666,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

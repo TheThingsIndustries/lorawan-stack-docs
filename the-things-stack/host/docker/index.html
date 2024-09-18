@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Docker | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/docker/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -265,9 +265,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>In addition to the following written instructions, video instructions for installing The Things Stack are available on <a href="https://www.youtube.com/watch?v=DcmgJMvMfZc">The Things Network youtube channel</a>.</p>
 <details><summary>Show video</summary>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/DcmgJMvMfZc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/DcmgJMvMfZc?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 </details>
 <h2 id="prerequisites">Prerequisites</h2>
@@ -292,10 +295,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           
           <div class="content has-text-grey">
             
-            This guide shows an example of configuring The Things Stack using configuration files, with an example domain thethings.example.com and TLS certificates from Let&amp;rsquo;s Encrypt.
+            This guide shows an example of configuring The Things Stack using configuration files, with an example domain thethings.example.com and TLS certificates from Let&rsquo;s Encrypt.
 If configuring The Things Stack as localhost on a machine with no public IP or DNS address, see the localhost section.
 In addition to the written instructions below, video instructions for installing The Things Stack are available on The Things Network youtube channel.
-Show video Configuration Files The Things Stack requires two configuration files when installing with Docker: docker-compose.
+Show video Configuration Files The Things Stack requires two configuration files when installing with Docker: docker-compose.yml and ttn-lw-stack-docker.yml. The files are provided below:
+
             
           </div>
         </div>
@@ -339,6 +343,7 @@ Begin by opening a terminal prompt in the same directory as your docker-compose.
 Initialization The first time The Things Stack is started, it requires some initialization. Start by pulling the Docker images:
 docker compose pull Next, you need to initialize the database of the Identity Server:
 docker compose run --rm stack is-db migrate If you receive a permissions error, ensure you have correctly configured permissions for Docker Engine.
+
             
           </div>
         </div>
@@ -379,7 +384,8 @@ docker compose run --rm stack is-db migrate If you receive a permissions error, 
             
             This section contains help for common issues you may encounter while installing The Things Stack.
 Component address is not included in this license Ensure that you configure the is.oauth.ui.canonical-url with a domain that matches the domain in your license. See the Configuration Reference for more information about the configuration options.
-Version in &amp;ldquo;docker-compose.yml&amp;rdquo; is unsupported Our docker-compose.yml file uses Compose file version 3.7. If using a package manager to install Docker Compose, it is possible to install an old, unsupported version.
+Version in &ldquo;docker-compose.yml&rdquo; is unsupported Our docker-compose.yml file uses Compose file version 3.7. If using a package manager to install Docker Compose, it is possible to install an old, unsupported version. See Docker&rsquo;s installation instructions to upgrade to a more recent version.
+
             
           </div>
         </div>
@@ -487,7 +493,8 @@ Version in &amp;ldquo;docker-compose.yml&amp;rdquo; is unsupported Our docker-co
             The Things Stack Open Source can also be installed on a Raspberry Pi 3 or 4 running balena.
 To run The Things Stack you need to deploy it to a balenaCloud fleet. This can be done by by clicking the button below:
 First, follow the instructions in your balenaCloud dashboard and click Create and deploy.
-Then, click Add device and configure the balenaOS file by filling in the presented form. Click Download balenaOS to download the resulting OS file and flash it to an SD card.
+Then, click Add device and configure the balenaOS file by filling in the presented form. Click Download balenaOS to download the resulting OS file and flash it to an SD card. Insert the SD card into your Raspberry Pi, connect it to the Internet and power it up. Enjoy the magic 🌟Over-The-Air🌟!
+
             
           </div>
         </div>
@@ -562,7 +569,7 @@ Then, click Add device and configure the balenaOS file by filling in the present
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

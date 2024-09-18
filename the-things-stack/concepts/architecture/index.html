@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Architecture | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/architecture/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -185,72 +185,72 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         <div class="content">
           <p>The Things Stack follows a API driven microservice architecture, well suited for high availability and reliability.</p>
-<figure><img src="tts-architecture.jpeg"
-         alt="The Things Stack Architecture"/>
+<figure><img src="/docs/the-things-stack/concepts/architecture/tts-architecture.jpeg"
+    alt="The Things Stack Architecture">
 </figure>
 
 <p>The Things Stack has the following main components.</p>
 <div class="fixed-table table-tts-components">
 <table>
-<thead>
-<tr>
-<th>Component (Service)</th>
-<th>Short</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Gateway Server</td>
-<td><code>GS</code></td>
-<td>Maintains connections with gateways supporting the Basic Station, UDP, MQTT and gRPC protocols. It forwards uplink traffic to Network Servers directly or indirectly, and schedules downlink traffic on gateways.</td>
-</tr>
-<tr>
-<td>Network Server</td>
-<td><code>NS</code></td>
-<td>Handles the LoRaWAN® network layer, including MAC commands, regional parameters and adaptive data rate (ADR).</td>
-</tr>
-<tr>
-<td>Application Server</td>
-<td><code>AS</code></td>
-<td>Handles the LoRaWAN application layer, including uplink data decryption and decoding, downlink queuing and downlink data encoding and encryption.</td>
-</tr>
-<tr>
-<td>Identity Server</td>
-<td><code>IS</code></td>
-<td>Provides the registries that store entities such as applications with their end devices, gateways, users, organizations, OAuth clients and authentication providers. It also manages access control through memberships and API keys.</td>
-</tr>
-<tr>
-<td>Join Server</td>
-<td><code>JS</code></td>
-<td>Handles the LoRaWAN join flow, including Network and Application Server authentication and session key generation.</td>
-</tr>
-<tr>
-<td>Device Claiming Server</td>
-<td><code>DCS</code></td>
-<td>Allows users to claim devices and gateways in a secure manner.</td>
-</tr>
-<tr>
-<td>Gateway Configuration Server</td>
-<td><code>GCS</code></td>
-<td>Generates configuration files for UDP gateways and manages gateway configuration and firmware updates for Basic Station and The Things Kickstarter gateways.</td>
-</tr>
-<tr>
-<td>Packet Broker Agent</td>
-<td><code>PBA</code></td>
-<td>Connects The Things Stack with Packet Broker for exchanging traffic with other networks.</td>
-</tr>
-<tr>
-<td>Network Operations Center</td>
-<td><code>NOC</code></td>
-<td>Provides aggregated insight in a network operated with The Things Stack.</td>
-</tr>
-<tr>
-<td>Console</td>
-<td>NA</td>
-<td>Is the web application used to interact with The Things Stack.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Component (Service)</th>
+          <th style="text-align: left">Short</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Gateway Server</td>
+          <td style="text-align: left"><code>GS</code></td>
+          <td style="text-align: left">Maintains connections with gateways supporting the Basic Station, UDP, MQTT and gRPC protocols. It forwards uplink traffic to Network Servers directly or indirectly, and schedules downlink traffic on gateways.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Network Server</td>
+          <td style="text-align: left"><code>NS</code></td>
+          <td style="text-align: left">Handles the LoRaWAN® network layer, including MAC commands, regional parameters and adaptive data rate (ADR).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Application Server</td>
+          <td style="text-align: left"><code>AS</code></td>
+          <td style="text-align: left">Handles the LoRaWAN application layer, including uplink data decryption and decoding, downlink queuing and downlink data encoding and encryption.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Identity Server</td>
+          <td style="text-align: left"><code>IS</code></td>
+          <td style="text-align: left">Provides the registries that store entities such as applications with their end devices, gateways, users, organizations, OAuth clients and authentication providers. It also manages access control through memberships and API keys.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Join Server</td>
+          <td style="text-align: left"><code>JS</code></td>
+          <td style="text-align: left">Handles the LoRaWAN join flow, including Network and Application Server authentication and session key generation.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Device Claiming Server</td>
+          <td style="text-align: left"><code>DCS</code></td>
+          <td style="text-align: left">Allows users to claim devices and gateways in a secure manner.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Gateway Configuration Server</td>
+          <td style="text-align: left"><code>GCS</code></td>
+          <td style="text-align: left">Generates configuration files for UDP gateways and manages gateway configuration and firmware updates for Basic Station and The Things Kickstarter gateways.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Packet Broker Agent</td>
+          <td style="text-align: left"><code>PBA</code></td>
+          <td style="text-align: left">Connects The Things Stack with Packet Broker for exchanging traffic with other networks.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Network Operations Center</td>
+          <td style="text-align: left"><code>NOC</code></td>
+          <td style="text-align: left">Provides aggregated insight in a network operated with The Things Stack.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Console</td>
+          <td style="text-align: left">NA</td>
+          <td style="text-align: left">Is the web application used to interact with The Things Stack.</td>
+      </tr>
+  </tbody>
 </table>
 </div>
 <br>
@@ -258,30 +258,30 @@ The Things Stack also has the following additional/supporting components.
 <br>
 <div class="fixed-table table-tts-components">
 <table>
-<thead>
-<tr>
-<th>Component (Service)</th>
-<th>Short</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Tenant Billing Server</td>
-<td><code>TBS</code></td>
-<td>Manages the creation, suspension and billing of tenants using different payment backends (only for The Things Stack cloud).</td>
-</tr>
-<tr>
-<td>QR Generator</td>
-<td><code>QRG</code></td>
-<td>Generates QR codes for devices in various formats. These QR codes can be used for various purposes, including identification and device claiming to transfer ownership..</td>
-</tr>
-<tr>
-<td>Device Template Converter</td>
-<td><code>DTC</code></td>
-<td>Converts data to device templates for migrating networks and importing vendor-specific data.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Component (Service)</th>
+          <th style="text-align: left">Short</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Tenant Billing Server</td>
+          <td style="text-align: left"><code>TBS</code></td>
+          <td style="text-align: left">Manages the creation, suspension and billing of tenants using different payment backends (only for The Things Stack cloud).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">QR Generator</td>
+          <td style="text-align: left"><code>QRG</code></td>
+          <td style="text-align: left">Generates QR codes for devices in various formats. These QR codes can be used for various purposes, including identification and device claiming to transfer ownership..</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Device Template Converter</td>
+          <td style="text-align: left"><code>DTC</code></td>
+          <td style="text-align: left">Converts data to device templates for migrating networks and importing vendor-specific data.</td>
+      </tr>
+  </tbody>
 </table>
 </div>
 <p>If you want more detailed information on each component, check the <a href="/docs/reference/components/">components reference</a> section.</p>
@@ -347,7 +347,7 @@ The Things Stack also has the following additional/supporting components.
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

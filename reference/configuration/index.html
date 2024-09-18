@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Configuration | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/configuration/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -314,8 +314,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="content has-text-grey">
             
             Global Options Under normal circumstances, only info, warn and error logs are printed to the console. For development, you may also want to see debug logs.
-log.level: The minimum level log messages must have to be shown (default &amp;ldquo;info&amp;rdquo;) The format of logs is also configurable. The Things Stack supports console format (that prints logs as a human-friendly text) and json format (that prints logs as JSON).
-log.format: Log format to write License The Things Stack requires a license key for production use.
+log.level: The minimum level log messages must have to be shown (default &ldquo;info&rdquo;) The format of logs is also configurable. The Things Stack supports console format (that prints logs as a human-friendly text) and json format (that prints logs as JSON).
+log.format: Log format to write License The Things Stack requires a license key for production use. For development purposes, it will work for a limited time on localhost without a license key.
+
             
           </div>
         </div>
@@ -371,7 +372,7 @@ log.format: Log format to write License The Things Stack requires a license key 
           
           <div class="content has-text-grey">
             
-            General options tbs.tenant-admin-key : The tenant administration key configured in the Identity Server. tbs.pull-interval : How frequently to pull the metering data. tbs.reporter-address-regexps : Regular expressions representing addresses which can report tenant metering totals. Stripe configuration tbs.stripe.enable : Enable the Stripe backend tbs.stripe.api-key : The API secret key used for Stripe operations. Can be found in the API keys menu of the Developers section of the Stripe dashboard. tbs.stripe.endpoint-secret-key : The endpoint secret key used to verify the signature of the Stripe webhooks.
+            General options tbs.tenant-admin-key : The tenant administration key configured in the Identity Server. tbs.pull-interval : How frequently to pull the metering data. tbs.reporter-address-regexps : Regular expressions representing addresses which can report tenant metering totals. Stripe configuration tbs.stripe.enable : Enable the Stripe backend tbs.stripe.api-key : The API secret key used for Stripe operations. Can be found in the API keys menu of the Developers section of the Stripe dashboard. tbs.stripe.endpoint-secret-key : The endpoint secret key used to verify the signature of the Stripe webhooks. Can be found in the Webhooks menu of the Developers section of the Stripe dashboard. tbs.stripe.skip-signature-validation : If enabled, the backend will no longer validate the signature of the Stripe webhooks. Do not use in production environments. tbs.stripe.recurring-plan-ids : The IDs of the recurring pricing plans which are managed by the backend. Can be found in the main page of the pricing plan. tbs.stripe.metered-plan-ids : The IDs of the metered pricing plans which are managed by the backend. Can be found in the main page of the pricing plan. 
             
           </div>
         </div>
@@ -391,7 +392,8 @@ log.format: Log format to write License The Things Stack requires a license key 
           <div class="content has-text-grey">
             
             Security Options as.device-kek-label: Label of KEK used to encrypt device keys at rest Interoperability Options The as.interop options configure how Application Server performs interoperability with other LoRaWAN® Backend Interfaces-compliant servers.
-as.interop.id: AS-ID of this Application Server as.interop.config-source: Source of the interoperability client configuration (directory, url, blob) as.interop.blob.bucket: Blob bucket, which contains interoperability client configuration as.interop.blob.path: Blob path, which contains interoperability client configuration as.interop.directory: OS filesystem directory, which contains interoperability client configuration as.
+as.interop.id: AS-ID of this Application Server as.interop.config-source: Source of the interoperability client configuration (directory, url, blob) as.interop.blob.bucket: Blob bucket, which contains interoperability client configuration as.interop.blob.path: Blob path, which contains interoperability client configuration as.interop.directory: OS filesystem directory, which contains interoperability client configuration as.interop.url: URL, which contains interoperability client configuration See LoRaWAN Join Server Configuration to learn how to configure the client configuration.
+
             
           </div>
         </div>
@@ -411,7 +413,8 @@ as.interop.id: AS-ID of this Application Server as.interop.config-source: Source
           <div class="content has-text-grey">
             
             Global Options Under normal circumstances, only info, warn and error logs are printed to the console. For development, you may also want to see debug logs.
-log.level: The minimum level log messages must have to be shown By default the CLI assumes that it is connecting to servers that use TLS certificates that are trusted by the operating system. When connecting to servers with self-signed certificates or a custom CA, the ca option can be used to trust those certificates.
+log.level: The minimum level log messages must have to be shown By default the CLI assumes that it is connecting to servers that use TLS certificates that are trusted by the operating system. When connecting to servers with self-signed certificates or a custom CA, the ca option can be used to trust those certificates. When connecting servers that don&rsquo;t use TLS, the insecure option can be used.
+
             
           </div>
         </div>
@@ -432,7 +435,8 @@ log.level: The minimum level log messages must have to be shown By default the C
             
             Console Mount The Console can be served under any arbitrary path on your server
 console.mount: Path on the server where the Console will be served OAuth Options The Console app uses the OAuth 2.0 authorization flow to authorize actions in the backend. You can customize the authorization parameters if necessary:
-console.oauth.authorize-url: The OAuth Authorize URL console.oauth.client-id: The OAuth client ID console.oauth.client-secret: The OAuth client secret console.oauth.token-url: The OAuth Token Exchange URL console.
+console.oauth.authorize-url: The OAuth Authorize URL console.oauth.client-id: The OAuth client ID console.oauth.client-secret: The OAuth client secret console.oauth.token-url: The OAuth Token Exchange URL console.oauth.logout-url: The logout URL of the OAuth server used to perform client initiated logouts console.oauth.cross-site-cookie: Controls access to OAuth state cookie between origins. Set to true in multi-cluster deployments in order to support OAuth clients that use POST callbacks. The default is false. Frontend Setup You can change various values that will be passed to the JavaScript logic and HTML Head tags of the Web UI:
+
             
           </div>
         </div>
@@ -451,7 +455,8 @@ console.oauth.authorize-url: The OAuth Authorize URL console.oauth.client-id: Th
           
           <div class="content has-text-grey">
             
-            End Device Claiming Options dcs.edcs.net-id: NetID of the Network Server to configure when claiming dcs.edcs.ns-id: NSID of the Network Server to configure when claiming dcs.edcs.as-id: AS-ID of the Application Server to configure when claiming dcs.edcs.source: Source of the file containing Join Server settings (directory, url, blob) dcs.edcs.directory: OS filesystem directory, which contains the config.yml and the client-specific files dcs.edcs.url: URL, which contains Join Server client configuration dcs.edcs.blob.bucket: Blob bucket to use for the Join Server client configuration dcs.
+            End Device Claiming Options dcs.edcs.net-id: NetID of the Network Server to configure when claiming dcs.edcs.ns-id: NSID of the Network Server to configure when claiming dcs.edcs.as-id: AS-ID of the Application Server to configure when claiming dcs.edcs.source: Source of the file containing Join Server settings (directory, url, blob) dcs.edcs.directory: OS filesystem directory, which contains the config.yml and the client-specific files dcs.edcs.url: URL, which contains Join Server client configuration dcs.edcs.blob.bucket: Blob bucket to use for the Join Server client configuration dcs.edcs.blob.path: Blob path to use for the Join Server client configuration See Device Claiming Repository to learn how to configure the client configuration.
+
             
           </div>
         </div>
@@ -471,7 +476,8 @@ console.oauth.authorize-url: The OAuth Authorize URL console.oauth.client-id: Th
           <div class="content has-text-grey">
             
             Security Options gcs.require-auth: Require authentication for the HTTP endpoints Basic Station CUPS Options The gcs.basic-station options configure the GCS to handle Basic Station CUPS requests.
-gcs.basic-station.allow-cups-uri-update: Allow CUPS URI updates gcs.basic-station.default.lns-uri: The default LNS URI that the gateways should use. If no Gateway Server address is registered, the default value is used. gcs.basic-station.owner-for-unknown.account-type: Type of account to register unknown gateways to (user|organization) gcs.basic-station.owner-for-unknown.api-key: API Key to use for unknown gateway registration gcs.
+gcs.basic-station.allow-cups-uri-update: Allow CUPS URI updates gcs.basic-station.default.lns-uri: The default LNS URI that the gateways should use. If no Gateway Server address is registered, the default value is used. gcs.basic-station.owner-for-unknown.account-type: Type of account to register unknown gateways to (user|organization) gcs.basic-station.owner-for-unknown.api-key: API Key to use for unknown gateway registration gcs.basic-station.owner-for-unknown.id: ID of the account to register unknown gateways to gcs.basic-station.require-explicit-enable: Require gateways to explicitly enable CUPS The Things Kickstarter Gateway Options The gcs.the-things-gateway.firmware-url and gcs.the-things-gateway.update-channel options configure the source of firmware updates for The Things Kickstarter Gateway.
+
             
           </div>
         </div>
@@ -492,7 +498,8 @@ gcs.basic-station.allow-cups-uri-update: Allow CUPS URI updates gcs.basic-statio
             
             General Options gs.update-version-info-delay Gateways are disconnected from The Things Stack when settings affecting the connection with the Gateway Server change. You can configure how often the gateway gets fetched from the entity registry.
 gs.fetch-gateway-interval: Update gateway fetching interval gs.fetch-gateway-jitter: Jitter to apply to the update interval to randomize intervals Forwarding Options The Gateway Server forwards traffic to upstream hosts based on the gs.forward parameter.
-gs.forward: Forward the DevAddr prefixes to the specified hosts.
+gs.forward: Forward the DevAddr prefixes to the specified hosts. This parameter accepts a list of strings in the format &quot;target=dev-addr-prefix1 target=dev-addr-prefix2&quot; Enter your NetID to view recommended forwarding settings:
+
             
           </div>
         </div>
@@ -512,7 +519,8 @@ gs.forward: Forward the DevAddr prefixes to the specified hosts.
           <div class="content has-text-grey">
             
             General Options is.delete.restore: Defines how long after soft-deletion an entity can be restored Database Options The Identity Server needs to be connected to a PostgreSQL-compatible database. Details for the form of the URI can be found in the PostgreSQL documentation.
-is.database-uri: Database connection URI is.database-max-idle-conns : Maximum number of idle database connections (default 10) is.database-max-open-conns : Maximum number of open database connections (default 20) is.read-database-uri : Read-Only database connection URI Email Options The Identity Server can be configured with different providers for sending emails.
+is.database-uri: Database connection URI is.database-max-idle-conns : Maximum number of idle database connections (default 10) is.database-max-open-conns : Maximum number of open database connections (default 20) is.read-database-uri : Read-Only database connection URI Email Options The Identity Server can be configured with different providers for sending emails. Currently the sendgrid, smtp and dir providers are implemented.
+
             
           </div>
         </div>
@@ -581,7 +589,8 @@ is.database-uri: Database connection URI is.database-max-idle-conns : Maximum nu
             
             Network Operations Center Mount The Network Operations Center can be served under any arbitrary path on your server:
 noc.mount: Path on the server where the Network Operations Center will be served OAuth Options Network Operations Center app uses the OAuth 2.0 authorization flow to authorize actions in the backend. You can customize the authorization parameters if necessary:
-noc.oauth.authorize-url: The OAuth Authorize URL noc.oauth.client-id: The OAuth client ID noc.oauth.client-secret: The OAuth client secret noc.
+noc.oauth.authorize-url: The OAuth Authorize URL noc.oauth.client-id: The OAuth client ID noc.oauth.client-secret: The OAuth client secret noc.oauth.token-url: The OAuth Token Exchange URL noc.oauth.logout-url: The logout URL of the OAuth server used to perform client initiated logouts noc.oauth.cross-site-cookie: Controls access to OAuth state cookie between origins. Set to true in multi-cluster deployments in order to support OAuth clients that use POST callbacks. The default is false. Database Options Network Operations Center needs to be connected to PostgreSQL database with a TimescaleDB extension installed. Details for the form of the URI can be found in the PostgreSQL documentation.
+
             
           </div>
         </div>
@@ -600,7 +609,8 @@ noc.oauth.authorize-url: The OAuth Authorize URL noc.oauth.client-id: The OAuth 
           
           <div class="content has-text-grey">
             
-            General Options ns.dev-addr-prefixes: Device address prefixes of this Network Server ns.net-id: NetID of this Network Server ns.cluster-id: ClusterID of this Network Server. This is purely informative and is added as metadata to messages forwarded to the Application Server ns.device-kek-label: Label of KEK used to encrypt device keys at rest Uplink Options ns.cooldown-window: Time window starting right after deduplication window, during which, duplicate messages are discarded ns.deduplication-window: Time window during which, duplicate messages are collected for metadata ns.
+            General Options ns.dev-addr-prefixes: Device address prefixes of this Network Server ns.net-id: NetID of this Network Server ns.cluster-id: ClusterID of this Network Server. This is purely informative and is added as metadata to messages forwarded to the Application Server ns.device-kek-label: Label of KEK used to encrypt device keys at rest Uplink Options ns.cooldown-window: Time window starting right after deduplication window, during which, duplicate messages are discarded ns.deduplication-window: Time window during which, duplicate messages are collected for metadata ns.application-uplink-queue.buffer-size: Application uplink queue buffer size (default 1000) ns.application-uplink-queue.num-consumers: Number of consumers for the application uplink queue (default 1) Downlink Options The ns.downlink-priorities options configure priorities Network Server assigns downlinks when scheduling them on Gateway Server. In case when several downlinks are available for scheduling, Gateway Server will schedule higher priority downlink first.
+
             
           </div>
         </div>
@@ -619,7 +629,8 @@ noc.oauth.authorize-url: The OAuth Authorize URL noc.oauth.client-id: The OAuth 
           
           <div class="content has-text-grey">
             
-            Registration Options pba.registration.name: Friendly name to register with Packet Broker pba.registration.administrative-contact.email: Email address of the administrative contact person or mailing group pba.registration.technical-contact.email: Email address of the technical contact person or mailing group pba.registration.listed: Indicates whether the Home Network is listed in the Packet Broker catalog. Set this to false to connect to Packet Broker but to stay private to other networks Connection Options pba.iam-address: Address of Packet Broker IAM pba.control-plane-address: Address of Packet Broker Control Plane pba.
+            Registration Options pba.registration.name: Friendly name to register with Packet Broker pba.registration.administrative-contact.email: Email address of the administrative contact person or mailing group pba.registration.technical-contact.email: Email address of the technical contact person or mailing group pba.registration.listed: Indicates whether the Home Network is listed in the Packet Broker catalog. Set this to false to connect to Packet Broker but to stay private to other networks Connection Options pba.iam-address: Address of Packet Broker IAM pba.control-plane-address: Address of Packet Broker Control Plane pba.data-plane-address: Address of Packet Broker Data Plane. See Packet Broker Clients for available cluster addresses pba.insecure: Connect without using TLS (only for test environments) pba.net-id: LoRa Alliance NetID pba.tenant-id: Tenant ID within the NetID pba.cluster-id: Cluster ID uniquely identifying this cluster within a NetID and tenant. The cluster ID is used for shared subscriptions (i.e. splitting traffic over multiple Packet Broker Agents) and as Forwarder ID to route downlink traffic to the right cluster pba.cluster-id-template: Use a Go template for constructing Packet Broker Cluster ID from The Things Stack Cluster ID (e.g. {{.}}.thethings.example.com with cluster ID eu1 results in Packet Broker Cluster ID eu1.thethings.example.com) pba.home-network-cluster-id: Home Network Cluster ID, if different from the Cluster ID. Leave empty to fallback to cluster-id Gateway identity, status, antennas, frequency plan, location, Tx and Rx rates can be reported to Packet Broker Mapper. Mapping is enabled when the Forwarder role is enabled.
+
             
           </div>
         </div>
@@ -697,7 +708,7 @@ noc.oauth.authorize-url: The OAuth Authorize URL noc.oauth.client-id: The OAuth 
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Adding Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/adding-devices/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -159,13 +159,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 An application is a logical collection of devices that can be used to collect devices by function or geographical area. Before proceeding with this guide, <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">create an application</a> first.</p>
 <p>This guide assumes that your device is in the <a href="https://github.com/TheThingsNetwork/lorawan-devices/">LoRaWAN® Device Repository</a> and that you&rsquo;re using the Console. If your device is not in the LoRaWAN® Device Repository or if you want to use The Things Stack CLI, see <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/manual/">Manually adding devices </a>.</p>
 <p>To create a device, first open the application you wish to add the device in. Go to <strong>End devices</strong> in the left menu and click on <strong>+Register end device</strong> to reach the end device registration page.</p>
-<figure><img src="application-end-devices.png"
-         alt="Application overview"/>
+<figure><img src="/docs/devices/adding-devices/application-end-devices.png"
+    alt="Application overview">
 </figure>
 
 <p>You will be presented with options to easily onboard your device using its QR code (if you have it), and to register your end device from the <a href="https://github.com/TheThingsNetwork/lorawan-devices/">LoRaWAN® Device Repository</a> or manually.</p>
-<figure><img src="register-devices-option.png"
-         alt="Options to register devices"/>
+<figure><img src="/docs/devices/adding-devices/register-devices-option.png"
+    alt="Options to register devices">
 </figure>
 
 <div class="tabs is-boxed">
@@ -192,39 +192,39 @@ An application is a logical collection of devices that can be used to collect de
 Note not all QR codes on the physical device are scannable. Only TR005 LoRaWAN® Device Identification QR Codes, are supported for this method.</p>
 <p>Click the <strong>Scan end device QR code</strong> button and allow The Things Stack to use your camera.
 Now just bring your device&rsquo;s QR code closer to your camera. A window with data found from the QR code will appear, containing your device&rsquo;s <strong>Claim authentication code</strong>, <strong>JoinEUI</strong>, <strong>DevEUI</strong> and <strong>Brand</strong>.</p>
-<figure><img src="qr-data-found.png"
-         alt="Found QR data"/>
+<figure><img src="/docs/devices/adding-devices/qr-data-found.png"
+    alt="Found QR data">
 </figure>
 <p>If the data is correct, click <strong>Apply</strong>.</p>
 <p>Now proceed to choose the <strong>Input Method</strong> under the <strong>End device type</strong> section below.</p>
 <p>Choose the <strong>Select the end device in the LoRaWAN Device Repository</strong> input method. Then, select the <strong>End device brand</strong>, <strong>Model</strong>, <strong>Hardware Version</strong>, <strong>Software Version</strong>, and <strong>Profile (Region)</strong> for your device.</p>
-<figure><img src="device-repo.png"
-         alt="Creating a new device with the Device Repository"/>
+<figure><img src="/docs/devices/adding-devices/device-repo.png"
+    alt="Creating a new device with the Device Repository">
 </figure>
 <p>Choose a <strong>Frequency plan</strong> appropriate for your region. Your device and gateway must use the same <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">frequency plan</a> to communicate.</p>
-<figure><img src="fp.png"
-         alt="Choosing a frequency plan"/>
+<figure><img src="/docs/devices/adding-devices/fp.png"
+    alt="Choosing a frequency plan">
 </figure>
 </section>
 <section data-content="without-qr-code">
   <h2 id="onboarding-devices-without-qr-codes">Onboarding devices without QR codes</h2>
 <p>If your device doesn&rsquo;t have a standard <a href="https://lora-alliance.org/resource_hub/tr005-lorawan-device-identification-qr-codes/">TR005 LoRaWAN® Device Identification QR Code</a>, or has a vendor specific QR code, then the device identification and keys have to be entered manually.</p>
 <p>First choose the <strong>Select the end device in the LoRaWAN Device Repository</strong> input method. Then, select the <strong>End device brand</strong>, <strong>Model</strong>, <strong>Hardware Version</strong>, <strong>Software Version</strong>, and <strong>Profile (Region)</strong> for your device.</p>
-<figure><img src="select-dr-non-qr.png"
-         alt="Creating a new device with the Device Repository"/>
+<figure><img src="/docs/devices/adding-devices/select-dr-non-qr.png"
+    alt="Creating a new device with the Device Repository">
 </figure>
 <p>Choose a <strong>Frequency plan</strong> appropriate for your region. Your device and gateway must use the same <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">frequency plan</a> to communicate. This example uses <code>Europe 863-870 MHz (SF9 for RX2 - recommended)</code>.</p>
-<figure><img src="fp-non-qr.png"
-         alt="Choosing a frequency plan"/>
+<figure><img src="/docs/devices/adding-devices/fp-non-qr.png"
+    alt="Choosing a frequency plan">
 </figure>
 <p>Enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer and click <strong>Confirm</strong>. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the <a href="https://ieee802.org/">IEEE 802 standards</a> or use all zeros, just make sure to program the same value into your device.</p>
-<figure><img src="non-qr-join-eui.png"
-         alt="Set the Join EUI"/>
+<figure><img src="/docs/devices/adding-devices/non-qr-join-eui.png"
+    alt="Set the Join EUI">
 </figure>
 <p>Now enter your <strong>DevEUI</strong>. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the <strong>Generate</strong> button, and program it in your device.</p>
 <p>For LoRaWAN version 1.0.x devices, you will see an <strong>AppKey</strong> field, and for LoRaWAN version 1.1.x devices you will also see a <strong>NwkKey</strong> field. If these keys are provided by your manufacturer, enter them. Otherwise, use the <strong>Generate</strong> button to create them, and program them into your device.</p>
-<figure><img src="non-qr-all-set.png"
-         alt="Set the Device EUI and Device Keys"/>
+<figure><img src="/docs/devices/adding-devices/non-qr-all-set.png"
+    alt="Set the Device EUI and Device Keys">
 </figure>
 </section>
 
@@ -363,7 +363,7 @@ Now just bring your device&rsquo;s QR code closer to your camera. A window with 
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Kaa | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/kaa/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -343,8 +343,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ol>
 <h2 id="setup-the-things-stack">Setup The Things Stack</h2>
 <p>Go to the <strong>MQTT</strong> integration section on the left hand menu in The Things Stack and generate an API key to access The Things Stack application from Kaa.</p>
-<figure><img src="ttn-generate-api-key.png"
-         alt="Generate API key"/>
+<figure><img src="/docs/integrations/cloud-integrations/kaa/ttn-generate-api-key.png"
+    alt="Generate API key">
 </figure>
 
 <p>Set the rights for the API key by selecting <strong>Grant all current and future rights</strong>. The Kaa platform requires this level of access in order to be able to query The Things Stack for application parameters and information on registered devices in that application.</p>
@@ -363,8 +363,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>First, you need to create an application in the Kaa Cloud, that will correspond to the application inside The Things Stack.</p>
 <p>To do so, navigate to the <strong>Device management → Applications</strong> and add a new application by clicking the <strong>Add application</strong> button.</p>
 <p>Next, create at least one version of that application by clicking the plus button.</p>
-<figure><img src="kaa-create-application.png"
-         alt="Create Kaa application"/>
+<figure><img src="/docs/integrations/cloud-integrations/kaa/kaa-create-application.png"
+    alt="Create Kaa application">
 </figure>
 
 <h3 id="create-application-integration">Create Application Integration</h3>
@@ -376,44 +376,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Identity Server Host - The Things Stack Identity Server host address (see the <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/server-addresses/">Server Addresses section</a> for more info)</li>
 <li>MQTT Server Host - The Things Stack MQTT public address</li>
 </ul>
-<figure><img src="kaa-create-app-integration.png"
-         alt="Create application integration"/>
+<figure><img src="/docs/integrations/cloud-integrations/kaa/kaa-create-app-integration.png"
+    alt="Create application integration">
 </figure>
 
 <h3 id="create-device-integration">Create Device Integration</h3>
 <p>Now, you need to create device integration, i.e. mappings between The Things Stack devices and Kaa <a href="https://docs.kaaiot.io/KAA/docs/v1.4.0/Kaa-concepts/#endpoints">endpoints</a>.</p>
 <p>Go to the created application integration and create a device integration by choosing the application version and The Things Stack device that you want to integrate. You can see the device integration in the <strong>Devices</strong> list after its creation.</p>
-<figure><img src="kaa-dev-integration.png"
-         alt="Device integrations"/>
+<figure><img src="/docs/integrations/cloud-integrations/kaa/kaa-dev-integration.png"
+    alt="Device integrations">
 </figure>
 
 <p>By navigating to <strong>Device management → Devices</strong>, you will find the Kaa endpoint that was automatically created during the device integration creation.
 All incoming data from The Things Stack device will be ingested under that endpoint.</p>
-<figure><img src="kaa-created-endpoint.png"
-         alt="Created endpoint"/>
+<figure><img src="/docs/integrations/cloud-integrations/kaa/kaa-created-endpoint.png"
+    alt="Created endpoint">
 </figure>
 
 <h2 id="visualize-device-data">Visualize Device Data</h2>
 <p>Next, you can visualize data coming from The Things Stack on Kaa UI.</p>
 <p>Edit the application configuration for the <a href="https://docs.kaaiot.io/KAA/docs/v1.4.0/Features/Data-collection/EPTS">Endpoint Time Series service (EPTS)</a>. EPTS is a Kaa platform component responsible for transforming raw <a href="https://docs.kaaiot.io/KAA/docs/v1.4.0/Kaa-concepts/#data-sample">data samples</a> into well-structured time series. It also stores the time series data and provides access to API for other services, including the <a href="https://docs.kaaiot.io/KAA/docs/v1.4.0/Features/Visualization/WD">Web Dashboard</a>.</p>
 <p>Go to the <strong>Device management → Applications</strong>, expand the application used for integration, click on EPTS and enable auto-extraction.</p>
-<figure><img src="kaa-epts-enable-auto-extraction.png"
-         alt="Enable time series auto extract"/>
+<figure><img src="/docs/integrations/cloud-integrations/kaa/kaa-epts-enable-auto-extraction.png"
+    alt="Enable time series auto extract">
 </figure>
 
 <p>With this function enabled, Kaa will automatically create a time series for each numeric field that it encounters at the root of data samples submitted by your endpoints.
 You will then be able to view these time series in the Kaa UI, with no extra configuration required.</p>
 <p>Now navigate to the device details page of the endpoint created in previous steps. To do that, go to the <strong>Devices</strong> page in the <strong>Device management</strong> section and click on the corresponding row. The data coming from The Things Stack device will be displayed on the <strong>Device telemetry</strong> widget.</p>
-<figure><img src="kaa-endpoint-no-data.png"
-         alt="Endpoint with no telemetry data"/>
+<figure><img src="/docs/integrations/cloud-integrations/kaa/kaa-endpoint-no-data.png"
+    alt="Endpoint with no telemetry data">
 </figure>
 
 <p>Let&rsquo;s assume that The Things Stack device is sending temperature measurements in the next format:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span><span class="nt">&#34;temp&#34;</span><span class="p">:</span><span class="mi">20</span><span class="p">}</span>
 </span></span></code></pre></div><p>Convert this payload to a byte array in HEX (<code>7B 22 74 65 6D 70 22 3A 32 30 7D</code>), go to the <strong>End devices → your device&rsquo;s Overview page → Messaging</strong> in The Things Stack Console and paste the byte array into the <strong>Payload</strong> field.</p>
 <p>As a result, you should be able to see the data on Kaa UI.</p>
-<figure><img src="kaa-endpoint-data.png"
-         alt="Endpoint with telemetry data"/>
+<figure><img src="/docs/integrations/cloud-integrations/kaa/kaa-endpoint-data.png"
+    alt="Endpoint with telemetry data">
 </figure>
 
 <p>Congratulations, you have successfully integrated The Things Stack with Kaa and visualized your data on the Kaa UI!</p>
@@ -498,7 +498,7 @@ You will then be able to view these time series in the Kaa UI, with no extra con
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

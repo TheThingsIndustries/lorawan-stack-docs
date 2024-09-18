@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>InfluxDB Cloud 2.0 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -349,39 +349,39 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ol>
 <h2 id="setup-influxdb-cloud-20">Setup InfluxDB Cloud 2.0</h2>
 <p>Log in to your InfluxDB Cloud 2.0 account and select the <strong>Data</strong> on the left hand menu.</p>
-<figure><img src="influxdb-data-dashboard.png"
-         alt="InfluxDB Data dashboard"/>
+<figure><img src="/docs/integrations/cloud-integrations/influxdb-cloud/influxdb-data-dashboard.png"
+    alt="InfluxDB Data dashboard">
 </figure>
 
 <p>On the <strong>Buckets</strong> tab, click the <strong>Create Bucket</strong> button to create a new bucket.</p>
 <p>Give your bucket a name, choose how long the data will remain in the database and finish by clicking <strong>Create</strong>.</p>
-<figure><img src="creating-a-bucket.png"
-         alt="Creating a bucket"/>
+<figure><img src="/docs/integrations/cloud-integrations/influxdb-cloud/creating-a-bucket.png"
+    alt="Creating a bucket">
 </figure>
 
 <p>Next, on the <strong>Tokens</strong> tab, select <strong>Generate</strong> to generate a new <strong>Read/Write Token</strong>.</p>
 <p>Enter the <strong>Description</strong> and select the bucket you wish to enable reading and writing for.</p>
-<figure><img src="generating-a-token.png"
-         alt="Generating a read/write token"/>
+<figure><img src="/docs/integrations/cloud-integrations/influxdb-cloud/generating-a-token.png"
+    alt="Generating a read/write token">
 </figure>
 
 <p>Go to the <strong>Telegraf</strong> tab and select <strong>Create Configuration</strong>.</p>
 <p>When asked <strong>What do you want to monitor?</strong>, select <strong>System</strong>.</p>
-<figure><img src="monitoring-system.png"
-         alt="Selecting to monitor a system"/>
+<figure><img src="/docs/integrations/cloud-integrations/influxdb-cloud/monitoring-system.png"
+    alt="Selecting to monitor a system">
 </figure>
 
 <p>Name your configuration, select <strong>Create and Verify</strong> and then <strong>Finish</strong>.</p>
 <p>Once the configuration is created, you can simply click on its name in the <strong>Telegraf</strong> tab and download the configuration file. You can further edit this file for usage with the MQTT or Webhook integration.</p>
-<figure><img src="telegraf-config.png"
-         alt="Auto-generated Telegraf configuration"/>
+<figure><img src="/docs/integrations/cloud-integrations/influxdb-cloud/telegraf-config.png"
+    alt="Auto-generated Telegraf configuration">
 </figure>
 
 <h2 id="configure-telegraf-for-mqtt-integration">Configure Telegraf for MQTT Integration</h2>
 <p>This section shows you how to configure your Telegraf agent with <a href="https://github.com/influxdata/telegraf/tree/master/plugins/inputs/mqtt_consumer">MQTT Consumer</a> plugin used for connecting to The Things Stack <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a>.</p>
 <p>The information needed to configure Telegraf can be found on the <strong>MQTT</strong> tab in The Things Stack <strong>Integrations</strong> menu.</p>
-<figure><img src="tts-mqtt-info.png"
-         alt="The Things Stack MQTT server info"/>
+<figure><img src="/docs/integrations/cloud-integrations/influxdb-cloud/tts-mqtt-info.png"
+    alt="The Things Stack MQTT server info">
 </figure>
 
 <p>Once you have downloaded the Telegraf configuration file as described in <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/">InfluxDB Cloud 2.0 Setup</a>, update it by adding the following lines and modifying them according to your MQTT server info:</p>
@@ -430,21 +430,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></code></pre></div><p>Start the Telegraf agent by running the following command in the terminal:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">telegraf --config /path/to/custom/telegraf.conf
 </span></span></code></pre></div><p>In The Things Stack Console, <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/">create a new webhook</a> with JSON <strong>Webhook format</strong>, set the <strong>Base URL</strong> to <code>http://localhost:8080/telegraf</code> and tick the box next to the message types you want to enable this webhook for.</p>
-<figure><img src="tts-webhook-info.png"
-         alt="Creating webhook on The Things Stack"/>
+<figure><img src="/docs/integrations/cloud-integrations/influxdb-cloud/tts-webhook-info.png"
+    alt="Creating webhook on The Things Stack">
 </figure>
 
 <p>Keep in mind that Telegraf agent can be hosted in a remote environment as well. In that case, you need to adjust the <strong>Base URL</strong> according to your setup.</p>
 <h2 id="monitor-your-data">Monitor Your Data</h2>
 <p>Click the <strong>Explore</strong> tab on the left in InfluxDB Cloud 2.0. Select your bucket in the <strong>FROM</strong> window in the bottom. Next, you have to filter your measurements depending on the type of integration.</p>
 <p>If you created an MQTT integration, select <strong>_measurement</strong> on the drop-down menu in the <strong>Filter</strong> window and tick the <strong>mqtt_consumer</strong> box. Then you can choose the topic and parameter you wish to monitor.</p>
-<figure><img src="influxdb-mqtt.png"
-         alt="Monitoring the MQTT data"/>
+<figure><img src="/docs/integrations/cloud-integrations/influxdb-cloud/influxdb-mqtt.png"
+    alt="Monitoring the MQTT data">
 </figure>
 
 <p>Otherwise, if you are using Webhook integration, select <strong>_measurement</strong> on the drop-down menu in the <strong>Filter</strong> window and tick the <strong>http_listener_v2</strong> box. In another <strong>Filter</strong> window, you can select the <strong>uplink_message_decoded_payload</strong> and click the <strong>Submit</strong> field on the right to see the incoming data.</p>
-<figure><img src="influxdb-http.png"
-         alt="Monitoring the HTTP data"/>
+<figure><img src="/docs/integrations/cloud-integrations/influxdb-cloud/influxdb-http.png"
+    alt="Monitoring the HTTP data">
 </figure>
         </div>
           <div class="columns is-multiline">
@@ -525,7 +525,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

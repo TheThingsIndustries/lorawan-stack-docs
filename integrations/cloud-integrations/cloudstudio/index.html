@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Cloud Studio | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -344,8 +344,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="setup-gear-studio">Setup Gear Studio</h2>
 <p>When you log in to the Gear Studio, you first go through the procedure of creating a <strong>Facility</strong> and then you are presented with the dashboard in the <strong>Monitoring</strong> mode.</p>
 <p>To be able to make changes to the Gear Studio setup, you first need to switch to the <strong>Settings</strong> mode by clicking on the nut icon in the upper left, as shown on the image below.</p>
-<figure><img src="dashboard.png"
-         alt="Cloud Studio dashboard"/>
+<figure><img src="/docs/integrations/cloud-integrations/cloudstudio/dashboard.png"
+    alt="Cloud Studio dashboard">
 </figure>
 
 <h3 id="create-a-custom-device-model">Create a Custom Device Model</h3>
@@ -353,23 +353,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>In this guide, we show how to create a custom <strong>Seeeduino LoRaWAN</strong> model. If your device&rsquo;s model is already defined in Gear Studio, you can skip this subsection and go directly to <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/#add-a-new-device">Add a New Device</a> subsection below.</p>
 <p>To create a new device model, in the <strong>Settings</strong> mode, navigate to <strong>Devices → Device models</strong> and click <strong>Add</strong>.</p>
 <p>In the <strong>Details</strong> tab, provide a <strong>Description</strong> of your model, and an arbitrary <strong>Device model code</strong>. Finish with <strong>Save</strong>.</p>
-<figure><img src="creating-device-model.png"
-         alt="Creating a custom device model"/>
+<figure><img src="/docs/integrations/cloud-integrations/cloudstudio/creating-device-model.png"
+    alt="Creating a custom device model">
 </figure>
 
-<figure><img src="device-model.png"
-         alt="Custom device model"/>
+<figure><img src="/docs/integrations/cloud-integrations/cloudstudio/device-model.png"
+    alt="Custom device model">
 </figure>
 
 <p>Next, you need to edit this model. Click on three dots next to your newly created model in the device models list and select <strong>Edit</strong>, as shown on the image below.</p>
-<figure><img src="edit-device-model.png"
-         alt="Editing a newly created device model"/>
+<figure><img src="/docs/integrations/cloud-integrations/cloudstudio/edit-device-model.png"
+    alt="Editing a newly created device model">
 </figure>
 
 <p>Switch to the <strong>Scripts</strong> tab.</p>
 <p>Next, you need to define a device configuration script for your upcoming Gear Studio device.</p>
-<figure><img src="scripts-configuration.png"
-         alt="Add configuration script"/>
+<figure><img src="/docs/integrations/cloud-integrations/cloudstudio/scripts-configuration.png"
+    alt="Add configuration script">
 </figure>
 
 <p>Click the <strong>Edit</strong> button next to the <strong>Configuration</strong> window and paste the following content:</p>
@@ -383,14 +383,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">  <span class="nx">endpoints</span><span class="p">.</span><span class="nx">addEndpoint</span><span class="p">(</span><span class="s2">&#34;1&#34;</span><span class="p">,</span> <span class="s2">&#34;Temperature sensor&#34;</span><span class="p">,</span> <span class="nx">endpointType</span><span class="p">.</span><span class="nx">temperatureSensor</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">endpoints</span><span class="p">.</span><span class="nx">addEndpoint</span><span class="p">(</span><span class="s2">&#34;2&#34;</span><span class="p">,</span> <span class="s2">&#34;humidity sensor&#34;</span><span class="p">,</span> <span class="nx">endpointType</span><span class="p">.</span><span class="nx">humiditySensor</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><figure><img src="configuration.png"
-         alt="Configuration script"/>
+</span></span></code></pre></div><figure><img src="/docs/integrations/cloud-integrations/cloudstudio/configuration.png"
+    alt="Configuration script">
 </figure>
 
 <p>The example configuration script above shows how to define device&rsquo;s address label, and how to define endpoints that will receive sensor values. <a href="https://wiki.cloud.studio/en/page/199">See Cloud Studio documentation for more info about device configuration scripts</a></p>
 <p>You also need to define a payload parser script, in order for Gear Studio to be able to properly parse the data coming from your end device on The Things Stack.</p>
-<figure><img src="scripts-payload-parser.png"
-         alt="Add payload parser script"/>
+<figure><img src="/docs/integrations/cloud-integrations/cloudstudio/scripts-payload-parser.png"
+    alt="Add payload parser script">
 </figure>
 
 <p>Click on the <strong>Edit</strong> button next to the <strong>Payload parser</strong> window and paste the following content:</p>
@@ -415,19 +415,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h3 id="add-a-new-device">Add a New Device</h3>
 <p>To add a new device, navigate to <strong>Devices → Devices</strong> on the left hand menu and select the <strong>Add</strong> button.</p>
 <p>Enter a <strong>Description</strong>, select the device <strong>Model</strong> (predefined or the one you created following the <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/#create-a-custom-device-model">Create a Custom Device Model</a> subsection), select <strong>The Things Network (TTN) interface</strong> as a <strong>Communication interface</strong> and provide the <strong>DevEUI</strong> of your end device. Finish with <strong>Save</strong>.</p>
-<figure><img src="add-device.png"
-         alt="Adding a new device"/>
+<figure><img src="/docs/integrations/cloud-integrations/cloudstudio/add-device.png"
+    alt="Adding a new device">
 </figure>
 
 <h3 id="create-an-access-token">Create an Access Token</h3>
 <p>To complete the integration on The Things Stack, in the next step you will need an access token. You can create an access token by navigating to <strong>Security → Access tokens</strong> and clicking on the <strong>Add</strong> button.</p>
 <p>Provide a <strong>Description</strong> for your token, enter your <strong>E-mail</strong> and set your <strong>Password</strong>. Finish with <strong>Save</strong>, copy the token and store it in a safe place.</p>
-<figure><img src="access-token.png"
-         alt="Creating an access token"/>
+<figure><img src="/docs/integrations/cloud-integrations/cloudstudio/access-token.png"
+    alt="Creating an access token">
 </figure>
 
-<figure><img src="copy-token.png"
-         alt="Copy the access token"/>
+<figure><img src="/docs/integrations/cloud-integrations/cloudstudio/copy-token.png"
+    alt="Copy the access token">
 </figure>
 
 <h2 id="configure-the-things-stack">Configure The Things Stack</h2>
@@ -435,25 +435,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>First, fill in the <strong>Webhook ID</strong>.</p>
 <p>Then you need to provide a Gear Studio <strong>Server instance</strong> that is hosting your Gear Studio IoT platform. This depends on your Gear Studio subscription. The default value is <code>gear.cloud.studio</code> that is commonly used for free subscriptions. See <a href="https://wiki.cloud.studio/en/page/174">Cloud Studio documentation</a> for detailed information on other server instances, depending on your subscription plan.</p>
 <p>As the last step, paste the access token you copied from Gear Studio in the <strong>Access token</strong> field.</p>
-<figure><img src="cloud-studio-template.png"
-         alt="Cloud Studio Webhook template"/>
+<figure><img src="/docs/integrations/cloud-integrations/cloudstudio/cloud-studio-template.png"
+    alt="Cloud Studio Webhook template">
 </figure>
 
 <p>To see the values of all parameters of the Cloud Studio integration, click on the integration after you created it with the Webhook template.</p>
 <h2 id="monitor-your-data">Monitor Your Data</h2>
 <p>To create a dashboard in Gear Studio, in <strong>Settings</strong> mode, navigate to <strong>Dashboards → Dahboards</strong> on the left hand menu. Click the <strong>Add</strong> button.</p>
 <p>Add a <strong>Description</strong> and <strong>Comments</strong>, and select <strong>Add Group</strong>. Under group settings, add a <strong>Title</strong> and select <strong>Add widget</strong>.</p>
-<figure><img src="widget-settings.png"
-         alt="Adjusting widget settings"/>
+<figure><img src="/docs/integrations/cloud-integrations/cloudstudio/widget-settings.png"
+    alt="Adjusting widget settings">
 </figure>
 
-<figure><img src="select-widget.png"
-         alt="Select widget"/>
+<figure><img src="/docs/integrations/cloud-integrations/cloudstudio/select-widget.png"
+    alt="Select widget">
 </figure>
 
 <p>Choose the desired widget type, adjust <strong>Minimum</strong> and <strong>Maximum</strong> values according to your data values range, choose the <strong>Variable</strong> you wish to monitor, and select a <strong>Device</strong> you want to monitor it from.</p>
-<figure><img src="add-dashboard.png"
-         alt="Adding a dashboard"/>
+<figure><img src="/docs/integrations/cloud-integrations/cloudstudio/add-dashboard.png"
+    alt="Adding a dashboard">
 </figure>
 
 <p>Now, go back to the <strong>Monitoring</strong> mode in Gear Studio, navigate to <strong>Dashboards</strong> on the left hand menu and start monitoring your sensor data!</p>
@@ -531,7 +531,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

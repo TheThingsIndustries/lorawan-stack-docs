@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Build an Application using Generic Node Sensor Edition and Kuando Busylight | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/guides/build-an-end-to-end-solution-gn/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -186,7 +186,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Power cycle your GNSE by either pressing the reset button or removing and re-inserting its batteries. Once power cycled, you can immediately see messages arriving, such as <strong>Accept join-request</strong> and <strong>Forward join-accept</strong>.</p>
 <p>Now press the user button on top of the GNSE. In the <strong>Live data</strong> section, you should see an uplink data message received by The Things Stack application.</p>
 <p>Select the uplink message. Scroll down and locate the <strong>frm_payload</strong> (frame payload) field. Note that the payload is encoded and requires decoding to understand it.</p>
-<figure><img src="frm-payload.png"/>
+<figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/frm-payload.png">
 </figure>
 
 <h2 id="using-payload-formatters">Using Payload Formatters</h2>
@@ -203,26 +203,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><figure><img src="javascript-payload-formatter.png"/>
+</span></span></code></pre></div><figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/javascript-payload-formatter.png">
 </figure>
 
 <p>To test it, go back to the <strong>Live data</strong> tab and copy the <strong>MAC payload</strong> (find it in the <strong>Forward uplink data message</strong> event).</p>
-<figure><img src="mac-payload.png"/>
+<figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/mac-payload.png">
 </figure>
 
 <p>Next paste it in the <strong>Byte payload</strong> field. Then press the <strong>Test decoder</strong> button. The result of decoding will be displayed in the <strong>Decoded test payload</strong> box.</p>
-<figure><img src="decoded-payload.png"/>
+<figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/decoded-payload.png">
 </figure>
 
 <p>Select <strong>Save changes</strong>.</p>
 <p>Now go back to the <strong>Live data</strong> tab and press the user button on GNSE. The payload of the uplink data message gets decoded as shown below:</p>
-<figure><img src="decoded-payload-live.png"/>
+<figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/decoded-payload-live.png">
 </figure>
 
 <h2 id="creating-an-integration-using-webhooks">Creating an Integration using Webhooks</h2>
 <p>A webhook helps you to send data from one application to another whenever a given event occurs. In this solution, The Things Stack application will send the temperature received by the sensor to the custom application through a webhook to display a temperature graph.</p>
 <p>Create a custom <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/">webhook</a> in JSON format by providing the base URL and endpoint, for example, <a href="http://root.yourhost.com:3000/webhooks">http://root.yourhost.com:3000/webhooks</a>. Select the checkbox <strong>Enabled</strong> next to the <strong>Uplink message</strong> event type. This will configure your webhook to send all uplink messages from your device to your custom application.</p>
-<figure><img src="add-webhook-1.png"/>
+<figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/add-webhook-1.png">
 </figure>
 
 <h2 id="nodejs-application">Node.js Application</h2>
@@ -239,7 +239,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTN_WEBHOOK_ID</span><span class="o">=</span>
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTN_DEVICE_ID</span><span class="o">=</span>
 </span></span></code></pre></div><p>After editing, your configuration file looks something like this:</p>
-<figure><img src="config-file-1.png"/>
+<figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/config-file-1.png">
 </figure>
 
 <p>Save the configuration file (<code>[esc][:wq][enter]</code>), source it (<code>source config.env</code>) and then start the server (<code>node index.js</code>).</p>
@@ -250,20 +250,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">  <span class="nx">values</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">io</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
 </span></span></code></pre></div><p>Open a web browser and go to the address your server is exposing. The address is something like this: <code>http://yourhost.com:3000</code>.</p>
-<figure><img src="chart-1.png"/>
+<figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/chart-1.png">
 </figure>
 
 <p>Now press the push button on GNSE. The current temperature and humidity will be immediately plotted on the chart.</p>
-<figure><img src="chart-2.png"/>
+<figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/chart-2.png">
 </figure>
 
 <p>Press the push button a few more times and see how your chart behaves in time.</p>
-<figure><img src="chart-3.png"/>
+<figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/chart-3.png">
 </figure>
 
 <h2 id="adding-kuando-busylight">Adding Kuando Busylight</h2>
 <p>Kuando BusyLight is a light device that you can control using LoRaWAN downlinks. It is a <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/class-c/">class C</a> end device that opens continuous receive windows so it is capable of receiving downlinks anytime.</p>
-<figure><img src="busylight.png"/>
+<figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/busylight.png">
 </figure>
 
 <p>To register the Kuando Busylight with The Things Stack, follow the steps outlined in <strong>Manually Registering an End Device</strong> section in the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> guide. When adding the device, make sure to select <strong>Class C (Continuous)</strong> from the <strong>Additional LoRaWAN class capabilities</strong> drop-down menu. You can find this by expanding the <strong>Show advanced activation, LoRaWAN class and cluster settings</strong> section.</p>
@@ -277,7 +277,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li><strong>Payload</strong>: type in <strong>FF FF FF FF 00</strong> (this makes the Busylight solid white, no blinking)</li>
 </ul>
 <p>Here is the payload structure for the downlink messages for your reference:</p>
-<figure><img src="busylight-payload-structure.png"/>
+<figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/busylight-payload-structure.png">
 </figure>
 
 <p>Select the <strong>Schedule downlink</strong> button. The Busylight will turn on solid white.</p>
@@ -301,14 +301,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>In The Things Stack Console, under your application, select <strong>API keys</strong>. Select the <strong>Add API key</strong> button.</p>
 <p>On the <strong>Add API key</strong> page, under <strong>Rights</strong>, select <strong>Grant individual rights</strong> and then select <strong>Write downlink application traffic</strong>.</p>
 <p>Select the <strong>Create API key</strong> button. Then copy the API key.</p>
-<figure><img src="api-key-1.png"/>
+<figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/api-key-1.png">
 </figure>
 
 <p>Go back to the configuration file and then paste your API key there (<code>export API_KEY=your API key</code>).</p>
 <p>Copy your webhook&rsquo;s ID and also paste it there (<code>export TTN_WEBHOOK_ID=your webhook id</code>).</p>
 <p>Copy the Busylight’s device ID and also paste it there (<code>export TTN_DEVICE_ID=device id</code>).</p>
 <p>After editing, your configuration file looks something like this:</p>
-<figure><img src="config-file-2.png"/>
+<figure><img src="/docs/integrations/guides/build-an-end-to-end-solution-gn/config-file-2.png">
 </figure>
 
 <p>Save the configuration file (<code>[esc][:wq][enter]</code>), source it (<code>source config.env</code>) and then start the server (<code>node index.js</code>).</p>
@@ -405,7 +405,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

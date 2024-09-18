@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>CloudGate | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/models/cloudgate/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -283,8 +283,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </h1>
         
         <div class="content">
-          <figure class="float plain"><img src="CloudGate.png"
-         alt="CloudGate Gateway"/>
+          <figure class="float plain"><img src="/docs/gateways/models/cloudgate/CloudGate.png"
+    alt="CloudGate Gateway">
 </figure>
 
 <p>Option Wireless Technology’s CloudGate is the carrier-approved IoT solution platform that delivers device connectivity, security and processing power for global IoT applications.</p>
@@ -301,8 +301,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h3 id="connect-the-cloudgate-to-the-internet-via-ethernet">Connect the CloudGate to the Internet via Ethernet</h3>
 <p>Connect an Ethernet cable to the WAN port of the CloudGate gateway. The WAN port supports DHCP and should automatically obtain an IP address from the network.</p>
 <h3 id="connect-the-cloudgate-to-the-internet-via-lte">Connect the CloudGate to the Internet via LTE</h3>
-<figure class="float"><img src="Insert-SIM.jpeg"
-         alt="Insert SIM"/>
+<figure class="float"><img src="/docs/gateways/models/cloudgate/Insert-SIM.jpeg"
+    alt="Insert SIM">
 </figure>
 
 <p>Install the LoRa expansion card into the CloudGate gateway.</p>
@@ -314,13 +314,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Now, open a web browser and navigate to to <code>192.168.1.1</code>.</p>
 <p>Log in using <code>admin</code> as both a username and a password. It is highly recommended to change the default username and password. This can be done in the settings under the <strong>System</strong> tab.</p>
 <p>Navigate to the <strong>Home</strong> tab and check if the CloudGate is connected.</p>
-<figure><img src="Connection-status.png"
-         alt="Connection status"/>
+<figure><img src="/docs/gateways/models/cloudgate/Connection-status.png"
+    alt="Connection status">
 </figure>
 
 <p>In case the CloudGate is not connected yet and you are connecting it via LTE network, check if the SIM PIN is entered correctly or if the correct APN parameters are used in the <strong>Network Settings</strong> section (under the <strong>Connections → LTE Interface</strong> tab).</p>
-<figure><img src="Network-settings.png"
-         alt="Network settings"/>
+<figure><img src="/docs/gateways/models/cloudgate/Network-settings.png"
+    alt="Network settings">
 </figure>
 
 <p>On the other hand, if you are connecting it via Ethernet, check if the CloudGate has obtained an IP address in the <strong>Connections → Main Ethernet Interface</strong> tab.</p>
@@ -340,35 +340,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>LNS establishes a data connection between a LoRa Basics Station and The Things Stack. To connect a gateway using the LNS protocol, it requires an API Key.</p>
 <p>Navigate to the <strong>API Keys</strong> on the left hand menu in your gateway&rsquo;s settings on The Things Stack and select <strong>Add API Key</strong>.</p>
 <p>Enter a name for your key, select the <strong>Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink</strong> right and then press <strong>Create API Key</strong>.</p>
-<figure><img src="Create-API-Key.png"
-         alt="Create API key"/>
+<figure><img src="/docs/gateways/models/cloudgate/Create-API-Key.png"
+    alt="Create API key">
 </figure>
 
 <p>You will see a screen that shows your newly created API Key. You now can copy it in your clipboard by pressing the copy button. After saving the key in a safe place, press <strong>I have copied the key</strong>. </p>
 <h3 id="configure-basics-station">Configure Basics Station</h3>
 <p>We assume you have made sure that the Basics Station application is installed in your CloudGate as noted in the previous steps.</p>
 <p>Now, go to <strong>Plugins → Basic Station</strong>.</p>
-<figure><img src="Open-BasicsStation.png"
-         alt="Open Basics Station"/>
+<figure><img src="/docs/gateways/models/cloudgate/Open-BasicsStation.png"
+    alt="Open Basics Station">
 </figure>
 
 <p>Configure the authentication as <strong>LNS</strong>, and select the region.</p>
-<figure><img src="BasicsStation-Config-Authentication.png"
-         alt="Choose Authentication Field"/>
+<figure><img src="/docs/gateways/models/cloudgate/BasicsStation-Config-Authentication.png"
+    alt="Choose Authentication Field">
 </figure>
 
 <p>On CloudGate gateways, only CUPS or LNS can be configured. Configuring CUPS will automatically configure LNS, so to use The Things Stack, just follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups/">Connecting to CUPS</a>.</p>
 <p>The server address is the network endpoint of The Things Stack LNS. It is a combination of the <strong>protocol</strong> (wss), the <strong>server address</strong>, and the <strong>port</strong>. Enter the following in your gateway as the <strong>LNS Server Address</strong>: <code>wss://&lt;server-address&gt;:8887</code>.</p>
 <p>The server CA certificates can be found from <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/">Root Certificates</a> page.</p>
 <p>You can download the minimal certificates list, and then copy and paste the content into the <strong>Server CA Cert</strong> field.</p>
-<figure><img src="BasicsStation-Config-ServerCACert.png"
-         alt="Add Server CA Certificate"/>
+<figure><img src="/docs/gateways/models/cloudgate/BasicsStation-Config-ServerCACert.png"
+    alt="Add Server CA Certificate">
 </figure>
 
 <p>The <strong>Gateway Cert</strong> field must be left empty.</p>
 <p>In the <strong>Gateway Key</strong> field, enter the LNS API key you created during previous steps. The format should be <code>Authorization: Bearer &lt;api-key&gt;</code>. Click on <strong>Save Changes</strong> to finish.</p>
-<figure><img src="BasicsStation-Config-GatewayKey.png"
-         alt=" Enter Gateway Key"/>
+<figure><img src="/docs/gateways/models/cloudgate/BasicsStation-Config-GatewayKey.png"
+    alt=" Enter Gateway Key">
 </figure>
 
 <p>If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds!</p>
@@ -445,7 +445,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>AWS Marketplace AMI | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/aws/ami/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -341,6 +341,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 Staging Performing maintenance operations requires in-depth knowledge of AWS and The Things Stack. It is likely that certain action might have unexpected results. For this reason, we strongly advise to maintain a staging environment, and test all updates on staging before deploying to production.
 Back-ups The Things Stack uses three types of storage:
 AWS RDS database
+
             
           </div>
         </div>
@@ -371,7 +372,8 @@ AWS RDS database
             
             The Things Stack supports publishing of uplink messages directly to the AWS IoT suite.
 Warning: This integration will be removed in a next version. Please switch to the Default Integration instead. AWS IoT suite can be used to subscribe to detailed uplink messages as well as get insights into aggregated metrics of your uplink data.
-Note: This only works if The Things Stack runs in your AWS account, i.e. in a Enterprise or AWS Launcher deployment.
+Note: This only works if The Things Stack runs in your AWS account, i.e. in a Enterprise or AWS Launcher deployment. When using the AWS Marketplace AMI listing, the AWS IoT Telemetry option in the CloudFormation template must be set to true during the deployment phase. Setup Login to the AWS Console in the same region as where the CloudFormation template is deployed. Search for IoT Core service and click to enter the IoT Core window. On the left-hand panel, select the Test option. In the central panel, choose Subscribe to a topic. In the Subscription topic field enter lorawan/&lt;cloud-formation-stack-name&gt;/&lt;application-id&gt;/things/&lt;device-id&gt;/up to subscribe to the uplinks for a particular device. For example, if your CloudFormation stack name is my-lorawan-server, the application ID is my-motion-sensors and the device ID is my-motion-sensor-1, then the topic would be lorawan/my-lorawan-server/my-motion-sensors/things/my-motion-sensor-1/up. When the device sends an uplink message, it will be displayed in this window in the preferred format. The following is an example payload in JSON format: { &#34;format&#34;: &#34;json&#34;, &#34;payload&#34;: { &#34;end_device_ids&#34;: { &#34;device_id&#34;: &#34;my-motion-sensor-1&#34;, &#34;application_ids&#34;: { &#34;application_id&#34;: &#34;my-motion-sensors&#34; }, &#34;dev_eui&#34;: &#34;xxxxxxxxxxxxxxxx&#34;, &#34;join_eui&#34;: &#34;xxxxxxxxxxxxxxxx&#34;, &#34;dev_addr&#34;: &#34;009C0D6F&#34; }, &#34;correlation_ids&#34;: [ &#34;as:up:01DYMZ1NKBT0B8NACFV6NJWG2J&#34;, &#34;gs:conn:01DYMY19DNK1R2EG9P79YQYB97&#34;, &#34;gs:uplink:01DYMZ1NCF2NAX6HJS3TX6SKAH&#34;, &#34;ns:uplink:01DYMZ1NCGW37WNSSKKJR86515&#34;, &#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01DYMZ1NCGB9FBVPQK74WA20YT&#34; ], &#34;received_at&#34;: &#34;2020-01-15T16:02:10.668892406Z&#34;, &#34;uplink_message&#34;: { &#34;session_key_id&#34;: &#34;AW+poh7YEnPnhTgVoA5a2A==&#34;, &#34;f_port&#34;: 102, &#34;f_cnt&#34;: 13, &#34;frm_payload&#34;: &#34;AdsmAADiAAA=&#34;, &#34;decoded_payload&#34;: { &#34;bat_percentage&#34;: 86.66666666666667, &#34;count&#34;: 226, &#34;events&#34;: &#34;motion&#34;, &#34;status&#34;: 1, &#34;temp&#34;: 6, &#34;time&#34;: 0, &#34;voltage&#34;: 3.6 }, &#34;rx_metadata&#34;: [ { &#34;gateway_ids&#34;: { &#34;gateway_id&#34;: &#34;tektelic-1&#34;, &#34;eui&#34;: &#34;xxxxxxxxxxxxxxxx&#34; }, &#34;timestamp&#34;: 1453994219, &#34;rssi&#34;: -3, &#34;channel_rssi&#34;: -3, &#34;snr&#34;: 9.5, &#34;uplink_token&#34;: &#34;CiMKIQoVdGVrdGVsaWMtZGVzay1nYXRld2F5Eghkf9r//gBccRDr4ai1BQ==&#34;, &#34;channel_index&#34;: 1 } ], &#34;settings&#34;: { &#34;data_rate&#34;: { &#34;lora&#34;: { &#34;bandwidth&#34;: 125000, &#34;spreading_factor&#34;: 7 } }, &#34;coding_rate&#34;: &#34;4/5&#34;, &#34;frequency&#34;: &#34;867300000&#34;, &#34;timestamp&#34;: 1453994219 }, &#34;received_at&#34;: &#34;2020-01-15T16:02:10.448769590Z&#34; } }, &#34;qos&#34;: 0, &#34;timestamp&#34;: 1579104130996, &#34;topic&#34;: &#34;lorawan/my-lorawan-server/my-motion-sensors/things/my-motion-sensor-1/up&#34; } Monitoring On the left-hand panel, click on the Monitor option for aggregated metrics on uplink data. The Sample period and Time range can be adjusted using the drop down links on the top right-hand corner. The following is a sample of the Messages and Messages published windows for an hour sampled every 5 minutes.
+
             
           </div>
         </div>
@@ -459,7 +461,7 @@ Note: This only works if The Things Stack runs in your AWS account, i.e. in a En
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

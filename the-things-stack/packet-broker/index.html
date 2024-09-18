@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Packet Broker | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -179,9 +179,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>For a video explaining what LoRaWAN peering is, and how Packet Broker works, see <a href="https://youtu.be/TQImwfHCraM">LoRaWAN Networks, Roaming and Peering in 5 minutes</a>.</p>
 <details><summary>Show video</summary>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/TQImwfHCraM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/TQImwfHCraM?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 </details>
 <p><img src="overview.png" alt="Overview"></p>
@@ -207,46 +210,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Routing policies define the rules that Forwarders configure for routing messages to Home Networks. Routing policies are peer-to-peer: a Forwarder can define policies with each individual Home Network. Forwarders can also define an optional default routing policy that is used as a fallback when no specific policy is defined.</p>
 <p>Forwarders can configure the following message types per direction in a routing policy:</p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th style="text-align:center">Uplink</th>
-<th style="text-align:center">Downlink</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Join</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td>Join-request (uplink) and join-accept (downlink) messages</td>
-</tr>
-<tr>
-<td>MAC payload</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td>Data messages with <code>FPort</code> <code>0</code> (for network layer instructions)</td>
-</tr>
-<tr>
-<td>Application payload</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td>Data messages with <code>FPort</code> <code>1</code> or higher (for application layer payload)</td>
-</tr>
-<tr>
-<td>Signal quality</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center"></td>
-<td>RSSI and SNR information</td>
-</tr>
-<tr>
-<td>Localization</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center"></td>
-<td>Gateway locations, timestamps and signal quality</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: center">Uplink</th>
+          <th style="text-align: center">Downlink</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Join</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: left">Join-request (uplink) and join-accept (downlink) messages</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">MAC payload</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: left">Data messages with <code>FPort</code> <code>0</code> (for network layer instructions)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Application payload</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: left">Data messages with <code>FPort</code> <code>1</code> or higher (for application layer payload)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Signal quality</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: left">RSSI and SNR information</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Localization</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: left">Gateway locations, timestamps and signal quality</td>
+      </tr>
+  </tbody>
 </table>
 <p>For instance, a Forwarder may wish to configure three policies:</p>
 <ol>
@@ -259,46 +262,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Forwarders can configure the visibility of their gateways towards the public or specific Home Networks. Like routing policies, gateway visibility is configured peer-to-peer: a Forwarder can define gateway visibility with each individual Home Network. Forwarders can also define an optional default gateway visibility that is used as a fallback when no specific visibility is defined.</p>
 <p>Forwarders can configure the following fields:</p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Location</td>
-<td>Gateway coordinates</td>
-</tr>
-<tr>
-<td>Antenna placement</td>
-<td>Indoor/outdoor antenna placement</td>
-</tr>
-<tr>
-<td>Antenna count</td>
-<td>Number of antennas</td>
-</tr>
-<tr>
-<td>Fine timestamps</td>
-<td>Whether the gateway produces fine timestamps</td>
-</tr>
-<tr>
-<td>Contact information</td>
-<td>Administrative and technical contact information of the gateway</td>
-</tr>
-<tr>
-<td>Status</td>
-<td>Online/offline status</td>
-</tr>
-<tr>
-<td>Frequency plan</td>
-<td>Region and channel plan with frequencies that the gateway uses</td>
-</tr>
-<tr>
-<td>Packet rates</td>
-<td>Receive and transmission packet rates</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Location</td>
+          <td style="text-align: left">Gateway coordinates</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Antenna placement</td>
+          <td style="text-align: left">Indoor/outdoor antenna placement</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Antenna count</td>
+          <td style="text-align: left">Number of antennas</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Fine timestamps</td>
+          <td style="text-align: left">Whether the gateway produces fine timestamps</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Contact information</td>
+          <td style="text-align: left">Administrative and technical contact information of the gateway</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Status</td>
+          <td style="text-align: left">Online/offline status</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Frequency plan</td>
+          <td style="text-align: left">Region and channel plan with frequencies that the gateway uses</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Packet rates</td>
+          <td style="text-align: left">Receive and transmission packet rates</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="getting-started">Getting Started</h2>
 <p>The Things Stack Sandbox and The Things Stack Cloud are already connected to Packet Broker. Proceed to <a href="/docs/the-things-stack/packet-broker/configure/">Configure</a> section to manage your registration and routing policies with other networks.</p>
@@ -371,7 +374,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
             This section explains how to connect The Things Stack to Packet Broker.
 The Things Stack Cloud and The Things Stack Sandbox are already connected to Packet Broker. If your deployment is already connected, proceed to configure Packet Broker.
-Prerequisites A LoRa Alliance NetID or a tenant of a host NetID To obtain a NetID, become a member of the LoRa Alliance To obtain a DevAddr block, contact The Things Industries sales Access to Packet Broker with an API key To obtain access to Packet Broker, contact The Things Industries sales The Things Stack installed and configured.
+Prerequisites A LoRa Alliance NetID or a tenant of a host NetID To obtain a NetID, become a member of the LoRa Alliance To obtain a DevAddr block, contact The Things Industries sales Access to Packet Broker with an API key To obtain access to Packet Broker, contact The Things Industries sales The Things Stack installed and configured. See Getting Started Packet Broker CLI installed and configured. See Packet Broker CLI Define DevAddr Prefix by NetID This guide uses The Things Network NetID 000013 as example, which has DevAddr prefix 26000000/7.
+
             
           </div>
         </div>
@@ -445,7 +449,8 @@ Prerequisites A LoRa Alliance NetID or a tenant of a host NetID To obtain a NetI
             
             This section shows you how to configure Packet Broker. You can manage your registration, list other networks, configure routing policies with other networks, and see which networks are forwarding traffic to your network.
 To see which routing policies are configured by default for all deployments, see the Packet Broker Routing section.
-Prerequisites Understand how Packet Broker works and what routing policies are. Learn about Packet Broker. The Things Stack connected to Packet Broker.
+Prerequisites Understand how Packet Broker works and what routing policies are. Learn about Packet Broker. The Things Stack connected to Packet Broker. The Things Stack Cloud is already connected to Packet Broker. The Things Stack Dedicated Cloud can be connected on request. Please contact The Things Industries support. The Things Stack Enterprise and Open Source: see Connect. An admin account for the The Things Stack deployment. All Packet Broker configuration requires administrative access. Packet Broker can be configured using either the Console or the CLI.
+
             
           </div>
         </div>
@@ -575,7 +580,7 @@ Prerequisites Understand how Packet Broker works and what routing policies are. 
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Preparation | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/preparation/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -250,70 +250,70 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <table>
-<thead>
-<tr>
-<th>Secret</th>
-<th>Description</th>
-<th>Size</th>
-<th>Setting in <code>values.yaml</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cluster Keys</td>
-<td>Key used by cluster components to communicate</td>
-<td>32</td>
-<td><code>global.cluster.keys</code></td>
-</tr>
-<tr>
-<td>HTTP Cookie Block Key</td>
-<td>Block Key for HTTP Cookies</td>
-<td>32</td>
-<td><code>global.http.cookie.blockKey</code></td>
-</tr>
-<tr>
-<td>HTTP Cookie Hash Key</td>
-<td>Hash Key for HTTP Cookies</td>
-<td>32</td>
-<td><code>global.http.cookie.hashKey</code></td>
-</tr>
-<tr>
-<td>Metrics Password</td>
-<td>Password to access exposed Prometheus metrics</td>
-<td>16</td>
-<td><code>global.http.metrics.password</code></td>
-</tr>
-<tr>
-<td>PProf Password</td>
-<td>Password to access profiling (pprof)</td>
-<td>16</td>
-<td><code>global.http.pprof.password</code></td>
-</tr>
-<tr>
-<td>Console Oauth Secret</td>
-<td>Secret used by the Console to connect to The Things Stack</td>
-<td>16</td>
-<td><code>global.console.oauth.clientSecret</code></td>
-</tr>
-<tr>
-<td>Tenant Administration Key</td>
-<td>Secret used to administer cluster tenants</td>
-<td>32</td>
-<td><code>global.tenancy.adminKey</code></td>
-</tr>
-<tr>
-<td>NOC Grafana Admin Password (optional)</td>
-<td>Grafana admin password for The Things Stack Network Operations Center</td>
-<td>24</td>
-<td><code>noc.grafana.adminPassword</code></td>
-</tr>
-<tr>
-<td>NOC Oauth Client Secret (optional)</td>
-<td>OAuth client secret for The Things Stack Network Operations Center</td>
-<td>24</td>
-<td><code>noc.oauth.clientSecret</code></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Secret</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Size</th>
+          <th style="text-align: left">Setting in <code>values.yaml</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Cluster Keys</td>
+          <td style="text-align: left">Key used by cluster components to communicate</td>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left"><code>global.cluster.keys</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">HTTP Cookie Block Key</td>
+          <td style="text-align: left">Block Key for HTTP Cookies</td>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left"><code>global.http.cookie.blockKey</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">HTTP Cookie Hash Key</td>
+          <td style="text-align: left">Hash Key for HTTP Cookies</td>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left"><code>global.http.cookie.hashKey</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Metrics Password</td>
+          <td style="text-align: left">Password to access exposed Prometheus metrics</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left"><code>global.http.metrics.password</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PProf Password</td>
+          <td style="text-align: left">Password to access profiling (pprof)</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left"><code>global.http.pprof.password</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Console Oauth Secret</td>
+          <td style="text-align: left">Secret used by the Console to connect to The Things Stack</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left"><code>global.console.oauth.clientSecret</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Tenant Administration Key</td>
+          <td style="text-align: left">Secret used to administer cluster tenants</td>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left"><code>global.tenancy.adminKey</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">NOC Grafana Admin Password (optional)</td>
+          <td style="text-align: left">Grafana admin password for The Things Stack Network Operations Center</td>
+          <td style="text-align: left">24</td>
+          <td style="text-align: left"><code>noc.grafana.adminPassword</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">NOC Oauth Client Secret (optional)</td>
+          <td style="text-align: left">OAuth client secret for The Things Stack Network Operations Center</td>
+          <td style="text-align: left">24</td>
+          <td style="text-align: left"><code>noc.oauth.clientSecret</code></td>
+      </tr>
+  </tbody>
 </table>
 <p>The simplest option is to use <code>openssl</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">size</span><span class="o">=</span>&lt;&gt;
@@ -383,7 +383,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

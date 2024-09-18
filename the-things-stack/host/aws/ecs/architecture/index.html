@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Architecture | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/aws/ecs/architecture/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -265,8 +265,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <p>This page describes the architecture of a The Things Stack deployment on AWS ECS.</p>
 <h2 id="vpc-and-subnets">VPC and Subnets</h2>
 <p>The foundation of the deployment is the Virtual Private Cloud (VPC) that lets us create an isolated environment within the AWS cloud.</p>
-<figure class="plain"><img src="aws-vpc.svg"
-         alt="VPC and Subnets"/>
+<figure class="plain"><img src="/docs/the-things-stack/host/aws/ecs/architecture/aws-vpc.svg"
+    alt="VPC and Subnets">
 </figure>
 
 <p>We will deploy The Things Stack across two availability zones (AZs). In each AZ we have a private subnet that will contain the resources for The Things Stack such as databases, container instances and the application containers themselves. Since these resources can&rsquo;t communicate with the internet directly, we also have public subnets that contain a Network Load Balancer (NLB) for load balancing incoming traffic across instances and a NAT Gateway (NGW) for outgoing connections from resources in the private subnet.</p>
@@ -275,8 +275,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>The Things Stack relies on two databases: PostgreSQL and Redis. AWS offers these databases as managed services, so that we can focus on operating a LoRaWAN® network instead of operating databases.</p>
 <p>We use a PostgreSQL-compatible version of Amazon Aurora and a Redis-compatible version of Amazon ElastiCache. Both PostgreSQL and Redis are deployed in a multi-AZ master-replica setup.</p>
 <p>If desired, it is possible to use separate Redis clusters for persistent storage and for caching.</p>
-<figure class="plain"><img src="aws-databases.svg"
-         alt="Databases"/>
+<figure class="plain"><img src="/docs/the-things-stack/host/aws/ecs/architecture/aws-databases.svg"
+    alt="Databases">
 </figure>
 
 <p>User uploads of profile pictures and end device pictures are stored in S3 buckets.</p>
@@ -290,16 +290,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>The configuration for interoperability with other LoRaWAN Backend Interfaces-compliant servers can become quite complicated and is therefore stored as multiple files in an S3 bucket.</p>
 <h2 id="containers">Containers</h2>
 <p>The Things Stack itself is deployed as Docker Containers on AWS ECS.</p>
-<figure class="plain"><img src="aws-ecs.svg"
-         alt="ECS Cluster"/>
+<figure class="plain"><img src="/docs/the-things-stack/host/aws/ecs/architecture/aws-ecs.svg"
+    alt="ECS Cluster">
 </figure>
 
 <p>The ECS cluster uses container instances in the private subnets of both availability zones. Each container instance runs at least a Gateway Server container that is dedicated for UDP gateways. This is necessary because of the limited support for UDP in ECS.</p>
 <p>Depending on your preferences, you can run other containers on your container instances, or choose to use AWS Fargate.</p>
 <h2 id="networking">Networking</h2>
 <p>All internal communication between the different components of The Things Stack is done over gRPC (port 1884) and HTTP (port 1885). For incoming connections from outside the cluster, ECS registers a number of services in the NLB.</p>
-<figure class="plain"><img src="aws-ecs-containers.svg"
-         alt="ECS Containers"/>
+<figure class="plain"><img src="/docs/the-things-stack/host/aws/ecs/architecture/aws-ecs-containers.svg"
+    alt="ECS Containers">
 </figure>
 
 <p>In addition to containers for the different components of The Things Stack, our deployment also contains proxy containers to route HTTP and gRPC requests to the correct component. Prometheus containers are used for monitoring the deployment.</p>
@@ -386,7 +386,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

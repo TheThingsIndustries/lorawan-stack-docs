@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Ubidots | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -342,42 +342,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ol>
 <h2 id="setup-ubidots">Setup Ubidots</h2>
 <p>Log in to your Ubidots account and find the <strong>Devices</strong> tab in the upper part of your dashboard. In its drop-down list, choose <strong>Plugins</strong>.</p>
-<figure><img src="plugins.png"
-         alt="Ubidots Plugins"/>
+<figure><img src="/docs/integrations/cloud-integrations/ubidots/plugins.png"
+    alt="Ubidots Plugins">
 </figure>
 
 <p>Click on the <strong>+</strong> or on the <strong>Create Data Plugin</strong> button to create a new plugin.</p>
 <p>When you are presented with available plugins, select <strong>The Things Stack</strong> plugin.</p>
-<figure><img src="tts-plugin.png"
-         alt="TTS plugin"/>
+<figure><img src="/docs/integrations/cloud-integrations/ubidots/tts-plugin.png"
+    alt="TTS plugin">
 </figure>
 
 <p>You will see details about <strong>Inputs</strong>, <strong>Usage</strong>, etc. Move forward by clicking the <strong>&gt;</strong> button.</p>
 <p>Next, you need to provide the name for a <strong>Ubidots device type</strong> after which a new device type will be created and linked to this plugin. This device type will later allow you to make changes for all devices that receive data through this plugin.</p>
 <p>You also need to select a <strong>Ubidots token</strong>. You can use the <strong>Default token</strong>, but creating a new token specifically for this plugin is <strong>recommended</strong>.</p>
-<figure><img src="device-type.png"
-         alt="Creating a device type and selecting token"/>
+<figure><img src="/docs/integrations/cloud-integrations/ubidots/device-type.png"
+    alt="Creating a device type and selecting token">
 </figure>
 
 <p>To create a new token, first click on your avatar in the upper right corner and select <strong>API Credentials</strong>. Then select <strong>More</strong> below the <strong>Default token</strong> and add a new token within the <strong>API Credentials page</strong>.</p>
-<figure><img src="tokens.png"
-         alt="Creating token"/>
+<figure><img src="/docs/integrations/cloud-integrations/ubidots/tokens.png"
+    alt="Creating token">
 </figure>
 
 <p>Select <strong>&gt;</strong> to continue and then hit the checkmark to finish.</p>
-<figure><img src="name-description.png"
-         alt="Finish with creating the plugin"/>
+<figure><img src="/docs/integrations/cloud-integrations/ubidots/name-description.png"
+    alt="Finish with creating the plugin">
 </figure>
 
 <p>After a few moments, your newly created plugin will show the status <strong>Running</strong>.</p>
-<figure><img src="running.png"
-         alt="Status: Running"/>
+<figure><img src="/docs/integrations/cloud-integrations/ubidots/running.png"
+    alt="Status: Running">
 </figure>
 
 <p>To complete the integration with The Things Stack, you will need to provide the plugin ID and aforementioned token.</p>
 <p>To find the plugin ID, click on your newly created plugin and navigate to the <strong>Decoder</strong> tab on the left. The plugin ID is available as part of the <strong>HTTPs Endpoint URL</strong> (as highlighted on the image below).</p>
-<figure><img src="plugin-id.png"
-         alt="Plugin ID"/>
+<figure><img src="/docs/integrations/cloud-integrations/ubidots/plugin-id.png"
+    alt="Plugin ID">
 </figure>
 
 <h2 id="setup-payload-decoder">Setup Payload Decoder</h2>
@@ -452,8 +452,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">bytes</span> <span class="o">=</span>  <span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="s1">&#39;uplink_message&#39;</span><span class="p">][</span><span class="s1">&#39;frm_payload&#39;</span><span class="p">],</span> <span class="s1">&#39;base64&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">decoded_payload</span> <span class="o">=</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)[</span><span class="s1">&#39;data&#39;</span><span class="p">];</span>
 </span></span></code></pre></div><p>You can find Ubidots&rsquo; pre-loaded sample payload decoder in your newly created plugin&rsquo;s menu, if you navigate to <strong>Decoder</strong> on the left and scroll down to the <strong>Decoding Function</strong> window. There you can edit it and finish with <strong>Save &amp; Make Live</strong>.</p>
-<figure><img src="decoding-function.png"
-         alt="Ubidots decoder function"/>
+<figure><img src="/docs/integrations/cloud-integrations/ubidots/decoding-function.png"
+    alt="Ubidots decoder function">
 </figure>
 
 <h2 id="configure-the-things-stack">Configure The Things Stack</h2>
@@ -466,20 +466,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>On The Things Stack, navigate to <strong>Integrations → Webhooks</strong> and choose the <strong>Ubidots</strong> Webhook template.</p>
 <p>Name your integration by filling in the <strong>Webhook ID</strong>.</p>
 <p>Paste the <strong>Plugin ID</strong> and <strong>Ubidots token</strong> values from Ubidots.</p>
-<figure><img src="ubidots-integration.png"
-         alt="Ubidots webhook template"/>
+<figure><img src="/docs/integrations/cloud-integrations/ubidots/ubidots-integration.png"
+    alt="Ubidots webhook template">
 </figure>
 
 <p>To see the values of all parameters of the Ubidots integration, click on the integration after you created it with the Webhook template.</p>
 <h2 id="monitor-your-data">Monitor Your Data</h2>
 <p>After you have completed the integration, navigate to <strong>Devices</strong> menu. You will see your end device appearing in the end devices list as soon as it sends an uplink message.</p>
-<figure><img src="devices.png"
-         alt="End devices list"/>
+<figure><img src="/docs/integrations/cloud-integrations/ubidots/devices.png"
+    alt="End devices list">
 </figure>
 
 <p>Select your device to enter its dashboard. Some variables are automatically loaded from uplink metadata, while some are loaded as a payload decoder result (like <strong>humidity</strong> and <strong>temperature</strong> in this example).</p>
-<figure><img src="dashboard.png"
-         alt="Device dashboard"/>
+<figure><img src="/docs/integrations/cloud-integrations/ubidots/dashboard.png"
+    alt="Device dashboard">
 </figure>
 
 <p>You can further use Ubidots features to monitor, process or visualize your data.</p>
@@ -562,7 +562,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>Withthegrid | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/withthegrid/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -346,135 +346,135 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h3 id="monitoring-environments">Monitoring environments</h3>
 <p>Monitoring environments are environments where the end users obtain an overview of all the issues and actions related to its assets.</p>
 <p>Locations form the core of the asset monitoring platform. At each location, measurements are recorded. In our example, a monitoring environment with the name <strong>Infrastructure company ACME</strong> will be created (Figure 1). We will create a location <strong>ACME Headquarters</strong> where we will connect a <strong>Dragino - LWL02</strong> water leak sensor device. Each location can be consisted of multiple location ports. These are ports onto which measurements are recorded. Here, we create a location port <strong>Entrance</strong> where the sensor is located. The device can be assigned with several channels that can be linked with any location port. This way, the right measurements can be pushed to desired locations.</p>
-<figure><img src="monnEnvironment.png"
-         alt="Monitoring environment example"/><figcaption>
-            <p>Figure 1. Example of the setup of monitoring environment</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/monnEnvironment.png"
+    alt="Monitoring environment example"><figcaption>
+      <p>Figure 1. Example of the setup of monitoring environment</p>
+    </figcaption>
 </figure>
 
 <h3 id="connectivity-environments">Connectivity environments</h3>
 <p>Connectivity environments are environments where users configure their devices or data streams and assign them to one or multiple monitoring environments.</p>
 <p>In the connectivity environment, you can configure secure access for your devices through HTTPS webhooks or client certificates. You can define event handlers in TypeScript that parse incoming payloads into measurement reports, return instructions to devices and monitor device health.</p>
-<figure><img src="connEnvironment.png"
-         alt="Connectivity environment example"/><figcaption>
-            <p>Figure 2. Example of the setup of connectivity environment</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/connEnvironment.png"
+    alt="Connectivity environment example"><figcaption>
+      <p>Figure 2. Example of the setup of connectivity environment</p>
+    </figcaption>
 </figure>
 
 <p>In the following example, <strong>Dragino - LWL02</strong> device will be connected to the platform. Every instance of this device type (the physical device) will obtain a unique device ID by the platform which we call a <strong>hashID</strong>. Each device can have multiple device channels where measurements are pushed. An example of a device channel is <strong>Internal Sensor</strong>. A user can define which measurements will be stored in this channel. The quantity which will be stored in this channel will be the operating voltage. Quantities related to the channel <strong>Probe</strong> are leak status, total leak events, and last leak duration. Custom commands can be defined in the connectivity environments such as a request to change the measurement interval of a connected device but this is out of the scope of this tutorial.</p>
 <p>Finally, the connectivity environment is used to define the structure of measurement reports.</p>
 <h2 id="simplified-dataflow-model">Simplified dataflow model</h2>
 <p>A simplified dataflow model is shown in the figure below. An HTTP request from The Things Stack is processed by the <strong>webhook</strong>. Webhooks define the communicating device type, its unique identifier (e.g. IMEI number) and forward this information together with the payload to the corresponding <strong>device type event handler</strong>. Subsequently, the event handler runs a <strong>report parser</strong>. The platform offers full flexibility on how to parse payload into condition reports, using a custom TypeScript parser function. The parser should then convert the payload string (probably applying <code>JSON.parse</code> first) into an actual report with measurements.</p>
-<figure><img src="dataFlow.png"
-         alt="WTG dataflow"/><figcaption>
-            <p>Figure 3. Simplified dataflow model of the Withthegrid platform</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/dataFlow.png"
+    alt="WTG dataflow"><figcaption>
+      <p>Figure 3. Simplified dataflow model of the Withthegrid platform</p>
+    </figcaption>
 </figure>
 
 <p>Now, let&rsquo;s implement the integration!</p>
 <h2 id="step-1-creating-monitoring-and-connectivity-environments">Step 1: Creating monitoring and connectivity environments</h2>
 <p>To create a new connectivity environment, simply enter the desired name and select <strong>CREATE</strong>.</p>
-<figure><img src="1_c_environment.png"
-         alt="Create new connectivity environment"/><figcaption>
-            <p>Figure 4. New connectivity environment</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/1_c_environment.png"
+    alt="Create new connectivity environment"><figcaption>
+      <p>Figure 4. New connectivity environment</p>
+    </figcaption>
 </figure>
 
 <p>The same procedure can be followed to create a new monitoring environment. To create the first location in the monitoring environment, locate the desired place on the map and <strong>Add a new location</strong>.</p>
-<figure><img src="claim6.png"
-         alt="Add new location"/><figcaption>
-            <p>Figure 5. Add new location</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/claim6.png"
+    alt="Add new location"><figcaption>
+      <p>Figure 5. Add new location</p>
+    </figcaption>
 </figure>
 
 <p>To navigate between the environments, click on the arrows located in the top left corner.</p>
 <h2 id="step-2-creating-a-new-webhook">Step 2: Creating a new webhook</h2>
 <p>The first step in integrating the Withthegrid platform with The Things Stack is to create a new webhook. Webhooks can be found in the connectivity environment, under <strong>Device access/Webhooks</strong>. To create a new webhook, click <strong>+</strong> in the right bottom corner.</p>
-<figure><img src="2_c_environment.png"
-         alt="Webhooks"/><figcaption>
-            <p>Figure 6. Webhooks overview</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/2_c_environment.png"
+    alt="Webhooks"><figcaption>
+      <p>Figure 6. Webhooks overview</p>
+    </figcaption>
 </figure>
 
 <p>Select the desired webhook name and click <strong>ADD</strong>.</p>
-<figure><img src="webhook_1.png"
-         alt="Add webhook"/><figcaption>
-            <p>Figure 7. Add a new webhook</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/webhook_1.png"
+    alt="Add webhook"><figcaption>
+      <p>Figure 7. Add a new webhook</p>
+    </figcaption>
 </figure>
 
 <p>The platform will generate a webhook URL which we can use later to connect with The Things Stack.</p>
-<figure><img src="webhook_2.png"
-         alt="Webhook URL"/><figcaption>
-            <p>Figure 8. New webhook</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/webhook_2.png"
+    alt="Webhook URL"><figcaption>
+      <p>Figure 8. New webhook</p>
+    </figcaption>
 </figure>
 
 <h2 id="step-3-creating-and-configuring-a-new-device-type">Step 3: Creating and configuring a new device type</h2>
 <p>A new device type can be created in a connectivity environment by navigating to <strong>Device types</strong>. This page shows an overview of all the device types that are available in your environment. Let’s create the first device type by clicking <strong>+</strong> in the bottom right corner.</p>
-<figure><img src="5_c_environment_deviceType.png"
-         alt="New device type"/><figcaption>
-            <p>Figure 9. Device types overview</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/5_c_environment_deviceType.png"
+    alt="New device type"><figcaption>
+      <p>Figure 9. Device types overview</p>
+    </figcaption>
 </figure>
 
 <p>Name the new device type. At this point, we can also change the default name of the device channel to <code>Internal Sensor</code>. Use the same name for default name for port. This is where internal battery voltage measurements will be pushed.</p>
-<figure><img src="device_type_1.png"
-         alt="Device type overview"/><figcaption>
-            <p>Figure 10. Add a new device type</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/device_type_1.png"
+    alt="Device type overview"><figcaption>
+      <p>Figure 10. Add a new device type</p>
+    </figcaption>
 </figure>
 
 <p>Let’s create one additional channel (<code>Probe</code>), where we will push measurements related to the water leak.</p>
-<figure><img src="device_type_2.png"
-         alt="Set channels"/><figcaption>
-            <p>Figure 11. Set channels</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/device_type_2.png"
+    alt="Set channels"><figcaption>
+      <p>Figure 11. Set channels</p>
+    </figcaption>
 </figure>
 
 <p>Click <strong>ADD</strong> to set the channel and click <strong>ADD</strong> to update and save the changes.</p>
 <p>Withthegrid&rsquo;s new event handler will validate the incoming request and pass the payload to the corresponding report parser which will parse incoming payloads into measurement reports. The new device type will be given a new hashID (e.g. <strong>4djrvd</strong>) which is a unique ID that identifies the event handler of <strong>Dragino - LWL02</strong>.</p>
-<figure><img src="device_type_3.png"
-         alt="Device type"/><figcaption>
-            <p>Figure 12. List of existing device types</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/device_type_3.png"
+    alt="Device type"><figcaption>
+      <p>Figure 12. List of existing device types</p>
+    </figcaption>
 </figure>
 
 <h2 id="step-4-creating-a-new-report-type-and-quantities">Step 4: Creating a new report type and quantities</h2>
 <p>For each report, a report parser can parse the incoming payload. To create a new report, click <strong>+</strong> in the bottom right corner.</p>
-<figure><img src="8_c_environment_report.png"
-         alt="Create a report parser"/><figcaption>
-            <p>Figure 13. Report types overview</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/8_c_environment_report.png"
+    alt="Create a report parser"><figcaption>
+      <p>Figure 13. Report types overview</p>
+    </figcaption>
 </figure>
 
 <p>Follow the same steps as before to <strong>ADD</strong> the new report type.</p>
-<figure><img src="10_c_environment_report.png"
-         alt="Report parser"/><figcaption>
-            <p>Figure 14. Add a new report parser</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/10_c_environment_report.png"
+    alt="Report parser"><figcaption>
+      <p>Figure 14. Add a new report parser</p>
+    </figcaption>
 </figure>
 
 <p>In the report parser, we will correctly parse the incoming payload into a measurement report. A new report type will be given a hashID (e.g. <strong>eyr96d</strong>). Note that the hashID is automatically created and will be different for everyone.</p>
 <p>The quantities of interest in this example are voltage, leak status, total leak events and last leak duration. Custom quantities can be found in the panel under option <strong>Quantities</strong>. To create a new quantity, select <strong>+</strong>.</p>
-<figure><img src="quantities_1.png"
-         alt="Quantities"/><figcaption>
-            <p>Figure 15. Quantities overview</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/quantities_1.png"
+    alt="Quantities"><figcaption>
+      <p>Figure 15. Quantities overview</p>
+    </figcaption>
 </figure>
 
 <p>Enter the quantity name <code>Voltage</code> and unit <code>V</code>. To create the quantity, select <strong>ADD</strong>.</p>
-<figure><img src="quantity_1.png"
-         alt="Create a quantity"/><figcaption>
-            <p>Figure 16. Add a new quantity</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/quantity_1.png"
+    alt="Create a quantity"><figcaption>
+      <p>Figure 16. Add a new quantity</p>
+    </figcaption>
 </figure>
 
 <p>After selecting <strong>ADD</strong>, a hashID will be created for the newly created quantity. We will create <code>Leak status</code>, <code>Total leak events</code>, and <code>Last leak duration</code> quantities by following the same procedure. For unitless quantities, just enter space. Leak duration is in min according to the datasheet. In this example, the voltage, leak status, total leak events, and last leak duration hashIDs are <strong>yl4wwy</strong>, <strong>dp2v9d</strong>, <strong>yzrwny</strong>, and <strong>d4rwrd</strong>, respectively. The hashIDs will be used in the report to identify the correct measurement quantity.</p>
-<figure><img src="quantity_2.png"
-         alt="Created quantities overview"/><figcaption>
-            <p>Figure 17. List of existing quantities</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/quantity_2.png"
+    alt="Created quantities overview"><figcaption>
+      <p>Figure 17. List of existing quantities</p>
+    </figcaption>
 </figure>
 
 <h2 id="step-5-configuring-the-created-webhook">Step 5: Configuring the created webhook</h2>
@@ -585,10 +585,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Now that the webhook and the event handler of the Dragino - LWL02 device are configured, we can proceed with setting up The Things Stack.</p>
 <p><a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">Create an application</a> and <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">add the Dragino device</a> by following linked tutorials.</p>
 <p>After the device is registered, we can configure a new webhook on The Things Stack. Set the webhook format to <strong>JSON</strong> and enter the <strong>Base URL</strong> provided with the Withthegrid webhook we created in step 2.</p>
-<figure><img src="TTS_Webhook.png"
-         alt="TTS set up webhook"/><figcaption>
-            <p>Figure 20. Configure The Things Stack webhook</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/TTS_Webhook.png"
+    alt="TTS set up webhook"><figcaption>
+      <p>Figure 20. Configure The Things Stack webhook</p>
+    </figcaption>
 </figure>
 
 <h2 id="step-8-configuring-report-type">Step 8: Configuring report type</h2>
@@ -694,76 +694,76 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="step-9-powering-up-the-device">Step 9: Powering up the device</h2>
 <p>After powering up the device it should automatically connect to the Withthegrid application. The successful connection can be observed in the connectivity environment under <strong>Activity</strong> and it will look like this:</p>
-<figure><img src="activity_1.png"
-         alt="Activity"/><figcaption>
-            <p>Figure 20. Activity overview</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/activity_1.png"
+    alt="Activity"><figcaption>
+      <p>Figure 20. Activity overview</p>
+    </figcaption>
 </figure>
 
 <p>You can click on <strong>Parse report</strong> to view more information and verify that the parsing is correct.</p>
-<figure><img src="activity_2.png"
-         alt="Snipet of parsed report"/><figcaption>
-            <p>Figure 21. Example of the parsed report</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/activity_2.png"
+    alt="Snipet of parsed report"><figcaption>
+      <p>Figure 21. Example of the parsed report</p>
+    </figcaption>
 </figure>
 
 <h2 id="step-10-claiming-device-tokens">Step 10: Claiming device tokens</h2>
 <p>When the sensor is linked for the first time, the instance of the device is created in the platform and can be found in <strong>Devices</strong>. The corresponding device will have a unique hashID (e.g. <strong>dxrwmd</strong>), Identifier (in our case IMEI of the device), and will be of device type <strong>Dragino - LWL02</strong>. The device can be easily placed in any monitoring environment by selecting <strong>GET CLAIM TOKEN(S)</strong> in the bottom right corner.</p>
-<figure><img src="tokens_1.png"
-         alt="Tokens for devices"/><figcaption>
-            <p>Figure 22. Devices overview</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/tokens_1.png"
+    alt="Tokens for devices"><figcaption>
+      <p>Figure 22. Devices overview</p>
+    </figcaption>
 </figure>
 
 <p>Enter the hashID of a device to be claimed and click <strong>REQUEST</strong>.</p>
-<figure><img src="tokens_2.png"
-         alt="HashID for claim token"/><figcaption>
-            <p>Figure 23. Get claim tokens with device hash IDs</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/tokens_2.png"
+    alt="HashID for claim token"><figcaption>
+      <p>Figure 23. Get claim tokens with device hash IDs</p>
+    </figcaption>
 </figure>
 
 <p>The platform will output a claim token that can be copied.</p>
-<figure><img src="token_3.png"
-         alt="Get claim token"/><figcaption>
-            <p>Figure 24. Claim generated token</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/token_3.png"
+    alt="Get claim token"><figcaption>
+      <p>Figure 24. Claim generated token</p>
+    </figcaption>
 </figure>
 
 <p>In the last step, we will configure the monitoring environment and add the newly connected sensor.</p>
 <h2 id="step-11-configuring-the-monitoring-environment">Step 11: Configuring the monitoring environment</h2>
 <p>To add a device into the monitoring environment, navigate to <strong>Devices</strong>, click <strong>+</strong>, and enter the previously copied claim token. Click <strong>ADD</strong>.</p>
-<figure><img src="claim4.png"
-         alt="Claim token"/><figcaption>
-            <p>Figure 25. Claim device in the monitoring environment</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/claim4.png"
+    alt="Claim token"><figcaption>
+      <p>Figure 25. Claim device in the monitoring environment</p>
+    </figcaption>
 </figure>
 
 <p>The following image shows that the device is registered in the monitoring environment, however, is not installed yet.</p>
-<figure><img src="Mon_1.png"
-         alt="Claim device in monitoring environment"/><figcaption>
-            <p>Figure 26. Available devices</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/Mon_1.png"
+    alt="Claim device in monitoring environment"><figcaption>
+      <p>Figure 26. Available devices</p>
+    </figcaption>
 </figure>
 
 <p>To install a device, navigate to the created location (<strong>ACME Headquarters</strong>) and select <strong>Devices</strong>.</p>
-<figure><img src="claim7.png"
-         alt="Create location"/><figcaption>
-            <p>Figure 27. Add a device to location</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/claim7.png"
+    alt="Create location"><figcaption>
+      <p>Figure 27. Add a device to location</p>
+    </figcaption>
 </figure>
 
 <p>In <strong>Link to a device</strong>, select the <strong>Dragino - LWL02</strong>. Finally, we would like to track the <strong>Internal Sensor</strong> port and <strong>Probe</strong> port onto which measurements are pushed. Click <strong>+ PORT</strong> to add the <strong>Internal Sensor</strong> channel and repeat to add the <strong>Probe</strong> channel. Finalize the device installation with <strong>SET</strong>.</p>
-<figure><img src="Mon_2.png"
-         alt="Set device ports"/><figcaption>
-            <p>Figure 28. Set device ports</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/Mon_2.png"
+    alt="Set device ports"><figcaption>
+      <p>Figure 28. Set device ports</p>
+    </figcaption>
 </figure>
 
 <p>From this point on, all measurements pushed to channels of Dragino - LWL02 sensor with the unique IMEI will be available in the monitoring environments, ready to be visualized in graphs. Try shorting the two pins on the sensor to see if a measurement is recorded.</p>
-<figure><img src="Graphs.png"
-         alt="Overview of the graph"/><figcaption>
-            <p>Figure 29. Visualize data</p>
-        </figcaption>
+<figure><img src="/docs/integrations/cloud-integrations/withthegrid/Graphs.png"
+    alt="Overview of the graph"><figcaption>
+      <p>Figure 29. Visualize data</p>
+    </figcaption>
 </figure>
 
 <p>Congratulations! If you can see measurements in the graphs, you have successfully finished the tutorial. If you want to learn more about all the cool functionalities that the Withthegrid platform offers, do not hesitate to look at our <a href="http://docs.withthegrid.com/">documentation</a> or contact us directly through <a href="http://withthegrid.com/">withthegrid.com</a>.</p>
@@ -872,7 +872,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

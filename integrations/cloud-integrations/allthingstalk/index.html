@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.112.3">
+  <meta name="generator" content="Hugo 0.134.2">
   <title>AllThingsTalk Maker | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/allthingstalk/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -343,41 +343,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ol>
 <h2 id="setup-allthingstalk-maker">Setup AllThingsTalk Maker</h2>
 <p>When you first log into the AllThingsTalk Maker, you have to create a new ground. To do so, click the <strong>+ New ground</strong> button, enter a ground name and finish with <strong>Create</strong>.</p>
-<figure><img src="ground.png"
-         alt="Creating a new ground"/>
+<figure><img src="/docs/integrations/cloud-integrations/allthingstalk/ground.png"
+    alt="Creating a new ground">
 </figure>
 
 <p>Navigate to <strong>Devices</strong> on the left hand menu in your newly created ground and click the <strong>+ Connect a device</strong> to add a new device.</p>
 <p>You will be presented with a list of supported devices; choose <strong>Your own LoRa device</strong>.</p>
-<figure><img src="lora-device.png"
-         alt="Choosing a LoRa device"/>
+<figure><img src="/docs/integrations/cloud-integrations/allthingstalk/lora-device.png"
+    alt="Choosing a LoRa device">
 </figure>
 
 <p>Next, choose <strong>The Things Network V3</strong> as a LoRaWAN® provider.</p>
-<figure><img src="ttnv3.png"
-         alt="Choosing TTN V3"/>
+<figure><img src="/docs/integrations/cloud-integrations/allthingstalk/ttnv3.png"
+    alt="Choosing TTN V3">
 </figure>
 
 <p>Last, you need to fill in the <strong>Device name</strong> with a desired value and provide your device&rsquo;s EUI in the <strong>Device EUI</strong> field.</p>
 <p>In this step, you can also note down the <strong>Network Token</strong> value as you will need it in further integration process.</p>
-<figure><img src="device-settings.png"
-         alt="Device settings"/>
+<figure><img src="/docs/integrations/cloud-integrations/allthingstalk/device-settings.png"
+    alt="Device settings">
 </figure>
 
 <p>Finish adding the device by clicking <strong>Connect</strong>.</p>
 <h2 id="configure-the-things-stack">Configure The Things Stack</h2>
 <p>After finishing AllThingsTalk Maker setup, use the <strong>AllThingsTalk Maker</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a> to create a Webhook integration on The Things Stack.</p>
 <p>To integrate, you only need to fill out the <strong>Webhook ID</strong> field and provide the <strong>Network Token</strong> you copied from AllThingsTalk in the previous step.</p>
-<figure><img src="att-webhook.png"
-         alt="AllThingsTalk Maker webhook template"/>
+<figure><img src="/docs/integrations/cloud-integrations/allthingstalk/att-webhook.png"
+    alt="AllThingsTalk Maker webhook template">
 </figure>
 
 <p>To see the values of all parameters of the AllThingsTalk Maker integration, click on the integration after you created it with the Webhook template.</p>
 <h2 id="monitoring-sensor-data">Monitoring Sensor Data</h2>
 <p>Enter your newly created device&rsquo;s dashboard, navigate to <strong>Assets</strong> and select <strong>Create asset</strong> to create a new device asset.</p>
 <p>Choose <strong>Sensor</strong>, add a <strong>Name</strong> depending on the type of your sensor data and choose the type of data. In this guide, we demonstrate sending numerical data from a temperature sensor.</p>
-<figure><img src="asset.png"
-         alt="Device asset"/>
+<figure><img src="/docs/integrations/cloud-integrations/allthingstalk/asset.png"
+    alt="Device asset">
 </figure>
 
 <p>In order for your sensor data to be properly decoded on the AllThingsTalk Maker end, it needs to be converted to CBOR format, as mentioned in the <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/allthingstalk/#prerequisites">Prerequisites</a>. According to the <a href="https://docs.allthingstalk.com/developers/data-formats/">AllThingsTalk data formats documentation</a>, the payload should be constructed using <code>{&quot;&lt;asset-name&gt;&quot;: &lt;value&gt;}</code> structures, which after need to be converted to CBOR.</p>
@@ -385,21 +385,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>In this guide, we demonstrate sending <code>{&quot;temperature&quot;: &lt;value&gt;}</code> records converted to CBOR format. For example, if the temperature sensor measurement results in <code>{&quot;temperature&quot;: 36}</code>, after a conversion to CBOR the uplink message payload will be <code>A1 6B 74 65 6D 70 65 72 61 74 75 72 65 18 24</code>.</p>
 <p>You can use free online tools such as <a href="http://cbor.me/">cbor.me</a> to easily convert data to CBOR.</p>
 <p>After this data reaches AllThingsTalk Maker, the asset sensor value will automatically be updated, as shown on the image below. You can now continue monitoring this data, creating visual charts, etc.</p>
-<figure><img src="sensor-data.png"
-         alt="Sensor data"/>
+<figure><img src="/docs/integrations/cloud-integrations/allthingstalk/sensor-data.png"
+    alt="Sensor data">
 </figure>
 
 <h2 id="actuating-your-device">Actuating Your Device</h2>
 <p>If your device is an actuator, you can actuate it by scheduling a downlink message to be sent to it from AllThingsTalk Maker.</p>
 <p>First, enter your device&rsquo;s dashboard on AllThingsTalk Maker, navigate to <strong>Assets</strong> and select <strong>Create asset</strong> to create a new device asset. Choose <strong>Actuator</strong>, add a <strong>Name</strong> depending on the variable name you are actuating your device from, and choose the type of data.</p>
 <p>In this guide, we demonstrate turning on a LED on an end device by setting the <code>LED</code> asset value to <code>true</code> and sending it through a downlink message.</p>
-<figure><img src="actuator.png"
-         alt="Actuating a device"/>
+<figure><img src="/docs/integrations/cloud-integrations/allthingstalk/actuator.png"
+    alt="Actuating a device">
 </figure>
 
 <p>Select the newly created asset, scroll down to the <strong>Command</strong> section, set the <code>value</code> to <code>true</code> and click on the green checkmark on the right.</p>
-<figure><img src="send-command.png"
-         alt="Sending command to the end device"/>
+<figure><img src="/docs/integrations/cloud-integrations/allthingstalk/send-command.png"
+    alt="Sending command to the end device">
 </figure>
 
 <p>If you check The Things Stack <strong>Live data</strong> tab, you will see downlink messages being scheduled to be sent to your end device.</p>
@@ -481,7 +481,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.f468ae7656443ab43fc7f95629f313e92c290334e7b715052da62c9f800ea702.js" integrity="sha256-9GiudlZEOrQ/x/lWKfMT6SwpAzTntxUFLaYsn4AOpwI=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };
