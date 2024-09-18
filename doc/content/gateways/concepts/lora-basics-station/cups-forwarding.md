@@ -8,13 +8,13 @@ This section explains how redirect your gateway from one {{% tts %}} instance to
 
 <!--more-->
 
-If your gateway is using [CUPS]({{< relref "/cups" >}}) to connect to {{% tts %}}, and you want to redirect it from one {{% tts %}} instance to another, just follow the steps below. As an example, we consider redirecting a gateway from {{% ttss %}} to {{% tts %}} Cloud. 
+If your gateway is using [CUPS]({{< relref "cups" >}}) to connect to {{% tts %}}, and you want to redirect it from one {{% tts %}} instance to another, just follow the steps below. As an example, we consider redirecting a gateway from {{% ttss %}} to {{% tts %}} Cloud.
 
-First, register your gateway in the target instance ({{% tts %}} Cloud in our example). You can choose to **Generate API key for LNS** upon registering, or to follow steps to create an [LNS key]({{< relref "/cups#create-separate-cups-and-lns-api-keys" >}}) (gateway API key with linking rights) in the target instance after registering.
+First, register your gateway in the target instance ({{% tts %}} Cloud in our example). You can choose to **Generate API key for LNS** upon registering, or to follow steps to create an [LNS key]({{< relref "cups#create-separate-cups-and-lns-api-keys" >}}) (gateway API key with linking rights) in the target instance after registering.
 
 {{< figure src="../target-instance-registration.png" alt="Registering gateway in the target The Things Stack instance" >}}
 
-Copy the LNS key from the target instance (that you created in previous step). In the source instance ({{% ttss %}} in our example), navigate to your gateway's **General settings** tab and paste the LNS key you've copied in the **LoRa Basics Station LNS Authentication Key** field. 
+Copy the LNS key from the target instance (that you created in previous step). In the source instance ({{% ttss %}} in our example), navigate to your gateway's **General settings** tab and paste the LNS key you've copied in the **LoRa Basics Station LNS Authentication Key** field.
 
 Navigate to your gateway's **General settings** tab in the target instance, copy the **Gateway Server address** and paste it in the **Gateway Server address** field of the source instance.
 
