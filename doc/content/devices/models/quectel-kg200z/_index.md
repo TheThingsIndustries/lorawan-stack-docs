@@ -42,7 +42,7 @@ Once you do that, you should see some text show up in your terminal. Now press t
 
 {{< figure src="prov-info.png" class="plain">}}
 
-Using these parameters we can now proceed with [onboarding the device to {{% tts %}}](#onboarding-to--tts-).  
+Using these values we can now proceed with onboarding the device to {{% tts %}}.  
 
 ### Windows 
 
@@ -58,11 +58,11 @@ Now close the program (using the **Cancel** button), then plug in the EVK and tu
 
 {{< figure src="win-com-dev.png" class="plain">}}
 
-Once that is done, hit **Connect** and you should see some text show up in the terminal. Now press the reset button on the EVK to have the device show its provisioning information. Select and copy the **AppKey**, **DevEUI and **AppEUI** and store them somewhere.  
+Once that is done, hit **Connect** and you should see some text show up in the terminal. Now press the reset button on the EVK to have the device show its provisioning information. Select and copy the **AppKey**, **DevEUI** and **AppEUI** and store them somewhere.  
 
 {{< figure src="win-com-prov.png" class="plain">}}
 
-Using these parameters we can now proceed with [onboarding the device to {{% tts %}}](#onboarding-to--tts-).  
+Using these values we can now proceed with onboarding the device to {{% tts %}}.  
 
 {{< note "Quectel KG200ZABTB cannot be onboarded to {{% tts %}} using QR code." />}}
 
@@ -75,12 +75,8 @@ To do this, in the **End device type** section, under **Input Method**, select *
 - LoRaWAN version: **LoRaWAN Specification 1.0.2**
 - Regional parameters version: **RP001 Regional Parameters 1.0.2 revision B**
 
+Then fill in the **Provisioning information**, which were found [in the first steps](#provisioning-information).
+
 After configuring your device, select the **Register end device** button.
 
 {{< figure src="evk-manual-prov.png" alt="Settings for manual registration" >}}
-
-## Monitoring Live Data
-
-When your device is registered, select the **Live Data** tab to view all messages exchanged between the end device and {{% tts %}}.
-
-{{< figure src="evk-live-data.png" alt="Live data tab" >}}
