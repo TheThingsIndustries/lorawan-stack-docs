@@ -14,13 +14,9 @@ This section contains instructions for adding Gateways in {{%tts%}}.
 
 <!--more-->
 
-Some gateways, like [The Things Indoor Gateway]({{< ref "/gateways/models/thethingsindoorgateway" >}}), have special instructions for claiming. Look for your gateway in the left hand menu for specific instructions, as this guide does not apply to those gateways.
+Some gateways, like [{{% ttigpro %}}]({{< ref "/gateways/models/thethingsindoorgatewaypro" >}}) and [{{% ttig %}}]({{< ref "/gateways/models/thethingsindoorgateway" >}}), have an onboarding guide. Look for your gateway in the left hand menu for specific instructions.
 
-{{< note >}}
-Do not follow this guide for a [The Things Indoor Gateway]({{< ref "/gateways/models/thethingsindoorgateway" >}}).
-{{</ note >}}
-
-If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "the-things-stack/packet-broker" >}}), you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced [TTN Mapper](https://ttnmapper.org) to find out if your location has nearby gateways.
+If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "the-things-stack/packet-broker" >}}), you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced [TTN Mapper](https://ttnmapper.org) to find out if you have nearby gateways.
 
 {{< tabs/container "Console" "CLI" "HTTP (REST) API">}}
 
@@ -30,11 +26,9 @@ If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "the-thin
 
 Go to **Gateways** in the top menu, and click **+ Register Gateway** to reach the gateway registration page.
 
-Fill the **Gateway EUI** and click **Confirm**. Some gateways do not use a **Gateway EUI** (e.g. The Things Kickstarter Gateway), in which case you can just click on **Continue without EUI**.
+Fill the **Gateway EUI** and click **Confirm**. Some gateways do not use a **Gateway EUI**, in which case you can just click on **Continue without EUI**.
 
 Depending on whether the **Gateway EUI** is claimable you will either be shown the claiming form or the manual registration form.
-
-{{< note >}}Claiming of gateways is not supported on {{% tts %}} Open Source. In that case, you will see the manual registration form by default.{{</ note >}}
 
 {{< figure src="gateway-add.png" alt="Gateway add" >}}
 
@@ -42,7 +36,7 @@ On the manual registration form fill in the **Frequency Plan** and the **Gateway
 
 {{< figure src="gateway-creation.png" alt="Gateway creation" >}}
 
-If your gateway is claimable (e.g. The Things Indoor Gateway), you will see the claiming form. Here, fill in the **Authentication Code**, **Gateway ID** and the **Frequency Plan**. Click **Claim Gateway** to finish.
+If your gateway is claimable (e.g. {{% ttigpro %}} and {{% ttig %}}), you will see the claiming form. Here, fill in the **Owner Token**, **Gateway ID** and the **Frequency Plan**. Click **Claim Gateway** to finish.
 
 {{< figure src="gateway-claim.png" alt="Gateway claiming" >}}
 
@@ -139,7 +133,7 @@ curl -v -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" 
 
 {{< /tabs/container >}}
 
-## Create Gateway API Key
+## Optional: Create Gateway API Key
 
 Some gateways require an API Key with Link Gateway Rights to be able to connect to {{% tts %}}. In this section we explain how to create an API key with this right, but the procedure of creating an API key is identical for any other right as well.
 
