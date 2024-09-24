@@ -29,7 +29,7 @@ This page will guide you through connecting {{% ttigpro %}} to {{% tts %}}.
 - Backplate for easy mounting on walls and ceilings
 - Available for EU868 and US915 regions
 
-You can find the data sheet [here](https://preview.thethingsindustries.com/media/uploads/managed-gateway-manual.pdf).
+You can find the brochure [here](https://www.thethingsindustries.com/media/uploads/managed-gateway-brochure.pdf).
 
 ## Prerequisites
 
