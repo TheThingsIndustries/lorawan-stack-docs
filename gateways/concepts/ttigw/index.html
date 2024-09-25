@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.134.2">
-  <title>Make a Gateway Claimable | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/concepts/gateway-claiming/make-gateways-claimable/" />
+  <title>The Things Industries Gateway Protocol | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/concepts/ttigw/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.5ba0be8f5f0e953584382f5875ae6ec65f7a9a9cda0dea27bd9ddb1025d10fa5.css" integrity="sha256-W6C&#43;j18OlTWEOC9Yda5uxl96mpzaDeonvZ3bECXRD6U=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Make a Gateway Claimable">
+  <meta itemprop="name" content="The Things Industries Gateway Protocol">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Make a Gateway Claimable">
+  <meta property="og:title" content="The Things Industries Gateway Protocol">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/concepts/gateway-claiming/make-gateways-claimable/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/concepts/ttigw/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Make a Gateway Claimable" />
+  <meta name="twitter:title" content="The Things Industries Gateway Protocol" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -67,7 +67,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
-            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/">Get The Things Stack</a>
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
           </div>
       </div>
     </div>
@@ -106,41 +106,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/gateway-claiming/" class="">Gateway Claiming</a>
-    
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/gateway-claiming/make-gateways-claimable/" class="is-active">Make a Gateway Claimable</a>
-    
-    
-
-
-
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/gateway-claiming/claim-gateways/" class="">Claim a Gateway</a>
-    
-  </li>
-
-</ul>
-
-
-    
-  </li>
-
-  <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/" class="">LoRa Basics™ Station</a>
     
   </li>
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/" class="">Semtech UDP Packet Forwarder</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/ttigw/" class="is-active">The Things Industries Gateway Protocol</a>
+    
+    
+
+
+
     
   </li>
 
@@ -172,91 +153,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Make a Gateway Claimable
+        <h1 class="title is-size-2">The Things Industries Gateway Protocol
           
         </h1>
         
-        <h2 class="subtitle">
-          
-            
-            
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-  
-
-  
-
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-          
-          
-          
-          
-        </h2>
-        
         <div class="content">
-          <div class="notification is-primary is-light has-text-dark">
-  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
-  <p>The instructions below use the command-line interface (CLI).</p>
-  
-  
-  <div class="buttons">
-    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/the-things-stack/interact/cli/installing-cli/">Learn how to install the CLI</a>
-  </div>
-</div>
-
-<p>This guide explains the process of making a gateway claimable. When a gateway is claimable, someone else can claim it securely.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<ol>
-<li>An gateway registered in a The Things Stack Cloud or The Things Stack Enterprise cluster <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/">See instructions</a>.</li>
-</ol>
-<h2 id="authorize-claiming">Authorize Claiming</h2>
-<p>In order for anyone to claim a gateway that is owned by you, you need to authorize claiming. This is needed for The Things Stack to move the gateway to the other user. This needs to be done separately for each gateway.</p>
-<p>Replace <code>&lt;gateway-id&gt;</code> with the <strong>Gateway ID</strong> of the gateway that you created in prerequisites, and run the following command in the CLI:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli gateways claim authorize &lt;gateway-id&gt;
-</span></span></code></pre></div><p>To undo the action:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli gateways claim unauthorize &lt;gateway-id&gt;
-</span></span></code></pre></div><h2 id="claiming-settings">Claiming Settings</h2>
-<p>When a gateway is added in The Things Stack, its claiming settings can be configured.</p>
-<p>This is comprised of a claim authentication code and a validity window. The claim authentication code is a secret value. The validity window is an optional start and end date on which the claim authentication code can be used.</p>
-<p>The claim authentication code value should be in hex while updating the gateway. Refer to the following example.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">CAC</span><span class="o">=</span>ABCD
-</span></span><span class="line"><span class="cl"><span class="nv">CAC_IN_HEX</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="s2">&#34;</span><span class="nv">$CAC</span><span class="s2">&#34;</span> <span class="p">|</span> xxd -ps -u -c 8192<span class="k">)</span>
-</span></span><span class="line"><span class="cl">ttn-lw-cli gateways update &lt;gateway-id&gt; --claim-authentication-code.secret.value <span class="nv">$CAC_IN_HEX</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --claim-authentication-code.valid-from 2021-03-01T00:00:00Z <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --claim-authentication-code.valid-to 2021-03-31T23:59:59Z
-</span></span></code></pre></div><p>This sets the secret claim authentication code secret value to <code>ABCD</code>, that can be used in March 2021. Please adapt these values for your specific case.</p>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  The claim authentication code allows anyone who has it to claim your gateway. Make sure to use a value that cannot be easily guessed and share it only with the intended recipient.
-</div>
+          <p>The Things Industries Gateway Protocol is a proprietary protocol developed by The Things Industries. Unlike other protocols like <a href="/docs/gateways/concepts/lora-basics-station/">LoRa Basics™ Station</a> and <a href="/docs/gateways/concepts/udp/">Semtech UDP Packet Forwarder</a>, The Things Industries Gateway Protocol can only be used by gateways provisioned by The Things Industries.</p>
+<p>The Things Industries Gateway Protocol is the most secure and bandwidth efficient protocol, designed for deploying gateways in public locations that may be using a metered backhaul like cellular.</p>
+<h2 id="security">Security</h2>
+<p>The Things Industries Gateway Protocol allows for managing the gateway from The Things Stack in a true zero-touch fashion. Gateways supporting this protocol therefore do not require a local user interface for any local configuration, meaning that it is impossible to tamper with configuration even with physical access to the gateway. Since all configuration is done in The Things Stack, you don&rsquo;t need to be near the gateway for onboarding and configuration.</p>
+<p>The Things Industries Gateway Protocol enabled gateways use a TLS client certificate signed by The Things Industries to securely authenticate with any The Things Stack deployment: Cloud, Enterprise, Sandbox and Open Source.</p>
+<h2 id="supported-gateways">Supported Gateways</h2>
+<p><a href="/docs/gateways/models/thethingsindoorgatewaypro/">The Things Indoor Gateway Pro</a> supports The Things Industries Gateway Protocol.</p>
         </div>
-        <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/gateways/concepts/gateway-claiming/">← Gateway Claiming</a>
-<a class="button is-pulled-right" href="/docs/gateways/concepts/gateway-claiming/claim-gateways/">Claim a Gateway →</a>
+          <div class="columns is-multiline">
 </div>
 
-        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/gateways/concepts/udp/">← Semtech UDP Packet Forwarder</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -274,13 +191,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul class="menu-list">
     
       
-      <li><a href='#prerequisites'>Prerequisites</a></li>
+      <li><a href='#security'>Security</a></li>
     
       
-      <li><a href='#authorize-claiming'>Authorize Claiming</a></li>
-    
-      
-      <li><a href='#claiming-settings'>Claiming Settings</a></li>
+      <li><a href='#supported-gateways'>Supported Gateways</a></li>
     
   </ul>
 

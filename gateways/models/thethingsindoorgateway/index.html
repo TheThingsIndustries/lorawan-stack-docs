@@ -67,7 +67,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
-            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/">Get The Things Stack</a>
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
           </div>
       </div>
     </div>
@@ -234,6 +234,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/models/thethingsindoorgatewaypro/" class="">The Things Indoor Gateway Pro</a>
+    
+  </li>
+
+  <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/models/thethingskickstartergateway/" class="">The Things Kickstarter Gateway</a>
     
   </li>
@@ -328,21 +333,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     alt="{{% ttig %}}" width="50%">
 </figure>
 
-<p>This page will guide you to connecting The Things Indoor Gateway to The Things Stack.</p>
-<p>The Things Indoor Gateway is an 8 Channel LoRaWAN® gateway with many features:</p>
+<p>This page will guide you through connecting The Things Indoor Gateway to The Things Stack.</p>
+<p>The Things Indoor Gateway is an 8 channel LoRaWAN® gateway with the following features:</p>
 <ul>
-<li>Supports the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/">LoRa Basics™ Station</a> protocol &amp; LBT (Listen Before Talk)</li>
-<li>Can connect to any network backend of choice</li>
-<li>Setup and connectivity over WiFi</li>
+<li>Supports the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/">LoRa Basics™ Station</a> protocol</li>
+<li>Supports Listen Before Talk (LBT)</li>
+<li>Connects to The Things Stack Cloud and Sandbox</li>
+<li>Setup and connectivity via a local WiFi access point</li>
 <li>Can be powered with a USB-C cable or into an electrical socket with a plug on the back</li>
 <li>Built-in omnidirectional antenna for indoor use</li>
 <li>EU868, US915, AS923 and CN470 versions available</li>
-<li>Security via a range of modes</li>
+<li>Supports most WiFi security modes</li>
 </ul>
-<p>You can find the datasheet <a href="https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/TTIG_datasheet.pdf">here</a>.</p>
+<p>You can find the data sheet <a href="https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/TTIG_datasheet.pdf">here</a>.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>User account on The Things Stack with rights to create Gateways and API Keys.</li>
+<li>User account on The Things Stack with rights to create gateways and API keys.</li>
 <li>The gateway EUI.</li>
 </ol>
 <p>The Gateway EUI can be found on the back of your gateway, where it is the first code after the <code>(92)</code>, but you need to <u>add</u> <code>FFFE</code> <u>after the first 6 characters</u> to make it a 16 character Gateway EUI.</p>
@@ -417,19 +423,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <h2 id="connecting-the-things-indoor-gateway">Connecting The Things Indoor Gateway</h2>
-<h3 id="gateways-connected-to-another-lns">Gateways Connected to Another LNS</h3>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  This is applicable if your gateway was previously connected to The Things Network v2.
-</div>
-
-<p>If the The Things Indoor Gateway is currently connected to another LNS, do either of the following</p>
-<ul>
-<li>Wait up to 24 hrs (this is the default action for gateways that are not physically reachable). The Things Indoor Gateway connects to the server every 24 hours to check for new configuration.</li>
-<li>Perform a hard reset by holding down the reset button for at least 5 seconds. Then, follow the new gateway instructions below.</li>
-</ul>
 <h3 id="new-gateways">New Gateways</h3>
-<p>If your gateway has never been configured to any LNS, follow the steps below.</p>
+<p>If your gateway has never been configured to any LoRaWAN Network Server (LNS), follow the steps below.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Make sure you have claimed the device before connecting to it.
@@ -458,7 +453,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 <p>For all the LED states and button actions, check the <a href="https://www.thethingsindustries.com/docs/gateways/models/thethingsindoorgateway/#led-states">troubleshooting</a> section.</p>
 <p>If this is the first time your gateway is being powered on/connected to WiFi, it might pick up a new firmware depending on when it was last updated. This is indicated by alternating GREEN/RED blinks of the LED. Please leave the gateway powered on when this happens.</p>
-<h2 id="existing-gateways">Existing Gateways</h2>
+<h3 id="existing-gateways">Existing Gateways</h3>
 <p>You can also claim gateways that have been previously claimed or registered to The Things Stack.</p>
 <p>For this, you need to authorize your gateways for claiming. This is currently only supported via the CLI.</p>
 <div class="notification is-primary is-light has-text-dark">
@@ -476,7 +471,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Once complete, make sure to unauthorize the gateway to prevent further claiming.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli gateways claim unauthorize &lt;gateway-id&gt;
 </span></span></code></pre></div><h2 id="using-the-things-indoor-gateway-with-different-lns">Using The Things Indoor Gateway with Different LNS</h2>
-<p>Once The Things Indoor Gateway is claimed on a The Things Stack cluster, the following steps will allow it to be used with a different LNS Server.</p>
+<p>Once The Things Indoor Gateway is claimed on a The Things Stack cluster, the following steps will allow it to be used with a different LNS.</p>
 <h3 id="connecting-to-an-lns-on-a-local-network">Connecting to an LNS on a Local Network</h3>
 <p>If you want to connect your gateway to an LNS on a local network (for example if you have The Things Stack installed for debugging on your laptop), use the steps below.</p>
 <div class="notification is-info is-light has-text-dark">
@@ -510,8 +505,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="common-errors">Common Errors</h3>
-<h4 id="claim-authentication-code-mismatch">Claim Authentication Code Mismatch</h4>
-<p>Double-check the EUI and the WiFi Password. Sometimes an <code>8</code> looks like a <code>3</code> or a <code>B</code>, an <code>1</code> like an <code>l</code>, a <code>0</code> like an <code>O</code>, etc. Note that the <code>FFFE</code> string has an <code>e</code> at the end.</p>
+<h4 id="owner-token-mismatch">Owner Token Mismatch</h4>
+<p>Double-check the EUI and the WiFi Password. Sometimes an <code>8</code> looks like a <code>3</code> or a <code>B</code>, an <code>1</code> like an <code>l</code>, a <code>0</code> like an <code>O</code>, etc. Note that the <code>FFFE</code> string has an <code>E</code> at the end.</p>
 <h4 id="gateway-not-authorized-for-claiming">Gateway Not Authorized for Claiming</h4>
 <p>If you have already registered/claimed your The Things Indoor Gateway in The Things Stack cluster that you want to claim, check the section on <a href="#existing-gateways">claiming existing gateways</a>.</p>
 <h4 id="gateway-with-id-already-exists">Gateway with ID Already Exists</h4>
@@ -598,7 +593,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <p>The casing needs to be first opened by unscrewing two screws found below the top and the bottom panel. Then, connect a 3.3V UART-USB Interface such as an FTDI to your computer. Connect the Rx (FTDI) to the Tx of the Gateway and ground pins.</p>
-<p>Use a serial terminal (Ex: <code>PUTTY</code> on Windows and <code>screen</code>/<code>minicom</code> on macOS/Linux) with a baudrate of 115200@8N to read the serial out. The connections are shown in the image below.</p>
+<p>Use a serial terminal (Ex: <code>PUTTY</code> on Windows and <code>screen</code>/<code>minicom</code> on macOS/Linux) with a baudrate of 115200, 8 data bits, no parity and 1 stop bit to read the serial output. The connections are shown in the image below.</p>
 <figure><img src="/docs/gateways/models/thethingsindoorgateway/TTIG_Serial.jpg"
     alt="{{% ttig %}} Serial">
 </figure>
@@ -652,7 +647,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
           <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/gateways/models/tektelickonamicro/udp/">← Connect Tektelic Kona Micro with UDP Packet Forwarder</a>
-<a class="button is-pulled-right" href="/docs/gateways/models/thethingskickstartergateway/">The Things Kickstarter Gateway →</a>
+<a class="button is-pulled-right" href="/docs/gateways/models/thethingsindoorgatewaypro/">The Things Indoor Gateway Pro →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -680,9 +675,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
       
       <li><a href='#connecting-the-things-indoor-gateway'>Connecting The Things Indoor Gateway</a></li>
-    
-      
-      <li><a href='#existing-gateways'>Existing Gateways</a></li>
     
       
       <li><a href='#using-the-things-indoor-gateway-with-different-lns'>Using The Things Indoor Gateway with Different LNS</a></li>

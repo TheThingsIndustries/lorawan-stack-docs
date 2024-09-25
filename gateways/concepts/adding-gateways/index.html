@@ -67,7 +67,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
-            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/">Get The Things Stack</a>
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
           </div>
       </div>
     </div>
@@ -111,17 +111,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/gateway-claiming/" class="">Gateway Claiming</a>
-    
-  </li>
-
-  <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/" class="">LoRa Basics™ Station</a>
     
   </li>
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/" class="">Semtech UDP Packet Forwarder</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/concepts/ttigw/" class="">The Things Industries Gateway Protocol</a>
     
   </li>
 
@@ -159,13 +159,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         <div class="content">
           <p>This section contains instructions for adding Gateways in The Things Stack.</p>
-<p>Some gateways, like <a href="https://www.thethingsindustries.com/docs/gateways/models/thethingsindoorgateway/">The Things Indoor Gateway</a>, have special instructions for claiming. Look for your gateway in the left hand menu for specific instructions, as this guide does not apply to those gateways.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Do not follow this guide for a <a href="https://www.thethingsindustries.com/docs/gateways/models/thethingsindoorgateway/">The Things Indoor Gateway</a>.
-</div>
-
-<p>If your The Things Stack deployment is connected to <a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/">Packet Broker</a>, you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced <a href="https://ttnmapper.org">TTN Mapper</a> to find out if your location has nearby gateways.</p>
+<p>Some gateways, like <a href="https://www.thethingsindustries.com/docs/gateways/models/thethingsindoorgatewaypro/">The Things Indoor Gateway Pro</a> and <a href="https://www.thethingsindustries.com/docs/gateways/models/thethingsindoorgateway/">The Things Indoor Gateway</a>, have an onboarding guide. Look for your gateway in the left hand menu for specific instructions.</p>
+<p>If your The Things Stack deployment is connected to <a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/">Packet Broker</a>, you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced <a href="https://ttnmapper.org">TTN Mapper</a> to find out if you have nearby gateways.</p>
 <div class="tabs is-boxed">
   <ul>
     
@@ -193,12 +188,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <section data-content="console">
   <h4 id="adding-gateways-using-the-console">Adding Gateways using the Console</h4>
 <p>Go to <strong>Gateways</strong> in the top menu, and click <strong>+ Register Gateway</strong> to reach the gateway registration page.</p>
-<p>Fill the <strong>Gateway EUI</strong> and click <strong>Confirm</strong>. Some gateways do not use a <strong>Gateway EUI</strong> (e.g. The Things Kickstarter Gateway), in which case you can just click on <strong>Continue without EUI</strong>.</p>
+<p>Fill the <strong>Gateway EUI</strong> and click <strong>Confirm</strong>. Some gateways do not use a <strong>Gateway EUI</strong>, in which case you can just click on <strong>Continue without EUI</strong>.</p>
 <p>Depending on whether the <strong>Gateway EUI</strong> is claimable you will either be shown the claiming form or the manual registration form.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Claiming of gateways is not supported on The Things Stack Open Source. In that case, you will see the manual registration form by default.
-</div>
 <figure><img src="/docs/gateways/concepts/adding-gateways/gateway-add.png"
     alt="Gateway add">
 </figure>
@@ -206,7 +197,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <figure><img src="/docs/gateways/concepts/adding-gateways/gateway-creation.png"
     alt="Gateway creation">
 </figure>
-<p>If your gateway is claimable (e.g. The Things Indoor Gateway), you will see the claiming form. Here, fill in the <strong>Authentication Code</strong>, <strong>Gateway ID</strong> and the <strong>Frequency Plan</strong>. Click <strong>Claim Gateway</strong> to finish.</p>
+<p>If your gateway is claimable (e.g. The Things Indoor Gateway Pro and The Things Indoor Gateway), you will see the claiming form. Here, fill in the <strong>Owner Token</strong>, <strong>Gateway ID</strong> and the <strong>Frequency Plan</strong>. Click <strong>Claim Gateway</strong> to finish.</p>
 <figure><img src="/docs/gateways/concepts/adding-gateways/gateway-claim.png"
     alt="Gateway claiming">
 </figure>
@@ -284,7 +275,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 </div>
 
-<h2 id="create-gateway-api-key">Create Gateway API Key</h2>
+<h2 id="optional-create-gateway-api-key">Optional: Create Gateway API Key</h2>
 <p>Some gateways require an API Key with Link Gateway Rights to be able to connect to The Things Stack. In this section we explain how to create an API key with this right, but the procedure of creating an API key is identical for any other right as well.</p>
 <div class="tabs is-boxed">
   <ul>
@@ -683,7 +674,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
           <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/gateways/concepts/">← Concepts</a>
-<a class="button is-pulled-right" href="/docs/gateways/concepts/gateway-claiming/">Gateway Claiming →</a>
+<a class="button is-pulled-right" href="/docs/gateways/concepts/lora-basics-station/">LoRa Basics™ Station →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -704,7 +695,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul class="menu-list">
     
       
-      <li><a href='#create-gateway-api-key'>Create Gateway API Key</a></li>
+      <li><a href='#optional-create-gateway-api-key'>Optional: Create Gateway API Key</a></li>
     
       
       <li><a href='#set-gateway-location'>Set Gateway Location</a></li>
