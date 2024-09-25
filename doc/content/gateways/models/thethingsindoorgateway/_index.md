@@ -3,7 +3,7 @@ title: "The Things Indoor Gateway"
 vendor: "The Things Industries"
 vendor_page: "https://www.thethingsshop.com/products/the-things-indoor-gateway"
 description: "The Things Indoor Gateway is an 8 Channel LoRaWAN® gateway."
-ip_rating: 
+ip_rating:
 backhaul: [Wi-Fi]
 distributions: ["Sandbox", "Cloud"]
 new_in_version: 3.13.3
@@ -13,39 +13,44 @@ image: [TTIG.png]
 
 {{< figure src="TTIG.png" alt="{{% ttig %}}" class="plain float" width="50%">}}
 
-This page will guide you to connecting {{% ttig %}} to {{% tts %}}.
+This page will guide you through connecting {{% ttig %}} to {{% tts %}}.
 
 <!--more-->
 
-{{% ttig %}} is an 8 Channel LoRaWAN® gateway with many features:
-- Supports the [LoRa Basics™ Station](https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/) protocol & LBT (Listen Before Talk)
-- Can connect to any network backend of choice
-- Setup and connectivity over WiFi
+{{% ttig %}} is an 8 channel LoRaWAN® gateway with the following features:
+
+- Supports the [LoRa Basics™ Station](https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/) protocol
+- Supports Listen Before Talk (LBT)
+- Connects to {{% tts %}} Cloud and Sandbox
+- Setup and connectivity via a local WiFi access point
 - Can be powered with a USB-C cable or into an electrical socket with a plug on the back
 - Built-in omnidirectional antenna for indoor use
 - EU868, US915, AS923 and CN470 versions available
-- Security via a range of modes
+- Supports most WiFi security modes
 
-You can find the datasheet [here](https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/TTIG_datasheet.pdf).
+You can find the data sheet [here](https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/TTIG_datasheet.pdf).
 
 ## Prerequisites
 
-1. User account on {{% tts %}} with rights to create Gateways and API Keys.
-2. The gateway EUI. 
+1. User account on {{% tts %}} with rights to create gateways and API keys.
+2. The gateway EUI.
 
-The Gateway EUI can be found on the back of your gateway, where it is the first code after the `(92)`, but you need to <u>add</u> `FFFE` <u>after the first 6 characters</u> to make it a 16 character Gateway EUI.  
+The Gateway EUI can be found on the back of your gateway, where it is the first code after the `(92)`, but you need to <u>add</u> `FFFE` <u>after the first 6 characters</u> to make it a 16 character Gateway EUI.
 
 As an example, the EUI
+
 ```
 58A0CB123456
 ```
 
 Would turn into
+
 ```
 58A0CBFFFE123456
 ```
 
 With the conversion like this:
+
 ```
 58A0CB123456 => 58A0CB FFFE 123456 => 58A0CBFFFE123456
 ```
@@ -110,18 +115,9 @@ For example using `tenant1`, the `target-cups-uri` would be `https://tenant1.eu1
 
 ## Connecting {{% ttig %}}
 
-### Gateways Connected to Another LNS
-
-{{< note >}} This is applicable if your gateway was previously connected to The Things Network v2. {{</ note >}}
-
-If the {{% ttig %}} is currently connected to another LNS, do either of the following
-
-- Wait up to 24 hrs (this is the default action for gateways that are not physically reachable). {{% ttig %}} connects to the server every 24 hours to check for new configuration.
-- Perform a hard reset by holding down the reset button for at least 5 seconds. Then, follow the new gateway instructions below.
-
 ### New Gateways
 
-If your gateway has never been configured to any LNS, follow the steps below.
+If your gateway has never been configured to any LoRaWAN Network Server (LNS), follow the steps below.
 
 {{< note "Make sure you have claimed the device before connecting to it."/>}}
 
@@ -150,7 +146,7 @@ For all the LED states and button actions, check the [troubleshooting]({{< ref "
 
 If this is the first time your gateway is being powered on/connected to WiFi, it might pick up a new firmware depending on when it was last updated. This is indicated by alternating GREEN/RED blinks of the LED. Please leave the gateway powered on when this happens.
 
-## Existing Gateways
+### Existing Gateways
 
 You can also claim gateways that have been previously claimed or registered to {{% tts %}}.
 
@@ -172,7 +168,7 @@ ttn-lw-cli gateways claim unauthorize <gateway-id>
 
 ## Using The Things Indoor Gateway with Different LNS
 
-Once {{% ttig %}} is claimed on a {{% tts %}} cluster, the following steps will allow it to be used with a different LNS Server.
+Once {{% ttig %}} is claimed on a {{% tts %}} cluster, the following steps will allow it to be used with a different LNS.
 
 ### Connecting to an LNS on a Local Network
 
@@ -216,9 +212,9 @@ Either restart the {{% ttig %}} or wait upto 24 hours for it to reconnect to the
 
 ### Common Errors
 
-#### Claim Authentication Code Mismatch
+#### Owner Token Mismatch
 
-Double-check the EUI and the WiFi Password. Sometimes an `8` looks like a `3` or a `B`, an `1` like an `l`, a `0` like an `O`, etc. Note that the `FFFE` string has an `e` at the end.
+Double-check the EUI and the WiFi Password. Sometimes an `8` looks like a `3` or a `B`, an `1` like an `l`, a `0` like an `O`, etc. Note that the `FFFE` string has an `E` at the end.
 
 #### Gateway Not Authorized for Claiming
 
@@ -246,11 +242,11 @@ Reboot your {{% ttig %}}. If the gateway status is still `Disconnected` after a 
 
 There are three possible button actions on the TTIG that are listed below.
 
-| Button           | CONF (Configuration) Mode   | GW (Gateway) Mode    |
-| -----------------| ----------------------------| ---------------------|
-| SETUP for 10s    |                             | Switch to CONF mode  |
-| SETUP for 5s     | Reboot                      |                      |
-| RESET for 5s     | Factory reset               | Factory reset        |
+| Button        | CONF (Configuration) Mode | GW (Gateway) Mode   |
+| ------------- | ------------------------- | ------------------- |
+| SETUP for 10s |                           | Switch to CONF mode |
+| SETUP for 5s  | Reboot                    |                     |
+| RESET for 5s  | Factory reset             | Factory reset       |
 
 Keep in mind that factory reset wipes out WiFi and LNS credentials, but retains CUPS credentials.
 
@@ -262,7 +258,7 @@ It is possible to read debug messages of the gateway but it requires opening its
 
 The casing needs to be first opened by unscrewing two screws found below the top and the bottom panel. Then, connect a 3.3V UART-USB Interface such as an FTDI to your computer. Connect the Rx (FTDI) to the Tx of the Gateway and ground pins.
 
-Use a serial terminal (Ex: `PUTTY` on Windows and `screen`/`minicom` on macOS/Linux) with a baudrate of 115200@8N to read the serial out. The connections are shown in the image below.
+Use a serial terminal (Ex: `PUTTY` on Windows and `screen`/`minicom` on macOS/Linux) with a baudrate of 115200, 8 data bits, no parity and 1 stop bit to read the serial output. The connections are shown in the image below.
 
 {{< figure src="TTIG_Serial.jpg" alt="{{% ttig %}} Serial" >}}
 
