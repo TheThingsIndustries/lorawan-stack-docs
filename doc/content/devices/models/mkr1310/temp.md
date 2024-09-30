@@ -106,11 +106,9 @@ If the Arduino IDE Serial Monitor does not show DHT sensor data, make sure to do
 
 Now that the device is working go back to {{% tts %}} and set up the payload formatter. A payload formatter will turn the hexadecimal string received into readable text. To do this, in your application on {{% tts %}}, click on **Payload formatters**.
 
-{{< figure src="../stack-pf.png" alt="payload formatter highlighted" width="70%" >}}
+{{< figure src="../stack-pf.png" alt="payload formatter highlighted" >}}
 
-Select **Custom Javascript formatter** from the dropdown.  
-
-{{< figure src="../custom-js.png" alt="custom javascript selected in dropdown" width="70%"   >}}
+Select the **Custom Javascript formatter** from the **Formatter type** dropdown.  
 
 Now paste the following code in the **Formatter code** field:  
 ```js

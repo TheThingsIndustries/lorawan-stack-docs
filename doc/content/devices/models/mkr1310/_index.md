@@ -71,8 +71,6 @@ For the **Provisioning information**, enter the following details:
 - **DevEUI:** The Device EUI value that was previously copied from Arduino IDE Serial Monitor
 - **AppKey:** Generate by clicking the **Generate** button  
 
-{{< figure src="stack-prov.png" alt="provisioning information of MKR" >}}
-
 In the device overview you can now see three parameters in the **Activation information** section: **AppEUI**, **DevEUI** and **AppKey**. You are going to need these values for the next steps.  
 
 {{< figure src="device-overview.png" alt="Device overview page with activation information highlighted" >}}
@@ -89,11 +87,9 @@ Now go to {{% tts %}} Console **Live data** tab and you should see messages arri
 
 As the device payload comes to {{% tts %}} in a HEX format, you will need to decode it using a [payload formatter](https://www.thethingsindustries.com/docs/integrations/payload-formatters/). To do this, in your application on {{% tts %}}, navigate to **Payload formatters**.  
 
-{{< figure src="stack-pf.png" alt="Payload formatters highlighted" width="70%" >}}
+{{< figure src="stack-pf.png" alt="Payload formatters highlighted" >}}
 
 Select the **Custom Javascript formatter** from the **Formatter type** dropdown.  
-
-{{< figure src="custom-js.png" alt="Custom javascript selected in dropdown" width="70%"   >}}
 
 Enter the following code in the **Formatter code** field:  
 

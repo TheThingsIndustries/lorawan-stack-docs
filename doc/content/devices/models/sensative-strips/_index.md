@@ -27,9 +27,11 @@ The [LoRaWAN® Device repository](https://github.com/TheThingsNetwork/lorawan-de
 In the **End device type** section, under **Input method**, select either the **Select the end device in the LoRaWAN Device Repository** or **Enter end device specifics manually** option. The [Onboarding devices without QR codes]({{< ref "/devices/adding-devices/#onboarding-devices-without-qr-codes" >}}) section of the [Adding Devices]({{< ref "/devices/adding-devices/" >}}) guide explains this procedure in detail. Following details are Strips-specific:
 
 - End device brand: **Sensative AB**
-- Model: **Strips**
+- Model: **Strips - Multisensor**
 - Hardware Ver.: **1.0**
 - Firmware Ver.: **1.0**
+
+Then fill in the **Provisioning information**, which were found [in the first steps](#provisioning-information).
 
 After configuring your device, select the **Register end device** button.
 
@@ -39,6 +41,8 @@ If you prefer onboarding **manually**, in the **End device type** section, under
 
 - LoRaWAN version: **LoRaWAN Specification 1.0.3**
 - Regional parameters version: **RP001 Regional Parameters 1.0.3 revision A** 
+
+Then fill in the **Provisioning information**, which were found [in the first steps](#provisioning-information).
 
 After configuring your device, select the **Register end device** button.
 
@@ -55,9 +59,3 @@ If you have removed the magnets, and you need to manually join the device, take 
 {{< note >}} **One long green LED blink** signals the device has successfully joined to {{% tts %}}. 
 
 **5 red blinks** means the device failed to join to the network. {{</ note >}}
-
-## Monitoring Live Data
-
-When your device is registered, select the **Live Data** tab to view all messages exchanged between your end device and {{% tts %}}.
-
-{{< figure src="strips-live-data.png" alt="Live Data tab" >}}
