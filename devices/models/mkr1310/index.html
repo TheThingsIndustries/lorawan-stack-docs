@@ -129,7 +129,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/models/browan-tbms100/" class="">Browan TBMS100</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/models/browan-tbms100/" class="">Browan TBMS100 Motion Sensor</a>
     
   </li>
 
@@ -313,10 +313,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li><strong>DevEUI:</strong> The Device EUI value that was previously copied from Arduino IDE Serial Monitor</li>
 <li><strong>AppKey:</strong> Generate by clicking the <strong>Generate</strong> button</li>
 </ul>
-<figure><img src="/docs/devices/models/mkr1310/stack-prov.png"
-    alt="provisioning information of MKR">
-</figure>
-
 <p>In the device overview you can now see three parameters in the <strong>Activation information</strong> section: <strong>AppEUI</strong>, <strong>DevEUI</strong> and <strong>AppKey</strong>. You are going to need these values for the next steps.</p>
 <figure><img src="/docs/devices/models/mkr1310/device-overview.png"
     alt="Device overview page with activation information highlighted">
@@ -332,14 +328,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Now go to The Things Stack Console <strong>Live data</strong> tab and you should see messages arriving, which should mean the device is connecting.</p>
 <p>As the device payload comes to The Things Stack in a HEX format, you will need to decode it using a <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a>. To do this, in your application on The Things Stack, navigate to <strong>Payload formatters</strong>.</p>
 <figure><img src="/docs/devices/models/mkr1310/stack-pf.png"
-    alt="Payload formatters highlighted" width="70%">
+    alt="Payload formatters highlighted">
 </figure>
 
 <p>Select the <strong>Custom Javascript formatter</strong> from the <strong>Formatter type</strong> dropdown.</p>
-<figure><img src="/docs/devices/models/mkr1310/custom-js.png"
-    alt="Custom javascript selected in dropdown" width="70%">
-</figure>
-
 <p>Enter the following code in the <strong>Formatter code</strong> field:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">Decoder</span><span class="p">(</span><span class="nx">bytes</span><span class="p">,</span> <span class="nx">port</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"> <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
