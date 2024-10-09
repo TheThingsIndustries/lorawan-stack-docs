@@ -327,6 +327,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Create the <code>edcs</code>, <code>interop</code>, <code>end_device_pictures</code> and <code>profile_pictures</code> folders at the root of the blob folder.</li>
 <li>Create an empty <code>config.yml</code> in the <code>edcs</code> and <code>interop</code> folders.</li>
 </ol>
+<h5 id="disabling-blob-storage">Disabling Blob Storage</h5>
+<p>The Things Stack Helm Charts by default expects a blob storage configured but it is possible to use The Things Stack without it. You can disable the usage of blob by setting <code>global.interop.configSource</code> and <code>global.blob.provider</code> values to an empty string <code>&quot;&quot;</code>.</p>
 <h4 id="5-traefik-proxy">5. Traefik Proxy</h4>
 <p>The Things Stack Helm Charts currently only supports the <a href="https://traefik.io/traefik/">Traefik</a> proxy out of the box to load balance incoming traffic.</p>
 <p>To use a custom proxy/load balancer, set <code>global.ingress.traefik.enabled</code> to <code>false</code>.</p>
@@ -432,8 +434,8 @@ Check the <code>ingress-routes.yaml</code> files for each component and adapt it
 </ul>
 <p>The Things Stack expects the name of this secret to be set in the value <code>global.ingress.tls.secretName</code>.</p>
 <p>The process of provisioning and maintenance of the certificate secret is left to the operator.</p>
-<h4 id="7-optional-timescaledb">7. (optional) TimescaleDB</h4>
-<p>Both The Things Stack <a href="https://www.thethingsindustries.com/docs/integrations/storage/">Storage Integration</a> and {% tts %}} <a href="https://www.thethingsindustries.com/docs/reference/components/network-operations-center/#accessing-network-operations-center">Network Operations Center</a> require a TimescaleDB instance.</p>
+<h4 id="7-optional-timescaledb">7. (Optional) TimescaleDB</h4>
+<p>Both The Things Stack <a href="https://www.thethingsindustries.com/docs/integrations/storage/">Storage Integration</a> and The Things Stack <a href="https://www.thethingsindustries.com/docs/reference/components/network-operations-center/#accessing-network-operations-center">Network Operations Center</a> require a TimescaleDB instance.</p>
 <p>There can either be two separate TimeScaleDB instances or a single instance but different Databases.</p>
 <p>For testing purposes, <a href="https://docs.timescale.com/install/latest/installation-kubernetes/">TimeScaleDB Helm Charts</a> can be installed in the Kubernetes Cluster.</p>
 <h4 id="8-optional-metrics-server">8. (Optional) Metrics Server</h4>
