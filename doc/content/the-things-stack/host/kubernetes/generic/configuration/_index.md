@@ -25,7 +25,7 @@ global:
       adminUserID: # User ID for the Administrator of the tenant. Do not use `admin`.
       adminEmail: # Email of the Administrator of the tenant.
   blob:
-    provider: "aws", "azure", "gcp" or "local"
+    provider: # "aws", "azure", "gcp", "local" or empty string to disable blob usage
     aws: # Set only if provider is "aws".
       region: # region
       accessKeyID: # AWS access key ID
@@ -65,6 +65,9 @@ global:
   tenancy:
     adminKey: # See preparation section.
   interop:
+    # Description: Interoperability configuration source.
+    # Expected value: "blob", "directory", "url" or empty string to disable blob usage
+    configSource: "blob"
     blob:
       # Description: Bucket for interoperability configuration.
       # Expected value: string

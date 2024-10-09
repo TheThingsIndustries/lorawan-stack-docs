@@ -105,6 +105,10 @@ $ sudo chown -R 886:886 <blob>
 2. Create the `edcs`, `interop`, `end_device_pictures` and `profile_pictures` folders at the root of the blob folder.
 3. Create an empty `config.yml` in the `edcs` and `interop` folders.
 
+##### Disabling Blob Storage
+
+{{% tts %}} Helm Charts by default expecting a blob storage but it is possible to use {{% tts %}} without it. In this case needs to disable the blob storage by setting `global.interop.configSource` and `global.blob.provider` values to an empty string `""`.
+
 #### 5. Traefik Proxy
 
 The Things Stack Helm Charts currently only supports the [Traefik](https://traefik.io/traefik/) proxy out of the box to load balance incoming traffic.
@@ -229,9 +233,9 @@ The Things Stack expects the name of this secret to be set in the value `global.
 
 The process of provisioning and maintenance of the certificate secret is left to the operator.
 
-#### 7. (optional) TimescaleDB
+#### 7. (Optional) TimescaleDB
 
-Both {{% tts %}} [Storage Integration](https://www.thethingsindustries.com/docs/integrations/storage/) and {% tts %}} [Network Operations Center](https://www.thethingsindustries.com/docs/reference/components/network-operations-center/#accessing-network-operations-center) require a TimescaleDB instance.
+Both {{% tts %}} [Storage Integration](https://www.thethingsindustries.com/docs/integrations/storage/) and {{% tts %}} [Network Operations Center](https://www.thethingsindustries.com/docs/reference/components/network-operations-center/#accessing-network-operations-center) require a TimescaleDB instance.
 
 There can either be two separate TimeScaleDB instances or a single instance but different Databases.
 
