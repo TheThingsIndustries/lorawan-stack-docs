@@ -107,7 +107,7 @@ $ sudo chown -R 886:886 <blob>
 
 ##### Disabling Blob Storage
 
-{{% tts %}} Helm Charts by default expecting a blob storage but it is possible to use {{% tts %}} without it. In this case needs to disable the blob storage by setting `global.interop.configSource` and `global.blob.provider` values to an empty string `""`.
+{{% tts %}} Helm Charts by default expects a blob storage configured but it is possible to use {{% tts %}} without it. You can disable the usage of blob by setting `global.interop.configSource` and `global.blob.provider` values to an empty string `""`.
 
 #### 5. Traefik Proxy
 
