@@ -271,6 +271,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>A LoRaWAN® compliant Gateway</li>
 <li>A LoRaWAN compliant End Device</li>
 <li>Access to a name server for DNS mapping</li>
+<li>(Optional) An AWS Secret containing TLS certificate data, if a custom TLS certificate is needed</li>
 </ol>
 <h2 id="deployment-using-aws-cloud-formation">Deployment using AWS Cloud Formation</h2>
 <h3 id="step-1-prepare-the-deployment">Step 1: Prepare the Deployment</h3>
@@ -376,18 +377,23 @@ This template allows the user to customize the deployment. The following is a li
           <td style="text-align: left">-</td>
       </tr>
       <tr>
-          <td style="text-align: left">TLS Certificate</td>
+          <td style="text-align: left">TLS Certificate*</td>
           <td style="text-align: left">TLS certificate to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
           <td style="text-align: left">-</td>
       </tr>
       <tr>
-          <td style="text-align: left">TLS Certificate Key</td>
+          <td style="text-align: left">TLS Certificate Key*</td>
           <td style="text-align: left">TLS certificate key to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
           <td style="text-align: left">-</td>
       </tr>
       <tr>
-          <td style="text-align: left">TLS Certificate CA</td>
+          <td style="text-align: left">TLS Certificate CA*</td>
           <td style="text-align: left">TLS certificate CA to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ARN of an AWS Secret containing the TLS certificate data*</td>
+          <td style="text-align: left">TLS certificate data specified as an AWS secret. If this secret is specified, TLSCertificate, TLSCertificateCA and TLSCertificateKey values will be ignored. The AWS secret must have 3 key/value pairs with the key names: cert, key, ca.</td>
           <td style="text-align: left">-</td>
       </tr>
   </tbody>
