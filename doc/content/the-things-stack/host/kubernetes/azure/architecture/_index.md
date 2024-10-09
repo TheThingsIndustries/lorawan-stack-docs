@@ -24,10 +24,10 @@ We use [Azure Database for PostgreSQL](https://learn.microsoft.com/en-us/azure/p
 
 Azure offers a managed [Azure Cache for Redis Database](https://azure.microsoft.com/en-us/products/cache) service, but due to it's version not being compatible with {{% tts %}} the Redis we use is in-cluster. The newest Redis version supported by Azure Cache is 6.0, while the minimum required version of Redis for {{% tts %}} is 6.2.
 
-User uploads of profile pictures and end device pictures are stored in public Azure Storage Containers.
+User uploads of profile pictures and end device pictures are stored in public Azure Storage Containers (Optional).
 
 ## Configuration
 
 The Azure Kubernetes deployment of {{% tts %}} uses a combination of configuration stored as Terraform and Helm configuration files.
 
-The configuration for interoperability with other LoRaWAN Backend Interfaces-compliant servers is stored as multiple files in a private Azure Storage Account.
+The configuration for interoperability with other LoRaWAN Backend Interfaces-compliant servers is stored as multiple files in a private Azure Storage Account (Optional).
