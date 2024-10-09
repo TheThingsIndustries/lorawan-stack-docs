@@ -39,6 +39,7 @@ The following are necessary to complete this guide:
 4. A LoRaWAN® compliant Gateway
 5. A LoRaWAN compliant End Device
 6. Access to a name server for DNS mapping
+7. (Optional) An AWS Secret containing TLS certificate data, if a custom TLS certificate is needed
 
 ## Deployment using AWS Cloud Formation
 
