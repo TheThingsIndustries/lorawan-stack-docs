@@ -184,65 +184,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </h1>
         
         <div class="content">
-          <p>The Things Stack uses the <a href="https://oauth.net/">OAuth 2.0 protocol</a> for authentication and authorization.</p>
-<p>To use this authentication method, you first need to register an <strong>OAuth client</strong>. A few parameters listed below are usually used to describe an OAuth client.</p>
-<ul>
-<li>The <strong>client ID</strong> uniquely identifies the OAuth client. Its <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/#requirements-of-an-id-or-eui">restrictions</a> are the same as for any other ID in The Things Stack.</li>
-<li>The <strong>description</strong> is shown to the user when you request authorization.</li>
-<li>The <strong>scope</strong> indicates what actions your OAuth client is allowed to perform. This is shown to the user when you request authorization. You can select the actions your OAuth client needs on registration. A full list of rights can also be found in the <a href="https://www.thethingsindustries.com/docs/api/reference/http/messages/#right">message reference</a>.</li>
-<li>The <strong>redirect URI</strong> is where the user is redirected after authorizing your OAuth client. At least one <strong>redirect URI</strong> must be configured while registering the OAuth client.</li>
-<li>The <strong>client secret</strong> is issued when your OAuth client registration is accepted by a network admin.</li>
-</ul>
-<p>To register OAuth client you can use The Things Stack <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/console/">Console</a> or <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/cli/">CLI</a>.</p>
-<div class="tabs is-boxed">
-  <ul>
-    
-    <li data-tab="console">
-      <a>
-        <span>Console</span>
-      </a>
-    </li>
-    
-    <li data-tab="cli">
-      <a>
-        <span>CLI</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-<div class="tab-content content">
-  <section data-content="console">
-  <p>To register an OAuth client using the Console, click the <strong>User settings</strong> dropdown in the left-hand sidebar and select <strong>OAuth clients</strong>. Then click <strong>+ Add OAuth client</strong> in the top-right.</p>
-<figure><img src="/docs/api/concepts/auth/oauth-access-tokens/oauth-client.png"
-    alt="OAuth client">
-</figure>
-<p>Enter the <strong>OAuth Client ID</strong>, <strong>Name</strong> and <strong>Description</strong> for your OAuth client. You can also add the <strong>Redirect URLs</strong> against which authorization requests will be checked, and <strong>Logout redirect URLs</strong> agains which client initiated requests are checked.</p>
-<figure><img src="/docs/api/concepts/auth/oauth-access-tokens/create-oauth-client.png"
-    alt="Create an OAuth client">
-</figure>
-<p>Some <strong>Advanced admin options</strong> are also available to set the state of the OAuth client, skip the authorization page or indicate endorsement.</p>
-<p>You can choose multiple <strong>Grant types</strong>, i.e. multiple OAuth flows that can be used for the client to obtain an OAuth token: <strong>Authorization code</strong>, <strong>Refresh token</strong> and <strong>Password</strong>.</p>
-<p>You also need to grant rights for your OAuth client. Keep in mind that, to provide the functionality of the application, a minimum set of rights has to be requested.</p>
-<figure><img src="/docs/api/concepts/auth/oauth-access-tokens/grant-rights-for-oauth-client.png"
-    alt="Grant rights for an OAuth client">
-</figure>
-</section>
-<section data-content="cli">
-  <p>To register an OAuth client using the CLI, use the following command:</p>
-<pre tabindex="0"><code>ttn-lw-cli clients create \
-  --client-id &lt;CLIENT-ID&gt; \
-  --name &lt;CLIENT-NAME&gt; \
-  --description &#34;My new OAuth client&#34; \
-  --redirect-uris &lt;REDIRECT-URI&gt; \
-  --grants GRANT_AUTHORIZATION_CODE \
-  --rights RIGHT_GATEWAY_ALL,RIGHT_ORGANIZATION_GATEWAYS_CREATE,RIGHT_ORGANIZATION_GATEWAYS_LIST,RIGHT_ORGANIZATION_INFO,RIGHT_USER_GATEWAYS_CREATE,RIGHT_USER_GATEWAYS_LIST,RIGHT_USER_INFO,RIGHT_USER_ORGANIZATIONS_LIST
-</code></pre>
-</section>
-
-</div>
-
-<p>After your OAuth client registration is accepted, you can <strong>request authorization</strong> by sending the user to the <strong>authorization URL</strong>:</p>
+          <p>To use this authentication method, you first need to <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/adding-oauth-clients/">register an <strong>OAuth client</strong></a> . After the registration is complete and accepted, you can <strong>request authorization</strong> by sending the user to the <strong>authorization URL</strong>:</p>
 <pre tabindex="0"><code>https://&lt;HOSTNAME&gt;/oauth/authorize?client_id=&lt;CLIENT-ID&gt;&amp;redirect_uri=&lt;REDIRECT-URI&gt;&amp;state=&lt;STATE&gt;&amp;response_type=code
 </code></pre><ul>
 <li>The <code>HOSTNAME</code> is the hostname of the Identity Server.</li>
