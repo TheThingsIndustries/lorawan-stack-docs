@@ -14,7 +14,9 @@ ttn-lw-cli gateways list-frequency-plans [flags]
 ### Options
 
 ```
+      --band-id string          Band ID to filter by
       --base-frequency uint32   Base frequency in MHz for hardware support (433, 470, 868 or 915)
+      --gateways-only           List only frequency plans that support gateways
   -h, --help                    help for list-frequency-plans
 ```
 
