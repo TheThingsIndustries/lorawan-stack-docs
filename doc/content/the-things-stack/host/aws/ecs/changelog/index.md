@@ -5,9 +5,9 @@ aliases: [/getting-started/aws/ecs/changelog]
 
 # Upgrading
 
-All meaningful changes to templates are documented in this file.
+## 3.32.1
 
-## Unreleased
+- Updated ECS AMIs to the latest versions.
 
 ## 3.32.0
 
