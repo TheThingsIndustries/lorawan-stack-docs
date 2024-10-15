@@ -2,19 +2,12 @@
 title: "Template Changelog"
 aliases: [/getting-started/aws/ecs/changelog]
 ---
+
 # Upgrading
 
-All meaningful changes to templates are documented in this file.
-
-## Unreleased
-
-### AMI/BYOL template
-
-- Add a new `TLSCertificateSecretARN` parameter to allow loading TLS certificates from AWS secrets to BYOL and PAYG single template deployments.
-- Add new IAM policy role that allows reading secrets from AWS Secret Manager
-- Update default postgres version to 16.4
-
 ## 3.32.1
+
+- Updated ECS AMIs to the latest versions.
 
 ## 3.32.0
 
