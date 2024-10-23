@@ -41,7 +41,7 @@ Please [contact our sales team](mailto:sales@thethingsindustries.com) for access
 2. PostgreSQL compatible database.
 3. Redis compatible database.
 4. Blob Storage
-5. Traefik Proxy to handle the ingress routes.
+5. An ingress controller to handle the ingress routes.
 6. TLS Certificates.
 7. (Optional) TimescaleDB
 8. (Optional) Metrics Server
@@ -111,96 +111,67 @@ $ sudo chown -R 886:886 <blob>
 
 ##### Disabling Blob Storage
 
-{{% tts %}} Helm Charts by default expects a blob storage configured but it is possible to use {{% tts %}} without it. You can disable the usage of blob by setting `global.interop.configSource` and `global.blob.provider` values to an empty string `""`.
+{{% tts %}} Helm Chart by default expects a blob storage configured but it is possible to use {{% tts %}} without it. You can disable the usage of blob by setting `global.interop.configSource` and `global.blob.provider` values to an empty string `""`.
 
-#### 5. Traefik Proxy
+#### 5. An ingress controller
 
-The Things Stack Helm Charts currently only supports the [Traefik](https://traefik.io/traefik/) proxy out of the box to load balance incoming traffic.
-
-To use a custom proxy/load balancer, set `global.ingress.traefik.enabled` to `false`.
-
-When Traefik is disabled, the ports and routes necessary for The Things Stack should be mapped manually by the operator.
-Check the `ingress-routes.yaml` files for each component and adapt it to your proxy. Setting up and maintaining a custom proxy is out of the scope of this document.
-
-If Traefik is not used, skip ahead to [setup TLS certificates]({{< ref "enterprise/kubernetes/generic/prerequisites#6-tls-certificates" >}}).
-
-The simplest way to install Traefik in the kubernetes cluster is use the [official Helm charts](https://artifacthub.io/packages/helm/traefik/traefik).
-
-The Things Stack ingress routes need to be mapped to the Traefik entry points. This can be done during installation.
-
-Save the following as a YAML file (example `traefik.values.yaml`) and use that as the values file for Helm.
-
+An ingress controller is needed to route the incoming traffic. Specify the ingress controller by setting the `global.ingress.controller` to the class name of the ingress controller deployed in the cluster. For TLS, make sure to set the `global.ingress.controller.tls.secretName`. The secret has to be accessible from the namespace where the {{% tts %}} Helm Chart is deployed. These ports are needed by {{% tts %}} and must be exposed:
+ 
 ```yaml
-deployment:
-  replicas: 2
 ports:
-  web: # NOTE: This name is predefined in traefik.
+  web:
     protocol: TCP
     port: 1885
-    expose: true
     exposedPort: 80
-    redirectTo: websecure
-  websecure: # NOTE: This name is predefined in traefik.
+  websecure:
     protocol: TCP
     port: 8885
-    expose: true
     exposedPort: 443
   grpc:
     protocol: TCP
     port: 1884
-    expose: true
     exposedPort: 1884
   grpcsecure:
     protocol: TCP
     port: 8884
-    expose: true
     exposedPort: 8884
   # Gateway Connectivity
   gtwmqttv2:
     protocol: TCP
     port: 1881
-    expose: true
     exposedPort: 1881
   gtwmqttv2secure:
     protocol: TCP
     port: 8881
-    expose: true
     exposedPort: 8881
   gtwmqttv3:
     protocol: TCP
     port: 1882
-    expose: true
     exposedPort: 1882
   gtwmqttv3secure:
     protocol: TCP
     port: 8882
-    expose: true
     exposedPort: 8882
   lbs:
     protocol: TCP
     port: 1887
-    expose: true
     exposedPort: 1887
   lbssecure:
     protocol: TCP
     port: 8887
-    expose: true
     exposedPort: 8887
   # Application MQTT
   appmqtt:
     protocol: TCP
     port: 1883
-    expose: true
     exposedPort: 1883
   appmqttsecure:
     protocol: TCP
     port: 8883
-    expose: true
     exposedPort: 8883
   udp:
     protocol: UDP
     port: 1700
-    expose: true
     exposedPort: 1700
   # Interoperability. This part is optional. Only enable it if interoperability is needed.
   interop:
@@ -210,14 +181,6 @@ ports:
     expose: true
     exposedPort: 8886
 ```
-
-##### Custom Resource Definitions (CRDs)
-
-Traefik requires the installation of multiple CRDs (Custom Resource Definitions) to run.
-
-This can be done using `kubectl`. Choose the appropriate CRD file for the version of Traefik that you are using.
-
-If you are using the official [Traefik Helm Chart](https://github.com/traefik/traefik-helm-chart), the CRDs are installed automatically for you.
 
 #### 6. TLS Certificates
 

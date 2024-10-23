@@ -63,9 +63,9 @@ global:
     oauth:
       clientSecret: # See preparation section.
   ingress:
-    traefik:
-      tls:
-        secretName: # Secret Name containing the TLS Certificates for the Domain.
+    controller: # Ingress controller class name.
+    tls:
+      secretName: # Secret Name containing the TLS Certificates for the Domain.
   tenancy:
     adminKey: # See preparation section.
   interop:
