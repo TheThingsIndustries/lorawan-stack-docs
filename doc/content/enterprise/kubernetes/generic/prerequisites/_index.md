@@ -182,6 +182,8 @@ ports:
     exposedPort: 8886
 ```
 
+Examples of ingress controllers configurations can be found [here](https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/prerequisites/sample-ingress-controllers/).
+
 #### 6. TLS Certificates
 
 The Things Stack expects a [Kubernetes TLS Secret](https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets) which contains the server leaf certificates.
