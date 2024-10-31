@@ -1,7 +1,7 @@
 ---
 title: "Daizy"
 description: ""
-distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "Sandbox"]
+distributions: ["Cloud", "Enterprise", "Sandbox"]
 ---
 
 Use [Daizy](https://daizy.io) to rapidly build, deploy and scale Internet of Things applications and stay in control of your data.

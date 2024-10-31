@@ -4,7 +4,6 @@ description: ""
 weight: 2
 distributions:
   - Cloud
-  - Dedicated Cloud
   - Enterprise
   - Open Source
 new_in_version: 3.15.1

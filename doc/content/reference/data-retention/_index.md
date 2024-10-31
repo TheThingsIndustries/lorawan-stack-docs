@@ -12,7 +12,7 @@ This reference contains information about what access administrators and users h
 
 To understand how data is secured in {{% tts %}} it is necessary to understand some important roles:
 
-**Infrastructure Owners**: Those with access to the hardware {{% tts %}} runs on. For {{% tts %}} Cloud, Dedicated Cloud and {{% ttss %}}, this is The Things Industries. {{% tts %}} Enterprise and Open Source deployments are managed by the customer and user respectively; The Things Industries does not have any infrastructural access. Technically, **Infrastructure Owners** have access to all data stored in databases or persistent volumes. In practice, The Things Industries uses this direct data access to {{% tts %}} Cloud or {{% ttss %}} deployments only for backups.
+**Infrastructure Owners**: Those with access to the hardware {{% tts %}} runs on. For {{% tts %}} Cloud and {{% ttss %}}, this is The Things Industries. {{% tts %}} Enterprise and Open Source deployments are managed by the customer and user respectively; The Things Industries does not have any infrastructural access. Technically, **Infrastructure Owners** have access to all data stored in databases or persistent volumes. In practice, The Things Industries uses this direct data access to {{% tts %}} Cloud or {{% ttss %}} deployments only for backups.
 
 **Network Administrators**: Users with administrative access in a tenant. **Network Administrators** have access to all entities in a tenant, including device secrets. In multi-tenant environments, tenants are completely isolated, and **Network Administrators** of one tenant have **no access** to other tenants.
 
@@ -20,15 +20,15 @@ To understand how data is secured in {{% tts %}} it is necessary to understand s
 
 **Support Engineers**: The Things Industries support engineers do **not** have infrastructural access to any {{% tts %}} deployments. They must be [granted access]({{< ref "/the-things-stack/management/user-management" >}}) by the customer.
 
-## {{% tts %}} Cloud and Dedicated Cloud
+## {{% tts %}} Cloud
 
-The following information applies to {{% tts %}} deployments hosted by The Things Industries, specifically {{% tts %}} Cloud and Dedicated Cloud.
+The following information applies to {{% tts %}} deployments hosted by The Things Industries, specifically {{% tts %}} Cloud.
 
 {{% tts %}} deployments hosted on customer hardware, specifically {{% tts %}} Enterprise, are completely managed by the customer and can be configured to meet more specific data privacy requirements.
 
 ### Persisted Data
 
-On {{% tts %}} Cloud and Dedicated Cloud, the Network Server stores
+On {{% tts %}} Cloud the Network Server stores
 
 - Recent uplinks as part of the MAC state, in a Redis database
 

@@ -4,7 +4,6 @@ description: ""
 weight: 1
 distributions:
   - Cloud
-  - Dedicated Cloud
   - Enterprise
   - Open Source
 aliases: [/getting-started/packet-broker/configure/routing-policies]

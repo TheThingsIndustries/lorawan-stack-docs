@@ -1,7 +1,7 @@
 ---
 title: "Azure IoT Central"
 description: ""
-distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "Sandbox"]
+distributions: ["Cloud", "Enterprise", "Sandbox"]
 aliases: ["/azure-iot-central"]
 ---
 

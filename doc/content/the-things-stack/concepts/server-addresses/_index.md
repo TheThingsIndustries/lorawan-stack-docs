@@ -24,7 +24,7 @@ You can update the examples below with your tenant ID and cluster ID by filling 
 
 ## Deployments
 
-**Cloud and Dedicated Cloud**: See [Cloud Addresses]({{< ref "/the-things-stack/cloud/addresses" >}}).
+**Cloud**: See [Cloud Addresses]({{< ref "/the-things-stack/cloud/addresses" >}}).
 
 **AWS Launcher**: This is the domain you specify in your [CloudFormation configuration]({{< ref "the-things-stack/host/aws/ami/deployment-guide#step-2-configure-the-deployment" >}}).
 

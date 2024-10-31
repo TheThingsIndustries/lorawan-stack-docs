@@ -368,7 +368,7 @@ Tenants can have custom configuration, such as custom branding or custom user re
 
 ## Resource Limiting
 
-{{< distributions "Dedicated Cloud" "Enterprise" "AWS Launcher" >}}  {{% tts %}} supports configuring maximum limits for active resources (e.g. number of active application data-plane MQTT connections). Resource limiting configuration can only be set from the configuration file. See [Resource Limiting]({{< ref "/reference/resource-limiting" >}}) for more details.
+{{< distributions "Enterprise" "AWS Launcher" >}}  {{% tts %}} supports configuring maximum limits for active resources (e.g. number of active application data-plane MQTT connections). Resource limiting configuration can only be set from the configuration file. See [Resource Limiting]({{< ref "/reference/resource-limiting" >}}) for more details.
 
 ## Version Check
 
