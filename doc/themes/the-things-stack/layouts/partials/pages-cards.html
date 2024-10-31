@@ -4,24 +4,24 @@
     <div class="card has-radius is-fullwidth">
       <div class="card-content">
         <div class="title-content">
+          {{ if or .Params.distributions (or .Params.new_in_version .Params.deprecated_in_version .Params.removed_in_version) }}
+            <div class="content-tags">
+              {{ with .Params.distributions }}
+                {{ partial "distributions" (dict "distributions" .) }}
+              {{ end }}
+              {{ with .Params.new_in_version }}
+                {{ partial "new-in-version" . }}
+              {{ end }}
+              {{ with .Params.deprecated_in_version }}
+                {{ partial "deprecated-in-version" .}}
+              {{ end }}
+              {{ with .Params.removed_in_version }}
+                {{ partial "removed-in-version" .}}
+              {{ end }}
+            </div>
+          {{ end }}
           <h1 class="title is-size-5 is-uppercase"><a href="{{ .Permalink }}">{{ .Title }}</a>
           </h1>
-          {{ if or .Params.distributions (or .Params.new_in_version .Params.deprecated_in_version .Params.removed_in_version) }}
-          <h2 class="subtitle">
-            {{ with .Params.distributions }}
-              {{ partial "distributions" (dict "distributions" .) }}
-            {{ end }}
-            {{ with .Params.new_in_version }}
-              {{ partial "new-in-version" . }}
-            {{ end }}
-            {{ with .Params.deprecated_in_version }}
-              {{ partial "deprecated-in-version" .}}
-            {{ end }}
-            {{ with .Params.removed_in_version }}
-              {{ partial "removed-in-version" .}}
-            {{ end }}
-          </h2>
-          {{ end }}
           <div class="content has-text-grey">
             {{ if (eq .Section "whats-new") }}
             See what's new in {{ .Title }}

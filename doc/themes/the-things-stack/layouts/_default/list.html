@@ -11,26 +11,25 @@
       {{ end }}
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">{{ .Title }}
-          {{ $context := . }}
-        </h1>
+        {{ $context := . }}
         {{ if or .Params.distributions (or .Params.new_in_version .Params.deprecated_in_version .Params.removed_in_version) }}
-        <h2 class="subtitle">
-          {{ with .Params.distributions }}
-            {{ $distributions := .}}
-            {{ partial "distributions" (dict "context" $context "distributions" $distributions) }}
-          {{ end }}
-          {{ with .Params.new_in_version }}
-            {{ partial "new-in-version" . }}
-          {{ end }}
-          {{ with .Params.deprecated_in_version }}
-            {{ partial "deprecated-in-version" .}}
-          {{ end }}
-          {{ with .Params.removed_in_version }}
-            {{ partial "removed-in-version" .}}
-          {{ end }}
-        </h2>
+          <div class="content-tags">
+            {{ with .Params.distributions }}
+              {{ $distributions := .}}
+              {{ partial "distributions" (dict "context" $context "distributions" $distributions) }}
+            {{ end }}
+            {{ with .Params.new_in_version }}
+              {{ partial "new-in-version" . }}
+            {{ end }}
+            {{ with .Params.deprecated_in_version }}
+              {{ partial "deprecated-in-version" .}}
+            {{ end }}
+            {{ with .Params.removed_in_version }}
+              {{ partial "removed-in-version" .}}
+            {{ end }}
+          </div>
         {{ end }}
+        <h1 class="title is-size-2">{{ .Title }}</h1>
         <div class="content">
           {{ .Content }}
         </div>
