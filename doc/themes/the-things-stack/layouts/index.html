@@ -2,6 +2,37 @@
 
 <div>
 
+  <section class="section-search">
+    <input type="text" placeholder="Search the doc or type your question" id="search-bar">
+  </section>
+
+  <div id="modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close-button" id="close-button">&times;</span>
+      <p>Here is the answer</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('search-bar').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        if (this.value.trim().toLowerCase() === 'here is my question') {
+          document.getElementById('modal').style.display = 'block';
+        }
+      }
+    });
+
+    document.getElementById('close-button').addEventListener('click', function() {
+      document.getElementById('modal').style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+      if (event.target == document.getElementById('modal')) {
+        document.getElementById('modal').style.display = 'none';
+      }
+    });
+  </script>
+
   <section class="section-doc-home-page-hero ttui-container grid pt-ls-xl pb-ls-xl">
 
     <div class="item-5 md:item-12 grid sm:mb-ls-l">
