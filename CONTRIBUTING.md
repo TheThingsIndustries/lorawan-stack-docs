@@ -80,7 +80,6 @@ If you add a section and it needs a troubleshooting page, title the troubleshoot
 The Things Stack docs cover all flavors of The Things Stack:
 
 - The Things Stack Cloud
-- The Things Stack Dedicated Cloud
 - The Things Stack AWS Launcher
 - The Things Stack Enterprise
 - The Things Stack Open Source

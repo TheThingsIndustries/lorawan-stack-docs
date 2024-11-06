@@ -99,7 +99,7 @@ Application Server can use Javascript payload formatters to decode uplink and en
 
 ## Storage Integration Options
 
-{{< distributions "Enterprise" "AWS Launcher" "Dedicated Cloud" >}} The Storage Integration requires a database for storing upstream messages.
+{{< distributions "Enterprise" "AWS Launcher" >}} The Storage Integration requires a database for storing upstream messages.
 
 - `as.packages.storage.provider`: Database backend to use. Currently, only `postgres` is supported.
 

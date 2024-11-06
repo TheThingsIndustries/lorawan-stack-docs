@@ -35,7 +35,7 @@ To sign up for any of the above mentioned plans, just click on the button on the
 
 If you are not looking for a cloud but for an enterprise solution, make sure to check out [self-hosted {{% tts %}} options](https://www.thethingsindustries.com/deployment/).
 
-{{< note >}} Some deployments (e.g. **{{% tts %}} Dedicated Cloud**) and some support plans (e.g. **Consulting**) are not available for purchase through the platform. Instead, you need to [contact The Things Industries](mailto:info@thethingsindustries.com) to proceed. {{</ note >}}
+{{< note >}} Some deployments and some support plans (e.g. **Consulting**) are not available for purchase through the platform. Instead, you need to [contact The Things Industries](mailto:info@thethingsindustries.com) to proceed. {{</ note >}}
 
 ## Creating Your Network
 
