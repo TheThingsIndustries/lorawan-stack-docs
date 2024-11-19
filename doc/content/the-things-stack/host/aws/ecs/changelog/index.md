@@ -2,12 +2,21 @@
 title: "Template Changelog"
 aliases: [/getting-started/aws/ecs/changelog]
 ---
-
 # Upgrading
 
-## 3.32.1
+All meaningful changes to templates are documented in this file.
 
-- Updated ECS AMIs to the latest versions.
+## Unreleased
+
+- Add GRPC methods rate limiting metric to prometheus rules.
+
+### AMI/BYOL template
+
+- Add a new `TLSCertificateSecretARN` parameter to allow loading TLS certificates from AWS secrets to BYOL and PAYG single template deployments.
+- Add new IAM policy role that allows reading secrets from AWS Secret Manager
+- Update default postgres version to 16.4
+
+## 3.32.1
 
 ## 3.32.0
 
