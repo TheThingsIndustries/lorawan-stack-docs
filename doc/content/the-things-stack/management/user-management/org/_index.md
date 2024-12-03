@@ -1,7 +1,12 @@
 ---
 title: "Organization Management"
 description: ""
-aliases: [/the-things-stack/management/user-management/cli/org, /the-things-stack/management/user-management/console/org, /getting-started/user-management/org/]
+aliases:
+  [
+    /the-things-stack/management/user-management/cli/org,
+    /the-things-stack/management/user-management/console/org,
+    /getting-started/user-management/org/,
+  ]
 ---
 
 This section contains instructions for managing organizations.
@@ -12,7 +17,7 @@ To make it easier to manage groups of users, it is possible to create organizati
 
 When a user is a collaborator of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity.
 
-In this section, we explain how to manage organizations and grant them rights using {{% tts %}} [Console]({{< ref "/the-things-stack/interact/console" >}}) and the [CLI]({{< ref "/the-things-stack/interact/cli" >}}).
+In this section, we explain how to manage organizations and grant them rights using {{% tts %}} [Console]({{< ref "/concepts/features/console" >}}) and the [CLI]({{< ref "/the-things-stack/interact/cli" >}}).
 
 {{< tabs/container "Console" "CLI" >}}
 
@@ -90,20 +95,22 @@ ttn-lw-cli organizations list
 ```
 
 ```json
-[{
-  "ids": {
-    "organization_id": "org1"
+[
+  {
+    "ids": {
+      "organization_id": "org1"
+    },
+    "created_at": "2020-07-09T12:39:35.129Z",
+    "updated_at": "2020-07-09T12:39:35.129Z"
   },
-  "created_at": "2020-07-09T12:39:35.129Z",
-  "updated_at": "2020-07-09T12:39:35.129Z"
-}
-, {
-  "ids": {
-    "organization_id": "org2"
-  },
-  "created_at": "2020-07-14T09:37:01.938Z",
-  "updated_at": "2020-07-14T09:37:01.938Z"
-}]
+  {
+    "ids": {
+      "organization_id": "org2"
+    },
+    "created_at": "2020-07-14T09:37:01.938Z",
+    "updated_at": "2020-07-14T09:37:01.938Z"
+  }
+]
 ```
 
 ### Searching for Organizations
@@ -117,18 +124,20 @@ ttn-lw-cli organizations search --id-contains $ORGANIZATION_ID
 Output:
 
 ```json
-[{
-  "ids": {
-    "organization_id": "org1"
-  },
-  "created_at": "2020-07-09T12:39:35.129Z",
-  "updated_at": "2020-07-09T12:39:35.129Z"
-}]
+[
+  {
+    "ids": {
+      "organization_id": "org1"
+    },
+    "created_at": "2020-07-09T12:39:35.129Z",
+    "updated_at": "2020-07-09T12:39:35.129Z"
+  }
+]
 ```
 
 ### Adding Users to Organizations
 
-To add a user to an organization, use the  `organizations collaborators set` command. This will add user `user1` as a collaborator of organization `org1` with all organization rights:
+To add a user to an organization, use the `organizations collaborators set` command. This will add user `user1` as a collaborator of organization `org1` with all organization rights:
 
 ```bash
 ttn-lw-cli organizations collaborators set --organization-id $ORGANIZATION_ID --user-id $USER_ID --right-organization-all
@@ -138,7 +147,7 @@ You must specify rights when adding a collaborator. Use the `--help` flag to see
 
 ### Removing Users from Organizations
 
-To remove a user from an organization, use the  `organizations collaborators delete` command:
+To remove a user from an organization, use the `organizations collaborators delete` command:
 
 ```bash
 ttn-lw-cli organizations collaborators delete --organization-id $ORGANIZATION_ID --user-id $USER_ID

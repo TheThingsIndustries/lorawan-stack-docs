@@ -6,7 +6,7 @@ weight: 3
 
 Users can interact with {{% tts %}} in the following ways:
 
-- [Console]({{< ref "/the-things-stack/interact/console/" >}})
+- [Console]({{< ref "/concepts/features/console/" >}})
 - [Command-line Interface]({{< ref "/the-things-stack/interact/cli/" >}})
 - [Using the API]({{< ref "/api" >}})
 

@@ -123,15 +123,15 @@ The variables for the Console and NOC OAuth clients are repeated here:
 
 Set the variables as follows:
 
-Key | Console | Network Operations Center
---- | --- | ---
-`ID` | `console` | `noc`
-`NAME` | `Console` | `Network Operations Center`
-`CLIENT_SECRET` | Config: `console.oauth.client-secret` | Config: `noc.oauth.client-secret`
-`REDIRECT_URI` | `${SERVER_ADDRESS}/console/oauth/callback` | `${SERVER_ADDRESS}/noc/oauth/callback`
-`REDIRECT_PATH` | `/console/oauth/callback` | `/noc/oauth/callback`
-`LOGOUT_REDIRECT_URI` | `${SERVER_ADDRESS}/console` | `${SERVER_ADDRESS}/noc`
-`LOGOUT_REDIRECT_PATH` | `/console` | `/noc`
+| Key                    | Console                                    | Network Operations Center              |
+| ---------------------- | ------------------------------------------ | -------------------------------------- |
+| `ID`                   | `console`                                  | `noc`                                  |
+| `NAME`                 | `Console`                                  | `Network Operations Center`            |
+| `CLIENT_SECRET`        | Config: `console.oauth.client-secret`      | Config: `noc.oauth.client-secret`      |
+| `REDIRECT_URI`         | `${SERVER_ADDRESS}/console/oauth/callback` | `${SERVER_ADDRESS}/noc/oauth/callback` |
+| `REDIRECT_PATH`        | `/console/oauth/callback`                  | `/noc/oauth/callback`                  |
+| `LOGOUT_REDIRECT_URI`  | `${SERVER_ADDRESS}/console`                | `${SERVER_ADDRESS}/noc`                |
+| `LOGOUT_REDIRECT_PATH` | `/console`                                 | `/noc`                                 |
 
 </details>
 
@@ -145,4 +145,4 @@ docker compose up
 
 This starts the stack, so you will see the stack logs being printed to your terminal. You can also start the stack in detached mode by adding `-d` to the command above. In that case you can get logs with [`docker compose logs`](https://docs.docker.com/compose/reference/logs/).
 
-With {{% tts %}} up and running, follow [Console]({{< ref "/the-things-stack/interact/console" >}}) or [Command-line Interface]({{< ref "the-things-stack/interact/cli" >}}) to proceed with the login, then continue with connecting gateways, creating devices and working with streaming data.
+With {{% tts %}} up and running, follow [Console]({{< ref "/concepts/features/console" >}}) or [Command-line Interface]({{< ref "the-things-stack/interact/cli" >}}) to proceed with the login, then continue with connecting gateways, creating devices and working with streaming data.

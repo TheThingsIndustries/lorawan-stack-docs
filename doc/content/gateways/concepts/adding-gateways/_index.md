@@ -6,7 +6,7 @@ aliases:
   [
     /gateways/adding-gateways,
     /the-things-stack/interact/cli/create-gateway,
-    /the-things-stack/interact/console/create-gateway,
+    /concepts/console/create-gateway,
   ]
 ---
 

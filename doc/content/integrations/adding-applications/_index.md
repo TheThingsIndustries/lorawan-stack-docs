@@ -8,8 +8,8 @@ aliases:
     /getting-started/console/create-application,
     /guides/getting-started/console/create-application,
     /the-things-stack/interact/cli/create-application,
-    /the-things-stack/interact/console/create-application,
-    /guides/the-things-stack/interact/console/create-application,
+    /concepts/console/create-application,
+    /guides/concepts/console/create-application,
   ]
 ---
 

@@ -2,7 +2,8 @@
 title: "Post Deployment Configuration"
 description: ""
 weight: 2
-aliases: [/guides/aws/ami/after-deploy, /getting-started/aws/ami/post-deployment]
+aliases:
+  [/guides/aws/ami/after-deploy, /getting-started/aws/ami/post-deployment]
 ---
 
 This section provides the information necessary to get started with {{% tts %}} after it is deployed via [AWS Marketplace](https://aws.amazon.com/marketplace/pp/The-Things-Industries-The-Things-Enterprise-Stack/B081HZKDJ4) using AWS CloudFormation.
@@ -18,21 +19,21 @@ In order to access the Console/API of the {{% tts %}}, the domain name chosen du
 
 Now, login to the Domain Name Management window of the Domain Name Registrar to which your preferred Domain is registered. Create a DNS **A** record with the parameters shown below.
 
-|**Name**|**Record Type**|**Value**|
-|---|---|---|
-|`@`|`A`|**PublicIP**|
+| **Name** | **Record Type** | **Value**    |
+| -------- | --------------- | ------------ |
+| `@`      | `A`             | **PublicIP** |
 
 If you are using a sub-domain:
 
-|**Name**|**Record Type**|**Value**|
-|---|---|---|
-|`sub-domain`|`A`|**PublicIP**|
+| **Name**     | **Record Type** | **Value**    |
+| ------------ | --------------- | ------------ |
+| `sub-domain` | `A`             | **PublicIP** |
 
 For example, if your **PublicIP** value is `3.12.14.15` and your sub-domain is `lorawan.mycompany.com`, then navigate to the management tab for the domain `mycompany.com` and perform the following mapping:
 
-|**Name**|**Record Type**|**Value**|
-|---|---|---|
-|`lorawan`|`A`|3.12.14.15|
+| **Name**  | **Record Type** | **Value**  |
+| --------- | --------------- | ---------- |
+| `lorawan` | `A`             | 3.12.14.15 |
 
 There will be an initial propagation delay for this value to be updated. You can check the status via a DNS lookup using either an [online tool](https://network-tools.webwiz.net/nslookup.htm) or using a command line tool (ex: `nslookup`).
 
@@ -46,7 +47,7 @@ Apart from the DNS mapping above, no additional steps are necessary for this.
 
 ## Getting Started using the Console
 
-Please check the [Console]({{< ref "/the-things-stack/interact/console" >}}) guide to get quickly started with {{% tts %}} Console.
+Please check the [Console]({{< ref "/concepts/features/console" >}}) guide to get quickly started with {{% tts %}} Console.
 
 ## Getting Started using the Command Line Interface (CLI)
 

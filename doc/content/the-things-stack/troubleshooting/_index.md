@@ -21,7 +21,7 @@ See [user and organization management]({{< ref "/the-things-stack/management/use
 
 ## Troubleshooting common errors in the Console
 
-See [Troubleshooting Console]({{< ref "the-things-stack/interact/console/troubleshooting" >}}).
+See [Troubleshooting Console]({{< ref "/concepts/features/console/troubleshooting" >}}).
 
 ## Troubleshooting common CLI errors
 

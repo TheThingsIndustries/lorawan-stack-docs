@@ -1,7 +1,12 @@
 ---
 title: "Console"
 description: ""
-aliases: [/guides/the-things-stack/interact/console, /getting-started/console]
+aliases:
+  [
+    /guides/concepts/console,
+    /getting-started/console,
+    /the-things-stack/interact/console,
+  ]
 weight: -3
 ---
 

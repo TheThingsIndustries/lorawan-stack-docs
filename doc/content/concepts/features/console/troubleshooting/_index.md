@@ -1,10 +1,14 @@
 ---
 title: "Troubleshooting Console"
 description: ""
-aliases: [/getting-started/console/troubleshooting]
+aliases:
+  [
+    /getting-started/console/troubleshooting,
+    /the-things-stack/interact/console/troubleshooting,
+  ]
 ---
 
-This section provides help for common issues in {{% tts %}} Console. 
+This section provides help for common issues in {{% tts %}} Console.
 
 <!--more-->
 

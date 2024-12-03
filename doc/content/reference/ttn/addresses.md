@@ -12,7 +12,7 @@ You can update the examples below with your cluster ID by filling it here.
 
 ## Console
 
-To learn how to get started with the Console, see the [Console Getting Started Guide]({{< ref "/the-things-stack/interact/console" >}}).
+To learn how to get started with the Console, see the [Console Getting Started Guide]({{< ref "/concepts/features/console" >}}).
 
 Each cluster has a Console where you can manage gateways and end devices of that cluster. You can use any cluster with your Cloud account.
 

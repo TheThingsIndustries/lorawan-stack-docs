@@ -19,7 +19,7 @@ Instead of adding devices one by one, {{% tts %}} supports multiple methods of a
 
 <!--more-->
 
-There are two ways to import devices in {{% tts %}} - using [Console]({{< ref "/the-things-stack/interact/console" >}}) or [CLI]({{< ref "/the-things-stack/interact/cli" >}}).
+There are two ways to import devices in {{% tts %}} - using [Console]({{< ref "/concepts/features/console" >}}) or [CLI]({{< ref "/the-things-stack/interact/cli" >}}).
 
 {{% tts %}} supports importing end devices in JSON and CSV format:
 

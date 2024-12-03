@@ -3,7 +3,11 @@ title: "Tenant Settings"
 description: ""
 weight: 1
 distributions: ["Cloud", "Enterprise"]
-aliases: [/getting-started/console/tenant-settings]
+aliases:
+  [
+    /getting-started/console/tenant-settings,
+    /the-things-stack/interact/console/tenant-settings,
+  ]
 ---
 
 This section explains how to modify tenant settings in {{% tts %}} Console.
