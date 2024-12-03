@@ -1,7 +1,7 @@
 ---
 title: "Subscription via AWS Marketplace"
 description: ""
-weight: 2
+weight: 3
 aliases: [/the-things-stack/cloud/subscribe-tts-via-aws-marketplace]
 ---
 

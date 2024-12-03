@@ -1,7 +1,6 @@
 ---
 title: "Server Addresses"
 description: ""
-weight: 1
 aliases: [/getting-started/server-addresses]
 ---
 

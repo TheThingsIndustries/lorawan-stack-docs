@@ -1,7 +1,7 @@
 ---
 title: "Clusters"
 description: ""
-weight: 2
+weight: 1
 aliases:
   [
     /getting-started/cloud-hosted/addresses,

@@ -1,8 +1,9 @@
 ---
 title: "Gateway connectivity outages"
 description: ""
-distributions: ["Enterprise", "Cloud"]
+distributions: ["Cloud"]
 new_in_version: "3.30.0"
+aliases: [/the-things-stack/alerting/gateway-connectivity-outages]
 weight: 3
 ---
 

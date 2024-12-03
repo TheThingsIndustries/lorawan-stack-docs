@@ -1,8 +1,9 @@
 ---
 title: "Receiving alert notifications"
 description: ""
-distributions: ["Enterprise", "Cloud"]
+distributions: ["Cloud"]
 new_in_version: "3.30.0"
+aliases: [/the-things-stack/alerting/receivers-and-profiles]
 weight: 2
 ---
 

@@ -1,9 +1,8 @@
 ---
-title: "Alerting in The Things Stack"
+title: "Alerting"
 description: ""
-distributions: ["Enterprise", "Cloud"]
-new_in_version: "3.30.0"
-weight: 8
+distributions: ["Cloud"]
+aliases: [/the-things-stack/alerting/gateway-connectivity-outages]
 ---
 
 Alerting in {{% tts %}} refers to notifications which are sent when certain conditions are met, usually signaling anomalous behavior exhibited by end devices or gateways.
