@@ -16,7 +16,15 @@ The server addresses for the different {{% tts %}} deployments are listed below.
 
 You can update the examples below with your tenant ID and cluster ID by filling them here. The `<tenant-id>` will be replaced with the provided tenant ID.
 
-{{< tenant-cluster-selector >}}
+{{< enterprise-cluster-selector >}}
+
+Your cluster address is:
+
+<p>
+<code data-content="cluster-address">
+<span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.<span data-content="base-domain"></span>
+</code>
+</p>
 
 ## Deployments
 
