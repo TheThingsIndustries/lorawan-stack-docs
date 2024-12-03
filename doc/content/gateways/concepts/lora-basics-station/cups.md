@@ -18,7 +18,7 @@ aliases: [/gateways/lora-basics-station/cups]
 
 ## Create a Gateway
 
-To connect a gateway using the CUPS protocol, you must first add the gateway in {{% tts %}}. This can be done either in the console, or via the command line. See instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}). 
+To connect a gateway using the CUPS protocol, you must first add the gateway in {{% tts %}}. This can be done either in the console, or via the command line. See instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}).
 
 ## Create Separate CUPS and LNS API Keys
 
@@ -58,7 +58,7 @@ Press **Save Changes** to update the gateway settings. When your gateway connect
 
 {{< tabs/tab "CLI" >}}
 
-We need to configure CUPS in {{% tts %}} to transmit the LNS API key when a gateway connects. Use the following command to do so, replacing `"your-gateway-id"` with your gateway ID in {{% tts %}} and  `"your-lns-api-key"` with the [LNS API key]({{< ref "/gateways/concepts/lora-basics-station/cups#create-separate-cups-and-lns-api-keys" >}}) you created in the last step:
+We need to configure CUPS in {{% tts %}} to transmit the LNS API key when a gateway connects. Use the following command to do so, replacing `"your-gateway-id"` with your gateway ID in {{% tts %}} and `"your-lns-api-key"` with the [LNS API key]({{< ref "/gateways/concepts/lora-basics-station/cups#create-separate-cups-and-lns-api-keys" >}}) you created in the last step:
 
 ```bash
 GTW_ID="your-gateway-id"
@@ -81,15 +81,14 @@ If successful, you should receive a response as follows:
   },
   "created_at": "2020-10-13T10:49:02.730Z",
   "updated_at": "2020-11-17T14:52:06.440Z",
-  "version_ids": {
-
-  },
+  "version_ids": {},
   "lbs_lns_secret": {
     "key_id": "is/gateway-secrets-encryption-key",
     "value": "<encrpyted-base64-lns-api-key>"
   }
 }
 ```
+
 </details>
 
 {{</ tabs/tab >}}
@@ -98,15 +97,15 @@ If successful, you should receive a response as follows:
 
 ## Configure Gateway
 
-All {{% lbs %}} gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway. 
+All {{% lbs %}} gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway.
 
 ### CUPS Server Address
 
 The server address is the network endpoint of {{% tts %}} CUPS. It is a combination of the **protocol** (https), the **server address**, and the **port**.
 
-Enter the following in your gateway as CUPS Server Address: `https://<server-address>:443`. 
+Enter the following in your gateway as CUPS Server Address: `https://<server-address>:443`.
 
-The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}) for more info.
+The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}) for more info.
 
 ### CUPS Server Certificate / CUPS Trust
 

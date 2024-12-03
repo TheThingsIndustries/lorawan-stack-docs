@@ -15,7 +15,7 @@ In the server configuration options, check the **Enable** box.
 
 Choose **Semtech** as the **Type**.
 
-For the **Server Address** choose **custom**, and enter the address of {{% tts %}} deployment you are using. See [Server Addresses]({{< ref "/the-things-stack/concepts/server-addresses" >}}) section for help.
+For the **Server Address** choose **custom**, and enter the address of {{% tts %}} deployment you are using. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}) section for help.
 
 Choose the appropriate **Port Up** and **Port Down** values. These are both **1700** by default in {{% tts %}}.
 

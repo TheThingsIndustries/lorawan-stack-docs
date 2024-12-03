@@ -1,11 +1,16 @@
 ---
 title: "Getting Started"
-description: ""
-weight: -2
+description: "Learn how to quickly get started with The Things Stack"
 menu:
   main:
-    weight: 2
-aliases: [/guides/getting-started, /guides/getting-started/running-the-stack, /guides/getting-started/quick-start, /getting-started/quick-start/]
+    weight: 1
+aliases:
+  [
+    /guides/getting-started,
+    /guides/getting-started/running-the-stack,
+    /guides/getting-started/quick-start,
+    /getting-started/quick-start/,
+  ]
 ---
 
 {{% tts %}} is an enterprise-grade LoRaWAN® Network Server that provides services and tools to securely install and manage millions of LoRaWAN devices in production.
@@ -19,7 +24,3 @@ We then introduce [{{% tts %}}]({{< relref "the-things-stack-basics" >}}) and it
 With these basics covered, we can now [setup your first LoRaWAN network]({{< relref "setup-first-network" >}}).
 
 Finally, since LoRaWAN and {{% tts %}} are deep topics, we provide suggestions on the [next steps]({{< relref "next-steps" >}}).
-
-
-
-

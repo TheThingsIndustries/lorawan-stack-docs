@@ -21,15 +21,15 @@ For more info, see Mikrotik's [official product page](https://mikrotik.com/produ
 
 **Features:**
 
-* 2.4 GHz AP in a rugged case
-* LTE installed in miniPCIe slot
-* Second miniPCIe slot for expansions
-* Three Mini SIM slots
-* Gigabit Ethernet port
-* Built-in GPS
-* Many powering options (DC jack, POE-in, automotive)
-* Serial port and full size USB for other devices
-* Perfect for cars or outdoor mobile applications
+- 2.4 GHz AP in a rugged case
+- LTE installed in miniPCIe slot
+- Second miniPCIe slot for expansions
+- Three Mini SIM slots
+- Gigabit Ethernet port
+- Built-in GPS
+- Many powering options (DC jack, POE-in, automotive)
+- Serial port and full size USB for other devices
+- Perfect for cars or outdoor mobile applications
 
 {{< warning >}} Currently, this gateway does not support changing frequency channels. {{</ warning >}}
 
@@ -58,6 +58,7 @@ Select **LoRa** on the left hand menu. The status of the gateway should be **Dis
 {{< figure src="portal-lora.png" alt="MikroTik LoRa portal" class="plain" >}}
 
 If you do not see any devices listed in the **Devices** tab of the **LoRa** menu, you will need to enable the LoRa interface first. To do so, click the **Terminal** button in the upper right corner and enter the command:
+
 ```
 system routerboard usb set type=mini-PCIe
 ```
@@ -70,8 +71,8 @@ From the top menu, select the **Servers** Tab and press the **Add New** button.
 
 Edit the server parameters.
 
-- **Name**: A distinct name 
-- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
+- **Name**: A distinct name
+- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}).
 - **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
 - **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
 

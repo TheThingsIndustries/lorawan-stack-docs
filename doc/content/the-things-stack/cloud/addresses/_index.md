@@ -2,7 +2,12 @@
 title: "Cloud Addresses"
 description: ""
 weight: 10
-aliases: [/getting-started/cloud-hosted/addresses, /guides/cloud-hosted/addresses, /the-things-stack/cloud/addresses]
+aliases:
+  [
+    /getting-started/cloud-hosted/addresses,
+    /guides/cloud-hosted/addresses,
+    /cloud/server-addresses,
+  ]
 distributions: ["Cloud"]
 ---
 

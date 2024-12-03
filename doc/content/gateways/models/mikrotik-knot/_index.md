@@ -31,7 +31,7 @@ Create a gateway by following the instructions for [Adding Gateways]({{< ref "/g
 
 ## Configuration via Browser
 
-The MikroTik Routerboard exposes a WiFi Access Point (AP) with SSID `MikroTik-xxxxxx`, where `xxxxxx` are the last 6 digits of the device's MAC address. Use your PC, tablet or smartphone to connect to this AP. You will not need a password to connect to this AP. 
+The MikroTik Routerboard exposes a WiFi Access Point (AP) with SSID `MikroTik-xxxxxx`, where `xxxxxx` are the last 6 digits of the device's MAC address. Use your PC, tablet or smartphone to connect to this AP. You will not need a password to connect to this AP.
 
 By opening your browser to `http://192.168.88.1/webfig` you will be able to access the RouterOS web interface and configure your gateway device.
 
@@ -50,7 +50,7 @@ From the top menu, select the **Servers** tab and press the **Add New** button.
 Edit the server parameters.
 
 - **Name**: A distinct name which you can define yourself
-- **Address**: The address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
+- **Address**: The address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}).
 - **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
 - **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
 
@@ -83,6 +83,7 @@ To test whether a connection with your LTE-M network is established, go to the *
 ```
 /interface ppp-client info ppp-out1
 ```
+
 If the gateway is set up correctly, it will respond with a message like:
 
 ```

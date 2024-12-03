@@ -20,7 +20,7 @@ Press the `i` key on your keyboard to start insert mode. Once finished editing, 
 
 Edit the server parameters:
 
-- **server_address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
+- **server_address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}).
 - **serv_port_up**: UDP upstream port of the Gateway Server, typically 1700.
 - **serv_port_down**: UDP downstream port of the Gateway Server, typically 1700.
 

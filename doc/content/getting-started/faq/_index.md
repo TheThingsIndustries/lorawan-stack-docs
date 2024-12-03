@@ -16,7 +16,7 @@ Check out [this article](https://www.thethingsindustries.com/news/why-you-should
 
 ## How does {{% tts %}} work?
 
-Check out [{{% tts %}} Architecture]({{< ref "/the-things-stack/concepts/architecture" >}}) guide for a detailed overview of the platform components and their functionality.
+Check out [{{% tts %}} Architecture]({{< ref "/concepts/architecture" >}}) guide for a detailed overview of the platform components and their functionality.
 
 ## How to choose a LoRaWAN device?
 
@@ -48,7 +48,7 @@ Yes, {{% tts %}} can be installed on your own hardware - check out a detailed gu
 
 {{% tts %}} Cloud is a multi-tenant and multi-cluster deployment. Being multi-tenant makes it possible for each customer to has their own isolated network, while sharing the underlying infrastructure, and being multi-cluster makes it possible to store account information in a central location, while routing all your IoT traffic to the closest cluster, therefore reducing latency significantly.
 
-Check [{{% tts %}} Cloud documentation]({{< ref "/the-things-stack/cloud" >}}) for more details and a list of available clusters.
+Check [{{% tts %}} Cloud documentation]({{< ref "/cloud" >}}) for more details and a list of available clusters.
 
 ## How to improve LoRaWAN coverage and network performance?
 

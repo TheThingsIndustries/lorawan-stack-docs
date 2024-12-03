@@ -46,7 +46,7 @@ Choose the WiFi network from the drop down and enter a password if necessary.
 
 Click the **Show Advanced Options** button and enter the following fields:
 
-- **Account Server**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
+- **Account Server**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}).
 - **Gateway Key**: The API Key that you created earlier.
 - Click **Save** when done.
 
@@ -93,7 +93,7 @@ A possible cause of this issue is that the LoRa board is not fully pushed in in 
 
 ### My gateway stays in AP mode. What do I do?
 
-This behaviour occurs when there is a glitch in the WiFi connection of the gateway. When this happens, your gateway will turn into an AP and devices you used to set up the gateway can connect to it (your laptop or phone). To avoid this, you should remove the gateway from the list of APs from your laptop/phone (*Network Settings &#8594; Things-Gateway-XXXX &#8594; Forget this network*).
+This behaviour occurs when there is a glitch in the WiFi connection of the gateway. When this happens, your gateway will turn into an AP and devices you used to set up the gateway can connect to it (your laptop or phone). To avoid this, you should remove the gateway from the list of APs from your laptop/phone (_Network Settings &#8594; Things-Gateway-XXXX &#8594; Forget this network_).
 
 ### I want to get in-depth insight/read debug messages of my gateway. Is that possible?
 
@@ -103,7 +103,7 @@ Connect a UART interface device to your computer. Connect the RX line to the RX 
 
 {{< figure src="uart-sample.jpg" alt="Sample connection between The Things Kickstarter gateway and an UART device" >}}
 
-Now, you need to start a terminal session to UART interface device with `115200@8N`. On Windows you can use *PuTTY*, on macOS or Linux use *screen*. The sample output is shown below.
+Now, you need to start a terminal session to UART interface device with `115200@8N`. On Windows you can use _PuTTY_, on macOS or Linux use _screen_. The sample output is shown below.
 
 {{< figure src="screen-macos.png" alt="Sample screen output" >}}
 
@@ -111,6 +111,6 @@ Now, you need to start a terminal session to UART interface device with `115200@
 
 There is no need to reconfigure the gateway, however, it is recommended to update the [gateway location settings]({{< ref "/gateways/concepts/adding-gateways#set-gateway-location" >}}) in {{% tts %}} Console for a better accuracy.
 
-### I see *Unexpected data sent to gateway* error. What should I do?
+### I see _Unexpected data sent to gateway_ error. What should I do?
 
 This error seems to appear when the Gateway ID length exceeds the maximum of 34 characters. If your gateway's ID is longer than the maximum allowed, delete and re-register your gateway in {{% tts %}} Console with a new, shorter Gateway ID.

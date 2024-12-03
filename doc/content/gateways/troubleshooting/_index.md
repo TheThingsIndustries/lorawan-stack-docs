@@ -11,7 +11,7 @@ This section provides help for common issues and frequently asked questions you 
 
 ## What is my server address?
 
-This is the address you use to access {{% tts %}}. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
+This is the address you use to access {{% tts %}}. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}).
 
 For {{% lbs %}}:
 

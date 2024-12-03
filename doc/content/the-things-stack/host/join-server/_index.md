@@ -4,9 +4,9 @@ description: ""
 weight: 8
 aliases:
   - /guides/cloud-hosted/tti-join-server
-  - /the-things-stack/cloud/tti-join-server
-  - /the-things-stack/cloud/tti-join-server/activate-devices-cloud-hosted
-  - /the-things-stack/cloud/tti-join-server/register-devices
+  - /cloud/tti-join-server
+  - /cloud/tti-join-server/activate-devices-cloud-hosted
+  - /cloud/tti-join-server/register-devices
   - /getting-started/join-server
 ---
 

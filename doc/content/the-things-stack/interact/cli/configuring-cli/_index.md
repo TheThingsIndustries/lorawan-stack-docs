@@ -39,7 +39,7 @@ If you are using {{% tts %}} Cloud use the following command with your `tenant i
 ttn-lw-cli use <tenant_id>.<eu1/eu2/au1/nam1/>.cloud.thethings.industries
 ```
 
-If you are hosting your own deployment, use the following, replacing `thethings.example.com` with your [server address]({{< ref "the-things-stack/concepts/server-addresses" >}}):
+If you are hosting your own deployment, use the following, replacing `thethings.example.com` with your [server address]({{< ref "/cloud/server-addresses" >}}):
 
 ```bash
 ttn-lw-cli use thethings.example.com
@@ -49,7 +49,7 @@ ttn-lw-cli use thethings.example.com
 
 {{< tabs/tab "Enterprise" >}}
 
-If you are hosting your own deployment, use the following, replacing `thethings.example.com` with your [server address]({{< ref "the-things-stack/concepts/server-addresses" >}}):
+If you are hosting your own deployment, use the following, replacing `thethings.example.com` with your [server address]({{< ref "/cloud/server-addresses" >}}):
 
 ```bash
 tti-lw-cli use thethings.example.com
@@ -99,7 +99,7 @@ It is also possible to manually create a configuration file. For most configurat
 
 To manually configure, first create a `.ttn-lw-cli.yml` file.
 
-Copy and paste the following contents in the `.ttn-lw-cli.yml` file, replacing `thethings.example.com` with the [server addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}) of each component:
+Copy and paste the following contents in the `.ttn-lw-cli.yml` file, replacing `thethings.example.com` with the [server addresses]({{< ref "/cloud/server-addresses" >}}) of each component:
 
 ```yaml
 oauth-server-address: "https://thethings.example.com/oauth"

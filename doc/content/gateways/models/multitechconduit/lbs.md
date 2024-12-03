@@ -29,7 +29,7 @@ Be sure to select **CUPS** in the **Credentials** dropdown.
 The entire configuration should look like:
 
 - Credentials: CUPS
-- URI: See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}})
+- URI: See [Server Addresses]({{< ref "/cloud/server-addresses" >}})
 - Station Config: Leave it as-is (will be overwritten by CUPS)
 - Server Cert: Use the [ISRG Root X1 Certificate]({{< ref "reference/root-certificates#isrg-root-x1" >}})
 - Gateway Cert: Leave blank

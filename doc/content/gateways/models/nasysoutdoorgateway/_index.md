@@ -15,7 +15,7 @@ This page guides you to connect NASys LoRaWAN® Outdoor Gateway to {{% tts %}}.
 
 <!--more-->
 
-NASys LoRaWAN Outdoor Gateway is an 8 Channel LoRaWAN gateway, whose technical specifications can be found in [the official product page](https://www.nasys.no/product/lorawan-gateway/). 
+NASys LoRaWAN Outdoor Gateway is an 8 Channel LoRaWAN gateway, whose technical specifications can be found in [the official product page](https://www.nasys.no/product/lorawan-gateway/).
 
 ## Prerequisites
 
@@ -64,7 +64,7 @@ vi /opt/nas-lgw/global_conf.json
 Edit the server parameters:
 
 - **gateway_ID**: Make sure this is the same as the GatewayEUI (in lowercase).
-- **server_address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
+- **server_address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}).
 - **serv_port_up**: UDP upstream port of the Gateway Server, typically 1700.
 - **serv_port_down**: UDP downstream port of the Gateway Server, typically 1700.
 

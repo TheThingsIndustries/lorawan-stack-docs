@@ -13,7 +13,7 @@ This page guides you to connecting the Cisco Wireless Gateway for LoRaWAN® to {
 
 <!--more-->
 
-Technical specifications for this gateway can be found in [Cisco's official documentation](https://www.cisco.com/c/en/us/products/routers/wireless-gateway-lorawan/). 
+Technical specifications for this gateway can be found in [Cisco's official documentation](https://www.cisco.com/c/en/us/products/routers/wireless-gateway-lorawan/).
 
 {{< figure src="cisco.png" alt="Cisco LoRaWAN Gateway" class="float plain" width="60%" >}}
 
@@ -29,7 +29,7 @@ Create a gateway by following the instructions for the [Console]({{< ref "/the-t
 
 The gateway EUI is derived from the MAC address that can be found on the back panel of the gateway. To get the EUI from the MAC address insert `FFFE` after the first 6 characters to make it a 64-bit EUI. For example, if the gateway's MAC address is `5B:A0:CB:80:04:2B` then the EUI is `5B A0 CB FF FE 80 04 2B`.
 
-The **Gateway Server Address** is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
+The **Gateway Server Address** is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}).
 
 ## Configuration
 
@@ -62,7 +62,7 @@ Gateway> enable
 To configure your Cisco Gateway to your network, type the following commands:
 
 ```
-Gateway# configure terminal 
+Gateway# configure terminal
 Gateway(config)# interface FastEthernet 0/1
 ```
 
@@ -146,7 +146,7 @@ This command may return the message `packet-forwarder firmware is not installed`
 As a final step before setting up the packet forwarder software, we are going to enable the radio. You can see radio information with the `show radio` command:
 
 ```
-Gateway# show radio 
+Gateway# show radio
 ORA_SN: FOC21028R8S
 ORA_PN: 95.1602T01
 ORA_SKU: 915
@@ -164,7 +164,7 @@ on
 If the radio is off, enable it with:
 
 ```
-Gateway# configure terminal 
+Gateway# configure terminal
 Gateway(config)# no radio off
 Gateway(config)# exit
 ```
@@ -177,22 +177,22 @@ To prevent unauthorized access to the gateway, you'll want to set up user authen
 
 To enable this secret system, you can use the following commands:
 
-+ `Gateway# configure terminal` to enter global configuration mode.
-+ To set the secret, you can use different commands:
-  `Gateway(config)# enable secret <secret>` to enter in plaintext the secret you wish to set, instead of `<secret>`. *Note*: Special characters cannot be used in plain secrets.
+- `Gateway# configure terminal` to enter global configuration mode.
+- To set the secret, you can use different commands:
+  `Gateway(config)# enable secret <secret>` to enter in plaintext the secret you wish to set, instead of `<secret>`. _Note_: Special characters cannot be used in plain secrets.
   `Gateway(config)# enable secret 5 <secret>` to enter the md5-encrypted secret.
   `Gateway(config)# enable secret 8 <secret>` to enter the SHA512-encrypted secret.
-+ `Gateway(config)# exit` to exit global configuration mode.
-+ `Gateway#copy running-config startup-config` to save the configuration.
+- `Gateway(config)# exit` to exit global configuration mode.
+- `Gateway#copy running-config startup-config` to save the configuration.
 
 ### Verification
 
 Before we install the packet forwarder, let's run verification to ensure that the gateway is ready.
 
-+ Type `show radio` to verify that the radio is enabled. The result should indicate **radio status: on**.
-+ Type `show inventory` to verify that the **FPGAStatus** is **Ready**.
-+ Type `show gps status` to verify that the GPS is correctly connected. You can get additional GPS metadata by typing `show gps info`.
-+ Verify that the network connection is working. You can test this by pinging common ping servers with `ping ip <IP>`, if your local network does not block ping commands. For example, you can ping Google's servers with `ping ip 8.8.8.8`.
+- Type `show radio` to verify that the radio is enabled. The result should indicate **radio status: on**.
+- Type `show inventory` to verify that the **FPGAStatus** is **Ready**.
+- Type `show gps status` to verify that the GPS is correctly connected. You can get additional GPS metadata by typing `show gps info`.
+- Verify that the network connection is working. You can test this by pinging common ping servers with `ping ip <IP>`, if your local network does not block ping commands. For example, you can ping Google's servers with `ping ip 8.8.8.8`.
 
 If some of those checks fail, go back to the appropriate section earlier in order to fix it.
 

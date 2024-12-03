@@ -49,7 +49,7 @@ Open a browser to `http://192.168.88.1/webfig/#Interfaces`.
 
 {{< figure src="portal.png" alt="Portal" class="plain" >}}
 
-In the left hand menu select **LoRa**. Make sure the status is set to *Disabled*, if needed press the **D** to disable the LoRa Device.
+In the left hand menu select **LoRa**. Make sure the status is set to _Disabled_, if needed press the **D** to disable the LoRa Device.
 
 {{< figure src="portal-lora.png" alt="LoRa" class="plain" >}}
 
@@ -59,8 +59,8 @@ From the top menu, select the **Servers** Tab and press the **Add New** button.
 
 Edit the server parameters.
 
-- **Name**: A distinct name 
-- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
+- **Name**: A distinct name
+- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}).
 - **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
 - **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
 
@@ -110,16 +110,16 @@ Scroll down and click on **LoRa**. In the **LoRa** config window select **Device
 
 {{< figure src="mikrotik-routerboard-lora-disable.jpeg" alt="MikroTik Routerboard wAP LoRa8 kit LoRa disable" >}}
 
-Back in the **LoRa** section, select the **Servers** section. Select the **+** button to add a new server. 
+Back in the **LoRa** section, select the **Servers** section. Select the **+** button to add a new server.
 
 Edit the server parameters.
 
-- **Name**: A distinct name 
-- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
+- **Name**: A distinct name
+- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}).
 - **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
 - **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
 
-Now back in the **LoRa** section, select **Devices** and select the **LoRa Device**. Click on **Network Servers** and select the server based on the name in the previous step. 
+Now back in the **LoRa** section, select **Devices** and select the **LoRa Device**. Click on **Network Servers** and select the server based on the name in the previous step.
 
 Go back and click on the device and enable it.
 

@@ -27,10 +27,10 @@ After that, go to the **Payload formatters** section on the left hand menu in {{
 function decodeUplink(input) {
   return {
     data: {
-      bytes: input.bytes
+      bytes: input.bytes,
     },
     warnings: [],
-    errors: []
+    errors: [],
   };
 }
 ```
@@ -53,9 +53,9 @@ Next, you can create the integration between Kaa and {{% tts %}} applications.
 
 Navigate to the **Device management &#8594; Integrations** and click the **Add integration** button. Fill in the following fields:
 
-- TTN username - {{% tts %}} MQTT username 
+- TTN username - {{% tts %}} MQTT username
 - TTN API key - the API key that you created in steps above
-- Identity Server Host - {{% tts %}} Identity Server host address (see the [Server Addresses section]({{< ref "/the-things-stack/concepts/server-addresses" >}}) for more info)
+- Identity Server Host - {{% tts %}} Identity Server host address (see the [Server Addresses section]({{< ref "/cloud/server-addresses" >}}) for more info)
 - MQTT Server Host - {{% tts %}} MQTT public address
 
 {{< figure src="kaa-create-app-integration.png" alt="Create application integration" >}}
@@ -68,14 +68,14 @@ Go to the created application integration and create a device integration by cho
 
 {{< figure src="kaa-dev-integration.png" alt="Device integrations" >}}
 
-By navigating to **Device management &#8594; Devices**, you will find the Kaa endpoint that was automatically created during the device integration creation. 
+By navigating to **Device management &#8594; Devices**, you will find the Kaa endpoint that was automatically created during the device integration creation.
 All incoming data from {{% tts %}} device will be ingested under that endpoint.
 
 {{< figure src="kaa-created-endpoint.png" alt="Created endpoint" >}}
 
 ## Visualize Device Data
 
-Next, you can visualize data coming from {{% tts %}} on Kaa UI. 
+Next, you can visualize data coming from {{% tts %}} on Kaa UI.
 
 Edit the application configuration for the [Endpoint Time Series service (EPTS)][EPTS]. EPTS is a Kaa platform component responsible for transforming raw [data samples][data-sample] into well-structured time series. It also stores the time series data and provides access to API for other services, including the [Web Dashboard][WD].
 
@@ -93,10 +93,10 @@ Now navigate to the device details page of the endpoint created in previous step
 Let's assume that {{% tts %}} device is sending temperature measurements in the next format:
 
 ```json
-{"temp":20}
+{ "temp": 20 }
 ```
 
-Convert this payload to a byte array in HEX (`7B 22 74 65 6D 70 22 3A 32 30 7D`), go to the **End devices &#8594; your device's Overview page &#8594; Messaging** in {{% tts %}} Console and paste the byte array into the **Payload** field. 
+Convert this payload to a byte array in HEX (`7B 22 74 65 6D 70 22 3A 32 30 7D`), go to the **End devices &#8594; your device's Overview page &#8594; Messaging** in {{% tts %}} Console and paste the byte array into the **Payload** field.
 
 As a result, you should be able to see the data on Kaa UI.
 
@@ -108,14 +108,13 @@ Congratulations, you have successfully integrated {{% tts %}} with Kaa and visua
 
 Explore more Kaa features by completing the [Getting Started tutorials cycle][Getting Started tutorials] with short tutorials on the main Kaa features.
 
-[kaa site]:                         https://www.kaaiot.com/
-[kaa cloud login]:                  https://cloud.kaaiot.com/login
-[kaa cloud registration]:           https://www.kaaiot.com/free-trial
-
-[data-sample]:                      https://docs.kaaiot.io/KAA/docs/v1.4.0/Kaa-concepts/#data-sample
-[endpoint]:                         https://docs.kaaiot.io/KAA/docs/v1.4.0/Kaa-concepts/#endpoints
-[EPTS]:                             https://docs.kaaiot.io/KAA/docs/v1.4.0/Features/Data-collection/EPTS
+[kaa site]: https://www.kaaiot.com/
+[kaa cloud login]: https://cloud.kaaiot.com/login
+[kaa cloud registration]: https://www.kaaiot.com/free-trial
+[data-sample]: https://docs.kaaiot.io/KAA/docs/v1.4.0/Kaa-concepts/#data-sample
+[endpoint]: https://docs.kaaiot.io/KAA/docs/v1.4.0/Kaa-concepts/#endpoints
+[EPTS]: https://docs.kaaiot.io/KAA/docs/v1.4.0/Features/Data-collection/EPTS
 [EPTS time series auto extraction]: https://docs.kaaiot.io/KAA/docs/v1.4.0/Features/Data-collection/EPTS/Configuration/#time-series-auto-extraction
-[EPTS time series configuration]:   https://docs.kaaiot.io/KAA/docs/v1.4.0/Features/Data-collection/EPTS/Configuration/#time-series-configuration
-[WD]:                               https://docs.kaaiot.io/KAA/docs/v1.4.0/Features/Visualization/WD
-[Getting Started tutorials]:        https://docs.kaaiot.io/KAA/docs/v1.4.0/Tutorials/getting-started/
+[EPTS time series configuration]: https://docs.kaaiot.io/KAA/docs/v1.4.0/Features/Data-collection/EPTS/Configuration/#time-series-configuration
+[WD]: https://docs.kaaiot.io/KAA/docs/v1.4.0/Features/Visualization/WD
+[Getting Started tutorials]: https://docs.kaaiot.io/KAA/docs/v1.4.0/Tutorials/getting-started/

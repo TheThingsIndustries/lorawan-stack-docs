@@ -1,8 +1,11 @@
 ---
 title: "The Things Stack Cloud"
-description: "This section contains concepts specific to The Things Stack Cloud"
-weight: 1
-aliases: [/guides/cloud-hosted/cloud-hosted, /getting-started/cloud-hosted]
+description: "Concepts specific to The Things Stack Cloud"
+menu:
+  main:
+    weight: 2
+aliases:
+  [/guides/cloud-hosted/cloud-hosted, /getting-started/cloud-hosted, /cloud]
 ---
 
 The Things Industries offers {{% tts %}} as hosted software as a service (SaaS).
@@ -35,7 +38,7 @@ If you navigate to [this link](https://console.cloud.thethings.industries), you 
 
 {{< figure src="cluster-location.png" alt="Recommended clusters" >}}
 
-See the [Cloud Addresses]({{< ref "/the-things-stack/cloud/addresses" >}}) for details about cluster, Console, API endpoints and other {{% tts %}} Cloud addresses.
+See the [Cloud Addresses]({{< ref "/cloud/server-addresses" >}}) for details about cluster, Console, API endpoints and other {{% tts %}} Cloud addresses.
 
 ## Status Page
 

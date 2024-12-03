@@ -113,4 +113,4 @@ error:cmd/ttn-lw-cli/commands:end_device_server_address_mismatch (Network/Applic
 
 If you want to perform operations on the entities registered in `a certain` cluster, then you need to ensure the CLI `is configured with server addresses for that` cluster.
 
-Keep in mind that Identity Server and OAuth addresses are always in `eu1` cluster, as described [here]({{< ref "/the-things-stack/cloud/addresses#command-line-interface" >}}).
+Keep in mind that Identity Server and OAuth addresses are always in `eu1` cluster, as described [here]({{< ref "/cloud/server-addresses#command-line-interface" >}}).

@@ -36,19 +36,15 @@ See instructions for configuring [Google]({{< relref "google" >}}) and [Amazon C
 
 ### Callback URL
 
-The callback URL (or Redirect URI in Google terminology) of your {{% tts %}} deployment is the [Server Address]({{< ref "the-things-stack/concepts/server-addresses" >}}) followed by the OAuth endpoint, which includes an **Authentication Provider ID** of your choosing:
+The callback URL (or Redirect URI in Google terminology) of your {{% tts %}} deployment is the [Server Address]({{< ref "/cloud/server-addresses" >}}) followed by the OAuth endpoint, which includes an **Authentication Provider ID** of your choosing:
 
-`
-/oauth/login/<authentication-provider-id>/callback
-`
+`/oauth/login/<authentication-provider-id>/callback`
 
 You will actually create the Authentication Provider in {{% tts %}} using this Authentication Provider ID, so remember it.
 
 For example, with a tenant `tenant1` in the `eu1` cluster and an Authentication Provider ID of `auth-provider`, the OAuth Callback URL is:
 
-`
-https://tenant1.eu1.cloud.thethings.industries/oauth/login/auth-provider/callback
-`
+`https://tenant1.eu1.cloud.thethings.industries/oauth/login/auth-provider/callback`
 
 ## Configure {{% tts %}} for SSO
 

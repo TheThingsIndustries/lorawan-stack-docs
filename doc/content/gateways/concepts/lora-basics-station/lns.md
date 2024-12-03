@@ -20,7 +20,7 @@ These are general instructions for all {{% lbs %}} gateways. For specific instru
 
 ## Create a Gateway
 
-To connect a gateway using the LNS protocol, you must first add the gateway in {{% tts %}}. This can be done either in the console, or via the command line. See instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}). 
+To connect a gateway using the LNS protocol, you must first add the gateway in {{% tts %}}. This can be done either in the console, or via the command line. See instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}).
 
 ## Create an API Key
 
@@ -34,7 +34,7 @@ To create this API key for your gateway, follow instructions for [Creating a Gat
 
 ## Configure Gateway
 
-All {{% lbs %}} gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway. 
+All {{% lbs %}} gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway.
 
 ### LNS Server Address
 
@@ -42,7 +42,7 @@ The server address is the network endpoint of {{% tts %}} LNS. It is a combinati
 
 Enter the following in your gateway as the LNS Server Address: `wss://<server-address>:8887`.
 
-The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}) for more info.
+The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}) for more info.
 
 ### LNS Server Certificate / LNS Trust
 
