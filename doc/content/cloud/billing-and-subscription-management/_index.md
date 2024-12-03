@@ -2,7 +2,11 @@
 title: "Subscription and Billing Management"
 description: ""
 weight: 1
-aliases: [/getting-started/billing-and-subscription-management/]
+aliases:
+  [
+    /getting-started/billing-and-subscription-management/,
+    /the-things-stack/cloud/billing-and-subscription-management,
+  ]
 ---
 
 This section shows how to buy {{% tts %}} subscription, and to perform subscription and billing management for your business accounts with The Things Industries.
@@ -166,7 +170,6 @@ If you want to add more entities than your current limit allows you to, you will
 Generally, the first two letters of the VAT ID represent the country code, but {{% tts %}} doesn't require it during the subscription process. Therefore, please remove the first two letters at the beginning of the VAT ID and enter the remaining digits as the VAT ID while filling in the details.
 
 For example, if the VAT ID is `AB12312312312`, enter `12312312312` and try subscribing to {{% tts %}} again.
-
 
 ### What happens if my subscription is past due?
 

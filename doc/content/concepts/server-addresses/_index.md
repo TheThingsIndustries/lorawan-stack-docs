@@ -16,6 +16,8 @@ The server addresses for the different {{% tts %}} deployments are listed below.
 
 You can update the examples below with your tenant ID and cluster ID by filling them here. The `<tenant-id>` will be replaced with the provided tenant ID.
 
+## Your The Things Stack Addresses
+
 {{< enterprise-cluster-selector >}}
 
 Your cluster address is:
@@ -26,17 +28,7 @@ Your cluster address is:
 </code>
 </p>
 
-## Deployments
-
-**Cloud**: See [Cloud Addresses]({{< ref "/cloud/addresses" >}}).
-
-**AWS Launcher**: This is the domain you specify in your [CloudFormation configuration]({{< ref "the-things-stack/host/aws/ami/deployment-guide#step-2-configure-the-deployment" >}}).
-
-**{{% ttss %}}**: See [{{% ttss %}} Addresses]({{< ref "reference/ttn/addresses" >}})
-
-**Enterprise and Open Source**: This is the domain you configure when installing {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/the-things-stack/host/docker" >}}), this is what you use instead of `thethings.example.com`.
-
-## Console
+### Console
 
 To access the Console, simply enter the [server address of your deployment](#deployments) in a browser.
 
@@ -46,7 +38,7 @@ To access the Console, simply enter the [server address of your deployment](#dep
 
 **Example 3**: If you installed {{% tts %}} Enterprise or Open Source, access the Console at the domain you used in place of `https://thethings.example.com`.
 
-## LNS
+### LNS
 
 The LNS gateway address is a combination of the **protocol** (wss), the **server address**, and the **port** (8887).
 
@@ -56,7 +48,7 @@ The LNS gateway address is a combination of the **protocol** (wss), the **server
 
 **Example 3**: If you installed {{% tts %}} Enterprise or Open Source, the LNS address is the domain you used in configuration, for example `wss://thethings.example.com:8887`.
 
-## CUPS
+### CUPS
 
 The CUPS gateway address is a combination of the **protocol** (https), the **server address**, and the **port** (443).
 
@@ -66,7 +58,7 @@ The CUPS gateway address is a combination of the **protocol** (https), the **ser
 
 **Example 3**: If you installed {{% tts %}} Enterprise or Open Source, the CUPS address is the domain you used in configuration, for example `https://thethings.example.com:443`.
 
-## The Things Kickstarter Gateway Account Server
+### The Things Kickstarter Gateway Account Server
 
 The The Things Kickstarter Gateway Account Server address is a combination of the **scheme** (https) and the **server address**. The port is inferred from the scheme.
 

@@ -2,6 +2,7 @@
 title: "Subscription via AWS Marketplace"
 description: ""
 weight: 2
+aliases: [/the-things-stack/cloud/subscribe-tts-via-aws-marketplace]
 ---
 
 This section shows how to subscribe a tenant in {{% tts %}} Cloud deployment via AWS Marketplace.
