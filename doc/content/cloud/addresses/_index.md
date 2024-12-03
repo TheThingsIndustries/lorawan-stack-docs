@@ -1,23 +1,39 @@
 ---
-title: "Cloud Addresses"
+title: "Clusters"
 description: ""
-weight: 10
+weight: 2
 aliases:
   [
     /getting-started/cloud-hosted/addresses,
     /guides/cloud-hosted/addresses,
-    /cloud/server-addresses,
+    /concepts/server-addresses,
   ]
 distributions: ["Cloud"]
 ---
 
-The addresses where you can reach your {{% tts %}} Cloud network consist of the tenant ID, the cluster ID and `cloud.thethings.industries`.
+{{% tts %}} Cloud is a multi-cluster deployment. This means that while your account, login and entity information is stored in a central location, you can connect your gateways to a cluster closer to the physical location of your gateways, and route all your IoT traffic in that cluster. Thi significantly reduces latency and improves the performance of your gateways.
 
-You can update the examples below with your tenant ID and cluster ID by filling them here.
+<!--more-->
+
+{{% tts %}} Cloud currently has the following clusters:
+
+| **Cluster ID** | **Name**        | **Location**      |
+| -------------- | --------------- | ----------------- |
+| `au1`          | Australia 1     | Sydney, Australia |
+| `as1`          | Asia 1          | Tokyo, Japan      |
+| `eu1`          | Europe 1        | Dublin, Ireland   |
+| `eu2`          | Europe 2        | London, UK        |
+| `nam1`         | North America 1 | California, USA   |
+
+You can head over to our cluster picker at [console.cloud.thethings.industries](https://console.cloud.thethings.industries) and find out which {{% tts %}} Cloud clusters are recommended for your deployment based on the location of your devices.
+
+{{< figure src="recommended-locations.png" alt="Recommended clusters" >}}
+
+## Your {{% tts %}} Cloud Addresses
+
+Enter your **tenant ID** and choose a **cluster** from the dropdown. This will update the rest of the page with that address so you can get easily copyable links.
 
 {{< tenant-cluster-selector >}}
-
-## Cluster Address
 
 Your cluster address is:
 
@@ -27,7 +43,7 @@ Your cluster address is:
 </code>
 </p>
 
-## Console
+### Console
 
 To learn how to get started with the Console, see the [Console Getting Started Guide]({{< ref "/the-things-stack/interact/console" >}}).
 
@@ -41,7 +57,7 @@ https://<span data-content="tenant-id"></span>.<span data-content="cluster-id"><
 </code>
 </p>
 
-## API Endpoints
+### API Endpoints
 
 The Application Server, Join Server and Network Server APIs are all available in your routing cluster.
 
@@ -51,7 +67,7 @@ The Application Server, Join Server and Network Server APIs are all available in
 </code>
 </p>
 
-However, the Identity Server APIs are only available in the `eu1` cluster:
+However, the Identity Server APIs (`/api/is/*`) are only available in the `eu1` cluster. This is because `eu1` is the central cluster where entity registrations are stored.
 
 <p>
 <code data-content="cluster-address">
@@ -61,7 +77,7 @@ However, the Identity Server APIs are only available in the `eu1` cluster:
 
 {{< warning >}}End-Device Registry API requests or other Identity Server API requests to any cluster other than `eu1` will fail. {{</ warning >}}
 
-## Account and OAuth
+### Account and OAuth
 
 User accounts are stored in the `eu1` cluster. For registering users, logging in, changing your password and for performing OAuth flows, you need to use the following address:
 
@@ -71,7 +87,7 @@ https://<span data-content="tenant-id"></span>.eu1.cloud.thethings.industries/oa
 </code>
 </p>
 
-## Command-line Interface
+### Command-line Interface
 
 The Command-line Interface (CLI) needs to be configured with the address of the OAuth server and the gRPC addresses of the different servers. The addresses for OAuth and the Identity Server are always those of the `eu1` cluster. The other addresses are typically of the cluster of your choice.
 
@@ -94,7 +110,7 @@ credentials-id: '<span data-content="tenant-id"></span>'
 
 See the [CLI Getting Started Guide]({{< ref "/the-things-stack/interact/cli" >}}) to learn how to get started with the CLI and working with configuration files.
 
-## IP Addresses
+### IP Addresses
 
 {{% tts %}} Cloud runs on AWS. See the [AWS IP address range documentation](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html) for IP addresses of Cloud clusters.
 

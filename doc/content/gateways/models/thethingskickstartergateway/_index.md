@@ -46,7 +46,7 @@ Choose the WiFi network from the drop down and enter a password if necessary.
 
 Click the **Show Advanced Options** button and enter the following fields:
 
-- **Account Server**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}).
+- **Account Server**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/concepts/server-addresses" >}}).
 - **Gateway Key**: The API Key that you created earlier.
 - Click **Save** when done.
 

@@ -64,7 +64,7 @@ vi /opt/nas-lgw/global_conf.json
 Edit the server parameters:
 
 - **gateway_ID**: Make sure this is the same as the GatewayEUI (in lowercase).
-- **server_address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}).
+- **server_address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/concepts/server-addresses" >}}).
 - **serv_port_up**: UDP upstream port of the Gateway Server, typically 1700.
 - **serv_port_down**: UDP downstream port of the Gateway Server, typically 1700.
 

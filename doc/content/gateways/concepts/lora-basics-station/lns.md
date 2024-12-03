@@ -42,7 +42,7 @@ The server address is the network endpoint of {{% tts %}} LNS. It is a combinati
 
 Enter the following in your gateway as the LNS Server Address: `wss://<server-address>:8887`.
 
-The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/cloud/server-addresses" >}}) for more info.
+The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "/concepts/server-addresses" >}}) for more info.
 
 ### LNS Server Certificate / LNS Trust
 

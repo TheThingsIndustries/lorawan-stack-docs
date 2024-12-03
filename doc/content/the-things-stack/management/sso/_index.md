@@ -36,7 +36,7 @@ See instructions for configuring [Google]({{< relref "google" >}}) and [Amazon C
 
 ### Callback URL
 
-The callback URL (or Redirect URI in Google terminology) of your {{% tts %}} deployment is the [Server Address]({{< ref "/cloud/server-addresses" >}}) followed by the OAuth endpoint, which includes an **Authentication Provider ID** of your choosing:
+The callback URL (or Redirect URI in Google terminology) of your {{% tts %}} deployment is the [Server Address]({{< ref "/concepts/server-addresses" >}}) followed by the OAuth endpoint, which includes an **Authentication Provider ID** of your choosing:
 
 `/oauth/login/<authentication-provider-id>/callback`
 

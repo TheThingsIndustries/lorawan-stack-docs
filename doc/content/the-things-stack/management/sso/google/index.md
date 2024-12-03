@@ -23,7 +23,7 @@ Choose **Web application** for the **Application type**.
 
 {{< figure src="web-app.png" >}}
 
-Give the Application a **Name** of your choosing, and enter the **Redirect URI** of your {{% tts %}} deployment. The URI is the [Server Address]({{< ref "/cloud/server-addresses" >}}) followed by the OAuth endpoint, which includes an **Authentication Provider ID** of your choosing:
+Give the Application a **Name** of your choosing, and enter the **Redirect URI** of your {{% tts %}} deployment. The URI is the [Server Address]({{< ref "/concepts/server-addresses" >}}) followed by the OAuth endpoint, which includes an **Authentication Provider ID** of your choosing:
 
 ```
 /oauth/login/<authentication-provider-id>/callback

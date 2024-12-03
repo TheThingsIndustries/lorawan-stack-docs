@@ -60,7 +60,7 @@ Connect and power the gateway as above. The gateway will use DHCP to request an 
 
 Navigate to **Packet Forward** > **Module 1 Settings** on the left hand menu and enter the following settings to connect the gateway to {{% tts %}}:
 
-- **Server Address:** The address of your {{% tts %}} instance. See [Server Addresses]({{< ref "/cloud/server-addresses" >}})
+- **Server Address:** The address of your {{% tts %}} instance. See [Server Addresses]({{< ref "/concepts/server-addresses" >}})
 - **Server Uplink Port:** 1700
 - **Server Downlink Port:** 1700
 

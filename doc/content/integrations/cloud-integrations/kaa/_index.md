@@ -55,7 +55,7 @@ Navigate to the **Device management &#8594; Integrations** and click the **Add i
 
 - TTN username - {{% tts %}} MQTT username
 - TTN API key - the API key that you created in steps above
-- Identity Server Host - {{% tts %}} Identity Server host address (see the [Server Addresses section]({{< ref "/cloud/server-addresses" >}}) for more info)
+- Identity Server Host - {{% tts %}} Identity Server host address (see the [Server Addresses section]({{< ref "/concepts/server-addresses" >}}) for more info)
 - MQTT Server Host - {{% tts %}} MQTT public address
 
 {{< figure src="kaa-create-app-integration.png" alt="Create application integration" >}}

@@ -74,7 +74,7 @@ The parameters configure the integration:
   - When using `DeviceID`, the thing name will be a combination of the CloudFormation stack name and the device ID as registered in {{% tts %}}, i.e. `<stackName>_<DeviceID>`.
 - **Thing Shadow Metrics**: Enable or disable updating the thing shadow with metrics.
 - **Cluster Address**: The cluster address of your {{% tts %}} deployment.
-  - When using **The Things Stack Cloud**, go to [The Things Stack Cloud Addresses]({{< relref "/cloud/server-addresses" >}}) to find your cluster address
+  - When using **The Things Stack Cloud**, go to [The Things Stack Cloud Addresses]({{< relref "/cloud/addresses" >}}) to find your cluster address
   - When using **The Things Stack Enterprise**, enter your cluster address
   - When using **The Things Network**, select the community cluster from the dropdown
 - **Application ID**: The application ID for which you configure the integration.

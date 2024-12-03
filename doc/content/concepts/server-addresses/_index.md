@@ -2,7 +2,7 @@
 title: "Server Addresses"
 description: ""
 weight: 1
-aliases: [/getting-started/server-addresses, /cloud/server-addresses]
+aliases: [/getting-started/server-addresses]
 ---
 
 To access the [Console]({{< ref "/the-things-stack/interact/console" >}}), register a [command line client]({{< ref "the-things-stack/interact/cli" >}}), [connect gateways]({{< ref "/gateways/concepts/adding-gateways" >}}), or schedule uplinks via [webhooks]({{< ref "integrations/webhooks" >}}), it is necessary to know the server address of your {{% tts %}} instance. This section contains information about addresses for different {{% tts %}} deployments.
@@ -20,7 +20,7 @@ You can update the examples below with your tenant ID and cluster ID by filling 
 
 ## Deployments
 
-**Cloud**: See [Cloud Addresses]({{< ref "/cloud/server-addresses" >}}).
+**Cloud**: See [Cloud Addresses]({{< ref "/cloud/addresses" >}}).
 
 **AWS Launcher**: This is the domain you specify in your [CloudFormation configuration]({{< ref "the-things-stack/host/aws/ami/deployment-guide#step-2-configure-the-deployment" >}}).
 

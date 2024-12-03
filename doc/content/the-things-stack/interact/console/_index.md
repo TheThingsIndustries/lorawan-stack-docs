@@ -25,7 +25,7 @@ https://<span data-content="tenant-id"></span>.<span data-content="cluster-id"><
 </code>
 </p>
 
-See [Cloud Addresses]({{< ref "/cloud/server-addresses" >}}) for more information about cluster addresses.
+See [Cloud Addresses]({{< ref "/cloud/addresses" >}}) for more information about cluster addresses.
 
 ## {{% ttss %}}
 
@@ -37,6 +37,6 @@ Visit the addresses page for [{{% ttss %}}]({{< ref "reference/ttn/addresses" >}
 
 If you are hosting your own deployment, the Console is available at the address you host {{% tts %}} at.
 
-See [Server Addresses]({{< ref "/cloud/server-addresses" >}}) to learn more.
+See [Server Addresses]({{< ref "/concepts/server-addresses" >}}) to learn more.
 
 Once you have access to the Console, proceed to [Login]({{< relref "login" >}}).
