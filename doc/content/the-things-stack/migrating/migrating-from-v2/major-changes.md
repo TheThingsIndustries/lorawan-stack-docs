@@ -63,7 +63,7 @@ In order to connect a gateway to {{% tts %}}, first follow instructions for [Add
 
 For details on the data format of {{% ttnv2 %}}, see the documentation from [The Things Network](https://www.thethingsnetwork.org/docs/applications/mqtt/api.html).
 
-For details on the data format of {{% tts %}}, see [Data Formats]({{% ref "/the-things-stack/concepts/data-formats" %}}) section. It uses a different schema, different names, and has much richer metadata support.
+For details on the data format of {{% tts %}}, see [Data Formats]({{% ref "/integrations/data-formats" %}}) section. It uses a different schema, different names, and has much richer metadata support.
 
 ### Payload Formats
 

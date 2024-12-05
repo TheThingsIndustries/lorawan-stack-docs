@@ -1,19 +1,20 @@
 ---
 title: "Data Formats"
 description: ""
-aliases: [/integrations/data-formats, /reference/data-formats]
+aliases:
+  [
+    /integrations/data-formats,
+    /reference/data-formats,
+    /the-things-stack/concepts/data-formats,
+  ]
 weight: 3
 ---
 
-The streaming data integrations provide multiple formats for the delivery of application uplink messages and downlink queue operations. This section will delve into the common formats used by them.
+{{% tts %}} sends and receives application data from the various integrations in JSON format. This documentation provides some examples of these messages.
 
 <!--more-->
 
-Read about LoRaWAN® message types in [The Things Network documentation](https://www.thethingsnetwork.org/docs/lorawan/message-types/).
-
-## JSON
-
-The JSON message format is described in the sections below.
+These message are closely related to LoRaWAN® message types. Read more about them in [The Things Network documentation](https://www.thethingsnetwork.org/docs/lorawan/message-types/).
 
 {{< note >}} Empty fields are omitted from payloads. As such, if a certain field has a value of `""`, `0` or `false` it will not be present in the message. {{</ note >}}
 
@@ -45,26 +46,26 @@ The JSON join-accept messages use the following format:
 
 ```json
 {
-  "end_device_ids" : {
-    "device_id" : "dev1",
-    "application_ids" : {
-      "application_id" : "app1"
+  "end_device_ids": {
+    "device_id": "dev1",
+    "application_ids": {
+      "application_id": "app1"
     },
-    "dev_eui" : "0004A30B001C0530",
-    "join_eui" : "800000000000000C",
-    "dev_addr" : "01497ECC"
+    "dev_eui": "0004A30B001C0530",
+    "join_eui": "800000000000000C",
+    "dev_addr": "01497ECC"
   },
-  "correlation_ids" : [
+  "correlation_ids": [
     "as:up:01E191YN5F2HMBQCBCVRF731VY",
     "gs:conn:01E191S6ZEWB630NTR45K5QN4Q",
     "gs:uplink:01E191YMZ2S7ZRTEGATVE2S3HH",
     "ns:uplink:01E191YMZ2J64K6FEW5F0WE7TQ",
     "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01E191YMZ2KK3TJYG5C4XZP8JK"
   ],
-  "received_at" : "2020-02-17T07:49:09.935284891Z",
-  "join_accept" : {
-    "session_key_id" : "AXBSH1Pk6Z0G166RlH16CQ==",
-    "received_at" : "2020-02-17T07:49:09.736532315Z"
+  "received_at": "2020-02-17T07:49:09.935284891Z",
+  "join_accept": {
+    "session_key_id": "AXBSH1Pk6Z0G166RlH16CQ==",
+    "received_at": "2020-02-17T07:49:09.736532315Z"
   }
 }
 ```
@@ -157,55 +158,57 @@ The JSON uplink messages use the following format:
 
 ```json
 {
-  "end_device_ids" : {
-    "device_id" : "dev1",
-    "application_ids" : {
-      "application_id" : "app1"
+  "end_device_ids": {
+    "device_id": "dev1",
+    "application_ids": {
+      "application_id": "app1"
     },
-    "dev_eui" : "0004A30B001C0530",
-    "join_eui" : "800000000000000C",
-    "dev_addr" : "00BCB929"
+    "dev_eui": "0004A30B001C0530",
+    "join_eui": "800000000000000C",
+    "dev_addr": "00BCB929"
   },
-  "correlation_ids" : [
+  "correlation_ids": [
     "as:up:01E0WZGT6Y7657CPFPE5WEYDSQ",
     "gs:conn:01E0WDEC6T5T4XXBAX7S1VMFKE",
     "gs:uplink:01E0WZGSZWT07NE5TS2APTV1Z9",
     "ns:uplink:01E0WZGSZXZXZS8RFAWZX0F2FY",
     "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01E0WZGSZXGE1KS577PFBWRJEE"
   ],
-  "received_at" : "2020-02-12T15:15:46.014773143Z",
-  "uplink_message" : {
-    "session_key_id" : "AXA50tHUGUucuzS/bCGMNw==",
-    "f_cnt" : 1,
-    "frm_payload" : "gkHe",
-    "decoded_payload" : {
+  "received_at": "2020-02-12T15:15:46.014773143Z",
+  "uplink_message": {
+    "session_key_id": "AXA50tHUGUucuzS/bCGMNw==",
+    "f_cnt": 1,
+    "frm_payload": "gkHe",
+    "decoded_payload": {
       "temperature": 1.0,
       "luminosity": 0.64
     },
-    "rx_metadata" : [ {
-      "gateway_ids" : {
-        "gateway_id" : "gtw1",
-        "eui" : "9C5C8E00001A05C4"
-      },
-      "time" : "2020-02-12T15:15:45.787Z",
-      "timestamp" : 2463457000,
-      "rssi" : -35,
-      "channel_rssi" : -35,
-      "snr" : 5,
-      "uplink_token" : "ChIKEAoEZ3R3MRIInFyOAAAaBcQQ6L3Vlgk=",
-      "channel_index" : 2
-    } ],
-    "settings" : {
-      "data_rate" : {
-        "lora" : {
-          "bandwidth" : 125000,
-          "spreading_factor" : 7
+    "rx_metadata": [
+      {
+        "gateway_ids": {
+          "gateway_id": "gtw1",
+          "eui": "9C5C8E00001A05C4"
+        },
+        "time": "2020-02-12T15:15:45.787Z",
+        "timestamp": 2463457000,
+        "rssi": -35,
+        "channel_rssi": -35,
+        "snr": 5,
+        "uplink_token": "ChIKEAoEZ3R3MRIInFyOAAAaBcQQ6L3Vlgk=",
+        "channel_index": 2
+      }
+    ],
+    "settings": {
+      "data_rate": {
+        "lora": {
+          "bandwidth": 125000,
+          "spreading_factor": 7
         }
       },
-      "coding_rate" : "4/6",
-      "frequency" : "868300000",
-      "timestamp" : 2463457000,
-      "time" : "2020-02-12T15:15:45.787Z"
+      "coding_rate": "4/6",
+      "frequency": "868300000",
+      "timestamp": 2463457000,
+      "time": "2020-02-12T15:15:45.787Z"
     },
     "consumed_airtime": "0.056576s",
     "locations": {
@@ -217,18 +220,18 @@ The JSON uplink messages use the following format:
       }
     },
     "version_ids": {
-        "brand_id": "the-things-products",
-        "model_id": "the-things-uno",
-        "hardware_version": "1.0",
-        "firmware_version": "quickstart",
-        "band_id": "US_902_928"
+      "brand_id": "the-things-products",
+      "model_id": "the-things-uno",
+      "hardware_version": "1.0",
+      "firmware_version": "quickstart",
+      "band_id": "US_902_928"
     },
     "network_ids": {
       "net_id": "000013",
       "tenant_id": "tenant1",
       "cluster_id": "nam1"
     },
-    "received_at" : "2020-02-12T15:15:45.789585559Z"
+    "received_at": "2020-02-12T15:15:45.789585559Z"
   }
 }
 ```
@@ -242,6 +245,7 @@ curl --request GET /
   --location 'https://thethings.example.com/api/v3/applications/<application-id>/devices/<device-id>?field_mask=attributes' /
   --header "Authorization: Bearer <api-key>"
 ```
+
 {{</ note >}}
 
 ### Downlink Events Messages
@@ -277,16 +281,16 @@ The JSON downlink `ack`, `nack`, `queued` and `sent` events messages use the fol
 
 ```json
 {
-  "end_device_ids" : {
-    "device_id" : "dev1",
-    "application_ids" : {
-      "application_id" : "app1"
+  "end_device_ids": {
+    "device_id": "dev1",
+    "application_ids": {
+      "application_id": "app1"
     },
-    "dev_eui" : "0004A30B001C0530",
-    "join_eui" : "800000000000000C",
-    "dev_addr" : "00C30DFA"
+    "dev_eui": "0004A30B001C0530",
+    "join_eui": "800000000000000C",
+    "dev_addr": "00C30DFA"
   },
-  "correlation_ids" : [
+  "correlation_ids": [
     "as:downlink:01E19B99501X84X6CV471TVSZ1",
     "as:up:01E19B9J8ED6HZW5CC41KPGHVD",
     "gs:conn:01E191S6ZEWB630NTR45K5QN4Q",
@@ -294,15 +298,15 @@ The JSON downlink `ack`, `nack`, `queued` and `sent` events messages use the fol
     "ns:uplink:01E19B9J1CG3QNWS5M8G3DBMPN",
     "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01E19B9J17K85MJ1MXPHTW0410"
   ],
-  "received_at" : "2020-02-17T10:32:24.590413417Z",
-  "downlink_ack" : {
-    "session_key_id" : "AXBSp8v2brG0jqkri+sIkw==",
-    "f_port" : 15,
-    "f_cnt" : 1,
-    "frm_payload" : "vu8=",
-    "confirmed" : true,
-    "priority" : "NORMAL",
-    "correlation_ids" : [ "as:downlink:01E19B99501X84X6CV471TVSZ1" ]
+  "received_at": "2020-02-17T10:32:24.590413417Z",
+  "downlink_ack": {
+    "session_key_id": "AXBSp8v2brG0jqkri+sIkw==",
+    "f_port": 15,
+    "f_cnt": 1,
+    "frm_payload": "vu8=",
+    "confirmed": true,
+    "priority": "NORMAL",
+    "correlation_ids": ["as:downlink:01E19B99501X84X6CV471TVSZ1"]
   }
 }
 ```
@@ -343,27 +347,27 @@ The JSON downlink `failed` event provides both the downlink and the error detail
 
 ```json
 {
-  "end_device_ids" : {
-    "device_id" : "dev1",
-    "application_ids" : {
-      "application_id" : "app1"
+  "end_device_ids": {
+    "device_id": "dev1",
+    "application_ids": {
+      "application_id": "app1"
     }
   },
-  "correlation_ids" : [ "as:downlink:01E19Z5W3BZBG7CXSJE9C0A3CE" ],
-  "downlink_failed" : {
-    "downlink" : {
-      "f_port" : 15,
-      "frm_payload" : "vu8=",
-      "confirmed" : true,
-      "priority" : "NORMAL",
-      "correlation_ids" : [ "as:downlink:01E19Z5W3BZBG7CXSJE9C0A3CE" ]
+  "correlation_ids": ["as:downlink:01E19Z5W3BZBG7CXSJE9C0A3CE"],
+  "downlink_failed": {
+    "downlink": {
+      "f_port": 15,
+      "frm_payload": "vu8=",
+      "confirmed": true,
+      "priority": "NORMAL",
+      "correlation_ids": ["as:downlink:01E19Z5W3BZBG7CXSJE9C0A3CE"]
     },
-    "error" : {
-      "namespace" : "pkg/networkserver",
-      "name" : "application_downlink_too_long",
-      "message_format" : "application downlink payload is too long",
-      "correlation_id" : "2e7f786912e946e597894e381d0ad7b0",
-      "code" : 3
+    "error": {
+      "namespace": "pkg/networkserver",
+      "name": "application_downlink_too_long",
+      "message_format": "application downlink payload is too long",
+      "correlation_id": "2e7f786912e946e597894e381d0ad7b0",
+      "code": 3
     }
   }
 }
@@ -403,23 +407,25 @@ The end device identifiers need to be supplied only to frontends that do not der
 
 ```json
 {
-  "end_device_ids" : {
-    "device_id" : "dev1",
-    "application_ids" : {
-      "application_id" : "app1"
+  "end_device_ids": {
+    "device_id": "dev1",
+    "application_ids": {
+      "application_id": "app1"
     }
   },
-  "downlinks": [{
-    "f_port": 15,
-    "frm_payload": "vu8=",
-    "decoded_payload" : {
-      "temperature": 1.0,
-      "luminosity": 0.64
-    },
-    "priority": "NORMAL",
-    "confirmed": true,
-    "correlation_ids" : [ "custom-id" ]
-  }]
+  "downlinks": [
+    {
+      "f_port": 15,
+      "frm_payload": "vu8=",
+      "decoded_payload": {
+        "temperature": 1.0,
+        "luminosity": 0.64
+      },
+      "priority": "NORMAL",
+      "confirmed": true,
+      "correlation_ids": ["custom-id"]
+    }
+  ]
 }
 ```
 
