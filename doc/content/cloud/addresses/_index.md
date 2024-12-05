@@ -1,7 +1,7 @@
 ---
-title: "Clusters"
+title: "Server Addresses"
 description: ""
-weight: 1
+weight: 2
 aliases:
   [
     /getting-started/cloud-hosted/addresses,
@@ -11,25 +11,9 @@ aliases:
 distributions: ["Cloud"]
 ---
 
-{{% tts %}} Cloud is a multi-cluster deployment. This means that while your account, login and entity information is stored in a central location, you can connect your gateways to a cluster closer to the physical location of your gateways, and route all your IoT traffic in that cluster. Thi significantly reduces latency and improves the performance of your gateways.
+This page provides configuration details and guidance for accessing and managing {{% tts %}} Cloud clusters, including Console, API endpoints, OAuth, CLI setup, and IP address considerations.
 
 <!--more-->
-
-{{% tts %}} Cloud currently has the following clusters:
-
-| **Cluster ID** | **Name**        | **Location**      |
-| -------------- | --------------- | ----------------- |
-| `au1`          | Australia 1     | Sydney, Australia |
-| `as1`          | Asia 1          | Tokyo, Japan      |
-| `eu1`          | Europe 1        | Dublin, Ireland   |
-| `eu2`          | Europe 2        | London, UK        |
-| `nam1`         | North America 1 | California, USA   |
-
-You can head over to our cluster picker at [console.cloud.thethings.industries](https://console.cloud.thethings.industries) and find out which {{% tts %}} Cloud clusters are recommended for your deployment based on the location of your devices.
-
-{{< figure src="recommended-locations.png" alt="Recommended clusters" >}}
-
-## Your {{% tts %}} Cloud Addresses
 
 Enter your **tenant ID** and choose a **cluster** from the dropdown. This will update the rest of the page with that address so you can get easily copyable links.
 

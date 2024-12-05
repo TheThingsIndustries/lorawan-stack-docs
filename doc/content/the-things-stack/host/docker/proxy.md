@@ -14,7 +14,7 @@ weight: 4
 
 In order for an external proxy to terminate TLS connections, {{% tts %}} TLS listeners have to be disabled.
 
-The [Networking]({{< ref "/the-things-stack/concepts/networking#port-allocations" >}}) section lists the ports that {{% tts %}} listens on and their TLS variants.
+The [Networking]({{< ref "/concepts/networking#port-allocations" >}}) section lists the ports that {{% tts %}} listens on and their TLS variants.
 
 In order to prevent {{% tts %}} listening to a TLS port, set the corresponding `listen-tls` option in the configuration to an empty string `""`.
 
@@ -45,7 +45,7 @@ interop:
 
 With the above setting, you can now map these TLS ports onto {{% tts %}} services.
 
-Following the table in our [Networking]({{< ref "/the-things-stack/concepts/networking#port-allocations" >}}) section, for each port that you want to enable in {{% tts %}}, configure your proxy to listen to the TLS variant of that port.
+Following the table in our [Networking]({{< ref "/concepts/networking#port-allocations" >}}) section, for each port that you want to enable in {{% tts %}}, configure your proxy to listen to the TLS variant of that port.
 
 For example, map the HTTPS port of the proxy to the HTTP port of {{% tts %}}, the gRPCS port of the proxy to the gRPC port of {{% tts %}} and so on. Each proxy has a different method of port mapping/traffic forwarding. Check the documentation of your proxy of choice.
 

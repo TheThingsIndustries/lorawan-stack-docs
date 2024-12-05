@@ -9,7 +9,7 @@ aliases: ["/reference/api/gateway_server_mqtt"]
 
 <!--more-->
 
-See the [port allocations]({{< ref "/the-things-stack/concepts/networking/#port-allocations" >}}) guide to check which protocol is supported on which port.
+See the [port allocations]({{< ref "/concepts/networking/#port-allocations" >}}) guide to check which protocol is supported on which port.
 
 ## LoRa Basics™ Station
 
@@ -58,7 +58,7 @@ Gateways can connect using the username `{gateway-id}@{tenant-id}` and an API ke
 
 #### Connecting to the Gateway Server
 
-See [Networking]({{< ref "/the-things-stack/concepts/networking" >}}) for the default port of the MQTT server.
+See [Networking]({{< ref "/concepts/networking" >}}) for the default port of the MQTT server.
 
 The username is `<gateway-id>@<tenant-id>` (e.g. `gtw1@tenant1`), and the password is a gateway API key with the `RIGHT_GATEWAY_LINK` right enabled. You can generate this API key by following instructions in the [Creating Gateways]({{< ref "/gateways/concepts/adding-gateways#create-gateway-api-key" >}}) section.
 

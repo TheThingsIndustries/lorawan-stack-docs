@@ -2,7 +2,7 @@
 title: "Networking"
 description: ""
 weight: 4
-aliases: [/reference/networking]
+aliases: [/reference/networking, /the-things-stack/concepts/networking/]
 ---
 
 {{% tts %}} uses a port per protocol, with a TLS counterpart when applicable. Ports can be shared by multiple services using the same protocol, i.e. gRPC services sharing management, data and events services.

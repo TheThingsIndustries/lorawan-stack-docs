@@ -1,7 +1,7 @@
 ---
 title: "Subscription and billing"
 description: ""
-weight: 2
+weight: 1
 aliases:
   [
     /getting-started/billing-and-subscription-management/,
