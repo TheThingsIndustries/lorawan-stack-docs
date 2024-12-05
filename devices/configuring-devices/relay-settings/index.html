@@ -58,6 +58,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div id="topMenu" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
         <a class="navbar-item" href="/docs/devices/">Devices</a>
         <a class="navbar-item" href="/docs/gateways/">Gateways</a>
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
@@ -197,12 +199,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="retroactivity">Retroactivity</h2>
 <p>In contrast to <a href="https://www.thethingsindustries.com/docs/devices/configuring-devices/mac-settings/">MAC settings</a>, the relay configuration commands will automatically apply changes to both the current, pending and future sessions of the end devices.</p>
 <h2 id="examples">Examples</h2>
-<h3 id="enabling-the-serving-mode-hahahugoshortcode63s3hbhb">Enabling the Serving Mode <span class="tag is-light">New in 3.29.0</span>
+<h3 id="enabling-the-serving-mode-hahahugoshortcode67s3hbhb">Enabling the Serving Mode <span class="tag is-light">New in 3.29.0</span>
 
 </h3>
 <p>In order to enable the <a href="https://www.thethingsindustries.com/docs/devices/concepts/relay/#relay-mode">serving mode</a> of an end device, use the <code>create</code> command and the <code>--mode.serving</code> parameter.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli relays create &lt;app-id&gt; &lt;device-id&gt; --mode.serving
-</span></span></code></pre></div><h3 id="enabling-the-served-mode-hahahugoshortcode63s5hbhb">Enabling the Served Mode <span class="tag is-light">New in 3.29.0</span>
+</span></span></code></pre></div><h3 id="enabling-the-served-mode-hahahugoshortcode67s5hbhb">Enabling the Served Mode <span class="tag is-light">New in 3.29.0</span>
 
 </h3>
 <p>In order to enable the <a href="https://www.thethingsindustries.com/docs/devices/concepts/relay/#relay-mode">served mode</a> of an end device, use the <code>create</code> command and the <code>--mode.served</code> flag.</p>
@@ -218,24 +220,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>A device may attempt to use the serving end device only after it has not received a downlink message recently. This mode is called <em>dynamic</em>, and can be used using the <code>--mode.served.mode.dynamic</code> flag.</li>
 <li>A device may have its own algorithm to choose when to use the serving end device. This mode is called <em>end device controlled</em>, and can be used using the <code>--mode.served.mode.end-device-controlled</code> flag.</li>
 </ol>
-<h3 id="retrieving-the-settings-hahahugoshortcode63s8hbhb">Retrieving the Settings <span class="tag is-light">New in 3.29.0</span>
+<h3 id="retrieving-the-settings-hahahugoshortcode67s8hbhb">Retrieving the Settings <span class="tag is-light">New in 3.29.0</span>
 
 </h3>
 <p>In order to retrieve the settings of a serving end device, use the <code>get</code> command.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli relays get &lt;app-id&gt; &lt;device-id&gt; --mode.serving
 </span></span></code></pre></div><p>The <code>--mode.served</code> may be used to retrieve the settings of a served end device.</p>
-<h3 id="updating-the-settings-hahahugoshortcode63s9hbhb">Updating the Settings <span class="tag is-light">New in 3.29.0</span>
+<h3 id="updating-the-settings-hahahugoshortcode67s9hbhb">Updating the Settings <span class="tag is-light">New in 3.29.0</span>
 
 </h3>
 <p>In order to update the settings of an end device, use the <code>set</code> command.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli relays <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mode.serving.cad-periodicity <span class="m">1</span>
 </span></span></code></pre></div><p>You can see the possible parameters which can be updated using the <code>--help</code> flag.</p>
-<h3 id="removing-the-settings-hahahugoshortcode63s10hbhb">Removing the Settings <span class="tag is-light">New in 3.29.0</span>
+<h3 id="removing-the-settings-hahahugoshortcode67s10hbhb">Removing the Settings <span class="tag is-light">New in 3.29.0</span>
 
 </h3>
 <p>In order to delete all of the relay settings of an end device, use the <code>delete</code> command.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli relays delete &lt;app-id&gt; &lt;device-id&gt;
-</span></span></code></pre></div><h3 id="creating-an-uplink-forwarding-rule-hahahugoshortcode63s11hbhb">Creating an Uplink Forwarding Rule <span class="tag is-light">New in 3.29.0</span>
+</span></span></code></pre></div><h3 id="creating-an-uplink-forwarding-rule-hahahugoshortcode67s11hbhb">Creating an Uplink Forwarding Rule <span class="tag is-light">New in 3.29.0</span>
 
 </h3>
 <p>In order to create an uplink forwarding rule on a serving end device, for a served end device, use the <code>uplink-forwarding-rules create</code> command.</p>
@@ -250,25 +252,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli relays uplink-forwarding-rules create &lt;app-id&gt; &lt;device-id&gt; &lt;rule-id&gt; --device-id &lt;served-device-id&gt;
-</span></span></code></pre></div><h3 id="retrieving-all-uplink-forwarding-rules-hahahugoshortcode63s14hbhb">Retrieving All Uplink Forwarding Rules <span class="tag is-light">New in 3.29.0</span>
+</span></span></code></pre></div><h3 id="retrieving-all-uplink-forwarding-rules-hahahugoshortcode67s14hbhb">Retrieving All Uplink Forwarding Rules <span class="tag is-light">New in 3.29.0</span>
 
 </h3>
 <p>In order to retrieve all of the uplink forwarding rules of a serving end device, use the <code>uplink-forwarding-rules list</code> command.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli relays uplink-forwarding-rules list &lt;app-id&gt; &lt;device-id&gt; --device-id
 </span></span></code></pre></div><p>Like other <code>list</code>-like commands in The Things Stack, the fields which are returned have to be specified in the command flags. Use the <code>--help</code> flags to see which other fields can be retrieved.</p>
-<h3 id="retrieving-individual-uplink-forwarding-rules-hahahugoshortcode63s16hbhb">Retrieving Individual Uplink Forwarding Rules <span class="tag is-light">New in 3.29.0</span>
+<h3 id="retrieving-individual-uplink-forwarding-rules-hahahugoshortcode67s16hbhb">Retrieving Individual Uplink Forwarding Rules <span class="tag is-light">New in 3.29.0</span>
 
 </h3>
 <p>In order to retrieve an individual uplink forwarding rule of a serving end device, use the <code>uplink-forwarding-rules get</code> command.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli relays uplink-forwarding-rules get &lt;app-id&gt; &lt;device-id&gt; &lt;rule-id&gt;
 </span></span></code></pre></div><p>Like other <code>get</code>-like commands in The Things Stack, the fields which are returned have to be specified in the command flags. Use the <code>--help</code> flags to see which other fields can be retrieved.</p>
-<h3 id="updating-uplink-forwarding-rules-hahahugoshortcode63s18hbhb">Updating Uplink Forwarding Rules <span class="tag is-light">New in 3.29.0</span>
+<h3 id="updating-uplink-forwarding-rules-hahahugoshortcode67s18hbhb">Updating Uplink Forwarding Rules <span class="tag is-light">New in 3.29.0</span>
 
 </h3>
 <p>In order to update an uplink forwarding rule of a serving end device, use the <code>uplink-forwarding-rules set</code> command.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli relays uplink-forwarding-rules <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; &lt;rule-id&gt; --device-id &lt;serving-device-id&gt;
 </span></span></code></pre></div><p>You can see the possible parameters which can be updated using the <code>--help</code> flag.</p>
-<h3 id="deleting-uplink-forwarding-rules-hahahugoshortcode63s19hbhb">Deleting Uplink Forwarding Rules <span class="tag is-light">New in 3.29.0</span>
+<h3 id="deleting-uplink-forwarding-rules-hahahugoshortcode67s19hbhb">Deleting Uplink Forwarding Rules <span class="tag is-light">New in 3.29.0</span>
 
 </h3>
 <p>In order to delete an uplink forwarding rule of a serving end device, use the <code>uplink-forwarding-rules delete</code> command.</p>
@@ -323,6 +325,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <nav class="column is-one-third">
         <h3 class="title is-6">The Things Stack</h3>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
         <p><a class="" href="/docs/devices/">Devices</a></p>
         <p><a class="" href="/docs/gateways/">Gateways</a></p>
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>

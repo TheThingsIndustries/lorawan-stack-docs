@@ -58,6 +58,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div id="topMenu" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
         <a class="navbar-item" href="/docs/devices/">Devices</a>
         <a class="navbar-item" href="/docs/gateways/">Gateways</a>
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
@@ -351,10 +353,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">bytes</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">bytes</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="o">:</span> <span class="p">[],</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">errors</span><span class="o">:</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">errors</span><span class="o">:</span> <span class="p">[],</span>
 </span></span><span class="line"><span class="cl">  <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="setup-kaa">Setup Kaa</h2>
@@ -372,7 +374,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>TTN username - The Things Stack MQTT username</li>
 <li>TTN API key - the API key that you created in steps above</li>
-<li>Identity Server Host - The Things Stack Identity Server host address (see the <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/server-addresses/">Server Addresses section</a> for more info)</li>
+<li>Identity Server Host - The Things Stack Identity Server host address (see the <a href="https://www.thethingsindustries.com/docs/cloud/server-addresses/">Server Addresses section</a> for more info)</li>
 <li>MQTT Server Host - The Things Stack MQTT public address</li>
 </ul>
 <figure><img src="/docs/integrations/cloud-integrations/kaa/kaa-create-app-integration.png"
@@ -408,7 +410,7 @@ You will then be able to view these time series in the Kaa UI, with no extra con
 </figure>
 
 <p>Let&rsquo;s assume that The Things Stack device is sending temperature measurements in the next format:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span><span class="nt">&#34;temp&#34;</span><span class="p">:</span><span class="mi">20</span><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span> <span class="nt">&#34;temp&#34;</span><span class="p">:</span> <span class="mi">20</span> <span class="p">}</span>
 </span></span></code></pre></div><p>Convert this payload to a byte array in HEX (<code>7B 22 74 65 6D 70 22 3A 32 30 7D</code>), go to the <strong>End devices → your device&rsquo;s Overview page → Messaging</strong> in The Things Stack Console and paste the byte array into the <strong>Payload</strong> field.</p>
 <p>As a result, you should be able to see the data on Kaa UI.</p>
 <figure><img src="/docs/integrations/cloud-integrations/kaa/kaa-endpoint-data.png"
@@ -477,6 +479,8 @@ You will then be able to view these time series in the Kaa UI, with no extra con
       <nav class="column is-one-third">
         <h3 class="title is-6">The Things Stack</h3>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
         <p><a class="" href="/docs/devices/">Devices</a></p>
         <p><a class="" href="/docs/gateways/">Gateways</a></p>
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>

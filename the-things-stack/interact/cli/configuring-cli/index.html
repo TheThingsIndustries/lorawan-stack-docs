@@ -58,6 +58,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div id="topMenu" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
         <a class="navbar-item" href="/docs/devices/">Devices</a>
         <a class="navbar-item" href="/docs/gateways/">Gateways</a>
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
@@ -94,13 +96,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/the-things-stack/" class="">Overview</a>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/" class="">Basic Concepts</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/cloud/" class="">The Things Stack Cloud</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/cloud/billing-and-subscription-management/" class="">Subscription and Billing Management</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/" class="">Host The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/spec-regional-parameters/" class="">LoRaWAN Specification and Regional Parameters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/cloud/subscribe-tts-via-aws-marketplace/" class="">Subscription via AWS Marketplace</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/data-formats/" class="">Data Formats</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/" class="">Interact with The Things Stack</a>
@@ -167,6 +175,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/" class="">Manage The Things Stack</a>
   </li>
 <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/networking/" class="">Networking</a>
+  </li>
+<li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/" class="">Migrate to The Things Stack</a>
   </li>
 <li>
@@ -180,6 +191,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/troubleshooting/" class="">Troubleshooting</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/cloud/addresses/" class="">Cloud Addresses</a>
   </li>
 </ul>
 
@@ -232,12 +246,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli.exe use &lt;eu1/au1/nam1&gt;.cloud.thethings.network
 </span></span></code></pre></div><p>If you are using The Things Stack Cloud use the following command with your <code>tenant id</code> and regional <code>cluster</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli use &lt;tenant_id&gt;.&lt;eu1/eu2/au1/nam1/&gt;.cloud.thethings.industries
-</span></span></code></pre></div><p>If you are hosting your own deployment, use the following, replacing <code>thethings.example.com</code> with your <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/server-addresses/">server address</a>:</p>
+</span></span></code></pre></div><p>If you are hosting your own deployment, use the following, replacing <code>thethings.example.com</code> with your <a href="https://www.thethingsindustries.com/docs/cloud/server-addresses/">server address</a>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli use thethings.example.com
 </span></span></code></pre></div>
 </section>
 <section data-content="enterprise">
-  <p>If you are hosting your own deployment, use the following, replacing <code>thethings.example.com</code> with your <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/server-addresses/">server address</a>:</p>
+  <p>If you are hosting your own deployment, use the following, replacing <code>thethings.example.com</code> with your <a href="https://www.thethingsindustries.com/docs/cloud/server-addresses/">server address</a>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tti-lw-cli use thethings.example.com
 </span></span></code></pre></div><p>or on Windows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tti-lw-cli.exe use thethings.example.com
@@ -264,7 +278,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h3 id="manually-create-configuration-file">Manually create configuration file</h3>
 <p>It is also possible to manually create a configuration file. For most configurations, this is not necessary, and it is preferable to <a href="#automatically-generate-configuration-file">automatically generate the configuration</a>. However, if you have separate component addresses, you can specify them in a manual configuration.</p>
 <p>To manually configure, first create a <code>.ttn-lw-cli.yml</code> file.</p>
-<p>Copy and paste the following contents in the <code>.ttn-lw-cli.yml</code> file, replacing <code>thethings.example.com</code> with the <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/server-addresses/">server addresses</a> of each component:</p>
+<p>Copy and paste the following contents in the <code>.ttn-lw-cli.yml</code> file, replacing <code>thethings.example.com</code> with the <a href="https://www.thethingsindustries.com/docs/cloud/server-addresses/">server addresses</a> of each component:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">oauth-server-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/oauth&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">identity-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com:8884&#34;</span><span class="w">
@@ -359,6 +373,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <nav class="column is-one-third">
         <h3 class="title is-6">The Things Stack</h3>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
         <p><a class="" href="/docs/devices/">Devices</a></p>
         <p><a class="" href="/docs/gateways/">Gateways</a></p>
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
