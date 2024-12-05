@@ -17,7 +17,7 @@ To make it easier to manage groups of users, it is possible to create organizati
 
 When a user is a collaborator of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity.
 
-In this section, we explain how to manage organizations and grant them rights using {{% tts %}} [Console]({{< ref "/concepts/features/console" >}}) and the [CLI]({{< ref "/the-things-stack/interact/cli" >}}).
+In this section, we explain how to manage organizations and grant them rights using {{% tts %}} [Console]({{< ref "/concepts/features/console" >}}) and the [CLI]({{< ref "/concepts/features/cli" >}}).
 
 {{< tabs/container "Console" "CLI" >}}
 

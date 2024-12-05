@@ -16,6 +16,7 @@ In addition to the written instructions below, video instructions for installing
 </details>
 
 ## Configuration Files
+
 {{% tts %}} requires two configuration files when installing with Docker: `docker-compose.yml` and `ttn-lw-stack-docker.yml`. The files are provided below:
 
 {{< tabs/container "Enterprise" "Open Source" >}}
@@ -318,7 +319,7 @@ ACME will not work on `localhost`, so you must either generate custom certificat
 
 This will still allow you to see {{% tts %}} Console by entering `localhost` or your local IP address in your browser. It will also allow you to connect to {{% tts %}} from any machine inside your local network.
 
-You will also need to [configure the CLI]({{< ref "the-things-stack/interact/cli/installing-cli#generate-configuration-file" >}}), to use the static IP of your machine as the address of {{% tts %}}.
+You will also need to [configure the CLI]({{< ref "/concepts/features/cli/installing-cli#generate-configuration-file" >}}), to use the static IP of your machine as the address of {{% tts %}}.
 
 ### Solution 2: Specify the internal ports that {{% tts %}} listens on in your configuration files
 
@@ -332,9 +333,9 @@ For example,
 is:
   oauth:
     ui:
-      canonical-url: 'https://thethings.example.com/oauth'
+      canonical-url: "https://thethings.example.com/oauth"
       is:
-        base-url: 'https://thethings.example.com/api/v3'
+        base-url: "https://thethings.example.com/api/v3"
 ```
 
 becomes
@@ -343,9 +344,9 @@ becomes
 is:
   oauth:
     ui:
-      canonical-url: 'https://localhost:8885/oauth'
+      canonical-url: "https://localhost:8885/oauth"
       is:
-        base-url: 'https://localhost:8885/api/v3'
+        base-url: "https://localhost:8885/api/v3"
 ```
 
 and in `docker-compose.yml`, add the following port forwarding configuration (if it does not already exist), while removing ports 80 and 443:

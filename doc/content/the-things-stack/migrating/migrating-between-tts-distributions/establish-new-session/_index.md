@@ -18,7 +18,7 @@ This section explains how to migrate end devices from {{% ttss %}} to {{% tts %}
 
 In this section, we consider migrating your devices in cases when you don't want to migrate your gateway from {{% ttss %}} to {{% tts %}} Cloud, or when your gateway is inaccessible for this migration. In those cases, devices are migrated from {{% ttss %}} to {{% tts %}} Cloud without persisting their active session, i.e. devices need to establish a new session with {{% tts %}} Cloud in order for a gateway (that wasn't migrated from {{% ttss %}}) to be able to route traffic from those devices to {{% tts %}} Cloud. More information about this is available in subsections below.
 
-For a new session to be established between device (that's currently connected to {{% ttss %}}) and {{% tts %}} Cloud, device has to perform a [join procedure]({{< ref "/reference/components/join-server#join-procedure" >}}) to register on {{% tts %}} Cloud. In order not to lose any uplink traffic during this join procedure, we suggest to disable scheduling downlink messages on {{% ttss %}} Network Server using the following [CLI]({{< ref "/the-things-stack/interact/cli" >}}) command:
+For a new session to be established between device (that's currently connected to {{% ttss %}}) and {{% tts %}} Cloud, device has to perform a [join procedure]({{< ref "/reference/components/join-server#join-procedure" >}}) to register on {{% tts %}} Cloud. In order not to lose any uplink traffic during this join procedure, we suggest to disable scheduling downlink messages on {{% ttss %}} Network Server using the following [CLI]({{< ref "/concepts/features/cli" >}}) command:
 
 ```bash
 ttn-lw-cli dev set --application-id <app-id> --device-id <device-id> \
@@ -53,7 +53,7 @@ To export device using the [migration tool]({{< ref "/the-things-stack/migrating
 ttn-lw-migrate device --source tts 'my-device' --tts.no-session > devices.json
 ```
 
-Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions.
 
 The process of migrating OTAA devices using the migration tool ends here and you can ignore the info below the line.
 
@@ -69,9 +69,9 @@ First step is to recreate your device on {{% tts %}} Cloud through the Console. 
 
 {{< tabs/tab "CLI" >}}
 
-First, configure your CLI to connect to {{% ttss %}}. See [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions. Make sure you also perform a [Login with the CLI]({{< ref "/the-things-stack/interact/cli/login" >}}) to {{% ttss %}}.
+First, configure your CLI to connect to {{% ttss %}}. See [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions. Make sure you also perform a [Login with the CLI]({{< ref "/concepts/features/cli/login" >}}) to {{% ttss %}}.
 
-{{< note >}} We recommend to use the latest version of the CLI. Instructions for upgrading the CLI if you already have it installed are available in the [Installing the CLI]({{< ref "/the-things-stack/interact/cli/installing-cli" >}}) guide. {{</ note >}}
+{{< note >}} We recommend to use the latest version of the CLI. Instructions for upgrading the CLI if you already have it installed are available in the [Installing the CLI]({{< ref "/concepts/features/cli/installing-cli" >}}) guide. {{</ note >}}
 
 Now, use the CLI to export your device's description from {{% ttss %}}:
 
@@ -89,7 +89,7 @@ ttn-lw-cli end-devices get --application-id <app-id> --device-id <device-id> \
 
 The command above will export your device's description to the `device-description.json` file in the current folder. Open the file with a text editor and remove the following fields: `join_server_address`, `network_server_address` and `application_server_address`.
 
-Next, you need to import the `device-description.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to re-configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `device-description.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to re-configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions.
 
 {{< /tabs/tab >}}
 
@@ -142,7 +142,7 @@ ttn-lw-migrate device --source tts 'my-device' \
     --tts.no-session > devices.json
 ```
 
-Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions.
 
 You will also need to reset your ABP device.
 
@@ -169,9 +169,9 @@ When your device is registered in {{% tts %}} Cloud, you need to completely dele
 
 {{< tabs/tab "CLI" >}}
 
-First, configure your CLI to connect to {{% ttss %}}. See [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions. Make sure you also perform a [Login with the CLI]({{< ref "/the-things-stack/interact/cli/login" >}}) to {{% ttss %}}.
+First, configure your CLI to connect to {{% ttss %}}. See [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions. Make sure you also perform a [Login with the CLI]({{< ref "/concepts/features/cli/login" >}}) to {{% ttss %}}.
 
-{{< note >}} We recommend to use the latest version of the CLI. Instructions for upgrading the CLI if you already have it installed are available in the [Installing the CLI]({{< ref "/the-things-stack/interact/cli/installing-cli" >}}) guide. {{</ note >}}
+{{< note >}} We recommend to use the latest version of the CLI. Instructions for upgrading the CLI if you already have it installed are available in the [Installing the CLI]({{< ref "/concepts/features/cli/installing-cli" >}}) guide. {{</ note >}}
 
 Now, use the CLI to export your device's description from {{% ttss %}}:
 
@@ -191,7 +191,7 @@ ttn-lw-cli end-devices get --application-id <app-id> --device-id <device-id> \
 
 The command above will export your device's description to the `device-description.json` file in the current folder. Open the file with a text editor and remove the following fields: `join_server_address`, `network_server_address` and `application_server_address`. Also, set the `mac-settings.resets-f-cnt` field value to `true`.
 
-Next, you need to import the `device-description.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to re-configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `device-description.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to re-configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions.
 
 When your device is registered in {{% tts %}} Cloud, you need to completely delete it from {{% ttss %}} network to prevent conflicts. You will also need to reset your ABP device.
 

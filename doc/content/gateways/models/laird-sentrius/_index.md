@@ -29,7 +29,7 @@ The technical specifications can be found in [Laird's official documentation](ht
 
 ## Registration
 
-Create a gateway by following the instructions for the [Console]({{< ref "/concepts/features/console#create-gateway" >}}) or the [CLI]({{< ref "/the-things-stack/interact/cli#create-gateway" >}}).
+Create a gateway by following the instructions for the [Console]({{< ref "/concepts/features/console#create-gateway" >}}) or the [CLI]({{< ref "/concepts/features/cli#create-gateway" >}}).
 
 The **EUI** of the gateway can be found on the configuration web page of the gateway as **Gateway ID**, or on the bottom label as **DevEUI**.
 

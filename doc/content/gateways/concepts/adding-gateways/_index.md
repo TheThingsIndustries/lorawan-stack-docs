@@ -5,7 +5,7 @@ weight: -2
 aliases:
   [
     /gateways/adding-gateways,
-    /the-things-stack/interact/cli/create-gateway,
+    /concepts/features/cli/create-gateway,
     /concepts/console/create-gateway,
   ]
 ---

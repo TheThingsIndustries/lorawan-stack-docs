@@ -4,7 +4,7 @@ description: ""
 aliases:
   - /getting-started/cli/create-end-device
   - /getting-started/console/create-end-device
-  - /the-things-stack/interact/cli/create-end-device
+  - /concepts/features/cli/create-end-device
   - /concepts/console/create-end-device
   - /getting-started/device-claiming/claim-devices
 weight: 1

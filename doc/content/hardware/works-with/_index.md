@@ -2,6 +2,7 @@
 title: "Works with The Things Stack"
 description: ""
 weight: 7
+aliases: [/the-things-stack/works-with]
 ---
 
 Selected LoRaWAN End Devices and Gateways are certified **Works with The Things Stack**.

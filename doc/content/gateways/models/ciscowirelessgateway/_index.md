@@ -25,7 +25,7 @@ Technical specifications for this gateway can be found in [Cisco's official docu
 
 ## Registration
 
-Create a gateway by following the instructions for the [Console]({{< ref "/concepts/features/console#create-gateway" >}}) or the [CLI]({{< ref "/the-things-stack/interact/cli#create-gateway" >}}).
+Create a gateway by following the instructions for the [Console]({{< ref "/concepts/features/console#create-gateway" >}}) or the [CLI]({{< ref "/concepts/features/cli#create-gateway" >}}).
 
 The gateway EUI is derived from the MAC address that can be found on the back panel of the gateway. To get the EUI from the MAC address insert `FFFE` after the first 6 characters to make it a 64-bit EUI. For example, if the gateway's MAC address is `5B:A0:CB:80:04:2B` then the EUI is `5B A0 CB FF FE 80 04 2B`.
 

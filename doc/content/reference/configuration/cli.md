@@ -25,6 +25,7 @@ By default the CLI uses JSON as the input and output format. It is also possible
 - `output-format`: Output format
 
 The CLI is capable of retrying requests that were rejected by the rate limiter: errors of type `ResourceExausthed` and `Unavailable`. By default, this behavior is disabled but can be set through the following configurations:
+
 - `retry-config.max`: Maximum amount of times that a request can be reattempted.
 - `retry-config.default-timeout`: Default timeout between retry attempts.
 - `retry-config.enable-metadata`: Enables use of the request response metadata to dynamically calculate a timeout for the retry attempts.
@@ -32,7 +33,7 @@ The CLI is capable of retrying requests that were rejected by the rate limiter: 
 
 ## API Options
 
-The CLI needs to be configured with the addresses of the OAuth server. The [Getting Started guide]({{< ref "/the-things-stack/interact/cli/installing-cli" >}}) gives a good example configuration for a typical deployment.
+The CLI needs to be configured with the addresses of the OAuth server. The [Getting Started guide]({{< ref "/concepts/features/cli/installing-cli" >}}) gives a good example configuration for a typical deployment.
 
 - `oauth-server-address`: OAuth Server address
 - `identity-server-grpc-address`: Identity Server address

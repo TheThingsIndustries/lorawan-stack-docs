@@ -51,7 +51,7 @@ Please check the [Console]({{< ref "/concepts/features/console" >}}) guide to ge
 
 ## Getting Started using the Command Line Interface (CLI)
 
-Please check the [CLI]({{< ref "/the-things-stack/interact/cli" >}}) guide to get quickly started with {{% tts %}} CLI.
+Please check the [CLI]({{< ref "/concepts/features/cli" >}}) guide to get quickly started with {{% tts %}} CLI.
 
 ## SSH Access
 

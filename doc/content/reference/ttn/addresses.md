@@ -73,4 +73,4 @@ device-template-converter-grpc-address: '<span data-content="cluster-id"></span>
 qr-code-generator-grpc-address: '<span data-content="cluster-id"></span>.cloud.thethings.network:8884'
 </pre>
 
-See the [CLI Getting Started Guide]({{< ref "/the-things-stack/interact/cli" >}}) to learn how to get started with the CLI and working with configuration files.
+See the [CLI Getting Started Guide]({{< ref "/concepts/features/cli" >}}) to learn how to get started with the CLI and working with configuration files.

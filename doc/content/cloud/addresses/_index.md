@@ -92,7 +92,7 @@ qr-code-generator-grpc-address: '<span data-content="tenant-id"></span>.<span da
 credentials-id: '<span data-content="tenant-id"></span>'
 </pre>
 
-See the [CLI Getting Started Guide]({{< ref "/the-things-stack/interact/cli" >}}) to learn how to get started with the CLI and working with configuration files.
+See the [CLI Getting Started Guide]({{< ref "/concepts/features/cli" >}}) to learn how to get started with the CLI and working with configuration files.
 
 ### IP Addresses
 

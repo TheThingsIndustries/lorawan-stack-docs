@@ -25,7 +25,7 @@ See [Troubleshooting Console]({{< ref "/concepts/features/console/troubleshootin
 
 ## Troubleshooting common CLI errors
 
-See [Troubleshooting CLI]({{< ref "the-things-stack/interact/cli/troubleshooting" >}}).
+See [Troubleshooting CLI]({{< ref "/concepts/features/cli/troubleshooting" >}}).
 
 ## Troubleshooting common device errors
 

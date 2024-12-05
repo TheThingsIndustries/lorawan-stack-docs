@@ -7,7 +7,7 @@ aliases:
     /getting-started/cli/create-application,
     /getting-started/console/create-application,
     /guides/getting-started/console/create-application,
-    /the-things-stack/interact/cli/create-application,
+    /concepts/features/cli/create-application,
     /concepts/console/create-application,
     /guides/concepts/console/create-application,
   ]

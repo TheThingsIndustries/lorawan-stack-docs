@@ -8,7 +8,7 @@ This section explains how to migrate your devices between {{% tts %}} distributi
 
 <!--more-->
 
-There are multiple methods that you can use to migrate your devices from source {{% tts %}} distribution to target {{% tts %}} distribution, depending on if you want to migrate them with or without their existing session, and how many devices you wish to migrate. These methods include using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}), {{% tts %}} [Console]({{< ref "/concepts/features/console" >}}) or {{% tts %}} [CLI]({{< ref "/the-things-stack/interact/cli" >}}).
+There are multiple methods that you can use to migrate your devices from source {{% tts %}} distribution to target {{% tts %}} distribution, depending on if you want to migrate them with or without their existing session, and how many devices you wish to migrate. These methods include using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}), {{% tts %}} [Console]({{< ref "/concepts/features/console" >}}) or {{% tts %}} [CLI]({{< ref "/concepts/features/cli" >}}).
 
 {{< note >}} We highly recommend using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}) and [migrating devices without persisting their active session]({{< ref "/the-things-stack/migrating/migrating-between-tts-distributions/establish-new-session" >}}). {{</ note >}}
 

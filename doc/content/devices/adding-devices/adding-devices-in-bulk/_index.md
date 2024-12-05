@@ -19,7 +19,7 @@ Instead of adding devices one by one, {{% tts %}} supports multiple methods of a
 
 <!--more-->
 
-There are two ways to import devices in {{% tts %}} - using [Console]({{< ref "/concepts/features/console" >}}) or [CLI]({{< ref "/the-things-stack/interact/cli" >}}).
+There are two ways to import devices in {{% tts %}} - using [Console]({{< ref "/concepts/features/console" >}}) or [CLI]({{< ref "/concepts/features/cli" >}}).
 
 {{% tts %}} supports importing end devices in JSON and CSV format:
 
@@ -157,7 +157,7 @@ Then, you only need to import the JSON file as explained above in [Import device
 
 Then, issue the CLI command to import the JSON file as explained above in [Import devices via the CLI]({{< ref "/devices/adding-devices/adding-devices-in-bulk#import-devices-via-the-cli" >}}).
 
-{{< note >}} The `join-server-enabled` option in the [CLI configuration]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) has to be set to `false` when claiming devices using the CLI. {{</ note >}}
+{{< note >}} The `join-server-enabled` option in the [CLI configuration]({{< ref "/concepts/features/cli/configuring-cli" >}}) has to be set to `false` when claiming devices using the CLI. {{</ note >}}
 
 {{< /tabs/tab >}}
 

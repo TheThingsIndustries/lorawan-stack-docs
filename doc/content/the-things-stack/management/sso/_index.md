@@ -16,7 +16,7 @@ aliases: [/getting-started/sso]
 
 1. Access to an OpenID Connect provider such as Google or Amazon Cognito
 2. Administrator access to your {{% tts %}} deployment
-3. [`tti-lw-cli`]({{< ref "the-things-stack/interact/cli" >}})
+3. [`tti-lw-cli`]({{< ref "/concepts/features/cli" >}})
 
 ## Configure Your OpenID Connect Provider
 

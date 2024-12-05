@@ -1,15 +1,20 @@
 ---
 title: "Command-line Interface"
 description: ""
-aliases: [/guides/the-things-stack/interact/cli, /getting-started/cli]
+aliases:
+  [
+    /guides/concepts/features/cli,
+    /getting-started/cli,
+    /the-things-stack/interact/cli,
+  ]
 weight: -2
 ---
 
 Although the web interface of {{% tts %}} (the Console) currently has support for all basic features of {{% tts %}}, for more advanced actions, you may need to use the Command-Line Interface (CLI).
 
-This section contains instructions for installing, configuring, and logging in with the CLI, so you can use it with your {{% tts %}} deployment.
-
 <!--more-->
+
+This section contains instructions for installing, configuring, and logging in with the CLI, so you can use it with your {{% tts %}} deployment.
 
 To use the CLI, you need to complete three steps:
 

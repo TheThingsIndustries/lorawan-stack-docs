@@ -4,7 +4,7 @@ description: ""
 weight: 1
 ---
 
-To interact with the available application packages, you can use [{{% tts %}} CLI]({{< ref "/the-things-stack/interact/cli" >}}).
+To interact with the available application packages, you can use [{{% tts %}} CLI]({{< ref "/concepts/features/cli" >}}).
 
 <!--more-->
 
@@ -91,8 +91,8 @@ This will update the association to use the given `api_key`:
   "updated_at": "2019-12-18T21:37:16.470742803Z",
   "package_name": "test-package",
   "data": {
-      "api_key": "AQEA8+q0v..."
-    }
+    "api_key": "AQEA8+q0v..."
+  }
 }
 ```
 
@@ -123,6 +123,7 @@ ttn-lw-cli applications packages default-associations list $APP_ID
   ]
 }
 ```
+
 </details>
 
 ## Retrieving an Association
@@ -151,6 +152,7 @@ ttn-lw-cli applications packages default-associations get $APP_ID $F_PORT --data
   }
 }
 ```
+
 </details>
 
 ## Deleting an Association
