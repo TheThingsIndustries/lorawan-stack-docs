@@ -58,8 +58,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div id="topMenu" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
-        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
-        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
         <a class="navbar-item" href="/docs/devices/">Devices</a>
         <a class="navbar-item" href="/docs/gateways/">Gateways</a>
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
@@ -251,7 +249,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Press <strong>Save Changes</strong> to update the gateway settings. When your gateway connects to CUPS, The Things Stack will send the LNS configuration settings and API key.</p>
 </section>
 <section data-content="cli">
-  <p>We need to configure CUPS in The Things Stack to transmit the LNS API key when a gateway connects. Use the following command to do so, replacing <code>&quot;your-gateway-id&quot;</code> with your gateway ID in The Things Stack and <code>&quot;your-lns-api-key&quot;</code> with the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups/#create-separate-cups-and-lns-api-keys">LNS API key</a> you created in the last step:</p>
+  <p>We need to configure CUPS in The Things Stack to transmit the LNS API key when a gateway connects. Use the following command to do so, replacing <code>&quot;your-gateway-id&quot;</code> with your gateway ID in The Things Stack and  <code>&quot;your-lns-api-key&quot;</code> with the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups/#create-separate-cups-and-lns-api-keys">LNS API key</a> you created in the last step:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">GTW_ID</span><span class="o">=</span><span class="s2">&#34;your-gateway-id&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">LNS_KEY</span><span class="o">=</span><span class="s2">&#34;your-lns-api-key&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">SECRET</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="nv">$LNS_KEY</span> <span class="p">|</span> xxd -ps -u -c 8192<span class="k">)</span>
@@ -269,7 +267,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">  <span class="p">},</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-10-13T10:49:02.730Z&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-11-17T14:52:06.440Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;lbs_lns_secret&#34;</span><span class="p">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;key_id&#34;</span><span class="p">:</span> <span class="s2">&#34;is/gateway-secrets-encryption-key&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;encrpyted-base64-lns-api-key&gt;&#34;</span>
@@ -285,7 +285,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h3 id="cups-server-address">CUPS Server Address</h3>
 <p>The server address is the network endpoint of The Things Stack CUPS. It is a combination of the <strong>protocol</strong> (https), the <strong>server address</strong>, and the <strong>port</strong>.</p>
 <p>Enter the following in your gateway as CUPS Server Address: <code>https://&lt;server-address&gt;:443</code>.</p>
-<p>The <code>&lt;server-address&gt;</code> is the address of your The Things Stack deployment. See <a href="https://www.thethingsindustries.com/docs/cloud/server-addresses/">Server Addresses</a> for more info.</p>
+<p>The <code>&lt;server-address&gt;</code> is the address of your The Things Stack deployment. See <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/server-addresses/">Server Addresses</a> for more info.</p>
 <h3 id="cups-server-certificate--cups-trust">CUPS Server Certificate / CUPS Trust</h3>
 <p>This is the <a href="https://en.wikipedia.org/wiki/Certificate_authority">CA certificate</a> which secures your domain. A <code>.pem</code> file containing common certificates is available in the <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/">Root Certificates Reference</a>.</p>
 <p>Upload the <code>.pem</code> file in your gateway as the CUPS Server Certificate, i.e. CUPS Trust.</p>
@@ -359,8 +359,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <nav class="column is-one-third">
         <h3 class="title is-6">The Things Stack</h3>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
-        <p><a class="" href="/docs/concepts/">Concepts</a></p>
-        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
         <p><a class="" href="/docs/devices/">Devices</a></p>
         <p><a class="" href="/docs/gateways/">Gateways</a></p>
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>

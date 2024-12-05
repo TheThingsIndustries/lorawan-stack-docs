@@ -58,8 +58,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div id="topMenu" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
-        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
-        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
         <a class="navbar-item" href="/docs/devices/">Devices</a>
         <a class="navbar-item" href="/docs/gateways/">Gateways</a>
         <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
@@ -318,7 +316,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="registration">Registration</h2>
 <p>Create a gateway by following the instructions for the <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/console/#create-gateway">Console</a> or the <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/cli/#create-gateway">CLI</a>.</p>
 <p>The gateway EUI is derived from the MAC address that can be found on the back panel of the gateway. To get the EUI from the MAC address insert <code>FFFE</code> after the first 6 characters to make it a 64-bit EUI. For example, if the gateway&rsquo;s MAC address is <code>5B:A0:CB:80:04:2B</code> then the EUI is <code>5B A0 CB FF FE 80 04 2B</code>.</p>
-<p>The <strong>Gateway Server Address</strong> is the address of your The Things Stack deployment. See <a href="https://www.thethingsindustries.com/docs/cloud/server-addresses/">Server Addresses</a>.</p>
+<p>The <strong>Gateway Server Address</strong> is the address of your The Things Stack deployment. See <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/server-addresses/">Server Addresses</a>.</p>
 <h2 id="configuration">Configuration</h2>
 <p>Plug the RJ45 end of the cable in the Console port at the side of the gateway, and the USB port to your computer.</p>
 <p>If you are using MacOS or Linux, connect to the Gateway by opening a terminal and a executing the following commands:</p>
@@ -331,7 +329,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <pre tabindex="0"><code>Gateway&gt; enable
 </code></pre><h3 id="network">Network</h3>
 <p>To configure your Cisco Gateway to your network, type the following commands:</p>
-<pre tabindex="0"><code>Gateway# configure terminal
+<pre tabindex="0"><code>Gateway# configure terminal 
 Gateway(config)# interface FastEthernet 0/1
 </code></pre><p>If your local network has a DHCP server attributing IPs:</p>
 <pre tabindex="0"><code>Gateway(config-if)# ip address dhcp
@@ -372,7 +370,7 @@ Gateway(config)# exit
 </code></pre><p>This command may return the message <code>packet-forwarder firmware is not installed</code>, which can be ignored.</p>
 <h3 id="enable-radio">Enable Radio</h3>
 <p>As a final step before setting up the packet forwarder software, we are going to enable the radio. You can see radio information with the <code>show radio</code> command:</p>
-<pre tabindex="0"><code>Gateway# show radio
+<pre tabindex="0"><code>Gateway# show radio 
 ORA_SN: FOC21028R8S
 ORA_PN: 95.1602T01
 ORA_SKU: 915
@@ -386,7 +384,7 @@ SSI_OFFSET_AUS: -203.00,-204.00
 radio status:
 on
 </code></pre><p>If the radio is off, enable it with:</p>
-<pre tabindex="0"><code>Gateway# configure terminal
+<pre tabindex="0"><code>Gateway# configure terminal 
 Gateway(config)# no radio off
 Gateway(config)# exit
 </code></pre><p>The <code>show radio</code> command also shows you more information about the LoRa concentrator powering the gateway. For example, <code>LORA_SKU</code> indicates the base frequency of the concentrator.</p>
@@ -519,8 +517,6 @@ Gateway(config)# exit
       <nav class="column is-one-third">
         <h3 class="title is-6">The Things Stack</h3>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
-        <p><a class="" href="/docs/concepts/">Concepts</a></p>
-        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
         <p><a class="" href="/docs/devices/">Devices</a></p>
         <p><a class="" href="/docs/gateways/">Gateways</a></p>
         <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
