@@ -62,7 +62,7 @@ Values of parameters like data rate index, transmission power index and number o
 ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-settings.adr.mode.dynamic --mac-settings.adr.mode.dynamic.max-data-rate-index <data_rate> --mac-settings.adr.mode.dynamic.max tx-power-index <power_index> --mac-settings.adr.mode.dynamic.max-nb-trans <nb_trans> --mac-settings.adr.mode.dynamic.min-data-rate-index <data_rate> --mac-settings.adr.mode.dynamic.min tx-power-index <power_index> --mac-settings.adr.mode.dynamic.min-nb-trans <nb_trans>
 ```
 
-> Please note that `data_rate` in above and following commands is data rate index which can take values from 0-6 (referring to data rate sets DR0-DR6). For example, data rate index 0 implies using SF12 in EU868 freqeuncy plan, as explained [here](https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/#eu863-870-data-rates). You can check out detailed info for your frequency plan in the [Regional Parameters specification]({{< ref "/the-things-stack/concepts/spec-regional-parameters" >}}).
+> Please note that `data_rate` in above and following commands is data rate index which can take values from 0-6 (referring to data rate sets DR0-DR6). For example, data rate index 0 implies using SF12 in EU868 freqeuncy plan, as explained [here](https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/#eu863-870-data-rates). You can check out detailed info for your frequency plan in the [Regional Parameters specification]({{< ref "/concepts/spec-regional-parameters" >}}).
 
 ### Configure ADR Margin
 
@@ -276,7 +276,7 @@ Before setting ADR parameters to desired values, you first need to turn off the 
 ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-settings.adr.mode.disabled
 ```
 
-> Please note that `data_rate` in above and following commands is data rate index which can take values from 0-6 (referring to data rate sets DR0-DR6). For example, data rate index 0 implies using SF12 in EU868 freqeuncy plan, as explained [here](https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/#eu863-870-data-rates). You can check out detailed info for your frequency plan in the [Regional Parameters specification]({{< ref "/the-things-stack/concepts/spec-regional-parameters" >}}).
+> Please note that `data_rate` in above and following commands is data rate index which can take values from 0-6 (referring to data rate sets DR0-DR6). For example, data rate index 0 implies using SF12 in EU868 freqeuncy plan, as explained [here](https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/#eu863-870-data-rates). You can check out detailed info for your frequency plan in the [Regional Parameters specification]({{< ref "/concepts/spec-regional-parameters" >}}).
 
 After {{% tts %}} ADR mechanism is disabled, the Network Server will no longer try to optimize ADR parameters.
 

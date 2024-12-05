@@ -1,7 +1,7 @@
 ---
-title: "LoRaWAN Specification and Regional Parameters"
+title: "LoRaWAN support"
 description: ""
-weight: 2
+weight: 5
 ---
 
 {{% tts %}} supports versions 1.0.x and 1.1.x of the LoRaWAN® specifications.
