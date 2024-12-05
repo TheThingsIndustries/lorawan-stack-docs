@@ -48,19 +48,19 @@ The Console needs to know how the individual {{% tts %}} components are configur
 
 ### File Includes
 
-You can control which CSS and JavaScript files are included into the rendered HTML of the Console. Note that these files must be present in the `/public` folder during runtime. 
+You can control which CSS and JavaScript files are included into the rendered HTML of the Console. Note that these files must be present in the `/public` folder during runtime.
 
 - `console.ui.js-file`: The names of the JavaScript file
 - `console.ui.css-file`: The names of the CSS files
 
 ### Assets and Custom Branding
 
-You can control the url of the assets folder that the Console frontend will use, e.g. if you plan on using a CDN to serve your assets. The branding base url will enable custom branding for logos, favicons and OpenGraph images. See the [custom branding guide]({{< ref "the-things-stack/management/branding" >}}) for detailed descriptions on this subject.
+You can control the url of the assets folder that the Console frontend will use, e.g. if you plan on using a CDN to serve your assets. The branding base url will enable custom branding for logos, favicons and OpenGraph images. See the [custom branding guide]({{< ref "/cloud/branding" >}}) for detailed descriptions on this subject.
 
 - `console.ui.assets-base-url`: The base URL to the page assets
 - `console.ui.branding-base-url`: The base URL to the branding assets
-- `console.ui.branding-cluster-id` {{< distributions "Cloud" "Enterprise" >}}: The cluster ID to show below the logo 
-- `console.ui.branding-text` {{< distributions "Cloud" "Enterprise" >}}: The branding text to show below the logo 
+- `console.ui.branding-cluster-id` {{< distributions "Cloud" "Enterprise" >}}: The cluster ID to show below the logo
+- `console.ui.branding-text` {{< distributions "Cloud" "Enterprise" >}}: The branding text to show below the logo
 - `console.ui.icon-prefix`: The prefix to put before the page icons (favicon.ico, touch-icon.png, og-image.png)
 - `console.ui.canonical-url`: The page canonical URL
 - `console.ui.descriptions`: The page description

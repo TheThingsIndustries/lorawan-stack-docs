@@ -5,7 +5,7 @@ aliases:
   [
     /guides/concepts/console,
     /getting-started/console,
-    /the-things-stack/interact/console,
+    /concepts/featuresconsole,
   ]
 weight: -3
 ---

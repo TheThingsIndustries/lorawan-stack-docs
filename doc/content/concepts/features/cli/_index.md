@@ -2,11 +2,7 @@
 title: "Command-line Interface"
 description: ""
 aliases:
-  [
-    /guides/concepts/features/cli,
-    /getting-started/cli,
-    /the-things-stack/interact/cli,
-  ]
+  [/guides/concepts/features/cli, /getting-started/cli, /concepts/featurescli]
 weight: -2
 ---
 

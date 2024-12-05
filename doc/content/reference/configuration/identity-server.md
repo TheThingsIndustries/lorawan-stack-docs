@@ -1,6 +1,6 @@
 ---
-title: 'Identity Server Options'
-description: ''
+title: "Identity Server Options"
+description: ""
 ---
 
 ## General Options
@@ -74,12 +74,12 @@ If you do not want to serve the OAuth user interface on `/oauth`, you may custom
 
 - `is.oauth.mount`: Path on the server where the OAuth server will be served
 
-If page assets for the OAuth UI are served from a CDN or on a different path on the server, the base URL needs to be customized as well. If you want to [customize the branding]({{< ref "the-things-stack/management/branding" >}}) of the OAuth UI, you can set the base URL for where your branding assets are located.
+If page assets for the OAuth UI are served from a CDN or on a different path on the server, the base URL needs to be customized as well. If you want to [customize the branding]({{< ref "/cloud/branding" >}}) of the OAuth UI, you can set the base URL for where your branding assets are located.
 
 - `is.oauth.ui.assets-base-url`: The base URL to the page assets
 - `is.oauth.ui.branding-base-url`: The base URL to the branding assets
-- `is.oauth.ui.branding-cluster-id` {{< distributions "Cloud" "Enterprise" >}}: The cluster ID to show below the logo 
-- `is.oauth.ui.branding-text` {{< distributions "Cloud" "Enterprise" >}}: The branding text to show below the logo 
+- `is.oauth.ui.branding-cluster-id` {{< distributions "Cloud" "Enterprise" >}}: The cluster ID to show below the logo
+- `is.oauth.ui.branding-text` {{< distributions "Cloud" "Enterprise" >}}: The branding text to show below the logo
 - `is.oauth.ui.cluster-picker-url`: A URL to the a cluster picker to enable users to pick the correct cluster of the deployment
 
 The appearance of {{% tts %}} can optionally be customized.
@@ -139,7 +139,7 @@ It is also possible to disable uploads:
 
 By default, users can register their own user accounts. User accounts can also be registered by admin users in the network. The user registration process can be customized by requiring approval by admin users, requiring email validation or by requiring new users to be invited by existing users.
 
-- `is.user-registration.enabled`: Enable user registration. If user registration is disabled, admin users can still create users. 
+- `is.user-registration.enabled`: Enable user registration. If user registration is disabled, admin users can still create users.
 - `is.user-registration.admin-approval.required`: Require admin approval for new users
 - `is.user-registration.contact-info-validation.required`: Require contact info validation for new users
 - `is.user-registration.contact-info-validation.token-ttl`: TTL of contact info validation tokens
@@ -192,7 +192,7 @@ By default admins are granted _almost_ all rights on all entities in the network
 
 - `is.gateways.encryption-key-id`: ID of the key used to encrypt gateway secrets at rest.
 
-## Tenant Administration Options 
+## Tenant Administration Options
 
 {{< distributions "Cloud" "Enterprise" >}} In multi-tenant deployments, tenants are managed with "tenant admin keys". These keys need to be configured in the Identity Server.
 

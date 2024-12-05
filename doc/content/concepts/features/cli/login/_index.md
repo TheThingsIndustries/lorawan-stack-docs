@@ -2,7 +2,7 @@
 title: "Login with the CLI"
 description: ""
 weight: 2
-aliases: [/getting-started/cli/login, /the-things-stack/interact/cli/login]
+aliases: [/getting-started/cli/login, /concepts/featurescli/login]
 ---
 
 This section explains how to login to {{% tts %}} using the command-line interface.

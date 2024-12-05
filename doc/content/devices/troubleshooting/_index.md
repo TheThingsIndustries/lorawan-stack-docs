@@ -61,10 +61,10 @@ Next, recreate your device as documented in the [Using the API]({{< ref "/device
 ## I see "Unable to access the end device" error
 
 If you're facing this error, your end device has probably been configured with incorrect server addresses, so {{% tts %}} Console treats and shows it as in `Other cluster`. To regain access to your end device, you should configure it with the correct server addresses. That can be done by accessing device's **General settings** and configuring server addresses, or by deleting and recreating the end device with appropriate server addresses.
- 
+
 ## How do I see device events?
 
-Device event logs can be found in the console in the device's general information page. See [Working with Events]({{< ref "the-things-stack/management/events" >}}) for other ways of subscribing to events.
+Device event logs can be found in the console in the device's general information page. See [Working with Events]({{< ref "/concepts/events" >}}) for other ways of subscribing to events.
 
 ## I see no Join Requests from my device in {{% tts %}}.
 

@@ -38,7 +38,7 @@ Gateways that use the legacy [{{% udp-pf %}}]({{< ref "/gateways/concepts/udp/" 
 
 ## How to easily interact with {{% tts %}}?
 
-You can [interact with {{% tts %}}]({{< ref "/the-things-stack/interact/" >}}) via Console, CLI and API. For newly onboarded users, the easiest way is probably using the Console Web UI. Advanced users who are familiar with the CLI or API can even build scripts on top of them to automate certain processes.
+You can [interact with {{% tts %}}]({{< ref "/concepts/features" >}}) via Console, CLI and API. For newly onboarded users, the easiest way is probably using the Console Web UI. Advanced users who are familiar with the CLI or API can even build scripts on top of them to automate certain processes.
 
 ## Can I host {{% tts %}} on my own hardware?
 

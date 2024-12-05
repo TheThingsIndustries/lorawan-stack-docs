@@ -1,7 +1,7 @@
 ---
-title: "Web UI Branding"
+title: "Custom branding"
 description: ""
-aliases: [/reference/branding]
+aliases: [/reference/branding, /the-things-stack/management/branding]
 ---
 
 This reference gives details on how to customize the branding of the login pages and the Console.

@@ -3,10 +3,7 @@ title: "Configuring the CLI"
 description: ""
 weight: 2
 aliases:
-  [
-    /getting-started/cli/configuring-cli/,
-    /the-things-stack/interact/cli/configuring-cli,
-  ]
+  [/getting-started/cli/configuring-cli/, /concepts/featurescli/configuring-cli]
 ---
 
 {{% tts %}} CLI needs to be configured to connect to your {{% tts %}} deployment.

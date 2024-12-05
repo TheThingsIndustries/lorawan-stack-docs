@@ -1,9 +1,7 @@
 ---
 title: "Adding OAuth Clients"
 description: ""
-weight: -1
-aliases:
-  [ /the-things-stack/interact/adding-oauth-clients ]
+aliases: [/concepts/featuresadding-oauth-clients]
 ---
 
 This section contains instructions for creating an OAuth Client.
@@ -106,10 +104,10 @@ ttn-lw-cli clients create \
 
 <div class="fixed-table table-api-item">
 
-| Item         | Value                                                                                                                                                    |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Item         | Value                                                                                                                                          |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | Endpoint     | [`/users/{collaborator.user_ids.user_id}/clients`]({{< ref "/api/reference/http/routes/#users{collaborator.user_ids.user_id}clients-post" >}}) |
-| Request type | `POST`                                                                                                                                                   |
+| Request type | `POST`                                                                                                                                         |
 
 </br>
 </div>
@@ -118,14 +116,13 @@ ttn-lw-cli clients create \
 
 <div class="fixed-table table-api-item">
 
-| Item         | Value                                                                                                                                                    |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Item         | Value                                                                                                                                                                                          |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Endpoint     | [`/organizations/{collaborator.organization_ids.organization_id}/clients`]({{< ref "/api/reference/http/routes/#organizations{collaborator.organization_ids.organization_id}clients-post" >}}) |
-| Request type | `POST`                                                                                                                                                   |
+| Request type | `POST`                                                                                                                                                                                         |
 
 </br>
 </div>
-
 
 ###### Example
 
@@ -149,12 +146,8 @@ To create a client `my-test-client` on `thethings.example.com`, first create a J
         "user_id": "testuser"
       }
     },
-    "redirect_uris": [
-      "https://thethings.example.com"
-    ],
-    "grants": [
-      "GRANT_AUTHORIZATION_CODE"
-    ],
+    "redirect_uris": ["https://thethings.example.com"],
+    "grants": ["GRANT_AUTHORIZATION_CODE"],
     "rights": [
       "RIGHT_GATEWAY_ALL",
       "RIGHT_ORGANIZATION_GATEWAYS_CREATE",
@@ -187,7 +180,6 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $API_
 {{< /tabs/tab >}}
 
 {{< /tabs/container >}}
-
 
 #### Additional information
 

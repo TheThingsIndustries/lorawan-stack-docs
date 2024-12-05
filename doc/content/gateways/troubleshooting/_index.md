@@ -47,7 +47,7 @@ For an example configuration file, see [Semtech's {{% lbs %}} documentation](htt
 
 ## How do I see gateway events?
 
-Gateway event logs can be found in the Live Data tab in the gateway's general information page. See [Working with Events]({{< ref "the-things-stack/management/events" >}}) for other ways of subscribing to events.
+Gateway event logs can be found in the Live Data tab in the gateway's general information page. See [Working with Events]({{< ref "/concepts/events" >}}) for other ways of subscribing to events.
 
 ## How does {{% tts %}} Console know whether a gateway is connected?
 

@@ -1,8 +1,8 @@
 ---
-title: "Working with Events"
+title: "Gaining insights using Events"
 description: ""
-weight: 15
-aliases: [/getting-started/events]
+weight: 5
+aliases: [/getting-started/events, /the-things-stack/management/events]
 ---
 
 {{% tts %}} generates lots of events that allow you to get insight in what is going on. You can subscribe to application, gateway, end device events, as well as to user, organization and OAuth client events.
@@ -184,13 +184,7 @@ See the events of a typical join flow in the example below:
       },
       "rx_delay": 5,
       "cf_list": {
-        "freq": [
-          8671000,
-          8673000,
-          8675000,
-          8677000,
-          8679000
-        ]
+        "freq": [8671000, 8673000, 8675000, 8677000, 8679000]
       },
       "correlation_ids": [
         "gs:conn:01G76RS17HGZZXV740X0N2XDV8",
@@ -359,13 +353,7 @@ See the events of a typical join flow in the example below:
           },
           "rx_delay": 5,
           "cf_list": {
-            "freq": [
-              8671000,
-              8673000,
-              8675000,
-              8677000,
-              8679000
-            ]
+            "freq": [8671000, 8673000, 8675000, 8677000, 8679000]
           }
         }
       },
@@ -648,4 +636,5 @@ See the events of a typical join flow in the example below:
   }
 ]
 ```
+
 </details>

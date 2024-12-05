@@ -6,7 +6,7 @@ distributions: ["Cloud", "Enterprise"]
 aliases:
   [
     /getting-started/console/tenant-settings,
-    /the-things-stack/interact/console/tenant-settings,
+    /concepts/featuresconsole/tenant-settings,
   ]
 ---
 
@@ -84,6 +84,6 @@ Deduplication and cooldown windows affect the initial delay of uplink forwarding
 
 ## Branding
 
-If you want to customize the [Web UI Branding]({{< ref "the-things-stack/management/branding" >}}) of your tenant's Console, you need to provide the source of your branding assets. Paste the source URL into the **Branding base URL** field.
+If you want to customize the [Web UI Branding]({{< ref "/cloud/branding" >}}) of your tenant's Console, you need to provide the source of your branding assets. Paste the source URL into the **Branding base URL** field.
 
 {{< figure src="branding.png" alt="Branding assets source URL" >}}

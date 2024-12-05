@@ -4,7 +4,7 @@ description: ""
 aliases:
   [
     /getting-started/console/troubleshooting,
-    /the-things-stack/interact/console/troubleshooting,
+    /concepts/featuresconsole/troubleshooting,
   ]
 ---
 

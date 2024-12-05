@@ -86,4 +86,4 @@ The CLI can manage the downlink queue of end devices. See the [Downlink Queue Op
 
 ## Events
 
-The CLI can be used to subscribe to events. See the [Events guide]({{< ref "/the-things-stack/management/events" >}}) for more details.
+The CLI can be used to subscribe to events. See the [Events guide]({{< ref "/concepts/events" >}}) for more details.
