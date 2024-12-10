@@ -1,7 +1,6 @@
 ---
 name: Release
 about: Checklist for releases
-
 ---
 
 <!--
@@ -12,15 +11,14 @@ Please check items along as you follow the release process.
 
 This is a checklist for releases. This is filled in by both the releaser and the reviewer where necessary.
 
-
 #### Update Documentation
 
 - [ ] Create a new release in the [`whats-new` section](https://github.com/TheThingsIndustries/lorawan-stack-docs/tree/master/doc/content/whats-new) and copy the release CHANGELOG from [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack). The title is the release version and the date is the release date.
-- [ ] Copy the contents of the latest UPGRADING.md from the [lorawan-stack-aws](https://github.com/TheThingsIndustries/lorawan-stack-aws) to [/the-things-stack/host/aws/ecs/changelog](https://github.com/TheThingsIndustries/lorawan-stack-docs/tree/master/doc/content/the-things-stack/host/aws/ecs/changelog/index.md)
+- [ ] Copy the contents of the latest UPGRADING.md from the [lorawan-stack-aws](https://github.com/TheThingsIndustries/lorawan-stack-aws) to [//enterprise/aws/ecs/changelog](https://github.com/TheThingsIndustries/lorawan-stack-docs/tree/master/doc/content//enterprise/aws/ecs/changelog/index.md)
 - [ ] Remove empty sections from the created release file.
 - [ ] Update the [documentation version](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/config/_default/config.toml#L28) to match the current PATCH, if necessary (`3.${minor}.${patch}`). Note that this previously included a "v" prefix and only included a minor, but the patch must be included or repository and CLI links will break, and no "v" should be prefixed.
 - [ ] To generate documentation, create a clone of [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack), and **checkout the git tag of the release**.
-- [ ] To generate API documentation, run the following from within the clone of [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack): 
+- [ ] To generate API documentation, run the following from within the clone of [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack):
 
 ```bash
 $ tools/bin/mage ttiProto:hugoData
@@ -68,7 +66,7 @@ $ rm ../lorawan-stack-docs/doc/content/ttn-lw-cli/ttn-lw-cli_end-devices.md.bak
 #### Check (for reviewers)
 
 - [ ] A new section has been created in [`whats-new`](doc/content/whats-new) with the corresponding CHANGELOG from [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack). The title is the release version and the date is the release date.
-- [ ] The latest UPGRADING.md from the [lorawan-stack-aws](https://github.com/TheThingsIndustries/lorawan-stack-aws) has been copied to [/the-things-stack/host/aws/ecs/changelog](https://github.com/TheThingsIndustries/lorawan-stack-docs/tree/master/doc/content/the-things-stack/host/aws/ecs/changelog/index.md)
+- [ ] The latest UPGRADING.md from the [lorawan-stack-aws](https://github.com/TheThingsIndustries/lorawan-stack-aws) has been copied to [//enterprise/aws/ecs/changelog](https://github.com/TheThingsIndustries/lorawan-stack-docs/tree/master/doc/content//enterprise/aws/ecs/changelog/index.md)
 - [ ] The documentation version is up to date with the latest PATCH (`3.${minor}.${patch}`). No "v" is prefixed.
 - [ ] The TTI and TTN API documentation has been generated and updated in [doc/data/api](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/data/api). This includes the following files:
 
