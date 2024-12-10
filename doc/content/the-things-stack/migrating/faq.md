@@ -23,9 +23,9 @@ No, you are not able to migrate your devices and gateways from The Things Networ
 
 [Packet Broker](https://packetbroker.net) is a neutral and open LoRaWAN packet broker developed by The Things Industries. Packet Broker adopts the Passive Roaming specifications, as defined by the LoRa Alliance, so it can be used to exchange traffic with other LoRaWAN networks to share coverage and improve overall network performance.
 
-See {{% tts %}} [Packet Broker documentation]({{< ref "/the-things-stack/packet-broker" >}}) for detailed info about connecting {{% tts %}} to Packet Broker.
+See {{% tts %}} [Packet Broker documentation]({{< ref "/concepts/packet-broker" >}}) for detailed info about connecting {{% tts %}} to Packet Broker.
 
-{{% ttss %}} and {{% tts %}} Cloud are connected to Packet Broker by default. {{% tts %}} Open Source and {{% tts %}} Enterprise can also be [connected]({{< ref "/the-things-stack/packet-broker/connect" >}}) to Packet Broker. The Things Industries {{% ttnv2 %}} can also be connected on a customer request. Traffic is then automatically exchanged between these networks. See [default Packet Broker routing tables]({{< ref "/reference/pb-routing" >}}).
+{{% ttss %}} and {{% tts %}} Cloud are connected to Packet Broker by default. {{% tts %}} Open Source and {{% tts %}} Enterprise can also be [connected]({{< ref "/concepts/packet-broker/connect" >}}) to Packet Broker. The Things Industries {{% ttnv2 %}} can also be connected on a customer request. Traffic is then automatically exchanged between these networks. See [default Packet Broker routing tables]({{< ref "/reference/pb-routing" >}}).
 
 For example, this means that you can migrate an end device from The Things Industries {{% ttnv2 %}} to {{% ttss %}} without immediately (or previously) having to migrate your gateway, if both of these deployments are connected to Packet Broker. However, there are certain requirements that need to be fulfilled in order for Packet Broker to route traffic from and to these devices properly and timely. [Read more about DevAddr and RX1 Delay requirements]({{< ref "/the-things-stack/migrating/migrating-from-v2/packet-broker-requirements" >}}).
 

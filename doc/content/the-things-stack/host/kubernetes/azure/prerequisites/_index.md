@@ -23,7 +23,7 @@ This section contains prerequisites for deploying {{% tts %}} on Azure Kubernete
 
 {{% tts %}} contains the Packet Broker Agent component that can communicate with [Packet Broker](https://packetbroker.net/).
 
-Packet Broker is disabled by default in the Helm charts. When enabled, it can operate either only a Forwarder or as both a Forwarder and a Home Network. Check the [Packet Broker section]({{< ref "/the-things-stack/packet-broker" >}}) for more details.
+Packet Broker is disabled by default in the Helm charts. When enabled, it can operate either only a Forwarder or as both a Forwarder and a Home Network. Check the [Packet Broker section]({{< ref "/concepts/packet-broker" >}}) for more details.
 
 - If the cluster acts simply as a Forwarder that forwards traffic to Packet Broker, then all that is needed are access credentials.
 - If the cluster also needs to work as a Packer Broker Home Network, in addition to the access credentials, the cluster either needs a NetID from the LoRa Alliance or The Things Industries can lease a DevAddr Block.

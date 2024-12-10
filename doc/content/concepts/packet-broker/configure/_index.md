@@ -7,12 +7,15 @@ distributions:
   - Enterprise
   - Open Source
 aliases:
-  - "/reference/packet-broker/configure"
-  - "/getting-started/packet-broker/configure/registration"
-  - "/getting-started/packet-broker/configure/routing-policies"
-  - "/the-things-stack/packet-broker/configure/registration"
-  - "/the-things-stack/packet-broker/configure/routing-policies"
-  - "/getting-started/packet-broker/configure"
+  [
+    /reference/packet-broker/configure,
+    /getting-started/packet-broker/configure/registration,
+    /getting-started/packet-broker/configure/routing-policies,
+    /concepts/packet-broker/configure/registration,
+    /concepts/packet-broker/configure/routing-policies,
+    /getting-started/packet-broker/configure,
+    /the-things-stack/packet-broker/configure,
+  ]
 ---
 
 This section shows you how to configure Packet Broker. You can manage your registration, list other networks, configure routing policies with other networks, and see which networks are forwarding traffic to your network.
@@ -25,8 +28,10 @@ To see which routing policies are configured by default for all deployments, see
 
 1. Understand how Packet Broker works and what routing policies are. [Learn about Packet Broker]({{< relref "../" >}}).
 2. {{% tts %}} connected to Packet Broker.
-  - {{< distributions "Cloud" >}} **{{% tts %}} Cloud** is already connected to Packet Broker.
-  - {{< distributions "Enterprise" "Open Source" >}} **{{% tts %}} Enterprise** and **Open Source**: see [Connect]({{< relref "connect" >}}).
+
+- {{< distributions "Cloud" >}} **{{% tts %}} Cloud** is already connected to Packet Broker.
+- {{< distributions "Enterprise" "Open Source" >}} **{{% tts %}} Enterprise** and **Open Source**: see [Connect]({{< relref "connect" >}}).
+
 3. An admin account for the {{% tts %}} deployment. All Packet Broker configuration requires administrative access.
 
 Packet Broker can be configured using either the Console or the CLI.

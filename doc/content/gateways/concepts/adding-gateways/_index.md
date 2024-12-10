@@ -16,7 +16,7 @@ This section contains instructions for adding Gateways in {{%tts%}}.
 
 Some gateways, like [{{% ttigpro %}}]({{< ref "/gateways/models/thethingsindoorgatewaypro" >}}) and [{{% ttig %}}]({{< ref "/gateways/models/thethingsindoorgateway" >}}), have an onboarding guide. Look for your gateway in the left hand menu for specific instructions.
 
-If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "the-things-stack/packet-broker" >}}), you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced [TTN Mapper](https://ttnmapper.org) to find out if you have nearby gateways.
+If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "/concepts/packet-broker" >}}), you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced [TTN Mapper](https://ttnmapper.org) to find out if you have nearby gateways.
 
 {{< tabs/container "Console" "CLI" "HTTP (REST) API">}}
 
@@ -428,7 +428,7 @@ Once a gateway has been added, get started with [Adding Devices]({{< ref "/devic
 
 ## Forwarding Uplinks to Packet Broker
 
-In deployments connected to [Packet Broker]({{< ref "/the-things-stack/packet-broker" >}}), you can control if you want uplinks received by your gateway to be forwarded to Packet Broker or not. In these deployments, uplinks received by your gateway are being forwarded to Packet Broker by default, but you can choose to disable this behavior.
+In deployments connected to [Packet Broker]({{< ref "/concepts/packet-broker" >}}), you can control if you want uplinks received by your gateway to be forwarded to Packet Broker or not. In these deployments, uplinks received by your gateway are being forwarded to Packet Broker by default, but you can choose to disable this behavior.
 
 {{< tabs/container "Console" "CLI" "HTTP (REST) API"  >}}
 

@@ -17,7 +17,7 @@ Read the instructions below to migrate your OTAA or ABP devices.
 
 ### Note on Gateway Migration
 
-Even though they are both connected to [Packet Broker]({{< ref "/the-things-stack/packet-broker" >}}), {{% ttss %}} and {{% tts %}} Cloud use different DevAddr blocks.
+Even though they are both connected to [Packet Broker]({{< ref "/concepts/packet-broker" >}}), {{% ttss %}} and {{% tts %}} Cloud use different DevAddr blocks.
 
 When an active device session is migrated from {{% ttss %}} to {{% tts %}} Cloud, the DevAddr that the device was assigned with (OTAA) or programmed with (ABP) when it joined {{% ttss %}} will be preserved. Since Packet Broker routes traffic according to the DevAddr blocks, in case of migrating an active session to {{% tts %}} Cloud it won't be able to route your device's traffic properly, because your device still has its {{% ttss %}}-related DevAddr.
 

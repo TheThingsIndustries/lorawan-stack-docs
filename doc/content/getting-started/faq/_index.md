@@ -52,9 +52,9 @@ Check [{{% tts %}} Cloud documentation]({{< ref "/cloud" >}}) for more details a
 
 ## How to improve LoRaWAN coverage and network performance?
 
-Improving the network coverage can be done by utilizing [Packet Broker]({{< ref "/the-things-stack/packet-broker/" >}}) which exchanges traffic between {{% tts %}} and other LoRaWAN networks. {{% ttss %}} and {{% tts %}} Cloud are connected to Packet Broker by default.
+Improving the network coverage can be done by utilizing [Packet Broker]({{< ref "/concepts/packet-broker/" >}}) which exchanges traffic between {{% tts %}} and other LoRaWAN networks. {{% ttss %}} and {{% tts %}} Cloud are connected to Packet Broker by default.
 
-You can choose to contribute to the community by defining [policies]({{< ref "/the-things-stack/packet-broker/configure/" >}}) to route traffic from your gateways to {{% ttss %}} devices.
+You can choose to contribute to the community by defining [policies]({{< ref "/concepts/packet-broker/configure/" >}}) to route traffic from your gateways to {{% ttss %}} devices.
 
 ## Does {{% tts %}} store data?
 

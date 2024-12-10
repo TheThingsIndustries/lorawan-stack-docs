@@ -3,10 +3,13 @@ title: Packet Broker
 description: ""
 summary: Exchange traffic with other LoRaWAN networks via peering to share coverage and improve the overall network performance.
 aliases:
-  - "/integrations/peering"
-  - "/reference/peering"
-  - "/reference/packet-broker"
-  - "getting-started/packet-broker"
+  [
+    /integrations/peering,
+    /reference/peering,
+    /reference/packet-broker,
+    getting-started/packet-broker,
+    /the-things-stack/packet-broker,
+  ]
 weight: 6
 ---
 

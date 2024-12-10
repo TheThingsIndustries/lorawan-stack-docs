@@ -6,7 +6,11 @@ distributions:
   - Cloud
   - Enterprise
   - Open Source
-aliases: [/getting-started/packet-broker/configure/routing-policies]
+aliases:
+  [
+    /getting-started/packet-broker/configure/routing-policies,
+    /the-things-stack/packet-broker/routing-policies,
+  ]
 ---
 
 Routing policies define the rules that Forwarders configure for routing messages to Home Networks.

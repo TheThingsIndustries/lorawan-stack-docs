@@ -7,10 +7,14 @@ distributions:
   - Enterprise
   - Open Source
 new_in_version: 3.15.1
-aliases: [/getting-started/packet-broker/configure/gateway-visibilities]
+aliases:
+  [
+    /getting-started/packet-broker/configure/gateway-visibilities,
+    /the-things-stack/packet-broker/gateway-visibilities,
+  ]
 ---
 
-Gateway visibility configuration allows network administrators to configure who sees which gateway-related information. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibility with fine-grained settings. [Learn more about gateway visibility]({{< ref "/the-things-stack/packet-broker#gateway-visibility-settings" >}}).
+Gateway visibility configuration allows network administrators to configure who sees which gateway-related information. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibility with fine-grained settings. [Learn more about gateway visibility]({{< ref "/concepts/packet-broker#gateway-visibility-settings" >}}).
 
 <!-- more -->
 
@@ -86,17 +90,17 @@ ttn-lw-cli packetbroker home-networks gateway-visibilities delete default
 
 When setting gateway visibility, you can specify a combination of the following flags:
 
-Flag | Meaning
---- | ---
-`--all` | Enable all fields
-`--location` | Enable gateway coordinates
-`--antenna-placement` | Enable indoor/outdoor antenna placement
-`--antenna-count` | Enable number of antennas
-`--fine-timestamps` | Enable whether the gateway produces fine timestamps
-`--contact-information` | Enable administrative and technical contact information of the gateway
-`--status` | Enable online/offline status
-`--frequency-plan` | Enable region and channel plan with frequencies that the gateway uses
-`--packet-rates` | Enable receive and transmission packet rates
+| Flag                    | Meaning                                                                |
+| ----------------------- | ---------------------------------------------------------------------- |
+| `--all`                 | Enable all fields                                                      |
+| `--location`            | Enable gateway coordinates                                             |
+| `--antenna-placement`   | Enable indoor/outdoor antenna placement                                |
+| `--antenna-count`       | Enable number of antennas                                              |
+| `--fine-timestamps`     | Enable whether the gateway produces fine timestamps                    |
+| `--contact-information` | Enable administrative and technical contact information of the gateway |
+| `--status`              | Enable online/offline status                                           |
+| `--frequency-plan`      | Enable region and channel plan with frequencies that the gateway uses  |
+| `--packet-rates`        | Enable receive and transmission packet rates                           |
 
 {{< /tabs/tab >}}
 
