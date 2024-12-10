@@ -1,7 +1,13 @@
 ---
 title: "Rights Management"
 description: ""
-aliases: [/the-things-stack/management/user-management/cli/rights, /the-things-stack/management/user-management/console/rights, /getting-started/user-management/rights]
+aliases:
+  [
+    /concepts/advanced/user-management/cli/rights,
+    /concepts/advanced/user-management/console/rights,
+    /getting-started/user-management/rights,
+    /the-things-stack/management/user-management/rights,
+  ]
 ---
 
 This section contains instructions for managing rights.

@@ -17,7 +17,7 @@ See the [authentication reference]({{< ref "/api/concepts/auth" >}}).
 
 ## How do I create and authorize new users?
 
-See [user and organization management]({{< ref "/the-things-stack/management/user-management" >}}).
+See [user and organization management]({{< ref "/concepts/advanced/user-management" >}}).
 
 ## Troubleshooting common errors in the Console
 

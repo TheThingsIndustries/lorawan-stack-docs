@@ -1,7 +1,12 @@
 ---
-title: "Users and Organizations"
+title: "Working with Users and Organizations"
 description: ""
-aliases: [/user-management, /getting-started/user-management]
+aliases:
+  [
+    /user-management,
+    /getting-started/user-management,
+    /the-things-stack/management/user-management,
+  ]
 weight: 13
 ---
 

@@ -2,7 +2,7 @@
 title: "Deleting, Restoring and Purging Entities"
 description: ""
 weight:
-aliases: [/reference/purge]
+aliases: [/reference/purge, /the-things-stack/management/purge]
 ---
 
 When entities are deleted, {{% tts %}} [retains some IDs]({{< ref "reference/id-eui-constraints" >}}) by default to prevent another user re-registering the ID and obtaining historical data. Deleted entities can be restored within a limited time period, but it is also possible for administrators to purge these entities, so that their IDs may be reused.
@@ -76,7 +76,7 @@ When entities are deleted from {{% tts %}} Cloud, there is a default time period
 
 ```bash
 error:pkg/identityserver:restore_window_expired (this entity can no longer be restored)
-``` 
+```
 
 In this case, entity can only be purged by an administrator and then recreated.
 
@@ -129,6 +129,7 @@ Purging entities using the Console or the CLI is usually most convenient, so tho
 {{< tabs/tab "Console" >}}
 
 There are two ways to purge an entity:
+
 - Go to the **General Settings** tab of the entity and click **Delete**. If you are an administrator, you will be presented with the option to purge the entity. Check the **Also release entity IDs** box to also purge the entity.
 
 {{< figure src="purge.png" >}}

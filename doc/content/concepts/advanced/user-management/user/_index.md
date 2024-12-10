@@ -1,7 +1,13 @@
 ---
 title: "User Management"
 description: ""
-aliases: [/the-things-stack/management/user-management/cli/user, /the-things-stack/management/user-management/console/user, /getting-started/user-management/user]
+aliases:
+  [
+    /concepts/advanced/user-management/cli/user,
+    /concepts/advanced/user-management/console/user,
+    /getting-started/user-management/user,
+    /the-things-stack/management/user-management/user,
+  ]
 ---
 
 This section contains instructions for managing users.
@@ -111,6 +117,7 @@ Please confirm password:***************
   "state": "STATE_APPROVED"
 }
 ```
+
 </details>
 
 ### Inviting Users
@@ -130,14 +137,17 @@ After you do this, you will be able to list the invitations you've sent:
 <details><summary>Output</summary>
 
 ```json
-[{
-  "email": "colleague@thethings.network",
-  "token": "MW7INQWYOE46GLP3AEFQEHR5XIKRYPSRAXFF3CUCLIQPPQ3BNBLQ",
-  "expires_at": "2019-12-26T11:41:29.485Z",
-  "created_at": "2019-12-19T11:41:29.486Z",
-  "updated_at": "2019-12-19T11:41:29.486Z"
-}]
+[
+  {
+    "email": "colleague@thethings.network",
+    "token": "MW7INQWYOE46GLP3AEFQEHR5XIKRYPSRAXFF3CUCLIQPPQ3BNBLQ",
+    "expires_at": "2019-12-26T11:41:29.485Z",
+    "created_at": "2019-12-19T11:41:29.486Z",
+    "updated_at": "2019-12-19T11:41:29.486Z"
+  }
+]
 ```
+
 </details>
 
 You will also be able to delete an invitation if you want to revoke it:
@@ -157,23 +167,27 @@ ttn-lw-cli users list --name --state --admin
 <details><summary>Output</summary>
 
 ```json
-[{
-  "ids": {
-    "user_id": "new-user"
+[
+  {
+    "ids": {
+      "user_id": "new-user"
+    },
+    "created_at": "2019-12-19T09:10:31.426Z",
+    "updated_at": "2019-12-19T09:10:40.527Z",
+    "name": "New User"
   },
-  "created_at": "2019-12-19T09:10:31.426Z",
-  "updated_at": "2019-12-19T09:10:40.527Z",
-  "name": "New User"
-}, {
-  "ids": {
-    "user_id": "admin"
-  },
-  "created_at": "2019-12-18T14:54:12.723Z",
-  "updated_at": "2019-12-18T14:54:12.723Z",
-  "state": "STATE_APPROVED",
-  "admin": true
-}]
+  {
+    "ids": {
+      "user_id": "admin"
+    },
+    "created_at": "2019-12-18T14:54:12.723Z",
+    "updated_at": "2019-12-18T14:54:12.723Z",
+    "state": "STATE_APPROVED",
+    "admin": true
+  }
+]
 ```
+
 </details>
 
 Use the pagination flags `--limit` and `--page` when there are many users.
@@ -189,15 +203,18 @@ ttn-lw-cli users search --id-contains new --name
 <details><summary>Output</summary>
 
 ```json
-[{
-  "ids": {
-    "user_id": "new-user"
-  },
-  "created_at": "2019-12-19T09:10:31.426Z",
-  "updated_at": "2019-12-19T09:10:40.527Z",
-  "name": "New User"
-}]
+[
+  {
+    "ids": {
+      "user_id": "new-user"
+    },
+    "created_at": "2019-12-19T09:10:31.426Z",
+    "updated_at": "2019-12-19T09:10:40.527Z",
+    "name": "New User"
+  }
+]
 ```
+
 </details>
 
 Use the pagination flags `--limit` and `--page` when there are many users.
@@ -223,6 +240,7 @@ ttn-lw-cli users update new-user --state APPROVED --admin true
   "admin": true
 }
 ```
+
 </details>
 
 ### Deleting Users

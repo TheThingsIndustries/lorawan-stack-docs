@@ -66,7 +66,7 @@ If a user (specified with the `--user-id` flag) does not have sufficient rights 
 error:pkg/auth/rights:insufficient_application_rights (insufficient rights for application `app1`)
 ```
 
-See [Users and Organizations]({{< ref "/the-things-stack/management/user-management" >}}) section for more info on rights management.
+See [Users and Organizations]({{< ref "/concepts/advanced/user-management" >}}) section for more info on rights management.
 
 ## Invalid Identifiers
 

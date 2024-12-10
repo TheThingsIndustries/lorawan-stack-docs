@@ -1,7 +1,11 @@
 ---
 title: "Troubleshooting User Management"
 description: ""
-aliases: [/getting-started/user-management/troubleshooting]
+aliases:
+  [
+    /getting-started/user-management/troubleshooting,
+    /the-things-stack/management/user-management/troubleshooting,
+  ]
 ---
 
 This section provides help for common issues and frequently asked questions you may have when managing users, organizations and right.

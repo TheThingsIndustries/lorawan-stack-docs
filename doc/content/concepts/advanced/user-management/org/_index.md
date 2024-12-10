@@ -3,9 +3,10 @@ title: "Organization Management"
 description: ""
 aliases:
   [
-    /the-things-stack/management/user-management/cli/org,
-    /the-things-stack/management/user-management/console/org,
+    /concepts/advanced/user-management/cli/org,
+    /concepts/advanced/user-management/console/org,
     /getting-started/user-management/org/,
+    /the-things-stack/management/user-management/org,
   ]
 ---
 

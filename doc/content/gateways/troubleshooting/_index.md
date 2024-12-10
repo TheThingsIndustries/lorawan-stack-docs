@@ -137,7 +137,7 @@ Another gateway is already registered with this ID. This gateway may have been d
 
 This gateway may also be registered by another user, but you are not able to see gateways registered by other users if you are not an administrator (e.g. if you are using {{% ttss %}}).
 
-To solve this, use a different gateway ID. If you are an administrator and wish to reuse a deleted ID, see [Purging Entities]({{< ref "/the-things-stack/management/purge" >}}).
+To solve this, use a different gateway ID. If you are an administrator and wish to reuse a deleted ID, see [Purging Entities]({{< ref "/concepts/advanced/purge" >}}).
 
 If you are using {{% tts %}} Cloud or Enterprise, ask the admin of your tenant to purge this ID for you.
 
