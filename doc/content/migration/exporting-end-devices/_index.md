@@ -1,17 +1,19 @@
 ---
-title: "Migration Tool"
+title: "Export End Device Data"
 description: ""
 weight: 2
-aliases: [/getting-started/migrating/migration-tool]
+aliases: [/migration/migration-tool/]
 ---
 
-[`ttn-lw-migrate`](https://github.com/TheThingsNetwork/lorawan-stack-migrate) is a tool that can be used for migrating end devices and applications from supported LoRaWAN® networks (like [ChirpStack](https://www.chirpstack.io/)) to {{% tts %}}, or between {{% tts %}} distributions. This section provides details on how to install, configure and use this tool.
+This section contains instructions on how to use the migration tooling to export end devices from supported LoRaWAN Networks, that can later be imported in {{% tts %}}.
 
 <!--more-->
 
+[`ttn-lw-migrate`](https://github.com/TheThingsNetwork/lorawan-stack-migrate) is a tool that can be used for migrating end devices and applications from supported LoRaWAN® networks (like [ChirpStack](https://www.chirpstack.io/)) to {{% tts %}}, or between {{% tts %}} distributions. This section provides details on how to install, configure and use this tool.
+
 This tool works in a way that it exports descriptions of end devices and applications to a [JSON file]({{< ref "/devices/adding-devices/adding-devices-in-bulk/device-json" >}}), that can later be [imported in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}).
 
-## Installation
+### Installation
 
 The migration tool can be installed using package managers or manually from binary files. We highly recommend installing or upgrading to `ttn-lw-migrate` version `0.5.0` or newer, because some features like session migration are not available for prior versions.
 
@@ -61,17 +63,17 @@ After this, you will be notified that you can run `ttn-lw-migrate` from the comm
 
 {{</ tabs/container >}}
 
-## Usage
+### Usage
 
 To use the `ttn-lw-migrate` tool after successful installation, use your terminal or command prompt to navigate to the folder where it is installed and run the commands from there. Run `ttn-lw-migrate help` to see all available commands and flags.
 
 Currently, there are three available sources listed in the table below. For detailed migration instructions using these three sources, check the linked sections.
 
-| Option                                                                                                  | Used for                                                                  |
-| :------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| [`tts`]({{< ref "/the-things-stack/migrating/migration-tool/export-from-tts" >}})                       | Migrating between {{% tts %}} distributions, tenants, and/or applications |
-| [`chirpstack`]({{< ref "/the-things-stack/migrating/migration-tool/export-from-chirpstack" >}})         | Migrating devices from ChirpStack version 4                               |
-| [`chirpstack` (v3)]({{< ref "/the-things-stack/migrating/migration-tool/export-from-chirpstack-v3" >}}) | Migrating devices from ChirpStack version 3                               |
-| [`firefly`]({{< ref "/the-things-stack/migrating/migration-tool/export-from-firefly" >}})               | Migrating devices from Digimondo's Firefly                                |
-| [`wanesy`]({{< ref "/the-things-stack/migrating/migration-tool/export-from-wanesy" >}})                 | Migrating devices from Kerlink's Firefly                                  |
-| `ttnv2`                                                                                                 | (Discontinued ) Migrating from legacy {{% ttnv2 %}} deployments           |
+| Option                                                                                        | Used for                                                                  |
+| :-------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [`tts`]({{< ref "/migration/exporting-end-devices/export-from-tts" >}})                       | Migrating between {{% tts %}} distributions, tenants, and/or applications |
+| [`chirpstack`]({{< ref "/migration/exporting-end-devices/export-from-chirpstack" >}})         | Migrating devices from ChirpStack version 4                               |
+| [`chirpstack` (v3)]({{< ref "/migration/exporting-end-devices/export-from-chirpstack-v3" >}}) | Migrating devices from ChirpStack version 3                               |
+| [`firefly`]({{< ref "/migration/exporting-end-devices/export-from-firefly" >}})               | Migrating devices from Digimondo's Firefly                                |
+| [`wanesy`]({{< ref "/migration/exporting-end-devices/export-from-wanesy" >}})                 | Migrating devices from Kerlink's Firefly                                  |
+| `ttnv2`                                                                                       | (Discontinued ) Migrating from legacy {{% ttnv2 %}} deployments           |

@@ -3,8 +3,9 @@ title: Migrating Gateways
 weight: 7
 aliases:
   [
-    /the-things-stack/migrating-from-v2/gateway-migration,
+    /migration-from-v2/gateway-migration,
     /getting-started/migrating/gateway-migration,
+    /the-things-stack/migrating/gateway-migration,
   ]
 ---
 

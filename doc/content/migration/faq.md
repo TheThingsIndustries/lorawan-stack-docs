@@ -1,6 +1,6 @@
 ---
-title: Migration FAQ
-aliases: [/getting-started/migrating/faq]
+title: Frequently Asked Questions
+aliases: [/getting-started/migrating/faq, /migration/faq]
 ---
 
 This section answers frequently asked questions regarding migration to {{% tts %}}.
@@ -13,7 +13,7 @@ This section answers frequently asked questions regarding migration to {{% tts %
 
 Start migrating your devices and gateways as soon as possible! V2 software is no longer maintained and there is no official support.
 
-Reading the [complete Migrating to {{% tts %}} guide]({{< ref "/the-things-stack/migrating" >}}) can help you with the migration process.
+Reading the [complete Migrating to {{% tts %}} guide]({{< ref "/migration" >}}) can help you with the migration process.
 
 ### Am I still able to migrate my devices and gateways from The Things Network {{% ttnv2 %}} to {{% tts %}}?
 
@@ -27,8 +27,6 @@ See {{% tts %}} [Packet Broker documentation]({{< ref "/concepts/packet-broker" 
 
 {{% ttss %}} and {{% tts %}} Cloud are connected to Packet Broker by default. {{% tts %}} Open Source and {{% tts %}} Enterprise can also be [connected]({{< ref "/concepts/packet-broker/connect" >}}) to Packet Broker. The Things Industries {{% ttnv2 %}} can also be connected on a customer request. Traffic is then automatically exchanged between these networks. See [default Packet Broker routing tables]({{< ref "/reference/pb-routing" >}}).
 
-For example, this means that you can migrate an end device from The Things Industries {{% ttnv2 %}} to {{% ttss %}} without immediately (or previously) having to migrate your gateway, if both of these deployments are connected to Packet Broker. However, there are certain requirements that need to be fulfilled in order for Packet Broker to route traffic from and to these devices properly and timely. [Read more about DevAddr and RX1 Delay requirements]({{< ref "/the-things-stack/migrating/migrating-from-v2/packet-broker-requirements" >}}).
-
 ### I tried migrating my The Things Indoor Gateway (TTIG) to {{% tts %}}, but the Console shows status `Disconnected`. Does {{% tts %}} support connecting TTIGs?
 
 Yes, TTIG can be migrated from {{% ttnv2 %}} to {{% tts %}}. Make sure you are not using the regular option of [adding gateways]({{< ref "/gateways/concepts/adding-gateways" >}}) and instead read the full guide on how to [connect TTIG to {{% tts %}}]({{< ref "/gateways/models/thethingsindoorgateway" >}}). This guide also contains a troubleshooting section for common errors.
@@ -40,8 +38,6 @@ Yes, you can delete your TTIG from {{% ttnv2 %}}, but keep in mind that you are 
 ### Can I migrate my device to {{% tts %}} without having to re-program it or trigger it to perform a new join?
 
 In a special case of migrating devices from The Things Industries {{% ttnv2 %}} environment to {{% tts %}} Cloud, devices can be migrated with their existing session via Packet Broker, i.e. without having to re-program them (ABP) or trigger them to perform a new join (OTAA), and without having to migrate the gateway to {{% tts %}}. For all other migration scenarios, to migrate an active device session you would have to have the gateway migrated to {{% tts %}} as well.
-
-Learn how to [Migrate Active Sessions]({{< ref "/the-things-stack/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session" >}}).
 
 {{< note >}} Please keep in mind that migrating active sessions is not recommended. If you cannot access your device to trigger it to perform a new join, you can try contacting your device's manufacturer as the device might have "secret" options to enable remote access. {{</ note >}}
 
@@ -63,7 +59,7 @@ In case of migrating active sessions using the `ttn-lw-migrate` tool, security k
 
 To export end device and/or application descriptions from {{% ttnv2 %}} and import them into {{% tts %}}, you cannot use `ttnctl` tool (command line tool for {{% ttnv2 %}}), but you need to use the `ttn-lw-migrate` migration tool.
 
-Learn to work with the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}).
+Learn to work with the [migration tool]({{< ref "/migration" >}}).
 
 ### Do all integrations from {{% ttnv2 %}} work with {{% tts %}} as well? Can I use integration guides for {{% ttnv2 %}} to implement integrations on {{% tts %}}?
 

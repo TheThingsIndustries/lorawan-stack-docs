@@ -1,39 +1,47 @@
 ---
-title: "Export End Devices from ChirpStack v3"
+title: "Export End Devices from ChirpStack v4"
 description: ""
 weight: 2
 aliases:
   [
-    /the-things-stack/migrating-from-networks/migrate-from-chirpstack,
+    /migration-from-networks/migrate-from-chirpstack,
     /getting-started/migrating/migration-tool/export-from-chirpstack,
+    /migration/migration-tool/export-from-chirpstack,
   ]
+new_in_version: "v0.12.0"
 ---
 
-This section contains instructions on how to configure migration tool and use it to export end devices from ChirpStack v3, that can later be imported in {{% tts %}}. This is a base for migrating end devices from ChirpStack to {{% tts %}}.
+This section contains instructions on how to configure migration tool and use it to export end devices from ChirpStack v4, that can later be imported in {{% tts %}}. This is a base for migrating end devices from ChirpStack to {{% tts %}}.
 
 <!--more-->
 
-{{< note "Migration from ChirpStack v3 is only supported in  `ttn-lw-migrate` versions `0.11.x`. Versions `0.12.0` onwards support only ChirpStack v4." />}}
+This guide covers migration from ChirpStack v4. For ChirpStack v3 , see the [corresponding guide]({{< ref "/migration/exporting-end-devices/export-from-chirpstack-v3" >}}).
 
 ## Configuration
 
 First, configure the environment with the following variables modified according to your setup. Navigate to the folder where you installed `ttn-lw-migrate` and execute:
 
 ```bash
-export CHIRPSTACK_API_URL="localhost:8080"    # ChirpStack Application Server URL
-export CHIRPSTACK_API_TOKEN="eyJ0eX........"  # ChirpStack API key
-export JOIN_EUI="0101010102020203"            # Set The Things Stack JoinEUI for exported devices
-export FREQUENCY_PLAN_ID="EU_863_870"         # Set The Things Stack FrequencyPlanID for exported devices
-export CHIRPSTACK_API_INSECURE=0              # Set to 1 if not using TLS on ChirpStack
+$ export CHIRPSTACK_API_URL="localhost:8080"    # ChirpStack Application Server URL
+$ export CHIRPSTACK_API_KEY="eyJ0eX........"    # Generate from ChirpStack GUI
+$ export JOIN_EUI="0101010102020203"            # JoinEUI for exported devices
+$ export FREQUENCY_PLAN_ID="EU_863_870"         # Frequency Plan for exported devices
+$ export CHIRPSTACK_EXPORT_SESSION="true"       # Set to true for session migration.
 ```
 
 If using Windows OS, replace `export` with `set` and remove the double-quotes in commands above. For example, you would use:
 
 ```bash
-set CHIRPSTACK_API_TOKEN=eyJ0eX...
+set CHIRPSTACK_API_TOKEN=7F0as987e61...
 ```
 
 `JoinEUI` and `FrequencyPlanID` have to be set because ChirpStack does not store these variables. See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) for a full list of frequency plans supported by {{% tts %}} (and their IDs).
+
+- ABP devices without an active session are successfully exported from ChirpStack, but cannot be imported into The Things Stack.
+- MaxEIRP may not be always set properly.
+- ChirpStack payload formatters also accept a `variables` parameter. This will always be `null` on The Things Stack.
+- ChirpStack v4 uses UUIDs as application ID. The migration tool uses the appends the last index of the UUID to application ID.
+  - Ex: If the ChirpStack v4 application ID is `59459ffa-bfd3-4ef3-9cee-e1ca219397f2`, the tool generates `chirpstack-e1ca219397f2` as the application ID.
 
 You can now proceed to exporting devices or applications.
 

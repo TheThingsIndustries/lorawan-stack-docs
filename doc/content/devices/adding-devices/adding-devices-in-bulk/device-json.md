@@ -3,10 +3,7 @@ title: "JSON File Reference"
 description: ""
 weight: 8
 aliases:
-  [
-    /the-things-stack/migrating-from-networks/device-json,
-    /getting-started/migrating/device-json,
-  ]
+  [/migration-from-networks/device-json, /getting-started/migrating/device-json]
 ---
 
 {{% tts %}} has support for importing end devices from JSON files.

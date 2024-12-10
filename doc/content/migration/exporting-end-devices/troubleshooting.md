@@ -2,6 +2,7 @@
 title: "Troubleshooting"
 description: "Troubleshooting the Migration tool"
 weight:
+aliases: [/migration/migration-tool/troubleshooting]
 ---
 
 <!--more-->
@@ -24,5 +25,3 @@ We suggest you delete such devices from {{% tts %}} Application and try exportin
 This error indicates that there might be an issue with your network such as your organization's network firewall blocking the connections on port `8884`.
 
 To isolate the issue, try migrating a device by connecting the Laptop/PC to the other networks, i.e., cellular hotspot, etc. Also, you may check any firewall restrictions in your network on port `8884`.
-
-

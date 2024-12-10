@@ -2,7 +2,11 @@
 title: "Export Devices from The Things Stack"
 description: ""
 weight: 1
-aliases: [/getting-started/migrating/migration-tool/export-from-tts]
+aliases:
+  [
+    /getting-started/migrating/migration-tool/export-from-tts,
+    /migration/migration-tool/export-from-tts,
+  ]
 ---
 
 This section explains how to configure the migration tool and use it to export end devices from {{% tts %}}, that can later be imported in other {{% tts %}} deployments. This is a base for migrating end devices between {{% tts %}} distributions.
@@ -108,4 +112,4 @@ export TTS_CA_FILE="/path/to/ca.file"   # Path to a CA file (optional)
 
 ---
 
-After exporting, devices and applications can be imported in other {{% tts %}} deployments. See [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}) for details about importing devices. See [Migrating End Devices between {{% tts %}} Distributions]({{< ref "/the-things-stack/migrating/migrating-between-tts-distributions" >}}) to wrap up the whole process of migration between {{% tts %}} distributions.
+After exporting, devices and applications can be imported in other {{% tts %}} deployments. See [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}) for details about importing devices. See [Migrating End Devices between {{% tts %}} Distributions]({{< ref "/migration/migrating-between-tts-distributions" >}}) to wrap up the whole process of migration between {{% tts %}} distributions.

@@ -3,6 +3,7 @@ title: "Export End Devices from Firefly"
 description: ""
 weight: 4
 new_in_version: "v0.10.0"
+aliases: [/migration/migration-tool/export-from-chirpstack]
 ---
 
 This section contains instructions on how to configure migration tool and use it to export end devices from Firefly, that can later be imported in {{% tts %}}.

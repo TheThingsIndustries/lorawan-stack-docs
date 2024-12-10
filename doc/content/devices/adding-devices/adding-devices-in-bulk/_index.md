@@ -6,9 +6,9 @@ aliases:
   [
     /getting-started/migrating-from-v2/import-devices,
     /getting-started/migrating-from-networks/import-devices,
-    /the-things-stack/migrating/import-devices,
-    /the-things-stack/migrating-from-v2/import-devices,
-    /the-things-stack/migrating-from-networks/import-devices,
+    /migration/import-devices,
+    /migration-from-v2/import-devices,
+    /migration-from-networks/import-devices,
     /getting-started/migrating,
     /getting-started/migrating/import-devices,
     /devices/adding-devices/adding-devices-in-bulk,
@@ -23,7 +23,7 @@ There are two ways to import devices in {{% tts %}} - using [Console]({{< ref "/
 
 {{% tts %}} supports importing end devices in JSON and CSV format:
 
-- To import devices that are in a JSON file (for example, the one you created by following [Migrating End Devices from {{% ttnv2 %}}]({{< ref "/the-things-stack/migrating/migrating-from-v2" >}}) or [Exporting Devices from ChirpStack]({{< ref "/the-things-stack/migrating/migration-tool/export-from-chirpstack" >}})), use **{{% tts %}} JSON** format (identified by `the-things-stack`). The JSON format data format is documented in the [JSON File Reference]({{< ref "/devices/adding-devices/adding-devices-in-bulk/device-json" >}}).
+- To import devices that are in a JSON file (for example, the one you created by following [Exporting Devices from ChirpStack]({{< ref "/migration/exporting-end-devices/export-from-chirpstack" >}})), use **{{% tts %}} JSON** format (identified by `the-things-stack`). The JSON format data format is documented in the [JSON File Reference]({{< ref "/devices/adding-devices/adding-devices-in-bulk/device-json" >}}).
 - To import devices that are in a CSV file, use the **{{% tts %}} CSV** (identified by `the-things-stack-csv`). The CSV data format is documented in the [CSV File Reference]({{< ref "/devices/adding-devices/adding-devices-in-bulk/device-csv" >}}), including a handy Excel template.
 
 {{< tabs/container "Console" "CLI" >}}
