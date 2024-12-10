@@ -3,7 +3,8 @@ title: "Docker"
 description: ""
 distributions: ["Enterprise", "Open Source"]
 weight: 4
-aliases: [/getting-started/installation]
+aliases:
+  [/getting-started/installation, /the-things-stack/host/docker/installation]
 ---
 
 This is a guide for installing {{% tts %}} Enterprise or Open Source on your own hardware using Docker, to run your own private LoRaWAN® network server.
@@ -40,4 +41,4 @@ For multi-tenant deployments, DNS records for `*.domain` need to be created in a
 
 This guide shows you how to get everything up and running on a server. If you are comfortable with configuring servers and working with command line, this is the perfect place to start, but first, follow the guides to [install Docker](https://docs.docker.com/install/#supported-platforms), to [install Docker Compose](https://docs.docker.com/compose/install/#install-compose), and to [configure permissions for Docker Engine](https://docs.docker.com/engine/install/linux-postinstall/).
 
-Next, see instructions on how to [configure]({{< ref "/the-things-stack/host/docker/configuration" >}}), set up [certificates]({{< ref "/the-things-stack/host/docker/certificates" >}}) and finally [run {{% tts %}}]({{< ref "/the-things-stack/host/docker/running-the-stack" >}})!
+Next, see instructions on how to [configure]({{< ref "/enterprise/docker/configuration" >}}), set up [certificates]({{< ref "/enterprise/docker/certificates" >}}) and finally [run {{% tts %}}]({{< ref "/enterprise/docker/running-the-stack" >}})!

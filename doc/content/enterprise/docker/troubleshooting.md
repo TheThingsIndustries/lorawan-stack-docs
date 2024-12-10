@@ -2,7 +2,11 @@
 title: "Troubleshooting Installation"
 description: ""
 weight: 4
-aliases: [/getting-started/installation/troubleshooting]
+aliases:
+  [
+    /getting-started/installation/troubleshooting,
+    /the-things-stack/host/docker/troubleshooting,
+  ]
 ---
 
 This section contains help for common issues you may encounter while installing {{% tts %}}.
@@ -18,11 +22,11 @@ Our `docker-compose.yml` file uses [Compose file version 3.7](https://docs.docke
 ## Token Exchange Refused
 
 1. Double check that you used the correct `client-secret` when you authorized the client in [Running {{% tts %}}]({{< relref "running-the-stack" >}}).
-2. If running on `localhost`, see the [Localhost]({{< ref "the-things-stack/host/docker/configuration#localhost" >}}) section for additional info.
+2. If running on `localhost`, see the [Localhost]({{< ref "/enterprise/docker/configuration#localhost" >}}) section for additional info.
 3. You may have invalid certificates. Verify using `openssl verify -CAfile ca.pem cert.pem`.
 4. If you configure {{% tts %}} without TLS and attempt to connect using `https` you will receive this error. Configure TLS or use `http`.
-5. If you are running an offline {{% tts %}} deployment, generating [Let's Encrypt certificates]({{< ref "/the-things-stack/host/docker/certificates#automatic-certificate-management" >}}) for your domain name might fail because of lack of the Internet connection. Try using certificates from a [Custom Certificate Authority]({{< ref "/the-things-stack/host/docker/certificates#custom-certificate-authority" >}}).
-6. Double-check all [ports]({{< ref "/the-things-stack/host/docker/configuration#environment-and-ports" >}}) listed in the `docker-compose.yml` file for any firewall restrictions.
+5. If you are running an offline {{% tts %}} deployment, generating [Let's Encrypt certificates]({{< ref "/enterprise/docker/certificates#automatic-certificate-management" >}}) for your domain name might fail because of lack of the Internet connection. Try using certificates from a [Custom Certificate Authority]({{< ref "/enterprise/docker/certificates#custom-certificate-authority" >}}).
+6. Double-check all [ports]({{< ref "/enterprise/docker/configuration#environment-and-ports" >}}) listed in the `docker-compose.yml` file for any firewall restrictions.
 
 ## Can't access the server
 
@@ -31,6 +35,7 @@ Ensure you have a DNS record pointing to your server's public IP address. See yo
 ## Key Permission Denied
 
 If you run into `/run/secrets/key.pem: permission denied`, you have probably forgotten to set permissions. To set permissions:
+
 ```bash
 sudo chown 886:886 ./cert.pem ./key.pem
 ```
@@ -43,7 +48,7 @@ If you see an error reading:
 Invalid redirect URI
 ```
 
-check that you entered the correct server address when [registering the Console as an OAuth client]({{< ref "the-things-stack/host/docker/running-the-stack#initialization" >}}).
+check that you entered the correct server address when [registering the Console as an OAuth client]({{< ref "/enterprise/docker/running-the-stack#initialization" >}}).
 
 If you encounter the following error while trying to long into the Console:
 
@@ -101,7 +106,7 @@ stack_1      |     licensed=[XXXXXXXX/24] (redacted)
 
 ## Database error
 
-This error has been observed when the Identity Server hasn't been initialized during {{% tts %}} installation. {{% tts %}} components are inherently stateless and depend on the underlying Postgres and Redis databases to store the data, so before running {{% tts %}}, make sure that the Identity Server database is initialized as explained in the [Initialization section]({{< ref "/the-things-stack/host/docker/running-the-stack#initialization" >}}).
+This error has been observed when the Identity Server hasn't been initialized during {{% tts %}} installation. {{% tts %}} components are inherently stateless and depend on the underlying Postgres and Redis databases to store the data, so before running {{% tts %}}, make sure that the Identity Server database is initialized as explained in the [Initialization section]({{< ref "/enterprise/docker/running-the-stack#initialization" >}}).
 
 ## Error while parsing {{% tts %}} configuration file
 
@@ -119,7 +124,7 @@ If you are facing the `missing_tenant_id` error, that means you are trying to ac
 
 ## Grafana container fails to start due to permissions issues
 
-If you are running {{% tts %}} Docker deployment on a Linux machine, you might encounter the following error: 
+If you are running {{% tts %}} Docker deployment on a Linux machine, you might encounter the following error:
 
 ```
 failed to connect to database: failed to create SQLite database file "/var/lib/grafana/db/grafana.db": open /var/lib/grafana/db/grafana.db: permission denied
@@ -149,10 +154,10 @@ In a containerized environment, the Grafana container connects to the {{% tts %}
 In order to avoid having to manually restart the Grafana container, ensure that your Grafana container has the correct `depends_on` dependencies set:
 
 ```yaml
-    depends_on:
-      - postgres
-      - stack
-``````
+depends_on:
+  - postgres
+  - stack
+```
 
 Older versions of {{% tts %}} may not have the above dependencies set, so you may consider adding them manually.
 

@@ -3,11 +3,14 @@ title: "The Things Join Server"
 description: ""
 weight: 8
 aliases:
-  - /guides/cloud-hosted/tti-join-server
-  - /cloud/tti-join-server
-  - /cloud/tti-join-server/activate-devices-cloud-hosted
-  - /cloud/tti-join-server/register-devices
-  - /getting-started/join-server
+  [
+    /guides/cloud-hosted/tti-join-server,
+    /cloud/tti-join-server,
+    /cloud/tti-join-server/activate-devices-cloud-hosted,
+    /cloud/tti-join-server/register-devices,
+    /getting-started/join-server,
+    /the-things-stack/host/join-server,
+  ]
 ---
 
 The Things Join Server is a stand-alone LoRaWAN® Join Server. The Things Join Server can be used by device makers to provision end devices to be used by all distributions of {{% tts %}} as well as any other standards compliant LoRaWAN Network Servers.

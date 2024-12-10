@@ -2,7 +2,11 @@
 title: "Running The Things Stack"
 description: ""
 weight: 3
-aliases: [/getting-started/installation/running-the-stack]
+aliases:
+  [
+    /getting-started/installation/running-the-stack,
+    /the-things-stack/host/docker/running-the-stack,
+  ]
 ---
 
 Now that all configuration is done, you are ready to initialize {{% tts %}} and start it!

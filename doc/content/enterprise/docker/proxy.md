@@ -2,6 +2,7 @@
 title: "Proxy"
 description: ""
 weight: 4
+aliases: [/the-things-stack/host/docker/proxy]
 ---
 
 {{% tts %}} can work with an external proxy that can terminate TLS connections.

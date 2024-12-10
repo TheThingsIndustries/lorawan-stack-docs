@@ -28,8 +28,8 @@ For example:
 <div class="fixed-table table-name">
 
 | Header 1 | Header 2 |
-|---|---|
-| Col 1 | Col 2 |
+| -------- | -------- |
+| Col 1    | Col 2    |
 
 </div>
 
@@ -79,7 +79,7 @@ For an inline tag, use the `{{< new-in-version "3.8.5" >}}` shortcode to tag doc
 
 For an inline tag, use the `{{< deprecated-in-version "3.8.5" >}}` shortcode.
 
-You may additionally provide information using the `{{< warning >}}` shortcode, e.g {{< warning "This feature will be removed in January 5, 2021 for Cloud deployments" >}} 
+You may additionally provide information using the `{{< warning >}}` shortcode, e.g {{< warning "This feature will be removed in January 5, 2021 for Cloud deployments" >}}
 
 ## Sections
 
@@ -100,6 +100,7 @@ There is no need to add the word "note" at the beginning of a note, or "warning"
 ## Images
 
 Taking screenshots is done as follows:
+
 - In Chrome: activate the Developer Tools and toggle the Device Toolbar. In the Device Toolbar, select Laptop with HiDPI screen (add it if not already there), and click Capture Screenshot in the menu on the right.
 - In Firefox: enter Responsive Design Mode. In the Device Toolbar, select "Laptop with HiDPI screen" (add it if not already there) and Take a screenshot of the viewport.
 
@@ -118,7 +119,9 @@ To separate instructions for the console and CLI, use the `tabs/container` short
 {{< tabs/container "Console" "CLI" >}}
 
 {{< tabs/tab "Console" >}}
+
 ## These are console instructions
+
 {{< /tabs/tab >}}
 
 {{< tabs/tab "CLI" >}}
@@ -144,7 +147,7 @@ $ SECRET=$(echo $LNS_KEY | xxd -p -u | perl -pe 's/\n//')
 $ ttn-lw-cli gateways update $GTW_ID --lbs-lns-secret.value $SECRET
 ```
 
-If not possible to define the variable, use angle brackets to indicate a variable that needs to be replaced, e.g `https://<server-address>`. 
+If not possible to define the variable, use angle brackets to indicate a variable that needs to be replaced, e.g `https://<server-address>`.
 
 ## Syntax Highlighting
 
@@ -182,7 +185,7 @@ SOME_ENV="value"
 # file: yaml-file.yml
 services:
   stack:
-    image: 'thethingsnetwork/lorawan-stack:<the tag>'
+    image: "thethingsnetwork/lorawan-stack:<the tag>"
 ```
 
 ### Line Breaks
@@ -213,5 +216,5 @@ $ curl --location --header 'Authorization: Bearer NNSXS.XXXXXXXXX' --header 'Acc
 It is also possible to host source code (or any text file) and display it using shortcodes. For example:
 
 {{< highlight yaml "linenos=table,linenostart=5" >}}
-{{< readfile path="/content/the-things-stack/host/docker/configuration/docker-compose-enterprise.yml" from=5 to=14 >}}
+{{< readfile path="/content/enterprise/docker/configuration/docker-compose-enterprise.yml" from=5 to=14 >}}
 {{< /highlight >}}

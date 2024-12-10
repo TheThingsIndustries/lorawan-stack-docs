@@ -5,7 +5,11 @@ menu:
   main:
     weight: 2
 aliases:
-  [/reference/spec-regional-parameters, doc/content/the-things-stack/concepts]
+  [
+    /reference/spec-regional-parameters,
+    doc/content/the-things-stack/concepts,
+    /the-things-stack,
+  ]
 ---
 
 This section introduces basic concepts of working with {{% tts %}}.

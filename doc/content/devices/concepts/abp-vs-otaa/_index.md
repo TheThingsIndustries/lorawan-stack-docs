@@ -49,7 +49,7 @@ Unlike ABP, OTAA end devices re-negotiate frame counters and session keys at est
 
 Read more about LoRaWAN security in [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/security/).
 
-For enhancing security, you can use [The Things Join Server]({{< ref "/the-things-stack/host/join-server" >}}) to handle the join flow, Network Server and Application Server authentication, store root keys and generate session keys. Another option is using Hardware Secured Elements (see [Microchip ATECC608 secure elements]({{< ref "/devices/adding-devices/atecc608a" >}})) which prevent the exposure of keys to software, firmware, manufacturing sites, and other third parties.
+For enhancing security, you can use [The Things Join Server]({{< ref "/enterprise/join-server" >}}) to handle the join flow, Network Server and Application Server authentication, store root keys and generate session keys. Another option is using Hardware Secured Elements (see [Microchip ATECC608 secure elements]({{< ref "/devices/adding-devices/atecc608a" >}})) which prevent the exposure of keys to software, firmware, manufacturing sites, and other third parties.
 
 3. **ABP end devices use fixed network parameters.**
 

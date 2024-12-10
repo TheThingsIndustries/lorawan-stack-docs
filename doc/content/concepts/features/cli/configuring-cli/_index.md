@@ -88,11 +88,11 @@ If the deployment is using a CA that is not already trusted by your system, use 
 tti-lw-cli use thethings.example.com --fetch-ca
 ```
 
-If you are using a [custom certificate authority]({{< ref "/the-things-stack/host/docker/certificates#custom-certificate-authority" >}}), you will have to specify the path to the CA file with `--ca="/path/to/ca.pem"` flag when running the CLI.
+If you are using a [custom certificate authority]({{< ref "/enterprise/docker/certificates#custom-certificate-authority" >}}), you will have to specify the path to the CA file with `--ca="/path/to/ca.pem"` flag when running the CLI.
 
 If the configuration file already exists and you run the command to generate it again, it will not be overwritten by default and an error will be printed instead. Use `--overwrite` to overwrite the existing configuration file.
 
-You can also use the `--grpc-port` and `--oauth-server-address` flags to override the default values for the gRPC port and the OAuth server address. Note that these are not needed for standard deployments. An example of having to specify the `--oauth-server-address` is if you are using an `https` port other than `443`, for example if you are [running {{% tts %}} on localhost]({{< ref "/the-things-stack/host/docker/configuration#running-the-things-stack-as-localhost" >}}). In case of running {{% tts %}} on localhost, you need to append `--oauth-server-address="https://localhost:8885/oauth` when running the CLI.
+You can also use the `--grpc-port` and `--oauth-server-address` flags to override the default values for the gRPC port and the OAuth server address. Note that these are not needed for standard deployments. An example of having to specify the `--oauth-server-address` is if you are using an `https` port other than `443`, for example if you are [running {{% tts %}} on localhost]({{< ref "/enterprise/docker/configuration#running-the-things-stack-as-localhost" >}}). In case of running {{% tts %}} on localhost, you need to append `--oauth-server-address="https://localhost:8885/oauth` when running the CLI.
 
 ### Manually create configuration file
 

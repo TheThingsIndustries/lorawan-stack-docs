@@ -2,14 +2,18 @@
 title: "Certificates"
 description: ""
 weight: 2
-aliases: [/getting-started/installation/certificates]
+aliases:
+  [
+    /getting-started/installation/certificates,
+    /the-things-stack/host/docker/certificates,
+  ]
 ---
 
 {{% tts %}} has built in support for Transport Layer Security (TLS) and HTTPS. This requires a TLS certificate and a corresponding key. For using {{% tts %}} behind an external proxy that can terminate TLS see the [proxy]({{< relref "proxy" >}}) section.
 
 <!--more-->
 
-In this guide, we request a free, trusted certificate from [Let's Encrypt](https://letsencrypt.org/getting-started/), using the built in ACME support, but if you already have a certificate (`cert.pem`) and a corresponding key (`key.pem`), you can also use those. 
+In this guide, we request a free, trusted certificate from [Let's Encrypt](https://letsencrypt.org/getting-started/), using the built in ACME support, but if you already have a certificate (`cert.pem`) and a corresponding key (`key.pem`), you can also use those.
 
 If you are deploying using ACME, move to the [Automatic Certificate Management](#automatic-certificate-management) section.
 
@@ -38,11 +42,11 @@ config/
     └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
 ```
 
-If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, make sure you specify all tenant addresses in the TLS configuration of `ttn-lw-stack-docker.yml`. Read more in the [TLS section]({{< ref "/the-things-stack/host/docker/configuration#tls" >}}).
+If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, make sure you specify all tenant addresses in the TLS configuration of `ttn-lw-stack-docker.yml`. Read more in the [TLS section]({{< ref "/enterprise/docker/configuration#tls" >}}).
 
 Certificates will automatically be requested the first time you access {{% tts %}}. You will notice that the page takes some time to load while certificates are obtained in the background.
 
-Once you have created the `acme` folder and given it appropriate permissions, move on to [run {{% tts %}}]({{< ref "/the-things-stack/host/docker/running-the-stack" >}})!
+Once you have created the `acme` folder and given it appropriate permissions, move on to [run {{% tts %}}]({{< ref "/enterprise/docker/running-the-stack" >}})!
 
 ## Custom Certificate Authority
 
@@ -114,19 +118,19 @@ Be sure to configure `docker-compose.yml` and `ttn-lw-stack-docker.yml` for your
 To use CA certificates you already have or [self-signed certificates](#custom-certificate-authority), you will need to uncomment the custom certificates section of `docker-compose.yml`:
 
 {{< highlight yaml "linenos=table,linenostart=66" >}}
-{{< readfile path="/content/the-things-stack/host/docker/configuration/docker-compose-custom-certificates.yml" from=66 to=79 >}}
+{{< readfile path="/content/enterprise/docker/configuration/docker-compose-custom-certificates.yml" from=66 to=79 >}}
 {{< /highlight >}}
 
 You will also need to comment out the Let's Encrypt section of `ttn-lw-stack-docker.yml`:
 
 {{< highlight yaml "linenos=table,linenostart=48" >}}
-{{< readfile path="/content/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=48 to=55 >}}
+{{< readfile path="/content/enterprise/docker/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=48 to=55 >}}
 {{< /highlight >}}
 
 And uncomment the custom certificates section:
 
 {{< highlight yaml "linenos=table,linenostart=41" >}}
-{{< readfile path="/content/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=41 to=46 >}}
+{{< readfile path="/content/enterprise/docker/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=41 to=46 >}}
 {{< /highlight >}}
 
 In order to use the certificate (`cert.pem`) and key (`key.pem`), you also need to set these permissions:
@@ -150,4 +154,4 @@ config/
 
 Make sure you have configured `docker-compose.yml` and `ttn-lw-stack-docker.yml` for your custom certificates, as shown in [using custom certificates](#using-custom-certificates).
 
-Now that the permissions have been set you can move on to [run {{% tts %}}]({{< ref "/the-things-stack/host/docker/running-the-stack" >}})!
+Now that the permissions have been set you can move on to [run {{% tts %}}]({{< ref "/enterprise/docker/running-the-stack" >}})!

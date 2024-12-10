@@ -3,7 +3,7 @@ title: "Upgrading The Things Stack"
 description: ""
 distributions: ["Enterprise", "Open Source"]
 weight: 4
-aliases: [/getting-started/upgrading]
+aliases: [/getting-started/upgrading, /the-things-stack/host/docker/upgrading]
 ---
 
 This section contains instructions to upgrade a {{% tts %}} Enterprise or Open Source deployment.
@@ -24,9 +24,10 @@ Replace the tag in your `docker-compose.yml` file with the newer version of {{% 
 services:
   # ...
   stack:
-    image: 'thethingsindustries/lorawan-stack:<new-version-tag>'
+    image: "thethingsindustries/lorawan-stack:<new-version-tag>"
   # ...
 ```
+
 {{< /tabs/tab >}}
 {{< tabs/tab "Open Source" >}}
 
@@ -35,7 +36,7 @@ services:
 services:
   # ...
   stack:
-    image: 'thethingsnetwork/lorawan-stack:<new-version-tag>'
+    image: "thethingsnetwork/lorawan-stack:<new-version-tag>"
   # ...
 ```
 
@@ -197,9 +198,9 @@ Migrate the Network Server Database.
 ```bash
 docker compose run --rm stack ns-db migrate
 ```
+
 {{< /tabs/tab >}}
 {{< /tabs/container >}}
-
 
 ## Running the new version
 
@@ -211,4 +212,4 @@ docker compose up -d stack
 
 ## Troubleshooting
 
-For common issues that might show up during the upgrade process, see the [Troubleshooting Installation section]({{< ref "/the-things-stack/host/docker/troubleshooting" >}}).
+For common issues that might show up during the upgrade process, see the [Troubleshooting Installation section]({{< ref "/enterprise/docker/troubleshooting" >}}).

@@ -16,7 +16,7 @@ aliases: [/getting-started/what-is-tts/]
 - {{< distributions "Cloud" >}} [{{% tts %}} Cloud]({{< relref "cloud" >}}): Our flagship, fully-managed, SLA-backed cloud subscription helping hundreds of companies around the world.
   By using {{% tts %}} Cloud, you can focus on providing value to your customers, while leaving the complexity of managing a production LoRaWAN Network Server to us. You can start evaluating {{% tts %}} Cloud by [signing up for the free discovery tier]({{< relref "setup-first-network" >}}) to get started.
 
-- {{< distributions "Enterprise" >}}[{{% tts %}} Enterprise]({{< relref "host" >}}): Alternatively, if you prefer to take on the responsibility of installing and maintaining {{% tts %}} in addition to managing your LoRaWAN device fleet, {{% tts %}} is available to be installed on your own hardware or cloud infrastructure.
+- {{< distributions "Enterprise" >}}[{{% tts %}} Enterprise]({{< relref "enterprise" >}}): Alternatively, if you prefer to take on the responsibility of installing and maintaining {{% tts %}} in addition to managing your LoRaWAN device fleet, {{% tts %}} is available to be installed on your own hardware or cloud infrastructure.
 
 For simple non-commercial projects and local testing, there are a few options.
 

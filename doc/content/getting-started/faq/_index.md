@@ -42,7 +42,7 @@ You can [interact with {{% tts %}}]({{< ref "/concepts/features" >}}) via Consol
 
 ## Can I host {{% tts %}} on my own hardware?
 
-Yes, {{% tts %}} can be installed on your own hardware - check out a detailed guide on [hosting {{% tts %}}]({{< ref "/the-things-stack/host" >}}), whether on you're installing it for DIY projects or for production purposes.
+Yes, {{% tts %}} can be installed on your own hardware - check out a detailed guide on [hosting {{% tts %}}]({{< ref "/enterprise/" >}}), whether on you're installing it for DIY projects or for production purposes.
 
 ## How could you benefit from {{% tts %}} multi-cluster and multi-tenant deployments?
 
