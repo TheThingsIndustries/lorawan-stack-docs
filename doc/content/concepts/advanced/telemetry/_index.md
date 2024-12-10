@@ -1,7 +1,7 @@
 ---
-title: 'Telemetry'
-description: ''
-aliases: [/reference/telemetry]
+title: "Telemetry"
+description: ""
+aliases: [/reference/telemetry, /the-things-stack/management/telemetry]
 ---
 
 {{% tts %}} exports [Prometheus](https://prometheus.io/) telemetry on the `/metrics` endpoint. This reference gives an overview of the most important metrics.

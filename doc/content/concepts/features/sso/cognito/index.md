@@ -2,7 +2,8 @@
 title: "Amazon Cognito"
 description: ""
 weight:
-aliases: [/getting-started/sso/cognito]
+aliases:
+  [/getting-started/sso/cognito, /the-things-stack/management/sso/cognito]
 ---
 
 This section contains instructions to configure Amazon Cognito to work with {{% tts %}}.

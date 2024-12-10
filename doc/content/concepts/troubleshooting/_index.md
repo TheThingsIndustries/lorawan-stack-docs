@@ -2,7 +2,7 @@
 title: "Troubleshooting"
 description: ""
 weight: 8
-aliases: [/getting-started/troubleshooting]
+aliases: [/getting-started/troubleshooting, /the-things-stack/troubleshooting]
 ---
 
 This section provides help for common issues and frequently asked questions you may have when getting started with {{% tts %}}.

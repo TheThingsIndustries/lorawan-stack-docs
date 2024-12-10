@@ -1,9 +1,9 @@
 ---
 title: "The Things Stack"
 description: ""
-weight: 4
+weight: 7
 menu:
   main:
-    weight: 4
+    weight: 7
 aliases: []
 ---

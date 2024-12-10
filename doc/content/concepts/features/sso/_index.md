@@ -3,7 +3,7 @@ title: "Single Sign-On"
 description: ""
 distributions: ["Cloud", "Enterprise"]
 weight: 12
-aliases: [/getting-started/sso]
+aliases: [/getting-started/sso, /the-things-stack/management/sso]
 ---
 
 {{% tts %}} supports [OpenID Connect](https://openid.net/connect/) for single sign-on. This section contains instructions for connecting an OpenID provider to your {{% tts %}} deployment to allow users to sign in with their existing credentials.

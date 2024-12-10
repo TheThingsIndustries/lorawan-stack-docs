@@ -43,7 +43,7 @@ Similar alerts for downlink traffic will be added in the future.
 
 ## Metrics
 
-In addition to the [metrics exported by {{% tts %}}]({{< ref "/the-things-stack/management/telemetry" >}}), the provided Prometheus image adds a number of recording rules that provide the input for the previously described alerting rules, but can also be useful in your dashboards.
+In addition to the [metrics exported by {{% tts %}}]({{< ref "/concepts/advanced/telemetry" >}}), the provided Prometheus image adds a number of recording rules that provide the input for the previously described alerting rules, but can also be useful in your dashboards.
 
 For all services the following metrics are recorded:
 

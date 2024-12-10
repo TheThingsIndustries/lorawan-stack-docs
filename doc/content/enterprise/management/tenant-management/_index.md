@@ -1,8 +1,8 @@
 ---
-title: 'Tenant Management'
-description: ''
-distributions: ['Enterprise']
-aliases: [/reference/tenant-management]
+title: "Tenant Management"
+description: ""
+aliases:
+  [/reference/tenant-management, /the-things-stack/management/tenant-management]
 ---
 
 This guide contains detailed information on how to perform common tenant management operations for {{% tts %}} Enterprise.

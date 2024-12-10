@@ -1,10 +1,10 @@
 ---
 title: "Gateways"
 description: ""
-weight: 3
+weight: 7
 menu:
   main:
-    weight: 3
+    weight: 7
 aliases: [/guides/connecting-gateways]
 ---
 
