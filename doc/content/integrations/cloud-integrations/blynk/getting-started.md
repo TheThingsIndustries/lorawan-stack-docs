@@ -7,7 +7,7 @@ weight: 1
 The easiest way to set up a device on Blynk is to use one already connected to The Things Stack.
 
 ## Prerequirements
-1. A application on The Things Stack server
+1. An application on The Things Stack server
 2. A [Blynk](https://blynk.io/) account
 3. A connected LoRaWAN device to The Things Stack server
 

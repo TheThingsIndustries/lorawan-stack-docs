@@ -7,7 +7,7 @@ weight: 2
 Once the integration with Blynk is configured, all devices in your The Things Stack application will be automatically imported into Blynk as soon as they transmit any data.
 
 Additionally, you can manually create devices in Blynk or use the Automated Device Onboarding feature, which offers an optimal user experience for connecting devices.
-However, this requires you to first properly configure the Automated Device Onboarding settings in your Blynk integration.
+However, this requires you to configure first the Automated Device Onboarding settings in your Blynk integration.
 
 ## Enabling Automated Device Onboarding
 To enable the Automated Device Onboarding feature:
@@ -29,7 +29,7 @@ To grant these permissions, either generate a new API key or edit the existing o
 
 {{< figure src="../api-key-permissions-settings.png" alt="The API key permission settings on The Things Stack" >}}
 
-Now that automated device onboarding is enabled and configured, you can onboard your first device.
+Now that the automated device onboarding is enabled and configured, you can onboard your first device.
 
 {{< note "Sometimes, a device requires a reboot to initiate the onboarding flow. Make sure to restart the device if it doesn't automatically start the onboarding process after following the setup steps. This can help ensure the device properly connects and begins the necessary communication with Blynk and The Things Stack." />}}
 
