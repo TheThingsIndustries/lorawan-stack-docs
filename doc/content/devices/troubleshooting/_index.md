@@ -96,7 +96,7 @@ It is possible that your device is sending Join Requests on non-default frequenc
 
 - Check for the errors and solutions listed above
 - If the Network Server is processing Join Requests and scheduling Join Accepts, check the gateway events and see whether the Join Accept downlink messages are being scheduled by the gateway
-- If you see any deviation in scheduling Join Accept downlinks from the gateway, follow the [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}})
+- If you see any deviation in scheduling Join Accept downlinks from the gateway, follow the [Troubleshooting Gateways]({{< ref "/hardware/gateways/troubleshooting" >}})
 - Did you schedule a command to reset your device as a confirmed downlink? If yes, the downlink confirmation will never arrive. You should always schedule the reset command as an unconfirmed downlink. However, if your device is already affected, use the **Reset session and MAC state** option under **Network layer** in your device's settings, then manually re-join the device.
 
 ## I see the "The LoRaWAN version `<mac-version>` does not support the `<frequency-plan-id>` frequency plan. Please choose a different MAC version or frequency plan" error while registering a device in {{% tts %}}.
@@ -118,7 +118,7 @@ Here are some common causes and solutions:
 - The device has no network coverage. Check if your device has a network coverage from any of the gateways registered in your tenant.
 - The device is transmitting data in a different FSB (frequency sub-band) than the one that the gateway is listening on. Check if the frequency plan and FSB that the gateway listens on are correctly configured on {{% tts %}} and on the device.
 - The gateway is not receiving uplinks due to hardware issues. Check if your gateway is receiving uplinks by observing its debug logs.
-- The gateway is not forwarding received uplinks to the Network Server. Check your gateway's debug logs for any errors or warnings. Refer to the [Troubleshooting Gateways guide]({{< ref "/gateways/troubleshooting" >}}).
+- The gateway is not forwarding received uplinks to the Network Server. Check your gateway's debug logs for any errors or warnings. Refer to the [Troubleshooting Gateways guide]({{< ref "/hardware/gateways/troubleshooting" >}}).
 
 ## {{% tts %}} is no longer receiving uplinks from my device. What do I do?
 
@@ -195,7 +195,7 @@ Here are some common causes of a delay in scheduling downlinks for Class C devic
 
 - **The `Supports class C` option not enabled in device settings**: If this option is not enabled, {{% tts %}} treats the device as a class A device, so it schedules a downlink only after receiving an uplink. Find and enable this option under **General settings &#8594; Network layer &#8594; LoRaWAN class capabilities**, then trigger your device for a re-join in order for changes to have an effect.
 - **Device not responding immediately on a confirmed downlink or a MAC command**: Your device might be configured to respond to confirmed downlinks and/or MAC commands with the next uplink, instead of immediately. All downlinks scheduled after the confirmed downlink or a MAC command will be in a pending state until the device responds with an ACK or a MAC answer. You can check pending requests with `ttn-lw-cli end-devices get --application-id <app-id> --device-id <dev-id> --mac-state > <dev-id>.mac-state.txt`. If the device does not respond in the `class-c-timeout` interval (5 minutes by default), all pending downlinks will be discarded. In this case, you need to configure your device to immediately answer confirmed downlinks and MAC commands.
-- **Downlink failure**: If you have already addressed the above mentioned cases, but you are still experiencing a delay in scheduling downlinks, the downlinks might not be reaching the device. Please check your end device's debug logs, and your gateway's packet forwarder logs for errors. Find the common gateway-related issues and solutions in the [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}}) section.
+- **Downlink failure**: If you have already addressed the above mentioned cases, but you are still experiencing a delay in scheduling downlinks, the downlinks might not be reaching the device. Please check your end device's debug logs, and your gateway's packet forwarder logs for errors. Find the common gateway-related issues and solutions in the [Troubleshooting Gateways]({{< ref "/hardware/gateways/troubleshooting" >}}) section.
 
 ## I see downlinks being sent after every uplink message, but I did not schedule any. What are those downlinks?
 
@@ -217,7 +217,7 @@ This error indicates that your end device was added from the [Device Repository]
 
 The `COLLISION_PACKET` error occurs when downlink transmissions overlap - this happens when two or more packets overlap in time and use the same spreading factor, bandwith and frequency plan settings.
 
-To avoid packet collisions, users can enable server-side buffering of donwlink messages. If server-side buffering is enabled, the Gateway Server schedules the downlink message to be sent after the downlink message that was already queued but not sent yet, so that their transmissions don't overlap. To enable this, navigate to your gateway's **General settings** section, expand the **LoRaWAN** section and **Enable** the **Schedule downlink late** option by ticking the box. Note that this is a recommended setting for gateways that use [UDP packet forwarder]({{< ref "/gateways/concepts/udp" >}}).
+To avoid packet collisions, users can enable server-side buffering of donwlink messages. If server-side buffering is enabled, the Gateway Server schedules the downlink message to be sent after the downlink message that was already queued but not sent yet, so that their transmissions don't overlap. To enable this, navigate to your gateway's **General settings** section, expand the **LoRaWAN** section and **Enable** the **Schedule downlink late** option by ticking the box. Note that this is a recommended setting for gateways that use [UDP packet forwarder]({{< ref "/hardware/gateways/concepts/udp" >}}).
 
 ## Scheduling downlinks for a Multicast device results with "no downlink path available" error.
 

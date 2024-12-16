@@ -9,7 +9,7 @@ Once you have your first LoRaWAN® Network setup, here are the next steps.
 <!--more-->
 
 1. <a href="https://www.thethingsshop.com/collections/gateways" target="_blank">Get {{% ttigpro %}}</a> or any other LoRa® gateway
-2. [Connect the gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) to your netowrk.
+2. [Connect the gateway]({{< ref "/hardware/gateways/concepts/adding-gateways" >}}) to your netowrk.
 3. [Add LoRaWAN end devices]({{< ref "devices/adding-devices" >}}) to send LoRaWAN traffic to your network.
 4. [Create an integration]({{< ref "integrations" >}}) to send your LoRaWAN sensor data to external integrations or to your own private server.
 5. Learn how to get the most out of [{{% tts %}}]({{< ref "/enterprise/" >}}).

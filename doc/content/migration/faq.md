@@ -17,7 +17,7 @@ Reading the [complete Migrating to {{% tts %}} guide]({{< ref "/migration" >}}) 
 
 ### Am I still able to migrate my devices and gateways from The Things Network {{% ttnv2 %}} to {{% tts %}}?
 
-No, you are not able to migrate your devices and gateways from The Things Network {{% ttnv2 %}} but you can still add them to {{% tts %}} from scratch. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) and [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}).
+No, you are not able to migrate your devices and gateways from The Things Network {{% ttnv2 %}} but you can still add them to {{% tts %}} from scratch. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) and [Adding Gateways]({{< ref "/hardware/gateways/concepts/adding-gateways" >}}).
 
 ### What is Packet Broker and what does it have to do with migrating to {{% tts %}}?
 
@@ -29,7 +29,7 @@ See {{% tts %}} [Packet Broker documentation]({{< ref "/concepts/packet-broker" 
 
 ### I tried migrating my The Things Indoor Gateway (TTIG) to {{% tts %}}, but the Console shows status `Disconnected`. Does {{% tts %}} support connecting TTIGs?
 
-Yes, TTIG can be migrated from {{% ttnv2 %}} to {{% tts %}}. Make sure you are not using the regular option of [adding gateways]({{< ref "/gateways/concepts/adding-gateways" >}}) and instead read the full guide on how to [connect TTIG to {{% tts %}}]({{< ref "/gateways/models/thethingsindoorgateway" >}}). This guide also contains a troubleshooting section for common errors.
+Yes, TTIG can be migrated from {{% ttnv2 %}} to {{% tts %}}. Make sure you are not using the regular option of [adding gateways]({{< ref "/hardware/gateways/concepts/adding-gateways" >}}) and instead read the full guide on how to [connect TTIG to {{% tts %}}]({{< ref "/hardware/gateways/models/thethingsindoorgateway" >}}). This guide also contains a troubleshooting section for common errors.
 
 ### Can I delete my TTIG from {{% ttnv2 %}} Console after I have migrated it to {{% tts %}}?
 

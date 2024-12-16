@@ -32,9 +32,9 @@ Keep in mind that we highly recommend to use OTAA activation method, rather than
 
 ## How to choose a LoRaWAN gateway?
 
-Gateways that use the legacy [{{% udp-pf %}}]({{< ref "/gateways/concepts/udp/" >}}) have many security drawbacks, so gateways that use the [{{% lbs %}}]({{< ref "/gateways/concepts/lora-basics-station" >}}) are strongly recommended.
+Gateways that use the legacy [{{% udp-pf %}}]({{< ref "/hardware/gateways/concepts/udp/" >}}) have many security drawbacks, so gateways that use the [{{% lbs %}}]({{< ref "/hardware/gateways/concepts/lora-basics-station" >}}) are strongly recommended.
 
-[Adding gateways]({{< ref "/gateways/concepts/adding-gateways/" >}}) guides you through simple process of gateway onboarding. Check [here]({{< ref "/gateways/models/" >}}) for simple guides on connecting various gateway models to {{% tts %}}.
+[Adding gateways]({{< ref "/hardware/gateways/concepts/adding-gateways/" >}}) guides you through simple process of gateway onboarding. Check [here]({{< ref "/hardware/gateways/models/" >}}) for simple guides on connecting various gateway models to {{% tts %}}.
 
 ## How to easily interact with {{% tts %}}?
 

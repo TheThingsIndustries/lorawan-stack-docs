@@ -6,9 +6,9 @@ weight: 4
 
 Payload formatters allow you to process data going to and from end devices. This is useful for converting binary payloads to human readable fields, or for doing any other kind of data conversion on uplinks and downlinks.
 
-This section explains how to set up payload formatters for a specific end device or an entire application.
-
 <!--more-->
+
+This section explains how to set up payload formatters for a specific end device or an entire application.
 
 In addition to the written instructions linked below, a video with instructions for creating JavaScript and device repository payload formatters is available on [The Things Network YouTube channel](https://youtu.be/4tii7MiD-yM).
 

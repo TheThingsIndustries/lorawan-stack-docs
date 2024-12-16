@@ -128,7 +128,7 @@ Once that is completed, deploy `5-4-ecs-services` with `SupportProxyTLS` set to 
 
 ### Step 5: Testing
 
-Now that the above setup is complete, we can now test if everything worked. For testing instructions check the [mTLS Authentication]({{< ref "/gateways/concepts/lora-basics-station/mtls-authentication" >}}) page.
+Now that the above setup is complete, we can now test if everything worked. For testing instructions check the [mTLS Authentication]({{< ref "/hardware/gateways/concepts/lora-basics-station/mtls-authentication" >}}) page.
 
 ## Additional Operator Notes
 

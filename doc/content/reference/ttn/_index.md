@@ -15,7 +15,7 @@ The Things Network runs {{% ttss %}}, which is a crowdsourced, open and decentra
 
 [Login or create an account](https://console.cloud.thethings.network/) to get started with The Things Network and start using {{% tts %}} Console.
 
-Once you have an account, get started by following instructions for adding [Devices]({{< ref "/devices" >}}), [Gateways]({{< ref "/gateways" >}}), and [Integrations]({{< ref "/integrations" >}}).
+Once you have an account, get started by following instructions for adding [Devices]({{< ref "/devices" >}}), [Gateways]({{< ref "/hardware/gateways" >}}), and [Integrations]({{< ref "/integrations" >}}).
 
 For more information about The Things Network and LoRaWAN, see [The Things Network Documentation](https://thethingsnetwork.org/docs)
 

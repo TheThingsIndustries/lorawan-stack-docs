@@ -8,7 +8,7 @@ This section shows how to build an end-to-end solution to control the [Kuando Bu
 
 ## Registering {{% ttig %}}
 
-Register {{% ttig %}} on {{% tts %}} by following [these instructions]({{< ref "/gateways/models/thethingsindoorgateway" >}}). Once registered, your gateway will be ready to receive uplinks and forward downlinks.
+Register {{% ttig %}} on {{% tts %}} by following [these instructions]({{< ref "/hardware/gateways/models/thethingsindoorgateway" >}}). Once registered, your gateway will be ready to receive uplinks and forward downlinks.
 
 ## Creating an Application
 

@@ -65,7 +65,7 @@ sudo journalctl -f -u lorawan-stack.service
 
 ### My gateway doesn't connect. What do I do?
 
-Please check the [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}}) guide.
+Please check the [Troubleshooting Gateways]({{< ref "/hardware/gateways/troubleshooting" >}}) guide.
 
 ### My device doesn't join. How do I fix this?
 

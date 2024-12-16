@@ -5,7 +5,7 @@ weight: 5
 menu:
   main:
     weight: 5
-aliases: [/migration]
+aliases: [/the-things-stack/migration]
 ---
 
 This guide documents the process of migrating end devices and gateways to {{% tts %}} and between different installations of {{% tts %}}.

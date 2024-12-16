@@ -13,7 +13,7 @@ See the [port allocations]({{< ref "/concepts/networking/#port-allocations" >}})
 
 ## LoRa Basics™ Station
 
-{{% tts %}} provides {{% lbs %}} [LNS]({{< ref "/gateways/concepts/lora-basics-station/#lorawan-network-server-lns" >}}) and [CUPS]({{< ref "/gateways/concepts/lora-basics-station/#configuration-and-update-server-cups" >}}) end points for gateways to connect.
+{{% tts %}} provides {{% lbs %}} [LNS]({{< ref "/hardware/gateways/concepts/lora-basics-station/#lorawan-network-server-lns" >}}) and [CUPS]({{< ref "/hardware/gateways/concepts/lora-basics-station/#configuration-and-update-server-cups" >}}) end points for gateways to connect.
 
 These protocols follow the {{% lbs %}} [reference specification](https://lora-developers.semtech.com/build/software/lora-basics/lora-basics-for-gateways/?url=cupsproto.html).
 
@@ -37,13 +37,13 @@ To communicate with the MQTT protocol, the Gateway Server and the gateway are ex
 
 ### MQTT v2
 
-The MQTT v2 gateway APIs are used by [The Things Kickstarter Gateway]({{< ref "/gateways/models/thethingskickstartergateway">}}) and use the [TTN v2 MQTT](https://github.com/TheThingsNetwork/lorawan-stack/blob/master/pkg/gatewayserver/io/mqtt/format_protobufv2.go) format.
+The MQTT v2 gateway APIs are used by [The Things Kickstarter Gateway]({{< ref "/hardware/gateways/models/thethingskickstartergateway">}}) and use the [TTN v2 MQTT](https://github.com/TheThingsNetwork/lorawan-stack/blob/master/pkg/gatewayserver/io/mqtt/format_protobufv2.go) format.
 
 ### MQTT v3
 
 The MQTT v3 protocol uses the {{% tts %}} v3 messages definitions.
 
-Gateways can connect using the username `{gateway-id}@{tenant-id}` and an API key as the password. Check how to [register a gateway and create an API key]({{< ref "/gateways/concepts/adding-gateways/">}}).
+Gateways can connect using the username `{gateway-id}@{tenant-id}` and an API key as the password. Check how to [register a gateway and create an API key]({{< ref "/hardware/gateways/concepts/adding-gateways/">}}).
 
 <div class="fixed-table table-api">
 
@@ -60,7 +60,7 @@ Gateways can connect using the username `{gateway-id}@{tenant-id}` and an API ke
 
 See [Networking]({{< ref "/concepts/networking" >}}) for the default port of the MQTT server.
 
-The username is `<gateway-id>@<tenant-id>` (e.g. `gtw1@tenant1`), and the password is a gateway API key with the `RIGHT_GATEWAY_LINK` right enabled. You can generate this API key by following instructions in the [Creating Gateways]({{< ref "/gateways/concepts/adding-gateways#create-gateway-api-key" >}}) section.
+The username is `<gateway-id>@<tenant-id>` (e.g. `gtw1@tenant1`), and the password is a gateway API key with the `RIGHT_GATEWAY_LINK` right enabled. You can generate this API key by following instructions in the [Creating Gateways]({{< ref "/hardware/gateways/concepts/adding-gateways#create-gateway-api-key" >}}) section.
 
 Authenticated clients get **write-only** access to the following topics:
 

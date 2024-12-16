@@ -33,7 +33,7 @@ See [Troubleshooting Devices]({{< ref "/devices/troubleshooting" >}}).
 
 ## Troubleshooting common gateway errors
 
-See [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}}).
+See [Troubleshooting Gateways]({{< ref "/hardware/gateways/troubleshooting" >}}).
 
 ## Tenant is not active
 

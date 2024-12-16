@@ -5,7 +5,7 @@ aliases: [/getting-started/server-addresses]
 weight: 6
 ---
 
-To access the [Console]({{< ref "/concepts/features/console" >}}), register a [command line client]({{< ref "/concepts/features/cli" >}}), [connect gateways]({{< ref "/gateways/concepts/adding-gateways" >}}), or schedule uplinks via [webhooks]({{< ref "integrations/webhooks" >}}), it is necessary to know the server address of your {{% tts %}} instance. This section contains information about addresses for different {{% tts %}} deployments.
+To access the [Console]({{< ref "/concepts/features/console" >}}), register a [command line client]({{< ref "/concepts/features/cli" >}}), [connect gateways]({{< ref "/hardware/gateways/concepts/adding-gateways" >}}), or schedule uplinks via [webhooks]({{< ref "integrations/webhooks" >}}), it is necessary to know the server address of your {{% tts %}} instance. This section contains information about addresses for different {{% tts %}} deployments.
 
 <!--more-->
 
