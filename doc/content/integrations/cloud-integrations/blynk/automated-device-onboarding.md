@@ -11,7 +11,7 @@ However, this requires you to configure first the Automated Device Onboarding se
 
 ## Enabling Automated Device Onboarding
 To enable the Automated Device Onboarding feature:
-- Open the **Blynk Console** and navigate to **Developer Tools -> Integrations -> The Things Network**.
+- Open the **Blynk Console** and navigate to **Developer Tools -> Integrations -> The Things Stack**.
 - Select the application you wish to configure and access the advanced settings.
 - Turn on the **Enable Automated Device Onboarding** switch.
 - Specify the LoRaWAN version, Frequency plan, and Regional Parameter Version. If needed, check the Support class B and/or Support class C boxes.
@@ -45,7 +45,7 @@ Next, to provision the device on The Things Stack, open **Info & Metadata** and 
 Once these three metadata fields are specified, Blynk will automatically create the device in The Things Stack application.
 
 ## Onboard using Static Tokens
-The preferred method for device provisioning is using [Blynk Static Tokens](https://docs.blynk.io/en/hardware-guides/the-things-network/automated-device-onboarding#onboard-using-static-tokens).
+The preferred method for device provisioning is using [Blynk Static Tokens](https://docs.blynk.io/en/hardware-guides/the-things-stack/automated-device-onboarding#onboard-using-static-tokens).
 Here’s how to do it:
 
 1. Create a CSV file listing the Device EUI, App EUI, and Application Key for each device.
@@ -90,3 +90,14 @@ LW:D0:70B3D57ED0000010:0018B20000000101:000AF8BE
 Generate the QR code by inputting this content into any QR code generator tool, such as [QR Code Generator](https://www.urldecoder.org/).
 Then this QR code can be scanned by the end customer in the Blynk Mobile application or on the Blynk Console.
 Once the device is created, it will be automatically added in The Things Stack application.
+
+## Re-provisioning
+If you've changed your hardware or updated any LoRaWAN connection parameters (such as DevEUI, AppEUI/JoinEUI, or Application Key), you will need to create a new device in The Things Stack.
+
+To retain the historical data, settings, or any other details for the old device in Blynk, follow these steps:
+
+1. Navigate to the **Device Information & Metadata** tab for the old device in Blynk.
+2. Update the **TheThingsStack Device ID** metafield.
+3. Optionally, you can also update other related metafields like **DevEUI**, **JoinEUI**, and **Application Key**.
+
+{{< warning "If the new device goes online in The Things Stack before updating the metafields in Blynk, it may be automatically imported into Blynk. In case of a **TheThingsStack Device ID** collision (where two devices have the same ID), Blynk will randomly select one device. To resolve this, simply delete the automatically imported device to ensure the correct one is used." />}}
