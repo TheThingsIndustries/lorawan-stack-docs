@@ -55,17 +55,17 @@ Ensure that **Cognito User Pool** is checked for **Enabled Identity Providers**.
 
 For the **Callback URL**, enter the **OAuth Callback URL** of your {{% tts %}} deployment. This is the [Server Address]({{< ref "the-things-stack/concepts/server-addresses" >}}) followed by the OAuth endpoint, which includes an **Authentication Provider ID** of your choosing:
 
-`
+```
 /oauth/login/<authentication-provider-id>/callback
-`
+```
 
 You will actually create the Authentication Provider in {{% tts %}} using this Authentication Provider ID, so remember it.
 
 For example, with a tenant `tenant1` in the `eu1` cluster and an Authentication Provider ID of `aws-cog`, the OAuth Callback URL is:
 
-`
+```
 https://tenant1.eu1.cloud.thethings.industries/oauth/login/aws-cog/callback
-`
+```
 
 Additionally, ensure the following **Allowed OAuth Scopes** are checked:
 
@@ -93,7 +93,7 @@ Finally, go to **App clients** and choose your **App Client** to view your Clien
 
 {{< figure src="secret.png" >}}
 
-Proceed to [Configure {{% tts %}} for SSO]({{< relref "../../sso#configure-the-things-stack-for-sso" >}}) using the following information:
+Proceed to [Configure {{% tts %}} for SSO]({{< relref "../sso#configure-the-things-stack-for-sso" >}}) using the following information:
 
 - **Client ID**: Provided by Cognito
 - **Client Secret**: Provided by Cognito

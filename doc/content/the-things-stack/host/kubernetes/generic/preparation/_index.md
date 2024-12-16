@@ -22,8 +22,8 @@ Copy each generated secret to a local file and then transfer those values later 
 | PProf Password                        | Password to access profiling (pprof)                                  | 16   | `global.http.pprof.password`        |
 | Console Oauth Secret                  | Secret used by the Console to connect to The Things Stack             | 16   | `global.console.oauth.clientSecret` |
 | Tenant Administration Key             | Secret used to administer cluster tenants                             | 32   | `global.tenancy.adminKey`           |
-| NOC Grafana Admin Password (optional) | Grafana admin password for The Things Stack Network Operations Center | 24   | `noc.grafana.adminPassword`         |
-| NOC Oauth Client Secret (optional)    | OAuth client secret for The Things Stack Network Operations Center    | 24   | `noc.oauth.clientSecret`            |
+| NOC Grafana Admin Password (optional) | Grafana admin password for The Things Stack Network Operations Center | 24   | `global.noc.grafana.adminPassword`  |
+| NOC Oauth Client Secret (optional)    | OAuth client secret for The Things Stack Network Operations Center    | 24   | `global.noc.oauth.clientSecret`     |
 
 The simplest option is to use `openssl`.
 

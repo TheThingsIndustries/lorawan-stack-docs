@@ -1,0 +1,39 @@
+name: ManagedGatewayConfigurationService
+methods:
+  Get:
+    name: Get
+    input:
+      name: GetGatewayRequest
+    output:
+      name: ManagedGateway
+    http:
+    - method: GET
+      path: /gcs/gateways/managed/{gateway_ids.gateway_id}
+  Update:
+    name: Update
+    input:
+      name: UpdateManagedGatewayRequest
+    output:
+      name: ManagedGateway
+    http:
+    - method: PUT
+      path: /gcs/gateways/managed/{gateway.ids.gateway_id}
+  StreamEvents:
+    name: StreamEvents
+    input:
+      name: GatewayIdentifiers
+    output:
+      name: ManagedGatewayEventData
+      stream: true
+    http:
+    - method: POST
+      path: /gcs/gateways/managed/{gateway_id}/events
+  ScanWiFiAccessPoints:
+    name: ScanWiFiAccessPoints
+    input:
+      name: GatewayIdentifiers
+    output:
+      name: ManagedGatewayWiFiAccessPoints
+    http:
+    - method: POST
+      path: /gcs/gateways/managed/{gateway_id}/wifi/scan

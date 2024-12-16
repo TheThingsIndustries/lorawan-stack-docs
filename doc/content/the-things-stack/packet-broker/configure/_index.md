@@ -4,7 +4,6 @@ description: ""
 weight: 2
 distributions:
   - Cloud
-  - Dedicated Cloud
   - Enterprise
   - Open Source
 aliases:
@@ -27,7 +26,6 @@ To see which routing policies are configured by default for all deployments, see
 1. Understand how Packet Broker works and what routing policies are. [Learn about Packet Broker]({{< relref "../" >}}).
 2. {{% tts %}} connected to Packet Broker.
   - {{< distributions "Cloud" >}} **{{% tts %}} Cloud** is already connected to Packet Broker.
-  - {{< distributions "Dedicated Cloud" >}} **{{% tts %}} Dedicated Cloud** can be connected on request. Please [contact The Things Industries support](mailto:support@thethingsindustries.com).
   - {{< distributions "Enterprise" "Open Source" >}} **{{% tts %}} Enterprise** and **Open Source**: see [Connect]({{< relref "connect" >}}).
 3. An admin account for the {{% tts %}} deployment. All Packet Broker configuration requires administrative access.
 
@@ -133,7 +131,7 @@ To register or update your existing tenant registration:
 ttn-lw-cli packetbroker register --listed
 ```
 
-This updates the registration with Packet Broker based on your {{% tts %}} environment. When using {{% tts %}} Cloud or Dedicated Cloud, the registration is based on your subscription. When using {{% tts %}} Enterprise or Open Source, the registration is based on [your configuration]({{< relref "configure" >}}).
+This updates the registration with Packet Broker based on your {{% tts %}} environment. When using {{% tts %}} Cloud, the registration is based on your subscription. When using {{% tts %}} Enterprise or Open Source, the registration is based on [your configuration]({{< relref "configure" >}}).
 
 With `--listed`, you make your network publicly listed so it can be found by other network administrators. This flag is optional.
 

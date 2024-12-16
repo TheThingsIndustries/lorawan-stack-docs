@@ -12,17 +12,9 @@ This section explains how to get started with the [Generic Node Sensor Edition](
 
 The Generic Node Sensor Edition comes with a pre-loaded application called [vanilla](https://www.genericnode.com/docs/applications/se-vanilla/) that showcases the device's functions and capabilities. This application utilizes a combination of the onboard components including the LEDs, button, buzzer, accelerometer, secure element, temperature sensor, and humidity sensor. The instructions on how to flash a new application onto the Generic Node SE can be found [here](https://www.genericnode.com/docs/getting-started/se-sw/env-setup/).
 
-# Onboarding GNSE Using the QR Code
+## Onboarding GNSE Using the QR Code
 
 The Generic Node can be onboarded to {{% tts %}} using the QR code which is printed on the back of its enclosure.
-
-Sign in to [{{% tts %}}](/getting-started/quick-start/).
-
-In {{% tts %}} **Console**, choose the application to which you want to add the GNSE. See [Adding applications](/integrations/adding-applications/) if you haven't created one yet.
-
-Select the **Register end device** button.
-
-{{< figure src="application-overview.png" alt="Application overview" >}}
 
 In the **Register end device** page select the **Scan end device QR code** button.
 
@@ -38,7 +30,7 @@ A window with information scanned from the QR code (like **Claim authentication 
 
 To continue with the rest of the registration process you can choose either **LoRaWAN® Device Repository** or **manual registration**.
 
-### Using the LoRaWAN Device Repository
+## Using the LoRaWAN Device Repository
 
 The [LoRaWAN® Device repository](https://github.com/TheThingsNetwork/lorawan-devices) comprises over 800 end-device profiles, including the Generic Node Sensor Edition, which requires less information for registration with {{% tts %}}.
 
@@ -66,7 +58,7 @@ The device is now registered and you will be redirected to the **Overview** page
 
 {{< figure src="gnse-after-register.png" alt="GNSE overview page" >}}
 
-### Manually
+## Manually
 
 The Generic Node Sensor Edition also supports manual registration, but you need to find the required settings from the datasheet and ensure that they are entered correctly.
 
@@ -80,18 +72,17 @@ Then select/enter the following values:
 
 Select **Show advanced activation, LoRaWAN class and cluster settings** to expand the section. Ensure that the default selection is **Over the Air Activation (OTAA)**.
 
-{{< figure src="manually-1.png" alt="Settings for manual registartion" >}}
+{{< figure src="manually-1.png" alt="Settings for manual registration" >}}
 
 Under **Provisioning information** enter the following settings:
 
-- JoinEUI: pre-filled
-- DevEUI: pre-filled (this is the secure element’s DevEUI)
-- AppKey: select the **Generate** button.
-- End device ID: you can continue with the pre-filled value or use any other unique value.
+- JoinEUI: **On the bottom of the device.**
+- DevEUI: **On the bottom of the device.**
+- AppKey: **select the Generate button.**
 
 Select the **Register end device** button.
 
-{{< figure src="manually-2.png" alt="Settings for manual registartion" >}}
+{{< figure src="manually-2.png" alt="Settings for manual registration" >}}
 
 The device is now registered and you will be redirected to the **Overview** page of the device.
 

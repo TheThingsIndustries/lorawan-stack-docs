@@ -15,6 +15,8 @@ This section explains how pagination works with HTTP (REST) APIs. For other APIs
 1. `limit`: The number of objects returned per page (at a time).
 2. `page`: The number of the page. A value of `0` is interpreted as the first page.
 
+{{< note "If the request does not set a `limit` value, the default limit set for the RPC is used." />}}
+
 In the following example, there are 10 gateways accessible by the `admin` user in a {{% tts %}} cluster.
 
 Let's list these gateways with a limit of 2 per page.

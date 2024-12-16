@@ -16,7 +16,7 @@ The following table lists the default ports used.
 | **Purpose**                                              | **Protocol**                                                                                      | **Authentication** | **Port**   | **Port (TLS)** |
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------ | ---------- | -------------- |
 | Gateway data                                             | [Semtech Packet Forwarder](https://github.com/Lora-net/packet_forwarder/blob/master/PROTOCOL.TXT) | None               | 1700 (UDP) | N/A            |
-| Gateway data                                             | MQTT (V2)                                                                                         | API key, token     | 1881       | 8881           |
+| Gateway data                                             | MQTT (legacy)                                                                                     | API key, token     | 1881       | 8881           |
 | Gateway data                                             | MQTT                                                                                              | API key, token     | 1882       | 8882           |
 | Application data, events                                 | MQTT                                                                                              | API key, token     | 1883       | 8883           |
 | Management, data, events                                 | gRPC                                                                                              | API key, token     | 1884       | 8884           |
@@ -24,6 +24,7 @@ The following table lists the default ports used.
 | Backend Interfaces                                       | HTTP                                                                                              | Custom             | 1886       | 8886           |
 | {{% lbs %}} LNS                                          | Web Sockets                                                                                       | Auth Token, Custom | 1887       | 8887           |
 | Tabs Hubs LNS {{< distributions "Cloud" "Enterprise" >}} | Web Sockets                                                                                       | Auth Token, Custom | 1888       | 8888           |
+| The Things Industries Gateway                            | Web Sockets                                                                                       | mTLS               | NA         | 8889           |
 | LBS CUPS mTLS {{< distributions "Cloud" "Enterprise" >}} | HTTP                                                                                              | mTLS               | NA         | 8987           |
 
 ## Service Discovery

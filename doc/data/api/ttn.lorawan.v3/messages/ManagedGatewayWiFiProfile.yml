@@ -1,0 +1,30 @@
+name: ManagedGatewayWiFiProfile
+fields:
+- name: profile_id
+  type: string
+  rules:
+    uuid: true
+    ignore_empty: true
+  default: ""
+- name: profile_name
+  type: string
+  rules:
+    max_len: 32
+  default: ""
+- name: shared
+  type: bool
+  default: false
+- name: ssid
+  type: string
+  rules:
+    max_len: 32
+  default: ""
+- name: password
+  type: string
+  rules:
+    max_len: 64
+  default: ""
+- name: network_interface_addresses
+  message:
+    name: ManagedGatewayNetworkInterfaceAddresses
+  default: {}

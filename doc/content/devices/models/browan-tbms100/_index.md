@@ -1,21 +1,19 @@
 ---
-title: "Browan TBMS100"
+title: "Browan TBMS100 Motion Sensor"
 description: ""
 weight: 
 ---
 
 {{< figure src="tbms100.png" alt="Generic Node Sensor Edition" class="float plain" >}}
 
-The Browan [TBMS100](https://www.browan.com/product/motion-sensor-pir/detail) is a PIR motion sensor designed to detect occupancy or movement in homes or buildings for security and efficient facility management. It helps optimize the utilization of spaces like desks, conference rooms, and bathrooms.
+The Browan [TBMS100 Motion Sensor](https://lora-alliance.org/wp-content/uploads/2020/05/RM_Motion-SensorPIR_20200205_v2_with-downlink.pdf) is a PIR motion sensor designed to detect occupancy or movement in homes or buildings for security and efficient facility management. It helps optimize the utilization of spaces like desks, conference rooms, and bathrooms.
 
 <!--more-->
 
 ## Provisioning Information
 The provisioning information, such as **JoinEUI** and **DevEUI**, can be found on the back of the device. The **AppKey**, which is sensitive information, is provided within an Excel sheet via email to the person who purchased it.
 
-
 {{< figure src="tbms100-back.png" alt="TBMS100 provisioning information" >}}
-
 
 {{< note "The TBMS100 doesn’t have a QR code that supports {{% tts %}} to extract provisioning information." />}}
 
@@ -32,6 +30,8 @@ The [Onboarding devices without QR codes]({{< ref "/devices/adding-devices/#onbo
 - Hardware Ver.: **1.0**
 - Firmware Ver.: **1.0.1**
 
+Then fill in the **Provisioning information**, which were found [in the first steps](#provisioning-information).
+
 After configuring your device, select the **Register end device** button.
 
 {{< figure src="tbms100-device-repository.png" alt="Settings for registration through device repository" >}}
@@ -41,12 +41,8 @@ If you prefer onboarding **manually**, in the **End device type** section, under
 - LoRaWAN version: **LoRaWAN Specification 1.0.3**
 - Regional parameters version: **RP001 Regional Parameters 1.0.3 revision A**
 
+Then fill in the **Provisioning information**, which were found [in the first steps](#provisioning-information).
+
 After configuring your device, select the **Register end device** button.
 
 {{< figure src="tbms100-manually.png" alt="Settings for manual registration" >}}
-
-## Monitoring Live Data
-
-When your device is registered, select the **Live Data** tab to view all messages exchanged between the end device and {{% tts %}}.
-
-{{< figure src="tbms100-live-data.png" alt="Live data tab" >}}

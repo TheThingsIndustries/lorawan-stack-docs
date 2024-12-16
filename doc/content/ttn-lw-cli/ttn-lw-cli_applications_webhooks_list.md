@@ -44,6 +44,7 @@ ttn-lw-cli applications webhooks list [application-id] [flags]
       --join-accept.path                                             select the join_accept.path field
       --location-solved                                              select the location_solved field and all allowed sub-fields
       --location-solved.path                                         select the location_solved.path field
+      --paused                                                       select the paused field
       --queue                                                        select the queue field and all allowed sub-fields
       --queue.enabled                                                select the queue.enabled field
       --service-data                                                 select the service_data field and all allowed sub-fields

@@ -146,6 +146,8 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 
 {{< proto/message message="ListGatewaysRequest" >}}
 
+{{< proto/message message="ListGatewaysRequest.Filter" >}}
+
 {{< proto/message message="Location" >}}
 
 {{< proto/message message="OrganizationOrUserIdentifiers" >}}

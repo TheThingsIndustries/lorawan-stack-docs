@@ -8,6 +8,29 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+- Add GRPC methods rate limiting metric to prometheus rules.
+
+### Proxy
+
+- Add `NsMACSettingsProfileRegistry` grpc service and routes.
+
+### AMI/BYOL template
+
+- Add a new `TLSCertificateSecretARN` parameter to allow loading TLS certificates from AWS secrets to BYOL and PAYG single template deployments.
+- Add new IAM policy role that allows reading secrets from AWS Secret Manager
+- Update default postgres version to 16.4
+
+## 3.32.1
+
+## 3.32.0
+
+- Add support for managed gateways via The Things Gateway Controller. The Gateway Configuration Server and Device Claiming Server use TLS client authentication.
+  - When using AWS Private CA (`CertificateAuthorityARN` in `4-2a-configuration`), the client certificate can be issued automatically.
+  - To specify a custom TLS client certificate, enable `EnableTTGCCustomCertificate` in `4-1-secrets` and specify the certificate and key according to the format in the description.
+- Add support for gateways using The Things Industries Gateway Protocol. This requires TLS mutual authentication and TLS termination by the proxy. Make sure that `SupportProxyTLS` is enabled. This adds a new public listener (port `8889`) that is mapped to the proxy that forwards traffic to the Gateway Server (port `1889`).
+- Fixed the rate-limiting profile for the `ApplicationUpStorage` service in the Application Server.
+- Add default values for the default and maximum page sizes in the `ApplicationUpStorage` service in the Application Server.
+
 ## 3.31.1
 
 ### Proxy

@@ -50,6 +50,8 @@ In the **End device type** section, under **Input method**, select either the **
 - Hardware Ver.: **2.4**
 - Firmware Ver.: **1.0.7**
 
+Then fill in the **Provisioning information**, which were found [in the first steps](#provisioning-information).
+
 After configuring your device, select the **Register end device** button.
 
 {{< figure src="lw001-bg-pro-prov-info-stack.png" alt="Settings for registration through device repository" >}}
@@ -59,12 +61,8 @@ If you prefer onboarding **manually**, in the **End device type** section, under
 - LoRaWAN version: **LoRaWAN Specification 1.0.3**
 - Regional parameters version: **RP001 Regional Parameters 1.0.3 revision A** 
 
+Then fill in the **Provisioning information**, which were found [in the first steps](#provisioning-information).
+
 After configuring your device, select the **Register end device** button.
 
 {{< figure src="manual-register.png" alt="Settings for manual registration" >}}
-
-## Monitoring Live Data
-
-When your device is registered, select the **Live Data** tab to view all messages exchanged between your end device and {{% tts %}}.
-
-{{< figure src="lw001-bg-pro-live-data.png" alt="Live Data tab" >}}

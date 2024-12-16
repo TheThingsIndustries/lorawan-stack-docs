@@ -1,7 +1,7 @@
 ---
 title: "Google OpenID Connect"
 description: ""
-weight: 
+weight:
 aliases: [/getting-started/sso/google]
 ---
 
@@ -25,23 +25,23 @@ Choose **Web application** for the **Application type**.
 
 Give the Application a **Name** of your choosing, and enter the **Redirect URI** of your {{% tts %}} deployment. The URI is the [Server Address]({{< ref "the-things-stack/concepts/server-addresses" >}}) followed by the OAuth endpoint, which includes an **Authentication Provider ID** of your choosing:
 
-`
+```
 /oauth/login/<authentication-provider-id>/callback
-`
+```
 
 You will actually create the Authentication Provider in {{% tts %}} using this Authentication Provider ID, so remember it.
 
 For example, with a tenant `tenant1` in the `eu1` cluster and an Authentication Provider ID of `goog`, the OAuth Callback URL is:
 
-`
+```
 https://tenant1.eu1.cloud.thethings.industries/oauth/login/goog/callback
-`
+```
 
 {{< figure src="callback.png" >}}
 
 Click **Create** and you will be presented with the **Client ID** and **Client Secret** for this provider.
 
-Proceed to [Configure {{% tts %}} for SSO]({{< relref "../../sso#configure-the-things-stack-for-sso" >}}) using the following information:
+Proceed to [Configure {{% tts %}} for SSO]({{< relref "../sso#configure-the-things-stack-for-sso" >}}) using the following information:
 
 - **Client ID**: Provided by Google
 - **Client Secret**: Provided by Google

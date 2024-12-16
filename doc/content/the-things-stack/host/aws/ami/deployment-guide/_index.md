@@ -39,6 +39,7 @@ The following are necessary to complete this guide:
 4. A LoRaWAN® compliant Gateway
 5. A LoRaWAN compliant End Device
 6. Access to a name server for DNS mapping
+7. (Optional) An AWS Secret containing TLS certificate data, if a custom TLS certificate is needed
 
 ## Deployment using AWS Cloud Formation
 
@@ -80,9 +81,10 @@ This template allows the user to customize the deployment. The following is a li
 |SendGrid API Key*|API key for [SendGrid](https://sendgrid.com/) to send emails.|-|
 |Amazon ElastiCache KMS Key ID*|Key used for Redis at-rest encryption. Leave empty to disable encryption. (Warning) A change to this field requires manual migration of the database.|-|
 |Amazon ElastiCache Password*|Password used to access Redis. Leave empty to disable TLS connection. (Warning) A change to this field requires manual migration of the database.|-|
-|TLS Certificate|TLS certificate to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.|-|
-|TLS Certificate Key|TLS certificate key to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.|-|
-|TLS Certificate CA|TLS certificate CA to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.|-|
+|TLS Certificate*|TLS certificate to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.|-|
+|TLS Certificate Key*|TLS certificate key to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.|-|
+|TLS Certificate CA*|TLS certificate CA to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.|-|
+|ARN of an AWS Secret containing the TLS certificate data*|TLS certificate data specified as an AWS secret. If this secret is specified, TLSCertificate, TLSCertificateCA and TLSCertificateKey values will be ignored. The AWS secret must have 3 key/value pairs with the key names: cert, key, ca.|-|
 
 > \* Optional field
 

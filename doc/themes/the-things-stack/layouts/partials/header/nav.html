@@ -36,7 +36,7 @@
           {{- if not .Params.hidebuttons -}}
           <div class="navbar-item">
             {{- range .Site.Menus.buttons }}
-            <a class="button is-primary{{ if $currentPage.IsMenuCurrent "buttons" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
+            <a class="button is-primary{{ if $currentPage.IsMenuCurrent "buttons" . }} is-active{{ end }}" href="{{ .URL }}" {{- with .Params.target }} target="{{ . }}"{{ end }}>{{ .Pre }}{{ .Name }}</a>
             {{- end }}
           </div>
           {{- end -}}

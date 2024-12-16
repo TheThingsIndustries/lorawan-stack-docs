@@ -12,20 +12,11 @@ methods:
     http:
     - method: POST
       path: /gcls/claim
-  AuthorizeGateway:
-    name: AuthorizeGateway
-    comment: AuthorizeGateway allows a gateway to be claimed.
-    input:
-      name: AuthorizeGatewayRequest
-    output:
-      package: google.protobuf
-      name: Empty
-    http:
-    - method: POST
-      path: /gcls/gateways/{gateway_ids.gateway_id}/authorize
-  UnauthorizeGateway:
-    name: UnauthorizeGateway
-    comment: UnauthorizeGateway prevents a gateway from being claimed.
+  Unclaim:
+    name: Unclaim
+    comment: |-
+      Unclaims the gateway.
+      EUI provided in the request are ignored and the end device is looked up by the gateway ID.
     input:
       name: GatewayIdentifiers
     output:
@@ -33,7 +24,7 @@ methods:
       name: Empty
     http:
     - method: DELETE
-      path: /gcls/gateways/{gateway_id}/authorize
+      path: /gcls/claim/{gateway_id}
   GetInfoByGatewayEUI:
     name: GetInfoByGatewayEUI
     comment: Return whether claiming is available for a given gateway EUI.
@@ -44,3 +35,31 @@ methods:
     http:
     - method: POST
       path: /gcls/claim/info
+  AuthorizeGateway:
+    name: AuthorizeGateway
+    comment: |-
+      AuthorizeGateway allows a gateway to be claimed.
+      DEPRECATED: Authorizing gateways for claiming is no longer supported and will be removed in a future version of The
+      Things Stack.
+    input:
+      name: AuthorizeGatewayRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: POST
+      path: /gcls/gateways/{gateway_ids.gateway_id}/authorize
+  UnauthorizeGateway:
+    name: UnauthorizeGateway
+    comment: |-
+      UnauthorizeGateway prevents a gateway from being claimed.
+      DEPRECATED: Unauthorizing (locking) gateways for claiming is no longer supported and will be removed in a future
+      version of The Things Stack.
+    input:
+      name: GatewayIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /gcls/gateways/{gateway_id}/authorize
