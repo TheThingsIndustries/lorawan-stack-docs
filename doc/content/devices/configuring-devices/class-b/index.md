@@ -73,7 +73,7 @@ ttn-lw-cli end-devices create --application-id $APP_ID --device-id $DEVICE_ID \
   --supports-class-b
 ```
 
-Then, schedule the following message to the [Application Server MQTT server]({{< ref "/integrations/mqtt" >}}) or [HTTP webhooks]({{< ref "/integrations/webhooks" >}}):
+Then, schedule the following message to the [Application Server MQTT server]({{< ref "/integrations/other-integrations/mqtt" >}}) or [HTTP webhooks]({{< ref "/integrations/webhooks" >}}):
 
 ```json
 {

@@ -2,8 +2,8 @@
 title: Storage Integration
 description: ""
 summary: Persistent storage for upstream messages.
-distributions:
-  ["Cloud", "Enterprise", "AWS Launcher", "Sandbox"]
+distributions: ["Cloud", "Enterprise", "AWS Launcher", "Sandbox"]
+weight: 6
 ---
 
 The Storage Integration allows storing received upstream messages in a persistent database, and retrieving them at a later time.

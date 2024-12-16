@@ -3,7 +3,7 @@ title: "TTN Mapper"
 description: ""
 ---
 
-[TTN Mapper](https://ttnmapper.org/) is a convenient tool used for mapping the network coverage of gateways connected to {{% tts %}}. 
+[TTN Mapper](https://ttnmapper.org/) is a convenient tool used for mapping the network coverage of gateways connected to {{% tts %}}.
 
 <!--more-->
 
@@ -12,7 +12,7 @@ Check the official [TTN Mapper documentation site](https://docs.ttnmapper.org/).
 ## Prerequisites
 
 1. A LoRaWAN® end device transmitting GPS coordinates (latitude, longitude and optionally altitude), and HDOP, GPS accuracy or satellite count.
-2. A LoRaWAN gateway with a [public location]({{< ref "/gateways/concepts/adding-gateways#set-gateway-location" >}}). 
+2. A LoRaWAN gateway with a [public location]({{< ref "/gateways/concepts/adding-gateways#set-gateway-location" >}}).
 
 ## Configure {{% tts %}}
 
@@ -21,7 +21,7 @@ Your end device can be sending its GPS coordinates in an uplink message as part 
 - If your end device is sending data in Cayenne LPP format, choose [Cayenne LPP payload formatter](({{< ref "/integrations/payload-formatters/cayenne" >}})) in your device's settings on {{% tts %}}.
 - Otherwise, create a custom [JavaScript payload formatter]({{< ref "/integrations/payload-formatters/javascript" >}}). This formatter will have to contain fields `latitude`, `longitude` and `altitude`. If possible, `hdop`, `accuracy` or `sats` fields should also be contained.
 
-<!--- Some devices, for example [LoRa Edge LR1110](https://www.semtech.com/products/wireless-rf/lora-edge/), obtain their location from [LoRa Cloud](https://www.loracloud.com/) platform using {{% tts %}} [LoRa Cloud integration]({{< ref "/integrations/lora-cloud" >}}). As a result, device location solution is contained in the `location` field of the location solved message. In this case, there is no need to set up a payload formatter. --->
+<!--- Some devices, for example [LoRa Edge LR1110](https://www.semtech.com/products/wireless-rf/lora-edge/), obtain their location from [LoRa Cloud](https://www.loracloud.com/) platform using {{% tts %}} [LoRa Cloud integration]({{< ref "/integrations/other-integrations/lora-cloud" >}}). As a result, device location solution is contained in the `location` field of the location solved message. In this case, there is no need to set up a payload formatter. --->
 
 The next step is to instantiate the **TTN Mapper** [Webhook template]({{< ref "/integrations/webhooks/webhook-templates" >}}).
 

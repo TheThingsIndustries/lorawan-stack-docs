@@ -19,7 +19,7 @@ Applications can connect to an Application Server by exchanging JSON messages ov
 
 The upstream messages do not only contain data uplink messages, but also join-accepts and downlink events, on separate topics.
 
-See [Application Server MQTT server]({{< ref "/integrations/mqtt" >}}) for more information.
+See [Application Server MQTT server]({{< ref "/integrations/other-integrations/mqtt" >}}) for more information.
 
 ### HTTP Webhooks
 

@@ -1,7 +1,7 @@
 ---
-title: "Cloud Integrations"
+title: "Integrate with popular IoT platforms"
 description: ""
-weight: 20
+weight: 7
 ---
 
 Here you can find detailed guides for creating integrations with popular IoT platforms.

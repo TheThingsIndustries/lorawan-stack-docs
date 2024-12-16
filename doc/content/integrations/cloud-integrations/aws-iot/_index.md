@@ -3,7 +3,7 @@ title: "AWS IoT"
 description: ""
 distributions: ["Cloud", "Enterprise", "Sandbox"]
 aliases:
-  - "/integrations/pubsub/aws-iot/"
+  - "/integrations/other-integrations/pubsub/aws-iot/"
   - "/integrations/aws-iot/default/"
   - "/integrations/cloud-integrations/aws-iot/default/"
 ---

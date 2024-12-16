@@ -23,7 +23,7 @@ On a high level, a FUOTA process implies the following steps:
 
 - Server enables [class C]({{< ref "/devices/configuring-devices/class-c" >}}) and joins a [multicast]({{< ref "/devices/configuring-devices/multicast" >}}) group
 - Server signs the firmware update and splits it in chunks
-- Server schedules each update chunk as a [downlink message]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) to the multicast group
+- Server schedules each update chunk as a [downlink message]({{< ref "/integrations/other-integrations/mqtt#publishing-downlink-traffic" >}}) to the multicast group
 - Server verifies that the device has received all chunks, synthesizes them and verifies the update signature
 - Device applies the firmware update
 - Device sends a `firmware update complete` uplink message

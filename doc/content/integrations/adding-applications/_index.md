@@ -13,9 +13,11 @@ aliases:
   ]
 ---
 
-This section contains instructions for creating an Application.
+An Application in {{% tts %}} is a collection of end devices.
 
 <!--more-->
+
+Users have the freedom to select which devices are part of an application. Each application has an `Application Identifier (application id)` which is unique within a tenant. Follow the instructions in the guide to create an Application.
 
 {{< tabs/container "Console" "CLI" "HTTP (REST) API" >}}
 
@@ -105,7 +107,7 @@ The request using `cURL` is as follows.
 
 {{< /tabs/container >}}
 
-Next, see [Adding Integrations]({{< ref "/integrations/adding-integrations" >}}) to proceed with using the built-in [MQTT Server]({{< ref "/integrations/mqtt" >}}) and [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) for receiving uplink and sending downlink traffic.
+Next, see [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) for receiving uplink and sending downlink traffic. Also, use the built-in [Storage Integration]({{< ref "/integrations/storage" >}}) to persist your data. Then you can checkout [Other Integrations]({{< ref "/integrations/other-integrations" >}}).
 
 End devices are also created within applications. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) for more information.
 

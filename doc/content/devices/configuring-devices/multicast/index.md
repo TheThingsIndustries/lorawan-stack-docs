@@ -87,7 +87,7 @@ ttn-lw-cli end-devices create $APP_ID $DEVICE_ID \
   --supports-class-c
 ```
 
-Then, schedule the following message to the [Application Server MQTT server]({{< ref "/integrations/mqtt" >}}) or [HTTP webhooks]({{< ref "/integrations/webhooks" >}}). A downlink path must be specified because none is known, as there is no uplink in multicast:
+Then, schedule the following message to the [Application Server MQTT server]({{< ref "/integrations/other-integrations/mqtt" >}}) or [HTTP webhooks]({{< ref "/integrations/webhooks" >}}). A downlink path must be specified because none is known, as there is no uplink in multicast:
 
 ```json
 {

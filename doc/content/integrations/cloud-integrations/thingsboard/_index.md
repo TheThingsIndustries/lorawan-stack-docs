@@ -1,15 +1,20 @@
 ---
 title: "ThingsBoard"
 description: ""
-weight: 
-aliases: ["/integrations/cloud-integrations/thingsboard/thingsboard-setup", "/integrations/cloud-integrations/thingsboard/tts-setup", "/integrations/cloud-integrations/thingsboard/scheduling-downlinks"]
+weight:
+aliases:
+  [
+    "/integrations/cloud-integrations/thingsboard/thingsboard-setup",
+    "/integrations/cloud-integrations/thingsboard/tts-setup",
+    "/integrations/cloud-integrations/thingsboard/scheduling-downlinks",
+  ]
 ---
 
 [ThingsBoard](https://thingsboard.io/) is an open-source IoT platform for data collection, processing, visualization, and device management. It supports cloud and on-premises deployments, and it combines scalability, fault-tolerance and performances to nullify the chances of getting your IoT data lost.
 
 <!--more-->
 
-The integration between {{% tts %}} and ThingsBoard is an example of an MQTT integration. ThingsBoard embeds an MQTT Broker, which is configured with the ThingsBoard **Integrations** functionality to subscribe or publish to {{% tts %}} [MQTT Server]({{< ref "/integrations/mqtt" >}}).
+The integration between {{% tts %}} and ThingsBoard is an example of an MQTT integration. ThingsBoard embeds an MQTT Broker, which is configured with the ThingsBoard **Integrations** functionality to subscribe or publish to {{% tts %}} [MQTT Server]({{< ref "/integrations/other-integrations/mqtt" >}}).
 
 ## Prerequisites
 
@@ -27,8 +32,8 @@ Define a [Javascript]({{< ref "/integrations/payload-formatters/javascript" >}})
 function decodeUplink(input) {
   return {
     data: {
-      temperature: input.bytes[0]
-    }
+      temperature: input.bytes[0],
+    },
   };
 }
 ```
@@ -39,9 +44,9 @@ Also, note your credentials available under **MQTT** submenu of the **Integratio
 
 ## Setup ThingsBoard
 
-Log in to your ThingsBoard account. 
+Log in to your ThingsBoard account.
 
-### Defining Data Converters 
+### Defining Data Converters
 
 Before creating an integration, you need to define uplink and downlink data converters. To do so, first navigate to **Data converters** on the left hand menu.
 
@@ -55,21 +60,21 @@ var deviceName = data.end_device_ids.device_id;
 var deviceType = data.end_device_ids.application_ids.application_id;
 
 var result = {
-    deviceName: deviceName,
-    deviceType: deviceType,
-    telemetry: {
-        temperature: data.uplink_message.decoded_payload.temperature
-    }
+  deviceName: deviceName,
+  deviceType: deviceType,
+  telemetry: {
+    temperature: data.uplink_message.decoded_payload.temperature,
+  },
 };
 
 function decodeToString(payload) {
-    return String.fromCharCode.apply(String, payload);
+  return String.fromCharCode.apply(String, payload);
 }
 
 function decodeToJson(payload) {
-    var str = decodeToString(payload);
-    var data = JSON.parse(str);
-    return data;
+  var str = decodeToString(payload);
+  var data = JSON.parse(str);
+  return data;
 }
 
 return result;
@@ -85,20 +90,22 @@ Follow the same procedure to create a converter with **Downlink** as a **Type** 
 
 ```js
 var data = {
-        downlinks: [{
-            f_port: 2,
-            confirmed: false,
-            frm_payload: btoa(msg.version),
-            priority: "NORMAL"
-        }]
-    };
+  downlinks: [
+    {
+      f_port: 2,
+      confirmed: false,
+      frm_payload: btoa(msg.version),
+      priority: "NORMAL",
+    },
+  ],
+};
 
 var result = {
-    contentType: "JSON",
-    data: JSON.stringify(data),
-    metadata: {
-        devId: 'device_id'     //enter your device's ID here
-    }
+  contentType: "JSON",
+  data: JSON.stringify(data),
+  metadata: {
+    devId: "device_id", //enter your device's ID here
+  },
 };
 return result;
 ```
@@ -127,7 +134,7 @@ You can check the connection with your host via port you specified using credent
 
 {{< figure src="creating-integration.png" alt="Creating the integration" >}}
 
-Click the **Add** button on the bottom to finish creating the integration. 
+Click the **Add** button on the bottom to finish creating the integration.
 
 A new device with your end device's ID will be created automatically. You can find it if you navigate to **Device groups &#8594; All** and search the end devices list. Select your device and switch to the **Latest telemetry** tab to see the telemetry data your device is sending, and use it to explore the further ThingsBoard features.
 
@@ -151,7 +158,7 @@ Connect the output port of the **Message Type Switch** node with the input port 
 
 Click **Apply changes** in the bottom right corner.
 
-Go back to your device's settings by navigating to **Device groups &#8594; All** and selecting your device. 
+Go back to your device's settings by navigating to **Device groups &#8594; All** and selecting your device.
 
 Switch to the **Attributes** tab, choose **Shared attributes** in the **Entity attributes scope** list, then click the **+** in the upper right corner to add a new shared attribute.
 

@@ -1,7 +1,7 @@
 ---
-title: "Guides"
+title: "Examples"
 description: ""
-weight: 
+weight: 25
 ---
 
-This section contains guides for building divers applications using {{% tts %}}.
+This section contains examples for building applications using {{% tts %}}.
