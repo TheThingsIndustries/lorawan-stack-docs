@@ -2,6 +2,7 @@
 title: "Managing Application Packages using the CLI"
 description: ""
 weight: 1
+aliases: [/reference/application-packages/using-the-cli]
 ---
 
 To interact with the available application packages, you can use [{{% tts %}} CLI]({{< ref "/concepts/features/cli" >}}).

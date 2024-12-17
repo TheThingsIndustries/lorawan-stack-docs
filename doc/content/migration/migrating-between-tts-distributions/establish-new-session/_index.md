@@ -19,7 +19,7 @@ This section explains how to migrate end devices from {{% ttss %}} to {{% tts %}
 
 In this section, we consider migrating your devices in cases when you don't want to migrate your gateway from {{% ttss %}} to {{% tts %}} Cloud, or when your gateway is inaccessible for this migration. In those cases, devices are migrated from {{% ttss %}} to {{% tts %}} Cloud without persisting their active session, i.e. devices need to establish a new session with {{% tts %}} Cloud in order for a gateway (that wasn't migrated from {{% ttss %}}) to be able to route traffic from those devices to {{% tts %}} Cloud. More information about this is available in subsections below.
 
-For a new session to be established between device (that's currently connected to {{% ttss %}}) and {{% tts %}} Cloud, device has to perform a [join procedure]({{< ref "/reference/components/join-server#join-procedure" >}}) to register on {{% tts %}} Cloud. In order not to lose any uplink traffic during this join procedure, we suggest to disable scheduling downlink messages on {{% ttss %}} Network Server using the following [CLI]({{< ref "/concepts/features/cli" >}}) command:
+For a new session to be established between device (that's currently connected to {{% ttss %}}) and {{% tts %}} Cloud, device has to perform a [join procedure]({{< ref "/concepts/architecture/components/join-server#join-procedure" >}}) to register on {{% tts %}} Cloud. In order not to lose any uplink traffic during this join procedure, we suggest to disable scheduling downlink messages on {{% ttss %}} Network Server using the following [CLI]({{< ref "/concepts/features/cli" >}}) command:
 
 ```bash
 ttn-lw-cli dev set --application-id <app-id> --device-id <device-id> \

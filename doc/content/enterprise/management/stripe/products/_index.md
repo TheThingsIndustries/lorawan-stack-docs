@@ -2,7 +2,7 @@
 title: "Products and Pricing Plans"
 description: ""
 weight: 10
-distributions: ["Cloud", "Enterprise"]
+aliases: [/reference/stripe/products]
 ---
 
 ## Creating a Product and the Initial Pricing Plan
@@ -31,14 +31,14 @@ It is possible to limit the number of entities a customer can create when subscr
 
 Entity limits can be specified using metadata fields. The following fields are supported:
 
-| Field name | Description |
-|------------|-------------|
-| `max-applications` | The maximum number of registered applications a tenant can have concurrently. Optional. |
-| `max-clients` | The maximum number of registered clients a tenant can have concurrently. Optional. |
-| `max-end-devices` | The maximum number of registered end devices a tenant can have concurrently. Optional. |
-| `max-gateways` | The maximum number of registered gateways a tenant can have concurrently. Optional. |
+| Field name          | Description                                                                              |
+| ------------------- | ---------------------------------------------------------------------------------------- |
+| `max-applications`  | The maximum number of registered applications a tenant can have concurrently. Optional.  |
+| `max-clients`       | The maximum number of registered clients a tenant can have concurrently. Optional.       |
+| `max-end-devices`   | The maximum number of registered end devices a tenant can have concurrently. Optional.   |
+| `max-gateways`      | The maximum number of registered gateways a tenant can have concurrently. Optional.      |
 | `max-organizations` | The maximum number of registered organizations a tenant can have concurrently. Optional. |
-| `max-users` | The maximum number of registered users a tenant can have concurrently. Optional. |
+| `max-users`         | The maximum number of registered users a tenant can have concurrently. Optional.         |
 
 In order to add one (or more) of these limits, click on the **Edit** button of the **Metadata** section and fill in the limits.
 

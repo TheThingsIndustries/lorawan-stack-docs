@@ -2,6 +2,7 @@
 title: "Managing Application Packages using the API"
 description: ""
 weight: 2
+aliases: [/reference/application-packages/using-the-api]
 ---
 
 Besides using the CLI, you can also use the [application package HTTP APIs]({{< ref "/api/reference/grpc/application_packages" >}}) exposed by {{% tts %}} to interact with the available application packages.

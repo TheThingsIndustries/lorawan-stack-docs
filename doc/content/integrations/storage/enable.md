@@ -5,11 +5,11 @@ summary: Enable Storage Integration for applications and end-devices.
 weight: 20
 ---
 
-The Storage Integration is implemented as an [Application Package]({{< ref "/reference/application-packages" >}}).
+The Storage Integration is implemented as an [Application Package]({{< ref "/integrations/application-packages" >}}).
 
 {{< note >}} Enabling/disabling Storage Integration for applications can be done using {{% tts %}} Console or CLI. Enabling/disabling Storage Integration for individual end devices is available only via CLI.
 
-Note that the instructions for CLI here are following generic instructions for [using the CLI]({{< ref "/reference/application-packages/using-the-cli" >}}) to manage application packages, just specified for the `storage-integration` application package. {{</ note >}}
+Note that the instructions for CLI here are following generic instructions for [using the CLI]({{< ref "/integrations/application-packages/using-the-cli" >}}) to manage application packages, just specified for the `storage-integration` application package. {{</ note >}}
 
 {{< tabs/container "Console" "CLI" "HTTP (REST) API">}}
 

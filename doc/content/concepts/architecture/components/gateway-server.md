@@ -1,7 +1,7 @@
 ---
 title: "Gateway Server"
 description: ""
-aliases: [/components/gateway-server]
+aliases: [/components/gateway-server, /reference/components/gateway-server]
 ---
 
 The Gateway Server maintains connections with gateways supporting the Basic Station, UDP, MQTT and gRPC protocols. It forwards uplink traffic to Network Servers directly or indirectly, and schedules downlink traffic on gateways.

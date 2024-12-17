@@ -1,7 +1,8 @@
 ---
 title: "LoRa Cloud Modem and Geolocation Services"
 description: ""
-aliases: "/integrations/application-packages/lora-cloud-device-and-application-services"
+aliases:
+  [/reference/application-packages/lora-cloud-device-and-application-services]
 ---
 
 The LoRa Cloud Modem and Geolocation Services v1 application package communicates the uplinks received from a compatible device to the LoRa Cloud Modem and Geolocation Services, and schedules the downlinks received from the service back to the device.
@@ -51,10 +52,11 @@ This will enable the package on FPort `199` of all of the devices of application
   "updated_at": "2019-12-18T22:06:21.693359719Z",
   "package_name": "lora-cloud-device-management-v1",
   "data": {
-      "token": "AQEAdqwV67..."
-    }
+    "token": "AQEAdqwV67..."
+  }
 }
 ```
+
 </details>
 
 ## Using a Custom Server URL
@@ -84,20 +86,21 @@ ttn-lw-cli applications packages default-associations set $APP_ID $F_PORT --pack
   "updated_at": "2020-05-14T02:04:45.286874524Z",
   "package_name": "lora-cloud-device-management-v1",
   "data": {
-      "server_url": "https://app.example.com",
-      "token": "AQEAdqwV67..."
-    }
+    "server_url": "https://app.example.com",
+    "token": "AQEAdqwV67..."
+  }
 }
 ```
+
 </details>
 
 ## Package Data JSON Schema
 
 The package data format is common between both default associations and associations, and should contain the following fields:
 
-| Field | Type | Description | Required | Default value |
-|-------|------|-------------|---------|---------------|
-| `token` | `string` | The acces token to be used by the package to submit uplinks to the LoRa Cloud Modem and Geolocation Services | Yes | None. |
-| `server_url` | `URL` | The custom base URL to be used for service communication | No | `https://mgs.loracloud.com`
+| Field        | Type     | Description                                                                                                  | Required | Default value               |
+| ------------ | -------- | ------------------------------------------------------------------------------------------------------------ | -------- | --------------------------- |
+| `token`      | `string` | The acces token to be used by the package to submit uplinks to the LoRa Cloud Modem and Geolocation Services | Yes      | None.                       |
+| `server_url` | `URL`    | The custom base URL to be used for service communication                                                     | No       | `https://mgs.loracloud.com` |
 
 Fields can be customized on a per device basis, by overriding the field in the package data of the association.

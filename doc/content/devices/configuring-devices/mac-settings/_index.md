@@ -129,7 +129,7 @@ To enable ADR, set the `mac-settings.use-adr` parameter:
 ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.use-adr=true
 ```
 
-See the [Adaptive Data Rate]({{< ref "/reference/adr" >}}) section for detailed information on configuring ADR parameters and ADR margin using MAC settings.
+See the [Adaptive Data Rate]({{< ref "/concepts/lorawan/adr" >}}) section for detailed information on configuring ADR parameters and ADR margin using MAC settings.
 
 ### Set RX1 Delay
 

@@ -1,6 +1,7 @@
 ---
 title: "Device Claiming Server"
 description: ""
+aliases: [/reference/components/device-claiming-server]
 ---
 
 The Device Claiming Server allows users to claim devices and gateways in a secure manner.

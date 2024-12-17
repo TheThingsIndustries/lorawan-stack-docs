@@ -165,7 +165,7 @@ In addition to the re-used parameters, the **License Key**, **Cluster Secrets** 
 
 For deployments that connect to Packet Broker, you need to configure your Packet Broker secrets here. If you don't have this, you can leave these parameters empty. It is possible to add or update this in the future.
 
-For multi-tenant deployments that use tenant billing through Stripe (see the [Stripe Billing reference]({{< ref "/reference/stripe" >}})), you need to configure the Stripe API key (starting with `sk_`) and Stripe endpoint secret key (starting with `whsec_`). It is possible to add or update this in the future.
+For multi-tenant deployments that use tenant billing through Stripe (see the [Stripe Billing reference]({{< ref "/enterprise/management/stripe" >}})), you need to configure the Stripe API key (starting with `sk_`) and Stripe endpoint secret key (starting with `whsec_`). It is possible to add or update this in the future.
 
 For the **Gateway Secrets Encryption Key Value** parameter, provide an AES-128 Key in Base64. The following command can be used to randomly generate one:
 

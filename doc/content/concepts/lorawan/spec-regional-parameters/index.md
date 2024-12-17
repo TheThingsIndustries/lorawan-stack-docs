@@ -1,8 +1,8 @@
 ---
-title: "LoRaWAN support"
+title: "Version support"
 description: ""
 weight: 5
-aliases: [/the-things-stack/concepts/spec-regional-parameters]
+aliases: [/the-things-stack/concepts/lorawan/spec-regional-parameters]
 ---
 
 {{% tts %}} supports versions 1.0.x and 1.1.x of the LoRaWAN® specifications.

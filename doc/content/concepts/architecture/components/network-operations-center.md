@@ -3,6 +3,7 @@ title: "Network Operations Center"
 description: ""
 distributions: ["Enterprise", "Cloud"]
 new_in_version: "3.21.0"
+aliases: [/reference/components/network-operations-center]
 ---
 
 The Network Operations Center provides aggregated insight in a network operated with {{% tts %}}.
@@ -78,9 +79,10 @@ The following is a brief description of each column in the table:
 - **Device ID**: displays IDs of all the end devices on the network.
 - **Application ID**: displays the application ID for each device.
 - **Last seen**: displays when the device last uplinked.
-- **Last packet error rate**:  displays the ratio between the number of missing frames and the total number of frames over an hour as a percentage.
+- **Last packet error rate**: displays the ratio between the number of missing frames and the total number of frames over an hour as a percentage.
 
 ## Gateway Details Dashboard
+
 The Gateway Details dashboard visualizes detailed insight into gateway statistics in the selected time period.
 
 {{< figure src="../gateway-details-dashboard.png" alt="gateway details dashboard" >}}
@@ -103,7 +105,7 @@ It consists of the following panels:
 
 {{< figure src="../gateway-packets-per-channel.png" alt="packets per channel" >}}
 
-**Channel utilization** - a graph that visualizes the percentage of total utilization on each channel over a time interval. For example, if we have sent 60 seconds of uplinks in a time period of 15 minutes, we have 60 / (15 * 60) = ~1.66% utilization.
+**Channel utilization** - a graph that visualizes the percentage of total utilization on each channel over a time interval. For example, if we have sent 60 seconds of uplinks in a time period of 15 minutes, we have 60 / (15 \* 60) = ~1.66% utilization.
 
 {{< figure src="../gateway-channel-utilization.png" alt="channel utilization" >}}
 

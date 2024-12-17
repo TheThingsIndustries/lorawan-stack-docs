@@ -239,7 +239,7 @@ The process of provisioning and maintenance of the certificate secret is left to
 
 #### 7. (Optional) TimescaleDB
 
-Both {{% tts %}} [Storage Integration](https://www.thethingsindustries.com/docs/integrations/storage/) and {{% tts %}} [Network Operations Center](https://www.thethingsindustries.com/docs/reference/components/network-operations-center/#accessing-network-operations-center) require a TimescaleDB instance.
+Both {{% tts %}} [Storage Integration](https://www.thethingsindustries.com/docs/integrations/storage/) and {{% tts %}} [Network Operations Center](https://www.thethingsindustries.com/docs/concepts/architecture/components/network-operations-center/#accessing-network-operations-center) require a TimescaleDB instance.
 
 There can either be two separate TimeScaleDB instances or a single instance but different Databases.
 

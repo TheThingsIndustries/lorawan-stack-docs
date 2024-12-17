@@ -3,6 +3,7 @@ title: "Alert Routing Server"
 description: ""
 distributions: ["Enterprise", "Cloud"]
 new_in_version: "3.30.0"
+aliases: [/reference/components/alert-routing-server]
 ---
 
 The Alert Routing Server dispatches alerts about network components in {{% tts %}}.
@@ -15,7 +16,7 @@ The Alert Routing Server deals only with the dispatching alert notifications. Th
 
 The Alert Routing Server looks up the alert notification profile associated with the entity related to the alert notification. If no profile is associated with the entity, the default alert notification profile is used. If no default alert notification profile is present, the alert notification is dropped.
 
-For every alert notification receiver, a dedicated alert notification is generated and stored in a [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) queue. These notifications are will be sent in order to the alert notification receiver. The delivery will be automatically retried, for a fixed number of times.
+For every alert notification receiver, a dedicated alert notification is generated and stored in a [FIFO](<https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)>) queue. These notifications are will be sent in order to the alert notification receiver. The delivery will be automatically retried, for a fixed number of times.
 
 ## Alert Generators
 
