@@ -425,7 +425,7 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_K
 
 Keep in mind that the `antennas.location` object will be cleared if previously set since it's only possible to set entire `antennas` object. Combine this with setting the location if both values need to persist.
 
-Once a gateway has been added, get started with [Adding Devices]({{< ref "/devices/adding-devices" >}}) and [Integrations]({{< ref "/integrations" >}}) to process and act on data.
+Once a gateway has been added, get started with [Adding Devices]({{< ref "/hardware/devices/adding-devices" >}}) and [Integrations]({{< ref "/integrations" >}}) to process and act on data.
 
 ## Forwarding Uplinks to Packet Broker
 

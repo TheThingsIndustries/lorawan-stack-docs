@@ -1,7 +1,7 @@
 ---
 title: "Withthegrid"
 description: ""
-weight: 
+weight:
 ---
 
 [Withthegrid](https://withthegrid.com/) is an IoT asset monitoring platform for infrastructure - it allows you to monitor assets, connect IoT sensors, visualize data, detect anomalies and manage workflows. In this section, we describe how to implement {{% tts %}} integration with the Withthegrid platform.
@@ -12,7 +12,7 @@ weight:
 
 Use a requirements subheading to list requirements/prerequisites.
 
-1. Access to the Withthegrid platform. To get started go to `https://app.withthegrid.com/` and login with your credentials. If you did not receive any credentials via e-mail you can sign up [here](https://app.withthegrid.com/#/sign-up) for a 14 day free trial. 
+1. Access to the Withthegrid platform. To get started go to `https://app.withthegrid.com/` and login with your credentials. If you did not receive any credentials via e-mail you can sign up [here](https://app.withthegrid.com/#/sign-up) for a 14 day free trial.
 
 ## Architecture
 
@@ -74,11 +74,11 @@ The platform will generate a webhook URL which we can use later to connect with 
 
 ## Step 3: Creating and configuring a new device type
 
-A new device type can be created in a connectivity environment by navigating to **Device types**. This page shows an overview of all the device types that are available in your environment. Let’s create the first device type by clicking **+** in the bottom right corner. 
+A new device type can be created in a connectivity environment by navigating to **Device types**. This page shows an overview of all the device types that are available in your environment. Let’s create the first device type by clicking **+** in the bottom right corner.
 
 {{< figure src="5_c_environment_deviceType.png" alt="New device type" caption="Figure 9. Device types overview" >}}
 
-Name the new device type. At this point, we can also change the default name of the device channel to `Internal Sensor`. Use the same name for default name for port. This is where internal battery voltage measurements will be pushed. 
+Name the new device type. At this point, we can also change the default name of the device channel to `Internal Sensor`. Use the same name for default name for port. This is where internal battery voltage measurements will be pushed.
 
 {{< figure src="device_type_1.png" alt="Device type overview" caption="Figure 10. Add a new device type" >}}
 
@@ -125,13 +125,13 @@ type JsonObject = { [key: string]: Json };
 
 const ttsApplicationIds = {
   dragino: {
-    waterLeak: 'dwl',
+    waterLeak: "dwl",
   },
 };
- 
+
 const deviceTypeHashIds = {
   dragino: {
-    waterLeak: '4djrvd',
+    waterLeak: "4djrvd",
   },
 };
 
@@ -232,9 +232,9 @@ function handle(args: Arguments, exec: Exec): IncomingRequestResponse | void {
 
 ## Step 7: Configuring {{% tts %}}
 
-Now that the webhook and the event handler of the Dragino - LWL02 device are configured, we can proceed with setting up {{% tts %}}. 
+Now that the webhook and the event handler of the Dragino - LWL02 device are configured, we can proceed with setting up {{% tts %}}.
 
-[Create an application]({{< ref "/integrations/adding-applications" >}}) and [add the Dragino device]({{< ref "/devices/adding-devices" >}}) by following linked tutorials.
+[Create an application]({{< ref "/integrations/adding-applications" >}}) and [add the Dragino device]({{< ref "/hardware/devices/adding-devices" >}}) by following linked tutorials.
 
 After the device is registered, we can configure a new webhook on {{% tts %}}. Set the webhook format to **JSON** and enter the **Base URL** provided with the Withthegrid webhook we created in step 2.
 
@@ -242,7 +242,7 @@ After the device is registered, we can configure a new webhook on {{% tts %}}. S
 
 ## Step 8: Configuring report type
 
-The next step is to correctly configure the created report type such that it can decode the incoming payload into physical measurements. **The Things Network** makes this easy because the payload is already decoded. We only need to push the measurements to correct channels. Voltage measurement should be pushed into *Internal Sensor* channel which is the first channel, therefore, has a `channelIndex` of 0. Measurements related to *Probe* should be pushed to a `channelIndex` of 1.
+The next step is to correctly configure the created report type such that it can decode the incoming payload into physical measurements. **The Things Network** makes this easy because the payload is already decoded. We only need to push the measurements to correct channels. Voltage measurement should be pushed into _Internal Sensor_ channel which is the first channel, therefore, has a `channelIndex` of 0. Measurements related to _Probe_ should be pushed to a `channelIndex` of 1.
 
 ```tsx
 /**
@@ -370,7 +370,7 @@ The platform will output a claim token that can be copied.
 
 {{< figure src="token_3.png" alt="Get claim token" caption="Figure 24. Claim generated token" >}}
 
-In the last step, we will configure the monitoring environment and add the newly connected sensor. 
+In the last step, we will configure the monitoring environment and add the newly connected sensor.
 
 ## Step 11: Configuring the monitoring environment
 

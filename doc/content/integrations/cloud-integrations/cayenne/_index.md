@@ -28,9 +28,9 @@ You can choose the device model, but you can also choose **Cayenne LPP**. If you
 
 {{< figure src="choose-ttn-device.png" alt="Choose network and device model" >}}
 
-To add your device, you will need to give it a **Name** (you can leave the pre-defined one) and provide its **DevEUI**. 
+To add your device, you will need to give it a **Name** (you can leave the pre-defined one) and provide its **DevEUI**.
 
-Since in this guide we assume your end device is already connected to {{% tts %}}, choose **Already Registered** for the **Activation Mode**. If your device is not connected to {{% tts %}}, see [Adding Devices]({{< ref "/devices/adding-devices" >}}) section for instructions on how to register it.
+Since in this guide we assume your end device is already connected to {{% tts %}}, choose **Already Registered** for the **Activation Mode**. If your device is not connected to {{% tts %}}, see [Adding Devices]({{< ref "/hardware/devices/adding-devices" >}}) section for instructions on how to register it.
 
 What you choose under **Tracking &#8594; Location** depends on the model of your device, i.e. if it can provide location coordinates or not. If you choose **This device doesn't move**, you will need to provide a static location of your device.
 

@@ -54,7 +54,7 @@ To export device using the [migration tool]({{< ref "/migration" >}}) without pe
 ttn-lw-migrate device --source tts 'my-device' --tts.no-session > devices.json
 ```
 
-Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/hardware/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions.
 
 The process of migrating OTAA devices using the migration tool ends here and you can ignore the info below the line.
 
@@ -64,7 +64,7 @@ The process of migrating OTAA devices using the migration tool ends here and you
 
 Using the Console is convenient only when you have a few devices to migrate. For larger groups of devices, we highly recommend using the [migration tool]({{< ref "/migration" >}}) or CLI.
 
-First step is to recreate your device on {{% tts %}} Cloud through the Console. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) for instructions on creating a device. You can reuse the DevEUI, AppEUI/JoinEUI and AppKey values from {{% ttss %}}. You can also generate new values for these parameters on {{% tts %}} Cloud, but then you will need to re-program your OTAA device using those values.
+First step is to recreate your device on {{% tts %}} Cloud through the Console. See [Adding Devices]({{< ref "/hardware/devices/adding-devices" >}}) for instructions on creating a device. You can reuse the DevEUI, AppEUI/JoinEUI and AppKey values from {{% ttss %}}. You can also generate new values for these parameters on {{% tts %}} Cloud, but then you will need to re-program your OTAA device using those values.
 
 {{< /tabs/tab >}}
 
@@ -90,7 +90,7 @@ ttn-lw-cli end-devices get --application-id <app-id> --device-id <device-id> \
 
 The command above will export your device's description to the `device-description.json` file in the current folder. Open the file with a text editor and remove the following fields: `join_server_address`, `network_server_address` and `application_server_address`.
 
-Next, you need to import the `device-description.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to re-configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `device-description.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/hardware/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to re-configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions.
 
 {{< /tabs/tab >}}
 
@@ -116,7 +116,7 @@ Since {{% ttss %}} and {{% tts %}} Cloud are both connected to Packet Broker, an
 
 The process of migrating your ABP device from {{% ttss %}} to {{% tts %}} Cloud without its active session by re-programming it is the most straightforward if you use the {{% tts %}} Console.
 
-First create a new ABP device on {{% tts %}} Cloud. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) for instructions on creating a device. Generate new DevAddr, AppSKey and NwkSKey values while creating the device.
+First create a new ABP device on {{% tts %}} Cloud. See [Adding Devices]({{< ref "/hardware/devices/adding-devices" >}}) for instructions on creating a device. Generate new DevAddr, AppSKey and NwkSKey values while creating the device.
 
 Now re-program your ABP device with newly created DevAddr, AppSKey and NwkSKey values from {{% tts %}} Cloud. You should immediately see uplinks arriving from your device to {{% tts %}} Cloud.
 
@@ -143,7 +143,7 @@ ttn-lw-migrate device --source tts 'my-device' \
     --tts.no-session > devices.json
 ```
 
-Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/hardware/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions.
 
 You will also need to reset your ABP device.
 
@@ -160,7 +160,7 @@ ttn-lw-migrate device --source tts 'my-device' \
 
 Using the Console is covenient only when you have a few devices to migrate. For larger groups of devices, we highly recommend using the migration tool or the CLI.
 
-First, recreate your device on {{% tts %}} Cloud. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) for instructions on creating a device. Reuse the DevEUI, DevAddr, AppSKey and NwkSKey values from {{% ttss %}}.
+First, recreate your device on {{% tts %}} Cloud. See [Adding Devices]({{< ref "/hardware/devices/adding-devices" >}}) for instructions on creating a device. Reuse the DevEUI, DevAddr, AppSKey and NwkSKey values from {{% ttss %}}.
 
 Navigate to **General settings &#8594; Network Layer &#8594; Advanced MAC settings** and enable the **Resets frame counters** option.
 
@@ -192,7 +192,7 @@ ttn-lw-cli end-devices get --application-id <app-id> --device-id <device-id> \
 
 The command above will export your device's description to the `device-description.json` file in the current folder. Open the file with a text editor and remove the following fields: `join_server_address`, `network_server_address` and `application_server_address`. Also, set the `mac-settings.resets-f-cnt` field value to `true`.
 
-Next, you need to import the `device-description.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to re-configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `device-description.json` file in your {{% tts %}} Cloud application. See instructions on how to [add end devices in bulk in {{% tts %}}]({{< ref "/hardware/devices/adding-devices/adding-devices-in-bulk" >}}). Keep in mind that if you are using the CLI to import devices, you first have to re-configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/concepts/features/cli/configuring-cli" >}}) guide for instructions.
 
 When your device is registered in {{% tts %}} Cloud, you need to completely delete it from {{% ttss %}} network to prevent conflicts. You will also need to reset your ABP device.
 

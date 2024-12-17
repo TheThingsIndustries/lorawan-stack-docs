@@ -98,4 +98,4 @@ $ ttn-lw-migrate firefly application --all --invalidate-keys > devices.json
 
 {{< /tabs/container >}}
 
-After exporting, devices can be imported in {{% tts %}}. See [add end devices in bulk in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}) for details about importing devices.
+After exporting, devices can be imported in {{% tts %}}. See [add end devices in bulk in {{% tts %}}]({{< ref "/hardware/devices/adding-devices/adding-devices-in-bulk" >}}) for details about importing devices.

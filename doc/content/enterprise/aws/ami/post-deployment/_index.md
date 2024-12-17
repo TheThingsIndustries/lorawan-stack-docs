@@ -104,7 +104,7 @@ Please check [Gateways]({{< relref "gateways" >}}) section to find an extensive 
 
 ### Registering a Device
 
-Please check the [Adding Devices]({{< relref "devices/adding-devices" >}}) guide.
+Please check the [Adding Devices]({{< relref "/hardware/devices/adding-devices" >}}) guide.
 
 ## AWS IoT
 

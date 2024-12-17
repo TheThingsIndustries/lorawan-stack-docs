@@ -17,7 +17,7 @@ Reading the [complete Migrating to {{% tts %}} guide]({{< ref "/migration" >}}) 
 
 ### Am I still able to migrate my devices and gateways from The Things Network {{% ttnv2 %}} to {{% tts %}}?
 
-No, you are not able to migrate your devices and gateways from The Things Network {{% ttnv2 %}} but you can still add them to {{% tts %}} from scratch. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) and [Adding Gateways]({{< ref "/hardware/gateways/concepts/adding-gateways" >}}).
+No, you are not able to migrate your devices and gateways from The Things Network {{% ttnv2 %}} but you can still add them to {{% tts %}} from scratch. See [Adding Devices]({{< ref "/hardware/devices/adding-devices" >}}) and [Adding Gateways]({{< ref "/hardware/gateways/concepts/adding-gateways" >}}).
 
 ### What is Packet Broker and what does it have to do with migrating to {{% tts %}}?
 

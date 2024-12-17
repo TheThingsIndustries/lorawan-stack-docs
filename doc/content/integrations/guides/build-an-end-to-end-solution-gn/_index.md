@@ -16,7 +16,7 @@ Create a new application on {{% tts %}} by following [these instructions]({{< re
 
 ## Adding GNSE
 
-Add GNSE to {{% tts %}} by following [these instructions]({{< ref "/devices/adding-devices/" >}}).
+Add GNSE to {{% tts %}} by following [these instructions]({{< ref "/hardware/devices/adding-devices/" >}}).
 
 {{< note "Your GNSE comes pre-programmed with a [*vanilla* application](https://www.genericnode.com/docs/applications/se-vanilla/) that can be used with this project. Full instructions on how to program GNSE can be found [here](https://www.genericnode.com/docs/getting-started/se-sw/)." />}}
 
@@ -130,11 +130,11 @@ Press the push button a few more times and see how your chart behaves in time.
 
 ## Adding Kuando Busylight
 
-Kuando BusyLight is a light device that you can control using LoRaWAN downlinks. It is a [class C]({{< ref "/devices/configuring-devices/class-c" >}}) end device that opens continuous receive windows so it is capable of receiving downlinks anytime.
+Kuando BusyLight is a light device that you can control using LoRaWAN downlinks. It is a [class C]({{< ref "/hardware/devices/configuring-devices/class-c" >}}) end device that opens continuous receive windows so it is capable of receiving downlinks anytime.
 
 {{< figure src="busylight.png" alt="" >}}
 
-To register the Kuando Busylight with {{% tts %}}, follow the steps outlined in **Manually Registering an End Device** section in the [Adding Devices]({{< ref "/devices/adding-devices/" >}}) guide. When adding the device, make sure to select **Class C (Continuous)** from the **Additional LoRaWAN class capabilities** drop-down menu. You can find this by expanding the **Show advanced activation, LoRaWAN class and cluster settings** section.
+To register the Kuando Busylight with {{% tts %}}, follow the steps outlined in **Manually Registering an End Device** section in the [Adding Devices]({{< ref "/hardware/devices/adding-devices/" >}}) guide. When adding the device, make sure to select **Class C (Continuous)** from the **Additional LoRaWAN class capabilities** drop-down menu. You can find this by expanding the **Show advanced activation, LoRaWAN class and cluster settings** section.
 
 ## Sending Downlink Messages to Kuando Busylight from {{% tts %}} Application
 

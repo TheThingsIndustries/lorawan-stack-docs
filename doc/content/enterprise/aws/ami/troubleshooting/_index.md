@@ -69,7 +69,7 @@ Please check the [Troubleshooting Gateways]({{< ref "/hardware/gateways/troubles
 
 ### My device doesn't join. How do I fix this?
 
-Please check the [Troubleshooting Devices]({{< ref "/devices/troubleshooting" >}}) guide.
+Please check the [Troubleshooting Devices]({{< ref "/hardware/devices/troubleshooting" >}}) guide.
 
 Device join failure could be due to a number of reasons. Ensure that the device settings are correct. This includes the JoinEUI, DevEUI and/or AppKey/NwkKey and the frequency plan settings. Check the logs as described above to locate the potential cause of the issue.
 

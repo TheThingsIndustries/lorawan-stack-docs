@@ -11,7 +11,7 @@ This section contains instructions on how to use the migration tooling to export
 
 [`ttn-lw-migrate`](https://github.com/TheThingsNetwork/lorawan-stack-migrate) is a tool that can be used for migrating end devices and applications from supported LoRaWAN® networks (like [ChirpStack](https://www.chirpstack.io/)) to {{% tts %}}, or between {{% tts %}} distributions. This section provides details on how to install, configure and use this tool.
 
-This tool works in a way that it exports descriptions of end devices and applications to a [JSON file]({{< ref "/devices/adding-devices/adding-devices-in-bulk/device-json" >}}), that can later be [imported in {{% tts %}}]({{< ref "/devices/adding-devices/adding-devices-in-bulk" >}}).
+This tool works in a way that it exports descriptions of end devices and applications to a [JSON file]({{< ref "/hardware/devices/adding-devices/adding-devices-in-bulk/device-json" >}}), that can later be [imported in {{% tts %}}]({{< ref "/hardware/devices/adding-devices/adding-devices-in-bulk" >}}).
 
 ### Installation
 

@@ -109,7 +109,7 @@ The request using `cURL` is as follows.
 
 Next, see [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) for receiving uplink and sending downlink traffic. Also, use the built-in [Storage Integration]({{< ref "/integrations/storage" >}}) to persist your data. Then you can checkout [Other Integrations]({{< ref "/integrations/other-integrations" >}}).
 
-End devices are also created within applications. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) for more information.
+End devices are also created within applications. See [Adding Devices]({{< ref "/hardware/devices/adding-devices" >}}) for more information.
 
 ## Create Application API Key
 

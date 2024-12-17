@@ -79,7 +79,7 @@ The Network Server uses the ADR margin of 15, but this value can be configured p
 ttn-lw-cli end-devices set --application-id <app-id> --device-id <device-id> --mac-settings.adr.mode.dynamic.margin <float32>
 ```
 
-Keep in mind that changes to `mac-settings.adr.mode.dynamic.<parameter>` are persistent and will be present even after a device reset/rejoin. Read the [MAC Settings]({{< ref "/devices/configuring-devices/mac-settings" >}}) section for detailed info.
+Keep in mind that changes to `mac-settings.adr.mode.dynamic.<parameter>` are persistent and will be present even after a device reset/rejoin. Read the [MAC Settings]({{< ref "/hardware/devices/configuring-devices/mac-settings" >}}) section for detailed info.
 
 #### Examples
 

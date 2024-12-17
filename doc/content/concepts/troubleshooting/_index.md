@@ -29,7 +29,7 @@ See [Troubleshooting CLI]({{< ref "/concepts/features/cli/troubleshooting" >}}).
 
 ## Troubleshooting common device errors
 
-See [Troubleshooting Devices]({{< ref "/devices/troubleshooting" >}}).
+See [Troubleshooting Devices]({{< ref "/hardware/devices/troubleshooting" >}}).
 
 ## Troubleshooting common gateway errors
 
