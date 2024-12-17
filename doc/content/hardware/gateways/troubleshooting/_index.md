@@ -27,7 +27,7 @@ For {{% udp-pf %}} use `<server-address>`. The **Up Port** and **Down Port** are
 
 ## Which packet forwarders does {{% tts %}} support?
 
-Read the [Packet Forwarders section]({{< ref "/reference/packet-forwarder" >}}).
+Read the [Packet Forwarders section]({{< ref "/hardware/gateways/concepts/packet-forwarder" >}}).
 
 ## Where can I learn more about {{% lbs %}}?
 
@@ -68,7 +68,7 @@ UDP is a connectionless protocol. {{% tts %}} expects a UDP gateway to occasiona
 Check the following in {{% tts %}} Console:
 
 - Does the Gateway EUI in the console match with the EUI of the gateway?
-- Does the Frequency Plan selected match with the configuration in the gateway? Refer to the [Frequency Plans section]({{< ref "/reference/frequency-plans" >}}) for plans that are officially supported by {{% tts %}}.
+- Does the Frequency Plan selected match with the configuration in the gateway? Refer to the [Frequency Plans section]({{< ref "/concepts/lorawan/frequency-plans" >}}) for plans that are officially supported by {{% tts %}}.
 - Did you select **Require authenticated connection** in gateway settings? This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections).
 - Do you see any warnings/errors in the Gateway live data section?
 
@@ -84,10 +84,10 @@ For {{% lbs %}} gateways:
 - Are the CUPS server address and LNS server address correctly configured? See [What's my server address](#whats-my-server-address).
 - Are the CUPS and LNS ports configured with 443 and 8887 respectively? See [What's my server address](#whats-my-server-address).
 - Are API keys assigned with necessary rights? See [Is an API key required](#is-an-api-key-required).
-- Did you select the correct root certificates? See the [Root Certificates Reference]({{< ref "/reference/root-certificates" >}}).
+- Did you select the correct root certificates? See the [Root Certificates Reference]({{< ref "/concepts/advanced/root-certificates" >}}).
 - Is the backhaul used in the Gateway stable?
 - Does the Gateway run with the latest firmware?
-- Does the Frequency Plan selected match with the configuration in the gateway? Refer to the [Frequency Plans section]({{< ref "/reference/frequency-plans" >}}) for plans that are officially supported by {{% tts %}}.
+- Does the Frequency Plan selected match with the configuration in the gateway? Refer to the [Frequency Plans section]({{< ref "/concepts/lorawan/frequency-plans" >}}) for plans that are officially supported by {{% tts %}}.
 - Are both CUPS and LNS are configured? There is no need to configure both, as CUPS will automatically configure LNS. Follow the instructions for [configuring CUPS]({{< relref "cups" >}}).
 
 Check your manufacturer's documentation to access the gateway logs on your gateway, which will help to diagnose the issue.
@@ -137,7 +137,7 @@ If a gateway appears in the Console with the status of "Other cluster", it means
 
 ## I get an "ID Already Taken" error when adding a gateway.
 
-Another gateway is already registered with this ID. This gateway may have been deleted already, but {{% tts %}} reserves previously used IDs for [security reasons]({{< ref "reference/id-eui-constraints" >}}).
+Another gateway is already registered with this ID. This gateway may have been deleted already, but {{% tts %}} reserves previously used IDs for [security reasons]({{< ref "/concepts/architecture/id-eui-constraints" >}}).
 
 This gateway may also be registered by another user, but you are not able to see gateways registered by other users if you are not an administrator (e.g. if you are using {{% ttss %}}).
 
@@ -175,7 +175,7 @@ These are two different types of {{% lbs %}} connections. Since CUPS automatical
 
 ## How do I find the CA Trust?
 
-See the [Root Certificates Reference]({{< ref "/reference/root-certificates" >}}).
+See the [Root Certificates Reference]({{< ref "/concepts/advanced/root-certificates" >}}).
 
 ## Is an API Key required?
 

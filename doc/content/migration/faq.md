@@ -25,7 +25,7 @@ No, you are not able to migrate your devices and gateways from The Things Networ
 
 See {{% tts %}} [Packet Broker documentation]({{< ref "/concepts/packet-broker" >}}) for detailed info about connecting {{% tts %}} to Packet Broker.
 
-{{% ttss %}} and {{% tts %}} Cloud are connected to Packet Broker by default. {{% tts %}} Open Source and {{% tts %}} Enterprise can also be [connected]({{< ref "/concepts/packet-broker/connect" >}}) to Packet Broker. The Things Industries {{% ttnv2 %}} can also be connected on a customer request. Traffic is then automatically exchanged between these networks. See [default Packet Broker routing tables]({{< ref "/reference/pb-routing" >}}).
+{{% ttss %}} and {{% tts %}} Cloud are connected to Packet Broker by default. {{% tts %}} Open Source and {{% tts %}} Enterprise can also be [connected]({{< ref "/concepts/packet-broker/connect" >}}) to Packet Broker. The Things Industries {{% ttnv2 %}} can also be connected on a customer request. Traffic is then automatically exchanged between these networks. See [default Packet Broker routing tables]({{< ref "/concepts/packet-broker/pb-routing" >}}).
 
 ### I tried migrating my The Things Indoor Gateway (TTIG) to {{% tts %}}, but the Console shows status `Disconnected`. Does {{% tts %}} support connecting TTIGs?
 

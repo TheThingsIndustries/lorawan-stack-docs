@@ -107,7 +107,7 @@ On CloudGate gateways, only CUPS or LNS can be configured. Configuring CUPS will
 
 The server address is the network endpoint of {{% tts %}} LNS. It is a combination of the **protocol** (wss), the **server address**, and the **port**. Enter the following in your gateway as the **LNS Server Address**: `wss://<server-address>:8887`.
 
-The server CA certificates can be found from [Root Certificates]({{< ref "/reference/root-certificates" >}}) page.
+The server CA certificates can be found from [Root Certificates]({{< ref "/concepts/advanced/root-certificates" >}}) page.
 
 You can download the minimal certificates list, and then copy and paste the content into the **Server CA Cert** field.
 

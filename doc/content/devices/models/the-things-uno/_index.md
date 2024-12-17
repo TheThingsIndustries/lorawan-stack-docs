@@ -219,7 +219,7 @@ If you have selected `quickstart` from the **Firmware Ver.** in the previous ste
 - AppEUI – Copy the **AppEUI** from the output printed by the **_TheThingsUnoTest_** sketch.
 - DevEUI – Copy the **DevEUI** from the output printed by the **_TheThingsUnoTest_** sketch.
 - AppKey – Select **Generate** button to generate an **AppKey**.
-- End device ID – Give your device a unique human-readable [identifier]({{< ref "reference/id-eui-constraints" >}}).
+- End device ID – Give your device a unique human-readable [identifier]({{< ref "/concepts/architecture/id-eui-constraints" >}}).
 
 Select the **Register end device** button.
 
@@ -231,7 +231,7 @@ If you have selected `abp` from the **Firmware Ver.** in the previous step:
 - Device address - Select **Generate** button.
 - AppSKey– Select **Generate** button.
 - NwkSKey– Select **Generate** button.
-- End device ID – Give your device a unique human-readable [identifier]({{< ref "reference/id-eui-constraints" >}}).
+- End device ID – Give your device a unique human-readable [identifier]({{< ref "/concepts/architecture/id-eui-constraints" >}}).
 
 Select the **Register end device** button.
 

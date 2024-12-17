@@ -25,7 +25,7 @@ The `ns.downlink-priorities` options configure priorities Network Server assigns
 - `ns.downlink-priorities.mac-commands`: Priority for messages carrying MAC commands (lowest, low, below_normal, normal, above_normal, high, highest)
 - `ns.downlink-priorities.max-application-downlink`: Maximum priority for application downlink messages (lowest, low, below_normal, normal, above_normal, high, highest)
 
-Network Server downlink queue capacity is configurable. 
+Network Server downlink queue capacity is configurable.
 
 - `ns.downlink-queue-capacity`: Maximum downlink queue size per session (default 10000)
 
@@ -58,7 +58,7 @@ The `ns.interop` options configure how Network Server performs interoperability 
 - `ns.interop.directory`: OS filesystem directory, which contains interoperability client configuration
 - `ns.interop.url`: URL, which contains interoperability client configuration
 
-See [LoRaWAN Join Server Configuration]({{< ref "/reference/interop-repository" >}}) to learn how to configure the client configuration.
+See [LoRaWAN Join Server Configuration]({{< ref "/enterprise/join-server/interop-configuration" >}}) to learn how to configure the client configuration.
 
 ## Peering
 

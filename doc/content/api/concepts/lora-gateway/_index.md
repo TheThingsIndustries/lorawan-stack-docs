@@ -19,7 +19,7 @@ These protocols follow the {{% lbs %}} [reference specification](https://lora-de
 
 {{< note "{{% lbs %}} CUPS API is usually exposed on the HTTP(s) port(s)." />}}
 
-Implementation specific details for clients using the {{% lbs %}} LNS protocol to communicate with {{% tts %}} is documented in the [LoRa Basics Station Implementation Guide]({{< ref "/reference/lbs" >}}).
+Implementation specific details for clients using the {{% lbs %}} LNS protocol to communicate with {{% tts %}} is documented in the [LoRa Basics Station Implementation Guide]({{< ref "/hardware/gateways/concepts/lora-basics-station/implementation-guide" >}}).
 
 This reference describes the MQTT protocol used by the Gateway Server. Packet forwarders implementing the MQTT protocols are specific for {{% tts %}}.
 

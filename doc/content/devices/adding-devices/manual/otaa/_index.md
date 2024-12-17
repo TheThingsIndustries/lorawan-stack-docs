@@ -12,7 +12,7 @@ Over-the-Air-Activation (OTAA) is the secure, scalable way to activate LoRaWAN d
 
 {{< tabs/tab "Console" >}}
 
-The example in this guide covers adding a device using [OTAA]({{< ref "reference/glossary#over-the-air-activation" >}}) (the most secure and preferred activation method) and [LoRaWAN version]({{< ref "reference/glossary#lorawan-version" >}}) MAC V1.0.2 (the most common LoRaWAN version, although newer versions are better and more secure) and RP001 Regional Parameters 1.0.2 revision B. Names and keys may vary slightly for other versions, but the process is the same and any differences are noted.
+The example in this guide covers adding a device using [OTAA]({{< ref "/getting-started/glossary#over-the-air-activation" >}}) (the most secure and preferred activation method) and [LoRaWAN version]({{< ref "/getting-started/glossary#lorawan-version" >}}) MAC V1.0.2 (the most common LoRaWAN version, although newer versions are better and more secure) and RP001 Regional Parameters 1.0.2 revision B. Names and keys may vary slightly for other versions, but the process is the same and any differences are noted.
 
 First, enter a **JoinEUI/AppEUI** if provided by your manufacturer. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the [IEEE 802 standards](https://ieee802.org/) or use all zeros, just make sure to program the same value into your device. Then click **Confirm**.
 
@@ -22,7 +22,7 @@ Enter your **DevEUI**. This should be provided by your manufacturer for commerci
 
 If your manufacturer provides an **AppKey**, enter it. Otherwise, use the **Generate** button to create one, and program it into your device.
 
-Give your device a unique **End device ID**. See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
+Give your device a unique **End device ID**. See [ID and EUI constraints]({{< ref "/concepts/architecture/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
 
 {{< figure src="manual-network-settings-otaa.png" alt="Manually create OTAA end device" >}}
 

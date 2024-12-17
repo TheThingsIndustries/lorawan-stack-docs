@@ -196,7 +196,7 @@ Under the **Enter registration data**, select/fill the following mandatory field
 - AppEUI – Copy the **AppEUI** from the output printed by the **_DeviceInfo_** sketch.
 - DevEUI – Copy the **DevEUI** from the output printed by the **_DeviceInfo_** sketch.
 - AppKey – Select **Generate** button to generate an **AppKey**.
-- End device ID – Give your device a unique human-readable [identifier]({{< ref "reference/id-eui-constraints" >}}).
+- End device ID – Give your device a unique human-readable [identifier]({{< ref "/concepts/architecture/id-eui-constraints" >}}).
 
 Select the **Register end device** button.
 

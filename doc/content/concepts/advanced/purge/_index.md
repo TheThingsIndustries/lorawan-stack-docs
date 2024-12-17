@@ -5,7 +5,7 @@ weight:
 aliases: [/reference/purge, /the-things-stack/management/purge]
 ---
 
-When entities are deleted, {{% tts %}} [retains some IDs]({{< ref "reference/id-eui-constraints" >}}) by default to prevent another user re-registering the ID and obtaining historical data. Deleted entities can be restored within a limited time period, but it is also possible for administrators to purge these entities, so that their IDs may be reused.
+When entities are deleted, {{% tts %}} [retains some IDs]({{< ref "/concepts/architecture/id-eui-constraints" >}}) by default to prevent another user re-registering the ID and obtaining historical data. Deleted entities can be restored within a limited time period, but it is also possible for administrators to purge these entities, so that their IDs may be reused.
 
 This reference contains information about how to do delete, restore and purge entities.
 

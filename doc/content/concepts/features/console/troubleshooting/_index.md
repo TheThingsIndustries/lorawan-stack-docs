@@ -21,7 +21,7 @@ If these steps do not help you solve the issue, please collect your browser cons
 
 ## What does "Last activity/Last seen" mean?
 
-See [Last Activity]({{< ref "reference/last-activity" >}}).
+See [Last Activity]({{< ref "/concepts/architecture/last-activity" >}}).
 
 ## Common Errors
 
@@ -37,7 +37,7 @@ In rare cases, this may also happen to ABP devices if a device resets its frame 
 
 ### Entity Already Exists
 
-An entity with this ID already exists. The entity may have been deleted, but {{% tts %}} retains deleted IDs so that they can not be reused, unless they are [purged]({{< ref "/concepts/advanced/purge" >}}). See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for uniqueness requirements.
+An entity with this ID already exists. The entity may have been deleted, but {{% tts %}} retains deleted IDs so that they can not be reused, unless they are [purged]({{< ref "/concepts/advanced/purge" >}}). See [ID and EUI constraints]({{< ref "/concepts/architecture/id-eui-constraints" >}}) for uniqueness requirements.
 
 ### Duplicate Uplink
 

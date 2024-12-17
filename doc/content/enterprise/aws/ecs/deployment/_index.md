@@ -114,7 +114,7 @@ The template `2-4b-routing-s3` creates an S3 bucket that stores configuration fo
 
 In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for the name of the bucket you want to create. It is typically fine to leave this parameter empty, and have a automatically generated bucket name.
 
-After deploying the `2-4b-routing-s3` template, you need to upload the interop configuration to the interop bucket, EDCS configuration to the EDCS bucket and plugins configuration to the plugins bucket. For details on those configuration files, see the [Interoperability Repository reference]({{< ref "/reference/interop-repository" >}}) and the [Device Claiming reference]({{< ref "/reference/device-claiming-repository" >}}). If you do not have the configuration, you can upload an empty configuration file:
+After deploying the `2-4b-routing-s3` template, you need to upload the interop configuration to the interop bucket, EDCS configuration to the EDCS bucket and plugins configuration to the plugins bucket. For details on those configuration files, see the [Interoperability Repository reference]({{< ref "/enterprise/join-server/interop-configuration" >}}) and the [Device Claiming reference]({{< ref "/enterprise/join-server/device-claiming-configuration" >}}). If you do not have the configuration, you can upload an empty configuration file:
 
 ```bash
 touch config.yml
@@ -192,7 +192,7 @@ The `4-2b-configuration-rate-limiting` template creates configuration options fo
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/4-2b-configuration-rate-limiting.gen.template (replace `3.x.y` with the current minor and patch version).
 
-More information can be found in the [Rate-limiting]({{< relref "/reference/rate-limiting" >}}) section.
+More information can be found in the [Rate-limiting]({{< relref "/enterprise/management/rate-limiting" >}}) section.
 
 ## Resource Limiting (optional)
 
@@ -200,7 +200,7 @@ The `4-2c-configuration-resource-limiting` template allows setting resource limi
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/4-2c-configuration-resource-limiting.gen.template (replace `3.x.y` with the current minor and patch version).
 
-More information can be found in the [Resource-limiting]({{< relref "/reference/resource-limiting" >}}) section.
+More information can be found in the [Resource-limiting]({{< relref "/enterprise/management/resource-limiting" >}}) section.
 
 ## ECS Cluster
 

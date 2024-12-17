@@ -51,7 +51,7 @@ If join-request is received:
 1. Device is matched using the `DevEUI` and `JoinEUI` pair present in the join-request, which uniquely identifies the device.
 2. New `DevAddr` is assigned to the device and new MAC state is derived for the device.
 3. If [Join Server]({{< relref "join-server.md" >}}) is present in the cluster, Network Server sends a join-request message to the cluster-local [Join Server]({{< relref "join-server.md" >}}).
-4. If [Join Server]({{< relref "join-server.md" >}}) is not present in the cluster or the device is not provisioned in the cluster-local [Join Server]({{< relref "join-server.md" >}}), Network Server sends a join-request message to the [Join Server]({{< relref "join-server.md" >}}) discovered via [interoperability configuration]({{< ref "/reference/interop-repository" >}}).
+4. If [Join Server]({{< relref "join-server.md" >}}) is not present in the cluster or the device is not provisioned in the cluster-local [Join Server]({{< relref "join-server.md" >}}), Network Server sends a join-request message to the [Join Server]({{< relref "join-server.md" >}}) discovered via [interoperability configuration]({{< ref "/enterprise/join-server/interop-configuration" >}}).
 5. If a [Join Server]({{< relref "join-server.md" >}}) accepted the join-request, join-accept message may be enqueued for the device and application-specific uplink messages carrying relevant information about join-accept is sent to linked [Application Server]({{< relref "application-server.md" >}}).
 
 ### Data uplink

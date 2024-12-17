@@ -49,7 +49,7 @@ Choose the **Select the end device in the LoRaWAN Device Repository** input meth
 
 {{< figure src="device-repo.png" alt="Creating a new device with the Device Repository" >}}
 
-Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same [frequency plan]({{< ref "/reference/frequency-plans/" >}}) to communicate.
+Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same [frequency plan]({{< ref "/concepts/lorawan/frequency-plans/" >}}) to communicate.
 
 {{< figure src="fp.png" alt="Choosing a frequency plan" >}}
 
@@ -65,7 +65,7 @@ First choose the **Select the end device in the LoRaWAN Device Repository** inpu
 
 {{< figure src="select-dr-non-qr.png" alt="Creating a new device with the Device Repository" >}}
 
-Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same [frequency plan]({{< ref "/reference/frequency-plans/" >}}) to communicate. This example uses `Europe 863-870 MHz (SF9 for RX2 - recommended)`.
+Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same [frequency plan]({{< ref "/concepts/lorawan/frequency-plans/" >}}) to communicate. This example uses `Europe 863-870 MHz (SF9 for RX2 - recommended)`.
 
 {{< figure src="fp-non-qr.png" alt="Choosing a frequency plan" >}}
 
@@ -83,7 +83,7 @@ For LoRaWAN version 1.0.x devices, you will see an **AppKey** field, and for LoR
 
 {{< /tabs/container >}}
 
-Finally, enter an **End device ID**. Advisable is doing it in the format `eui-{Device EUI}`. You can edit this field and give the device a unique identifier. See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
+Finally, enter an **End device ID**. Advisable is doing it in the format `eui-{Device EUI}`. You can edit this field and give the device a unique identifier. See [ID and EUI constraints]({{< ref "/concepts/architecture/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
 
 Now verify that all the fields are filled and click the **Register end device** button to create the end device.
 

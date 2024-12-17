@@ -47,7 +47,7 @@ On your Peplink router’s web admin page, go to the **Advanced** tab along the 
 
 Find **LoRaWAN** settings on the left and tick the **Enable** checkbox.
 
-Download a [common root SSL certificate]({{< ref "/reference/root-certificates" >}}) used in {{% tts %}}. For this guide, we used **ISRG Root X1 certificate**.
+Download a [common root SSL certificate]({{< ref "/concepts/advanced/root-certificates" >}}) used in {{% tts %}}. For this guide, we used **ISRG Root X1 certificate**.
 
 Now configure the following settings:
 

@@ -182,9 +182,9 @@ Or you can enable failover using [Redis Sentinel](https://redis.io/topics/sentin
 
 Further, you can reduce the load on the Redis master by specifying read-only configuration:
 
-- `redis.readonly.address` {{< distributions "Cloud" "Enterprise" >}}: Address of the Redis server 
-- `redis.readonly.password` {{< distributions "Cloud" "Enterprise" >}}: Password of the Redis server 
-- `redis.readonly.database` {{< distributions "Cloud" "Enterprise" >}}: Redis database to use 
+- `redis.readonly.address` {{< distributions "Cloud" "Enterprise" >}}: Address of the Redis server
+- `redis.readonly.password` {{< distributions "Cloud" "Enterprise" >}}: Password of the Redis server
+- `redis.readonly.database` {{< distributions "Cloud" "Enterprise" >}}: Redis database to use
 - `redis.readonly.pool-size` {{< distributions "Cloud" "Enterprise" >}}: The maximum size of the connection pool
 
 If your Redis server uses TLS, use the following options:
@@ -241,12 +241,12 @@ Similar to the global Redis configuration, you can reduce the load on the Redis 
 
 - `events.redis.readonly.address` {{< distributions "Cloud" "Enterprise" >}}: Address of the Redis server
 - `events.redis.readonly.password` {{< distributions "Cloud" "Enterprise" >}}: Password of the Redis server
-- `events.redis.readonly.database` {{< distributions "Cloud" "Enterprise" >}}: Redis database to use 
+- `events.redis.readonly.database` {{< distributions "Cloud" "Enterprise" >}}: Redis database to use
 - `events.redis.readonly.pool-size` {{< distributions "Cloud" "Enterprise" >}}: The maximum size of the connection pool
 
 Redis events backend also provides event storage where retention can be configured.
 
-- `events.redis.store.enable`: Enable events store 
+- `events.redis.store.enable`: Enable events store
 - `events.redis.store.correlation-id-count`: Defines how many events are indexed for a correlation ID
 - `events.redis.store.entity-count`: Defines how many events are indexed for an entity ID
 - `events.redis.store.entity-ttl`: Defines how long events are indexed for an entity ID
@@ -344,12 +344,12 @@ When using the `redis` backend, the global [Redis configuration]({{< ref "#redis
 
 See [Redis configuration]({{< ref "#redis-options" >}}) for more options.
 
-## Multi-Tenancy 
+## Multi-Tenancy
 
 {{< distributions "Cloud" "Enterprise" >}} In multi-tenant deployments, some additional configuration is required.
 
-- `tenancy.base-domains` {{< distributions "Cloud" "Enterprise" >}}: Base domains for tenant ID inference. Setting this to `thethings.example.com` would extract the tenant ID from `<tenant-id>.thethings.example.com`. 
-- `tenancy.default-id` {{< distributions "Cloud" "Enterprise" >}}: Default tenant ID. Users visiting `thethings.example.com` (from `tenancy.base-domains`) will be redirected to `default.thethings.example.com`. 
+- `tenancy.base-domains` {{< distributions "Cloud" "Enterprise" >}}: Base domains for tenant ID inference. Setting this to `thethings.example.com` would extract the tenant ID from `<tenant-id>.thethings.example.com`.
+- `tenancy.default-id` {{< distributions "Cloud" "Enterprise" >}}: Default tenant ID. Users visiting `thethings.example.com` (from `tenancy.base-domains`) will be redirected to `default.thethings.example.com`.
 
 Tenants can have custom configuration, such as custom branding or custom user registration options. This information is typically cached locally, especially in multi-region deployments to reduce the load on the Identity Server and to be more resilient against outages of the Identity Server.
 
@@ -357,7 +357,7 @@ Tenants can have custom configuration, such as custom branding or custom user re
 
 ## Rate Limiting
 
-{{% tts %}} supports rate limiting external endpoints. See [Rate Limiting]({{< ref "/reference/rate-limiting" >}}) for more details.
+{{% tts %}} supports rate limiting external endpoints. See [Rate Limiting]({{< ref "/enterprise/management/rate-limiting" >}}) for more details.
 
 - `rate-limiting.blob.bucket`: Bucket to use
 - `rate-limiting.blob.path`: Path to use
@@ -368,7 +368,7 @@ Tenants can have custom configuration, such as custom branding or custom user re
 
 ## Resource Limiting
 
-{{< distributions "Enterprise" "AWS Launcher" >}}  {{% tts %}} supports configuring maximum limits for active resources (e.g. number of active application data-plane MQTT connections). Resource limiting configuration can only be set from the configuration file. See [Resource Limiting]({{< ref "/reference/resource-limiting" >}}) for more details.
+{{< distributions "Enterprise" "AWS Launcher" >}} {{% tts %}} supports configuring maximum limits for active resources (e.g. number of active application data-plane MQTT connections). Resource limiting configuration can only be set from the configuration file. See [Resource Limiting]({{< ref "/enterprise/management/resource-limiting" >}}) for more details.
 
 ## Version Check
 

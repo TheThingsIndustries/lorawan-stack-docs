@@ -14,11 +14,11 @@ This error usually occurs when wrong path(s) are specified in the `field_mask` o
 
 ###### When adding a device, I get an "invalid end_device: embedded message failed validation" error.
 
-The most common cause for this error is not following the regex pattern in the `device_id` field. See [End Device APIs]({{< ref "/api/reference/grpc/end_device#message:EndDeviceIdentifiers" >}}) section and make sure your `device_id` is in line with the defined regex pattern. See also [ID and EUI constaints]({{< ref "/reference/id-eui-constraints" >}}) documentation.
+The most common cause for this error is not following the regex pattern in the `device_id` field. See [End Device APIs]({{< ref "/api/reference/grpc/end_device#message:EndDeviceIdentifiers" >}}) section and make sure your `device_id` is in line with the defined regex pattern. See also [ID and EUI constaints]({{< ref "/concepts/architecture/id-eui-constraints" >}}) documentation.
 
 ###### Listing gateways via API call works for the eu1 {{% tts %}} Cloud cluster, but won't work for the nam1 cluster.
 
-Unlike other server components, the Identity Server component of {{% tts %}} is hosted only in the `eu1` cluster for [{{% tts %}} Cloud]({{< ref "/concepts/server-addresses#api-endpoints" >}}) and [{{% tts %}} Sandbox]({{< ref "/reference/ttn/addresses#api-endpoints" >}}). This is the reason why Identity Server API request to any cluster other than `eu1` will fail.
+Unlike other server components, the Identity Server component of {{% tts %}} is hosted only in the `eu1` cluster for [{{% tts %}} Cloud]({{< ref "/concepts/server-addresses#api-endpoints" >}}) and [{{% tts %}} Sandbox]({{< ref "/concepts/ttn/addresses#api-endpoints" >}}). This is the reason why Identity Server API request to any cluster other than `eu1` will fail.
 
 ###### "426 Upgrade Required" error
 

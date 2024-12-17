@@ -14,4 +14,4 @@ description: ""
 - `dcs.edcs.blob.bucket`: Blob bucket to use for the Join Server client configuration
 - `dcs.edcs.blob.path`: Blob path to use for the Join Server client configuration
 
-See [Device Claiming Repository]({{< ref "/reference/device-claiming-repository" >}}) to learn how to configure the client configuration.
+See [Device Claiming Repository]({{< ref "/enterprise/join-server/device-claiming-configuration" >}}) to learn how to configure the client configuration.

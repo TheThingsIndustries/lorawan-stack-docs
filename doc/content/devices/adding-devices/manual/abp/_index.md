@@ -28,7 +28,7 @@ For LoRaWAN versions 1.0.x, generate an **AppSKey** and **NwkSKey** and program 
 
 For LoRaWAN versions 1.1.x, generate an **AppSKey**, **FNwkSIntKey**, **SNwkSIntKey**, and **NwkSEncKey**, and program them in your device.
 
-Finally, give your device a unique **End device ID**. See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
+Finally, give your device a unique **End device ID**. See [ID and EUI constraints]({{< ref "/concepts/architecture/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
 
 {{< figure src="abp-fields-set.png" alt="ABP fields set" >}}
 

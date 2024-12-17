@@ -44,7 +44,7 @@ When reviewing the requests of new OAuth clients, administrators always validate
 
 A few parameters listed below are usually used to describe an OAuth [client]({{< ref "/api/reference/http/messages/#client" >}}).
 
-- The **client ID** uniquely identifies the OAuth client. Its [restrictions]({{< ref "/reference/id-eui-constraints#requirements-of-an-id-or-eui" >}}) are the same as for any other ID in {{% tts %}}.
+- The **client ID** uniquely identifies the OAuth client. Its [restrictions]({{< ref "/concepts/architecture/id-eui-constraints#requirements-of-an-id-or-eui" >}}) are the same as for any other ID in {{% tts %}}.
 - The **description** is shown to the user when you request authorization.
 - The **rights** indicates what actions your OAuth client is allowed to perform. This is shown to the user when performing an authorization request. A full list of rights can also be found in the [message reference]({{< ref "/api/reference/http/messages/#right" >}}).
 - The **redirect URI** is where the user is redirected after authorizing your OAuth client. At least one **redirect URI** must be configured while registering the OAuth client.

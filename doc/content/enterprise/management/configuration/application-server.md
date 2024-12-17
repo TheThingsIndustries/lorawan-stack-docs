@@ -18,7 +18,7 @@ The `as.interop` options configure how Application Server performs interoperabil
 - `as.interop.directory`: OS filesystem directory, which contains interoperability client configuration
 - `as.interop.url`: URL, which contains interoperability client configuration
 
-See [LoRaWAN Join Server Configuration]({{< ref "/reference/interop-repository" >}}) to learn how to configure the client configuration.
+See [LoRaWAN Join Server Configuration]({{< ref "/enterprise/join-server/interop-configuration" >}}) to learn how to configure the client configuration.
 
 ## MQTT Options
 

@@ -113,7 +113,7 @@ The `<server-address>` is the address of your {{% tts %}} deployment. See [Serve
 
 ### CUPS Server Certificate / CUPS Trust
 
-This is the [CA certificate](https://en.wikipedia.org/wiki/Certificate_authority) which secures your domain. A `.pem` file containing common certificates is available in the [Root Certificates Reference]({{< ref "/reference/root-certificates" >}}).
+This is the [CA certificate](https://en.wikipedia.org/wiki/Certificate_authority) which secures your domain. A `.pem` file containing common certificates is available in the [Root Certificates Reference]({{< ref "/concepts/advanced/root-certificates" >}}).
 
 Upload the `.pem` file in your gateway as the CUPS Server Certificate, i.e. CUPS Trust.
 

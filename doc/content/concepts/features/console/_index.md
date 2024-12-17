@@ -36,7 +36,7 @@ See [Cloud Addresses]({{< ref "/cloud/addresses" >}}) for more information about
 
 If you are using {{% ttss %}}, the Console is available at `cloud.thethings.network`.
 
-Visit the addresses page for [{{% ttss %}}]({{< ref "reference/ttn/addresses" >}}) for more information.
+Visit the addresses page for [{{% ttss %}}]({{< ref "/concepts/ttn/addresses" >}}) for more information.
 
 ## {{% tts %}} Enterprise and Open Source
 

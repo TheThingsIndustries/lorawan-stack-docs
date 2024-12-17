@@ -34,7 +34,7 @@ If using Windows OS, replace `export` with `set` and remove the double-quotes in
 set CHIRPSTACK_API_TOKEN=eyJ0eX...
 ```
 
-`JoinEUI` and `FrequencyPlanID` have to be set because ChirpStack does not store these variables. See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) for a full list of frequency plans supported by {{% tts %}} (and their IDs).
+`JoinEUI` and `FrequencyPlanID` have to be set because ChirpStack does not store these variables. See [Frequency Plans]({{< ref "/concepts/lorawan/frequency-plans" >}}) for a full list of frequency plans supported by {{% tts %}} (and their IDs).
 
 You can now proceed to exporting devices or applications.
 

@@ -2,7 +2,12 @@
 title: "Google OpenID Connect"
 description: ""
 weight:
-aliases: [/getting-started/sso/google, /the-things-stack/management/sso/google]
+aliases:
+  [
+    /getting-started/sso/google,
+    /the-things-stack/management/sso/google,
+    /reference/federated-auth/oidc/google,
+  ]
 ---
 
 This section contains instructions to configure Google OpenID Connect to work with {{% tts %}}.

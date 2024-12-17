@@ -79,7 +79,7 @@ name=GatewayIdentifiersValidationError
 reason=value does not match regex pattern "^[a-z0-9](?:[-]?[a-z0-9]){2,}$"
 ```
 
-See [ID and EUI Constraints]({{< ref "reference/id-eui-constraints" >}}) section for more info.
+See [ID and EUI Constraints]({{< ref "/concepts/architecture/id-eui-constraints" >}}) section for more info.
 
 ## Setting Multiple Boolean Parameters
 
