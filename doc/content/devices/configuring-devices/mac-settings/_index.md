@@ -25,7 +25,7 @@ The expected procedure for testing and updating settings is:
 2. Test that everything works as expected
 3. Modify `mac-settings.desired_<parameter>` to make the change permanent
 
-See how this applies to the Rx1 delay parameter in the example below. If no settings are provided on device creation or unset, defaults are first taken from the device Frequency Plan if available, and finally from [Network Server Configuration]({{< ref "/reference/configuration/network-server" >}}).
+See how this applies to the Rx1 delay parameter in the example below. If no settings are provided on device creation or unset, defaults are first taken from the device Frequency Plan if available, and finally from [Network Server Configuration]({{< ref "/enterprise/management/configuration/network-server" >}}).
 
 ### Example: Configure Rx1 Delay
 

@@ -3,7 +3,10 @@ title: "Configuring the CLI"
 description: ""
 weight: 2
 aliases:
-  [/getting-started/cli/configuring-cli/, /concepts/featurescli/configuring-cli]
+  [
+    /getting-started/cli/configuring-cli/,
+    /concepts/features/cli/configuring-cli,
+  ]
 ---
 
 {{% tts %}} CLI needs to be configured to connect to your {{% tts %}} deployment.
@@ -127,7 +130,7 @@ If your deployment uses a custom certificate authority, you will need to specify
 ca: /path/to/ca.pem
 ```
 
-For advanced options, see the [Configuration Reference]({{< ref "/reference/configuration/cli" >}}).
+For advanced options, see the [Configuration Reference]({{< ref "/enterprise/management/configuration/cli" >}}).
 
 ## Step 2 - Configure the CLI
 

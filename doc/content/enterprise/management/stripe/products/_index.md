@@ -19,7 +19,7 @@ After specifying the name and the unit label, you can add a new pricing plan by 
 
 {{< figure src="plan-create.png" alt="Pricing plan creation" >}}
 
-After setting up the plan, scroll down and click **Add pricing plan**. Your product will be created with the given pricing plan and you can now provide the pricing plan ID in the [configuration]({{< ref "/reference/configuration/tenant-billing-server" >}}).
+After setting up the plan, scroll down and click **Add pricing plan**. Your product will be created with the given pricing plan and you can now provide the pricing plan ID in the [configuration]({{< ref "/enterprise/management/configuration/tenant-billing-server" >}}).
 
 {{< figure src="product-created.png" alt="Created product" >}}
 

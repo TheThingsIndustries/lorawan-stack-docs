@@ -8,7 +8,7 @@ aliases: "/telemetry/identity-server"
 
 Telemetry collection is **enabled** by default for **{{% tts %}} Open Source** distribution.
 
-In order to disable it, set `telemetry.enable` to `false` in the [{{% tts %}} configuration]({{< ref "reference/configuration" >}}):
+In order to disable it, set `telemetry.enable` to `false` in the [{{% tts %}} configuration]({{< ref "/enterprise/management/configuration" >}}):
 
 ```yaml
 telemetry:
@@ -23,7 +23,7 @@ When the Identity Server starts the background task responsible for collecting a
 UID is the SHA512 hash of `console.ui[IS,GS,NS,AS,JS].BaseURL` values.
 
 {{< note >}}
-If you want the telemetry collector to use a different list of elements, there is an option to set your own list of values used in the SHA512 hash creation. Edit [{{% tts %}}'s configuration]({{< ref "reference/configuration" >}}) and set `telemetry.uid-elements` to a list of string values of your choice.
+If you want the telemetry collector to use a different list of elements, there is an option to set your own list of values used in the SHA512 hash creation. Edit [{{% tts %}}'s configuration]({{< ref "/enterprise/management/configuration" >}}) and set `telemetry.uid-elements` to a list of string values of your choice.
 
 ```yaml
 # Example

@@ -7,7 +7,7 @@ description: ""
 
 <!-- more -->
 
-Network Server and Application Server use this configuration to contact LoRaWAN Join Servers. Learn how to configure [Network Server]({{< ref "/reference/configuration/network-server#interoperability-options" >}}) and [Application Server]({{< ref "/reference/configuration/application-server#interoperability-options" >}}) to use the interoperability client configuration.
+Network Server and Application Server use this configuration to contact LoRaWAN Join Servers. Learn how to configure [Network Server]({{< ref "/enterprise/management/configuration/network-server#interoperability-options" >}}) and [Application Server]({{< ref "/enterprise/management/configuration/application-server#interoperability-options" >}}) to use the interoperability client configuration.
 
 ## Configuration Files
 
@@ -15,10 +15,10 @@ Network Server and Application Server use this configuration to contact LoRaWAN 
 
 ```yml
 join-servers:
-  - file: './path/js.yml'     # relative path to a file containing Join Server configuration
-    components: ['as', 'ns']  # optional selector for components (new in 3.21.0)
-    join-euis:                # list of Join EUI prefixes the Join Server should handle
-      - '11AA000000000000/16' # in this example, the first 16 bits, so all JoinEUIs starting with 11AA
+  - file: "./path/js.yml" # relative path to a file containing Join Server configuration
+    components: ["as", "ns"] # optional selector for components (new in 3.21.0)
+    join-euis: # list of Join EUI prefixes the Join Server should handle
+      - "11AA000000000000/16" # in this example, the first 16 bits, so all JoinEUIs starting with 11AA
 ```
 
 All paths are relative to the `config.yml` file they are defined in.
@@ -29,37 +29,37 @@ In case `JoinEUI` prefixes overlap, the most specific prefix takes precedence. `
 
 ```yml
 join-servers:
-  - file: './fallback/js.yml'
+  - file: "./fallback/js.yml"
     join-euis:
-      - '0000000000000000/0'
+      - "0000000000000000/0"
 ```
 
 The Join Server configuration provides means to configure how the components interact with the Join Server. The configuration supports multiple options:
 
 ```yml
-scheme: 'https'                          # URL scheme. Defaults to https
-fqdn: 'thethings.example'                # FQDN of the Join Server
-port: 443                                # port to connect at. Defaults to 443
-protocol: 'BI1.0'                        # Backend Interfaces protocol to use (BI1.0 or BI1.1)
-paths:                                   # custom URI paths to use for various requests. Defaults to /
-  join: 'some/path'                      # the URI path to use for JoinReq
-  rejoin: 'some/other/path'              # the URI path to use for RejoinReq
-  app-s-key: 'other/path'                # the URI path to use for AppSKeyReq
-  home-ns: 'somepath'                    # the URI path to use for HomeNSReq
-sender-ns-id: '1122334455667788'         # Backend Interfaces 1.1 NSID (overrides ns.interop.id)
-basic-auth:                              # HTTP Basic Authentication (optional)
-  username: 'user'                       # HTTP Basic username
-  password: 'secret'                     # HTTP Basic password
-tls:                                     # TLS configuration to use (optional)
-  source: 'file'                         # TLS client certificate source (file or key-vault)
-  root-ca: 'path/to/clientca.pem'        # path to CA file to verify TLS server certificate (optional)
-  certificate: 'path/to/clientcert.pem'  # path to TLS client certificate
-  key: 'path/to/clientkey.pem'           # path to TLS client key
-headers:                                 # HTTP headers to send, defined as key-value map
-  Some-Header: 'SomeValue'
+scheme: "https" # URL scheme. Defaults to https
+fqdn: "thethings.example" # FQDN of the Join Server
+port: 443 # port to connect at. Defaults to 443
+protocol: "BI1.0" # Backend Interfaces protocol to use (BI1.0 or BI1.1)
+paths: # custom URI paths to use for various requests. Defaults to /
+  join: "some/path" # the URI path to use for JoinReq
+  rejoin: "some/other/path" # the URI path to use for RejoinReq
+  app-s-key: "other/path" # the URI path to use for AppSKeyReq
+  home-ns: "somepath" # the URI path to use for HomeNSReq
+sender-ns-id: "1122334455667788" # Backend Interfaces 1.1 NSID (overrides ns.interop.id)
+basic-auth: # HTTP Basic Authentication (optional)
+  username: "user" # HTTP Basic username
+  password: "secret" # HTTP Basic password
+tls: # TLS configuration to use (optional)
+  source: "file" # TLS client certificate source (file or key-vault)
+  root-ca: "path/to/clientca.pem" # path to CA file to verify TLS server certificate (optional)
+  certificate: "path/to/clientcert.pem" # path to TLS client certificate
+  key: "path/to/clientkey.pem" # path to TLS client key
+headers: # HTTP headers to send, defined as key-value map
+  Some-Header: "SomeValue"
 ```
 
-If `tls.source` is set to `key-vault`, {{% tts %}} uses its [Key Vault]({{< ref "/reference/configuration/the-things-stack#key-vault" >}}) configuration to load the TLS client certificate.
+If `tls.source` is set to `key-vault`, {{% tts %}} uses its [Key Vault]({{< ref "/enterprise/management/configuration/the-things-stack#key-vault" >}}) configuration to load the TLS client certificate.
 
 ## Interoperability with The Things Join Server
 
@@ -80,10 +80,10 @@ join-servers:
 
 ```yml
 # tti/js.yml
-fqdn: 'js.cloud.thethings.industries'
-protocol: 'BI1.1'
+fqdn: "js.cloud.thethings.industries"
+protocol: "BI1.1"
 tls:
-  source: 'key-vault'
+  source: "key-vault"
 ```
 
 Please contact [The Things Industries support](mailto:support@thethingsindustries.com) to gain access to The Things Join Server.
@@ -106,14 +106,14 @@ join-servers:
 
 ```yml
 # semtech/js.yml
-fqdn: 'js.loracloud.com'
+fqdn: "js.loracloud.com"
 port: 7009
-protocol: 'BI1.0'
+protocol: "BI1.0"
 paths:
-  join: 'api/v1/rens/rens-1::2/lbi_joinreq'  # replace 'rens-1::1' by the RENS issued by Semtech
+  join: "api/v1/rens/rens-1::2/lbi_joinreq" # replace 'rens-1::1' by the RENS issued by Semtech
 tls:
-  source: 'file'
-  root-ca: './ca.pem'                        # path to the CA issued by Semtech
-  certificate: './cert.pem'                  # path to the TLS client certificate issued by Semtech
-  key: './key.pem'                           # path to the TLS client key issued by Semtech
+  source: "file"
+  root-ca: "./ca.pem" # path to the CA issued by Semtech
+  certificate: "./cert.pem" # path to the TLS client certificate issued by Semtech
+  key: "./key.pem" # path to the TLS client key issued by Semtech
 ```

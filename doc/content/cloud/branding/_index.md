@@ -16,7 +16,7 @@ See below for what's available to customize and what files are necessary. Users 
 
 ## Title, Subtitle and Description
 
-The title, subtitle and description of the login pages and the Console can be changed using configuration options. For details, see the [Identity Server configuration reference]({{< ref "/reference/configuration/identity-server#oauth-ui-options" >}}) and the [Console configuration reference]({{< ref "/reference/configuration/console" >}}).
+The title, subtitle and description of the login pages and the Console can be changed using configuration options. For details, see the [Identity Server configuration reference]({{< ref "/enterprise/management/configuration/identity-server#oauth-ui-options" >}}) and the [Console configuration reference]({{< ref "/enterprise/management/configuration/console" >}}).
 
 ## Logos
 
@@ -51,8 +51,8 @@ convert console-favicon.png \
     console-favicon.ico
 ```
 
-For the additional info about configuration options required to set a custom branding, see the [Identity Server configuration reference]({{< ref "/reference/configuration/identity-server#oauth-ui-options" >}}) and the [Console configuration reference]({{< ref "/reference/configuration/console" >}}).
+For the additional info about configuration options required to set a custom branding, see the [Identity Server configuration reference]({{< ref "/enterprise/management/configuration/identity-server#oauth-ui-options" >}}) and the [Console configuration reference]({{< ref "/enterprise/management/configuration/console" >}}).
 
 ## Deployment Information and Disclaimers
 
-It is possible to highlight some deployment information and disclaimers in the header of the web UIs. E.g. you can highlight an SLA that applies or a support tier that is connected with the deployment. Please see the respective sections in the [Identity Server configuration reference]({{< ref "/reference/configuration/identity-server#oauth-ui-options" >}}) and [Console configuration reference]({{< ref "/reference/configuration/console#deployment-information-and-disclaimers" >}}).
+It is possible to highlight some deployment information and disclaimers in the header of the web UIs. E.g. you can highlight an SLA that applies or a support tier that is connected with the deployment. Please see the respective sections in the [Identity Server configuration reference]({{< ref "/enterprise/management/configuration/identity-server#oauth-ui-options" >}}) and [Console configuration reference]({{< ref "/enterprise/management/configuration/console#deployment-information-and-disclaimers" >}}).

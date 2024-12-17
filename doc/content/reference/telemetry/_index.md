@@ -5,11 +5,11 @@ aliases: [/telemetry]
 new_in_version: "3.27.1"
 ---
 
-This section contains detailed information on telemetry collected by the [CLI]({{<ref "/reference/cli">}}) and by each of {{% tts %}}\'s [components]({{<relref "components">}}).
+This section contains detailed information on telemetry collected by the [CLI]({{<ref "/concepts/features/cli">}}) and by each of {{% tts %}}\'s [components]({{<relref "components">}}).
 
 <!--more-->
 
-{{% tts %}}'s [CLI]({{<ref "/reference/cli">}}) and [components]({{<relref "components">}}) have the ability to collect and send telemetry data to The Things Industries. We are interested in gaining insights on how users use {{% tts %}} in the field to give us a better idea on things that need improvement.
+{{% tts %}}'s [CLI]({{<ref "/concepts/features/cli">}}) and [components]({{<relref "components">}}) have the ability to collect and send telemetry data to The Things Industries. We are interested in gaining insights on how users use {{% tts %}} in the field to give us a better idea on things that need improvement.
 
 {{% tts %}} does **not** collect, store and/or transmit personally identifiable information. All information collected is **anonymised** by {{% tts %}} before transmission.
 

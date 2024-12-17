@@ -80,7 +80,7 @@ error:pkg/identityserver:restore_window_expired (this entity can no longer be re
 
 In this case, entity can only be purged by an administrator and then recreated.
 
-For {{% tts %}} Enterprise deployments, it is possible to configure the restoration period. For more info, check [Identity Server Options]({{< ref "/reference/configuration/identity-server#general-options" >}}).
+For {{% tts %}} Enterprise deployments, it is possible to configure the restoration period. For more info, check [Identity Server Options]({{< ref "/enterprise/management/configuration/identity-server#general-options" >}}).
 
 Note again that restoring entities is not possible if they have been purged.
 

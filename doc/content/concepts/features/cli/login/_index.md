@@ -2,7 +2,7 @@
 title: "Login with the CLI"
 description: ""
 weight: 2
-aliases: [/getting-started/cli/login, /concepts/featurescli/login]
+aliases: [/getting-started/cli/login, /concepts/features/cli/login]
 ---
 
 This section explains how to login to {{% tts %}} using the command-line interface.

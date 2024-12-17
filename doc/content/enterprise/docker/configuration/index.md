@@ -63,7 +63,7 @@ Next, proceed to the instructions below on how to change additional settings for
 
 `ttn-lw-stack-docker.yml` contains the configuration specific to {{% tts %}} deployment and is used to configure {{% tts %}}. When {{% tts %}} starts, it searches through `ttn-lw-stack-docker.yml` for component server addresses, a TLS certificate source, client authentication credentials, and other configuration parameters.
 
-The configuration options in `ttn-lw-stack-docker` can also be specified using command-line flags or environment variables. All configuration options have a corresponding environment variable and command-line flag. See the [Configuration Reference]({{< ref "reference/configuration" >}}) for more information about the configuration options.
+The configuration options in `ttn-lw-stack-docker` can also be specified using command-line flags or environment variables. All configuration options have a corresponding environment variable and command-line flag. See the [Configuration Reference]({{< ref "/enterprise/management/configuration" >}}) for more information about the configuration options.
 
 Settings in `docker-compose.yml` and `ttn-lw-stack-docker.yml` files are explained in detail in [Understanding Docker Configuration](#understanding-docker-configuration) and [Understanding The Things Stack Configuration](#understanding-the-things-stack-configuration) sections below. Further, we provide tips for running {{% tts %}} in production.
 
@@ -97,7 +97,7 @@ The simplest configuration for PostgreSQL looks like this (excerpted from the ex
 {{< /highlight >}}
 
 {{< note >}}
-Alternatively, you can use a managed TimescaleDB database, like [Timescale Cloud](https://www.timescale.com/cloud). In that case, make sure to configure the [Identity Server]({{< ref "/reference/configuration/identity-server#database-options" >}}), [Application Server]({{< ref "/reference/configuration/application-server#storage-integration-options" >}}) and [Network Operations Center]({{< ref "/reference/configuration/network-operations-center#database-options" >}}) databases.
+Alternatively, you can use a managed TimescaleDB database, like [Timescale Cloud](https://www.timescale.com/cloud). In that case, make sure to configure the [Identity Server]({{< ref "/enterprise/management/configuration/identity-server#database-options" >}}), [Application Server]({{< ref "/enterprise/management/configuration/application-server#storage-integration-options" >}}) and [Network Operations Center]({{< ref "/enterprise/management/configuration/network-operations-center#database-options" >}}) databases.
 {{< /note >}}
 
 {{< /tabs/tab >}}
@@ -112,7 +112,7 @@ The simplest configuration for PostgreSQL looks like this (excerpted from the ex
 {{< /highlight >}}
 
 {{< note >}}
-Alternatively, you can use a managed PostgreSQL database. In that case, make sure to configure the [Identity Server]({{< ref "/reference/configuration/identity-server#database-options" >}}) database.
+Alternatively, you can use a managed PostgreSQL database. In that case, make sure to configure the [Identity Server]({{< ref "/enterprise/management/configuration/identity-server#database-options" >}}) database.
 {{< /note >}}
 
 {{< /tabs/tab >}}
@@ -126,7 +126,7 @@ The configuration in this guide uses a single instance of [Redis](https://redis.
 
 In production, replace the `image` with a working, stable tag from [Docker Hub - Redis](https://hub.docker.com/_/redis?tab=tags).
 
-It is also possible (and even preferred) to use a managed Redis database. In this case, you will need to configure the managed database address with the `redis-address` [configuration option]({{< ref "reference/configuration/the-things-stack#redis-options" >}}) or `TTN_LW_REDIS_ADDRESS` environment variable.
+It is also possible (and even preferred) to use a managed Redis database. In this case, you will need to configure the managed database address with the `redis-address` [configuration option]({{< ref "/enterprise/management/configuration/the-things-stack#redis-options" >}}) or `TTN_LW_REDIS_ADDRESS` environment variable.
 
 The simplest configuration for Redis looks like this (excerpted from the example `docker-compose.yml`):
 
@@ -194,7 +194,7 @@ The example `ttn-lw-stack-docker.yml` file for {{% tts %}} Enterprise shown belo
 
 ### License
 
-{{< distributions "Enterprise" >}} {{% tts %}} Enterprise requires a license, which can be purchased at the [products page](https://thethingsindustries.com/technology/pricing). This is specified in the `license` field, and can be either a `key` string, or a `file`path. See the [License configuration reference]({{< ref "/reference/configuration/the-things-stack#license" >}}) for more information.
+{{< distributions "Enterprise" >}} {{% tts %}} Enterprise requires a license, which can be purchased at the [products page](https://thethingsindustries.com/technology/pricing). This is specified in the `license` field, and can be either a `key` string, or a `file`path. See the [License configuration reference]({{< ref "/enterprise/management/configuration/the-things-stack#license" >}}) for more information.
 
 {{< highlight yaml "linenos=table,linenostart=2" >}}
 {{< readfile path="/content/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=2 to=6 >}}
@@ -227,7 +227,7 @@ host, and also to use it as the default host.
 
 If using Let's Encrypt, certificates will automatically be requested the first time you access {{% tts %}}. You will notice that the page takes some time to load while certificates are obtained in the background.
 
-See the [TLS Options configuration reference]({{< ref "/reference/configuration/the-things-stack#tls-options" >}}) for more information.
+See the [TLS Options configuration reference]({{< ref "/enterprise/management/configuration/the-things-stack#tls-options" >}}) for more information.
 
 Make sure that you use the correct `tls` configuration depending on whether you are using Let's Encrypt or your own certificate files.
 
@@ -279,7 +279,7 @@ To visualize data, configure the `grafana` section.
 
 ### Multi-tenancy
 
-{{< distributions "Enterprise" >}} If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the [`tenancy` configuration reference]({{< ref "/reference/configuration/the-things-stack#multi-tenancy" >}}).
+{{< distributions "Enterprise" >}} If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the [`tenancy` configuration reference]({{< ref "/enterprise/management/configuration/the-things-stack#multi-tenancy" >}}).
 
 {{< highlight yaml "linenos=table,linenostart=188" >}}
 {{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=188 to=191 >}}

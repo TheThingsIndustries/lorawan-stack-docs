@@ -23,7 +23,7 @@ We recommend the following:
 
 ## My gateway is not visible in the Packet Broker Mapper API.
 
-For self-hosted deployments ({{% tts %}} Enterprise and Open Source), users need to configure the Packet Broker Mapper address in the [Packet Broker Agent]({{< ref "/concepts/packet-broker/connect#configure-packet-broker-agent" >}}). Also, the Gateway Server needs to be configured to forward traffic to upstream hosts (see [Gateway Server Forwarding Options]({{< ref "/reference/configuration/gateway-server#forwarding-options" >}})).
+For self-hosted deployments ({{% tts %}} Enterprise and Open Source), users need to configure the Packet Broker Mapper address in the [Packet Broker Agent]({{< ref "/concepts/packet-broker/connect#configure-packet-broker-agent" >}}). Also, the Gateway Server needs to be configured to forward traffic to upstream hosts (see [Gateway Server Forwarding Options]({{< ref "/enterprise/management/configuration/gateway-server#forwarding-options" >}})).
 
 Double check that your [Gateway Visibility Settings]({{< ref "/concepts/packet-broker/configure/gateway-visibilities" >}}) are properly configured.
 

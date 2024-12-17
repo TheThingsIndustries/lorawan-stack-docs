@@ -2,7 +2,7 @@
 title: "Command-line Interface"
 description: ""
 aliases:
-  [/guides/concepts/features/cli, /getting-started/cli, /concepts/featurescli]
+  [/guides/concepts/features/cli, /getting-started/cli, //concepts/features/cli]
 weight: -2
 ---
 
@@ -21,13 +21,13 @@ To use the CLI, you need to complete three steps:
 
 If you need help with any CLI command, use the `--help` flag to get a list of subcommands, flags and their description and aliases.
 
-For a complete list of CLI commands, see the [CLI reference]({{< ref "reference/cli" >}}).
+For a complete list of CLI commands, see the [CLI reference]({{< ref "/concepts/features/cli" >}}).
 
 For troubleshooting common CLI errors, see the [Troubleshooting CLI]({{< relref "troubleshooting" >}}) section.
 
 ## Configuration
 
-See the [Configuration Reference]({{< ref "/reference/configuration" >}}) for details on how the CLI can be configured. The different options are detailed in the [CLI Configuration Reference]({{< ref "/reference/configuration/cli.md" >}}).
+See the [Configuration Reference]({{< ref "/enterprise/management/configuration" >}}) for details on how the CLI can be configured. The different options are detailed in the [CLI Configuration Reference]({{< ref "/enterprise/management/configuration/cli.md" >}}).
 
 ## Help for Commands
 

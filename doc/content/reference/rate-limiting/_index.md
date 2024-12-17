@@ -69,7 +69,7 @@ This section lists resources of {{% tts %}} on which a maximum rate limit can be
 
 {{< note >}} Both gRPC methods and HTTP endpoints support multiple classes. This enables overriding the generic rate limits for specific methods and endpoints. {{</ note >}}
 
-{{< warning >}} When {{% tts %}} HTTP and gRPC endpoints are served behind a reverse proxy, the `X-Forwarded-For` header is respected for the remote IP. The IP address of the reverse proxy must be trusted by {{% tts %}} for this to work, see [HTTP options]({{< ref "/reference/configuration/the-things-stack#http-options" >}}) and [gRPC Options]({{< ref "/reference/configuration/the-things-stack#grpc-options" >}}). {{</ warning >}}
+{{< warning >}} When {{% tts %}} HTTP and gRPC endpoints are served behind a reverse proxy, the `X-Forwarded-For` header is respected for the remote IP. The IP address of the reverse proxy must be trusted by {{% tts %}} for this to work, see [HTTP options]({{< ref "/enterprise/management/configuration/the-things-stack#http-options" >}}) and [gRPC Options]({{< ref "/enterprise/management/configuration/the-things-stack#grpc-options" >}}). {{</ warning >}}
 
 {{< warning >}} When {{% tts %}} MQTT and UDP endpoints are served by a reverse proxy, the remote IP address seen by {{% tts %}} may not be correct. In this case, rate limiting for new MQTT connections (and UDP traffic) should be handled by the reverse proxy and disabled in {{% tts %}}. {{</ warning >}}
 

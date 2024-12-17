@@ -15,7 +15,7 @@ This guide contains detailed information on how to perform common tenant managem
 
 Instead of using API keys and OAuth access tokens as for other {{% tts %}} services, the tenant services require using **tenant admin keys** for authentication.
 
-Tenant admin keys are configured in the Identity Server as described [here]({{< ref "/reference/configuration/identity-server#tenant-administration-options" >}}).
+Tenant admin keys are configured in the Identity Server as described [here]({{< ref "/enterprise/management/configuration/identity-server#tenant-administration-options" >}}).
 
 This means all tenant management CLI commands will need to have the `--tenant-admin-key` flag appended, followed by a tenant admin key that you configured in the Identity Server. See the section below for examples.
 

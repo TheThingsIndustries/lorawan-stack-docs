@@ -184,7 +184,7 @@ As with the other templates, this one also asks for the re-used parameters from 
 - **Domain** and **Identity Server Domain** are the `domain` from earlier. In multi-tenant deployments, tenants will use `[tenant-id].[domain]` to access the cluster.
 - The **Default Tenant ID** is the tenant ID of the only tenant in single-tenant deployments, or the optional default tenant ID in multi-tenant deployments. Please note that the stack does not automatically create the default tenant. See [Database Operations]({{< ref "/enterprise/aws/ecs/database-operations" >}}) for instructions how to do this manually.
 
-For the other parameters, see the descriptions and the [Configuration reference]({{< ref "/reference/configuration" >}}).
+For the other parameters, see the descriptions and the [Configuration reference]({{< ref "/enterprise/management/configuration" >}}).
 
 ## Rate limiting
 

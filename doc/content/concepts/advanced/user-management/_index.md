@@ -26,7 +26,7 @@ In addition to the written instructions linked below, a video with instructions 
 
 - Manage users in the network (or the tenant, for multi-tenant deployments)
 - Manage the tenant configuration in multi-tenant deployments
-- Have all rights on all entities in the tenants (or most rights, depending on [Admin Rights Options]({{< ref "/reference/configuration/identity-server#admin-rights-options" >}}))
+- Have all rights on all entities in the tenants (or most rights, depending on [Admin Rights Options]({{< ref "/enterprise/management/configuration/identity-server#admin-rights-options" >}}))
 - Search for all entities in the network
 - Perform any actions on all entities in the network
 - Manage some admin-only fields of OAuth clients and users

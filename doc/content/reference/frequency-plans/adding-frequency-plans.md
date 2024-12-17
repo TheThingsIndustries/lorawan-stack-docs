@@ -11,4 +11,4 @@ You may also fork the repository and reference your fork, with potentially custo
 
 You may also configure a local directory (or cloud storage bucket) where the frequency plans are stored, in case the private network cannot access GitHub or does not want to rely on GitHub.
 
-See [configuration options]({{< ref "/reference/configuration/the-things-stack#frequency-plans-options" >}}) to configure a different repository or directory for frequency plans.
+See [configuration options]({{< ref "/enterprise/management/configuration/the-things-stack#frequency-plans-options" >}}) to configure a different repository or directory for frequency plans.

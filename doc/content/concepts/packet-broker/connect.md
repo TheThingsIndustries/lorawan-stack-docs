@@ -70,7 +70,7 @@ pba:
     enable: true
 ```
 
-See [Packet Broker Agent configuration]({{< ref "/reference/configuration/packet-broker-agent" >}}) for all configuration options.
+See [Packet Broker Agent configuration]({{< ref "/enterprise/management/configuration/packet-broker-agent" >}}) for all configuration options.
 
 ## Configure Gateway Server
 
@@ -88,7 +88,7 @@ gs:
     - "packetbroker=00000000/0"
 ```
 
-See [Gateway Server configuration]({{< ref "/reference/configuration/gateway-server" >}}) for all configuration options.
+See [Gateway Server configuration]({{< ref "/enterprise/management/configuration/gateway-server" >}}) for all configuration options.
 
 ## Configure Network Server
 
@@ -115,7 +115,7 @@ ns:
 
 By default, the Network Server uses NetID `000000` which is intended for experimentation purposes. Only devices that are activated with a DevAddr that refers to a NetID will have their traffic routed by Packet Broker to your network.
 
-See [Network Server configuration]({{< ref "/reference/configuration/network-server" >}}) for all configuration options.
+See [Network Server configuration]({{< ref "/enterprise/management/configuration/network-server" >}}) for all configuration options.
 
 ## Configure Packet Broker
 
