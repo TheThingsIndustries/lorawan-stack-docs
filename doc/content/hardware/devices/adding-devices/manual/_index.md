@@ -15,7 +15,7 @@ Choose the **Enter end device specifics manually** input method. Please refer to
 
 Choose the **Enter end device specifics manually** option of the input method.
 
-Choose an appropriate **Frequency Plan**. Your device and gateway must use the same [frequency plan]({{< ref "/concepts/lorawan/frequency-plans/" >}}) to communicate.
+Choose an appropriate **Frequency Plan**. Your device and gateway must use the same [frequency plan]({{< ref "/concepts/features/lorawan/frequency-plans/" >}}) to communicate.
 
 Select **LoRaWAN Version** and **Regional Parameters version** fields for your specific device.
 These values are usually found in the end device documentation either on the vendor/manufacturer's website or on the data sheet. If this data is not available, check with the device vendor/manufacturer.

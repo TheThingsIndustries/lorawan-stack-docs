@@ -52,7 +52,7 @@ Choose the **Select the end device in the LoRaWAN Device Repository** input meth
 
 {{< figure src="device-repo.png" alt="Creating a new device with the Device Repository" >}}
 
-Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same [frequency plan]({{< ref "/concepts/lorawan/frequency-plans/" >}}) to communicate.
+Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same [frequency plan]({{< ref "/concepts/features/lorawan/frequency-plans/" >}}) to communicate.
 
 {{< figure src="fp.png" alt="Choosing a frequency plan" >}}
 
@@ -68,7 +68,7 @@ First choose the **Select the end device in the LoRaWAN Device Repository** inpu
 
 {{< figure src="select-dr-non-qr.png" alt="Creating a new device with the Device Repository" >}}
 
-Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same [frequency plan]({{< ref "/concepts/lorawan/frequency-plans/" >}}) to communicate. This example uses `Europe 863-870 MHz (SF9 for RX2 - recommended)`.
+Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same [frequency plan]({{< ref "/concepts/features/lorawan/frequency-plans/" >}}) to communicate. This example uses `Europe 863-870 MHz (SF9 for RX2 - recommended)`.
 
 {{< figure src="fp-non-qr.png" alt="Choosing a frequency plan" >}}
 

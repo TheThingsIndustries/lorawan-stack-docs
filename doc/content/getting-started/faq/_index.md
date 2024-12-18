@@ -24,7 +24,7 @@ Check out the [Device Repository](https://www.thethingsnetwork.org/device-reposi
 
 ## How to easily provision devices in {{% tts %}}?
 
-The easiest way of provisioning devices is using [Device Repository](https://www.thethingsnetwork.org/device-repository/) because that way you don't have to worry too much about [LoRaWAN and Regional Parameters]({{< ref "/concepts/lorawan/spec-regional-parameters" >}}) versions as they are automatically provided by {{% tts %}}.
+The easiest way of provisioning devices is using [Device Repository](https://www.thethingsnetwork.org/device-repository/) because that way you don't have to worry too much about [LoRaWAN and Regional Parameters]({{< ref "/concepts/features/lorawan/version-support" >}}) versions as they are automatically provided by {{% tts %}}.
 
 Check the [Adding Devices]({{< ref "/hardware/devices/adding-devices" >}}) guide for detailed instructions on how to provision devices using Device Repository or manually, as well as in bulk. Check [here]({{< ref "/hardware/devices/models/" >}}) for simple guides on connecting various device models to {{% tts %}}.
 

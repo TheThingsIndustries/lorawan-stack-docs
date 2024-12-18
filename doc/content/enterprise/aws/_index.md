@@ -7,6 +7,8 @@ aliases: [/getting-started/aws, /the-things-stack/host/aws]
 
 {{% tts %}} is currently available as two flavours for self-hosting on Amazon Web Services (AWS).
 
+<!--more-->
+
 1. AWS Marketplace AMI
 
 - An AWS CloudFormation stack that can be purchased at the AWS Marketplace.

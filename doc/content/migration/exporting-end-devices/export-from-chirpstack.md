@@ -35,7 +35,7 @@ If using Windows OS, replace `export` with `set` and remove the double-quotes in
 set CHIRPSTACK_API_TOKEN=7F0as987e61...
 ```
 
-`JoinEUI` and `FrequencyPlanID` have to be set because ChirpStack does not store these variables. See [Frequency Plans]({{< ref "/concepts/lorawan/frequency-plans" >}}) for a full list of frequency plans supported by {{% tts %}} (and their IDs).
+`JoinEUI` and `FrequencyPlanID` have to be set because ChirpStack does not store these variables. See [Frequency Plans]({{< ref "/concepts/features/lorawan/frequency-plans" >}}) for a full list of frequency plans supported by {{% tts %}} (and their IDs).
 
 - ABP devices without an active session are successfully exported from ChirpStack, but cannot be imported into The Things Stack.
 - MaxEIRP may not be always set properly.

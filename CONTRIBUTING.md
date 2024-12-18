@@ -134,7 +134,7 @@ Please respect the following guidelines for content in our documentation site.
 
 ## Building Frequency Plans Documentation
 
-The [Frequency Plans](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/concepts/lorawan/frequency-plans/_index.md) section contains all frequency plans that are officially supported by {{% tts %}}. The list of frequency plans is populated from the [LoRaWAN Frequency Plans for {{% tts %}} Github repository](https://github.com/TheThingsNetwork/lorawan-frequency-plans/). To update the list of frequency plans with the newest changes from the Frequency Plans repository, run `make freq.deps`.
+The [Frequency Plans](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/concepts/features/lorawan/frequency-plans/_index.md) section contains all frequency plans that are officially supported by {{% tts %}}. The list of frequency plans is populated from the [LoRaWAN Frequency Plans for {{% tts %}} Github repository](https://github.com/TheThingsNetwork/lorawan-frequency-plans/). To update the list of frequency plans with the newest changes from the Frequency Plans repository, run `make freq.deps`.
 
 ## Legal
 

@@ -48,7 +48,7 @@ You will now be presented with a JSON document containing the Device Twin. You n
 - `regionalParametersVersion`: either `1.0`, `1.0.1`, `1.0.2` (or `1.0.2-a`), `1.0.2-b`, `1.0.3-a`, `1.1-a` or `1.1-b`.
 - `appKey`: the hexadecimal LoRaWAN AppKey.
 - `nwkKey`: the hexadecimal LoRaWAN NwkKey (only when using LoRaWAN 1.1 or higher).
-- `frequencyPlanId`: the frequency plan ID. See [Frequency Plans]({{< ref "/concepts/lorawan/frequency-plans" >}}) for the supported values.
+- `frequencyPlanId`: the frequency plan ID. See [Frequency Plans]({{< ref "/concepts/features/lorawan/frequency-plans" >}}) for the supported values.
 
 If your end device is a part of the [LoRaWAN Device Repository]({{< ref "/integrations/payload-formatters/device-repo" >}}), you may provide the identifiers of the device as part of an optional `versionIdentifiers` object. You can specify the following information as part of the identifiers:
 

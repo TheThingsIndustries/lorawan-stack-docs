@@ -83,7 +83,7 @@ For devices that don't move, the LoRaWAN specification recommends allowing the N
 
 For moving devices, ADR should not be used since RF conditions will likely change, but since many moving devices are temporarily stationary, it is possible to save additional power by requesting ADR only during the time a device is stationary.
 
-You may also use application specific knowledge to predict when ADR is appropriate. A tracking device can detect when it is moving, for example. A parked car sensor can detect when a parked car will affect RF conditions, and should fall back to another strategy. [Learn more about how ADR is implemented in {{% tts %}}]({{< ref "/concepts/lorawan/adr" >}}).
+You may also use application specific knowledge to predict when ADR is appropriate. A tracking device can detect when it is moving, for example. A parked car sensor can detect when a parked car will affect RF conditions, and should fall back to another strategy. [Learn more about how ADR is implemented in {{% tts %}}]({{< ref "/concepts/features/lorawan/adr" >}}).
 
 ## Use OTAA
 

@@ -78,10 +78,10 @@ Next, you can create a new device by specifying all required attributes under **
 - `appKey`: hexadecimal LoRaWAN AppKey
 - `nwkKey`: hexadecimal LoRaWAN NwkKey (only when using LoRaWAN 1.1 or higher)
 - Optional `deviceID`: the device ID that will be used to create the device in your {{% tts %}} application. When omitted, the integration uses `eui-<dev-eui>` as device ID. See [ID and EUI constraints]({{< ref "/concepts/architecture/id-eui-constraints" >}}) for accepted ID formats.
-- Optional `frequencyPlanID`: the frequency plan ID. See [Frequency Plans]({{< ref "/concepts/lorawan/frequency-plans" >}}) for the supported values. When omitted, the default frequency plan of your AWS region is used. See the **Outputs** section of your AWS CloudFormation stack to see which one that is.
+- Optional `frequencyPlanID`: the frequency plan ID. See [Frequency Plans]({{< ref "/concepts/features/lorawan/frequency-plans" >}}) for the supported values. When omitted, the default frequency plan of your AWS region is used. See the **Outputs** section of your AWS CloudFormation stack to see which one that is.
 
 {{< note >}}
-Any errors during Creating Things will be propagated to CloudWatch. See [Troubleshooting]({{< ref "/concepts/lorawan/frequency-plans" >}}) for more information about retrieving logs.
+Any errors during Creating Things will be propagated to CloudWatch. See [Troubleshooting]({{< ref "/concepts/features/lorawan/frequency-plans" >}}) for more information about retrieving logs.
 {{< /note >}}
 
 {{< figure src="../create-thing-3.png" alt="Create Thing" >}}

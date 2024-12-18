@@ -68,7 +68,7 @@ UDP is a connectionless protocol. {{% tts %}} expects a UDP gateway to occasiona
 Check the following in {{% tts %}} Console:
 
 - Does the Gateway EUI in the console match with the EUI of the gateway?
-- Does the Frequency Plan selected match with the configuration in the gateway? Refer to the [Frequency Plans section]({{< ref "/concepts/lorawan/frequency-plans" >}}) for plans that are officially supported by {{% tts %}}.
+- Does the Frequency Plan selected match with the configuration in the gateway? Refer to the [Frequency Plans section]({{< ref "/concepts/features/lorawan/frequency-plans" >}}) for plans that are officially supported by {{% tts %}}.
 - Did you select **Require authenticated connection** in gateway settings? This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections).
 - Do you see any warnings/errors in the Gateway live data section?
 
@@ -87,7 +87,7 @@ For {{% lbs %}} gateways:
 - Did you select the correct root certificates? See the [Root Certificates Reference]({{< ref "/concepts/advanced/root-certificates" >}}).
 - Is the backhaul used in the Gateway stable?
 - Does the Gateway run with the latest firmware?
-- Does the Frequency Plan selected match with the configuration in the gateway? Refer to the [Frequency Plans section]({{< ref "/concepts/lorawan/frequency-plans" >}}) for plans that are officially supported by {{% tts %}}.
+- Does the Frequency Plan selected match with the configuration in the gateway? Refer to the [Frequency Plans section]({{< ref "/concepts/features/lorawan/frequency-plans" >}}) for plans that are officially supported by {{% tts %}}.
 - Are both CUPS and LNS are configured? There is no need to configure both, as CUPS will automatically configure LNS. Follow the instructions for [configuring CUPS]({{< relref "cups" >}}).
 
 Check your manufacturer's documentation to access the gateway logs on your gateway, which will help to diagnose the issue.
