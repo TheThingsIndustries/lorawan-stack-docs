@@ -16,8 +16,25 @@ fields:
     name: EntityIdentifiers
   default: {}
 - name: notification_type
-  comment: The type of this notification.
+  comment: |-
+    The type of this notification.
+    TODO: Replace with type NotificationType in v4 https://github.com/TheThingsNetwork/lorawan-stack/issues/7384.
   type: string
+  rules:
+    in:
+    - unknown
+    - api_key_created
+    - api_key_changed
+    - client_requested
+    - collaborator_changed
+    - entity_state_changed
+    - invitation
+    - login_token
+    - password_changed
+    - temporary_password
+    - user_requested
+    - validate
+    - support_access_requested
   default: ""
 - name: data
   comment: The data related to the notification.

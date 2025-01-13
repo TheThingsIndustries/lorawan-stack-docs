@@ -26,6 +26,7 @@ ttn-lw-cli applications api-keys set [application-id] [api-key-id] [flags]
       --right-application-devices-write-keys       
       --right-application-info                     
       --right-application-link                     
+      --right-application-purge                    
       --right-application-settings-api-keys        
       --right-application-settings-basic           
       --right-application-settings-collaborators   
