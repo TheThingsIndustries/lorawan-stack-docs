@@ -65,7 +65,7 @@ If you're facing this error, your end device has probably been configured with i
 
 ## How do I see device events?
 
-Device event logs can be found in the console in the device's general information page. See [Working with Events]({{< ref "/concepts/events" >}}) for other ways of subscribing to events.
+Device event logs can be found in the console in the device's general information page. See [Working with Events]({{< ref "/concepts/features/events" >}}) for other ways of subscribing to events.
 
 ## I see no Join Requests from my device in {{% tts %}}.
 

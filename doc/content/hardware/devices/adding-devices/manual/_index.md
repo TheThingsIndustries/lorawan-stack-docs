@@ -21,7 +21,7 @@ Select **LoRaWAN Version** and **Regional Parameters version** fields for your s
 These values are usually found in the end device documentation either on the vendor/manufacturer's website or on the data sheet. If this data is not available, check with the device vendor/manufacturer.
 
 {{< warning >}}
-Choosing the incorrect LoRaWAN version can lead to complex errors. Activation may work, but the device will not be able to communicate consistently. If you are unsure about the LoRaWAN version you have selected, watch the [event log]({{< ref "/concepts/events" >}}) for errors!
+Choosing the incorrect LoRaWAN version can lead to complex errors. Activation may work, but the device will not be able to communicate consistently. If you are unsure about the LoRaWAN version you have selected, watch the [event log]({{< ref "/concepts/features/events" >}}) for errors!
 {{</ warning >}}
 
 {{< figure src="device-input-method.png" alt="ABP input method" >}}
