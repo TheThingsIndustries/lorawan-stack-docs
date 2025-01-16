@@ -6,6 +6,8 @@ weight: 1
 
 {{% tts %}} follows a API driven microservice architecture, well suited for high availability and reliability.
 
+<!--more-->
+
 {{< figure src="tts-architecture.jpeg" alt="The Things Stack Architecture" >}}
 
 {{% tts %}} has the following main components.
