@@ -18,6 +18,8 @@ These message are closely related to LoRaWAN® message types. Read more about th
 
 {{< note >}} Empty fields are omitted from payloads. As such, if a certain field has a value of `""`, `0` or `false` it will not be present in the message. {{</ note >}}
 
+{{< new-in-version "v3.34.0" >}} Uplink messages forward the attributes of the end device that produced the message.
+
 ### Join-accept Messages
 
 The JSON join-accept messages use the following format:
@@ -37,7 +39,11 @@ The JSON join-accept messages use the following format:
   "received_at" : "2020-02-12T15:15..."      // ISO 8601 UTC timestamp at which the message has been received by the Application Server
   "join_accept" : {
     "session_key_id" : "AXBSH1Pk6Z0G166...", // Join Server issued identifier for the session keys
-    "received_at" : "2020-02-17T07:49..."    // ISO 8601 UTC timestamp at which the uplink has been received by the Network Server
+    "received_at" : "2020-02-17T07:49...",   // ISO 8601 UTC timestamp at which the uplink has been received by the Network Server
+    "attributes": {                          // End device key-value attributes set for this device.
+      "key1": "value1",
+      "key2": "value2"
+    }
   }
 }
 ```
@@ -62,10 +68,14 @@ The JSON join-accept messages use the following format:
     "ns:uplink:01E191YMZ2J64K6FEW5F0WE7TQ",
     "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01E191YMZ2KK3TJYG5C4XZP8JK"
   ],
-  "received_at": "2020-02-17T07:49:09.935284891Z",
-  "join_accept": {
-    "session_key_id": "AXBSH1Pk6Z0G166RlH16CQ==",
-    "received_at": "2020-02-17T07:49:09.736532315Z"
+  "received_at" : "2020-02-17T07:49:09.935284891Z",
+  "join_accept" : {
+    "session_key_id" : "AXBSH1Pk6Z0G166RlH16CQ==",
+    "received_at" : "2020-02-17T07:49:09.736532315Z",
+    "attributes": {
+      "key1": "value1",
+      "key2": "value2"
+    }
   }
 }
 ```
@@ -148,6 +158,10 @@ The JSON uplink messages use the following format:
       "net_id": "000013",                     // Network ID
       "tenant_id": "tenant1",                 // Tenant ID
       "cluster_id": "eu1"                     // Cluster ID
+    },
+    "attributes": {                           // End device key-value attributes set for this device.
+      "key1": "value1",
+      "key2": "value2"
     }
   },
   "simulated": true,                         // Signals if the message is coming from the Network Server or is simulated.
@@ -231,22 +245,15 @@ The JSON uplink messages use the following format:
       "tenant_id": "tenant1",
       "cluster_id": "nam1"
     },
-    "received_at": "2020-02-12T15:15:45.789585559Z"
+    "attributes": {
+      "key1": "value1",
+      "key2": "value2"
+    }
+    "received_at" : "2020-02-12T15:15:45.789585559Z"
   }
 }
 ```
-
 </details>
-
-{{< note >}} End device key-value attributes are not included in uplink messages, because these attributes are stored in the Identity Server and normally they are static, so sending that data with every uplink is inefficient. Users can instead fetch device's attributes using the API:
-
-```bash
-curl --request GET /
-  --location 'https://thethings.example.com/api/v3/applications/<application-id>/devices/<device-id>?field_mask=attributes' /
-  --header "Authorization: Bearer <api-key>"
-```
-
-{{</ note >}}
 
 ### Downlink Events Messages
 
