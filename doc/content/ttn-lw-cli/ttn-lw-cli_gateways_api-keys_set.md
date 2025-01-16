@@ -23,6 +23,7 @@ ttn-lw-cli gateways api-keys set [gateway-id] [api-key-id] [flags]
       --right-gateway-info                     
       --right-gateway-link                     
       --right-gateway-location-read            
+      --right-gateway-purge                    
       --right-gateway-read-secrets             
       --right-gateway-settings-api-keys        
       --right-gateway-settings-basic           

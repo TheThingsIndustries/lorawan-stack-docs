@@ -23,10 +23,12 @@ ttn-lw-cli users list [flags]
       --console-preferences.console-theme       select the console_preferences.console_theme field
       --console-preferences.dashboard-layouts   select the console_preferences.dashboard_layouts field and all allowed sub-fields
       --console-preferences.sort-by             select the console_preferences.sort_by field and all allowed sub-fields
+      --console-preferences.tutorials           select the console_preferences.tutorials field and all allowed sub-fields
       --contact-info                            select the contact_info field
       --deleted                                 
       --deleted-at                              select the deleted_at field
       --description                             select the description field
+      --email-notification-preferences          select the email_notification_preferences field and all allowed sub-fields
       --field-mask strings                      
       --gateway-limit                           select the gateway_limit field
   -h, --help                                    help for list
@@ -46,6 +48,7 @@ ttn-lw-cli users list [flags]
       --temporary-password                      select the temporary_password field
       --temporary-password-created-at           select the temporary_password_created_at field
       --temporary-password-expires-at           select the temporary_password_expires_at field
+      --universal-rights                        select the universal_rights field
 ```
 
 ### Options inherited from parent commands

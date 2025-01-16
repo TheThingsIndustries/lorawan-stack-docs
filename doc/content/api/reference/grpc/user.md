@@ -114,6 +114,8 @@ List of User APIs.
 
 {{< proto/message package="tti.lorawan.v3" message="DeleteExternalUserRequest" >}}
 
+{{< proto/message message="EmailNotificationPreferences" >}}
+
 {{< proto/message message="EndDeviceIdentifiers" >}}
 
 {{< proto/message message="EntityIdentifiers" >}}
@@ -182,6 +184,8 @@ List of User APIs.
 
 {{< proto/message message="UserConsolePreferences.SortBy" >}}
 
+{{< proto/message message="UserConsolePreferences.Tutorials" >}}
+
 {{< proto/message message="UserSessionIdentifiers" >}}
 
 ## Enums
@@ -196,10 +200,14 @@ List of User APIs.
 
 {{< proto/enum enum="NotificationStatus" >}}
 
+{{< proto/enum enum="NotificationType" >}}
+
 {{< proto/enum enum="NotificationReceiver" >}}
 
 {{< proto/enum enum="Right" >}}
 
 {{< proto/enum enum="State" >}}
+
+{{< proto/enum  enum="Tutorial" >}}
 
 {{< api-refs >}}

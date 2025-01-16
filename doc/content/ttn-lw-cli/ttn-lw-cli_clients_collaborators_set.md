@@ -19,6 +19,7 @@ ttn-lw-cli clients collaborators set [flags]
       --right-client-all                      
       --right-client-delete                   
       --right-client-info                     
+      --right-client-purge                    
       --right-client-settings-basic           
       --right-client-settings-collaborators   
       --user-id string                        

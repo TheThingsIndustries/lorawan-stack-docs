@@ -1,0 +1,55 @@
+name: NsMACSettingsProfileRegistry
+comment: |-
+  The NsMACSettingsProfileRegistry service allows clients to manage MAC settings profiles on the Network Server.
+  EXPERIMENTAL: This service is subject to change.
+methods:
+  Create:
+    name: Create
+    comment: Create creates a new MAC settings profile.
+    input:
+      name: CreateMACSettingsProfileRequest
+    output:
+      name: CreateMACSettingsProfileResponse
+    http:
+    - method: POST
+      path: /ns/applications/{mac_settings_profile.ids.application_ids.application_id}/mac_settings_profiles
+  Get:
+    name: Get
+    comment: Get returns the MAC settings profile that matches the given identifiers.
+    input:
+      name: GetMACSettingsProfileRequest
+    output:
+      name: GetMACSettingsProfileResponse
+    http:
+    - method: GET
+      path: /ns/applications/{mac_settings_profile_ids.application_ids.application_id}/mac_settings_profiles/{mac_settings_profile_ids.profile_id}
+  Update:
+    name: Update
+    comment: Update updates the MAC settings profile that matches the given identifiers.
+    input:
+      name: UpdateMACSettingsProfileRequest
+    output:
+      name: UpdateMACSettingsProfileResponse
+    http:
+    - method: PUT
+      path: /ns/applications/{mac_settings_profile_ids.application_ids.application_id}/mac_settings_profiles/{mac_settings_profile_ids.profile_id}
+  Delete:
+    name: Delete
+    comment: Delete deletes the MAC settings profile that matches the given identifiers.
+    input:
+      name: DeleteMACSettingsProfileRequest
+    output:
+      name: DeleteMACSettingsProfileResponse
+    http:
+    - method: DELETE
+      path: /ns/applications/{mac_settings_profile_ids.application_ids.application_id}/mac_settings_profiles/{mac_settings_profile_ids.profile_id}
+  List:
+    name: List
+    comment: List lists the MAC settings profiles.
+    input:
+      name: ListMACSettingsProfilesRequest
+    output:
+      name: ListMACSettingsProfilesResponse
+    http:
+    - method: GET
+      path: /ns/applications/{application_ids.application_id}/mac_settings_profiles

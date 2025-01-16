@@ -25,6 +25,7 @@ ttn-lw-cli users api-keys create [user-id] [flags]
       --right-application-devices-write-keys       
       --right-application-info                     
       --right-application-link                     
+      --right-application-purge                    
       --right-application-settings-api-keys        
       --right-application-settings-basic           
       --right-application-settings-collaborators   
@@ -35,6 +36,7 @@ ttn-lw-cli users api-keys create [user-id] [flags]
       --right-client-all                           
       --right-client-delete                        
       --right-client-info                          
+      --right-client-purge                         
       --right-client-settings-basic                
       --right-client-settings-collaborators        
       --right-gateway-all                          
@@ -42,6 +44,7 @@ ttn-lw-cli users api-keys create [user-id] [flags]
       --right-gateway-info                         
       --right-gateway-link                         
       --right-gateway-location-read                
+      --right-gateway-purge                        
       --right-gateway-read-secrets                 
       --right-gateway-settings-api-keys            
       --right-gateway-settings-basic               
@@ -60,6 +63,7 @@ ttn-lw-cli users api-keys create [user-id] [flags]
       --right-organization-gateways-create         
       --right-organization-gateways-list           
       --right-organization-info                    
+      --right-organization-purge                   
       --right-organization-settings-api-keys       
       --right-organization-settings-basic          
       --right-organization-settings-members        
@@ -69,13 +73,16 @@ ttn-lw-cli users api-keys create [user-id] [flags]
       --right-user-authorized-clients              
       --right-user-clients-create                  
       --right-user-clients-list                    
+      --right-user-create                          
       --right-user-delete                          
       --right-user-gateways-create                 
       --right-user-gateways-list                   
       --right-user-info                            
+      --right-user-list                            
       --right-user-notifications-read              
       --right-user-organizations-create            
       --right-user-organizations-list              
+      --right-user-purge                           
       --right-user-settings-api-keys               
       --right-user-settings-basic                  
 ```

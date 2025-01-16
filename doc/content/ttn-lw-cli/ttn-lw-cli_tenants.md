@@ -63,5 +63,6 @@ Tenant commands
 * [ttn-lw-cli tenants get-registry-totals]({{< relref "ttn-lw-cli_tenants_get-registry-totals" >}})	 - Get registry totals of a tenant
 * [ttn-lw-cli tenants list]({{< relref "ttn-lw-cli_tenants_list" >}})	 - List tenants
 * [ttn-lw-cli tenants search]({{< relref "ttn-lw-cli_tenants_search" >}})	 - Search for tenants
+* [ttn-lw-cli tenants support-login-token]({{< relref "ttn-lw-cli_tenants_support-login-token" >}})	 - Generate a login token associated with the unique 'support' user
 * [ttn-lw-cli tenants update]({{< relref "ttn-lw-cli_tenants_update" >}})	 - Update a tenant
 

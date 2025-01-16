@@ -24,6 +24,7 @@ ttn-lw-cli organizations collaborators set [flags]
       --right-application-devices-write-keys       
       --right-application-info                     
       --right-application-link                     
+      --right-application-purge                    
       --right-application-settings-api-keys        
       --right-application-settings-basic           
       --right-application-settings-collaborators   
@@ -34,6 +35,7 @@ ttn-lw-cli organizations collaborators set [flags]
       --right-client-all                           
       --right-client-delete                        
       --right-client-info                          
+      --right-client-purge                         
       --right-client-settings-basic                
       --right-client-settings-collaborators        
       --right-gateway-all                          
@@ -41,6 +43,7 @@ ttn-lw-cli organizations collaborators set [flags]
       --right-gateway-info                         
       --right-gateway-link                         
       --right-gateway-location-read                
+      --right-gateway-purge                        
       --right-gateway-read-secrets                 
       --right-gateway-settings-api-keys            
       --right-gateway-settings-basic               
@@ -59,6 +62,7 @@ ttn-lw-cli organizations collaborators set [flags]
       --right-organization-gateways-create         
       --right-organization-gateways-list           
       --right-organization-info                    
+      --right-organization-purge                   
       --right-organization-settings-api-keys       
       --right-organization-settings-basic          
       --right-organization-settings-members        
