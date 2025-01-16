@@ -37,12 +37,12 @@ Please [contact our sales team](mailto:sales@thethingsindustries.com) for access
 
 {{% tts %}} on Kubernetes requires the following infrastructural services to run.
 
-1. A Kubernetes cluster.
-2. PostgreSQL compatible database.
-3. Redis compatible database.
+1. A Kubernetes cluster
+2. PostgreSQL compatible database
+3. Redis compatible database
 4. Blob Storage
-5. An ingress controller to handle the ingress routes.
-6. TLS Certificates.
+5. An ingress controller to handle the ingress routes
+6. TLS Certificates
 7. (Optional) TimescaleDB
 8. (Optional) Metrics Server
 
@@ -118,71 +118,95 @@ $ sudo chown -R 886:886 <blob>
 An ingress controller is needed to route the incoming traffic. Specify the ingress controller by setting the `global.ingress.controller` to the class name of the ingress controller deployed in the cluster. For TLS, make sure to set the `global.ingress.controller.tls.secretName`. The secret has to be accessible from the namespace where the {{% tts %}} Helm Chart is deployed. These ports are needed by {{% tts %}} and must be exposed:
  
 ```yaml
-ports:
-  web:
-    protocol: TCP
-    port: 1885
-    exposedPort: 80
-  websecure:
-    protocol: TCP
-    port: 8885
-    exposedPort: 443
-  grpc:
-    protocol: TCP
-    port: 1884
-    exposedPort: 1884
-  grpcsecure:
-    protocol: TCP
-    port: 8884
-    exposedPort: 8884
-  # Gateway Connectivity
-  gtwmqttv2:
-    protocol: TCP
-    port: 1881
-    exposedPort: 1881
-  gtwmqttv2secure:
-    protocol: TCP
-    port: 8881
-    exposedPort: 8881
-  gtwmqttv3:
-    protocol: TCP
-    port: 1882
-    exposedPort: 1882
-  gtwmqttv3secure:
-    protocol: TCP
-    port: 8882
-    exposedPort: 8882
-  lbs:
-    protocol: TCP
-    port: 1887
-    exposedPort: 1887
-  lbssecure:
-    protocol: TCP
-    port: 8887
-    exposedPort: 8887
-  # Application MQTT
-  appmqtt:
-    protocol: TCP
-    port: 1883
-    exposedPort: 1883
-  appmqttsecure:
-    protocol: TCP
-    port: 8883
-    exposedPort: 8883
-  udp:
-    protocol: UDP
-    port: 1700
-    exposedPort: 1700
-  # Interoperability. This part is optional. Only enable it if interoperability is needed.
-  interop:
-    protocol: TCP
-    # Note: Change this to 1886 if using `server-only` mode.
-    port: 8886
-    expose: true
-    exposedPort: 8886
+web:
+  protocol: TCP
+  port: 1885
+  exposedPort: 80
+websecure:
+  protocol: TCP
+  port: 8885
+  exposedPort: 443
+grpc:
+  protocol: TCP
+  port: 1884
+  exposedPort: 1884
+grpcsecure:
+  protocol: TCP
+  port: 8884
+  exposedPort: 8884
+# Gateway Connectivity
+gtwmqttv2:
+  protocol: TCP
+  port: 1881
+  exposedPort: 1881
+gtwmqttv2secure:
+  protocol: TCP
+  port: 8881
+  exposedPort: 8881
+gtwmqttv3:
+  protocol: TCP
+  port: 1882
+  exposedPort: 1882
+gtwmqttv3secure:
+  protocol: TCP
+  port: 8882
+  exposedPort: 8882
+lbs:
+  protocol: TCP
+  port: 1887
+  exposedPort: 1887
+lbssecure:
+  protocol: TCP
+  port: 8887
+  exposedPort: 8887
+# Application MQTT
+appmqtt:
+  protocol: TCP
+  port: 1883
+  exposedPort: 1883
+appmqttsecure:
+  protocol: TCP
+  port: 8883
+  exposedPort: 8883
+# The Things Indoor Gateway Pro
+ttigw:
+  protocol: "TCP"
+  port: 1889
+  exposedPort: 1889
+ttigwsecure:
+  protocol: "TCP"
+  port: 8889
+  exposedPort: 8889
+# Interoperability. This part is optional. Only enable it if interoperability is needed.
+interop:
+  protocol: TCP
+  # Note: Change this to 1886 if using `server-only` mode.
+  port: 8886
+  exposedPort: 8886
+```
+
+In case annotations are needed for certain protocols or for the {{% tts %}} services, these can be specified under `global.ingress.annotations` and `global.ingress.serviceAnnotations`. E.g. Traefik annotations can be specified as:
+```yaml
+ingress:
+  controller: "traefik"
+  tls:
+    secretName: "ingress-tls-cert"
+  annotations:
+    grpc:
+      traefik.ingress.kubernetes.io/router.entrypoints: grpcsecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+    http:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    semtechws:
+      traefik.ingress.kubernetes.io/router.entrypoints: semtechwssecure, semtechws
+      traefik.ingress.kubernetes.io/router.tls: "true"
+  serviceAnnotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: h2c
 ```
 
 Examples of ingress controllers configurations can be found [here](https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/prerequisites/sample-ingress-controllers/).
+
+{{< note "{{% tts %}} Helm chart uses Kubernetes ingress rules for routing requests to the components of {{% tts %}}. This allows the users of {{% tts %}} Helm chart to configure an ingress controller of their choice. However, Kubernetes ingress routes support only L7 traffic (HTTP/gRPC). For this reason, UDP Packet Forwarder for gateways is not supported in the Helm chart for now." />}}
 
 #### 6. TLS Certificates
 
@@ -198,9 +222,11 @@ Consequently, the TLS certificates used should cover `domain` and one of the fol
 - `*.domain`
 - `<default tenant>.domain`
 
-The Things Stack expects the name of this secret to be set in the value `global.ingress.tls.secretName`.
+The Things Stack expects the name of this secret to be set in the value `global.ingress.tls.secretName`. In case the gateway controller is enabled in the Helm chart, the name of the secret must be set in the value of `global.ttgc.tls.secretName` as well.
 
 The process of provisioning and maintenance of the certificate secret is left to the operator.
+
+If the cluster has a custom CA, it must be specified in `global.tls.rootCA`. The certificate must be specified as a base64 encoded x509 certificate. Multiple certificates must be separated by a new line.
 
 #### 7. (Optional) TimescaleDB
 

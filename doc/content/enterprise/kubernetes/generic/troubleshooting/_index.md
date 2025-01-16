@@ -34,7 +34,3 @@ For this error, make sure that the value set in `ingress.traefik.tls.secretName`
 ## pkg/util/store:driver (driver error)
 
 {{% tts %}} runs Kubernetes jobs to initialize and migrate Postgres. This error can occur if the {{% tts %}} is accessed either before these jobs are run or if the jobs failed to execute. Check the status of the jobs for more details on what went wrong.
-
-## Gateways don't work when targeting the UDP port 1700
-
-Ensure that UDP port (default 1700) is exposed outside the Kubernetes cluster via your chosen proxy or load balancer.
