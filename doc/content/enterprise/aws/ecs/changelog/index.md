@@ -12,6 +12,10 @@ All meaningful changes to templates are documented in this file.
 
 - Add GRPC methods rate limiting metric to prometheus rules.
 
+### Proxy
+
+- Add `NsMACSettingsProfileRegistry` grpc service and routes.
+
 ### AMI/BYOL template
 
 - Add a new `TLSCertificateSecretARN` parameter to allow loading TLS certificates from AWS secrets to BYOL and PAYG single template deployments.
