@@ -11,7 +11,8 @@ The following are examples of ingress controllers for {{% tts %}} deployment on 
 
 ## Traefik
 
-Example of a Traefik configuration provided through the values of an Traefik Helm chart. More info about the Helm chart can be found [here](https://github.com/traefik/traefik-helm-chart).
+Example of a Traefik configuration provided through the values of an Traefik Helm chart. More info about the Helm chart 
+can be found [here](https://github.com/traefik/traefik-helm-chart).
 
 ```yaml
 deployment:
@@ -22,7 +23,6 @@ ingressRoute:
     enabled: false
 additionalArguments:
 - "--entrypoints.udp.udp.timeout=90s"
-- "--log.level=DEBUG"
 ports:
   web:
     protocol: "TCP"
@@ -103,6 +103,18 @@ ports:
     expose:
       default: true
     exposedPort: 8883
+  ttigw:
+    protocol: "TCP"
+    port: 1889
+    expose:
+      default: true
+    exposedPort: 1889
+  ttigwsecure:
+    protocol: "TCP"
+    port: 8889
+    expose:
+      default: true
+    exposedPort: 8889
   interop:
     protocol: "TCP"
     port: 8886
@@ -122,8 +134,6 @@ namespaceOverride: "ingress-nginx"
 kind: Deployment
 replicaCount: '1'
 config:
-  log-level: "debug"
-  error-log-level: "debug"
   # redirect port 80 to 443 for HTTP to HTTPS.
   ssl-redirect: "true"
   upstream-keepalive-timeout: '90s'
@@ -163,6 +173,8 @@ service:
       "8883": "8883"
       # interop
       "8886": "8886"
-    udp:
-      "1700": "1700"
+      # ttigw
+      "1889": "1889"
+      # ttigwsecure
+      "8889": "8889"
 ```
