@@ -18,6 +18,7 @@ function decodeUplink(input) {
   // {
   //   "bytes": [1, 2, 3], // FRMPayload (byte array)
   //   "fPort": 1
+  //   "recvTime": "Thu Jan 16 2025 17:29:37 GMT+0200 (Eastern European Standard Time)" // receivedAt (Date object)
   // }
   return {
     data: {
