@@ -15,7 +15,7 @@ This section answers frequently asked questions regarding migration to {{% tts %
 
 Start migrating your devices and gateways as soon as possible! V2 software is no longer maintained and there is no official support.
 
-Reading the [complete Migrating to {{% tts %}} guide]({{< ref "/migration" >}}) can help you with the migration process.
+Reading the [complete Migrating to {{% tts %}} guide]({{< ref "/concepts/migration" >}}) can help you with the migration process.
 
 ### Am I still able to migrate my devices and gateways from The Things Network {{% ttnv2 %}} to {{% tts %}}?
 
@@ -61,7 +61,7 @@ In case of migrating active sessions using the `ttn-lw-migrate` tool, security k
 
 To export end device and/or application descriptions from {{% ttnv2 %}} and import them into {{% tts %}}, you cannot use `ttnctl` tool (command line tool for {{% ttnv2 %}}), but you need to use the `ttn-lw-migrate` migration tool.
 
-Learn to work with the [migration tool]({{< ref "/migration" >}}).
+Learn to work with the [migration tool]({{<ref "/concepts/migration" >}}).
 
 ### Do all integrations from {{% ttnv2 %}} work with {{% tts %}} as well? Can I use integration guides for {{% ttnv2 %}} to implement integrations on {{% tts %}}?
 

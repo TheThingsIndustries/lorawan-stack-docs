@@ -69,11 +69,11 @@ To use the `ttn-lw-migrate` tool after successful installation, use your termina
 
 Currently, there are three available sources listed in the table below. For detailed migration instructions using these three sources, check the linked sections.
 
-| Option                                                                                        | Used for                                                                  |
-| :-------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [`tts`]({{< ref "/migration/exporting-end-devices/export-from-tts" >}})                       | Migrating between {{% tts %}} distributions, tenants, and/or applications |
-| [`chirpstack`]({{< ref "/migration/exporting-end-devices/export-from-chirpstack" >}})         | Migrating devices from ChirpStack version 4                               |
-| [`chirpstack` (v3)]({{< ref "/migration/exporting-end-devices/export-from-chirpstack-v3" >}}) | Migrating devices from ChirpStack version 3                               |
-| [`firefly`]({{< ref "/migration/exporting-end-devices/export-from-firefly" >}})               | Migrating devices from Digimondo's Firefly                                |
-| [`wanesy`]({{< ref "/migration/exporting-end-devices/export-from-wanesy" >}})                 | Migrating devices from Kerlink's Firefly                                  |
-| `ttnv2`                                                                                       | (Discontinued ) Migrating from legacy {{% ttnv2 %}} deployments           |
+| Option                                                                                                 | Used for                                                                  |
+| :----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [`tts`]({{< ref "/concepts/migration/exporting-end-devices/export-from-tts" >}})                       | Migrating between {{% tts %}} distributions, tenants, and/or applications |
+| [`chirpstack`]({{< ref "/concepts/migration/exporting-end-devices/export-from-chirpstack" >}})         | Migrating devices from ChirpStack version 4                               |
+| [`chirpstack` (v3)]({{< ref "/concepts/migration/exporting-end-devices/export-from-chirpstack-v3" >}}) | Migrating devices from ChirpStack version 3                               |
+| [`firefly`]({{< ref "/concepts/migration/exporting-end-devices/export-from-firefly" >}})               | Migrating devices from Digimondo's Firefly                                |
+| [`wanesy`]({{< ref "/concepts/migration/exporting-end-devices/export-from-wanesy" >}})                 | Migrating devices from Kerlink's Firefly                                  |
+| `ttnv2`                                                                                                | (Discontinued ) Migrating from legacy {{% ttnv2 %}} deployments           |

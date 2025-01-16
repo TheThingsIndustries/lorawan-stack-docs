@@ -15,7 +15,7 @@ This section contains instructions on how to configure migration tool and use it
 
 <!--more-->
 
-This guide covers migration from ChirpStack v4. For ChirpStack v3 , see the [corresponding guide]({{< ref "/migration/exporting-end-devices/export-from-chirpstack-v3" >}}).
+This guide covers migration from ChirpStack v4. For ChirpStack v3 , see the [corresponding guide]({{< ref "/concepts/migration/exporting-end-devices/export-from-chirpstack-v3" >}}).
 
 ## Configuration
 

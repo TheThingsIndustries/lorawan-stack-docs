@@ -112,4 +112,4 @@ export TTS_CA_FILE="/path/to/ca.file"   # Path to a CA file (optional)
 
 ---
 
-After exporting, devices and applications can be imported in other {{% tts %}} deployments. See [add end devices in bulk in {{% tts %}}]({{< ref "/hardware/devices/adding-devices/adding-devices-in-bulk" >}}) for details about importing devices. See [Migrating End Devices between {{% tts %}} Distributions]({{< ref "/migration/migrating-between-tts-distributions" >}}) to wrap up the whole process of migration between {{% tts %}} distributions.
+After exporting, devices and applications can be imported in other {{% tts %}} deployments. See [add end devices in bulk in {{% tts %}}]({{< ref "/hardware/devices/adding-devices/adding-devices-in-bulk" >}}) for details about importing devices. See [Migrating End Devices between {{% tts %}} Distributions]({{< ref "/concepts/migration/migrating-between-tts-distributions" >}}) to wrap up the whole process of migration between {{% tts %}} distributions.
