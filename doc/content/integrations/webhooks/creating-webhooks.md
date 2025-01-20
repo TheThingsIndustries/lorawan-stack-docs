@@ -16,7 +16,7 @@ In addition to the written instructions linked below, a video with instructions 
 
 Creating a webhook requires you to have an HTTP(S) endpoint available. If you don't have an endpoint available for testing, you can test with a free service like [Webhook.site](https://webhook.site).
 
-In your application select the **Webhooks** submenu from the **Integrations** side menu. Clicking on the **+ Add Webhook** button will open the list of Webhook templates. 
+In your application select the **Webhooks** submenu from the **Integrations** side menu. Clicking on the **+ Add Webhook** button will open the list of Webhook templates.
 
 {{< figure src="../webhook-templates.png" alt="Webhook templates" >}}
 
@@ -76,6 +76,6 @@ The paths are appended to the **Base URL**. In the example from the images above
 
 If no path is specified, messages of that type will be sent to the **Base URL**.
 
-See [Data Formats]({{< ref "the-things-stack/concepts/data-formats" >}}) for examples of uplink and downlink JSON messages. 
+See [Data Formats]({{< ref "/integrations/data-formats" >}}) for examples of uplink and downlink JSON messages.
 
 Clicking the **Add Webhook** button will create the Webhook.

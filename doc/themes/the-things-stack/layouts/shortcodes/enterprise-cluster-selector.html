@@ -1,0 +1,60 @@
+<div class="field">
+  <label class="label">Base Domain</label>
+  <div class="control">
+    <input class="input" type="text" data-content="base-domain" placeholder="base domain">
+  </div>
+</div>
+<div class="field">
+  <label class="label">Cluster ID (only for multi-cluster deployments)</label>
+  <div class="control">
+    <input class="input" type="text" data-content="cluster-id" placeholder="cluster (ex: eu1, nam1)">
+  </div>
+</div>
+<div class="field">
+  <label class="label">Tenant ID (only for multi-tenant deployments)</label>
+  <div class="control">
+    <input class="input" type="text" data-content="tenant-id" placeholder="tenant id">
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', function() {
+  var $tenantIDInput = document.querySelector('input[data-content="tenant-id"]');
+  var $clusterIDInput = document.querySelector('input[data-content="cluster-id"]');
+  var $baseDomainInput = document.querySelector('input[data-content="base-domain"]');
+  var $clusterAddressCode = document.querySelector('code[data-content="cluster-address"]');
+
+  var query = new URLSearchParams(window.location.search);
+
+  $tenantIDInput.value = query.has('tenant-id') ? query.get('tenant-id') : '';
+  $clusterIDInput.value = query.has('cluster-id') ? query.get('cluster-id') : '';
+  $baseDomainInput.value = query.has('base-domain') ? query.get('base-domain') : '';
+
+  function updateClusterAddress() {
+    var tenantID = $tenantIDInput.value;
+    var clusterID = $clusterIDInput.value;
+    var baseDomain = $baseDomainInput.value || '<base-domain>';
+
+    // Build cluster address dynamically
+    var clusterAddress = baseDomain;
+
+    if (clusterID) {
+      clusterAddress = `${clusterID}.${clusterAddress}`;
+    }
+
+    if (tenantID) {
+      clusterAddress = `${tenantID}.${clusterAddress}`;
+    }
+
+    $clusterAddressCode.innerText = clusterAddress;
+  }
+
+  // Initialize with current values
+  updateClusterAddress();
+
+  // Event listeners for updating the cluster address
+  $tenantIDInput.addEventListener('keyup', updateClusterAddress);
+  $clusterIDInput.addEventListener('keyup', updateClusterAddress);
+  $baseDomainInput.addEventListener('keyup', updateClusterAddress);
+});
+</script>

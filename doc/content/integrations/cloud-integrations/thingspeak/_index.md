@@ -1,8 +1,12 @@
 ---
 title: "ThingSpeak"
 description: ""
-weight: 
-aliases: ["/integrations/cloud-integrations/thingspeak/thingspeak-setup", "/integrations/cloud-integrations/thingspeak/tts-setup"]
+weight:
+aliases:
+  [
+    "/integrations/cloud-integrations/thingspeak/thingspeak-setup",
+    "/integrations/cloud-integrations/thingspeak/tts-setup",
+  ]
 ---
 
 [ThingSpeak](https://thingspeak.com/) is an IoT platform with built-in [MATLAB&reg;](https://www.mathworks.com/products/matlab.html) analytics, which allows preprocessing, analyzing and visualizing data sent by IoT devices, as well as creating actions such as alerts based on your channel data.
@@ -17,11 +21,11 @@ aliases: ["/integrations/cloud-integrations/thingspeak/thingspeak-setup", "/inte
 
 Log in to your ThingSpeak user account and navigate to the **Channels** section. To create a new channel, click the **New Channel** button.
 
-Enter a **Name** for your channel, give labels to the data fields and enable them by checking the boxes next to them. 
+Enter a **Name** for your channel, give labels to the data fields and enable them by checking the boxes next to them.
 
 When done, scroll down and click the **Save Channel** button.
 
-You should enable a field for each metric from the `decoded_payload` object of the [uplink message]({{< ref "/the-things-stack/concepts/data-formats#uplink-messages" >}}).
+You should enable a field for each metric from the `decoded_payload` object of the [uplink message]({{< ref "/integrations/data-formats#uplink-messages" >}}).
 
 {{< figure src="channel.png" alt="Creating a new channel" >}}
 
@@ -42,17 +46,17 @@ function decodeUplink(input) {
   return {
     data: {
       field1: input.bytes[0],
-      field2: input.bytes[1]
+      field2: input.bytes[1],
     },
     warnings: [],
-    errors: []
+    errors: [],
   };
 }
 ```
 
 The last step is to instantiate the **ThingSpeak** [Webhook template]({{< ref "/integrations/webhooks/webhook-templates" >}}) to create a Webhook integration.
 
-Give a name to your integration by filling in the **Webhook ID** field. 
+Give a name to your integration by filling in the **Webhook ID** field.
 
 Fill in the **Channel ID** field with the ThingSpeak channel ID value, and paste the **Write API Key** from ThingSpeak in the **API Key** field.
 
@@ -63,5 +67,3 @@ Finish by clicking the **Create thingspeak webhook** button.
 To see the values of all parameters of the ThingSpeak integration, click on the integration after you created it with the Webhook template.
 
 At this point, you can go back to your [channels page](https://thingspeak.com/channels) on ThingSpeak and select the private or public view of your channel to check out the field charts under **Channel Stats**. You can now also write and automate MATLAB&reg; code to analyze and further visualize your data.
-
-

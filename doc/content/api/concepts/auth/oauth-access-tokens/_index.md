@@ -2,13 +2,12 @@
 title: "OAuth access tokens"
 description: ""
 weight: 1
-aliases:
-  [ /api/concepts/auth/oauth-access-tokens ]
+aliases: [/api/concepts/auth/oauth-access-tokens]
 ---
 
 <!--more-->
 
-To use this authentication method, you first need to [register an **OAuth client**]({{<ref "/the-things-stack/interact/adding-oauth-clients">}}) . After the registration is complete and accepted, you can **request authorization** by sending the user to the **authorization URL**:
+To use this authentication method, you first need to [register an **OAuth client**]({{<ref "/concepts/advanced/adding-oauth-clients">}}) . After the registration is complete and accepted, you can **request authorization** by sending the user to the **authorization URL**:
 
 ```
 https://<HOSTNAME>/oauth/authorize?client_id=<CLIENT-ID>&redirect_uri=<REDIRECT-URI>&state=<STATE>&response_type=code

@@ -1,6 +1,7 @@
 ---
 title: "Webhooks"
 description: ""
+weight: 5
 ---
 
 The Webhooks feature allows {{% tts %}} to send application related messages to specific HTTP(S) endpoints.
@@ -20,4 +21,4 @@ Webhooks can be used to build integrations between {{% tts %}} and any third par
 
 Webhooks access an HTTP(S) endpoint and pass relevant data as JSON. The third party service must expose this endpoint and listen for data, or post messages to {{% tts %}}. For uplinks, this is encrypted or unencrypted application data, metadata about gateways and signal strength, timestamps, etc. For downlinks, {{% tts %}} expects an application payload.
 
-See [Data Formats]({{< ref "the-things-stack/concepts/data-formats" >}}) for examples of uplink and downlink JSON messages. 
+See [Data Formats]({{< ref "/integrations/data-formats" >}}) for examples of uplink and downlink JSON messages.

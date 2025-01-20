@@ -6,7 +6,7 @@ weight: 4
 
 {{% tts %}} uses Webhook templates from the [`lorawan-webhook-templates` Github repository](https://github.com/TheThingsNetwork/lorawan-webhook-templates/).
 
-The `lorawan-webhook-templates` repository is open source, so users are free to submit pull requests to add new Webhook templates. Naturally, before submitting a new Webhook template in a pull request, one would want to test if the template is correct, i.e. if it yields an integration that is working as expected. A common way to test a newly built Webhook template is to deploy {{% tts %}} on a local machine (see [installation]({{< ref "/the-things-stack/host/docker" >}})), while configuring the deployment to use the locally stored Webhook templates.
+The `lorawan-webhook-templates` repository is open source, so users are free to submit pull requests to add new Webhook templates. Naturally, before submitting a new Webhook template in a pull request, one would want to test if the template is correct, i.e. if it yields an integration that is working as expected. A common way to test a newly built Webhook template is to deploy {{% tts %}} on a local machine (see [installation]({{< ref "/enterprise/docker" >}})), while configuring the deployment to use the locally stored Webhook templates.
 
 Once you have created a new Webhook template with a proper [format]({{< ref "/integrations/webhooks/webhook-templates/format.md" >}}), follow these steps:
 
@@ -16,13 +16,13 @@ Once you have created a new Webhook template with a proper [format]({{< ref "/in
 
 3. Include your Webhook template in the pre-existing `templates.yml` file contained in the previously mentioned folder.
 
-4. Include the following lines in [{{% tts %}} configuration file]({{< ref "/the-things-stack/host/docker/configuration" >}}) (`ttn-lw-stack.yml`):
+4. Include the following lines in [{{% tts %}} configuration file]({{< ref "/enterprise/docker/configuration" >}}) (`ttn-lw-stack.yml`):
 
 ```yaml
 as:
   webhooks:
     templates:
-      directory: "/home/webhook-templates"   # replace with a path to a local folder where you stored Webhook templates
+      directory: "/home/webhook-templates" # replace with a path to a local folder where you stored Webhook templates
 ```
 
 Note that you can skip this step and use `--as.webhooks.templates.directory` command line option when running {{% tts %}} (step 5) instead.

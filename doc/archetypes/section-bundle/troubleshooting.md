@@ -15,7 +15,7 @@ Title the troubleshooting page "Troubleshooting <name_of_section>", so that it i
 
 ## Component address is not included in this license
 
-Ensure that you configure the `is.oauth.ui.canonical-url` with a domain that matches the domain in your license. See the [Configuration Reference]({{< ref src="/reference/configuration" >}}) for more information about the configuration options.
+Ensure that you configure the `is.oauth.ui.canonical-url` with a domain that matches the domain in your license. See the [Configuration Reference]({{< ref src="/enterprise/management/configuration" >}}) for more information about the configuration options.
 
 ## Version in "docker-compose.yml" is unsupported
 

@@ -1,11 +1,16 @@
 ---
 title: "Datacake"
 description: ""
-weight: 
-aliases: ["/integrations/cloud-integrations/datacake/datacake-setup", "/integrations/cloud-integrations/datacake/tts-setup", "/integrations/cloud-integrations/datacake/scheduling-downlinks"]
+weight:
+aliases:
+  [
+    "/integrations/cloud-integrations/datacake/datacake-setup",
+    "/integrations/cloud-integrations/datacake/tts-setup",
+    "/integrations/cloud-integrations/datacake/scheduling-downlinks",
+  ]
 ---
 
-[Datacake](https://datacake.co/) is a multi-purpose IoT platform, which provides the possibility of building custom IoT applications, without requiring programming skills. 
+[Datacake](https://datacake.co/) is a multi-purpose IoT platform, which provides the possibility of building custom IoT applications, without requiring programming skills.
 
 <!--more-->
 
@@ -15,11 +20,11 @@ aliases: ["/integrations/cloud-integrations/datacake/datacake-setup", "/integrat
 
 ## Setup Datacake
 
-First, create a **Workspace** on Datacake by navigating to the **Create Workspace** button in the upper left corner. 
+First, create a **Workspace** on Datacake by navigating to the **Create Workspace** button in the upper left corner.
 
 {{< figure src="datacake-workspace.png" alt="Add workspace on Datacake" >}}
 
-On the left hand menu, click **Devices**. To add a new device, click the **Add Device** button on the right. 
+On the left hand menu, click **Devices**. To add a new device, click the **Add Device** button on the right.
 
 In the **Add Device** pop-up menu, choose **LoRaWAN** &#8594; **Generic LoRa Device**. When asked **Which device are you missing?**, just click **Skip** and then select **The Things Industries** adapter.
 
@@ -29,17 +34,17 @@ After selecting your subscription plan, fill in **Name** and **DevEUI** for your
 
 Once the device is created, you can click on it in the **Devices** menu to enter its settings.
 
-In the **Configuration** tab, you can find the **LoRaWAN** section, where you can configure **Network** settings, choose to **Authenticate Webhook** or define **Payload Decoder**. 
+In the **Configuration** tab, you can find the **LoRaWAN** section, where you can configure **Network** settings, choose to **Authenticate Webhook** or define **Payload Decoder**.
 
 Under **Network**, choose **The Things Industries** from the drop-down menu.
 
 Paste your device's **End device ID** from {{% tts %}} in the **TTI Dev Id** field.
 
-The **TTI Server Url** field should contain the URL of your {{% tts %}} deployment. See the [Server Addresses section]({{< ref "/the-things-stack/concepts/server-addresses" >}}) for more info.
+The **TTI Server Url** field should contain the URL of your {{% tts %}} deployment. See the [Server Addresses section]({{< ref "/concepts/server-addresses" >}}) for more info.
 
-Paste your **Application ID** from {{% tts %}} in the **TTI App Id** field. 
+Paste your **Application ID** from {{% tts %}} in the **TTI App Id** field.
 
-In {{% tts %}}, navigate to **API keys** on the left hand menu, click the **Add API key** button, give it a **Name** and confirm that you have copied it to finish. Paste the copied API key into the **TTI Api Key** field on Datacake. 
+In {{% tts %}}, navigate to **API keys** on the left hand menu, click the **Add API key** button, give it a **Name** and confirm that you have copied it to finish. Paste the copied API key into the **TTI Api Key** field on Datacake.
 
 {{< figure src="lorawan-settings.png" alt="LoRaWAN settings" >}}
 
@@ -65,7 +70,7 @@ Enter your device's settings page on Datacake and go to the **Downlinks** tab.
 
 Click the **Add Downlink** button.
 
-Next, fill in the **Name** field, define the **Payload encoder** and click **Save Downlink**. 
+Next, fill in the **Name** field, define the **Payload encoder** and click **Save Downlink**.
 
 Learn to write payload decoders in the [official Datacake documentation](https://docs.datacake.de/lorawan/downlinks#writing-a-downlink-encoder).
 

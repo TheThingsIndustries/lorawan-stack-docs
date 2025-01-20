@@ -31,7 +31,7 @@ Click **Add Device**.
 As **Device ID**, enter any device ID you like. Hit **Save**.
 
 {{< note >}}
-See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
+See [ID and EUI constraints]({{< ref "/concepts/architecture/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
 {{</ note >}}
 
 {{< figure src="../add-device.png" alt="Add Device" >}}
@@ -48,7 +48,7 @@ You will now be presented with a JSON document containing the Device Twin. You n
 - `regionalParametersVersion`: either `1.0`, `1.0.1`, `1.0.2` (or `1.0.2-a`), `1.0.2-b`, `1.0.3-a`, `1.1-a` or `1.1-b`.
 - `appKey`: the hexadecimal LoRaWAN AppKey.
 - `nwkKey`: the hexadecimal LoRaWAN NwkKey (only when using LoRaWAN 1.1 or higher).
-- `frequencyPlanId`: the frequency plan ID. See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) for the supported values.
+- `frequencyPlanId`: the frequency plan ID. See [Frequency Plans]({{< ref "/concepts/features/lorawan/frequency-plans" >}}) for the supported values.
 
 If your end device is a part of the [LoRaWAN Device Repository]({{< ref "/integrations/payload-formatters/device-repo" >}}), you may provide the identifiers of the device as part of an optional `versionIdentifiers` object. You can specify the following information as part of the identifiers:
 
@@ -64,21 +64,21 @@ The final JSON `tags` object should look as follows:
 
 ```json
 {
-   "lorawan":{
-      "devEui":"0004A30B001C5838",
-      "joinEui":"800000000000000C",
-      "lorawanVersion":"1.0.2",
-      "regionalParametersVersion":"1.0.2-b",
-      "frequencyPlanId":"EU_863_870_TTN",
-      "appKey":"459B77D46A08C427254822A33F6FA1A3",
-      "versionIdentifiers":{
-         "bandId":"EU_863_870",
-         "brandId":"the-things-products",
-         "firmwareVersion":"1.0",
-         "hardwareVersion":"1.0",
-         "modelId":"the-things-node"
-      }
-   }
+  "lorawan": {
+    "devEui": "0004A30B001C5838",
+    "joinEui": "800000000000000C",
+    "lorawanVersion": "1.0.2",
+    "regionalParametersVersion": "1.0.2-b",
+    "frequencyPlanId": "EU_863_870_TTN",
+    "appKey": "459B77D46A08C427254822A33F6FA1A3",
+    "versionIdentifiers": {
+      "bandId": "EU_863_870",
+      "brandId": "the-things-products",
+      "firmwareVersion": "1.0",
+      "hardwareVersion": "1.0",
+      "modelId": "the-things-node"
+    }
+  }
 }
 ```
 

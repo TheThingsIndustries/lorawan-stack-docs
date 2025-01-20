@@ -11,10 +11,10 @@ This section contains instructions for configuring the Storage Integration on {{
 
 The Storage Integration requires configuration for the underlying storage provider used, along with a few options for tuning performance and memory usage.
 
-You can configure PostgreSQL, or any other PostgreSQL-compatible database (e.g. [TimescaleDB](https://www.timescale.com/)). A base-line configuration can be found below. Add the following section into your existing `ttn-lw-stack.yml` configuration file. See [Storage Integration Options]({{< ref "/reference/configuration/application-server#storage-integration-options" >}}) for more details.
+You can configure PostgreSQL, or any other PostgreSQL-compatible database (e.g. [TimescaleDB](https://www.timescale.com/)). A base-line configuration can be found below. Add the following section into your existing `ttn-lw-stack.yml` configuration file. See [Storage Integration Options]({{< ref "/enterprise/management/configuration/application-server#storage-integration-options" >}}) for more details.
 
 {{< highlight yaml "linenos=table,linenostart=108" >}}
-{{< readfile path="/content/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=124 to=134 >}}
+{{< readfile path="/content/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=124 to=134 >}}
 {{< /highlight >}}
 
 {{< note >}} This will use the same database instance that is used for the Identity Server as well. In production deployments, this should be a different database. {{</ note >}}
@@ -47,7 +47,7 @@ If you are using TimescaleDB, as mentioned in the [TimescaleDB Options]({{< ref 
 --timescaledb.retention-days
 ```
 
-If you are using Docker Compose to run {{% tts %}} (as shown in [Installing {{% tts %}} guide]({{< ref "/the-things-stack/host/docker" >}})), initialize the configured database with:
+If you are using Docker Compose to run {{% tts %}} (as shown in [Installing {{% tts %}} guide]({{< ref "/enterprise/docker" >}})), initialize the configured database with:
 
 ```bash
 docker compose run --rm stack storage-db init

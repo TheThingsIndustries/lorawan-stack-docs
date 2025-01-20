@@ -1,8 +1,7 @@
 ---
 title: "API"
 description: ""
-aliases:
-  ["/api/reference/grpc", "/the-things-stack/interact/api/", "/reference/api"]
+aliases: ["/api/reference/grpc", "/concepts/featuresapi/", "/reference/api"]
 weight: 7
 menu:
   main:

@@ -91,7 +91,7 @@ Mark documentation that applies only to a specific distribution in one of the fo
 
 - Use the Front Matter `distributions` element to add a list of distributions, i.e `distribution: ["Enterprise", "Cloud"]`. This will mark the page in the parent's table of contents, and will produce a notification on the page
 - Use the `{{< distributions "Enterprise" "Cloud" >}}` shortcode to produce a notification on the page
-- Note that you should not use the `{{< distributions >}}`,  `{{< new-in-version >}}`, or `{{< deprecated-in-version >}}` shortcodes in a heading, as Hugo will not correctly generate the ID element for it. Put it at the beginning of the paragraph below.
+- Note that you should not use the `{{< distributions >}}`, `{{< new-in-version >}}`, or `{{< deprecated-in-version >}}` shortcodes in a heading, as Hugo will not correctly generate the ID element for it. Put it at the beginning of the paragraph below.
 
 ## Style Guidelines
 
@@ -126,7 +126,7 @@ Please respect the following guidelines for content in our documentation site.
   - Wrap large CLI output with `<details><summary>Show CLI output</summary> ... output here ... </details>`.
   - `yaml` (not `yml`) for YAML. Wrap strings with single quotes `''` (because of frequent Go templates that use double quotes).
 - For variables which a user must replace, use a command to define the variable in the shell, if possible, e.g `API_KEY="your-api-key"`.
-- If not possible to define the variable, use angle brackets to indicate a variable that needs to be replaced, e.g `https://<server-address>`. 
+- If not possible to define the variable, use angle brackets to indicate a variable that needs to be replaced, e.g `https://<server-address>`.
 - In long command line examples or other code snippets, use the following guidelines:
   - If a line is longer than 80 columns, try to find a "natural" break
   - If a line is longer than 120 columns, insert a line break
@@ -134,7 +134,7 @@ Please respect the following guidelines for content in our documentation site.
 
 ## Building Frequency Plans Documentation
 
-The [Frequency Plans](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/frequency-plans/_index.md) section contains all frequency plans that are officially supported by {{% tts %}}. The list of frequency plans is populated from the [LoRaWAN Frequency Plans for {{% tts %}} Github repository](https://github.com/TheThingsNetwork/lorawan-frequency-plans/). To update the list of frequency plans with the newest changes from the Frequency Plans repository, run `make freq.deps`.
+The [Frequency Plans](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/concepts/features/lorawan/frequency-plans/_index.md) section contains all frequency plans that are officially supported by {{% tts %}}. The list of frequency plans is populated from the [LoRaWAN Frequency Plans for {{% tts %}} Github repository](https://github.com/TheThingsNetwork/lorawan-frequency-plans/). To update the list of frequency plans with the newest changes from the Frequency Plans repository, run `make freq.deps`.
 
 ## Legal
 

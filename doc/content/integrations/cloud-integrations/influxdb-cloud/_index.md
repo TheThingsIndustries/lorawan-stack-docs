@@ -1,15 +1,20 @@
 ---
 title: "InfluxDB Cloud 2.0"
 description: ""
-weight: 
-aliases: ["/integrations/cloud-integrations/influxdb-cloud/influxdb-cloud-setup", "/integrations/cloud-integrations/influxdb-cloud/telegraf-setup/telegraf-mqtt-setup", "/integrations/cloud-integrations/influxdb-cloud/telegraf-setup/telegraf-http-setup"]
+weight:
+aliases:
+  [
+    "/integrations/cloud-integrations/influxdb-cloud/influxdb-cloud-setup",
+    "/integrations/cloud-integrations/influxdb-cloud/telegraf-setup/telegraf-mqtt-setup",
+    "/integrations/cloud-integrations/influxdb-cloud/telegraf-setup/telegraf-http-setup",
+  ]
 ---
 
-[InfluxDB Cloud 2.0](https://v2.docs.influxdata.com/v2.0/get-started/) is a serverless real-time monitoring platform specifically created for working with time series data. It combines data storage, user interface, visualization, processing, monitoring and alerting into one cohesive system. 
+[InfluxDB Cloud 2.0](https://v2.docs.influxdata.com/v2.0/get-started/) is a serverless real-time monitoring platform specifically created for working with time series data. It combines data storage, user interface, visualization, processing, monitoring and alerting into one cohesive system.
 
 <!--more-->
 
-Besides being able to send data to InfluxDB Cloud 2.0, [Telegraf agent](https://www.influxdata.com/time-series-platform/telegraf/) can also be configured to subscribe to messages published by {{% tts %}} [MQTT server]({{< ref "/integrations/mqtt" >}}) or to listen to messages sent by {{% tts %}} Application Server via [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}). This guide contains the instructions for both of these implementations.
+Besides being able to send data to InfluxDB Cloud 2.0, [Telegraf agent](https://www.influxdata.com/time-series-platform/telegraf/) can also be configured to subscribe to messages published by {{% tts %}} [MQTT server]({{< ref "/integrations/other-integrations/mqtt" >}}) or to listen to messages sent by {{% tts %}} Application Server via [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}). This guide contains the instructions for both of these implementations.
 
 For additional info on configuring the Telegraf agent and using its plugins, check out the [official documentation](https://v2.docs.influxdata.com/v2.0/write-data/no-code/use-telegraf/).
 
@@ -21,7 +26,7 @@ For additional info on configuring the Telegraf agent and using its plugins, che
 
 ## Setup InfluxDB Cloud 2.0
 
-Log in to your InfluxDB Cloud 2.0 account and select the **Data** on the left hand menu. 
+Log in to your InfluxDB Cloud 2.0 account and select the **Data** on the left hand menu.
 
 {{< figure src="influxdb-data-dashboard.png" alt="InfluxDB Data dashboard" >}}
 
@@ -37,9 +42,9 @@ Enter the **Description** and select the bucket you wish to enable reading and w
 
 {{< figure src="generating-a-token.png" alt="Generating a read/write token" >}}
 
-Go to the **Telegraf** tab and select **Create Configuration**. 
+Go to the **Telegraf** tab and select **Create Configuration**.
 
-When asked **What do you want to monitor?**, select **System**. 
+When asked **What do you want to monitor?**, select **System**.
 
 {{< figure src="monitoring-system.png" alt="Selecting to monitor a system" >}}
 
@@ -51,7 +56,7 @@ Once the configuration is created, you can simply click on its name in the **Tel
 
 ## Configure Telegraf for MQTT Integration
 
-This section shows you how to configure your Telegraf agent with [MQTT Consumer](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/mqtt_consumer) plugin used for connecting to {{% tts %}} [MQTT Server]({{< ref "/integrations/mqtt" >}}).
+This section shows you how to configure your Telegraf agent with [MQTT Consumer](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/mqtt_consumer) plugin used for connecting to {{% tts %}} [MQTT Server]({{< ref "/integrations/other-integrations/mqtt" >}}).
 
 The information needed to configure Telegraf can be found on the **MQTT** tab in {{% tts %}} **Integrations** menu.
 
@@ -93,7 +98,7 @@ telegraf --config /path/to/custom/telegraf.conf
 
 ## Configure Telegraf and The Things Stack for Webhook Integration
 
-This section shows you how to configure the Telegraf agent with [HTTP Listener v2](https://github.com/influxdata/telegraf/blob/master/plugins/inputs/http_listener_v2/) plugin and how to create a belonging [Webhook integration]({{< ref "/integrations/webhooks/creating-webhooks" >}}) on {{% tts %}}. 
+This section shows you how to configure the Telegraf agent with [HTTP Listener v2](https://github.com/influxdata/telegraf/blob/master/plugins/inputs/http_listener_v2/) plugin and how to create a belonging [Webhook integration]({{< ref "/integrations/webhooks/creating-webhooks" >}}) on {{% tts %}}.
 
 Update the Telegraf configuration you previously downloaded as described in [InfluxDB Cloud 2.0 Setup]({{< ref "/integrations/cloud-integrations/influxdb-cloud" >}}) by adding the following lines and modifying them according to your setup:
 
@@ -127,6 +132,7 @@ Start the Telegraf agent by running the following command in the terminal:
 ```bash
 telegraf --config /path/to/custom/telegraf.conf
 ```
+
 In {{% tts %}} Console, [create a new webhook]({{< ref "/integrations/webhooks/creating-webhooks" >}}) with JSON **Webhook format**, set the **Base URL** to `http://localhost:8080/telegraf` and tick the box next to the message types you want to enable this webhook for.
 
 {{< figure src="tts-webhook-info.png" alt="Creating webhook on The Things Stack" >}}
@@ -137,11 +143,10 @@ Keep in mind that Telegraf agent can be hosted in a remote environment as well. 
 
 Click the **Explore** tab on the left in InfluxDB Cloud 2.0. Select your bucket in the **FROM** window in the bottom. Next, you have to filter your measurements depending on the type of integration.
 
-If you created an MQTT integration, select **_measurement** on the drop-down menu in the **Filter** window and tick the **mqtt_consumer** box. Then you can choose the topic and parameter you wish to monitor.
+If you created an MQTT integration, select **\_measurement** on the drop-down menu in the **Filter** window and tick the **mqtt_consumer** box. Then you can choose the topic and parameter you wish to monitor.
 
 {{< figure src="influxdb-mqtt.png" alt="Monitoring the MQTT data" >}}
 
-Otherwise, if you are using Webhook integration, select **_measurement** on the drop-down menu in the **Filter** window and tick the **http_listener_v2** box. In another **Filter** window, you can select the **uplink_message_decoded_payload** and click the **Submit** field on the right to see the incoming data.
+Otherwise, if you are using Webhook integration, select **\_measurement** on the drop-down menu in the **Filter** window and tick the **http_listener_v2** box. In another **Filter** window, you can select the **uplink_message_decoded_payload** and click the **Submit** field on the right to see the incoming data.
 
 {{< figure src="influxdb-http.png" alt="Monitoring the HTTP data" >}}
-

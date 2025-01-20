@@ -11,7 +11,7 @@ List of Tenant APIs.
 
 ## Authentication
 
-Unlike the other services, the tenant services do **not** accept API keys or OAuth access tokens. Instead, authentication is done with a "tenant admin key" that is [configured in the Identity Server]({{< relref "/reference/configuration/identity-server#tenant-administration-options" >}})
+Unlike the other services, the tenant services do **not** accept API keys or OAuth access tokens. Instead, authentication is done with a "tenant admin key" that is [configured in the Identity Server]({{< relref "/enterprise/management/configuration/identity-server#tenant-administration-options" >}})
 
 - Usage with HTTP `Authorization` Header: `TenantAdminKey XXXXX`
 - Usage with gRPC [call credentials](https://grpc.io/docs/guides/auth.html#authentication-api) (in the `authorization` header): `TenantAdminKey XXXXX`

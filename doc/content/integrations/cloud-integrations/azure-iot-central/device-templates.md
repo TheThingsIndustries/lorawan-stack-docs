@@ -8,11 +8,11 @@ Azure IoT Central allows users to model the telemetry and device properties usin
 
 <!--more-->
 
-As part of this tutorial we will build a small DTDL model for [The Things Uno]({{< ref "/devices/models/the-things-uno" >}}) which allows us to control the built in LED of the device.
+As part of this tutorial we will build a small DTDL model for [The Things Uno]({{< ref "/hardware/devices/models/the-things-uno" >}}) which allows us to control the built in LED of the device.
 
 ## Prerequisites
 
-1. A [The Things Uno]({{< ref "/devices/models/the-things-uno" >}}) registered in your end device, with the end device version identifiers set, and using the `quickstart` sketch.
+1. A [The Things Uno]({{< ref "/hardware/devices/models/the-things-uno" >}}) registered in your end device, with the end device version identifiers set, and using the `quickstart` sketch.
 
 > You can check if the end device version identifiers are set by checking the Console end device overview, under the **Hardware** section.
 

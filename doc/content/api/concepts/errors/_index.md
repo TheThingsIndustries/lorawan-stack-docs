@@ -53,7 +53,7 @@ Fields of the JSON message are described below.
 
 ## Rate limiting
 
-API request may be subject to [rate limits]({{< ref "/reference/rate-limiting" >}}).
+API request may be subject to [rate limits]({{< ref "/enterprise/management/rate-limiting" >}}).
 
 When the rate limit is reached, the server returns a `429 Too Many Requests` response.
 
