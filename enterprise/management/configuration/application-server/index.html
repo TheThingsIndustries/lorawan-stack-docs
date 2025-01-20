@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Application Server Options | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/application-server/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Application Server Options">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Application Server Options">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/enterprise/management/configuration/application-server/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Application Server Options" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">The Things Stack Enterprise</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/enterprise/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/" class="">AWS</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/" class="">Kubernetes</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/" class="">Docker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/join-server/" class="">The Things Join Server</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/" class="">Manage The Things Stack</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/" class="">Configuration</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/the-things-stack/" class="">General Options</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/tenant-billing-server/" class="">Tenant Billing Server Options</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/application-server/" class="is-active">Application Server Options</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/cli/" class="">Command-Line Interface Options</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/console/" class="">Console Options</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/device-claiming-server/" class="">Device Claiming Server Options</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/gateway-configuration-server/" class="">Gateway Configuration Server Options</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/gateway-server/" class="">Gateway Server Options</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/identity-server/" class="">Identity Server Options</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/join-server/" class="">Join Server Options</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/network-operations-center/" class="">Network Operations Center Options</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/network-server/" class="">Network Server Options</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/packet-broker-agent/" class="">Packet Broker Agent Options</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/rate-limiting/" class="">Rate Limiting</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/resource-limiting/" class="">Resource Limiting</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/stripe/" class="">Setting up billing with Stripe</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/tenant-management/" class="">Tenant Management</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+          
+          
+        <h1 class="title is-size-2">Application Server Options</h1>
+        <div class="content">
+          <h2 id="security-options">Security Options</h2>
+<ul>
+<li><code>as.device-kek-label</code>: Label of KEK used to encrypt device keys at rest</li>
+</ul>
+<h2 id="interoperability-options">Interoperability Options</h2>
+<p>The <code>as.interop</code> options configure how Application Server performs interoperability with other LoRaWAN® Backend Interfaces-compliant servers.</p>
+<ul>
+<li><code>as.interop.id</code>: AS-ID of this Application Server</li>
+<li><code>as.interop.config-source</code>: Source of the interoperability client configuration (directory, url, blob)</li>
+<li><code>as.interop.blob.bucket</code>: Blob bucket, which contains interoperability client configuration</li>
+<li><code>as.interop.blob.path</code>: Blob path, which contains interoperability client configuration</li>
+<li><code>as.interop.directory</code>: OS filesystem directory, which contains interoperability client configuration</li>
+<li><code>as.interop.url</code>: URL, which contains interoperability client configuration</li>
+</ul>
+<p>See <a href="https://www.thethingsindustries.com/docs/enterprise/join-server/interop-configuration/">LoRaWAN Join Server Configuration</a> to learn how to configure the client configuration.</p>
+<h2 id="mqtt-options">MQTT Options</h2>
+<p>Application Server exposes an MQTT server for streaming data.</p>
+<ul>
+<li><code>as.mqtt.listen</code>: Address for the MQTT frontend to listen on (default &ldquo;:1883&rdquo;)</li>
+<li><code>as.mqtt.listen-tls</code>: Address for the MQTTS frontend to listen on (default &ldquo;:8883&rdquo;)</li>
+<li><code>as.mqtt.public-address</code>: Public address of the MQTT frontend (default &ldquo;localhost:1883&rdquo;)</li>
+<li><code>as.mqtt.public-tls-address</code>: Public address of the MQTTs frontend (default &ldquo;localhost:8883&rdquo;)</li>
+</ul>
+<h2 id="pubsub-options">PubSub Options</h2>
+<ul>
+<li><code>as.pubsub.providers.mqtt</code>: Controls the status of MQTT provider (default <code>enabled</code>)</li>
+<li><code>as.pubsub.providers.nats</code>: Controls the status of NATS provider (default <code>enabled</code>)</li>
+</ul>
+<h2 id="aws-iot-integration-options">AWS IoT Integration Options</h2>
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_aws.svg"></img>
+
+</a>
+
+
+
+<ul>
+<li><code>as.aws.iot.telemetry</code> <span class="tag is-danger is-light">Deprecated in 3.11.1</span>
+
+: Enable publishing telemetry to AWS IoT</li>
+<li><code>as.aws.region</code>: AWS region (optional)</li>
+</ul>
+<h2 id="http-webhooks-options">HTTP Webhooks Options</h2>
+<p>Application Server has an internal queue with worker routines for outgoing requests. When remote endpoints are not fast enough and queue (with <code>queue-size</code>) gets full, new traffic gets discarded. You can tune these parameters for optimal performance, considering memory consumption with a large queue size and number of workers.</p>
+<ul>
+<li><code>as.webhooks.queue-size</code>: Number of requests to queue (default 1024)</li>
+<li><code>as.webhooks.target</code>: Target of the integration (direct) (default &ldquo;direct&rdquo;)</li>
+<li><code>as.webhooks.timeout</code>: Wait timeout of the target to process the request (default 5s)</li>
+<li><code>as.webhooks.workers</code>: Number of workers to process requests (default 1024)</li>
+</ul>
+<p>Application Server supports templates for webhooks that can be loaded from a <code>directory</code> or <code>url</code>.</p>
+<ul>
+<li><code>as.webhooks.templates.directory</code>: Retrieve the webhook templates from the filesystem</li>
+<li><code>as.webhooks.templates.url</code>: Retrieve the webhook templates from a web server</li>
+<li><code>as.webhooks.templates.logo-base-url</code>: The base URL for the logo storage</li>
+</ul>
+<p>Application Server supports communicating the paths of the downlink queue operations to the webhook endpoints via headers. The paths are computed from the public address, and the HTTPS endpoint is preferred over the HTTP one.</p>
+<ul>
+<li><code>as.webhooks.downlink.public-address</code>: Public address of the HTTP webhooks frontend (default &ldquo;http://localhost:1885/api/v3&rdquo;)</li>
+<li><code>as.webhooks.downlink.public-tls-address</code>: Public address of the HTTPS webhooks frontend</li>
+</ul>
+<p>Webhooks have a health status associated with them, so the webhooks that fail successively (with a non-2xx status code) get disabled for a period of time. A successful HTTP request resets the failure counter.</p>
+<ul>
+<li><code>as.webhooks.unhealthy-attempts-threshold</code>: The number of allowed successive failures before the webhook is disabled</li>
+<li><code>as.webhooks.unhealthy-retry-interval</code>: The cooldown period after which disabled webhooks may execute again</li>
+</ul>
+<h2 id="entity-fetcher-options">Entity Fetcher Options</h2>
+<p>Application Server can fetch information stored in the Identity Server. For example, it may be fetch end devices, in order to add their location as metadata to forwarded upstream messages. This information can be cached locally to improve performance:</p>
+<ul>
+<li><code>as.fetcher.timeout</code>: Timeout of the end device retrieval operation</li>
+<li><code>as.fetcher.cache.enable</code>: Set to <code>true</code> to enable end device caching</li>
+<li><code>as.fetcher.cache.size</code>: Number of cache entries. In case the cache is full, the Least Frequently Used entry will be evicted. Set to <code>0</code> to disable.</li>
+<li><code>as.fetcher.cache.ttl</code>: TTL for cache entries</li>
+<li><code>as.fetcher.circuit-breaker.enable</code>: Enable circuit breaker behavior on burst errors</li>
+<li><code>as.fetcher.circuit-breaker.threshold</code>: Number of failed fetching attempts after which the circuit breaker opens</li>
+<li><code>as.fetcher.circuit-breaker.timeout</code>: Timeout after which the circuit breaker closes</li>
+</ul>
+<h2 id="formatter-options">Formatter Options</h2>
+<p>Application Server can use Javascript payload formatters to decode uplink and encode downlink messages.</p>
+<ul>
+<li><code>as.formatters.max-parameter-length</code>: Maximum length (in bytes) for user-defined payload formatter scripts. A global cap of 16KB is enforced at the API level. This does not affect payload formatter scripts loaded from the <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/device-repo/">Device Repository</a>.</li>
+</ul>
+<h2 id="application-packages-options">Application Packages Options</h2>
+<ul>
+<li><code>as.packages.workers</code>: Number of workers per application package to process requests (default 1024)</li>
+<li><code>as.packages.timeout</code>: Message processing timeout (default <code>10s</code>)</li>
+</ul>
+<h2 id="azure-iot-hub-integration-options">Azure IoT Hub Integration Options</h2>
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+</a>
+
+
+
+<ul>
+<li><code>as.packages.azure-iot-hub.cluster.application-server</code>: Application Server cluster address (default <code>localhost</code>)</li>
+<li><code>as.packages.azure-iot-hub.cluster.join-server</code>: Join Server cluster address (default <code>localhost</code>)</li>
+<li><code>as.packages.azure-iot-hub.cluster.network-server</code>: Network Server cluster address (default <code>localhost</code>)</li>
+</ul>
+<h2 id="storage-integration-options">Storage Integration Options</h2>
+<p>
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_aws.svg"></img>
+
+</a>
+
+
+ The Storage Integration requires a database for storing upstream messages.</p>
+<ul>
+<li><code>as.packages.storage.provider</code>: Database backend to use. Currently, only <code>postgres</code> is supported.</li>
+</ul>
+<p>A PostgreSQL-compatible database is required. The Application Server will automatically recognise when <a href="https://www.timescale.com">TimescaleDB</a> is used.</p>
+<ul>
+<li><code>as.packages.storage.postgres.database-uri</code>: Database connection URI. Details for the form of the URI can be found in the <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING">PostgreSQL documentation</a></li>
+<li><code>as.packages.storage.postgres.read-database-uri</code>: Read-only database connection URI</li>
+<li><code>as.packages.storage.postgres.select-batch-size</code>: Maximum batch size for <code>SELECT</code> queries. Larger values require more memory, but improve speed when querying large datasets</li>
+<li><code>as.packages.storage.postgres.insert-batch-size</code>: Maximum batch size for <code>INSERT</code> queries. Larger values require more memory, but improve throughput when storing messages, by reducing the number of required database transactions. Only relevant when bulk mode is enabled</li>
+<li><code>as.packages.storage.postgres.debug</code>: Log all SQL queries, make sure to set to <code>false</code> for production environments</li>
+</ul>
+<p>In order to improve performance, the Storage Integration can be configured to store upstream messages in a local cache, and then flush them in batches to the database in regular intervals.</p>
+<ul>
+<li><code>as.packages.storage.bulk.enabled</code>: Set to <code>true</code> to enable bulk mode.</li>
+<li><code>as.packages.storage.bulk.interval</code>: Interval between consecutive flushes.</li>
+<li><code>as.packages.storage.bulk.max-size</code>: Local cache size (number of messages). If the cache is full and a new upstream messages arrives, the cache is flushed to the database.</li>
+</ul>
+<p>The Storage Integration can be configured to store only specific types of upstream messages.</p>
+<ul>
+<li><code>as.packages.storage.enable.all</code>: Set to <code>true</code> to store all current and future message types, ignoring the rest of the options</li>
+<li><code>as.packages.storage.enable.uplink-message</code>: Set to <code>true</code> to store <code>UplinkMessage</code> messages</li>
+<li><code>as.packages.storage.enable.join-accept</code>: Set to <code>true</code> to store <code>JoinAccept</code> messages</li>
+<li><code>as.packages.storage.enable.downlink-ack</code>: Set to <code>true</code> to store <code>DownlinkAck</code> messages</li>
+<li><code>as.packages.storage.enable.downlink-nack</code>: Set to <code>true</code> to store <code>DownlinkNack</code> messages</li>
+<li><code>as.packages.storage.enable.downlink-sent</code>: Set to <code>true</code> to store <code>DownlinkSent</code> messages</li>
+<li><code>as.packages.storage.enable.downlink-failed</code>: Set to <code>true</code> to store <code>DownlinkFailed</code> messages</li>
+<li><code>as.packages.storage.enable.location-solved</code>: Set to <code>true</code> to store <code>LocationSolved</code> messages</li>
+<li><code>as.packages.storage.enable.service-data</code>: Set to <code>true</code> to store <code>ServiceData</code> messages</li>
+</ul>
+<h2 id="advanced-distribution-options">Advanced Distribution Options</h2>
+<p>The Application Server can be configured to block while publishing traffic to global or local subscribers, as well as the number of uplinks that the Application Server buffers for those subscribers.</p>
+<ul>
+<li><code>as.distribution.timeout</code>: Wait timeout of any empty subscription set (default <code>10ms</code>)</li>
+<li><code>as.distribution.global.individual.subscription-blocks</code>: Controls if the Application Server should block while publishing traffic to individual global subscribers (such as MQTT clients).</li>
+<li><code>as.distribution.global.individual.subscription-queue-size</code>: Controls how many uplinks the Application Server should buffer for an individual global subscriber. Note that when the buffer is full, the Application Server will drop the uplinks if <code>--as.distribution.global.individual.subscription-blocks</code> is not enabled. Use a negative value in order to disable the queue.</li>
+<li><code>as.distribution.local.broadcast.subscription-blocks</code>: Controls if the Application Server should block while publishing traffic to broadcast local subscribers (such as webhooks and application packages matching).</li>
+<li><code>as.distribution.local.broadcast.subscription-queue-size</code>: Controls how many uplinks the Application Server should buffer for an broadcast local subscriber. Has the same semantics as <code>--as.distribution.global.individual.subscription-queue-size</code>.</li>
+<li><code>as.distribution.local.individual.subscription-blocks</code>: Controls if the Application Server should block while publishing traffic to individual local subscribers (such as PubSub integrations).</li>
+<li><code>as.distribution.local.individual.subscription-queue-size</code>: Controls how many uplinks the Application Server should buffer for an individual local subscriber. Has the same semantics as <code>--as.distribution.global.individual.subscription-queue-size</code>.</li>
+</ul>
+<h2 id="end-device-location-caching-options">End Device Location Caching Options</h2>
+<ul>
+<li><code>as.end-device-metadata-storage.location.timeout</code>: Timeout of the end device retrieval operation (default <code>5s</code>)</li>
+<li><code>as.end-device-metadata-storage.location.cache.enable</code>: Enable caching of end device locations (default <code>true</code>)</li>
+<li><code>as.end-device-metadata-storage.location.cache.eviction-ttl</code>: TTL of cached end device locations</li>
+<li><code>as.end-device-metadata-storage.location.cache.max-refresh-interval</code>: Maximum time interval between two asynchronous refreshes</li>
+<li><code>as.end-device-metadata-storage.location.cache.min-refresh-interval</code>: Minimum time interval between two asynchronous refreshes</li>
+</ul>
+<h2 id="uplink-storage-limit">Uplink Storage Limit</h2>
+<ul>
+<li><code>as.uplink-storage.limit</code>: Controls the number of application uplinks per device that are stored in the Application Server (default 16)</li>
+</ul>
+
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/enterprise/management/configuration/tenant-billing-server/">← Tenant Billing Server Options</a>
+<a class="button is-pulled-right" href="/docs/enterprise/management/configuration/cli/">Command-Line Interface Options →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#security-options'>Security Options</a></li>
+    
+      
+      <li><a href='#interoperability-options'>Interoperability Options</a></li>
+    
+      
+      <li><a href='#mqtt-options'>MQTT Options</a></li>
+    
+      
+      <li><a href='#pubsub-options'>PubSub Options</a></li>
+    
+      
+      <li><a href='#aws-iot-integration-options'>AWS IoT Integration Options</a></li>
+    
+      
+      <li><a href='#http-webhooks-options'>HTTP Webhooks Options</a></li>
+    
+      
+      <li><a href='#entity-fetcher-options'>Entity Fetcher Options</a></li>
+    
+      
+      <li><a href='#formatter-options'>Formatter Options</a></li>
+    
+      
+      <li><a href='#application-packages-options'>Application Packages Options</a></li>
+    
+      
+      <li><a href='#azure-iot-hub-integration-options'>Azure IoT Hub Integration Options</a></li>
+    
+      
+      <li><a href='#storage-integration-options'>Storage Integration Options</a></li>
+    
+      
+      <li><a href='#advanced-distribution-options'>Advanced Distribution Options</a></li>
+    
+      
+      <li><a href='#end-device-location-caching-options'>End Device Location Caching Options</a></li>
+    
+      
+      <li><a href='#uplink-storage-limit'>Uplink Storage Limit</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

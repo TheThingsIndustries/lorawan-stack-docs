@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>LoRa Basics™ Station | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="LoRa Basics™ Station">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="LoRa Basics™ Station">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="LoRa Basics™ Station" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Hardware</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/hardware/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/" class="">Devices</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/" class="">Gateways</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/" class="">Concepts</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/adding-gateways/" class="">Adding Gateways</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/" class="is-active">LoRa Basics™ Station</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/cups/" class="">Configuration and Update Server (CUPS)</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/lns/" class="">LoRaWAN Network Server (LNS)</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/cups-forwarding/" class="">Using CUPS to redirect to a different LNS</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/implementation-guide/" class="">Implementation Guide</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/mtls-authentication/" class="">mTLS Authentication</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/udp/" class="">Semtech UDP Packet Forwarder</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/ttigw/" class="">The Things Industries Gateway Protocol</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/packet-forwarder/" class="">Packet Forwarders</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/gateway-rtt/" class="">Gateway Round Trip Times</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/" class="">Models</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/troubleshooting/" class="">Troubleshooting Gateways</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/works-with/" class="">Works with The Things Stack</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+        <h1 class="title is-size-2">LoRa Basics™ Station</h1>
+        <div class="content">
+          <p>The <a href="https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/">LoRa Basics™ Station</a> protocol simplifies management of large scale LoRaWAN® networks. LoRa Basics™ Station is the preferred way of connecting Gateways to The Things Stack.</p>
+<p>This section contains information for connecting your gateway to The Things Stack using LoRa Basics™ Station and its subprotocols.</p>
+<p>These are general instructions for all LoRa Basics™ Station gateways. For specific instructions for your gateway, look in the <a href="https://www.thethingsindustries.com/docs/hardware/gateways/">Gateways</a> section.</p>
+<h2 id="advantages-of-lora-basics-station">Advantages of LoRa Basics™ Station</h2>
+<p>Some of the advantages of LoRa Basics™ Station over the legacy UDP Packet Forwarder are:</p>
+<ul>
+<li>Centralized Update and Configuration Management</li>
+<li>TLS and Token-based Authentication</li>
+<li>Centralized Channel-Plan Management</li>
+<li>No Dependency on Local Time Keeping</li>
+</ul>
+<h2 id="authentication">Authentication</h2>
+<p>The Things Stack supports <a href="https://lora-developers.semtech.com/build/software/lora-basics/lora-basics-for-gateways/?url=authmodes.html">TLS server authentication and client token</a>. This requires a <code>*.trust</code> file and a <code>*.key</code> file. See the <a href="/docs/hardware/gateways/concepts/lora-basics-station/lns/">LNS</a> and <a href="/docs/hardware/gateways/concepts/lora-basics-station/cups/">CUPS</a> sections for information about getting these files. The Things Stack does not support TLS client authentication and does not provide a <code>*.cert</code> file.</p>
+<h2 id="lns-and-cups-sub-protocols">LNS and CUPS Sub Protocols</h2>
+<p>LoRa Basics™ Station contains two sub protocols for connecting Gateways to Network Servers, LoRaWAN Network Server (LNS) and Configuration and Update Server (CUPS).</p>
+<h3 id="lorawan-network-server-lns">LoRaWAN Network Server (LNS)</h3>
+<p>LNS establishes a data connection between a LoRa Basics™ Station gateway and a Network Server (in this case, The Things Stack). LoRa® uplink and downlink frames are exchanged through this data connection. The LNS protocol is <strong>required</strong> for sending and receiving LoRaWAN data.</p>
+<h3 id="configuration-and-update-server-cups">Configuration and Update Server (CUPS)</h3>
+<p>CUPS allows a Network Server to configure gateways remotely, and to update gateway firmware. CUPS is <strong>not required</strong> for sending and receiving LoRaWAN data, but it can greatly simplify the management of gateways. Configuring CUPS will also automatically retrieve LNS credentials and configure LNS on your gateway.</p>
+<p>More information about LoRa Basics™ Station is available at <a href="https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/">Semtech&rsquo;s Developer Portal</a></p>
+        </div>
+          <div class="columns is-multiline">
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/cups/">Configuration and Update Server (CUPS)</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            LoRa Basics™ Station can regularly connect to a Configuration and Update Server (CUPS) server to check for configuration and software updates. This page contains information about connecting your gateway to The Things Stack to support remote management via the CUPS Protocol.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/cups/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/lns/">LoRaWAN Network Server (LNS)</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            LNS establishes a data connection between a LoRa Basics™ Station and The Things Stack. This page contains information about connecting your gateway to The Things Stack using the LoRaWAN® Network Server (LNS) protocol.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/lns/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/cups-forwarding/">Using CUPS to redirect to a different LNS</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            This section explains how redirect your gateway from one The Things Stack instance to another using CUPS, thus facilitating remote gateway management.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/cups-forwarding/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/implementation-guide/">Implementation Guide</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            This guide contains implementation details primarily for gateway manufacturers intending to implement the LoRa Basics™ Station protocol.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/implementation-guide/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/mtls-authentication/">mTLS Authentication</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            The Things Stack supports mutual TLS to authenticate LoRa Basics™ Station CUPS connections in selected deployments. This guide explains how gateway vendors/resellers and users can leverage
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/mtls-authentication/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/hardware/gateways/concepts/adding-gateways/">← Adding Gateways</a>
+<a class="button is-pulled-right" href="/docs/hardware/gateways/concepts/lora-basics-station/cups/">Configuration and Update Server (CUPS) →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#advantages-of-lora-basics-station'>Advantages of LoRa Basics™ Station</a></li>
+    
+      
+      <li><a href='#authentication'>Authentication</a></li>
+    
+      
+      <li><a href='#lns-and-cups-sub-protocols'>LNS and CUPS Sub Protocols</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

@@ -58,12 +58,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div id="topMenu" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
-        <a class="navbar-item" href="/docs/devices/">Devices</a>
-        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
-        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
-        <a class="navbar-item" href="/docs/reference/">Reference</a>
         <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -165,16 +165,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h1 class="title is-size-2">LoRa® Gateway specific APIs</h1>
         <div class="content">
           <p>The Things Stack supports multiple LoRa® gateway protocols which communicate the respective APIs.</p>
-<p>See the <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/networking/#port-allocations">port allocations</a> guide to check which protocol is supported on which port.</p>
+<p>See the <a href="https://www.thethingsindustries.com/docs/concepts/networking/#port-allocations">port allocations</a> guide to check which protocol is supported on which port.</p>
 <h2 id="lora-basics-station">LoRa Basics™ Station</h2>
-<p>The Things Stack provides LoRa Basics™ Station <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/#lorawan-network-server-lns">LNS</a> and <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/#configuration-and-update-server-cups">CUPS</a> end points for gateways to connect.</p>
+<p>The Things Stack provides LoRa Basics™ Station <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/#lorawan-network-server-lns">LNS</a> and <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/#configuration-and-update-server-cups">CUPS</a> end points for gateways to connect.</p>
 <p>These protocols follow the LoRa Basics™ Station <a href="https://lora-developers.semtech.com/build/software/lora-basics/lora-basics-for-gateways/?url=cupsproto.html">reference specification</a>.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   LoRa Basics™ Station CUPS API is usually exposed on the HTTP(s) port(s).
 </div>
 
-<p>Implementation specific details for clients using the LoRa Basics™ Station LNS protocol to communicate with The Things Stack is documented in the <a href="https://www.thethingsindustries.com/docs/reference/lbs/">LoRa Basics Station Implementation Guide</a>.</p>
+<p>Implementation specific details for clients using the LoRa Basics™ Station LNS protocol to communicate with The Things Stack is documented in the <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/implementation-guide/">LoRa Basics Station Implementation Guide</a>.</p>
 <p>This reference describes the MQTT protocol used by the Gateway Server. Packet forwarders implementing the MQTT protocols are specific for The Things Stack.</p>
 <p>The MQTT protocol can be used to develop custom packet forwarders or gateway bridges for exchanging traffic between a gateway and The Things Stack, or easily simulating gateway traffic for testing purposes. It is an alternative to the <a href="https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/">Basic Station</a> and the <a href="https://github.com/Lora-net/packet_forwarder/blob/master/PROTOCOL.TXT">Semtech UDP</a> protocols.</p>
 <h2 id="mqtt">MQTT</h2>
@@ -183,10 +183,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>On multi-tenant environments such as Cloud, endpoints include the tenant id, e.g <code>gateway1@tenant1</code>. On single tenant environments such as Open Source, the tenant id can be removed, i.e <code>gateway1</code>.</p>
 <p>To communicate with the MQTT protocol, the Gateway Server and the gateway are exchanging <a href="https://developers.google.com/protocol-buffers">Protocol Buffers</a>. The definitions of the Protocol Buffers can be found at the <a href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub repository</a> of The Things Stack, under <a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/v3.33/api/ttn/lorawan/v3/messages.proto"><strong>messages.proto</strong></a> and <a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/v3.33/api/ttn/lorawan/v3/lorawan.proto"><strong>lorawan.proto</strong></a>.</p>
 <h3 id="mqtt-v2">MQTT v2</h3>
-<p>The MQTT v2 gateway APIs are used by <a href="https://www.thethingsindustries.com/docs/gateways/models/thethingskickstartergateway/">The Things Kickstarter Gateway</a> and use the <a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/master/pkg/gatewayserver/io/mqtt/format_protobufv2.go">TTN v2 MQTT</a> format.</p>
+<p>The MQTT v2 gateway APIs are used by <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/thethingskickstartergateway/">The Things Kickstarter Gateway</a> and use the <a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/master/pkg/gatewayserver/io/mqtt/format_protobufv2.go">TTN v2 MQTT</a> format.</p>
 <h3 id="mqtt-v3">MQTT v3</h3>
 <p>The MQTT v3 protocol uses the The Things Stack v3 messages definitions.</p>
-<p>Gateways can connect using the username <code>{gateway-id}@{tenant-id}</code> and an API key as the password. Check how to <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/">register a gateway and create an API key</a>.</p>
+<p>Gateways can connect using the username <code>{gateway-id}@{tenant-id}</code> and an API key as the password. Check how to <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/adding-gateways/">register a gateway and create an API key</a>.</p>
 <div class="fixed-table table-api">
 <table>
   <thead>
@@ -216,8 +216,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </table>
 </div>
 <h4 id="connecting-to-the-gateway-server">Connecting to the Gateway Server</h4>
-<p>See <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/networking/">Networking</a> for the default port of the MQTT server.</p>
-<p>The username is <code>&lt;gateway-id&gt;@&lt;tenant-id&gt;</code> (e.g. <code>gtw1@tenant1</code>), and the password is a gateway API key with the <code>RIGHT_GATEWAY_LINK</code> right enabled. You can generate this API key by following instructions in the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/#create-gateway-api-key">Creating Gateways</a> section.</p>
+<p>See <a href="https://www.thethingsindustries.com/docs/concepts/networking/">Networking</a> for the default port of the MQTT server.</p>
+<p>The username is <code>&lt;gateway-id&gt;@&lt;tenant-id&gt;</code> (e.g. <code>gtw1@tenant1</code>), and the password is a gateway API key with the <code>RIGHT_GATEWAY_LINK</code> right enabled. You can generate this API key by following instructions in the <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/adding-gateways/#create-gateway-api-key">Creating Gateways</a> section.</p>
 <p>Authenticated clients get <strong>write-only</strong> access to the following topics:</p>
 <ul>
 <li><code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/up</code>: Used for sending uplink traffic to the Gateway Server.</li>
@@ -369,12 +369,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <nav class="column is-one-third">
         <h3 class="title is-6">The Things Stack</h3>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
-        <p><a class="" href="/docs/devices/">Devices</a></p>
-        <p><a class="" href="/docs/gateways/">Gateways</a></p>
-        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
-        <p><a class="" href="/docs/reference/">Reference</a></p>
         <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

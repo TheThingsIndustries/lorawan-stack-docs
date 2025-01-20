@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Activation by Personalization (ABP) | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/manual/abp/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Activation by Personalization (ABP)">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Activation by Personalization (ABP)">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/manual/abp/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Activation by Personalization (ABP)" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Hardware</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/hardware/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/" class="">Devices</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/" class="">Adding Devices</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/manual/" class="">Manually adding devices</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/manual/otaa/" class="">Over the Air Activation (OTAA)</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/manual/abp/" class="is-active">Activation by Personalization (ABP)</a>
+    
+    
+
+
+
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/adding-devices-in-bulk/" class="">Adding devices in bulk</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/atecc608a/" class="">Adding devices with ATECC608 Secure Elements</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/configuring-devices/" class="">Configuring Devices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/concepts/" class="">Concepts</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/models/" class="">Models</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/troubleshooting/" class="">Troubleshooting Devices</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/" class="">Gateways</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/works-with/" class="">Works with The Things Stack</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+        <h1 class="title is-size-2">Activation by Personalization (ABP)</h1>
+        <div class="content">
+          <p>If your device cannot be activated using the more secure OTAA, you may manually activate it by programming security keys it, i.e. using ABP. This guide explains how to add ABP devices manually.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+    <li data-tab="http-rest-api">
+      <a>
+        <span>HTTP (REST) API</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <p>Click on the <strong>Show advanced activation, LoRaWAN class and cluster settings</strong> select <strong>Activation by Personalization (ABP)</strong>.</p>
+<p>Choose the appropriate <strong>Additional LoRaWAN class capabilities</strong>. When using ABP, it is important to make sure that the Rx1 settings in your device match those in The Things Stack. Uncheck <strong>Network Defaults</strong> to specify settings that match those in your device. The Things Stack recommends an Rx1 delay of <code>5</code> seconds, but this value would have to also be programmed into your device.</p>
+<figure><img src="/docs/hardware/devices/adding-devices/manual/abp/abp-network-defaults.png"
+    alt="ABP Network Settings">
+</figure>
+<p>Now proceed with <strong>Provisioning information</strong>. Enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the <a href="https://ieee802.org/">IEEE 802 standards</a> or use all zeros, just make sure to program the same value into your device. Then click <strong>Confirm</strong>.</p>
+<p>Enter your <strong>DevEUI</strong>. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the <strong>Generate</strong> button, and program it in your device.</p>
+<p>Use the <strong>Generate</strong> button to create a <strong>Device address</strong>, and program it in your device.</p>
+<p>For LoRaWAN versions 1.0.x, generate an <strong>AppSKey</strong> and <strong>NwkSKey</strong> and program them in your device.</p>
+<p>For LoRaWAN versions 1.1.x, generate an <strong>AppSKey</strong>, <strong>FNwkSIntKey</strong>, <strong>SNwkSIntKey</strong>, and <strong>NwkSEncKey</strong>, and program them in your device.</p>
+<p>Finally, give your device a unique <strong>End device ID</strong>. See <a href="https://www.thethingsindustries.com/docs/concepts/architecture/id-eui-constraints/">ID and EUI constraints</a> for guidelines about choosing a unique ID.</p>
+<figure><img src="/docs/hardware/devices/adding-devices/manual/abp/abp-fields-set.png"
+    alt="ABP fields set">
+</figure>
+<p>Click <strong>Register end device</strong> to create the end device.</p>
+</section>
+<section data-content="cli">
+  <p>First, list the available frequency plans and LoRaWAN versions:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices list-frequency-plans
+</span></span><span class="line"><span class="cl">ttn-lw-cli end-devices create --help
+</span></span></code></pre></div><p>For adding ABP devices, we can define the following parameters:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">DEV_ADDR</span><span class="o">=</span><span class="s2">&#34;00E4304D&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">APP_SESSION_KEY</span><span class="o">=</span><span class="s2">&#34;A0CAD5A30036DBE03096EB67CA975BAA&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">NWK_SESSION_KEY</span><span class="o">=</span><span class="s2">&#34;B7F3E161BC9D4388E6C788A0C547F255&#34;</span>
+</span></span></code></pre></div><p>Make sure you modify these according to your setup.</p>
+<p><strong>LoRaWAN 1.0.x:</strong></p>
+<p>It is also possible to register an ABP activated device using the <code>--abp</code> flag as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-phy-version 1.0.3-a <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --abp <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.dev-addr <span class="nv">$DEV_ADDR</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.app-s-key.key <span class="nv">$APP_SESSION_KEY</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.nwk-s-key.key <span class="nv">$NWK_SESSION_KEY</span>
+</span></span></code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.0.3 MAC and 1.0.3-a PHY versions. Make sure you replace these versions according to your setup.</p>
+<p>Please note that the <code>NwkSKey</code> is returned as <code>f_nwk_s_int_key</code> (The Things Stack uses LoRaWAN 1.1 terminology).</p>
+<p>You can also pass <code>--with-session</code> to have a session generated.</p>
+<p><strong>LoRaWAN 1.1.x:</strong></p>
+<p>To register a LoRaWAN 1.1.x end device using ABP:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">F_NWK_SESSION_INT_KEY</span><span class="o">=</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">S_NWK_SESSION_INT_KEY</span><span class="o">=</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">NWK_SESSION_ENC_KEY</span><span class="o">=</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
+</span></span><span class="line"><span class="cl">ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-version 1.1.0 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-phy-version 1.1.0-b <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --abp <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.dev-addr <span class="nv">$DEV_ADDR</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.app-s-key.key <span class="nv">$APP_SESSION_KEY</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.nwk-s-key.key <span class="nv">$NWK_SESSION_KEY</span>
+</span></span><span class="line"><span class="cl">  --session.keys.f-nwk-s-int-key.key <span class="nv">$F_NWK_SESSION_INT_KEY</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.s-nwk-s-int-key.key <span class="nv">$S_NWK_SESSION_INT_KEY</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.nwk-s-enc-key.key <span class="nv">$NWK_SESSION_ENC_KEY</span>
+</span></span></code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.1.0 MAC and 1.1.0-b PHY versions. Make sure you replace these versions according to your setup.</p>
+<p>You can also pass <code>--with-session</code> to have a session generated.</p>
+</section>
+<section data-content="http-rest-api">
+  <p>The Things Stack stores end device data on the Identity Server, Application Server, Network Server. Since ABP devices do not have the concept of join, the Join Server is not used.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  These examples only set a few basic fields. For the full list of customization options, check the linked references.
+</div>
+<p>Make sure to follow the same order in creating the devices across the servers.</p>
+<p>First, create the device on the Identity Server. Create an <code>is.json</code> file in the same folder.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;end_device&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-device-abp&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000011&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;join_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;thethings.localhost&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;network_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;thethings.localhost&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;application_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;thethings.localhost&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field_mask&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;join_server_address&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;network_server_address&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;application_server_address&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ids.dev_eui&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Then make a <code>POST</code> request to the <a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#applications%7Bend_device.ids.application_ids.application_id%7Ddevices-post"><code>/api/v3/applications/{end_device.ids.application_ids.application_id}/devices</code></a> end point.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X POST -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./is.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/applications/my-test-app/devices
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;device_id&#34;</span>:<span class="s2">&#34;test-device-abp&#34;</span>,<span class="s2">&#34;application_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;application_id&#34;</span>:<span class="s2">&#34;my-test-app&#34;</span><span class="o">}</span>,<span class="s2">&#34;dev_eui&#34;</span>:<span class="s2">&#34;0000000000000011&#34;</span><span class="o">}</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-01-10T14:51:53.281866Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-01-10T14:51:53.281867Z&#34;</span>,<span class="s2">&#34;version_ids&#34;</span>:<span class="o">{}</span>,<span class="s2">&#34;network_server_address&#34;</span>:<span class="s2">&#34;thethings.localhost&#34;</span>,<span class="s2">&#34;application_server_address&#34;</span>:<span class="s2">&#34;thethings.localhost&#34;</span>,<span class="s2">&#34;join_server_address&#34;</span>:<span class="s2">&#34;thethings.localhost&#34;</span>,<span class="s2">&#34;lora_alliance_profile_ids&#34;</span>:<span class="o">{}}</span>
+</span></span></code></pre></div><p>Now create the device on the Network Server. Create an <code>ns.json</code> file with the following example contents. Note that you need to set the correct LoRaWAN settings for the device on the Network Server. Also, since this is ABP, we also set the Network Session Keys.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;end_device&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;supports_join&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;lorawan_version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-device-abp&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000011&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;session&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;keys&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;f_nwk_s_int_key&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;11223344556677881122334455667788&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;12345678&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;mac_settings&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;resets_f_cnt&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;factory_preset_frequencies&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;868100000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;868300000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;868500000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;867100000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;867300000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;867500000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;867700000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;867900000&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;resets_f_cnt&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;lorawan_phy_version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.2-b&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;frequency_plan_id&#34;</span><span class="p">:</span> <span class="s2">&#34;EU_863_870_TTN&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field_mask&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;supports_join&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;lorawan_version&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ids.device_id&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ids.dev_eui&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;session.keys.f_nwk_s_int_key.key&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;session.dev_addr&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;mac_settings.resets_f_cnt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;mac_settings.factory_preset_frequencies&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;lorawan_phy_version&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;frequency_plan_id&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Make a <code>PUT</code> request to the <a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#nsapplications%7Bend_device.ids.application_ids.application_id%7Ddevices%7Bend_device.ids.device_id%7D-put"><code>/api/v3/ns/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}</code></a> end point.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X PUT -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./ns.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/ns/applications/my-test-app/devices/test-device-abp
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;device_id&#34;</span>:<span class="s2">&#34;test-device-abp&#34;</span>,<span class="s2">&#34;application_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;application_id&#34;</span>:<span class="s2">&#34;my-test-app&#34;</span><span class="o">}</span>,<span class="s2">&#34;dev_eui&#34;</span>:<span class="s2">&#34;0000000000000011&#34;</span>,<span class="s2">&#34;dev_addr&#34;</span>:<span class="s2">&#34;12345678&#34;</span><span class="o">}</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-01-10T14:53:22.649080Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-01-10T14:53:22.649080Z&#34;</span>,<span class="s2">&#34;lorawan_version&#34;</span>:<span class="s2">&#34;MAC_V1_0_2&#34;</span>,<span class="s2">&#34;lorawan_phy_version&#34;</span>:<span class="s2">&#34;PHY_V1_0_2_REV_B&#34;</span>,<span class="s2">&#34;frequency_plan_id&#34;</span>:<span class="s2">&#34;EU_863_870_TTN&#34;</span>,<span class="s2">&#34;mac_settings&#34;</span>:<span class="o">{</span><span class="s2">&#34;factory_preset_frequencies&#34;</span>:<span class="o">[</span><span class="s2">&#34;868100000&#34;</span>,<span class="s2">&#34;868300000&#34;</span>,<span class="s2">&#34;868500000&#34;</span>,<span class="s2">&#34;867100000&#34;</span>,<span class="s2">&#34;867300000&#34;</span>,<span class="s2">&#34;867500000&#34;</span>,<span class="s2">&#34;867700000&#34;</span>,<span class="s2">&#34;867900000&#34;</span><span class="o">]</span>,<span class="s2">&#34;resets_f_cnt&#34;</span>:true<span class="o">}</span>,<span class="s2">&#34;session&#34;</span>:<span class="o">{</span><span class="s2">&#34;dev_addr&#34;</span>:<span class="s2">&#34;12345678&#34;</span>,<span class="s2">&#34;keys&#34;</span>:<span class="o">{</span><span class="s2">&#34;f_nwk_s_int_key&#34;</span>:<span class="o">{</span><span class="s2">&#34;key&#34;</span>:<span class="s2">&#34;11223344556677881122334455667788&#34;</span><span class="o">}}}}</span>
+</span></span></code></pre></div><p>Now create the device on the Application Server. Create an <code>as.json</code> file with the following example contents.
+We also set the application session key here.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;end_device&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-device-abp&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000011&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;session&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;keys&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;app_s_key&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;11223344556677881122334455667788&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;12345678&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;skip_payload_crypto&#34;</span><span class="p">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field_mask&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ids.device_id&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ids.dev_eui&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;session.keys.app_s_key.key&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;session.dev_addr&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;skip_payload_crypto&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Make a <code>PUT</code> request to the <a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#asapplications%7Bend_device.ids.application_ids.application_id%7Ddevices%7Bend_device.ids.device_id%7D-put"><code>/api/v3/as/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}</code></a> end point.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X PUT -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./as.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/as/applications/my-test-app/devices/test-device-abp
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;device_id&#34;</span>:<span class="s2">&#34;test-device-abp&#34;</span>,<span class="s2">&#34;application_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;application_id&#34;</span>:<span class="s2">&#34;my-test-app&#34;</span><span class="o">}</span>,<span class="s2">&#34;dev_eui&#34;</span>:<span class="s2">&#34;0000000000000011&#34;</span><span class="o">}</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-01-10T14:55:13.479196Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-01-10T14:55:13.479196Z&#34;</span>,<span class="s2">&#34;session&#34;</span>:<span class="o">{</span><span class="s2">&#34;dev_addr&#34;</span>:<span class="s2">&#34;12345678&#34;</span>,<span class="s2">&#34;keys&#34;</span>:<span class="o">{</span><span class="s2">&#34;app_s_key&#34;</span>:<span class="o">{</span><span class="s2">&#34;key&#34;</span>:<span class="s2">&#34;11223344556677881122334455667788&#34;</span><span class="o">}}}}</span>
+</span></span></code></pre></div>
+</section>
+
+</div>
+        </div>
+          <div class="columns is-multiline">
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/hardware/devices/adding-devices/manual/otaa/">← Over the Air Activation (OTAA)</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

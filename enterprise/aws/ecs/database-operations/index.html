@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Database Operations | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/database-operations/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Database Operations">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Database Operations">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/database-operations/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Database Operations" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">The Things Stack Enterprise</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/enterprise/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/" class="">AWS</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ami/" class="">AWS Marketplace AMI</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/" class="">AWS ECS</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/architecture/" class="">Architecture</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/" class="">Prerequisites</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/deployment/" class="">Deployment</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/database-operations/" class="is-active">Database Operations</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/monitoring/" class="">Monitoring</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/updating/" class="">Updating</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/best-practices/" class="">Best Practices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/interop/" class="">Interoperability</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/mutual-tls/" class="">Mutual TLS</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/troubleshooting/" class="">Troubleshooting AWS ECS Deployment</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/changelog/" class="">Template Changelog</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/" class="">Kubernetes</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/" class="">Docker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/join-server/" class="">The Things Join Server</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/" class="">Manage The Things Stack</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+        <h1 class="title is-size-2">Database Operations</h1>
+        <div class="content">
+          <p>This page describes the steps for performing database operations on an AWS ECS deployment.</p>
+<p>The <code>OpsRunTaskArguments</code> output of the stack deployed from the <code>5-2-ecs-ops</code> template contains the parameters needed to run (database) operations. The value of this output contains:</p>
+<pre tabindex="0"><code>TASK_DEFINITION CLUSTER_NAME SUBNET_ONE SUBNET_TWO SECURITY_GROUP
+</code></pre><p>To run a task from the AWS Console, go to <strong>Amazon ECS</strong> &gt; <strong>Clusters</strong> &gt; your cluster &gt; <strong>Tasks</strong>, and click <strong>Run new Task</strong>.</p>
+<p>For <strong>Task Definition</strong> select the latest version of the ops task definition (<code>TASK_DEFINITION</code> from earlier).</p>
+<p>Select the <strong>VPC</strong>, and for <strong>Subnets</strong> the subnets <code>SUBNET_ONE</code> and <code>SUBNET_TWO</code> from the <code>OpsRunTaskArguments</code> mentioned earlier. Instead of creating a new security group, select the existing <code>SECURITY_GROUP</code> listed in <code>OpsRunTaskArguments</code>.</p>
+<p>Under <strong>Advanced Options</strong> &gt; <strong>Container Overrides</strong> &gt; <code>ttes</code>, set the <strong>Command override</strong> to the command you want to run, separating arguments with commas. A typical command will look like <code>tti-lw-stack,COMMAND,ARGUMENTS,AND,FLAGS</code>.</p>
+<p>Alternatively, you can run ops commands using the AWS CLI:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">aws ecs run-task <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --task-definition TASK_DEFINITION <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cluster CLUSTER_NAME <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --launch-type FARGATE <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --network-configuration <span class="s1">&#39;{
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;awsvpcConfiguration&#34;:{
+</span></span></span><span class="line"><span class="cl"><span class="s1">      &#34;subnets&#34;:[
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;SUBNET_ONE&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;SUBNET_TWO&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">      ],
+</span></span></span><span class="line"><span class="cl"><span class="s1">      &#34;securityGroups&#34;:[
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;SECURITY_GROUP&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">      ],
+</span></span></span><span class="line"><span class="cl"><span class="s1">      &#34;assignPublicIp&#34;:&#34;DISABLED&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    }
+</span></span></span><span class="line"><span class="cl"><span class="s1">  }&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --overrides <span class="s1">&#39;{
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;containerOverrides&#34;:[
+</span></span></span><span class="line"><span class="cl"><span class="s1">      {
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;name&#34;:&#34;ttes&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;command&#34;:[
+</span></span></span><span class="line"><span class="cl"><span class="s1">          &#34;tti-lw-stack&#34;,&#34;COMMAND&#34;,&#34;ARGUMENTS&#34;,&#34;AND&#34;,&#34;FLAGS&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">        ]
+</span></span></span><span class="line"><span class="cl"><span class="s1">      }
+</span></span></span><span class="line"><span class="cl"><span class="s1">    ]
+</span></span></span><span class="line"><span class="cl"><span class="s1">  }&#39;</span>
+</span></span></code></pre></div><p>In this case, the command, arguments and flags need to be written as a JSON array.</p>
+<h2 id="initialize-events-storage">Initialize Events Storage</h2>
+<p>If you use events storage (template <code>timescale</code>), you need to initialize the database.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,storage-db,init,--timescaledb.chunk-time-interval,12h,--timescaledb.enable-retention-policy,--timescaledb.retention-days,31
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;storage-db&#34;,&#34;init&#34;,&#34;--timescaledb.chunk-time-interval&#34;,&#34;12h&#34;,&#34;--timescaledb.enable-retention-policy&#34;,&#34;--timescaledb.retention-days&#34;,&#34;31&#34;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Depending on your use case, feel free to adjust parameter values.
+</div>
+
+<h2 id="initialize-network-operations-center-database">Initialize Network Operations Center Database</h2>
+<p>When deploying your main cluster with Network Operations Center for the first time, the database needs to be initialized.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,noc-db,init
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;noc-db&#34;,&#34;init&#34;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  While initialization alone is needed for deployment itself, creating initial resources mentioned below is required for The Things Stack to work.
+</div>
+
+<h2 id="migrate-identity-server-database">Migrate Identity Server Database</h2>
+<p>Before upgrading the Identity Server to a new minor version or deploying The Things Stack for the first time, the database may need to be migrated.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,is-db,migrate
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;migrate&#34;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  While the migration alone is sufficient for completing the deployment, creating initial resources mentioned above is required for The Things Stack to work.
+</div>
+
+<h2 id="create-a-tenant-in-the-identity-server-database-multi-tenant-only">Create a Tenant in the Identity Server Database (multi-tenant only)</h2>
+<p>If you can not, or do not want to use the Tenant Billing Server or the API to create tenants, you can create tenants directly in the database.</p>
+<p>The command for this is:</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,is-db,create-tenant,--id=$TENANT_ID,--name=$TENANT_NAME
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;create-tenant&#34;,&#34;--id=$TENANT_ID&#34;,&#34;--name=$TENANT_NAME&#34;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Replace <code>$TENANT_ID</code> and <code>$TENANT_NAME</code> with your own.
+</div>
+
+<h2 id="create-the-oauth-client-for-the-command-line-interface">Create the OAuth Client for the Command-Line Interface</h2>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=cli,--name=Command Line Interface,--no-secret,--redirect-uri=local-callback,--redirect-uri=code
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;create-oauth-client&#34;,&#34;--tenant-id=NULL&#34;,&#34;--id=cli&#34;,&#34;--name=Command Line Interface&#34;,&#34;--no-secret&#34;,&#34;--redirect-uri=local-callback&#34;,&#34;--redirect-uri=code&#34;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Replace <code>--tenant-id=NULL</code> with <code>--tenant-id=$TENANT_ID</code> in single-tenant deployments.
+</div>
+
+<h2 id="create-the-oauth-clients">Create the OAuth Clients</h2>
+<p>The Console and Network Operations Center are OAuth clients. These clients must be created before they can be used.</p>
+<p>Use the following command with variables:</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--secret=$CLIENT_SECRET,--redirect-uri=$REDIRECT_PATH,--redirect-uri=$REDIRECT_URI,--logout-redirect-uri=$LOGOUT_REDIRECT_PATH,--logout-redirect-uri=$LOGOUT_REDIRECT_URI
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;create-oauth-client&#34;,&#34;--tenant-id=NULL&#34;,&#34;--id=$ID&#34;,&#34;--name=$NAME&#34;,&#34;--secret=$CLIENT_SECRET&#34;,&#34;--redirect-uri=$REDIRECT_PATH&#34;,&#34;--redirect-uri=$REDIRECT_URI&#34;,&#34;--logout-redirect-uri=$LOGOUT_REDIRECT_PATH&#34;,&#34;--logout-redirect-uri=$LOGOUT_REDIRECT_URI&#34;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <ul>
+<li>Replace <code>--tenant-id=NULL</code> with <code>--tenant-id=$TENANT_ID</code> in single-tenant deployments.</li>
+<li>For secondary clusters (where the domain of the Console or Network Operations Center is not equal to the domain of the Identity Server), omit you can omit the <code>--redirect-uri</code> and <code>--logout-redirect-uri</code> to relative paths (only keep the URI).</li>
+</ul>
+
+</div>
+
+<p>Set the variables as follows:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Key</th>
+          <th style="text-align: left">Console</th>
+          <th style="text-align: left">Network Operations Center</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>ID</code></td>
+          <td style="text-align: left"><code>client_id</code> from Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-console-oauth-client</code></td>
+          <td style="text-align: left"><code>client_id</code> from Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-noc-oauth-client</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>NAME</code></td>
+          <td style="text-align: left"><code>Console</code></td>
+          <td style="text-align: left"><code>Network Operations Center</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>CLIENT_SECRET</code></td>
+          <td style="text-align: left"><code>client_secret</code> from Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-console-oauth-client</code></td>
+          <td style="text-align: left"><code>client_secret</code> from Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-noc-oauth-client</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>REDIRECT_URI</code></td>
+          <td style="text-align: left"><code>https://${DOMAIN}/console/oauth/callback</code></td>
+          <td style="text-align: left"><code>https://${DOMAIN}/noc/oauth/callback</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>REDIRECT_PATH</code></td>
+          <td style="text-align: left"><code>/console/oauth/callback</code></td>
+          <td style="text-align: left"><code>/noc/oauth/callback</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>LOGOUT_REDIRECT_URI</code></td>
+          <td style="text-align: left"><code>https://${DOMAIN}/console</code></td>
+          <td style="text-align: left"><code>https://${DOMAIN}/noc</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>LOGOUT_REDIRECT_PATH</code></td>
+          <td style="text-align: left"><code>/console</code></td>
+          <td style="text-align: left"><code>/noc</code></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="create-admin-user">Create Admin User</h2>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,is-db,create-admin-user,--tenant-id,$TENANT_ID,--email,$ADMIN_EMAIL,--password,$ADMIN_PASSWORD
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;create-admin-user&#34;,&#34;--tenant-id&#34;,&#34;$TENANT_ID&#34;,&#34;--email&#34;,&#34;$ADMIN_EMAIL&#34;,&#34;--password&#34;,&#34;$ADMIN_PASSWORD&#34;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Replace <code>$TENANT_ID</code>, <code>$ADMIN_EMAIL</code> and <code>$ADMIN_PASSWORD</code> with your own.
+</div>
+
+<h2 id="migrate-network-server-database">Migrate Network Server Database</h2>
+<p>Before upgrading the Network Server to a new minor version, the database may need to be migrated.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,ns-db,migrate
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;ns-db&#34;,&#34;migrate&#34;]
+</code></pre>
+</section>
+
+</div>
+
+<h2 id="prune-network-server-database">Prune Network Server Database</h2>
+<p>Before upgrading the Network Server to a new minor version, the unused data may be pruned from the database.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,ns-db,prune
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;ns-db&#34;,&#34;prune&#34;]
+</code></pre>
+</section>
+
+</div>
+
+<h2 id="migrate-application-server-database">Migrate Application Server Database</h2>
+<p>Before upgrading the Application Server to a new minor version, the database may need to be migrated.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,as-db,migrate
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;as-db&#34;,&#34;migrate&#34;]
+</code></pre>
+</section>
+
+</div>
+
+<h2 id="migrate-network-operations-center-database">Migrate Network Operations Center Database</h2>
+<p>Before upgrading the Network Operations Center to a new minor version, the database may need to be migrated.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,noc-db,migrate
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;noc-db&#34;,&#34;migrate&#34;]
+</code></pre>
+</section>
+
+</div>
+
+<h2 id="migrate-device-claiming-server-database">Migrate Device Claiming Server Database</h2>
+<p>Before upgrading the Device Claiming Server to a new minor version, the database may need to be migrated.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,dcs-db,migrate
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;dcs-db&#34;,&#34;migrate&#34;]
+</code></pre>
+</section>
+
+</div>
+        </div>
+          <div class="columns is-multiline">
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/enterprise/aws/ecs/deployment/">← Deployment</a>
+<a class="button is-pulled-right" href="/docs/enterprise/aws/ecs/monitoring/">Monitoring →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#initialize-events-storage'>Initialize Events Storage</a></li>
+    
+      
+      <li><a href='#initialize-network-operations-center-database'>Initialize Network Operations Center Database</a></li>
+    
+      
+      <li><a href='#migrate-identity-server-database'>Migrate Identity Server Database</a></li>
+    
+      
+      <li><a href='#create-a-tenant-in-the-identity-server-database-multi-tenant-only'>Create a Tenant in the Identity Server Database (multi-tenant only)</a></li>
+    
+      
+      <li><a href='#create-the-oauth-client-for-the-command-line-interface'>Create the OAuth Client for the Command-Line Interface</a></li>
+    
+      
+      <li><a href='#create-the-oauth-clients'>Create the OAuth Clients</a></li>
+    
+      
+      <li><a href='#create-admin-user'>Create Admin User</a></li>
+    
+      
+      <li><a href='#migrate-network-server-database'>Migrate Network Server Database</a></li>
+    
+      
+      <li><a href='#prune-network-server-database'>Prune Network Server Database</a></li>
+    
+      
+      <li><a href='#migrate-application-server-database'>Migrate Application Server Database</a></li>
+    
+      
+      <li><a href='#migrate-network-operations-center-database'>Migrate Network Operations Center Database</a></li>
+    
+      
+      <li><a href='#migrate-device-claiming-server-database'>Migrate Device Claiming Server Database</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

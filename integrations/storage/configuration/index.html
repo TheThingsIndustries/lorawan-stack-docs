@@ -58,12 +58,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div id="topMenu" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
-        <a class="navbar-item" href="/docs/devices/">Devices</a>
-        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
-        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
-        <a class="navbar-item" href="/docs/reference/">Reference</a>
         <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -97,31 +97,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" class="">Adding Applications</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/adding-integrations/" class="">Adding Integrations</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Cloud Integrations</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/" class="">MQTT Server</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/pubsub/" class="">Pub/Sub</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/" class="">LoRa Cloud</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/node-red/" class="">Node-RED</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/ifttt/" class="">IFTTT</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/guides/" class="">Guides</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/data-formats/" class="">Data Formats</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">Webhooks</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
@@ -156,7 +138,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">Webhooks</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Integrate with popular IoT platforms</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/" class="">Other integrations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/application-packages/" class="">Application Packages</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/guides/" class="">Examples</a>
   </li>
 </ul>
 
@@ -218,7 +209,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <p>The Storage Integration requires configuration for the underlying storage provider used, along with a few options for tuning performance and memory usage.</p>
-<p>You can configure PostgreSQL, or any other PostgreSQL-compatible database (e.g. <a href="https://www.timescale.com/">TimescaleDB</a>). A base-line configuration can be found below. Add the following section into your existing <code>ttn-lw-stack.yml</code> configuration file. See <a href="https://www.thethingsindustries.com/docs/reference/configuration/application-server/#storage-integration-options">Storage Integration Options</a> for more details.</p>
+<p>You can configure PostgreSQL, or any other PostgreSQL-compatible database (e.g. <a href="https://www.timescale.com/">TimescaleDB</a>). A base-line configuration can be found below. Add the following section into your existing <code>ttn-lw-stack.yml</code> configuration file. See <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/application-server/#storage-integration-options">Storage Integration Options</a> for more details.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">108
@@ -277,7 +268,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <pre tabindex="0"><code>--timescaledb.chunk-time-interval
 --timescaledb.enable-retention-policy
 --timescaledb.retention-days
-</code></pre><p>If you are using Docker Compose to run The Things Stack (as shown in <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/docker/">Installing The Things Stack guide</a>), initialize the configured database with:</p>
+</code></pre><p>If you are using Docker Compose to run The Things Stack (as shown in <a href="https://www.thethingsindustries.com/docs/enterprise/docker/">Installing The Things Stack guide</a>), initialize the configured database with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack storage-db init
 </span></span></code></pre></div><p>If everything went well, upon restart, you should be able to see the following log message:</p>
 <pre tabindex="0"><code>INFO Initialized Storage Integration          namespace=applicationserver/io/packages/storage provider=postgres
@@ -329,12 +320,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <nav class="column is-one-third">
         <h3 class="title is-6">The Things Stack</h3>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
-        <p><a class="" href="/docs/devices/">Devices</a></p>
-        <p><a class="" href="/docs/gateways/">Gateways</a></p>
-        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
-        <p><a class="" href="/docs/reference/">Reference</a></p>
         <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

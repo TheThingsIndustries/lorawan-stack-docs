@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Node-RED | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Node-RED">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Node-RED">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Node-RED" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Integrations</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/integrations/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" class="">Adding Applications</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/data-formats/" class="">Data Formats</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">Webhooks</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Integrate with popular IoT platforms</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/" class="">Other integrations</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/mqtt/" class="">MQTT Server</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/pubsub/" class="">Pub/Sub</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/lora-cloud/" class="">LoRa Cloud</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/" class="is-active">Node-RED</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/setup/" class="">Setup</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/receive/" class="">Receive Events and Messages</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/send/" class="">Send Messages</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/ifttt/" class="">IFTTT</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/application-packages/" class="">Application Packages</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/guides/" class="">Examples</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+        <h1 class="title is-size-2">Node-RED</h1>
+        <div class="content">
+          <p><a href="https://nodered.org/">Node-RED</a> is a free, JavaScript-based development tool for visual programming, developed to ease the process of wiring together hardware devices, APIs and online services.</p>
+<p>The MQTT server that is exposed by The Things Stack can be connected to Node-RED.</p>
+<p>This integration allows <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/setup/">setting up a Node-RED flow</a> that <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/receive/">listens to events and uplink messages</a>, and it is also possible to <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/send/">schedule downlink messages</a>.</p>
+<figure class="plain"><img src="/docs/integrations/other-integrations/node-red/demo_setup.png"
+    alt="Demo setup">
+</figure>
+        </div>
+          <div class="columns is-multiline">
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/setup/">Setup</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            This section describes how to setup a Node-RED server and prepare to connect it to The Things Stack.
+Requirements Install Node-RED Note: Node-RED v1.0.6 is current at time of writing and is used in this guide. Setup Run Node-RED in your terminal and navigate to the server address of your Node-RED instance in your web browser. For example, a default address of a Node-RED instance deployed on localhost is 127.0.0.1:1880. You should see something like:
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/setup/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/receive/">Receive Events and Messages</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            This section follows the process of setting up a flow which subscribes and listens to the events and messages that are being published by the MQTT server.
+Configure MQTT In Node Place the mqtt in node on the dashboard. Double-click on the node to configure its properties.
+In the Server dropdown menu, select Add new mqtt-broker and click on the button besides to edit it.
+In the Connection tab, under Server, provide the address of the MQTT server (without port) from The Things Stack Console (the address shown on the image at the bottom of the Setup section).
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/receive/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/send/">Send Messages</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            This section explains the process of setting up a flow which publishes messages to a certain topic that the MQTT server is subscribed to.
+Doing this schedules downlink messages to be sent to your end device. This section follows the example for publishing downlink traffic in MQTT Server guide.
+Configure MQTT Out Node Place the mqtt out node on the dashboard.
+Configure the Server options with the same settings as in the Receive Events and Messages section.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/node-red/send/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/integrations/other-integrations/lora-cloud/modem-services/">← LoRa Cloud Modem Services</a>
+<a class="button is-pulled-right" href="/docs/integrations/other-integrations/node-red/setup/">Setup →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

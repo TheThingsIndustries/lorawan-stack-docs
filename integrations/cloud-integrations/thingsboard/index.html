@@ -58,12 +58,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div id="topMenu" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
-        <a class="navbar-item" href="/docs/devices/">Devices</a>
-        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
-        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
-        <a class="navbar-item" href="/docs/reference/">Reference</a>
         <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -97,10 +97,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" class="">Adding Applications</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/adding-integrations/" class="">Adding Integrations</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/data-formats/" class="">Data Formats</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Cloud Integrations</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">Webhooks</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Integrate with popular IoT platforms</a>
     
 
 
@@ -287,31 +296,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/" class="">MQTT Server</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/" class="">Other integrations</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/pubsub/" class="">Pub/Sub</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/application-packages/" class="">Application Packages</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/" class="">LoRa Cloud</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/node-red/" class="">Node-RED</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/ifttt/" class="">IFTTT</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/guides/" class="">Guides</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">Webhooks</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/guides/" class="">Examples</a>
   </li>
 </ul>
 
@@ -335,7 +326,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h1 class="title is-size-2">ThingsBoard</h1>
         <div class="content">
           <p><a href="https://thingsboard.io/">ThingsBoard</a> is an open-source IoT platform for data collection, processing, visualization, and device management. It supports cloud and on-premises deployments, and it combines scalability, fault-tolerance and performances to nullify the chances of getting your IoT data lost.</p>
-<p>The integration between The Things Stack and ThingsBoard is an example of an MQTT integration. ThingsBoard embeds an MQTT Broker, which is configured with the ThingsBoard <strong>Integrations</strong> functionality to subscribe or publish to The Things Stack <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a>.</p>
+<p>The integration between The Things Stack and ThingsBoard is an example of an MQTT integration. ThingsBoard embeds an MQTT Broker, which is configured with the ThingsBoard <strong>Integrations</strong> functionality to subscribe or publish to The Things Stack <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/mqtt/">MQTT Server</a>.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>Access to <a href="https://thingsboard.io/products/thingsboard-pe/">ThingsBoard Professional Edition</a> deployment. You can <a href="https://cloud.thingsboard.io/signup">sign up</a> for a trial account on ThingsBoard PE Cloud server.</li>
@@ -351,8 +342,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">temperature</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">temperature</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
 </span></span><span class="line"><span class="cl">  <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>The payload formatter shown above extracts the first byte of your payload and sets it as a temperature value, but <code>data</code> object&rsquo;s contents can vary depending on the telemetry type your device is sending.</p>
@@ -368,21 +359,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">deviceType</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">end_device_ids</span><span class="p">.</span><span class="nx">application_ids</span><span class="p">.</span><span class="nx">application_id</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">deviceName</span><span class="o">:</span> <span class="nx">deviceName</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">deviceType</span><span class="o">:</span> <span class="nx">deviceType</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">telemetry</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">temperature</span><span class="o">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">uplink_message</span><span class="p">.</span><span class="nx">decoded_payload</span><span class="p">.</span><span class="nx">temperature</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">deviceName</span><span class="o">:</span> <span class="nx">deviceName</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">deviceType</span><span class="o">:</span> <span class="nx">deviceType</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">telemetry</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">temperature</span><span class="o">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">uplink_message</span><span class="p">.</span><span class="nx">decoded_payload</span><span class="p">.</span><span class="nx">temperature</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeToString</span><span class="p">(</span><span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeToJson</span><span class="p">(</span><span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">decodeToString</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">decodeToString</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
@@ -394,20 +385,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Finish by selecting <strong>Add</strong>.</p>
 <p>Follow the same procedure to create a converter with <strong>Downlink</strong> as a <strong>Type</strong> and a following encoder function:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">downlinks</span><span class="o">:</span> <span class="p">[{</span>
-</span></span><span class="line"><span class="cl">            <span class="nx">f_port</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="nx">confirmed</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="nx">frm_payload</span><span class="o">:</span> <span class="nx">btoa</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">version</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">            <span class="nx">priority</span><span class="o">:</span> <span class="s2">&#34;NORMAL&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}]</span>
-</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">downlinks</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">f_port</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">confirmed</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">frm_payload</span><span class="o">:</span> <span class="nx">btoa</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">version</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">priority</span><span class="o">:</span> <span class="s2">&#34;NORMAL&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">contentType</span><span class="o">:</span> <span class="s2">&#34;JSON&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">metadata</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">devId</span><span class="o">:</span> <span class="s1">&#39;device_id&#39;</span>     <span class="c1">//enter your device&#39;s ID here
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">contentType</span><span class="o">:</span> <span class="s2">&#34;JSON&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">metadata</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">devId</span><span class="o">:</span> <span class="s2">&#34;device_id&#34;</span><span class="p">,</span> <span class="c1">//enter your device&#39;s ID here
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
 </span></span></code></pre></div><p>Replace the <code>device_id</code> in the downlink converter function with the <strong>End device ID</strong> value from The Things Stack.</p>
@@ -510,12 +503,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <nav class="column is-one-third">
         <h3 class="title is-6">The Things Stack</h3>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
-        <p><a class="" href="/docs/devices/">Devices</a></p>
-        <p><a class="" href="/docs/gateways/">Gateways</a></p>
-        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
-        <p><a class="" href="/docs/reference/">Reference</a></p>
         <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

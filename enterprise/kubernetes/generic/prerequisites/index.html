@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Prerequisites | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/prerequisites/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Prerequisites">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Prerequisites">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/prerequisites/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Prerequisites" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">The Things Stack Enterprise</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/enterprise/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/" class="">AWS</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/" class="">Kubernetes</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/" class="">Generic</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/prerequisites/" class="is-active">Prerequisites</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/preparation/" class="">Preparation</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/configuration/" class="">Configuration</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/install-charts/" class="">Install Charts</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/monitoring/" class="">Monitoring</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/troubleshooting/" class="">Troubleshooting</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/database-migrations/" class="">Database Migrations</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/azure/" class="">Azure</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/" class="">Docker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/join-server/" class="">The Things Join Server</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/" class="">Manage The Things Stack</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+        <h1 class="title is-size-2">Prerequisites</h1>
+        <div class="content">
+          <p>The following are required for The Things Stack on Kubernetes.</p>
+<h2 id="installation-tools">Installation Tools</h2>
+<ol>
+<li><a href="https://kubernetes.io/docs/reference/kubectl/"><code>kubectl</code></a></li>
+<li><a href="https://helm.sh/docs/intro/">Helm version 3</a>. Check the version of Helm installed using <code>helm version</code>. Helm v3.8 or above is required.</li>
+</ol>
+<h2 id="license">License</h2>
+<p>The Things Stack requires a license key to run. Please <a href="mailto:sales@thethingsindustries.com">contact our sales team</a> for your license key.</p>
+<h2 id="optional-packet-broker-access">(Optional) Packet Broker Access</h2>
+<p>The Things Stack contains the Packet Broker Agent component that can communicate with <a href="https://packetbroker.net/">Packet Broker</a>.</p>
+<p>Packet Broker is disabled by default in the Helm charts. When enabled, it can operate either only a Forwarder or as both a Forwarder and a Home Network. Check the <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/">The Things Stack Documentation</a> for more details.</p>
+<ul>
+<li>If the cluster acts simply as a forwarder that forwards traffic to Packet Broker, then all that is needed are access credentials.</li>
+<li>If the cluster also needs to work as a Packer Broker Home Network, in addition to the access credentials, the cluster either needs a NetID from the LoRa Alliance or The Things Industries can lease a DevAddr Block.</li>
+</ul>
+<p>Please <a href="mailto:sales@thethingsindustries.com">contact our sales team</a> for access credentials and a Device Address Block (if necessary).</p>
+<h2 id="infrastructure">Infrastructure</h2>
+<p>The Things Stack on Kubernetes requires the following infrastructural services to run.</p>
+<ol>
+<li>A Kubernetes cluster.</li>
+<li>PostgreSQL compatible database.</li>
+<li>Redis compatible database.</li>
+<li>Blob Storage</li>
+<li>Traefik Proxy to handle the ingress routes.</li>
+<li>TLS Certificates.</li>
+<li>(Optional) TimescaleDB</li>
+<li>(Optional) Metrics Server</li>
+</ol>
+<p>These components are highly specific to the specific infrastructure chosen by the operator and hence are out of scope of this documentation.</p>
+<p>However, the following is a guide of the general principles involved in setting up the infrastructure.</p>
+<h4 id="1-kubernetes-cluster">1. Kubernetes Cluster</h4>
+<p>The Things Stack requires a minimum kubernetes version of v1.21. However, we recommend using the highest available version.</p>
+<h4 id="2-postgres-compatible-database">2. Postgres Compatible Database</h4>
+<p>The database used by The Things Stack Identity Server is a PostgreSQL database. We recommend using a managed database for High Availability with backups enabled.</p>
+<p>For testing purposes, <a href="https://artifacthub.io/packages/helm/bitnami/postgresql">Bitnami&rsquo;s Helm Charts for PostgreSQL</a> can be installed in the Kubernetes Cluster.</p>
+<h4 id="3-redis-compatible-database">3. Redis Compatible Database</h4>
+<p>Multiple components of The Things Stack use Redis to store data and for task-based operations. We recommend using a managed database for High Availability with backups enabled.</p>
+<p>For testing purposes, <a href="https://artifacthub.io/packages/helm/bitnami/redis">Bitnami&rsquo;s Helm Charts for Redis</a> can be installed in the Kubernetes Cluster.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If using the Bitnami Helm Charts for Redis, make sure to either setup TLS or disable password authentication. The latter is recommended since this database is used for testing. Check Bitnami&rsquo;s documentation on how to disable authentication. It usually involves setting <code>auth.enabled</code> to <code>false</code> for the Redis Helm charts and not using a Redis password in The Things Stack.
+</div>
+
+<h4 id="4-blob-storage">4. Blob Storage</h4>
+<p>The Things Stack currently supports AWS S3, S3 compatible Blob, Azure Blob storage, Google Cloud Platform (GCP) Buckets or a local PVC.</p>
+<h5 id="using-buckets">Using Buckets</h5>
+<p>The Things Stack requires the following buckets.</p>
+<ol>
+<li>Profile pictures bucket</li>
+</ol>
+<ul>
+<li>The contents of this bucket must be <em>public</em>.</li>
+</ul>
+<ol start="2">
+<li>End device pictures bucket</li>
+</ol>
+<ul>
+<li>The contents of this bucket must be <em>public</em>.</li>
+</ul>
+<ol start="3">
+<li>End Device Claiming Server configuration</li>
+</ol>
+<ul>
+<li>Once this bucket is setup, place an empty <code>config.yml</code> file at the root of the bucket.</li>
+<li>The contents of this bucket must be <em>private</em> since they contain secrets.</li>
+<li>Enabling encryption and versioning is highly recommended.</li>
+</ul>
+<ol start="4">
+<li>Interoperability configuration</li>
+</ol>
+<ul>
+<li>Once this bucket is setup, place an empty <code>config.yml</code> file at the root of the bucket.</li>
+<li>The contents of this bucket must be <em>private</em> since they contain secrets.</li>
+<li>Enabling encryption and versioning is highly recommended.</li>
+</ul>
+<h5 id="using-local-blob-storage">Using Local Blob Storage</h5>
+<p>In the case of using a local blob, the following steps are necessary.</p>
+<ol>
+<li>Set the correct owner of the blob and its contents. Accessing the volume via the command line is specific to different storage providers. Check the documentation of the k8s storage provider.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo chown -R 886:886 &lt;blob&gt;
+</span></span></code></pre></div><ol start="2">
+<li>Create the <code>edcs</code>, <code>interop</code>, <code>end_device_pictures</code> and <code>profile_pictures</code> folders at the root of the blob folder.</li>
+<li>Create an empty <code>config.yml</code> in the <code>edcs</code> and <code>interop</code> folders.</li>
+</ol>
+<h5 id="disabling-blob-storage">Disabling Blob Storage</h5>
+<p>The Things Stack Helm Charts by default expects a blob storage configured but it is possible to use The Things Stack without it. You can disable the usage of blob by setting <code>global.interop.configSource</code> and <code>global.blob.provider</code> values to an empty string <code>&quot;&quot;</code>.</p>
+<h4 id="5-traefik-proxy">5. Traefik Proxy</h4>
+<p>The Things Stack Helm Charts currently only supports the <a href="https://traefik.io/traefik/">Traefik</a> proxy out of the box to load balance incoming traffic.</p>
+<p>To use a custom proxy/load balancer, set <code>global.ingress.traefik.enabled</code> to <code>false</code>.</p>
+<p>When Traefik is disabled, the ports and routes necessary for The Things Stack should be mapped manually by the operator.
+Check the <code>ingress-routes.yaml</code> files for each component and adapt it to your proxy. Setting up and maintaining a custom proxy is out of the scope of this document.</p>
+<p>If Traefik is not used, skip ahead to <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/prerequisites/#6-tls-certificates">setup TLS certificates</a>.</p>
+<p>The simplest way to install Traefik in the kubernetes cluster is use the <a href="https://artifacthub.io/packages/helm/traefik/traefik">official Helm charts</a>.</p>
+<p>The Things Stack ingress routes need to be mapped to the Traefik entry points. This can be done during installation.</p>
+<p>Save the following as a YAML file (example <code>traefik.values.yaml</code>) and use that as the values file for Helm.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">deployment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">web: # NOTE</span><span class="p">:</span><span class="w"> </span><span class="l">This name is predefined in traefik.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">1885</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">80</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">redirectTo</span><span class="p">:</span><span class="w"> </span><span class="l">websecure</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">websecure: # NOTE</span><span class="p">:</span><span class="w"> </span><span class="l">This name is predefined in traefik.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8885</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">443</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">grpc</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">1884</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">1884</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">grpcsecure</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8884</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">8884</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Gateway Connectivity</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">gtwmqttv2</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">1881</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">1881</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">gtwmqttv2secure</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8881</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">8881</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">gtwmqttv3</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">1882</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">1882</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">gtwmqttv3secure</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8882</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">8882</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">lbs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">1887</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">1887</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">lbssecure</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8887</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">8887</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Application MQTT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">appmqtt</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">1883</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">1883</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">appmqttsecure</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8883</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">8883</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">udp</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">UDP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">1700</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">1700</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Interoperability. This part is optional. Only enable it if interoperability is needed.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">interop</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Note: Change this to 1886 if using `server-only` mode.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8886</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exposedPort</span><span class="p">:</span><span class="w"> </span><span class="m">8886</span><span class="w">
+</span></span></span></code></pre></div><h5 id="custom-resource-definitions-crds">Custom Resource Definitions (CRDs)</h5>
+<p>Traefik requires the installation of multiple CRDs (Custom Resource Definitions) to run.</p>
+<p>This can be done using <code>kubectl</code>. Choose the appropriate CRD file for the version of Traefik that you are using.</p>
+<p>If you are using the official <a href="https://github.com/traefik/traefik-helm-chart">Traefik Helm Chart</a>, the CRDs are installed automatically for you.</p>
+<h4 id="6-tls-certificates">6. TLS Certificates</h4>
+<p>The Things Stack expects a <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS Secret</a> which contains the server leaf certificates.</p>
+<p>The Things Stack (Enterprise) uses a base domain ex: <code>domain</code> and one of the following</p>
+<ul>
+<li><code>*.domain</code> (wildcard) with multi-tenancy</li>
+<li><code>&lt;default tenant&gt;.domain</code> (single tenant) without multi-tenancy.</li>
+</ul>
+<p>Consequently, the TLS certificates used should cover <code>domain</code> and one of the following.</p>
+<ul>
+<li><code>*.domain</code></li>
+<li><code>&lt;default tenant&gt;.domain</code></li>
+</ul>
+<p>The Things Stack expects the name of this secret to be set in the value <code>global.ingress.tls.secretName</code>.</p>
+<p>The process of provisioning and maintenance of the certificate secret is left to the operator.</p>
+<h4 id="7-optional-timescaledb">7. (Optional) TimescaleDB</h4>
+<p>Both The Things Stack <a href="https://www.thethingsindustries.com/docs/integrations/storage/">Storage Integration</a> and The Things Stack <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/network-operations-center/#accessing-network-operations-center">Network Operations Center</a> require a TimescaleDB instance.</p>
+<p>There can either be two separate TimeScaleDB instances or a single instance but different Databases.</p>
+<p>For testing purposes, <a href="https://docs.timescale.com/install/latest/installation-kubernetes/">TimeScaleDB Helm Charts</a> can be installed in the Kubernetes Cluster.</p>
+<h4 id="8-optional-metrics-server">8. (Optional) Metrics Server</h4>
+<p>For Autoscaling, the Kubernetes cluster needs a <a href="https://github.com/kubernetes-sigs/metrics-server">Metrics Server</a>. This is dependent on the cluster and the cloud infrastructure and is hence left to the operator.</p>
+        </div>
+          <div class="columns is-multiline">
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/enterprise/kubernetes/generic/">← Generic</a>
+<a class="button is-pulled-right" href="/docs/enterprise/kubernetes/generic/preparation/">Preparation →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#installation-tools'>Installation Tools</a></li>
+    
+      
+      <li><a href='#license'>License</a></li>
+    
+      
+      <li><a href='#optional-packet-broker-access'>(Optional) Packet Broker Access</a></li>
+    
+      
+      <li><a href='#infrastructure'>Infrastructure</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

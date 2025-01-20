@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>ABP vs OTAA | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/hardware/devices/concepts/abp-vs-otaa/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="ABP vs OTAA">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="ABP vs OTAA">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/hardware/devices/concepts/abp-vs-otaa/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="ABP vs OTAA" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Hardware</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/hardware/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/" class="">Devices</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/" class="">Adding Devices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/configuring-devices/" class="">Configuring Devices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/concepts/" class="">Concepts</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/concepts/best-practices/" class="">Best Practices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/concepts/abp-vs-otaa/" class="is-active">ABP vs OTAA</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/concepts/confirmed-downlinks-behavior/" class="">Confirmed Downlinks Behavior</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/concepts/confirmed-uplinks-behavior/" class="">Confirmed Uplinks Behavior</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/concepts/device-claiming/" class="">Device Claiming</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/concepts/lorawan-device-repository/" class="">LoRaWAN device repository</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/concepts/relay/" class="">Relay</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/models/" class="">Models</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/troubleshooting/" class="">Troubleshooting Devices</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/" class="">Gateways</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/works-with/" class="">Works with The Things Stack</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+        <h1 class="title is-size-2">ABP vs OTAA</h1>
+        <div class="content">
+          <p>This section can help you understand the differences between ABP and OTAA activation modes for LoRaWAN® end devices, and comprehend why using OTAA is recommended.</p>
+<p>Learn more about device activation in general and details about OTAA and ABP flow in <a href="https://www.thethingsnetwork.org/docs/lorawan/end-device-activation/">The Things Network LoRaWAN documentation</a>.</p>
+<p>A <code>DevEUI</code> is a 64-bit unique ID assigned to an end device by the manufacturer. This value is linked to the hardware and it cannot be altered.</p>
+<p>Unlike <code>DevEUI</code>, which identifies an end device globally, a 32-bit <code>DevAddr</code> identifies the end device within the current network and all communication after joining the network is done with it. A <code>DevAddr</code> value consists of <code>NwkAddr</code> (end device address within network) prefixed by a <code>NwkID</code> (network identifier).</p>
+<p>Please keep in mind that the <code>DevAddr</code> value is not unique - multiple devices can have the same <code>DevAddr</code>.</p>
+<p>A <code>DevAddr</code> and session keys are assigned to an end device during a procedure called <strong>activation</strong>. LoRaWAN supports two modes of activating an end device: <strong>ABP (Activation By Personalization)</strong> and <strong>OTAA (Over-The-Air Activation)</strong>.</p>
+<h2 id="abp">ABP</h2>
+<p>In ABP activation, a <strong>fixed</strong> <code>DevAddr</code> and <strong>session keys</strong> for a pre-selected network are hardcoded into the end device, and they remain the same throughout the lifetime of an ABP end device. With this mode, an end device skips the join procedure which seems to be simpler, but there are quite a few limitations of using ABP, which are explained below.</p>
+<h2 id="otaa">OTAA</h2>
+<p>OTAA end devices are provisioned with <strong>root keys</strong>. In OTAA activation, an end device performs a join procedure with a LoRaWAN network, during which a <strong>dynamic</strong> <code>DevAddr</code> is assigned to an end device, and root keys are utilized to derive <strong>session keys</strong>. Hence, <code>DevAddr</code> and session keys change as each new session is established.</p>
+<h2 id="why-is-otaa-better-than-abp">Why is OTAA better than ABP?</h2>
+<p>ABP&rsquo;s drawbacks are arising as consequences of its main characteristics.</p>
+<ol>
+<li><strong>ABP end devices use a fixed <code>DevAddr</code>.</strong></li>
+</ol>
+<p>Taking the structure of <code>DevAddr</code> into the account and the fact that, with ABP, <code>NwkID</code> is fixed, we come to the conclusion that this device can work correctly only in its predefined network. Even if a network or a cluster allows registering end devices with different <code>DevAddr</code> values than the ones that were assigned to that network/cluster, the <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/#packet-broker">Packet Broker</a> will not route the traffic from those end devices to the right network/cluster.</p>
+<p>Also, even if the network/cluster is assigned with additional address blocks, the Network Server will not be able to perform optimization of <code>DevAddr</code> allocation, hence the device matching procedure for ABP end devices will not be improved.</p>
+<p>OTAA end devices are assigned a new <code>DevAddr</code> at establishing each new session. This allows them to move to different networks/clusters.</p>
+<ol start="2">
+<li><strong>ABP end devices use a fixed security session.</strong></li>
+</ol>
+<p>Frame counters associated with ABP devices should not be reset during their lifetime, otherwise the messages from those end devices may end up being dropped. When an ABP end device runs out of frame counters, it is the end of its lifetime.</p>
+<p>Session keys are hardcoded into an ABP device, meaning that even if they leak, they cannot be rotated, which is a serious security threat.</p>
+<p>Unlike ABP, OTAA end devices re-negotiate frame counters and session keys at establishing each new session. Hence, the lifetime of an OTAA device is not conditioned by the width of the frame counter.</p>
+<p>Read more about LoRaWAN security in <a href="https://www.thethingsnetwork.org/docs/lorawan/security/">The Things Network LoRaWAN documentation</a>.</p>
+<p>For enhancing security, you can use <a href="https://www.thethingsindustries.com/docs/enterprise/join-server/">The Things Join Server</a> to handle the join flow, Network Server and Application Server authentication, store root keys and generate session keys. Another option is using Hardware Secured Elements (see <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/atecc608a/">Microchip ATECC608 secure elements</a>) which prevent the exposure of keys to software, firmware, manufacturing sites, and other third parties.</p>
+<ol start="3">
+<li><strong>ABP end devices use fixed network parameters.</strong></li>
+</ol>
+<p>When registering an ABP device on The Things Stack, you will need to provide the <strong>RX1 Delay</strong>, <strong>RX1 Data Rate Offset</strong>, <strong>RX2 Data Rate Index</strong>, <strong>RX2 Frequency</strong> and a list of <strong>Factory Preset Frequencies</strong>. If these values are not correctly configured, uplinks and/or downlinks might not work.</p>
+<p>OTAA end devices re-negotiate network parameters at establishing each new session, meaning you do not have to worry about them being misconfigured.</p>
+<h2 id="otaa-requirements">OTAA Requirements</h2>
+<p>In general, there are no drawbacks in using OTAA over using ABP, but there are certain requirements that need to be met when using OTAA.</p>
+<p>The only thing to keep in mind is that an OTAA join requires the end device to be within the coverage of the network it is registered on. The reason for this is that the OTAA join procedure requires the end device to be able to receive the Join Accept downlink message from the Network Server.</p>
+<p>In case the end device does not have the network coverage when it is switched on, the Join procedure will fail. Depending on the firmware and LoRaWAN stack used in the device, a failed OTAA join may result in the device not going into sleep mode, or using a lot of energy on endless attempts to rejoin the network.</p>
+<p>If the network coverage for the end device can not be guaranteed, it does not mean that OTAA can not be used. If the firmware in the device is smart enough to handle failed OTAA joins properly, the device can retry the join at a later stage.</p>
+<p>A naive approach that has been used in the past to avoid this was to use ABP. ABP allows a device to start transmitting messages immediately when it is switched on, regardless of whether it has the network coverage or not.</p>
+<p>A better approach is to perform an OTAA join in a factory or workshop where the network coverage and working downlinks can be guaranteed. There are no drawbacks to this approach as long as the device follows the LoRaWAN <a href="https://www.thethingsindustries.com/docs/hardware/devices/concepts/best-practices/">best practices</a>.</p>
+<p>One more thing to take into account is persisting network parameters between device restarts. For example, an ABP device uses a non-volatile storage to persist frame counters between restarts. A better approach would be to switch to using OTAA and store the OTAA session rather than frame counters.</p>
+        </div>
+          <div class="columns is-multiline">
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/hardware/devices/concepts/best-practices/">← Best Practices</a>
+<a class="button is-pulled-right" href="/docs/hardware/devices/concepts/confirmed-downlinks-behavior/">Confirmed Downlinks Behavior →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#abp'>ABP</a></li>
+    
+      
+      <li><a href='#otaa'>OTAA</a></li>
+    
+      
+      <li><a href='#why-is-otaa-better-than-abp'>Why is OTAA better than ABP?</a></li>
+    
+      
+      <li><a href='#otaa-requirements'>OTAA Requirements</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

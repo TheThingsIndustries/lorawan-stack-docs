@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Upgrading The Things Stack | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/enterprise/docker/upgrading/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Upgrading The Things Stack">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Upgrading The Things Stack">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/enterprise/docker/upgrading/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Upgrading The Things Stack" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">The Things Stack Enterprise</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/enterprise/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/" class="">AWS</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/" class="">Kubernetes</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/" class="">Docker</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/configuration/" class="">Configuration</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/certificates/" class="">Certificates</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/running-the-stack/" class="">Running The Things Stack</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/proxy/" class="">Proxy</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/troubleshooting/" class="">Troubleshooting Installation</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/upgrading/" class="is-active">Upgrading The Things Stack</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/balena/" class="">Balena</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/join-server/" class="">The Things Join Server</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/" class="">Manage The Things Stack</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+          <div class="content-tags">
+            
+              
+              
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_open_source.svg"></img>
+
+</a>
+
+
+            
+            
+            
+            
+          </div>
+        
+        <h1 class="title is-size-2">Upgrading The Things Stack</h1>
+        <div class="content">
+          <p>This section contains instructions to upgrade a The Things Stack Enterprise or Open Source deployment.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  To avoid downtime in production deployments, we strongly suggest The Things Stack users to test the upgrading process in their staging environments first. After confirming that the upgrade process was successful in staging environment, you may proceed with upgrading The Things Stack in your production deployment.
+</div>
+
+<h2 id="pulling-new-images">Pulling new images</h2>
+<p>Replace the tag in your <code>docker-compose.yml</code> file with the newer version of The Things Stack.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="enterprise">
+      <a>
+        <span>Enterprise</span>
+      </a>
+    </li>
+    
+    <li data-tab="open-source">
+      <a>
+        <span>Open Source</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="enterprise">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># file: docker-compose.yml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># ...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">stack</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethingsindustries/lorawan-stack:&lt;new-version-tag&gt;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># ...</span><span class="w">
+</span></span></span></code></pre></div>
+</section>
+<section data-content="open-source">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># file: docker-compose.yml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># ...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">stack</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethingsnetwork/lorawan-stack:&lt;new-version-tag&gt;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># ...</span><span class="w">
+</span></span></span></code></pre></div>
+</section>
+
+</div>
+
+<p>Pull the docker images of the new version.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose pull stack
+</span></span><span class="line"><span class="cl">Pulling stack     ... <span class="k">done</span>
+</span></span></code></pre></div><p>The new version will be pulled locally but not run yet.</p>
+<h2 id="backup">Backup</h2>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  We do not recommend manually backing up and restoring databases for production deployments. Consider using a managed database service with support for snapshots.
+</div>
+
+<p>Stop <code>The Things Stack</code> container.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose stop stack
+</span></span><span class="line"><span class="cl">Stopping &lt;directory&gt;_stack_1 ... <span class="k">done</span>
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  In this guide, <code>&lt;directory&gt;</code> represents the directory containing The Things Stack files, i.e. the directory where you cloned The Things Stack repository.
+</div>
+
+<h3 id="redis">Redis</h3>
+<p>Navigate to the Redis data folder, which can be found in the <code>docker-compose.yml</code> for the <code>redis</code> service (ex: <code>${DEV_DATA_DIR:-.env/data}/redis</code>)</p>
+<p>Stop the <code>redis</code> container.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose stop redis
+</span></span><span class="line"><span class="cl">Stopping &lt;directory&gt;_redis_1 ... <span class="k">done</span>
+</span></span></code></pre></div><p>Copy the <code>${DEV_DATA_DIR:-.env/data}/redis/appendonly.aof</code> file to a location of your choice. This file is now a snapshot of the database at the time that it is copied.</p>
+<p>To restore <code>redis</code> from this file, simply place the file back in the data folder (replacing the <code>appendonly.aof</code> file) and start <code>redis</code>. The contents of the backup will be read and restored.</p>
+<p>Start the <code>redis</code> container.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up -d redis
+</span></span><span class="line"><span class="cl">Starting &lt;directory&gt;_redis_1 ... <span class="k">done</span>
+</span></span></code></pre></div><h3 id="postgresql">PostgreSQL</h3>
+<p>Keep the <code>postgres</code> container running and make a PostgreSQL backup file using the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;directory&gt;_postgres_1 /usr/bin/pg_dump --format<span class="o">=</span>c ttn_lorawan &gt; &lt;location-of-your-choice&gt;/postgres-backup.sql
+</span></span></code></pre></div><p>A <code>postgres-backup.sql</code> file containing a snapshot of the PostgreSQL database at the time that it was backed up will be created in the <code>&lt;location-of-your-choice&gt;</code> directory.</p>
+<p>In order to make the backup file available inside the container, just copy the <code>postgres-backup.sql</code> file to the <code>${DEV_DATA_DIR:-.env/data}/postgres</code> directory on your machine. You can also use the following command to copy the file into the <code>/var/lib/postgresql/data</code> directory inside the container:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker cp postgres-backup.sql &lt;directory&gt;_postgres_1:/var/lib/postgresql/data
+</span></span></code></pre></div><p>In order to restore the PostgreSQL database contents, you first need to delete (or rename) the old <code>ttn_lorawan</code> database to prevent conflicts. In order to perform deletion or renaming, you have to be disconnected from the <code>ttn_lorawan</code> database.</p>
+<p>Create a temporary database <code>temp_db</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;directory&gt;_postgres_1 psql -d ttn_lorawan -c <span class="s2">&#34;CREATE DATABASE temp_db;&#34;</span>
+</span></span></code></pre></div><p>Run the following command to disconnect from <code>ttn_lorawan</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;directory&gt;_postgres_1 psql -d ttn_lorawan -c <span class="s2">&#34;SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = &#39;ttn_lorawan&#39; AND pid &lt;&gt; pg_backend_pid();&#34;</span>
+</span></span></code></pre></div><p>Now connect to <code>temp_db</code> and delete the old <code>ttn_lorawan</code> database with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;directory&gt;_postgres_1 psql -d temp_db -c <span class="s2">&#34;DROP DATABASE ttn_lorawan;&#34;</span>
+</span></span></code></pre></div><p>Recreate the <code>ttn_lorawan</code> database:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;directory&gt;_postgres_1 psql -d temp_db -c <span class="s2">&#34;CREATE DATABASE ttn_lorawan;&#34;</span>
+</span></span></code></pre></div><p>At this point, the <code>ttn_lorawan</code> database will be empty. Finally, you can restore the database contents from the <code>postgres-backup.sql</code> snapshot file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> &lt;directory&gt;_postgres_1 pg_restore -d ttn_lorawan /var/lib/postgresql/data/postgres-backup.sql
+</span></span></code></pre></div><p>For additional info, please refer to the <a href="https://www.postgresql.org/docs/14/backup.html">official PostgreSQL documentation</a> for the specific version that you are using.</p>
+<h3 id="optional">Optional</h3>
+<p>Updates to The Things Stack do not modify static (user-uploaded) assets. But those can be backed up as well.</p>
+<p>User profile pictures and end device pictures are stored in the <code>assets</code> folder by default.</p>
+<p>Check the values set for <code>is.profile-picture.bucket-url</code> and <code>is.end-device-picture.bucket-url</code> configuration options to find these locations (if you are using a non-default location).</p>
+<p>You can now copy the contents of those folders to a location of your choice.</p>
+<h2 id="migrations">Migrations</h2>
+<p>New minor versions of The Things Stack include new features/fixes which may require an update to the databases. This is done through migrations.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="enterprise">
+      <a>
+        <span>Enterprise</span>
+      </a>
+    </li>
+    
+    <li data-tab="open-source">
+      <a>
+        <span>Open Source</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="enterprise">
+  <p>Migrate the Identity Server Database.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack is-db migrate
+</span></span></code></pre></div><p>Migrate the Network Server Database.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack ns-db migrate
+</span></span></code></pre></div><p>Migrate the Device Claiming Server Database.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack dcs-db migrate
+</span></span></code></pre></div><p>Migrate the Application Server Database.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack as-db migrate
+</span></span></code></pre></div><p>Migrate the Network Operations Center Database.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack noc-db migrate
+</span></span></code></pre></div>
+</section>
+<section data-content="open-source">
+  <p>Migrate the Identity Server Database.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack is-db migrate
+</span></span></code></pre></div><p>Migrate the Network Server Database.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack ns-db migrate
+</span></span></code></pre></div>
+</section>
+
+</div>
+
+<h2 id="running-the-new-version">Running the new version</h2>
+<p>Once the above steps are successfully completed, start The Things Stack.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up -d stack
+</span></span></code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
+<p>For common issues that might show up during the upgrade process, see the <a href="https://www.thethingsindustries.com/docs/enterprise/docker/troubleshooting/">Troubleshooting Installation section</a>.</p>
+        </div>
+          <div class="columns is-multiline">
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/enterprise/docker/troubleshooting/">← Troubleshooting Installation</a>
+<a class="button is-pulled-right" href="/docs/enterprise/docker/balena/">Balena →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#pulling-new-images'>Pulling new images</a></li>
+    
+      
+      <li><a href='#backup'>Backup</a></li>
+    
+      
+      <li><a href='#migrations'>Migrations</a></li>
+    
+      
+      <li><a href='#running-the-new-version'>Running the new version</a></li>
+    
+      
+      <li><a href='#troubleshooting'>Troubleshooting</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Configuring the CLI | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/concepts/features/cli/configuring-cli/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Configuring the CLI">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Configuring the CLI">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/concepts/features/cli/configuring-cli/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Configuring the CLI" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Concepts</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/concepts/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/" class="">Architecture</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/" class="">Features</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/console/" class="">Console</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/cli/" class="">Command-line Interface</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/cli/installing-cli/" class="">Installing the CLI</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/cli/configuring-cli/" class="is-active">Configuring the CLI</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/cli/login/" class="">Login with the CLI</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/cli/troubleshooting/" class="">Troubleshooting CLI</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/multitenancy/" class="">Multi-tenancy</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/events/" class="">Gaining insights using Events</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/lorawan/" class="">LoRaWAN</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/sso/" class="">Single Sign-On</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/alerting/" class="">Alerting</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/network-operations-center/" class="">Network Operations Center</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/networking/" class="">Networking</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/" class="">Migrate to The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/" class="">Packet Broker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/server-addresses/" class="">Server Addresses</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/advanced/" class="">Advanced Topics</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/troubleshooting/" class="">Troubleshooting</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/ttn/" class="">The Things Stack Sandbox</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+        <h1 class="title is-size-2">Configuring the CLI</h1>
+        <div class="content">
+          <p>The Things Stack CLI needs to be configured to connect to your The Things Stack deployment.</p>
+<p>To configure the CLI, you first have to create a configuration file, then make that file available to the CLI. The CLI configuration file can be generated or manually created.</p>
+<h2 id="step-1---create-a-configuration-file">Step 1 - Create a configuration file</h2>
+<h3 id="automatically-generate-configuration-file">Automatically generate configuration file</h3>
+<p>To generate the CLI configuration file, use the following command in your terminal:</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="cloud-sandbox-and-open-source">
+      <a>
+        <span>Cloud, Sandbox, and Open Source</span>
+      </a>
+    </li>
+    
+    <li data-tab="enterprise">
+      <a>
+        <span>Enterprise</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="cloud-sandbox-and-open-source">
+  <p>If using The Things Stack Sandbox, use the following command as per your regional <code>cluster</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli use &lt;eu1/au1/nam1&gt;.cloud.thethings.network
+</span></span></code></pre></div><p>or on Windows, this would be:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli.exe use &lt;eu1/au1/nam1&gt;.cloud.thethings.network
+</span></span></code></pre></div><p>If you are using The Things Stack Cloud use the following command with your <code>tenant id</code> and regional <code>cluster</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli use &lt;tenant_id&gt;.&lt;eu1/eu2/au1/nam1/&gt;.cloud.thethings.industries
+</span></span></code></pre></div><p>If you are hosting your own deployment, use the following, replacing <code>thethings.example.com</code> with your <a href="https://www.thethingsindustries.com/docs/concepts/server-addresses/">server address</a>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli use thethings.example.com
+</span></span></code></pre></div>
+</section>
+<section data-content="enterprise">
+  <p>If you are hosting your own deployment, use the following, replacing <code>thethings.example.com</code> with your <a href="https://www.thethingsindustries.com/docs/concepts/server-addresses/">server address</a>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tti-lw-cli use thethings.example.com
+</span></span></code></pre></div><p>or on Windows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tti-lw-cli.exe use thethings.example.com
+</span></span></code></pre></div>
+</section>
+
+</div>
+
+<p>This will generate the CLI configuration and save it to a file named <code>.ttn-lw-cli.yml</code>.</p>
+<p>By default, the file is created in the current directory. Add the <code>--user</code> flag to save it under the user&rsquo;s <code>.config</code> directory. The last <code>INFO</code> line in response to running the command will contain the location of the generated file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">INFO	Config file <span class="k">for</span> eu1.cloud.thethings.network written in /home/user/.config/.ttn-lw-cli.yml
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The default configuration file for both <code>ttn-lw-cli</code> and <code>tti-lw-cli</code> CLI versions is named <code>.ttn-lw-cli.yml</code>.
+</div>
+
+<p>Once you have the configuration file, proceed to <a href="#step-2---configure-the-cli">Step 2 - Configure CLI</a> to pass the configuration file to the CLI.</p>
+<h4 id="additional-flags-optional">Additional Flags (Optional)</h4>
+<p>If the deployment is using a CA that is not already trusted by your system, use the <code>--fetch-ca</code> flag to also connect to the server and retrieve the CA required for establishing secure communication, i.e:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tti-lw-cli use thethings.example.com --fetch-ca
+</span></span></code></pre></div><p>If you are using a <a href="https://www.thethingsindustries.com/docs/enterprise/docker/certificates/#custom-certificate-authority">custom certificate authority</a>, you will have to specify the path to the CA file with <code>--ca=&quot;/path/to/ca.pem&quot;</code> flag when running the CLI.</p>
+<p>If the configuration file already exists and you run the command to generate it again, it will not be overwritten by default and an error will be printed instead. Use <code>--overwrite</code> to overwrite the existing configuration file.</p>
+<p>You can also use the <code>--grpc-port</code> and <code>--oauth-server-address</code> flags to override the default values for the gRPC port and the OAuth server address. Note that these are not needed for standard deployments. An example of having to specify the <code>--oauth-server-address</code> is if you are using an <code>https</code> port other than <code>443</code>, for example if you are <a href="https://www.thethingsindustries.com/docs/enterprise/docker/configuration/#running-the-things-stack-as-localhost">running The Things Stack on localhost</a>. In case of running The Things Stack on localhost, you need to append <code>--oauth-server-address=&quot;https://localhost:8885/oauth</code> when running the CLI.</p>
+<h3 id="manually-create-configuration-file">Manually create configuration file</h3>
+<p>It is also possible to manually create a configuration file. For most configurations, this is not necessary, and it is preferable to <a href="#automatically-generate-configuration-file">automatically generate the configuration</a>. However, if you have separate component addresses, you can specify them in a manual configuration.</p>
+<p>To manually configure, first create a <code>.ttn-lw-cli.yml</code> file.</p>
+<p>Copy and paste the following contents in the <code>.ttn-lw-cli.yml</code> file, replacing <code>thethings.example.com</code> with the <a href="https://www.thethingsindustries.com/docs/concepts/server-addresses/">server addresses</a> of each component:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">oauth-server-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/oauth&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">identity-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com:8884&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">gateway-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com:8884&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">network-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com:8884&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">application-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com:8884&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">join-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com:8884&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">device-claiming-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com:8884&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">device-template-converter-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com:8884&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">qr-code-generator-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com:8884&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>If you are using an <code>https</code> port other than <code>443</code> (for example if running The Things Stack on localhost), you need to specify that port by adding the following line in <code>.ttn-lw-cli.yml</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">oauth-server-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com:8885/oauth&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>If your deployment uses a custom certificate authority, you will need to specify the path to the CA file by adding the following line in the configuration file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">ca</span><span class="p">:</span><span class="w"> </span><span class="l">/path/to/ca.pem</span><span class="w">
+</span></span></span></code></pre></div><p>For advanced options, see the <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/cli/">Configuration Reference</a>.</p>
+<h2 id="step-2---configure-the-cli">Step 2 - Configure the CLI</h2>
+<p>Once you have the <code>.ttn-lw-cli.yml</code> configuration file, you have multiple options to make this file available to the CLI in order to configure it:</p>
+<ol>
+<li>Save the configuration file as <code>.ttn-lw-cli.yml</code> in <code>$XDG_CONFIG_HOME</code>, your home directory, or the working directory. If you <a href="#automatically-generate-configuration-file">automatically generate configuration using <code>ttn-lw-cli use</code></a>, the configuration will be saved in the working directory.</li>
+<li>Set the environmental variable by running:</li>
+</ol>
+<p><strong>macOS and Linux:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTN_LW_CONFIG</span><span class="o">=</span>/path/to/.ttn-lw-cli.yml
+</span></span></code></pre></div><p><strong>Windows:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> <span class="nv">TTN_LW_CONFIG</span><span class="o">=</span>/path/to/.ttn-lw-cli.yml
+</span></span></code></pre></div><ol start="3">
+<li>Use command-line flag <code>-c /path/to/.ttn-lw-cli.yml</code> when running the CLI</li>
+</ol>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  When using the <code>snap</code> packages, <code>~/.ttn-lw-cli.yml</code> will fail with permission errors. Choose a different path for the configuration file.
+</div>
+
+<p>To check if configuration is being properly loaded, use the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli config
+</span></span></code></pre></div><p>or on Windows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli.exe config
+</span></span></code></pre></div><p>or for Enterprise deployments:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tti-lw-cli config
+</span></span></code></pre></div><h2 id="step-3---login">Step 3 - Login</h2>
+<p>Once the CLI has been configured, proceed to <a href="/docs/concepts/features/cli/login/">Login with the CLI</a> to authorize and begin using the CLI.</p>
+        </div>
+          <div class="columns is-multiline">
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/concepts/features/cli/installing-cli/">← Installing the CLI</a>
+<a class="button is-pulled-right" href="/docs/concepts/features/cli/login/">Login with the CLI →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#step-1---create-a-configuration-file'>Step 1 - Create a configuration file</a></li>
+    
+      
+      <li><a href='#step-2---configure-the-cli'>Step 2 - Configure the CLI</a></li>
+    
+      
+      <li><a href='#step-3---login'>Step 3 - Login</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

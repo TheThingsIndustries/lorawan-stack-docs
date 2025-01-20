@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Network Operations Center | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/concepts/architecture/components/network-operations-center/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Network Operations Center">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Network Operations Center">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/concepts/architecture/components/network-operations-center/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Network Operations Center" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Concepts</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/concepts/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/" class="">Architecture</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/" class="">Components</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/alert-routing-server/" class="">Alert Routing Server</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/application-server/" class="">Application Server</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/console/" class="">Console</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/device-claiming-server/" class="">Device Claiming Server</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/device-template-converter/" class="">Device Template Converter</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/gateway-configuration-server/" class="">Gateway Configuration Server</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/gateway-server/" class="">Gateway Server</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/identity-server/" class="">Identity Server</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/join-server/" class="">Join Server</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/network-operations-center/" class="is-active">Network Operations Center</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/network-server/" class="">Network Server</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/packet-broker-agent/" class="">Packet Broker Agent</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/tenant-billing-server/" class="">Tenant Billing Server</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/id-eui-constraints/" class="">ID and EUI Constraints</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/last-activity/" class="">Last Activity</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/" class="">Features</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/networking/" class="">Networking</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/" class="">Migrate to The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/" class="">Packet Broker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/server-addresses/" class="">Server Addresses</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/advanced/" class="">Advanced Topics</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/troubleshooting/" class="">Troubleshooting</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/ttn/" class="">The Things Stack Sandbox</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+          
+          
+            <div class="content-tags">
+              
+                
+                
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+</a>
+
+
+              
+              
+                <span class="tag is-light">New in 3.21.0</span>
+
+              
+              
+              
+            </div>
+          
+        <h1 class="title is-size-2">Network Operations Center</h1>
+        <div class="content">
+          <p>The Network Operations Center provides aggregated insight in a network operated with The Things Stack.</p>
+<!-- more -->
+<p>The Network Operations Center stores events from The Things Stack in a time series database, queries aggregated data and visualizes data in a dashboard driven by Grafana. The Network Operations Center is complementary to the <a href="/docs/concepts/architecture/components/console/">Console</a>: the Network Operations Center shows historic data (with a delay of at most 5 minutes), while the Console shows live information and allows for managing the network.</p>
+<p>The Network Operations Center has two tiers - extended, and normal. The extended Network Operations Center shows statistics for Gateways, Applications, and End Devices. Non-extended users can only access Gateway statistics. <a href="mailto:sales@thethingsindustries.com">Contact billing</a> for information about accessing the Network Operations Center.</p>
+<h2 id="accessing-network-operations-center">Accessing Network Operations Center</h2>
+<p>The Network Operations Center can only be accessed by administrators. There are two main ways to access Network Operations Center within The Things Stack Console:</p>
+<ul>
+<li>On the left hand menu click Network Operations Center.</li>
+<li>Click on your avatar/profile in the upper right corner and then choose the Network Operations Center from the drop-down menu.</li>
+</ul>
+<p>The Network Operations Center Overview dashboard will open in a new web browser tab.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Since it utilizes Grafana, the Network Operations Center is supported in the current version of the following <a href="https://grafana.com/docs/grafana/latest/setup-grafana/installation#supported-web-browsers">web browsers</a>.
+</div>
+
+<p>A dashboard offers many features such as time picker, alerting, etc. For more information see the <a href="https://grafana.com/docs/grafana/v9.0/dashboards/use-dashboards/">Grafana docs</a>. Each dashboard has several panels for data visualization.</p>
+<h2 id="overview-dashboard">Overview Dashboard</h2>
+<p>The Overview dashboard provides a high-level overview of the network, focusing on the historical data for gateway, application, and device statistics for extended users. Non-extended users see only gateway statistics.</p>
+<figure><img src="../overview-dashboard.png"
+    alt="overview dashboard">
+</figure>
+
+<h3 id="gateway-overview">Gateway Overview</h3>
+<p>The gateway overview consists of the following panels:</p>
+<p><strong>Gateways connected</strong> - a bar chart that visualizes the number of gateways that have connected to the network in the selected period.</p>
+<p><strong>Gateway connectivity</strong> - a table layout that displays the <strong>Gateway ID</strong>, <strong>Last connect</strong>, <strong>Last disconnect</strong>, <strong>Disconnects</strong>, <strong>Uptime</strong>, and <strong>Packet rate</strong> of all the gateways on the network in the selected period.</p>
+<p>The following is a brief description of each column in the table:</p>
+<ul>
+<li><strong>Gateway ID</strong>: displays gateway IDs of all the gateways on the network. Click on the Gateway ID to access its Gateway Details Dashboard.</li>
+<li><strong>Last connect</strong>: the date and time when the gateway last connected to the Network Server.</li>
+<li><strong>Last disconnect</strong>: the date and time when the gateway last disconnected from the Network Server.</li>
+<li><strong>Disconnects</strong>: the number of disconnects in the selected period.</li>
+<li><strong>Uptime</strong>: the fraction of time in which the gateway has been connected to the Network Server.</li>
+<li><strong>Packet rate</strong>: the total number of uplink and downlink data packets forwarded by the gateway per second.</li>
+</ul>
+<p>The data can be sorted by column names and filtered by column values.</p>
+<h3 id="application-overview">Application Overview</h3>
+<p>The application overview consists of the following panels:</p>
+<p><strong>Applications active</strong> - a bar chart that visualizes the number of applications with a device that has been activated in the network in the selected period, either in the last hour, week, or day.</p>
+<p><strong>Application statistics</strong> - a table layout that displays the <strong>Application ID</strong>, <strong>Active devices</strong>, and <strong>Average packet error rate</strong> of all the applications on the network in the selected period.</p>
+<p>The following is a brief description of each column in the table:</p>
+<ul>
+<li><strong>Application ID</strong>: displays application IDs of all the applications on the network.</li>
+<li><strong>Active devices</strong>: displays the number of devices in the application which have sent an uplink message in the last hour.</li>
+<li><strong>Average packet error rate</strong>: displays the average of the last packet error rate, over all of the end devices in an application as a percentage.</li>
+</ul>
+<h3 id="end-device-overview">End Device Overview</h3>
+<p>The end device overview consists of the following panels:</p>
+<p><strong>End devices active</strong> - a bar chart that visualizes the number of devices that have connected to the network (uplinked) in the selected period, either in the last hour, week, or day.</p>
+<p><strong>End device statistics</strong> - a table layout that displays the <strong>Device ID</strong>, <strong>Application ID</strong>, <strong>Last seen</strong>, and <strong>Last packet error rate</strong> of all the devices on the network in the selected period.</p>
+<p>The following is a brief description of each column in the table:</p>
+<ul>
+<li><strong>Device ID</strong>: displays IDs of all the end devices on the network.</li>
+<li><strong>Application ID</strong>: displays the application ID for each device.</li>
+<li><strong>Last seen</strong>: displays when the device last uplinked.</li>
+<li><strong>Last packet error rate</strong>: displays the ratio between the number of missing frames and the total number of frames over an hour as a percentage.</li>
+</ul>
+<h2 id="gateway-details-dashboard">Gateway Details Dashboard</h2>
+<p>The Gateway Details dashboard visualizes detailed insight into gateway statistics in the selected time period.</p>
+<figure><img src="../gateway-details-dashboard.png"
+    alt="gateway details dashboard">
+</figure>
+
+<p>It consists of the following panels:</p>
+<p><strong>Uptime</strong> - a gauge chart that visualizes the amount of time the gateway has been connected to the Network Server, represented as a percentage.</p>
+<figure><img src="../gateway-uptime.png"
+    alt="uptime">
+</figure>
+
+<p><strong>Lowest RSSI (LoRa)</strong> - a graph that visualizes data about the lowest Received Signal Strength Indicator (RSSI) in dBm for each channel.</p>
+<figure><img src="../gateway-rssi.png"
+    alt="lowest rssi">
+</figure>
+
+<p><strong>Traffic</strong> - a time series graph that visualizes the uplink and downlink rates in packets per second.</p>
+<figure><img src="../gateway-traffic.png"
+    alt="traffic">
+</figure>
+
+<p><strong>Packets per channel</strong> - a heat map that visualizes the number of uplink data packets for each channel.</p>
+<figure><img src="../gateway-packets-per-channel.png"
+    alt="packets per channel">
+</figure>
+
+<p><strong>Channel utilization</strong> - a graph that visualizes the percentage of total utilization on each channel over a time interval. For example, if we have sent 60 seconds of uplinks in a time period of 15 minutes, we have 60 / (15 * 60) = ~1.66% utilization.</p>
+<figure><img src="../gateway-channel-utilization.png"
+    alt="channel utilization">
+</figure>
+
+<p>The Packets per channel and Channel utilization graphs can be used to find out which channels are overused and which channels are prone to collisions.</p>
+<p><strong>Packets per data rate</strong> - a time series graph that visualizes the number of uplinks at each data rate.</p>
+<figure><img src="../gateway-packets-per-data-rate.png">
+</figure>
+
+<h2 id="application-details-dashboard">Application Details Dashboard</h2>
+<p>The <strong>Application Details</strong> dashboard provides a detailed insight into application statistics in the selected time period.</p>
+<figure><img src="../application-details-full.png">
+</figure>
+
+<p>It consists of the following panels:</p>
+<p><strong>Gateways seen</strong> - a chart which displays the number of packets received by each gateway and the channel they primarily use.</p>
+<figure><img src="../gateways-seen.png">
+</figure>
+
+<p><strong>Device statistics</strong> - a chart displaying gateway, RSSI, and packet data for each device in the application.</p>
+<figure><img src="../device-statistics.png">
+</figure>
+
+<p><strong>Packets per data rate</strong> - a time series graph that visualizes the number of uplinks at each data rate.</p>
+<figure><img src="../packets-per-data-rate.png">
+</figure>
+
+<p><strong>Packets per channel</strong> - a heat map that visualizes the number of uplink data packets for each channel.</p>
+<figure><img src="../packets-per-channel-app.png">
+</figure>
+
+<h2 id="end-device-details-dashboard">End Device Details Dashboard</h2>
+<p>The <strong>End Device Details</strong> dashboard provides a detailed insight into end device statistics in the selected time period.</p>
+<figure><img src="../end-device-details.png">
+</figure>
+
+<p>It consists of the following panels:</p>
+<p><strong>Last seen</strong> - when the device last uplinked.</p>
+<figure><img src="../last-seen-ed.png">
+</figure>
+
+<p><strong>Session age</strong> - how long since the device last negotiated new keys.</p>
+<figure><img src="../session-age-ed.png">
+</figure>
+
+<p><strong>Best RSSI (LoRa)</strong> - a chart displaying the RSSI for each channel.</p>
+<figure><img src="../best-rssi-ed.png">
+</figure>
+
+<p><strong>Packet error rate</strong> - a chart displaying the historical average error rate.</p>
+<figure><img src="../packet-error-rate-ed.png">
+</figure>
+
+<p><strong>Channel utilization</strong> - a chart displaying the percentage of channel utilization.</p>
+<figure><img src="../channel-utilization-ed.png">
+</figure>
+
+<p><strong>Packets per data rate</strong> - a time series graph that visualizes the number of uplinks at each data rate.</p>
+<figure><img src="../packets-per-data-rate-ed.png">
+</figure>
+
+<p><strong>Packets per channel</strong> - a heat map that visualizes the number of uplink data packets for each channel.</p>
+<figure><img src="../packets-per-channel-ed.png">
+</figure>
+
+
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/concepts/architecture/components/join-server/">← Join Server</a>
+<a class="button is-pulled-right" href="/docs/concepts/architecture/components/network-server/">Network Server →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#accessing-network-operations-center'>Accessing Network Operations Center</a></li>
+    
+      
+      <li><a href='#overview-dashboard'>Overview Dashboard</a></li>
+    
+      
+      <li><a href='#gateway-details-dashboard'>Gateway Details Dashboard</a></li>
+    
+      
+      <li><a href='#application-details-dashboard'>Application Details Dashboard</a></li>
+    
+      
+      <li><a href='#end-device-details-dashboard'>End Device Details Dashboard</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

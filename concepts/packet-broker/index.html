@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Packet Broker | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/concepts/packet-broker/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Packet Broker">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Packet Broker">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/concepts/packet-broker/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Packet Broker" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Concepts</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/concepts/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/" class="">Architecture</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/" class="">Features</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/networking/" class="">Networking</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/" class="">Migrate to The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/" class="is-active">Packet Broker</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/connect/" class="">Connect</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/configure/" class="">Configure</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/pb-routing/" class="">Default Packet Broker Routing</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/api/" class="">Mapper API</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/troubleshooting/" class="">Troubleshooting</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/server-addresses/" class="">Server Addresses</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/advanced/" class="">Advanced Topics</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/troubleshooting/" class="">Troubleshooting</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/ttn/" class="">The Things Stack Sandbox</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+        <h1 class="title is-size-2">Packet Broker</h1>
+        <div class="content">
+          <h2 id="what-is-it">What is it?</h2>
+<p>Packet Broker uses LoRaWAN® peering to exchange traffic with other LoRaWAN networks to share coverage and improve the overall network performance.</p>
+<p>For a video explaining what LoRaWAN peering is, and how Packet Broker works, see <a href="https://youtu.be/TQImwfHCraM">LoRaWAN Networks, Roaming and Peering in 5 minutes</a>.</p>
+<details><summary>Show video</summary>
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/TQImwfHCraM?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+</details>
+<p><img src="overview.png" alt="Overview"></p>
+<p>Packet Broker supports class A and C downlink as well as OTAA device activations.</p>
+<h2 id="who-is-it-for">Who is it for?</h2>
+<p>Exchanging traffic can be beneficial for all public and private LoRaWAN network operators: it can improve overall network performance by increasing resilience against gateway failures, expanding coverage area and optimizing end device battery life by communicating with the nearest gateways.</p>
+<h3 id="typical-use-cases">Typical Use Cases</h3>
+<ol>
+<li>Forward uplink traffic received by your gateways from devices to their home network. The home network may also use your gateways to transmit downlink traffic to their devices. You can also put commercial agreements in place to monetize coverage.</li>
+<li>Receive uplink traffic for your devices from other networks, and use those other networks to transmit downlink traffic to your end devices.</li>
+</ol>
+<h2 id="how-does-it-work">How Does it Work?</h2>
+<p>Packet Broker distinguishes two types of networks: Forwarders and Home Networks. Forwarders are networks with gateways: they forward uplink messages from the gateways to Packet Broker, and downlink messages from Packet Broker back to the gateways. Home Networks are networks with end devices.</p>
+<p>Your The Things Stack deployment can be a Forwarder, a Home Network or both. This means that you can make your physical gateway infrastructure available to other networks without having end devices. Likewise, you can deploy end devices as a Home Network, without physical gateway infrastructure.</p>
+<p>Packet Broker routes uplink messages from Forwarders to Home Networks based on the 32-bit <code>DevAddr</code> in the uplink message. The first part of the <code>DevAddr</code> is the <code>NetID</code>, a globally unique identifier of a LoRaWAN network. Packet Broker uses the <code>NetID</code> to lookup the Home Network. Besides identifying Home Networks by <code>NetID</code>, Packet Broker also supports tenants. Tenants use a <code>DevAddr</code> block of a Home Network host.</p>
+<p>For example, a message with <code>DevAddr</code> <code>27ABCD12</code> has <code>NetID</code> <code>000013</code> (owned by The Things Network Foundation). The <code>DevAddr</code> block <code>27ABCD00</code> to <code>27ABCDFF</code> might be assigned to a private network <code>example-com</code>. That <code>DevAddr</code> block is noted as <code>27ABCD00/24</code>: 24 significant bits. Packet Broker identifies the Home Network then as <code>NetID</code> <code>000013</code> and tenant ID <code>example-com</code>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The Things Network is identified by <code>NetID</code> is <code>000013</code> and tenant ID <code>ttn</code>.
+</div>
+
+<h3 id="routing-policies">Routing Policies</h3>
+<p>Routing policies define the rules that Forwarders configure for routing messages to Home Networks. Routing policies are peer-to-peer: a Forwarder can define policies with each individual Home Network. Forwarders can also define an optional default routing policy that is used as a fallback when no specific policy is defined.</p>
+<p>Forwarders can configure the following message types per direction in a routing policy:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: center">Uplink</th>
+          <th style="text-align: center">Downlink</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Join</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: left">Join-request (uplink) and join-accept (downlink) messages</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">MAC payload</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: left">Data messages with <code>FPort</code> <code>0</code> (for network layer instructions)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Application payload</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: left">Data messages with <code>FPort</code> <code>1</code> or higher (for application layer payload)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Signal quality</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: left">RSSI and SNR information</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Localization</td>
+          <td style="text-align: center">O</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: left">Gateway locations, timestamps and signal quality</td>
+      </tr>
+  </tbody>
+</table>
+<p>For instance, a Forwarder may wish to configure three policies:</p>
+<ol>
+<li>With Home Network that has <code>NetID</code> <code>000013</code> and tenant ID <code>ttn</code> (The Things Network): all message types. This would mean to forward join-requests and join-accepts, uplink and downlink MAC and application payload messages, and signal quality and localization information.</li>
+<li>With Home Network that has <code>NetID</code> <code>000013</code> and tenant ID <code>example-com</code>: only join-requests, join-accepts and uplink and downlink MAC and application payload messages. This would mean to not forward the metadata.</li>
+<li>A default policy (for all other networks): only uplink MAC and application payload messages. That would mean to not forward join-requests and join-accepts, and to not forward the metadata.</li>
+</ol>
+<h3 id="gateway-visibility-settings">Gateway Visibility Settings</h3>
+<p>Gateway visibility configuration allows network administrators to configure who sees which gateway-related information. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibility with fine-grained settings.</p>
+<p>Forwarders can configure the visibility of their gateways towards the public or specific Home Networks. Like routing policies, gateway visibility is configured peer-to-peer: a Forwarder can define gateway visibility with each individual Home Network. Forwarders can also define an optional default gateway visibility that is used as a fallback when no specific visibility is defined.</p>
+<p>Forwarders can configure the following fields:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Location</td>
+          <td style="text-align: left">Gateway coordinates</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Antenna placement</td>
+          <td style="text-align: left">Indoor/outdoor antenna placement</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Antenna count</td>
+          <td style="text-align: left">Number of antennas</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Fine timestamps</td>
+          <td style="text-align: left">Whether the gateway produces fine timestamps</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Contact information</td>
+          <td style="text-align: left">Administrative and technical contact information of the gateway</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Status</td>
+          <td style="text-align: left">Online/offline status</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Frequency plan</td>
+          <td style="text-align: left">Region and channel plan with frequencies that the gateway uses</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Packet rates</td>
+          <td style="text-align: left">Receive and transmission packet rates</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="getting-started">Getting Started</h2>
+<p>The Things Stack Sandbox and The Things Stack Cloud are already connected to Packet Broker. Proceed to <a href="/docs/concepts/packet-broker/configure/">Configure</a> section to manage your registration and routing policies with other networks.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The Things Stack Sandbox and The Things Stack Cloud are configured for peering within the same geographical region. For example, The Things Stack Sandbox <code>eu1</code> cluster is configured to peer only with The Things Stack Cloud <code>eu1</code> deployments and vice versa. Peering between <code>eu1</code>, <code>au1</code> and <code>nam1</code> clusters is not currently enabled.
+</div>
+
+<p>When you are using The Things Stack Sandbox, you cannot configure any routing policies, as The Things Stack Sandbox is a public network and The Things Network Foundation controls which public or private networks the traffic gets exchanged with. To manage routing policies for your gateways, upgrade to The Things Stack Cloud.</p>
+<p>When using The Things Stack Enterprise of The Things Stack Open Source, learn to <a href="/docs/concepts/packet-broker/connect/">Connect The Things Stack to Packet Broker</a>.</p>
+<h2 id="lorawan-roaming-vs-packet-broker">LoRaWAN Roaming vs Packet Broker</h2>
+<p>Packet Broker is a global backbone for LoRaWAN traffic. It is designed to securely exchange traffic between LoRaWAN networks.</p>
+<p>Packet Broker supports LoRaWAN passive roaming, but it goes even beyond that:</p>
+<ul>
+<li>Packet Broker allows for individual packet selection: networks do not get charged for traffic they did not consume.</li>
+<li>Packet Broker separates traffic routing from billing and clearing: networks are free to put commercial agreements in place to settle balances.</li>
+<li>Packet Broker separates payload from metadata: networks only get charged for the value they need.</li>
+<li>The Things Stack has native support for Packet Broker and can access the global coverage provided by The Things Network.</li>
+</ul>
+<h2 id="status-page">Status Page</h2>
+<p>Visit the <a href="https://status.packetbroker.net/">Packet Broker services status page</a> to check the current status of Packet Broker services. Be up do date with the recent Packet Broker upgrades, scheduled maintenances and reported incidents.</p>
+
+        </div>
+          <div class="columns is-multiline">
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+            <div class="content-tags">
+              
+                
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_open_source.svg"></img>
+
+</a>
+
+
+              
+              
+              
+              
+            </div>
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/connect/">Connect</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            This section explains how to connect The Things Stack to Packet Broker.
+The Things Stack Cloud and The Things Stack Sandbox are already connected to Packet Broker. If your deployment is already connected, proceed to configure Packet Broker.
+Prerequisites A LoRa Alliance NetID or a tenant of a host NetID To obtain a NetID, become a member of the LoRa Alliance To obtain a DevAddr block, contact The Things Industries sales Access to Packet Broker with an API key To obtain access to Packet Broker, contact The Things Industries sales The Things Stack installed and configured. See Getting Started Packet Broker CLI installed and configured. See Packet Broker CLI Define DevAddr Prefix by NetID This guide uses The Things Network NetID 000013 as example, which has DevAddr prefix 26000000/7.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/connect/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+            <div class="content-tags">
+              
+                
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+  
+
+<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_open_source.svg"></img>
+
+</a>
+
+
+              
+              
+              
+              
+            </div>
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/configure/">Configure</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            This section shows you how to configure Packet Broker. You can manage your registration, list other networks, configure routing policies with other networks, and see which networks are forwarding traffic to your network.
+To see which routing policies are configured by default for all deployments, see the Packet Broker Routing section.
+Prerequisites Understand how Packet Broker works and what routing policies are. Learn about Packet Broker. The Things Stack connected to Packet Broker. The Things Stack Cloud is already connected to Packet Broker. The Things Stack Enterprise and Open Source: see Connect. An admin account for the The Things Stack deployment. All Packet Broker configuration requires administrative access. Packet Broker can be configured using either the Console or the CLI.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/configure/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/pb-routing/">Default Packet Broker Routing</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            This reference contains default Packet Broker routing tables.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/pb-routing/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/api/">Mapper API</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            The Packet Broker Mapper API can help you fetch gateway locations, online status and other gateway information for The Things Stack Sandbox, Cloud, Enterprise and Open Source deployments. This section contains the reference for the Packet Broker Mapper API and examples of forming an API call.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/api/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/troubleshooting/">Troubleshooting</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            This section provides help for common issues and frequently asked questions you may have when using Packet Broker.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/troubleshooting/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/concepts/migration/faq/">← Frequently Asked Questions</a>
+<a class="button is-pulled-right" href="/docs/concepts/packet-broker/connect/">Connect →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#what-is-it'>What is it?</a></li>
+    
+      
+      <li><a href='#who-is-it-for'>Who is it for?</a></li>
+    
+      
+      <li><a href='#how-does-it-work'>How Does it Work?</a></li>
+    
+      
+      <li><a href='#getting-started'>Getting Started</a></li>
+    
+      
+      <li><a href='#lorawan-roaming-vs-packet-broker'>LoRaWAN Roaming vs Packet Broker</a></li>
+    
+      
+      <li><a href='#status-page'>Status Page</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

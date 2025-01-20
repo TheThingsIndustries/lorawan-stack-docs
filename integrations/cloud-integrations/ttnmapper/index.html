@@ -58,12 +58,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div id="topMenu" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
-        <a class="navbar-item" href="/docs/devices/">Devices</a>
-        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
-        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
-        <a class="navbar-item" href="/docs/reference/">Reference</a>
         <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
 
       </div>
       <div class="navbar-end"><div class="navbar-item">
@@ -97,10 +97,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" class="">Adding Applications</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/adding-integrations/" class="">Adding Integrations</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/data-formats/" class="">Data Formats</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Cloud Integrations</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">Webhooks</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Integrate with popular IoT platforms</a>
     
 
 
@@ -287,31 +296,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/" class="">MQTT Server</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/" class="">Other integrations</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/pubsub/" class="">Pub/Sub</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/application-packages/" class="">Application Packages</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/" class="">LoRa Cloud</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/node-red/" class="">Node-RED</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/ifttt/" class="">IFTTT</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/guides/" class="">Guides</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">Webhooks</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/guides/" class="">Examples</a>
   </li>
 </ul>
 
@@ -339,7 +330,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>A LoRaWAN® end device transmitting GPS coordinates (latitude, longitude and optionally altitude), and HDOP, GPS accuracy or satellite count.</li>
-<li>A LoRaWAN gateway with a <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/#set-gateway-location">public location</a>.</li>
+<li>A LoRaWAN gateway with a <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/adding-gateways/#set-gateway-location">public location</a>.</li>
 </ol>
 <h2 id="configure-the-things-stack">Configure The Things Stack</h2>
 <p>Your end device can be sending its GPS coordinates in an uplink message as part of the <code>frm_payload</code> field. In that case, before implementing the Webhook integration, you need to create an uplink <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a> in order for TTN Mapper to be able to parse your data.</p>
@@ -347,7 +338,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>If your end device is sending data in Cayenne LPP format, choose <a href="(https://www.thethingsindustries.com/docs/integrations/payload-formatters/cayenne/)">Cayenne LPP payload formatter</a> in your device&rsquo;s settings on The Things Stack.</li>
 <li>Otherwise, create a custom <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/">JavaScript payload formatter</a>. This formatter will have to contain fields <code>latitude</code>, <code>longitude</code> and <code>altitude</code>. If possible, <code>hdop</code>, <code>accuracy</code> or <code>sats</code> fields should also be contained.</li>
 </ul>
-<!--- Some devices, for example [LoRa Edge LR1110](https://www.semtech.com/products/wireless-rf/lora-edge/), obtain their location from [LoRa Cloud](https://www.loracloud.com/) platform using The Things Stack [LoRa Cloud integration](https://www.thethingsindustries.com/docs/integrations/lora-cloud/). As a result, device location solution is contained in the `location` field of the location solved message. In this case, there is no need to set up a payload formatter. --->
+<!--- Some devices, for example [LoRa Edge LR1110](https://www.semtech.com/products/wireless-rf/lora-edge/), obtain their location from [LoRa Cloud](https://www.loracloud.com/) platform using The Things Stack [LoRa Cloud integration](https://www.thethingsindustries.com/docs/integrations/other-integrations/lora-cloud/). As a result, device location solution is contained in the `location` field of the location solved message. In this case, there is no need to set up a payload formatter. --->
 <p>The next step is to instantiate the <strong>TTN Mapper</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a>.</p>
 <!--- <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -431,12 +422,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <nav class="column is-one-third">
         <h3 class="title is-6">The Things Stack</h3>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
-        <p><a class="" href="/docs/devices/">Devices</a></p>
-        <p><a class="" href="/docs/gateways/">Gateways</a></p>
-        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
-        <p><a class="" href="/docs/reference/">Reference</a></p>
         <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
       </nav>
       <nav class="column is-one-third">
         <h3 class="title is-6">Contributing</h3>

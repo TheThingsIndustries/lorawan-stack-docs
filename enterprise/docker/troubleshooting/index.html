@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Troubleshooting Installation | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/enterprise/docker/troubleshooting/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Troubleshooting Installation">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Troubleshooting Installation">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/enterprise/docker/troubleshooting/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Troubleshooting Installation" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">The Things Stack Enterprise</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/enterprise/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/aws/" class="">AWS</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/" class="">Kubernetes</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/" class="">Docker</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/configuration/" class="">Configuration</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/certificates/" class="">Certificates</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/running-the-stack/" class="">Running The Things Stack</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/proxy/" class="">Proxy</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/troubleshooting/" class="is-active">Troubleshooting Installation</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/upgrading/" class="">Upgrading The Things Stack</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/docker/balena/" class="">Balena</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/join-server/" class="">The Things Join Server</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/" class="">Manage The Things Stack</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+          
+          
+        <h1 class="title is-size-2">Troubleshooting Installation</h1>
+        <div class="content">
+          <p>This section contains help for common issues you may encounter while installing The Things Stack.</p>
+<h2 id="component-address-is-not-included-in-this-license">Component address is not included in this license</h2>
+<p>Ensure that you configure the <code>is.oauth.ui.canonical-url</code> with a domain that matches the domain in your license. See the <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/">Configuration Reference</a> for more information about the configuration options.</p>
+<h2 id="version-in-docker-composeyml-is-unsupported">Version in &ldquo;docker-compose.yml&rdquo; is unsupported</h2>
+<p>Our <code>docker-compose.yml</code> file uses <a href="https://docs.docker.com/compose/compose-file/">Compose file version 3.7</a>. If using a package manager to install Docker Compose, it is possible to install an old, unsupported version. See Docker&rsquo;s <a href="https://docs.docker.com/compose/install/">installation instructions</a> to upgrade to a more recent version.</p>
+<h2 id="token-exchange-refused">Token Exchange Refused</h2>
+<ol>
+<li>Double check that you used the correct <code>client-secret</code> when you authorized the client in <a href="/docs/enterprise/docker/running-the-stack/">Running The Things Stack</a>.</li>
+<li>If running on <code>localhost</code>, see the <a href="https://www.thethingsindustries.com/docs/enterprise/docker/configuration/#localhost">Localhost</a> section for additional info.</li>
+<li>You may have invalid certificates. Verify using <code>openssl verify -CAfile ca.pem cert.pem</code>.</li>
+<li>If you configure The Things Stack without TLS and attempt to connect using <code>https</code> you will receive this error. Configure TLS or use <code>http</code>.</li>
+<li>If you are running an offline The Things Stack deployment, generating <a href="https://www.thethingsindustries.com/docs/enterprise/docker/certificates/#automatic-certificate-management">Let&rsquo;s Encrypt certificates</a> for your domain name might fail because of lack of the Internet connection. Try using certificates from a <a href="https://www.thethingsindustries.com/docs/enterprise/docker/certificates/#custom-certificate-authority">Custom Certificate Authority</a>.</li>
+<li>Double-check all <a href="https://www.thethingsindustries.com/docs/enterprise/docker/configuration/#environment-and-ports">ports</a> listed in the <code>docker-compose.yml</code> file for any firewall restrictions.</li>
+</ol>
+<h2 id="cant-access-the-server">Can&rsquo;t access the server</h2>
+<p>Ensure you have a DNS record pointing to your server&rsquo;s public IP address. See your domain registrar&rsquo;s help section for instructions, or <a href="https://www.name.com/support/articles/205188538-Pointing-your-domain-to-hosting-with-A-records">name.com&rsquo;s DNS guide</a> for general information about pointing records to your IP address.</p>
+<h2 id="key-permission-denied">Key Permission Denied</h2>
+<p>If you run into <code>/run/secrets/key.pem: permission denied</code>, you have probably forgotten to set permissions. To set permissions:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chown 886:886 ./cert.pem ./key.pem
+</span></span></code></pre></div><h2 id="forbidden">Forbidden</h2>
+<p>If you see an error reading:</p>
+<pre tabindex="0"><code>Invalid redirect URI
+</code></pre><p>check that you entered the correct server address when <a href="https://www.thethingsindustries.com/docs/enterprise/docker/running-the-stack/#initialization">registering the Console as an OAuth client</a>.</p>
+<p>If you encounter the following error while trying to long into the Console:</p>
+<pre tabindex="0"><code>The client is not authorized to request a token using this method
+</code></pre><p>make sure you used the same <code>client-secret</code> in your The Things Stack configuration (<code>ttn-lw-stack-docker.yml</code> file) and for authorizing the Console client in <a href="/docs/enterprise/docker/running-the-stack/">Running The Things Stack</a>.</p>
+<h2 id="connection-refused">Connection Refused</h2>
+<p>This issue occurs when either the database URI is misconfigured or there are latency issues between Docker containers. It results in the database refusing connections from the stack container, leading to operational errors with the following output.</p>
+<pre tabindex="0"><code>failed to connect to `host=postgres user=root database=ttn_lorawan`: dial error (dial tcp 127.0.0.1:5432: connect: connection refused)
+</code></pre><p>Make sure to configure the correct database URI. Also, ensure that internet connection is stable and with minimal latency.</p>
+<h2 id="could-not-initialize-server">Could not initialize Server</h2>
+<p>The cause of this error lies in misconfiguration of The Things Stack server components. A few examples related to this error are listed below.</p>
+<p>When an invalid tenant admin key is configured, the initialization of the Identity Server will fail with the following output:</p>
+<pre tabindex="0"><code>stack_1      | INFO Setting up Identity Server
+stack_1      | error:cmd/internal/shared:initialize_identity_server (could not initialize Identity Server)
+stack_1      |     correlation_id=c98b9172c25c45269ac674aad04710f1
+stack_1      | --- error:pkg/identityserver:tenant_admin_key (invalid tenant admin key)
+stack_1      |     correlation_id=c3ad9a81631c40f88ec35eb1b3234f54
+stack_1      | --- encoding/hex: invalid byte: U+00E2 &#39;?&#39;
+</code></pre><p>When a wrong database URI is configured, the initialization of the Application Server will fail:</p>
+<pre tabindex="0"><code>stack_1      | INFO	Setting up Application Server
+stack_1      | error:cmd/internal/shared:initialize_application_server (could not initialize Application Server)
+stack_1      |     correlation_id=4804d40c2b9143209f95925d47c6881e
+stack_1      | --- error:pkg/errors:net_operation (dial tcp 127.0.0.1:5432: connect: connection refused)
+stack_1      |     message=dial tcp 127.0.0.1:5432: connect: connection refused
+</code></pre><p>When the Network Server is configured to use a DevAddr block that is not included in the license, its initialization will fail:</p>
+<pre tabindex="0"><code>stack_1      | INFO Setting up Network Server
+stack_1      | error:cmd/internal/shared:initialize_network_server (could not initialize Network Server)
+stack_1      |     correlation_id=47a8f405f56f45918d1277aeee8faaa7
+stack_1      | --- error:pkg/license:dev_addr_prefix_not_licensed (DevAddr prefix 00000000/7 is not included in this license)
+stack_1      |     prefix=00000000/7
+stack_1      |     licensed=[XXXXXXXX/24] (redacted)
+</code></pre><h2 id="database-error">Database error</h2>
+<p>This error has been observed when the Identity Server hasn&rsquo;t been initialized during The Things Stack installation. The Things Stack components are inherently stateless and depend on the underlying Postgres and Redis databases to store the data, so before running The Things Stack, make sure that the Identity Server database is initialized as explained in the <a href="https://www.thethingsindustries.com/docs/enterprise/docker/running-the-stack/#initialization">Initialization section</a>.</p>
+<h2 id="error-while-parsing-the-things-stack-configuration-file">Error while parsing The Things Stack configuration file</h2>
+<p>One of the issues that can cause parsing errors is using inappropriate indentation in The Things Stack configuration file, so you might end up seeing something like:</p>
+<pre tabindex="0"><code>stack_1      | While parsing config: yaml: line 34: did not find expected key
+</code></pre><p>In most cases, the error will point to an exact line of your configuration file where the issue occured. To fix this, apply the correct indentation. Use <code>ttn-lw-stack config --yml</code> to see the default The Things Stack configuration with correct indentation in your terminal.</p>
+<h2 id="missing-tenant-id">Missing tenant ID</h2>
+<p>If you are facing the <code>missing_tenant_id</code> error, that means you are trying to access the Console in a multi-tenant The Things Stack environment on an address that doesn&rsquo;t contain any tenant ID, e.g. <code>https://thethings.example.com</code>. To access the Console of a particular tenant in a multi-tenant environment, you have to specify a tenant ID as a URL subdomain, e.g. <code>https://&lt;tenant-id&gt;.thethings.network.com</code>.</p>
+<h2 id="grafana-container-fails-to-start-due-to-permissions-issues">Grafana container fails to start due to permissions issues</h2>
+<p>If you are running The Things Stack Docker deployment on a Linux machine, you might encounter the following error:</p>
+<pre tabindex="0"><code>failed to connect to database: failed to create SQLite database file &#34;/var/lib/grafana/db/grafana.db&#34;: open /var/lib/grafana/db/grafana.db: permission denied
+</code></pre><p>This issue usually arises from the following fact - on Linux, Docker creates folders as <code>root</code> and containers are expected to run as <code>root</code>, while Grafana runs as a non-<code>root</code> user. To fix this, you need to manually update rights for Grafana using the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chown -R 472:0 .env/data/grafana
+</span></span></code></pre></div><h2 id="network-operations-center-cannot-be-initialized">Network Operations Center cannot be initialized</h2>
+<p>If you have registered user with User ID <code>admin</code> during installation, you will most likely encounter this error when trying to run The Things Stack:</p>
+<pre tabindex="0"><code>stack_1     | INFO	Setting up Network Operations Center
+stack_1     | error:cmd/internal/shared:initialize_network_operations_center (could not initialize Network Operations Center)
+</code></pre><p>Accessing the Network Operations Center with the <code>admin</code> user is not allowed, so make sure to create user with admin rights but with User ID other than <code>admin</code>.</p>
+<h2 id="grafana-cannot-connect-to-the-things-stack-following-a-restart">Grafana cannot connect to The Things Stack following a restart</h2>
+<p>In a containerized environment, the Grafana container connects to the The Things Stack using the container DNS address. Following a The Things Stack container restart, the Grafana container will maintain the address of the old container for the duration of the Docker DNS TTL (default 10 minutes). In order to speed up the process, it is possible to restart the Grafana container using <code>docker compose restart grafana</code>.</p>
+<p>In order to avoid having to manually restart the Grafana container, ensure that your Grafana container has the correct <code>depends_on</code> dependencies set:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">postgres</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">stack</span><span class="w">
+</span></span></span></code></pre></div><p>Older versions of The Things Stack may not have the above dependencies set, so you may consider adding them manually.</p>
+<h2 id="operation-timed-out">Operation timed out</h2>
+<p>Generally, an operation will fail with this error if it hasn&rsquo;t been completed within the expected timeframe. For example, if there are firewall restrictions on port 443, logging into The Things Stack will probably fail with this error since token can&rsquo;t be returned to the Console. Besides this example, similar issues with establishing connection with The Things Stack or communication between its components can occur if there are issues with user&rsquo;s internet connection, or if there are restrictions on The Things Stack infrastructure, web browser or firewall level.</p>
+<p>To avoid this happening, users need to ensure that their internet connection is stable and with minimal latency, and that there are no firewall restrictions on the system from which they are accessing The Things Stack. Users can also try using a different browser or computer to try isolating the issue within a specific system. Finally, clear the web browser cache and retry the operation.</p>
+
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/enterprise/docker/proxy/">← Proxy</a>
+<a class="button is-pulled-right" href="/docs/enterprise/docker/upgrading/">Upgrading The Things Stack →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#component-address-is-not-included-in-this-license'>Component address is not included in this license</a></li>
+    
+      
+      <li><a href='#version-in-docker-composeyml-is-unsupported'>Version in “docker-compose.yml” is unsupported</a></li>
+    
+      
+      <li><a href='#token-exchange-refused'>Token Exchange Refused</a></li>
+    
+      
+      <li><a href='#cant-access-the-server'>Can’t access the server</a></li>
+    
+      
+      <li><a href='#key-permission-denied'>Key Permission Denied</a></li>
+    
+      
+      <li><a href='#forbidden'>Forbidden</a></li>
+    
+      
+      <li><a href='#connection-refused'>Connection Refused</a></li>
+    
+      
+      <li><a href='#could-not-initialize-server'>Could not initialize Server</a></li>
+    
+      
+      <li><a href='#database-error'>Database error</a></li>
+    
+      
+      <li><a href='#error-while-parsing-the-things-stack-configuration-file'>Error while parsing The Things Stack configuration file</a></li>
+    
+      
+      <li><a href='#missing-tenant-id'>Missing tenant ID</a></li>
+    
+      
+      <li><a href='#grafana-container-fails-to-start-due-to-permissions-issues'>Grafana container fails to start due to permissions issues</a></li>
+    
+      
+      <li><a href='#network-operations-center-cannot-be-initialized'>Network Operations Center cannot be initialized</a></li>
+    
+      
+      <li><a href='#grafana-cannot-connect-to-the-things-stack-following-a-restart'>Grafana cannot connect to The Things Stack following a restart</a></li>
+    
+      
+      <li><a href='#operation-timed-out'>Operation timed out</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

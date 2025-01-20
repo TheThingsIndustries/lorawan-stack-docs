@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Adding OAuth Clients | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/concepts/advanced/adding-oauth-clients/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Adding OAuth Clients">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Adding OAuth Clients">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/concepts/advanced/adding-oauth-clients/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Adding OAuth Clients" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Concepts</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/concepts/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/" class="">Architecture</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/" class="">Features</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/networking/" class="">Networking</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/" class="">Migrate to The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/" class="">Packet Broker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/server-addresses/" class="">Server Addresses</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/advanced/" class="">Advanced Topics</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/advanced/user-management/" class="">Working with Users and Organizations</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/advanced/adding-oauth-clients/" class="is-active">Adding OAuth Clients</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/advanced/purge/" class="">Deleting, Restoring and Purging Entities</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/advanced/metrics/" class="">Metrics</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/advanced/root-certificates/" class="">Root Certificates</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/advanced/telemetry/" class="">Telemetry</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/troubleshooting/" class="">Troubleshooting</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/ttn/" class="">The Things Stack Sandbox</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+        <h1 class="title is-size-2">Adding OAuth Clients</h1>
+        <div class="content">
+          <p>This section contains instructions for creating an OAuth Client.</p>
+<p>The Things Stack uses the <a href="https://oauth.net/">OAuth 2.0 protocol</a> for authentication and authorization.</p>
+<h4 id="considerations">Considerations</h4>
+<p>When you register an OAuth client, you should keep in mind that it will have to be approved by an administrator. The scope and duration of the review process depends on the network where you register your OAuth client. If you register in The Things Stack Cloud, Enterprise or Open Source, then the administrator (probably you) can approve it right away. If you register an OAuth client on The Things Stack Sandbox, the administrators will take some time to review if and how the OAuth client benefits the community.</p>
+<details>
+<summary>Guidelines for creation of OAuth clients on The Things Stack Sandbox</summary>
+<p>When reviewing the requests of new OAuth clients, administrators always validate the following:</p>
+<ul>
+<li>The ID and name of the user / organization that owns the OAuth client should clearly identify who is providing the service.
+<ul>
+<li>For public clients, this should typically be an organization with the brand name as ID.</li>
+<li>For private/testing clients this can also be a user ID.</li>
+<li>For personal testing clients, approval should not be needed.</li>
+<li>IDs or names that could be confused with official TTN IDs/names will be rejected.</li>
+</ul>
+</li>
+<li>The ID of the OAuth client should ideally consist of the brand name of the application and the purpose of the OAuth client.
+<ul>
+<li>Example: &ldquo;mycompany-gateway-onboarding&rdquo;.</li>
+<li>Keep in mind that you can&rsquo;t change the Client ID after registration, and you can&rsquo;t re-use the Client ID after deletion.</li>
+</ul>
+</li>
+<li>The name and description should be clear.
+<ul>
+<li>The name is typically the capitalized form of the ID.
+<ul>
+<li>Example: &ldquo;MyBrand Gateway Manager&rdquo;</li>
+</ul>
+</li>
+<li>The description should explain to users what the application does.
+<ul>
+<li>Example: &ldquo;Manage your MyBrand gateway from the mobile app&rdquo;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The redirect URI(s) should work.</li>
+<li>The logout redirect URI(s) are optional.</li>
+<li>The password grant should <strong>never</strong> be used. No exceptions.</li>
+<li>The refresh_token grant should only be used when non-interactive access is clearly required.</li>
+<li>The rights should be appropriate given the name and description of the OAuth client.</li>
+</ul>
+</details>
+<h4 id="parameters-overview">Parameters Overview</h4>
+<p>A few parameters listed below are usually used to describe an OAuth <a href="https://www.thethingsindustries.com/docs/api/reference/http/messages/#client">client</a>.</p>
+<ul>
+<li>The <strong>client ID</strong> uniquely identifies the OAuth client. Its <a href="https://www.thethingsindustries.com/docs/concepts/architecture/id-eui-constraints/#requirements-of-an-id-or-eui">restrictions</a> are the same as for any other ID in The Things Stack.</li>
+<li>The <strong>description</strong> is shown to the user when you request authorization.</li>
+<li>The <strong>rights</strong> indicates what actions your OAuth client is allowed to perform. This is shown to the user when performing an authorization request. A full list of rights can also be found in the <a href="https://www.thethingsindustries.com/docs/api/reference/http/messages/#right">message reference</a>.</li>
+<li>The <strong>redirect URI</strong> is where the user is redirected after authorizing your OAuth client. At least one <strong>redirect URI</strong> must be configured while registering the OAuth client.</li>
+<li>The <strong>client secret</strong> is issued when your OAuth client registration is accepted by a network administrator.</li>
+</ul>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+    <li data-tab="http-rest-api">
+      <a>
+        <span>HTTP (REST) API</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <h4 id="adding-oauth-clients-using-the-console">Adding OAuth clients using the Console</h4>
+<p>To register an OAuth client using the Console, click the <strong>User settings</strong> dropdown in the left-hand sidebar and select <strong>OAuth clients</strong>. Then click <strong>+ Add OAuth client</strong> in the top-right.</p>
+<figure><img src="/docs/concepts/advanced/adding-oauth-clients/oauth-client.png"
+    alt="OAuth client">
+</figure>
+<p>Enter the <strong>OAuth Client ID</strong>, <strong>Name</strong> and <strong>Description</strong> for your OAuth client. You can also add the <strong>Redirect URLs</strong> against which authorization requests will be checked, and <strong>Logout redirect URLs</strong> agains which client initiated requests are checked.</p>
+<figure><img src="/docs/concepts/advanced/adding-oauth-clients/create-oauth-client.png"
+    alt="Create an OAuth client">
+</figure>
+<p>Some <strong>Advanced administrator options</strong> are also available to set the state of the OAuth client, skip the authorization page or indicate endorsement.</p>
+<p>You can choose multiple <strong>Grant types</strong>, i.e. multiple OAuth flows that can be used for the client to obtain an OAuth token: <strong>Authorization code</strong>, <strong>Refresh token</strong> and <strong>Password</strong>.</p>
+<p>You also need to grant rights for your OAuth client. Keep in mind that, to provide the functionality of the application, a minimum set of rights has to be requested.</p>
+<figure><img src="/docs/concepts/advanced/adding-oauth-clients/grant-rights-for-oauth-client.png"
+    alt="Grant rights for an OAuth client">
+</figure>
+</section>
+<section data-content="cli">
+  <h4 id="adding-oauth-clients-using-the-cli">Adding OAuth clients using the CLI</h4>
+<p>To register an OAuth client using the CLI, use the following command:</p>
+<pre tabindex="0"><code>ttn-lw-cli clients create \
+  --client-id &lt;CLIENT-ID&gt; \
+  --name &lt;CLIENT-NAME&gt; \
+  --description &#34;My new OAuth client&#34; \
+  --redirect-uris &lt;REDIRECT-URI&gt; \
+  --grants GRANT_AUTHORIZATION_CODE \
+  --rights RIGHT_GATEWAY_ALL,RIGHT_ORGANIZATION_GATEWAYS_CREATE,RIGHT_ORGANIZATION_GATEWAYS_LIST,RIGHT_ORGANIZATION_INFO,RIGHT_USER_GATEWAYS_CREATE,RIGHT_USER_GATEWAYS_LIST,RIGHT_USER_INFO,RIGHT_USER_ORGANIZATIONS_LIST
+</code></pre>
+</section>
+<section data-content="http-rest-api">
+  <h4 id="adding-oauth-clients-using-the-http-rest-api">Adding OAuth clients using the HTTP (REST) API</h4>
+<br>
+<h5 id="endpoint-details">Endpoint Details</h5>
+<h6 id="create-oauth-client-that-belongs-to-an-user">Create OAuth client that belongs to an user.</h6>
+<div class="fixed-table table-api-item">
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Item</th>
+          <th style="text-align: left">Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Endpoint</td>
+          <td style="text-align: left"><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#users%7Bcollaborator.user_ids.user_id%7Dclients-post"><code>/users/{collaborator.user_ids.user_id}/clients</code></a></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Request type</td>
+          <td style="text-align: left"><code>POST</code></td>
+      </tr>
+  </tbody>
+</table>
+</br>
+</div>
+<h6 id="create-oauth-client-that-belongs-to-an-organization">Create OAuth client that belongs to an organization.</h6>
+<div class="fixed-table table-api-item">
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Item</th>
+          <th style="text-align: left">Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Endpoint</td>
+          <td style="text-align: left"><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#organizations%7Bcollaborator.organization_ids.organization_id%7Dclients-post"><code>/organizations/{collaborator.organization_ids.organization_id}/clients</code></a></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Request type</td>
+          <td style="text-align: left"><code>POST</code></td>
+      </tr>
+  </tbody>
+</table>
+</br>
+</div>
+<h6 id="example">Example</h6>
+<p>To create a client <code>my-test-client</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;client&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;client_id&#34;</span><span class="p">:</span> <span class="s2">&#34;my-test-client&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;My Test OAuth&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;My Test OAuth description&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;administrative_contact&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;user_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="s2">&#34;testuser&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;technical_contact&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;user_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="s2">&#34;testuser&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;redirect_uris&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;https://thethings.example.com&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;grants&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;GRANT_AUTHORIZATION_CODE&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;rights&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;RIGHT_GATEWAY_ALL&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;RIGHT_ORGANIZATION_GATEWAYS_CREATE&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;RIGHT_ORGANIZATION_GATEWAYS_LIST&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;RIGHT_ORGANIZATION_INFO&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;RIGHT_USER_GATEWAYS_CREATE&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;RIGHT_USER_GATEWAYS_LIST&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;RIGHT_USER_INFO&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;RIGHT_USER_ORGANIZATIONS_LIST&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;collaborator&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;user_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="s2">&#34;testuser&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X POST -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> https://thethings.example.com/api/v3/users/testuser/clients
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;client_id&#34;</span>:<span class="s2">&#34;my-test-client&#34;</span><span class="o">}</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2024-09-16T17:52:30.975475Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2024-09-16T17:52:30.975475Z&#34;</span>,<span class="s2">&#34;name&#34;</span>:<span class="s2">&#34;My Test OAuth&#34;</span>,<span class="s2">&#34;description&#34;</span>:<span class="s2">&#34;My Test OAuth description&#34;</span>,<span class="s2">&#34;administrative_contact&#34;</span>:<span class="o">{</span><span class="s2">&#34;user_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;user_id&#34;</span>:<span class="s2">&#34;testuser&#34;</span><span class="o">}}</span>,<span class="s2">&#34;technical_contact&#34;</span>:<span class="o">{</span><span class="s2">&#34;user_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;user_id&#34;</span>:<span class="s2">&#34;testuser&#34;</span><span class="o">}}</span>,<span class="s2">&#34;secret&#34;</span>:<span class="s2">&#34;FG5K5HP64NVQUYCHKO4C5YLUZXCD6FAUCTI4HQQJZY7N75TTCT2A&#34;</span>,<span class="s2">&#34;redirect_uris&#34;</span>:<span class="o">[</span><span class="s2">&#34;https://thethings.example.com&#34;</span><span class="o">]</span>,<span class="s2">&#34;grants&#34;</span>:<span class="o">[</span><span class="s2">&#34;GRANT_AUTHORIZATION_CODE&#34;</span><span class="o">]</span>,<span class="s2">&#34;rights&#34;</span>:<span class="o">[</span><span class="s2">&#34;RIGHT_GATEWAY_ALL&#34;</span>,<span class="s2">&#34;RIGHT_ORGANIZATION_GATEWAYS_CREATE&#34;</span>,<span class="s2">&#34;RIGHT_ORGANIZATION_GATEWAYS_LIST&#34;</span>,<span class="s2">&#34;RIGHT_ORGANIZATION_INFO&#34;</span>,<span class="s2">&#34;RIGHT_USER_GATEWAYS_CREATE&#34;</span>,<span class="s2">&#34;RIGHT_USER_GATEWAYS_LIST&#34;</span>,<span class="s2">&#34;RIGHT_USER_INFO&#34;</span>,<span class="s2">&#34;RIGHT_USER_ORGANIZATIONS_LIST&#34;</span><span class="o">]}</span>
+</span></span></code></pre></div>
+</section>
+
+</div>
+
+<h4 id="additional-information">Additional information</h4>
+<p>For more details on how obtain access token from an approved OAuth client, consult the <a href="https://www.thethingsindustries.com/docs/api/concepts/auth/oauth-access-tokens/">oauth access tokens</a> section.</p>
+        </div>
+          <div class="columns is-multiline">
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/concepts/advanced/user-management/user/">← User Management</a>
+<a class="button is-pulled-right" href="/docs/concepts/advanced/purge/">Deleting, Restoring and Purging Entities →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Export End Devices from Firefly | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/concepts/migration/exporting-end-devices/export-from-firefly/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Export End Devices from Firefly">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Export End Devices from Firefly">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/concepts/migration/exporting-end-devices/export-from-firefly/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Export End Devices from Firefly" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Concepts</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/concepts/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/architecture/" class="">Architecture</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/features/" class="">Features</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/networking/" class="">Networking</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/" class="">Migrate to The Things Stack</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/exporting-end-devices/" class="">Export End Device Data</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/exporting-end-devices/export-from-tts/" class="">Export Devices from The Things Stack</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/exporting-end-devices/export-from-chirpstack-v3/" class="">Export End Devices from ChirpStack v3</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/exporting-end-devices/export-from-chirpstack/" class="">Export End Devices from ChirpStack v4</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/exporting-end-devices/export-from-wanesy/" class="">Export End Devices from Wanesy</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/exporting-end-devices/export-from-firefly/" class="is-active">Export End Devices from Firefly</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/exporting-end-devices/troubleshooting/" class="">Troubleshooting</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/gateway-migration/" class="">Migrating Gateways</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/migrating-between-tts-distributions/" class="">Between The Things Stack distributions</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/migration/faq/" class="">Frequently Asked Questions</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/packet-broker/" class="">Packet Broker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/server-addresses/" class="">Server Addresses</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/advanced/" class="">Advanced Topics</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/troubleshooting/" class="">Troubleshooting</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/concepts/ttn/" class="">The Things Stack Sandbox</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+          
+          
+            <div class="content-tags">
+              
+              
+                <span class="tag is-light">New in v0.10.0</span>
+
+              
+              
+              
+            </div>
+          
+        <h1 class="title is-size-2">Export End Devices from Firefly</h1>
+        <div class="content">
+          <p>This section contains instructions on how to configure migration tool and use it to export end devices from Firefly, that can later be imported in The Things Stack.</p>
+<h3 id="before-you-begin">Before you begin</h3>
+<ul>
+<li>Using the actual JoinEUI of the end devices is mandatory when registering them on The Things Stack. Since Firefly does not store the JoinEUI of the device, users need to obtain this information separately, such as from the device manufacturer.</li>
+<li>The export process will halt if any error occurs.</li>
+<li>Use the <code>--invalidate-keys</code> option to invalidate the root and/or session keys of the devices on the Firefly server. This is necessary to prevent both networks from communicating with the same device. The last byte of the keys will be incremented by 0x01. This enables an easy rollback if necessary. Setting this flag to false (default) would result in a &ldquo;dry run&rdquo;, where the devices are exported but they will still be able to communicate with the Firefly server.</li>
+</ul>
+<h3 id="configuration">Configuration</h3>
+<p>Configure with environment variables, or command-line arguments.</p>
+<p>See <code>ttn-lw-migrate firefly {device|application} --help</code> for more details.</p>
+<p>The following example shows how to set options via environment variables. These are example values. Please use actual ones based on your case.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">FIREFLY_HOST</span><span class="o">=</span>example.com       <span class="c1"># Host of the Firefly API</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">FIREFLY_API_KEY</span><span class="o">=</span>abcdefgh       <span class="c1"># Firefly API Key</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">APP_ID</span><span class="o">=</span>my-test-app             <span class="c1"># Application ID for the exported devices</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">JOIN_EUI</span><span class="o">=</span><span class="m">1111111111111111</span>      <span class="c1"># JoinEUI for the exported devices.</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">FREQUENCY_PLAN_ID</span><span class="o">=</span>EU_863_870   <span class="c1"># Frequency Plan ID for the exported devices</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">MAC_VERSION</span><span class="o">=</span>1.0.2b             <span class="c1"># LoRaWAN MAC version for the exported devices</span>
+</span></span></code></pre></div><p>The above settings are common for all the following export methods.</p>
+<h3 id="export-devices">Export Devices</h3>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="single-device">
+      <a>
+        <span>Single device</span>
+      </a>
+    </li>
+    
+    <li data-tab="multiple-devices">
+      <a>
+        <span>Multiple devices</span>
+      </a>
+    </li>
+    
+    <li data-tab="all-devices">
+      <a>
+        <span>All devices</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="single-device">
+  <p>To export a single device using its Device EUI (e.g. <code>1111111111111112</code>):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
+</span></span><span class="line"><span class="cl">$ ttn-lw-migrate firefly device <span class="m">1111111111111112</span> --verbose &gt; devices.json
+</span></span><span class="line"><span class="cl"><span class="c1"># export device</span>
+</span></span><span class="line"><span class="cl">$ ttn-lw-migrate firefly device <span class="m">1111111111111112</span> --invalidate-keys &gt; devices.json
+</span></span></code></pre></div>
+</section>
+<section data-content="multiple-devices">
+  <p>In order to export a large number of devices, create a file named <code>device_euis.txt</code> with one device EUI per line:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">1111111111111112
+</span></span><span class="line"><span class="cl">FF11111111111134
+</span></span><span class="line"><span class="cl">ABCD111111111100
+</span></span></code></pre></div><p>Please note that all these devices should have the same JoinEUI.</p>
+<p>And then export with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
+</span></span><span class="line"><span class="cl">$ ttn-lw-migrate firefly device --verbose &lt; device_ids.txt &gt; devices.json
+</span></span><span class="line"><span class="cl"><span class="c1"># export devices</span>
+</span></span><span class="line"><span class="cl">$ ttn-lw-migrate firefly device --invalidate-keys &lt; device_ids.txt &gt; devices.json
+</span></span></code></pre></div>
+</section>
+<section data-content="all-devices">
+  <p>The Firefly LNS does not strictly enforce device to application relationships.</p>
+<p>Setting the <code>--all</code> flag will export <strong>all devices that are accessible by the API key</strong>.</p>
+<p>The <code>application</code> command without the <code>--all</code> flag is a no-op (does nothing).</p>
+<blockquote>
+<p>Note: Please be cautious while using this command as this might invalidate all the keys of all the devices.</p>
+</blockquote>
+<p>To export all devices accessible by the API Key,</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
+</span></span><span class="line"><span class="cl">$ ttn-lw-migrate firefly application --all --verbose &gt; devices.json
+</span></span><span class="line"><span class="cl"><span class="c1"># export all devices</span>
+</span></span><span class="line"><span class="cl">$ ttn-lw-migrate firefly application --all --invalidate-keys &gt; devices.json
+</span></span></code></pre></div>
+</section>
+
+</div>
+
+<p>After exporting, devices can be imported in The Things Stack. See <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/adding-devices-in-bulk/">add end devices in bulk in The Things Stack</a> for details about importing devices.</p>
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/concepts/migration/exporting-end-devices/export-from-wanesy/">← Export End Devices from Wanesy</a>
+<a class="button is-pulled-right" href="/docs/concepts/migration/exporting-end-devices/troubleshooting/">Troubleshooting →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

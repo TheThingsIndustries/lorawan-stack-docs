@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Adding Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Adding Devices">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Adding Devices">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Adding Devices" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Hardware</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/hardware/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/" class="">Devices</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/" class="is-active">Adding Devices</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/manual/" class="">Manually adding devices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/adding-devices-in-bulk/" class="">Adding devices in bulk</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/atecc608a/" class="">Adding devices with ATECC608 Secure Elements</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/configuring-devices/" class="">Configuring Devices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/concepts/" class="">Concepts</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/models/" class="">Models</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/troubleshooting/" class="">Troubleshooting Devices</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/" class="">Gateways</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/works-with/" class="">Works with The Things Stack</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+        <h1 class="title is-size-2">Adding Devices</h1>
+        <div class="content">
+          <p>This section contains instructions for adding LoRaWAN® devices in The Things Stack.</p>
+<p>End devices in The Things Stack are managed under <strong>Applications</strong>.
+An application is a logical collection of devices that can be used to collect devices by function or geographical area. Before proceeding with this guide, <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">create an application</a> first.</p>
+<p>This guide assumes that your device is in the <a href="https://github.com/TheThingsNetwork/lorawan-devices/">LoRaWAN® Device Repository</a> and that you&rsquo;re using the Console. If your device is not in the LoRaWAN® Device Repository or if you want to use The Things Stack CLI, see <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/manual/">Manually adding devices </a>.</p>
+<p>To create a device, first open the application you wish to add the device in. Go to <strong>End devices</strong> in the left menu and click on <strong>+Register end device</strong> to reach the end device registration page.</p>
+<figure><img src="/docs/hardware/devices/adding-devices/application-end-devices.png"
+    alt="Application overview">
+</figure>
+
+<p>You will be presented with options to easily onboard your device using its QR code (if you have it), and to register your end device from the <a href="https://github.com/TheThingsNetwork/lorawan-devices/">LoRaWAN® Device Repository</a> or manually.</p>
+<figure><img src="/docs/hardware/devices/adding-devices/register-devices-option.png"
+    alt="Options to register devices">
+</figure>
+
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="with-qr-code">
+      <a>
+        <span>With QR Code</span>
+      </a>
+    </li>
+    
+    <li data-tab="without-qr-code">
+      <a>
+        <span>Without QR Code</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="with-qr-code">
+  <h2 id="onboarding-devices-using-qr-codes">Onboarding devices using QR codes</h2>
+<p>If your device has a <a href="https://lora-alliance.org/resource_hub/tr005-lorawan-device-identification-qr-codes/">TR005 LoRaWAN® Device Identification QR Code</a>, adding a device is a simple process.
+Note not all QR codes on the physical device are scannable. Only TR005 LoRaWAN® Device Identification QR Codes, are supported for this method.</p>
+<p>Click the <strong>Scan end device QR code</strong> button and allow The Things Stack to use your camera.
+Now just bring your device&rsquo;s QR code closer to your camera. A window with data found from the QR code will appear, containing your device&rsquo;s <strong>Claim authentication code</strong>, <strong>JoinEUI</strong>, <strong>DevEUI</strong> and <strong>Brand</strong>.</p>
+<figure><img src="/docs/hardware/devices/adding-devices/qr-data-found.png"
+    alt="Found QR data">
+</figure>
+<p>If the data is correct, click <strong>Apply</strong>.</p>
+<p>Now proceed to choose the <strong>Input Method</strong> under the <strong>End device type</strong> section below.</p>
+<p>Choose the <strong>Select the end device in the LoRaWAN Device Repository</strong> input method. Then, select the <strong>End device brand</strong>, <strong>Model</strong>, <strong>Hardware Version</strong>, <strong>Software Version</strong>, and <strong>Profile (Region)</strong> for your device.</p>
+<figure><img src="/docs/hardware/devices/adding-devices/device-repo.png"
+    alt="Creating a new device with the Device Repository">
+</figure>
+<p>Choose a <strong>Frequency plan</strong> appropriate for your region. Your device and gateway must use the same <a href="https://www.thethingsindustries.com/docs/concepts/features/lorawan/frequency-plans/">frequency plan</a> to communicate.</p>
+<figure><img src="/docs/hardware/devices/adding-devices/fp.png"
+    alt="Choosing a frequency plan">
+</figure>
+</section>
+<section data-content="without-qr-code">
+  <h2 id="onboarding-devices-without-qr-codes">Onboarding devices without QR codes</h2>
+<p>If your device doesn&rsquo;t have a standard <a href="https://lora-alliance.org/resource_hub/tr005-lorawan-device-identification-qr-codes/">TR005 LoRaWAN® Device Identification QR Code</a>, or has a vendor specific QR code, then the device identification and keys have to be entered manually.</p>
+<p>First choose the <strong>Select the end device in the LoRaWAN Device Repository</strong> input method. Then, select the <strong>End device brand</strong>, <strong>Model</strong>, <strong>Hardware Version</strong>, <strong>Software Version</strong>, and <strong>Profile (Region)</strong> for your device.</p>
+<figure><img src="/docs/hardware/devices/adding-devices/select-dr-non-qr.png"
+    alt="Creating a new device with the Device Repository">
+</figure>
+<p>Choose a <strong>Frequency plan</strong> appropriate for your region. Your device and gateway must use the same <a href="https://www.thethingsindustries.com/docs/concepts/features/lorawan/frequency-plans/">frequency plan</a> to communicate. This example uses <code>Europe 863-870 MHz (SF9 for RX2 - recommended)</code>.</p>
+<figure><img src="/docs/hardware/devices/adding-devices/fp-non-qr.png"
+    alt="Choosing a frequency plan">
+</figure>
+<p>Enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer and click <strong>Confirm</strong>. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the <a href="https://ieee802.org/">IEEE 802 standards</a> or use all zeros, just make sure to program the same value into your device.</p>
+<figure><img src="/docs/hardware/devices/adding-devices/non-qr-join-eui.png"
+    alt="Set the Join EUI">
+</figure>
+<p>Now enter your <strong>DevEUI</strong>. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the <strong>Generate</strong> button, and program it in your device.</p>
+<p>For LoRaWAN version 1.0.x devices, you will see an <strong>AppKey</strong> field, and for LoRaWAN version 1.1.x devices you will also see a <strong>NwkKey</strong> field. If these keys are provided by your manufacturer, enter them. Otherwise, use the <strong>Generate</strong> button to create them, and program them into your device.</p>
+<figure><img src="/docs/hardware/devices/adding-devices/non-qr-all-set.png"
+    alt="Set the Device EUI and Device Keys">
+</figure>
+</section>
+
+</div>
+
+<p>Finally, enter an <strong>End device ID</strong>. Advisable is doing it in the format <code>eui-{Device EUI}</code>. You can edit this field and give the device a unique identifier. See <a href="https://www.thethingsindustries.com/docs/concepts/architecture/id-eui-constraints/">ID and EUI constraints</a> for guidelines about choosing a unique ID.</p>
+<p>Now verify that all the fields are filled and click the <strong>Register end device</strong> button to create the end device.</p>
+<p>The device is now registered, and will appear as connected in The Things Stack once it sends an uplink.</p>
+        </div>
+          <div class="columns is-multiline">
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/manual/">Manually adding devices</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            If your devices are not yet part of the LoRaWAN® Device Repository or you want to set advanced fields, you can add devices manually in The Things Stack.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/manual/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/adding-devices-in-bulk/">Adding devices in bulk</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            Instead of adding devices one by one, The Things Stack supports multiple methods of adding multiple end devices at once. Adding multiple devices is also referred to as importing devices.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/adding-devices-in-bulk/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/atecc608a/">Adding devices with ATECC608 Secure Elements</a>
+          </h1>
+          <div class="content has-text-grey">
+            
+            The Things Industries and Microchip developed a security solution for LoRaWAN® that enables secure key provisioning and secure cryptographic operations using secure elements.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/atecc608a/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/hardware/devices/">← Devices</a>
+<a class="button is-pulled-right" href="/docs/hardware/devices/adding-devices/manual/">Manually adding devices →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#onboarding-devices-using-qr-codes'>Onboarding devices using QR codes</a></li>
+    
+      
+      <li><a href='#onboarding-devices-without-qr-codes'>Onboarding devices without QR codes</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

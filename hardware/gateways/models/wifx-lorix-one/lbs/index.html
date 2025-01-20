@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.134.2">
+  <title>Connect LORIX One with Lora Basics™ Station | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/hardware/gateways/models/wifx-lorix-one/lbs/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Connect LORIX One with Lora Basics™ Station">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Connect LORIX One with Lora Basics™ Station">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/hardware/gateways/models/wifx-lorix-one/lbs/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Connect LORIX One with Lora Basics™ Station" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Hardware</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/hardware/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/devices/" class="">Devices</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/" class="">Gateways</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/" class="">Concepts</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/" class="">Models</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/raspberry-pi/" class="">Building a gateway with Raspberry Pi and IC880A</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/browan-minihub-pro/" class="">Browan Minihub Pro</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/ciscowirelessgateway/" class="">Cisco IXM Wireless Gateway for LoRaWAN</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/cloudgate/" class="">CloudGate</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/cotx/" class="">COTX</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/dragino-lps8/" class="">Dragino LPS8N</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/kerlinkwirnetistation/" class="">Kerlink Wirnet iStation</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/kerlinkwirnetstation/" class="">Kerlink Wirnet Station</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/laird-sentrius/" class="">Laird Sentrius™ RG1xx LoRaWAN Gateway</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/mikrotik-knot/" class="">MikroTik KNOT</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/mikrotik-ltap/" class="">MikroTik LtAP</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/mikrotikrouterboard/" class="">MikroTik Routerboard wAP LoRa8 kit</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/milesightug56/" class="">Milesight UG56 LoRaWAN Gateway</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/milesightug65/" class="">Milesight UG65 LoRaWAN Gateway</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/milesightug67/" class="">Milesight UG67 LoRaWAN Gateway</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/milesightug85/" class="">Milesight UG85 LoRaWAN Gateway</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/milesightug87/" class="">Milesight UG87 LoRaWAN Gateway</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/moko-mkgw2-lw/" class="">MOKOSMART MKGW2-LW LoRaWAN® Gateway</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/multitechconduit/" class="">MultiTech Conduit AEP</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/multitechconduit-mlinux/" class="">MultiTech Conduit mLinux</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/nasysoutdoorgateway/" class="">NASys LoRaWAN Outdoor Gateway</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/peplink-20x/" class="">Peplink Balance 20X LoRaWAN (with FlexModule Mini)</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/rak-7240/" class="">RAK7240 WisGate Edge Prime</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/tektelickonamicro/" class="">Tektelic Kona Micro IoT LoRaWAN Gateway</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/thethingsindoorgateway/" class="">The Things Indoor Gateway</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/thethingsindoorgatewaypro/" class="">The Things Indoor Gateway Pro</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/thethingskickstartergateway/" class="">The Things Kickstarter Gateway</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/thethingsoutdoor/" class="">The Things Outdoor Gateway</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/wifx-l1/" class="">Wifx L1</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/wifx-lorix-one/" class="">Wifx LORIX One</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/wifx-lorix-one/lbs/" class="is-active">Connect LORIX One with Lora Basics™ Station</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/wifx-lorix-one/udp/" class="">Connect LORIX One with UDP Packet Forwarder</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/gateways/troubleshooting/" class="">Troubleshooting Gateways</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/hardware/works-with/" class="">Works with The Things Stack</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+          
+          
+        <h1 class="title is-size-2">Connect LORIX One with Lora Basics™ Station</h1>
+        <div class="content">
+          <p>This section contains instructions for connecting to The Things Stack using <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/">LoRa Basics™ Station</a>.</p>
+<h2 id="enable-the-basic-station">Enable the Basic Station</h2>
+<p>Go to the <strong>LoRa &gt; Forwarder</strong> page.</p>
+<figure><img src="../lorix-one-lora-settings-forwarder.png"
+    alt="LORIX One LoRa forwarder page">
+</figure>
+
+<p>On the top right, click the <strong>Edit</strong> button to choose a forwarder.</p>
+<figure class="plain"><img src="../lorix-one-lora-settings-forwarder-change-list.png"
+    alt="LORIX One LoRa forwarder selection">
+</figure>
+
+<p>In the list, select <strong>LoRa Basic Station</strong> and press apply.</p>
+<figure class="plain"><img src="../lorix-one-lora-settings-forwarder-change-bs.png"
+    alt="LORIX One LoRa forwarder Basic Station selection">
+</figure>
+
+<h2 id="configure-the-lns">Configure the LNS</h2>
+<p>Scroll down to the <strong>Configuration</strong> section and enable the <strong>LoRaWAN Network Server</strong> option.</p>
+<figure><img src="../lorix-one-lora-settings-bs.png"
+    alt="LORIX One LoRa forwarder Basic Station LNS">
+</figure>
+
+<p>Configure the <strong>Address</strong> with the <a href="https://www.thethingsindustries.com/docs/concepts/server-addresses/">Server Address</a> of your deployment, and <strong>Port</strong> with LNS port <code>8887</code>.</p>
+<p>Enable the <strong>Secured TLS connection</strong> and select the <strong>Use local root certificates</strong> option. If you need to use a certificate specific to your infrastructure (for on-premise installations), use the <strong>Use certificate file</strong> option instead and upload the certificate.</p>
+<p>Enable the <strong>Client authentication</strong>, select <strong>Use token</strong>, and set the previously saved API key in the <strong>Authentication token</strong> field. This key was shown to you as you created it when <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/adding-gateways/#create-gateway-api-key">registering the gateway</a>. If you did not copy the key, you can delete it and create a new one.</p>
+<figure class="plain"><img src="../lorix-one-lora-settings-bs-lns.png"
+    alt="LORIX One LoRa forwarder Basic Station LNS">
+</figure>
+
+<p>Press the <strong>SAVE</strong> button. In the <strong>Control</strong> pane above, press <strong>START</strong> and check the logs in the dedicated pane.</p>
+<figure><img src="../lorix-one-lora-settings-bs-control-logs.png"
+    alt="LORIX One LoRa forwarder Basic Station start">
+</figure>
+
+<p>You should see a bunch of messages, one of which indicates success :</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">[TCE:INFO] Infos: fcc2:3dff:feab:cdef muxs-::0 wss://wifx.eu1.cloud.thethings.industries:8887/traffic/eui-FCC23DFFFEABCDEF
+</code></pre><p>If the connection fails, you will get this kind of message:</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">[AIO:ERRO] [-1] WS connect failed: NET - Failed to get an IP address for the given hostname
+[TCE:ERRO] TC connect failed - URI: wss://wrong-tenant.eu1.cloud.thethings.industries:8887
+</code></pre><p>Please check the configuration and the <strong>LoRa Network Server</strong> status. After a configuration change, always restart the Basic Station with the <strong>Restart</strong> button to make it effective.</p>
+<p>If the Basic Station crashes for any reason, it will be automatically restarted if the <strong>Auto-start</strong> option is enabled.</p>
+<h2 id="cups">CUPS</h2>
+<p>Go to the <strong>Configuration</strong> section and enable <strong>Configuration and Update Server</strong>.</p>
+<figure><img src="../lorix-one-lora-settings-bs.png"
+    alt="LORIX One LoRa forwarder Basic Station LNS">
+</figure>
+
+<p>To connect the gateway via CUPS protocol, follow the instructions for <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/cups/">Connecting CUPS</a>.</p>
+<p>Press the <strong>SAVE</strong> button. In the <strong>Control</strong> pane above, press <strong>START</strong> and check the logs in the dedicated pane.</p>
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/hardware/gateways/models/wifx-lorix-one/">← Wifx LORIX One</a>
+<a class="button is-pulled-right" href="/docs/hardware/gateways/models/wifx-lorix-one/udp/">Connect LORIX One with UDP Packet Forwarder →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#enable-the-basic-station'>Enable the Basic Station</a></li>
+    
+      
+      <li><a href='#configure-the-lns'>Configure the LNS</a></li>
+    
+      
+      <li><a href='#cups'>CUPS</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-third">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-third">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-third">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
