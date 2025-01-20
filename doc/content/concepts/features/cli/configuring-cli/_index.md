@@ -5,7 +5,7 @@ weight: 2
 aliases:
   [
     /getting-started/cli/configuring-cli/,
-    /concepts/features/cli/configuring-cli,
+    /the-things-stack/interact/cli/configuring-cli,
   ]
 ---
 

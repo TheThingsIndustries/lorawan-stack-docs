@@ -5,7 +5,7 @@ weight: 1
 aliases: [the-things-stack/concepts/architecture]
 ---
 
-{{% tts %}} follows a API driven microservice architecture, well suited for high availability and reliability.
+{{% tts %}} follows an API driven microservice architecture, well suited for high availability and reliability.
 
 <!--more-->
 
@@ -36,11 +36,11 @@ aliases: [the-things-stack/concepts/architecture]
 
 <div class="fixed-table table-tts-components">
 
-| Component (Service)       | Short | Description                                                                                                                                                              |
-| ------------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Tenant Billing Server     | `TBS` | Manages the creation, suspension and billing of tenants using different payment backends (only for {{% tts %}} cloud).                                                   |
-| QR Generator              | `QRG` | Generates QR codes for devices in various formats. These QR codes can be used for various purposes, including identification and device claiming to transfer ownership.. |
-| Device Template Converter | `DTC` | Converts data to device templates for migrating networks and importing vendor-specific data.                                                                             |
+| Component (Service)       | Short | Description                                                                                                                                                             |
+| ------------------------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tenant Billing Server     | `TBS` | Manages the creation, suspension and billing of tenants using different payment backends (only for {{% tts %}} cloud).                                                  |
+| QR Generator              | `QRG` | Generates QR codes for devices in various formats. These QR codes can be used for various purposes, including identification and device claiming to transfer ownership. |
+| Device Template Converter | `DTC` | Converts data to device templates for migrating networks and importing vendor-specific data.                                                                            |
 
 </div>
 

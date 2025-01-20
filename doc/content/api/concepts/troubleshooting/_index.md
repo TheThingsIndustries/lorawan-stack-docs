@@ -14,7 +14,7 @@ This error usually occurs when wrong path(s) are specified in the `field_mask` o
 
 ###### When adding a device, I get an "invalid end_device: embedded message failed validation" error.
 
-The most common cause for this error is not following the regex pattern in the `device_id` field. See [End Device APIs]({{< ref "/api/reference/grpc/end_device#message:EndDeviceIdentifiers" >}}) section and make sure your `device_id` is in line with the defined regex pattern. See also [ID and EUI constaints]({{< ref "/concepts/architecture/id-eui-constraints" >}}) documentation.
+The most common cause for this error is not following the regex pattern in the `device_id` field. See [End Device APIs]({{< ref "/api/reference/grpc/end_device#message:EndDeviceIdentifiers" >}}) section and make sure your `device_id` is in line with the defined regex pattern. See also [ID and EUI constraints]({{< ref "/concepts/architecture/id-eui-constraints" >}}) documentation.
 
 ###### Listing gateways via API call works for the eu1 {{% tts %}} Cloud cluster, but won't work for the nam1 cluster.
 

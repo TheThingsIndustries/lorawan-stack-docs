@@ -3,7 +3,10 @@ title: "Installing the CLI"
 description: ""
 weight: 1
 aliases:
-  [/getting-started/cli/installing-cli/, /concepts/features/cli/installing-cli]
+  [
+    /getting-started/cli/installing-cli/,
+    /the-things-stack/interact/cli/installing-cli,
+  ]
 ---
 
 This section contains instructions for installing the command-line interface.
