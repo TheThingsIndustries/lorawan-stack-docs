@@ -10,6 +10,10 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.33.0
+
+## 3.32.3
+
 - Add GRPC methods rate limiting metric to prometheus rules.
 
 ### Proxy
