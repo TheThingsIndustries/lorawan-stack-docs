@@ -115,7 +115,7 @@ func frontMatterToCSV(rootDirectory, csvPath, repoBaseURL string) error {
 }
 
 func main() {
-	rootDirectoryPath := "doc/content/gateways/models"
+	rootDirectoryPath := "doc/content/hardware/gateways/models"
 	csvPath := "gateways.csv"
 	repoBaseURL := "https://raw.githubusercontent.com/TheThingsIndustries/lorawan-stack-docs/master/doc/content/gateways/models"
 	if err := frontMatterToCSV(rootDirectoryPath, csvPath, repoBaseURL); err != nil {
