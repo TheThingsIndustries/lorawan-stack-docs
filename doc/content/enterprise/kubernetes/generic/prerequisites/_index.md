@@ -39,7 +39,7 @@ Please [contact our sales team](mailto:sales@thethingsindustries.com) for access
 
 1. A Kubernetes cluster
 2. PostgreSQL compatible database
-3. Redis compatible database
+3. Redis compatible database (Redis 6.2 or above is required)
 4. Blob Storage
 5. An ingress controller to handle the ingress routes
 6. TLS Certificates
