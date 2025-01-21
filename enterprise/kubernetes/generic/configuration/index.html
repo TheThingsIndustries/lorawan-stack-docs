@@ -198,7 +198,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h1 class="title is-size-2">Configuration</h1>
         <div class="content">
           <p>The Things Stack Helm chart is configured using <code>yaml</code> files. This guide assumes that these fields are saved in a <code>&lt;deployment&gt;.values.yaml</code> file and used for deployment/updates.</p>
-<p>The following is a list of mandatory minimum fields. For a full list of possible values, check the <code>values.yaml</code> file at the root of the The Things Stack Helm chart.</p>
+<p>The following is a list of mandatory minimum fields. For a full list of possible values, check the <code>values.yaml</code> file at the root of the The Things Stack Helm chart. You can find it on <a href="https://artifacthub.io/packages/helm/thethingsindustries/lorawan-stack-helm-chart?modal=values">artifacthub.io</a> as well.</p>
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   Some values in this file are secrets. Make sure to check this file into a secure repository.
@@ -249,9 +249,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">oauth</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="c"># See preparation section.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ingress</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">traefik</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">tls</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="c"># Secret Name containing the TLS Certificates for the Domain.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">controller</span><span class="p">:</span><span class="w"> </span><span class="c"># Ingress controller class name.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">tls</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="c"># Secret Name containing the TLS Certificates for the Domain.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tenancy</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">adminKey</span><span class="p">:</span><span class="w"> </span><span class="c"># See preparation section.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">interop</span><span class="p">:</span><span class="w">
@@ -279,7 +279,104 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">edcs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">blob</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">bucket</span><span class="p">:</span><span class="w"> </span><span class="c"># End Device Claiming Server bucket from &#34;Section 4. Blob Storage&#34;</span><span class="w">
-</span></span></span></code></pre></div>
+</span></span></span></code></pre></div><h2 id="the-things-indoor-gateway-pro-configuration">The Things Indoor Gateway Pro configuration</h2>
+<p>The Helm chart does not support The Things Indoor Gateway Pro by default. To enable it in the Helm chart, The Things Gateway Controller must be enabled and the ingress controller of the Kubernetes cluster must have mTLS configured.</p>
+<p>To set up the gateway controller, the following fields must be filled in <code>values.yaml</code>:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Field name</strong></th>
+          <th style="text-align: left"><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>global.ttgc.enabled</code></td>
+          <td style="text-align: left">The Things Gateway Controller enable flag. Set this to <code>true</code>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>global.ttgc.domain</code></td>
+          <td style="text-align: left">Domain name of the cluster. Should be the same as <code>global.domain</code>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>global.ttgc.tls.secretName</code></td>
+          <td style="text-align: left">Kubernetes Secret name containing the TLS. Should be the same as <code>global.ingress.tls.secretName</code>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>global.ttgc.address</code></td>
+          <td style="text-align: left">(Optional) The URL of the gateway controller. It not specified, it defaults to <code>gc.thethings.industries:443</code>.</td>
+      </tr>
+  </tbody>
+</table>
+<p>The Things Stack verifies the identity of each connected TTIGPro gateway for security reasons, therefore mutual TLS is necessary to be configured in the ingress controller. mTLS configuration depends on the chosen ingress controller and is left to the operator of the Kubernetes cluster. The Things Stack recognizes the following client certificate header names:</p>
+<ul>
+<li><code>X-Forwarded-Client-Cert</code></li>
+<li><code>X-Forwarded-Tls-Client-Cert</code></li>
+</ul>
+<p>As an example, the steps to configure Traefik to support mTLS are the following:</p>
+<ol>
+<li>
+<p>Create the Traefik middleware that passes the TLS client certificates in the request headers.</p>
+<ul>
+<li>Paste the k8s middleware manifest into a yaml file (make sure to set the correct namespace):</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># traefik-passtlsclientcert.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">traefik.io/v1alpha1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Middleware</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">traefik-passtlsclientcert</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;traefik-namespace&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">passTLSClientCert</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">pem</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>Apply the k8s manifest to the cluster:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl apply -f traefik-passtlsclientcert.yaml 
+</span></span></code></pre></div></li>
+</ol>
+<p>For more info check the <a href="https://doc.traefik.io/traefik/middlewares/http/passtlsclientcert/">Traefik docs on the PassTLSClientCert middleware</a>.</p>
+<ol start="2">
+<li>
+<p>Configure the default TLS options for Traefik.</p>
+<ul>
+<li>Paste the k8s middleware manifest into a yaml file (make sure to set the correct namespace):</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># traefik-tlsoption.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">traefik.io/v1alpha1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">TLSOption</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;traefik-namespace&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">clientAuth</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">clientAuthType</span><span class="p">:</span><span class="w"> </span><span class="l">RequestClientCert</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>Apply the k8s manifest to the cluster:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl apply -f traefik-passtlsclientcert.yaml 
+</span></span></code></pre></div></li>
+</ol>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The Things Stack Helm chart uses wildcard domains in ingress routes. This is necessary for multi-tenant deployments as we don&rsquo;t know the names of the tenants in advance. Traefik does not support TLS options for wildcard domains, because it maps the TLS options based solely on the host name (the <code>Host</code> part of the ingress rule) and it needs a concrete domain to match (<a href="https://doc.traefik.io/traefik/v2.3/routing/routers/#options">check out more in the Traefik docs</a>). To go around this limitation, a default TLS option can be used which is the fallback for any unmatched host.
+</div>
+
+<p>For more info check the <a href="https://doc.traefik.io/traefik/https/tls/#tls-options">Traefik docs on TLS options</a>.</p>
+<ol start="3">
+<li>Set the protocol annotations for The Things Indoor Gateway Pro, middleware annotations and serviceAnnotations in <code>values.yaml</code>
+(in addition to the existing annotations):</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ttigw</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">traefik.ingress.kubernetes.io/router.entrypoints</span><span class="p">:</span><span class="w"> </span><span class="l">ttigw,ttigwsecure</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">traefik.ingress.kubernetes.io/router.middlewares</span><span class="p">:</span><span class="w"> </span><span class="l">traefik-passtlsclientcert@kubernetescrd</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">traefik.ingress.kubernetes.io/router.tls</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;true&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">serviceAnnotations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">traefik.ingress.kubernetes.io/service.serversscheme</span><span class="p">:</span><span class="w"> </span><span class="l">h2c</span><span class="w">
+</span></span></span></code></pre></div><ol start="4">
+<li>Install (or upgrade) the helm chart.</li>
+</ol>
         </div>
           <div class="columns is-multiline">
 </div>
@@ -303,6 +400,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#the-things-indoor-gateway-pro-configuration'>The Things Indoor Gateway Pro configuration</a></li>
+    
+  </ul>
 
 
   </nav>
