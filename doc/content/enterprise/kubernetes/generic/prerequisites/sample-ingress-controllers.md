@@ -2,7 +2,10 @@
 title: "Sample ingress controllers"
 description: ""
 weight: 1
-aliases: [/getting-started/kubernetes/self-managed/prerequisites/sample-ingress-controllers]
+aliases: [
+  /getting-started/kubernetes/self-managed/prerequisites/sample-ingress-controllers,
+  /the-things-stack/host/kubernetes/generic/prerequisites/sample-ingress-controllers,
+  ]
 ---
 
 The following are examples of ingress controllers for {{% tts %}} deployment on Kubernetes.
