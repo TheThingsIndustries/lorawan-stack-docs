@@ -9,7 +9,7 @@ aliases:
   ]
 ---
 
-{{% tts %}} Helm charts are packaged and distributed as [OCI packages](https://helm.sh/docs/topics/registries/) and are published to [Docker Hub](https://hub.docker.com/r/thethingsindustries/lorawan-stack-helm-chart).
+{{% tts %}} Helm charts are packaged and distributed as [OCI packages](https://helm.sh/docs/topics/registries/) and are published to [Docker Hub](https://hub.docker.com/r/thethingsindustries/lorawan-stack-helm-chart). You can also find information about the Helm chart on [artifacthub.io](https://artifacthub.io/packages/helm/thethingsindustries/lorawan-stack-helm-chart).
 
 Use the following steps to install the chart.
 
