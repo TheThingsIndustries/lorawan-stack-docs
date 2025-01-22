@@ -18,6 +18,7 @@ function decodeUplink(input) {
   // {
   //   "bytes": [1, 2, 3], // FRMPayload (byte array)
   //   "fPort": 1
+  //   "recvTime": "Thu Jan 16 2025 17:29:37 GMT+0200 (Eastern European Standard Time)" // receivedAt (Date object)
   // }
   return {
     data: {
@@ -183,6 +184,7 @@ function decodeUplink(input) {
     3: "motion",
     4: "button",
   };
+  data.recvTime = input.recvTime.toString();
   data.event = events[input.fPort];
   data.battery = (input.bytes[0] << 8) + input.bytes[1];
   data.light = (input.bytes[2] << 8) + input.bytes[3];
@@ -213,7 +215,7 @@ function normalizeUplink(input) {
 
 For example, the end device observed an event and performed some measurements. The end device transmitted the following binary payload: `0C B2 04 80 F7 AE` (hex encoded) on FPort 4. The Base64 equivalent of that binary payload is `DLIEgPeu` and the JavaScript byte array is `[ 12, 178, 4, 128, 247, 174 ]`. This is all the same, just a different representation.
 
-The uplink decoder gets the JavaScript byte array of the binary payload and FPort as input. {{% tts %}} sets `frm_payload` to the Base64 representation of the binary payload, and `decoded_payload` to the output `data` of the uplink decoder. If there are warnings, they are set in `decoded_payload_warnings`.
+The uplink decoder gets the JavaScript byte array of the binary payload, the FPort and the time of receipt (`recvTime`) as input. {{% tts %}} sets `frm_payload` to the Base64 representation of the binary payload, and `decoded_payload` to the output `data` of the uplink decoder. If there are warnings, they are set in `decoded_payload_warnings`.
 
 The `data.uplink_message` object of the `as.up.data.forward` event will contain:
 
@@ -226,6 +228,7 @@ The `data.uplink_message` object of the `as.up.data.forward` event will contain:
       "battery": 3250,
       "event": "setup",
       "light": 1152,
+      "recvTime": "Tue Jan 21 2025 17:56:54 GMT+0100 (CET)",
       "temperature": -21.3
     },
     "decoded_payload_warnings": ["it's cold"],
