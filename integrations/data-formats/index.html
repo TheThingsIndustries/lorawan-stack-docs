@@ -153,6 +153,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   Empty fields are omitted from payloads. As such, if a certain field has a value of <code>&quot;&quot;</code>, <code>0</code> or <code>false</code> it will not be present in the message.
 </div>
 
+<p><span class="tag is-light">New in v3.34.0</span>
+
+ Uplink messages forward the attributes of the end device that produced the message.</p>
 <h3 id="join-accept-messages">Join-accept Messages</h3>
 <p>The JSON join-accept messages use the following format:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="p">{</span>
@@ -169,8 +172,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;received_at&#34;</span> <span class="o">:</span> <span class="s2">&#34;2020-02-12T15:15...&#34;</span>      <span class="c1">// ISO 8601 UTC timestamp at which the message has been received by the Application Server
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;join_accept&#34;</span> <span class="o">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="s2">&#34;session_key_id&#34;</span> <span class="o">:</span> <span class="s2">&#34;AXBSH1Pk6Z0G166...&#34;</span><span class="p">,</span> <span class="c1">// Join Server issued identifier for the session keys
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;received_at&#34;</span> <span class="o">:</span> <span class="s2">&#34;2020-02-17T07:49...&#34;</span>    <span class="c1">// ISO 8601 UTC timestamp at which the uplink has been received by the Network Server
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;received_at&#34;</span> <span class="o">:</span> <span class="s2">&#34;2020-02-17T07:49...&#34;</span><span class="p">,</span>   <span class="c1">// ISO 8601 UTC timestamp at which the uplink has been received by the Network Server
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;attributes&#34;</span><span class="o">:</span> <span class="p">{</span>                          <span class="c1">// End device key-value attributes set for this device.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="s2">&#34;key1&#34;</span><span class="o">:</span> <span class="s2">&#34;value1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;key2&#34;</span><span class="o">:</span> <span class="s2">&#34;value2&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><details><summary>Join message example</summary>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
@@ -190,10 +197,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">    <span class="s2">&#34;ns:uplink:01E191YMZ2J64K6FEW5F0WE7TQ&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01E191YMZ2KK3TJYG5C4XZP8JK&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;received_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-02-17T07:49:09.935284891Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;join_accept&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;session_key_id&#34;</span><span class="p">:</span> <span class="s2">&#34;AXBSH1Pk6Z0G166RlH16CQ==&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;received_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-02-17T07:49:09.736532315Z&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;received_at&#34;</span> <span class="p">:</span> <span class="s2">&#34;2020-02-17T07:49:09.935284891Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;join_accept&#34;</span> <span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;session_key_id&#34;</span> <span class="p">:</span> <span class="s2">&#34;AXBSH1Pk6Z0G166RlH16CQ==&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;received_at&#34;</span> <span class="p">:</span> <span class="s2">&#34;2020-02-17T07:49:09.736532315Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;attributes&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;key1&#34;</span><span class="p">:</span> <span class="s2">&#34;value1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;key2&#34;</span><span class="p">:</span> <span class="s2">&#34;value2&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div></details>
@@ -270,7 +281,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="s2">&#34;net_id&#34;</span><span class="o">:</span> <span class="s2">&#34;000013&#34;</span><span class="p">,</span>                     <span class="c1">// Network ID
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="s2">&#34;tenant_id&#34;</span><span class="o">:</span> <span class="s2">&#34;tenant1&#34;</span><span class="p">,</span>                 <span class="c1">// Tenant ID
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="s2">&#34;cluster_id&#34;</span><span class="o">:</span> <span class="s2">&#34;eu1&#34;</span>                     <span class="c1">// Cluster ID
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;attributes&#34;</span><span class="o">:</span> <span class="p">{</span>                           <span class="c1">// End device key-value attributes set for this device.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="s2">&#34;key1&#34;</span><span class="o">:</span> <span class="s2">&#34;value1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;key2&#34;</span><span class="o">:</span> <span class="s2">&#34;value2&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">},</span>
 </span></span><span class="line"><span class="cl">  <span class="s2">&#34;simulated&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>                         <span class="c1">// Signals if the message is coming from the Network Server or is simulated.
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
@@ -349,19 +364,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">      <span class="nt">&#34;tenant_id&#34;</span><span class="p">:</span> <span class="s2">&#34;tenant1&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&#34;cluster_id&#34;</span><span class="p">:</span> <span class="s2">&#34;nam1&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;received_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-02-12T15:15:45.789585559Z&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;attributes&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;key1&#34;</span><span class="p">:</span> <span class="s2">&#34;value1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;key2&#34;</span><span class="p">:</span> <span class="s2">&#34;value2&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;received_at&#34;</span> <span class="p">:</span> <span class="s2">&#34;2020-02-12T15:15:45.789585559Z&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div></details>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>End device key-value attributes are not included in uplink messages, because these attributes are stored in the Identity Server and normally they are static, so sending that data with every uplink is inefficient. Users can instead fetch device&rsquo;s attributes using the API:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl --request GET /
-</span></span><span class="line"><span class="cl">  --location <span class="s1">&#39;https://thethings.example.com/api/v3/applications/&lt;application-id&gt;/devices/&lt;device-id&gt;?field_mask=attributes&#39;</span> /
-</span></span><span class="line"><span class="cl">  --header <span class="s2">&#34;Authorization: Bearer &lt;api-key&gt;&#34;</span>
-</span></span></code></pre></div>
-</div>
-
 <h3 id="downlink-events-messages">Downlink Events Messages</h3>
 <p>The JSON downlink <code>ack</code>, <code>nack</code>, <code>queued</code> and <code>sent</code> events messages use the following format:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="p">{</span>
