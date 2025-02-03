@@ -1,15 +1,22 @@
 <footer class="footer">
   <div class="container">
     <div class="columns">
-      <nav class="column is-one-third">
-        <h3 class="title is-6">The Things Stack</h3>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sections</h3>
         {{- $currentPage := . -}}
         {{- range .Site.Menus.main }}
         <p><a class="{{ if $currentPage.IsMenuCurrent "main" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a></p>
         {{- end }}
       </nav>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sitemap</h3>
+        {{- $currentPage := . -}}
+        {{- range .Site.Menus.sitemap }}
+        <p><a class="{{ if $currentPage.IsMenuCurrent "sitemap" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a></p>
+        {{- end }}
+      </nav>
       {{- if .Site.Menus.contributing }}
-      <nav class="column is-one-third">
+      <nav class="column is-one-fourth">
         <h3 class="title is-6">Contributing</h3>
         {{- $currentPage := . -}}
         {{- range .Site.Menus.contributing }}
@@ -18,7 +25,7 @@
       </nav>
       {{ end -}}
       {{- if .Site.Menus.about_us }}
-      <nav class="column is-one-third">
+      <nav class="column is-one-fourth">
         <h3 class="title is-6">About Us</h3>
         {{- $currentPage := . -}}
         {{- range .Site.Menus.about_us }}

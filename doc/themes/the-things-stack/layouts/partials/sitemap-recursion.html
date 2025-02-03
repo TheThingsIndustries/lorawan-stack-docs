@@ -1,0 +1,11 @@
+
+<li>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+    {{ if .Pages }}
+        <ul>
+            {{ range .Pages }}
+                {{ partial "sitemap-recursion.html" . }}
+            {{ end }}
+        </ul>
+    {{ end }}
+</li>
