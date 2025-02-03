@@ -25,7 +25,7 @@ To use the CLI, you need to complete three steps:
 
 If you need help with any CLI command, use the `--help` flag to get a list of subcommands, flags and their description and aliases.
 
-For a complete list of CLI commands, see the [CLI reference]({{< ref "/concepts/features/cli" >}}).
+For a complete list of CLI commands, see the [CLI reference]({{< ref "/concepts/features/cli/reference" >}}).
 
 For troubleshooting common CLI errors, see the [Troubleshooting CLI]({{< relref "troubleshooting" >}}) section.
 
