@@ -25,6 +25,7 @@ ttn-lw-cli users search [flags]
       --console-preferences.dashboard-layouts   select the console_preferences.dashboard_layouts field and all allowed sub-fields
       --console-preferences.sort-by             select the console_preferences.sort_by field and all allowed sub-fields
       --console-preferences.tutorials           select the console_preferences.tutorials field and all allowed sub-fields
+      --console-preferences.tutorials.seen      select the console_preferences.tutorials.seen field
       --contact-info                            select the contact_info field
       --deleted                                 
       --deleted-at                              select the deleted_at field

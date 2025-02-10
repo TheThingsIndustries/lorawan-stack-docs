@@ -160,6 +160,7 @@ ttn-lw-cli end-devices storage get [application-id] [device-id] [flags]
       --up.uplink-message.f-port                                                            select the up.uplink_message.f_port field
       --up.uplink-message.frm-payload                                                       select the up.uplink_message.frm_payload field
       --up.uplink-message.last-a-f-cnt-down                                                 select the up.uplink_message.last_a_f_cnt_down field
+      --up.uplink-message.last-battery-percentage                                           select the up.uplink_message.last_battery_percentage field and all allowed sub-fields
       --up.uplink-message.locations                                                         select the up.uplink_message.locations field
       --up.uplink-message.network-ids                                                       select the up.uplink_message.network_ids field and all allowed sub-fields
       --up.uplink-message.network-ids.cluster-address                                       select the up.uplink_message.network_ids.cluster_address field

@@ -1,14 +1,14 @@
 ---
 title: "Template Changelog"
-aliases:
-  [/getting-started/aws/ecs/changelog, /the-things-stack/host/aws/ecs/changelog]
+aliases: [/getting-started/aws/ecs/changelog]
 ---
-
 # Upgrading
 
 All meaningful changes to templates are documented in this file.
 
 ## Unreleased
+
+## 3.33.1
 
 ## 3.33.0
 

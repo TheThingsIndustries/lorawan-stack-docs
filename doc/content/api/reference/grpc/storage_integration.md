@@ -63,6 +63,8 @@ List of Storage Integration APIs.
 
 {{< proto/message message="KeyEnvelope" >}}
 
+{{< proto/message message="LastBatteryPercentage" >}}
+
 {{< proto/message message="LoRaDataRate" >}}
 
 {{< proto/message message="Location" >}}
