@@ -142,6 +142,8 @@ List of Network Server APIs.
 
 {{< proto/message message="KeyEnvelope" >}}
 
+{{< proto/message message="LastBatteryPercentage" >}}
+
 {{< proto/message message="Location" >}}
 
 {{< proto/message message="LoRaDataRate" >}}
