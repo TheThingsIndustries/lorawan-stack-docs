@@ -1,0 +1,23 @@
+name: LastBatteryPercentage
+fields:
+- name: f_cnt
+  comment: Frame counter value of last uplink containing DevStatusAns.
+  type: uint32
+  default: 0
+- name: value
+  comment: |-
+    The battery percentage of the end device.
+    The value is defined in the [0, 100] interval.
+  message:
+    package: google.protobuf
+    name: FloatValue
+  rules:
+    lte: 100
+    gte: 0
+  default: null
+- name: received_at
+  comment: Time when last DevStatus MAC command was received.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
