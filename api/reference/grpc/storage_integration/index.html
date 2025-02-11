@@ -2809,6 +2809,7 @@ The Application Server automatically sets this field, and callers must not manua
   "locations": {},
   "version_ids": {},
   "network_ids": {},
+  "last_battery_percentage": {},
 }</code></pre>
 </details>
 
@@ -3583,6 +3584,55 @@ Calculated by the Network Server. The value is defined in the [0, 1] interval.</
       </th>
       <td>
           <p>Network identifiers, set by the Network Server that handles the message.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>last_battery_percentage</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:LastBatteryPercentage">
+  
+  <code>
+    
+    LastBatteryPercentage
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Last battery percentage of the end device.
+Received via the DevStatus MAC command at last_dev_status_received_at or earlier.
+Set by the Network Server while handling the message.</p>
       </td>
     </tr>
     
@@ -5764,6 +5814,139 @@ traces the network may (or may not) store about recent errors.</p>
       </th>
       <td>
           <p><code>max_len</code>: <code>1024</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:LastBatteryPercentage">Message <code>LastBatteryPercentage</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "f_cnt": 0,
+  "value": null,
+  "received_at": "0001-01-01T00:00:00Z",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>f_cnt</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Frame counter value of last uplink containing DevStatusAns.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>value</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    FloatValue
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The battery percentage of the end device.
+The value is defined in the [0, 100] interval.</p>
+          <p><code>gte</code>: <code>0</code></p>
+          <p><code>lte</code>: <code>100</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>received_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Time when last DevStatus MAC command was received.</p>
       </td>
     </tr>
     
