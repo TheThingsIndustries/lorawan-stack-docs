@@ -1,7 +1,7 @@
 ---
 title: "MQTT Server"
 description: ""
-aliases: [/guides/getting-started/mqtt, /integrations/mqtt]
+aliases: [/guides/getting-started/mqtt, /integrations/mqtt, /integrations/mqtt/cloud-hosted]
 weight: 30
 ---
 

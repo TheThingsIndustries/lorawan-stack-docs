@@ -7,6 +7,7 @@ aliases:
     /migration-from-networks/migrate-from-chirpstack,
     /getting-started/migrating/migration-tool/export-from-chirpstack,
     /migration/migration-tool/export-from-chirpstack-v3,
+    /migrating/migration-tool/export-from-chirpstack-v3,
   ]
 ---
 

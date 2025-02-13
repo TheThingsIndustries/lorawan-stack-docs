@@ -6,6 +6,7 @@ aliases:
   [
     /integrations/other-integrations/mqtt-clients/eclipse-paho,
     /integrations/mqtt/mqtt-clients/eclipse-paho,
+    /integrations/mqtt-clients/eclipse-paho
   ]
 ---
 

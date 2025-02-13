@@ -5,7 +5,7 @@ weight: 4
 menu:
   main:
     weight: 4
-aliases: [/the-things-stack/host]
+aliases: [/the-things-stack/host, /getting-started/installation/configuration]
 ---
 
 {{% tts %}} is a highly flexible software product that is available in a variety of deployment models and caters to various user requirements. Check which model applies to your use case.

@@ -6,6 +6,7 @@ aliases:
   [
     /getting-started/migrating/migration-tool/export-from-tts,
     /migration/migration-tool/export-from-tts,
+    /the-things-stack/migrating/migration-tool/export-from-tts/
   ]
 ---
 

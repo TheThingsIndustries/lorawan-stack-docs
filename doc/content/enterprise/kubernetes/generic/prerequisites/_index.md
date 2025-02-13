@@ -6,6 +6,7 @@ aliases:
   [
     /getting-started/kubernetes/self-managed/prerequisites,
     /the-things-stack/host/kubernetes/generic/prerequisites,
+    /the-things-stack/host/kubernetes/prerequisites,
   ]
 ---
 

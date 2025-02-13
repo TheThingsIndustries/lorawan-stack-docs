@@ -7,6 +7,8 @@ aliases:
     /migration-from-networks/migrate-from-chirpstack,
     /getting-started/migrating/migration-tool/export-from-chirpstack,
     /migration/migration-tool/export-from-chirpstack,
+    /the-things-stack/migrating/migration-tool/export-from-chirpstack,
+    /getting-started/migrating/migrate-from-chirpstack
   ]
 new_in_version: "v0.12.0"
 ---

@@ -2,7 +2,7 @@
 title: "Troubleshooting CLI"
 description: ""
 aliases:
-  [/getting-started/cli/troubleshooting, /concepts/features/cli/troubleshooting]
+  [/getting-started/cli/troubleshooting, /concepts/features/cli/troubleshooting, /the-things-stack/interact/cli/troubleshooting/]
 weight: 3
 ---
 

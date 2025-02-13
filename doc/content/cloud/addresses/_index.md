@@ -3,7 +3,7 @@ title: "Server Addresses"
 description: ""
 weight: 2
 aliases:
-  [/getting-started/cloud-hosted/addresses, /guides/cloud-hosted/addresses]
+  [/getting-started/cloud-hosted/addresses, /guides/cloud-hosted/addresses, /the-things-stack/cloud/addresses]
 ---
 
 This page provides configuration details and guidance for accessing and managing {{% tts %}} Cloud clusters, including Console, API endpoints, OAuth, CLI setup, and IP address considerations.

@@ -2,7 +2,7 @@
 title: "Login"
 description: ""
 weight: 1
-aliases: [/getting-started/console/login, /concepts/console/login]
+aliases: [/getting-started/console/login, /concepts/console/login, /the-things-stack/interact/console/login]
 ---
 
 The Console needs to be logged in to create gateways, applications, devices and API keys. In this section, learn how to login into the Console.

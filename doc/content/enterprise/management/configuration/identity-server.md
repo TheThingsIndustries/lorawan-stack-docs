@@ -1,6 +1,7 @@
 ---
 title: "Identity Server Options"
 description: ""
+aliases: [/reference/configuration/identity-server]
 ---
 
 ## General Options

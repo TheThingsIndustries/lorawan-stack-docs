@@ -1,6 +1,7 @@
 ---
 title: "mTLS Authentication"
 description: ""
+aliases: [/gateways/concepts/lora-basics-station/mtls-authentication]
 ---
 
 {{% tts %}} supports mutual TLS to authenticate {{% lbs %}} CUPS connections in selected deployments. This guide explains how gateway vendors/resellers and users can leverage

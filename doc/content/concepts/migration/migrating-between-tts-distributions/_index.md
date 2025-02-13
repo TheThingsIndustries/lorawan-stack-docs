@@ -1,7 +1,10 @@
 ---
 title: "Between The Things Stack distributions"
 description: ""
-aliases: [/the-things-stack/migrating/migrating-between-tts-distributions]
+aliases: [
+    /the-things-stack/migrating/migrating-between-tts-distributions,
+    /getting-started/migrating/migrating-between-tts-distributions
+    ]
 ---
 
 This section explains how to migrate your devices between {{% tts %}} distributions.

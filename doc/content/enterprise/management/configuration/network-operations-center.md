@@ -1,7 +1,7 @@
 ---
 title: "Network Operations Center Options"
 description: ""
-distributions: ["Enterprise"]
+aliases: [/reference/configuration/network-operations-center]
 ---
 
 ## Network Operations Center Mount

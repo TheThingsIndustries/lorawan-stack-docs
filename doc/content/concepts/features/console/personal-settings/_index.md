@@ -7,6 +7,7 @@ aliases:
     /concepts/console/profile-settings,
     /getting-started/console/personal-settings,
     /concepts/featuresconsole/personal-settings,
+    /the-things-stack/interact/console/personal-settings
   ]
 weight: 1
 ---

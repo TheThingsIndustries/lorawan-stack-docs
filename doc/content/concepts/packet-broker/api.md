@@ -1,7 +1,7 @@
 ---
 title: Mapper API
 description: ""
-aliases: [/getting-started/packet-broker/api]
+aliases: [/getting-started/packet-broker/api, /the-things-stack/packet-broker/api]
 ---
 
 The Packet Broker Mapper API can help you fetch gateway locations, online status and other gateway information for {{% ttss %}}, Cloud, Enterprise and Open Source deployments. This section contains the reference for the Packet Broker Mapper API and examples of forming an API call.

@@ -1,6 +1,7 @@
 ---
 title: "Console Options"
 description: ""
+aliases: [/reference/configuration/console]
 ---
 
 ## Console Mount

@@ -1,7 +1,7 @@
 ---
 title: "Packet Forwarders"
 weight: 2
-aliases: [/reference/packet-forwarder]
+aliases: [/reference/packet-forwarder, /docs/gateways/semtech-udp-packet-forwarder/]
 ---
 
 This reference describes support for various Packet Forwarders in {{% tts %}}.

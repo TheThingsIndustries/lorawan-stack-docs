@@ -3,7 +3,7 @@ title: "Single Sign-On"
 description: ""
 distributions: ["Cloud", "Enterprise"]
 weight: 12
-aliases: [/getting-started/sso, /the-things-stack/management/sso]
+aliases: [/getting-started/sso, /the-things-stack/management/sso,/reference/federated-auth/ ]
 ---
 
 Single sign-on (also known as Federated Authentication) allows network administrators to use the already existing identity providers in order to authenticate users, instead of manually creating and managing the accounts in {{% tts %}}. {{% tts %}} supports [OpenID Connect](https://openid.net/connect/) for single sign-on.

@@ -2,7 +2,15 @@
 title: "Migrate to The Things Stack"
 description: "Concepts specific to The Things Stack Cloud"
 weight: 5
-aliases: [/the-things-stack/migration]
+aliases: [
+    /the-things-stack/migration,
+    /the-things-stack/migrating,
+    /the-things-stack/migrating/migration-tool/,
+    /getting-started/migrating/migration-tool/,
+    /getting-started/migrating/migrating-from-v2/migrate-using-takeout-tool/,
+    /getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session,
+    /the-things-stack/migrating/migrating-from-v2/migrate-using-migration-tool/establish-new-session
+    ]
 ---
 
 This guide documents the process of migrating end devices and gateways to {{% tts %}} and between different installations of {{% tts %}}.

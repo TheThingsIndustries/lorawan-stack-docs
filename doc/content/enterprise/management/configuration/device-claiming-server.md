@@ -1,6 +1,7 @@
 ---
 title: "Device Claiming Server Options"
 description: ""
+aliases: [/reference/configuration/device-claiming-server]
 ---
 
 ## End Device Claiming Options

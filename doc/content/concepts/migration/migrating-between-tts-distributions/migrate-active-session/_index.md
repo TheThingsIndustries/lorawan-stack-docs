@@ -5,6 +5,7 @@ aliases:
   [
     /getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session,
     /the-things-stack/migrating/gateway-migration/migrate-active-session,
+    /getting-started/migrating/migrating-between-tts-distributions/migrate-active-session,
   ]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Adding OAuth Clients"
 description: ""
-aliases: [/concepts/featuresadding-oauth-clients]
+aliases: [/concepts/featuresadding-oauth-clients, /the-things-stack/interact/adding-oauth-clients, /reference/federated-auth/oidc]
 ---
 
 This section contains instructions for creating an OAuth Client.

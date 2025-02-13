@@ -2,7 +2,7 @@
 title: "Gateways"
 description: ""
 weight: 2
-aliases: [/guides/connecting-gateways]
+aliases: [/guides/connecting-gateways, /gateways]
 ---
 
 This section contains information to help you work with gateways in {{% tts %}}.
