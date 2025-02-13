@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.134.2">
+  <meta name="generator" content="Hugo 0.140.0-DEV">
   <title>Rate Limiting | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/enterprise/management/rate-limiting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -512,41 +512,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Resource</th>
-          <th style="text-align: left">Rate Limit Action</th>
-          <th style="text-align: left">Expected Client Action</th>
+          <th>Resource</th>
+          <th>Rate Limit Action</th>
+          <th>Expected Client Action</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">gRPC Requests</td>
-          <td style="text-align: left">Return an error response of type <code>ResourceExhausted</code>, and set rate limiting headers.</td>
-          <td style="text-align: left">The client should wait and then retry the gRPC request. The <code>X-Rate-Limit-Retry</code> header from the response can help in this case.</td>
+          <td>gRPC Requests</td>
+          <td>Return an error response of type <code>ResourceExhausted</code>, and set rate limiting headers.</td>
+          <td>The client should wait and then retry the gRPC request. The <code>X-Rate-Limit-Retry</code> header from the response can help in this case.</td>
       </tr>
       <tr>
-          <td style="text-align: left">HTTP Requests</td>
-          <td style="text-align: left">Return an <code>HTTP 429 (Too Many Requests)</code> error response, and set rate limiting headers.</td>
-          <td style="text-align: left">The client should wait and then retry the HTTP request. The <code>X-Rate-Limit-Retry</code> header from the response can help in this case.</td>
+          <td>HTTP Requests</td>
+          <td>Return an <code>HTTP 429 (Too Many Requests)</code> error response, and set rate limiting headers.</td>
+          <td>The client should wait and then retry the HTTP request. The <code>X-Rate-Limit-Retry</code> header from the response can help in this case.</td>
       </tr>
       <tr>
-          <td style="text-align: left">New MQTT Connections</td>
-          <td style="text-align: left">Drop (reject) new connection.</td>
-          <td style="text-align: left">The client should reconnect with a backoff.</td>
+          <td>New MQTT Connections</td>
+          <td>Drop (reject) new connection.</td>
+          <td>The client should reconnect with a backoff.</td>
       </tr>
       <tr>
-          <td style="text-align: left">UDP packets</td>
-          <td style="text-align: left">Drop packet.</td>
-          <td style="text-align: left">The client has no way of knowing whether the sent packet was received and/or processed, which is a limitation of the Legacy UDP packet forwarder.</td>
+          <td>UDP packets</td>
+          <td>Drop packet.</td>
+          <td>The client has no way of knowing whether the sent packet was received and/or processed, which is a limitation of the Legacy UDP packet forwarder.</td>
       </tr>
       <tr>
-          <td style="text-align: left">Application Downlinks</td>
-          <td style="text-align: left">Reject downlink message and terminate connection.</td>
-          <td style="text-align: left">The client should reconnect, and reduce the downlink traffic load.</td>
+          <td>Application Downlinks</td>
+          <td>Reject downlink message and terminate connection.</td>
+          <td>The client should reconnect, and reduce the downlink traffic load.</td>
       </tr>
       <tr>
-          <td style="text-align: left">Gateway Uplinks</td>
-          <td style="text-align: left">Reject uplink message and terminate connection.</td>
-          <td style="text-align: left">The client should reconnect, and reduce the downlink traffic load.</td>
+          <td>Gateway Uplinks</td>
+          <td>Reject uplink message and terminate connection.</td>
+          <td>The client should reconnect, and reduce the downlink traffic load.</td>
       </tr>
   </tbody>
 </table>
@@ -563,18 +563,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Provider</th>
-          <th style="text-align: left">State</th>
+          <th>Provider</th>
+          <th>State</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left"><code>memory</code></td>
-          <td style="text-align: left">per instance</td>
+          <td><code>memory</code></td>
+          <td>per instance</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>redis</code></td>
-          <td style="text-align: left">shared</td>
+          <td><code>redis</code></td>
+          <td>shared</td>
       </tr>
   </tbody>
 </table>
