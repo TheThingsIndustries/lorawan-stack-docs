@@ -2,7 +2,7 @@
 title: "Export End Device Data"
 description: ""
 weight: 2
-aliases: [/migration/migration-tool/]
+aliases: [/migration/migration-tool/, /the-things-stack/migrating/import-devices]
 ---
 
 This section contains instructions on how to use the migration tooling to export end devices from supported LoRaWAN Networks, that can later be imported in {{% tts %}}.

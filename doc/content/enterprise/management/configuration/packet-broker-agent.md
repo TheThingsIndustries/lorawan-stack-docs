@@ -1,6 +1,7 @@
 ---
 title: "Packet Broker Agent Options"
 description: ""
+aliases: [/reference/configuration/packet-broker-agent]
 ---
 
 ## Registration Options

@@ -1,6 +1,7 @@
 ---
 title: "Join Server Options"
 description: ""
+aliases: [/reference/configuration/join-server]
 ---
 
 ## Security Options

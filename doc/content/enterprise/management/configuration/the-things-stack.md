@@ -2,6 +2,7 @@
 title: "General Options"
 description: ""
 weight: -1
+aliases: [/reference/configuration/the-things-stack]
 ---
 
 ## Global Options

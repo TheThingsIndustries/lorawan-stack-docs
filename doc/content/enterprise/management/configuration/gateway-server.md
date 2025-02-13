@@ -1,6 +1,7 @@
 ---
 title: "Gateway Server Options"
 description: ""
+aliases: [/reference/configuration/gateway-server]
 ---
 
 ## General Options

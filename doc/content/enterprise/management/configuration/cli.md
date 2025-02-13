@@ -1,6 +1,7 @@
 ---
 title: "Command-Line Interface Options"
 description: ""
+aliases: [/reference/configuration/cli]
 ---
 
 ## Global Options

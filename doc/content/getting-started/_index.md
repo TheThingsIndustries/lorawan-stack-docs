@@ -10,6 +10,7 @@ aliases:
     /guides/getting-started/running-the-stack,
     /guides/getting-started/quick-start,
     /getting-started/quick-start/,
+    /getting-started/what-is-tts/
   ]
 ---
 

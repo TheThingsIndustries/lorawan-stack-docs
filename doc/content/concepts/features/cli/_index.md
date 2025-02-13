@@ -6,6 +6,9 @@ aliases:
     /guides/concepts/features/cli,
     /getting-started/cli,
     /the-things-stack/interact/cli,
+    /reference/cli,
+    /reference/components/cli/,
+    /components/cli/
   ]
 weight: -2
 ---

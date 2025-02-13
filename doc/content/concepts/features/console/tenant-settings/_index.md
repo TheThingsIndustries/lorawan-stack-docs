@@ -7,6 +7,7 @@ aliases:
   [
     /getting-started/console/tenant-settings,
     /concepts/featuresconsole/tenant-settings,
+    /the-things-stack/interact/console/tenant-settings
   ]
 ---
 

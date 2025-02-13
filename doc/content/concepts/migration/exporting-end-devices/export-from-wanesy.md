@@ -3,7 +3,7 @@ title: "Export End Devices from Wanesy"
 description: ""
 weight: 3
 new_in_version: "v0.11.0"
-aliases: [/migration/migration-tool/export-from-wanesy]
+aliases: [/migration/migration-tool/export-from-wanesy, /the-things-stack/migrating/migration-tool/export-from-wanesy/]
 ---
 
 This section contains instructions on how to configure migration tool and use it to convert end device information exported from [Kerlink's Wanesy Management Center](https://www.kerlink.com/), into {{% tts %}} end device format.

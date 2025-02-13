@@ -2,7 +2,7 @@
 title: "LoRa Cloud Geolocation Services"
 description: ""
 weight: 2
-aliases: [/integrations/lora-cloud/geolocation-services]
+aliases: [/integrations/lora-cloud/geolocation-services, /integrations/lora-cloud/geolocation/]
 ---
 
 [LoRa Cloud Geolocation Services](https://www.loracloud.com/portal/geolocation/home) provides simple JSON web APIs that can be easily integrated with a LoRaWAN network or application server to enable estimating the location of LoRa-based devices.

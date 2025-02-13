@@ -1,6 +1,7 @@
 ---
 title: "Network Server Options"
 description: ""
+aliases: [/reference/configuration/network-server]
 ---
 
 ## General Options

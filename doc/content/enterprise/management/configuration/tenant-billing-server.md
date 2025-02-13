@@ -2,7 +2,7 @@
 title: "Tenant Billing Server Options"
 description: ""
 weight: 10
-distributions: ["Cloud", "Enterprise"]
+aliases: [/reference/configuration/tenant-billing-server]
 ---
 
 ## General options

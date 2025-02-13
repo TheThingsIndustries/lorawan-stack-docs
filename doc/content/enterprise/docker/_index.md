@@ -4,7 +4,7 @@ description: ""
 distributions: ["Enterprise", "Open Source"]
 weight: 4
 aliases:
-  [/getting-started/installation, /the-things-stack/host/docker/installation]
+  [/getting-started/installation, /the-things-stack/host/docker/installation, /the-things-stack/host/docker]
 ---
 
 This is a guide for installing {{% tts %}} Enterprise or Open Source on your own hardware using Docker, to run your own private LoRaWAN® network server.

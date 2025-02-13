@@ -2,7 +2,7 @@
 title: "MQTTBox"
 description: ""
 weight:
-aliases: [/integrations/mqtt/mqtt-clients/mqttbox]
+aliases: [/integrations/mqtt/mqtt-clients/mqttbox, /integrations/mqtt-clients/mqttbox/]
 ---
 
 [MQTTBox](http://workswithweb.com/mqttbox.html) is a cross platform application that makes it simple to create MQTT clients, virtual device networks, and load test MQTT devices and brokers.

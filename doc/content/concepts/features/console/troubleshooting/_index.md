@@ -5,6 +5,7 @@ aliases:
   [
     /getting-started/console/troubleshooting,
     /concepts/featuresconsole/troubleshooting,
+    /the-things-stack/interact/console/troubleshooting
   ]
 ---
 

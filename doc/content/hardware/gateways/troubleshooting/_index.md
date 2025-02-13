@@ -5,6 +5,7 @@ aliases:
   [
     "/hardware/gateways/adding-gateways/troubleshooting",
     /gateways/troubleshooting,
+    /gateways/adding-gateways/troubleshooting
   ]
 weight: -1
 ---

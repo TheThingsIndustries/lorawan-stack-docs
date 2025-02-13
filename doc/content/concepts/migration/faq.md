@@ -1,6 +1,6 @@
 ---
 title: Frequently Asked Questions
-aliases: [/getting-started/migrating/faq, /migration/faq]
+aliases: [/getting-started/migrating/faq, /migration/faq, /the-things-stack/migrating/migrating-from-v2/major-changes/, /the-things-stack/migrating/faq/]
 ---
 
 This section answers frequently asked questions regarding migration to {{% tts %}}.

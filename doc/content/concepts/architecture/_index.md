@@ -2,7 +2,7 @@
 title: "Architecture"
 description: "This section explains the architecture and components of The Things Stack"
 weight: 1
-aliases: [the-things-stack/concepts/architecture]
+aliases: [/the-things-stack/concepts/architecture]
 ---
 
 {{% tts %}} follows an API driven microservice architecture, well suited for high availability and reliability.

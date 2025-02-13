@@ -1,6 +1,7 @@
 ---
 title: "Gateway Configuration Server Options"
 description: ""
+aliases: [/reference/configuration/gateway-configuration-server]
 ---
 
 ## Security Options

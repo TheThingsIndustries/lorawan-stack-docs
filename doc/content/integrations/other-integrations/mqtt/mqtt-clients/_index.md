@@ -6,6 +6,7 @@ aliases:
   [
     /integrations/other-integrations/mqtt-clients,
     /integrations/mqtt/mqtt-clients,
+    /integrations/mqtt-clients/
   ]
 ---
 

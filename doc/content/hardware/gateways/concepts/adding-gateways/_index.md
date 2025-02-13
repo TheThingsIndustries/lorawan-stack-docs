@@ -8,6 +8,9 @@ aliases:
     /concepts/features/cli/create-gateway,
     /concepts/console/create-gateway,
     /gateways/concepts/adding-gateways,
+    /gateways/gateway-claiming/make-gateways-claimable/,
+    /gateways/gateway-claiming/claim-gateways/,
+    /gateways/concepts/gateway-claiming/claim-gateways/
   ]
 ---
 

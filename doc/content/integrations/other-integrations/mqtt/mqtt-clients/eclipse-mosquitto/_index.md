@@ -5,6 +5,7 @@ aliases:
   [
     /integrations/other-integrations/mqtt-clients/eclipse-mosquitto,
     /integrations/mqtt/mqtt-clients/eclipse-mosquitto,
+    /integrations/mqtt-clients/eclipse-mosquitto/,
   ]
 ---
 

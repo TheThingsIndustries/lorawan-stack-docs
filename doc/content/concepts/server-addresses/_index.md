@@ -1,7 +1,7 @@
 ---
 title: "Server Addresses"
 description: ""
-aliases: [/getting-started/server-addresses]
+aliases: [/getting-started/server-addresses, /the-things-stack/concepts/server-addresses, /getting-started/cloudhosted/addresses, /gettingstarted/ttn/addresses ]
 weight: 6
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "Application Server Options"
 description: ""
+aliases: [/reference/configuration/application-server]
 ---
 
 ## Security Options
