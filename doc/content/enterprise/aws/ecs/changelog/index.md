@@ -8,6 +8,8 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.33.2
+
 ## 3.33.1
 
 ## 3.33.0
