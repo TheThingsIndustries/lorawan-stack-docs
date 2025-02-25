@@ -2,7 +2,8 @@
 title: "Export End Device Data"
 description: ""
 weight: 2
-aliases: [/migration/migration-tool/, /the-things-stack/migrating/import-devices]
+aliases:
+  [/migration/migration-tool/, /the-things-stack/migrating/import-devices]
 ---
 
 This section contains instructions on how to use the migration tooling to export end devices from supported LoRaWAN Networks, that can later be imported in {{% tts %}}.
@@ -67,7 +68,7 @@ After this, you will be notified that you can run `ttn-lw-migrate` from the comm
 
 To use the `ttn-lw-migrate` tool after successful installation, use your terminal or command prompt to navigate to the folder where it is installed and run the commands from there. Run `ttn-lw-migrate help` to see all available commands and flags.
 
-Currently, there are three available sources listed in the table below. For detailed migration instructions using these three sources, check the linked sections.
+Currently available sources listed in the table below. For detailed migration instructions using these sources, check the linked sections.
 
 | Option                                                                                                 | Used for                                                                  |
 | :----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
@@ -75,5 +76,6 @@ Currently, there are three available sources listed in the table below. For deta
 | [`chirpstack`]({{< ref "/concepts/migration/exporting-end-devices/export-from-chirpstack" >}})         | Migrating devices from ChirpStack version 4                               |
 | [`chirpstack` (v3)]({{< ref "/concepts/migration/exporting-end-devices/export-from-chirpstack-v3" >}}) | Migrating devices from ChirpStack version 3                               |
 | [`firefly`]({{< ref "/concepts/migration/exporting-end-devices/export-from-firefly" >}})               | Migrating devices from Digimondo's Firefly                                |
-| [`wanesy`]({{< ref "/concepts/migration/exporting-end-devices/export-from-wanesy" >}})                 | Migrating devices from Kerlink's Firefly                                  |
+| [`wanesy`]({{< ref "/concepts/migration/exporting-end-devices/export-from-wanesy" >}})                 | Migrating devices from Kerlink's Wanesy                                   |
+| [`awsiot`]({{< ref "/concepts/migration/exporting-end-devices/export-from-awsiot" >}})                 | Migrating devices from AWS IoT                                            |
 | `ttnv2`                                                                                                | (Discontinued ) Migrating from legacy {{% ttnv2 %}} deployments           |
