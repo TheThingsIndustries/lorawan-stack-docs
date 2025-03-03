@@ -93,7 +93,7 @@ In production, replace the `image` with a working, stable tag from [Docker Hub -
 The simplest configuration for PostgreSQL looks like this (excerpted from the example `docker-compose.yml`):
 
 {{< highlight yaml "linenos=table,linenostart=4" >}}
-{{< readfile path="/content/enterprise/docker/configuration/docker-compose-enterprise.yml" from=4 to=17 >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=4 to=17 >}}
 {{< /highlight >}}
 
 {{< note >}}
@@ -131,7 +131,7 @@ It is also possible (and even preferred) to use a managed Redis database. In thi
 The simplest configuration for Redis looks like this (excerpted from the example `docker-compose.yml`):
 
 {{< highlight yaml "linenos=table,linenostart=19" >}}
-{{< readfile path="/content/enterprise/docker/configuration/docker-compose-enterprise.yml" from=19 to=27 >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=19 to=27 >}}
 {{< /highlight >}}
 
 ### {{% tts %}}
@@ -163,7 +163,7 @@ The `depends_on` field tells Docker Compose that {{% tts %}} depends on PostgreS
 Under the `volumes` section, volumes for the files that need to be persisted on the disk are defined. There are stored blob files (such as profile pictures) and certificate files retrieved with ACME (if required). Also, local `./config/stack/` directory is mounted on the container under `/config`, so that {{% tts %}} can find the configuration file at `/config/ttn-lw-stack-docker.yml`.
 
 {{< highlight yaml "linenos=table,linenostart=65" >}}
-{{< readfile path="/content/enterprise/docker/configuration/docker-compose-enterprise.yml" from=65 to=69 >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=65 to=69 >}}
 {{< /highlight >}}
 
 {{< note >}} If your `ttn-lw-stack-docker.yml` is in a directory other than `./config/stack`, you will need to change this volume accordingly. {{</ note >}}
@@ -177,7 +177,7 @@ The databases used by {{% tts %}} are configured in the `environment` section. I
 The `ports` section exposes {{% tts %}}'s ports outside the Docker container. Port `80` and `443` are mapped to the internal HTTP and HTTPS ports. The other ports have a direct mapping. If you don't need support for gateways and applications that don't use TLS, you can remove ports starting with `188`:
 
 {{< highlight yaml "linenos=table,linenostart=78" >}}
-{{< readfile path="/content/enterprise/docker/configuration/docker-compose-enterprise.yml" from=78 to=98 >}}
+{{< readfile path="/content/enterprise/docker/configuration/docker-compose-enterprise.yml" from=78 to=99 >}}
 {{< /highlight >}}
 
 {{< note >}} Be sure to provide network access to these ports on the machine you are running {{% tts %}}. {{</ note >}}
@@ -227,7 +227,9 @@ host, and also to use it as the default host.
 
 If using Let's Encrypt, certificates will automatically be requested the first time you access {{% tts %}}. You will notice that the page takes some time to load while certificates are obtained in the background.
 
-See the [TLS Options configuration reference]({{< ref "/enterprise/management/configuration/the-things-stack#tls-options" >}}) for more information.
+{{< highlight yaml "linenos=table,linenostart=61" >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=61 to=71 >}}
+{{< /highlight >}}
 
 Make sure that you use the correct `tls` configuration depending on whether you are using Let's Encrypt or your own certificate files.
 
@@ -237,27 +239,45 @@ If you are using your own certificate files, make sure to uncomment the lines th
 {{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=53 to=59 >}}
 {{< /highlight >}}
 
-If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, all tenant addresses have to be specified in the `ttn-lw-stack-docker.yml` file using `tls.acme.hosts` configuration option with `*.thethings.example.com` wildcard.
+See the [TLS Options configuration reference]({{< ref "/enterprise/management/configuration/the-things-stack#tls-options" >}}) for more information.
 
-{{< highlight yaml "linenos=table,linenostart=61" >}}
-{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=61 to=70 >}}
-{{< /highlight >}}
+Make sure that you use the correct `tls` configuration depending on whether you are using Let's Encrypt or your own certificate files.
 
 ### Console Component URLs
 
 The `console` section configures the URLs for the Web UI and the secret used by the console client. These tell {{% tts %}} where all its components are accessible. Be sure to replace these, and all the other server addresses, with yours.
 
-{{< highlight yaml "linenos=table,linenostart=89" >}}
-{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=89 to=115 >}}
+{{< highlight yaml "linenos=table,linenostart=91" >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=91 to=116 >}}
 {{< /highlight >}}
 
 {{< warning >}} Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name! {{</ warning >}}
 
 The `client-secret` will be needed later when authorizing the Console. Be sure to set and remember it!
 
-{{< highlight yaml "linenos=table,linenostart=116" >}}
-{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=116 to=121 >}}
+{{< highlight yaml "linenos=table,linenostart=117" >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=117 to=122 >}}
 {{< /highlight >}}
+
+### Managed Gateways {{< new-in-version "3.34.0" >}}
+
+If you want to connected managed gateways, e.g. [The Things Indoor Gateway Pro]({{< ref "/hardware/gateways/models/thethingsindoorgatewaypro" >}}), you need to enable The Things Gateway Controller. This is a central service operated by The Things Industries that allows for claiming and remotely managing gateways. {{% tts %}} is natively integrated with The Things Gateway Controller.
+
+To authenticate with The Things Gateway Controller, {{% tts %}} typically uses the same TLS certificate as used for the TLS server, either Let's Encrypt or custom certificates.
+
+When using Let's Encrypt:
+
+{{< highlight yaml "linenos=table,linenostart=143" >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=143 to=151 >}}
+{{< /highlight >}}
+
+When using custom certificates:
+
+{{< highlight yaml "linenos=table,linenostart=152" >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=152 to=156 >}}
+{{< /highlight >}}
+
+{{< note >}} If you are using a private PKI for generating certificates (e.g. a self-signed CA), you need to share your CA file with The Things Industries in order for The Things Gateway Controller to verify your certificate and authenticate your deployment. Contact [The Things Industries support](mailto:support@thethingsindustries.com). {{</ note >}}
 
 ### NOC
 
@@ -267,14 +287,14 @@ Besides `ui` and `oauth` settings, storage settings need to be configured in the
 
 To authorize the NOC, be sure to set and remember the client secret.
 
-{{< highlight yaml "linenos=table,linenostart=161" >}}
-{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=161 to=170 >}}
+{{< highlight yaml "linenos=table,linenostart=157" >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=157 to=175 >}}
 {{< /highlight >}}
 
 To visualize data, configure the `grafana` section.
 
-{{< highlight yaml "linenos=table,linenostart=179" >}}
-{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=179 to=184 >}}
+{{< highlight yaml "linenos=table,linenostart=176" >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=176 to=181 >}}
 {{< /highlight >}}
 
 ### Multi-tenancy
@@ -282,10 +302,10 @@ To visualize data, configure the `grafana` section.
 {{< distributions "Enterprise" >}} If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the [`tenancy` configuration reference]({{< ref "/enterprise/management/configuration/the-things-stack#multi-tenancy" >}}).
 
 {{< highlight yaml "linenos=table,linenostart=188" >}}
-{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=188 to=191 >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=184 to=187 >}}
 {{< /highlight >}}
 
-For multi-tenant environments you'll also need to configure tenant admin keys:
+For multi-tenant environments you'll also need to configure tenant admin keys in the `is` section:
 
 {{< highlight yaml "linenos=table,linenostart=40" >}}
 {{< readfile path="/content/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=40 to=42 >}}

@@ -115,10 +115,10 @@ Be sure to configure `docker-compose.yml` and `ttn-lw-stack-docker.yml` for your
 
 ## Using Custom Certificates
 
-To use CA certificates you already have or [self-signed certificates](#custom-certificate-authority), you will need to uncomment the custom certificates section of `docker-compose.yml`:
+To use CA certificates you already have or [self-signed certificates](#custom-certificate-authority), you will need to specify the custom certificates section of `docker-compose.yml`:
 
-{{< highlight yaml "linenos=table,linenostart=66" >}}
-{{< readfile path="/content/enterprise/docker/configuration/docker-compose-custom-certificates.yml" from=66 to=79 >}}
+{{< highlight yaml "linenos=table,linenostart=67" >}}
+{{< readfile path="/content/enterprise/docker/configuration/docker-compose-custom-certificates.yml" from=67 to=80 >}}
 {{< /highlight >}}
 
 You will also need to comment out the Let's Encrypt section of `ttn-lw-stack-docker.yml`:
