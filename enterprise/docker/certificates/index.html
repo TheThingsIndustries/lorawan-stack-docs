@@ -246,11 +246,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
 </span></span></code></pre></div><p>Be sure to configure <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code> for your custom certificates, as shown in <a href="#using-custom-certificates">using custom certificates</a>.</p>
 <h2 id="using-custom-certificates">Using Custom Certificates</h2>
-<p>To use CA certificates you already have or <a href="#custom-certificate-authority">self-signed certificates</a>, you will need to uncomment the custom certificates section of <code>docker-compose.yml</code>:</p>
+<p>To use CA certificates you already have or <a href="#custom-certificate-authority">self-signed certificates</a>, you will need to specify the custom certificates section of <code>docker-compose.yml</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">66
-</span><span class="lnt">67
+<pre tabindex="0" class="chroma"><code><span class="lnt">67
 </span><span class="lnt">68
 </span><span class="lnt">69
 </span><span class="lnt">70
@@ -263,6 +262,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span><span class="lnt">77
 </span><span class="lnt">78
 </span><span class="lnt">79
+</span><span class="lnt">80
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="c"># If using custom certificates:</span><span class="w">
@@ -296,12 +296,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Let&#39;s encrypt for &#34;thethings.example.com&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># tls:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#   source: &#39;acme&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#   source: acme</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#   acme:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     dir: &#39;/var/lib/acme&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     email: &#39;you@thethings.example.com&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     hosts: [&#39;thethings.example.com&#39;]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     default-host: &#39;thethings.example.com&#39;</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     enable: true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     dir: /var/lib/acme</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     email: &#34;you@thethings.example.com&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     hosts: [&#34;thethings.example.com&#34;]</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>And uncomment the custom certificates section:</p>

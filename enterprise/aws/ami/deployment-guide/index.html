@@ -215,7 +215,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>AWS EC2, AWS CloudFormation</li>
 <li>Shell and command line usage</li>
-<li>Basics of LoRaWAN® devices and gateways</li>
+<li>Basics of LoRaWAN devices and gateways</li>
 </ul>
 <h3 id="prerequisites">Prerequisites</h3>
 <p>The following are necessary to complete this guide:</p>
@@ -223,7 +223,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>An account with AWS with access to the AWS Marketplace. If you don&rsquo;t have one, create it by using the <a href="https://portal.aws.amazon.com/billing/signup#/start">Create an AWS account</a> page.</li>
 <li>An RSA Public-Private Key pair</li>
 <li>Sufficient rights on your account to create IAM roles</li>
-<li>A LoRaWAN® compliant Gateway</li>
+<li>A LoRaWAN compliant Gateway</li>
 <li>A LoRaWAN compliant End Device</li>
 <li>Access to a name server for DNS mapping</li>
 <li>(Optional) An AWS Secret containing TLS certificate data, if a custom TLS certificate is needed</li>
@@ -254,7 +254,7 @@ This template allows the user to customize the deployment. The following is a li
       <tr>
           <td>EC2 Instance Name</td>
           <td>Name of the EC2 instance.</td>
-          <td><code>the-things-enterprise-stack</code></td>
+          <td>tts</td>
       </tr>
       <tr>
           <td>Domain</td>
@@ -264,7 +264,7 @@ This template allows the user to customize the deployment. The following is a li
       <tr>
           <td>Network Title*</td>
           <td>The title of your deployment.</td>
-          <td><code>The Things Stack Enterprise for LoRaWAN</code></td>
+          <td>The Things Stack Enterprise for LoRaWAN</td>
       </tr>
       <tr>
           <td>CIDR block</td>
@@ -287,9 +287,39 @@ This template allows the user to customize the deployment. The following is a li
   </thead>
   <tbody>
       <tr>
+          <td>TLS Certificate*</td>
+          <td>TLS certificate to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>TLS Certificate Key*</td>
+          <td>TLS certificate key to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>TLS Certificate CA*</td>
+          <td>TLS certificate CA to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>TLS Certificate Secret ARN*</td>
+          <td>TLS certificate data specified as an AWS secret. If this secret is specified, TLSCertificate, TLSCertificateCA and TLSCertificateKey values will be ignored. The AWS secret must have 3 key/value pairs with the key names: cert, key, ca.</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>Allow unauthenticated Basic Station connections</td>
+          <td>Allow unauthenticated Basic Station connections. This should only be set only for testing purposes.</td>
+          <td>false</td>
+      </tr>
+      <tr>
           <td>Admin Username</td>
           <td>Name of the admin user.</td>
           <td><code>admin</code></td>
+      </tr>
+      <tr>
+          <td>Initial Admin Password</td>
+          <td>Initial admin password. Please choose a strong password. It is recommended to change this password upon first login.</td>
+          <td>-</td>
       </tr>
       <tr>
           <td>Admin Email</td>
@@ -297,8 +327,13 @@ This template allows the user to customize the deployment. The following is a li
           <td><code>admin@mycompany.com</code></td>
       </tr>
       <tr>
-          <td>Initial Admin Password</td>
-          <td>Initial admin password. Please choose a strong password. It is recommended to change this password upon first login.</td>
+          <td>Amazon ElastiCache KMS Key ID*</td>
+          <td>Key used for Redis at-rest encryption. Leave empty to disable encryption. (Warning) A change to this field requires manual migration of the database.</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>Amazon ElastiCache Password*</td>
+          <td>Password used to access Redis. Leave empty to disable TLS connection. (Warning) A change to this field requires manual migration of the database.</td>
           <td>-</td>
       </tr>
       <tr>
@@ -321,57 +356,67 @@ This template allows the user to customize the deployment. The following is a li
           <td>API key for <a href="https://sendgrid.com/">SendGrid</a> to send emails.</td>
           <td>-</td>
       </tr>
-      <tr>
-          <td>Amazon ElastiCache KMS Key ID*</td>
-          <td>Key used for Redis at-rest encryption. Leave empty to disable encryption. (Warning) A change to this field requires manual migration of the database.</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>Amazon ElastiCache Password*</td>
-          <td>Password used to access Redis. Leave empty to disable TLS connection. (Warning) A change to this field requires manual migration of the database.</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>TLS Certificate*</td>
-          <td>TLS certificate to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>TLS Certificate Key*</td>
-          <td>TLS certificate key to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>TLS Certificate CA*</td>
-          <td>TLS certificate CA to use. If left empty, TLS certificates from Let&rsquo;s Encrypt will automatically be requested.</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>ARN of an AWS Secret containing the TLS certificate data*</td>
-          <td>TLS certificate data specified as an AWS secret. If this secret is specified, TLSCertificate, TLSCertificateCA and TLSCertificateKey values will be ignored. The AWS secret must have 3 key/value pairs with the key names: cert, key, ca.</td>
-          <td>-</td>
-      </tr>
   </tbody>
 </table>
 <blockquote>
 <p>* Optional field</p>
 </blockquote>
+<h4 id="email-settings">Email Settings</h4>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Parameter</strong></th>
+          <th><strong>Description</strong></th>
+          <th><strong>Default</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Email Provider</td>
+          <td>Email provider for The Things Stack Identity Server</td>
+          <td>sendgrid</td>
+      </tr>
+      <tr>
+          <td>SendGrid API Key</td>
+          <td>If email provider is sendgrid: API key for SendGrid (<a href="https://sendgrid.com/">https://sendgrid.com/</a>) to send emails.</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>SMTP Server Address</td>
+          <td>If email provider is smtp: Address of the SMTP server.</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>SMTP Username</td>
+          <td>If email provider is smtp: Username for the SMTP server.</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>SMTP Password</td>
+          <td>If email provider is smtp: Password for the SMTP server.</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
 <h4 id="external-connectivity">External Connectivity</h4>
 <table>
   <thead>
       <tr>
           <th><strong>Parameter</strong></th>
           <th><strong>Description</strong></th>
+          <th><strong>Default</strong></th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>Restrict SSH Access to IP Range</td>
           <td>The source IP address range that can be used to connect via SSH to the EC2 instances. Use 0.0.0.0/0 for global SSH access.</td>
+          <td>0.0.0.0/0</td>
       </tr>
       <tr>
           <td>Restrict Service Access to IP Range</td>
           <td>The source IP address range that can be used to connect to the deployed services. Use 0.0.0.0/0 for global access.</td>
+          <td>0.0.0.0/0</td>
       </tr>
   </tbody>
 </table>
@@ -460,7 +505,7 @@ This template allows the user to customize the deployment. The following is a li
       <tr>
           <td>Redis Instance Type</td>
           <td>The size of machine for the Redis instance.</td>
-          <td>cache.t2.small</td>
+          <td>cache.t4g.small</td>
       </tr>
       <tr>
           <td>Enable Multi-AZ for Redis</td>
@@ -480,7 +525,7 @@ This template allows the user to customize the deployment. The following is a li
       <tr>
           <td>Amazon RDS Instance Type</td>
           <td>The instance type for the Amazon RDS database.</td>
-          <td>db.t3.small</td>
+          <td>db.t4g.small</td>
       </tr>
       <tr>
           <td>Amazon RDS Backup Retention Period</td>
@@ -490,7 +535,7 @@ This template allows the user to customize the deployment. The following is a li
       <tr>
           <td>Amazon RDS Postgres Version</td>
           <td>PostgreSQL version for the Amazon RDS database.</td>
-          <td>11.4</td>
+          <td>16.4</td>
       </tr>
       <tr>
           <td>Enable Multi-AZ for Amazon RDS</td>
@@ -528,6 +573,30 @@ This template allows the user to customize the deployment. The following is a li
           <td>LoRaWAN NetID</td>
           <td>The LoRaWAN NetID that is assigned through <a href="https://lora-alliance.org/become-a-member">LoRa Alliance membership</a>. This is required if your network needs interoperability (e.g. roaming, peering, join flow) with other networks. If you do not have a NetID, please use 000000 or 000001.</td>
           <td>000000</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="managed-gateways-hahahugoshortcode135s10hbhb">Managed Gateways <span class="tag is-light">New in 3.34.0</span>
+
+</h4>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  All of following parameters are optional.
+</div>
+
+<table>
+  <thead>
+      <tr>
+          <th><strong>Parameter</strong></th>
+          <th><strong>Description</strong></th>
+          <th><strong>Default</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>The Things Gateway Controller</td>
+          <td>If set to true, The Things Stack connects to The Things Gateway Controller for claiming and configuring managed gateways (including The Things Indoor Gateway Pro). If you are using a TLS certificate that is signed by a private CA, contact <a href="mailto:support@thethingsindustries.com">support@thethingsindustries.com</a> to get your CA configured in The Things Gateway Controller.</td>
+          <td>false</td>
       </tr>
   </tbody>
 </table>

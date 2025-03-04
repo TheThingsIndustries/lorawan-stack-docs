@@ -47,9 +47,9 @@ http:
 
 # Let's encrypt for "thethings.example.com"
 tls:
-  source: "acme"
+  source: acme
   acme:
-    dir: "/var/lib/acme"
+    dir: /var/lib/acme
     email: "you@thethings.example.com"
     hosts: ["thethings.example.com"]
     default-host: "thethings.example.com"
@@ -68,9 +68,6 @@ gcs:
   basic-station:
     default:
       lns-uri: "wss://thethings.example.com:8887"
-  the-things-gateway:
-    default:
-      mqtt-server: "mqtts://thethings.example.com:8881"
 
 # Web UI configuration for "thethings.example.com":
 console:
@@ -81,13 +78,13 @@ console:
       base-url: "https://thethings.example.com/api/v3"
     gs:
       base-url: "https://thethings.example.com/api/v3"
-    gcs:
-      base-url: "https://thethings.example.com/api/v3"
     ns:
       base-url: "https://thethings.example.com/api/v3"
     as:
       base-url: "https://thethings.example.com/api/v3"
     js:
+      base-url: "https://thethings.example.com/api/v3"
+    gcs:
       base-url: "https://thethings.example.com/api/v3"
     qrg:
       base-url: "https://thethings.example.com/api/v3"
@@ -111,21 +108,17 @@ as:
     downlink:
       public-address: "thethings.example.com:1885/api/v3"
 
-# If Device Claiming Server enabled, defaults for "thethings.example.com":
-dcs:
-  oauth:
-    authorize-url: "https://thethings.example.com/oauth/authorize"
-    token-url: "https://thethings.example.com/oauth/token"
-    logout-url: "https://thethings.example.com/oauth/logout"
-    client-id: "device-claiming"
-    client-secret: "device-claiming" # choose or generate a secret
-  ui:
-    canonical-url: "https://thethings.example.com/claim"
-    as:
-      base-url: "https://thethings.example.com/api/v3"
-    dcs:
-      base-url: "https://thethings.example.com/api/v3"
-    is:
-      base-url: "https://thethings.example.com/api/v3"
-    ns:
-      base-url: "https://thethings.example.com/api/v3"
+# Managed gateway configuration, defaults for "thethings.example.com".
+# This configures a connection with The Things Gateway Controller, a service operated by The Things Industries.
+# This allows connecting, for example, The Things Indoor Gateway Pro.
+ttgc:
+  enabled: true
+  domain: thethings.example.com
+  # Let's Encrypt:
+  tls:
+    source: acme
+  # If using custom certificates:
+  # tls:
+  #   source: file
+  #   certificate: /run/secrets/cert.pem
+  #   key: /run/secrets/key.pem
