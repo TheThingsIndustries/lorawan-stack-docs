@@ -93,7 +93,7 @@ In production, replace the `image` with a working, stable tag from [Docker Hub -
 The simplest configuration for PostgreSQL looks like this (excerpted from the example `docker-compose.yml`):
 
 {{< highlight yaml "linenos=table,linenostart=4" >}}
-{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=4 to=17 >}}
+{{< readfile path="/enterprise/docker/configuration/docker-compose-enterprise.yml" from=4 to=17 >}}
 {{< /highlight >}}
 
 {{< note >}}
@@ -131,7 +131,7 @@ It is also possible (and even preferred) to use a managed Redis database. In thi
 The simplest configuration for Redis looks like this (excerpted from the example `docker-compose.yml`):
 
 {{< highlight yaml "linenos=table,linenostart=19" >}}
-{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=19 to=27 >}}
+{{< readfile path="/enterprise/docker/configuration/docker-compose-enterprise.yml" from=19 to=27 >}}
 {{< /highlight >}}
 
 ### {{% tts %}}
