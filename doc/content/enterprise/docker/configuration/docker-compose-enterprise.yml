@@ -5,7 +5,7 @@ services:
     # In production, replace 'latest' with tag from https://hub.docker.com/r/timescale/timescaledb/tags
     # If you are not using the Storage Integration nor Network Operations Center, you can use vanilla Postgres.
     # The minimum Postgres version supported is 14.x.
-    image: "timescale/timescaledb:latest-pg14"
+    image: "timescale/timescaledb:latest-pg16"
     restart: unless-stopped
     environment:
       - POSTGRES_PASSWORD=root
@@ -95,6 +95,7 @@ services:
       - "8887:8887"
       - "1888:1888"
       - "8888:8888"
+      - "8889:8889"
       - "1700:1700/udp"
 
     # If using custom certificates:

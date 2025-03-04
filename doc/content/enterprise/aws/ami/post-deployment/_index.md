@@ -96,15 +96,15 @@ sudo journalctl -f -u lorawan-stack.service
 
 ## Routing LoRaWAN Traffic
 
-Now that your stack has been successfully deployed, let's look at how to connect a LoRaWAN® Gateway, Register a LoRaWAN Device and read traffic from this device.
+Now that your stack has been successfully deployed, let's look at how to connect a LoRaWAN gateway, register a LoRaWAN device and read traffic from this device.
 
 ### Connecting a Gateway
 
-Please check [Gateways]({{< relref "gateways" >}}) section to find an extensive connecting guide for the particular brand/model of your gateway.
+Please check [Gateways]({{< ref "/hardware/gateways/concepts/adding-gateways" >}}) section to learn how to add gateways.
 
 ### Registering a Device
 
-Please check the [Adding Devices]({{< relref "/hardware/devices/adding-devices" >}}) guide.
+Please check the [Adding Devices]({{< ref "/hardware/devices/adding-devices" >}}) guide.
 
 ## AWS IoT
 

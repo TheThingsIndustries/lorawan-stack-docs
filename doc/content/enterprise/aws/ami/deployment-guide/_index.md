@@ -33,7 +33,7 @@ In order to follow this guide to deploy {{% tts %}}, it is recommended to be fam
 
 - AWS EC2, AWS CloudFormation
 - Shell and command line usage
-- Basics of LoRaWAN® devices and gateways
+- Basics of LoRaWAN devices and gateways
 
 ### Prerequisites
 
@@ -42,7 +42,7 @@ The following are necessary to complete this guide:
 1. An account with AWS with access to the AWS Marketplace. If you don't have one, create it by using the [Create an AWS account](https://portal.aws.amazon.com/billing/signup#/start) page.
 2. An RSA Public-Private Key pair
 3. Sufficient rights on your account to create IAM roles
-4. A LoRaWAN® compliant Gateway
+4. A LoRaWAN compliant Gateway
 5. A LoRaWAN compliant End Device
 6. Access to a name server for DNS mapping
 7. (Optional) An AWS Secret containing TLS certificate data, if a custom TLS certificate is needed
@@ -65,41 +65,52 @@ This template allows the user to customize the deployment. The following is a li
 
 #### Basic Configuration
 
-| Parameter         | Description                                                                                                                           | Default                                   |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| EC2 Instance Name | Name of the EC2 instance.                                                                                                             | `the-things-enterprise-stack`             |
-| Domain            | Domain name. You should be able to configure DNS for the domain. TLS certificates from Let's Encrypt will automatically be requested. | -                                         |
-| Network Title\*   | The title of your deployment.                                                                                                         | `The Things Stack Enterprise for LoRaWAN` |
-| CIDR block        | CIDR block used by the VPC.                                                                                                           | 10.0.0.0/16                               |
+| Parameter         | Description                                                                                                                           | Default                                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| EC2 Instance Name | Name of the EC2 instance.                                                                                                             | tts                                     |
+| Domain            | Domain name. You should be able to configure DNS for the domain. TLS certificates from Let's Encrypt will automatically be requested. | -                                       |
+| Network Title\*   | The title of your deployment.                                                                                                         | The Things Stack Enterprise for LoRaWAN |
+| CIDR block        | CIDR block used by the VPC.                                                                                                           | 10.0.0.0/16                             |
 
 > \* Optional field
 
 #### Security Configuration
 
-| **Parameter**                                              | **Description**                                                                                                                                                                                                                            | **Default**           |
-| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------- |
-| Admin Username                                             | Name of the admin user.                                                                                                                                                                                                                    | `admin`               |
-| Admin Email                                                | Email address of the admin user.                                                                                                                                                                                                           | `admin@mycompany.com` |
-| Initial Admin Password                                     | Initial admin password. Please choose a strong password. It is recommended to change this password upon first login.                                                                                                                       | -                     |
-| Amazon RDS Database Username                               | Username of the relational database.                                                                                                                                                                                                       | `postgres`            |
-| Amazon RDS Database Password                               | Password for the relational database. This password is used to access the Amazon RDS database.                                                                                                                                             | -                     |
-| SSH Key                                                    | Name of an existing EC2 KeyPair to enable SSH access to your instance.                                                                                                                                                                     | -                     |
-| SendGrid API Key\*                                         | API key for [SendGrid](https://sendgrid.com/) to send emails.                                                                                                                                                                              | -                     |
-| Amazon ElastiCache KMS Key ID\*                            | Key used for Redis at-rest encryption. Leave empty to disable encryption. (Warning) A change to this field requires manual migration of the database.                                                                                      | -                     |
-| Amazon ElastiCache Password\*                              | Password used to access Redis. Leave empty to disable TLS connection. (Warning) A change to this field requires manual migration of the database.                                                                                          | -                     |
-| TLS Certificate\*                                          | TLS certificate to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.                                                                                                                                | -                     |
-| TLS Certificate Key\*                                      | TLS certificate key to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.                                                                                                                            | -                     |
-| TLS Certificate CA\*                                       | TLS certificate CA to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.                                                                                                                             | -                     |
-| ARN of an AWS Secret containing the TLS certificate data\* | TLS certificate data specified as an AWS secret. If this secret is specified, TLSCertificate, TLSCertificateCA and TLSCertificateKey values will be ignored. The AWS secret must have 3 key/value pairs with the key names: cert, key, ca. | -                     |
+| **Parameter**                                   | **Description**                                                                                                                                                                                                                            | **Default**           |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------- |
+| TLS Certificate\*                               | TLS certificate to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.                                                                                                                                | -                     |
+| TLS Certificate Key\*                           | TLS certificate key to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.                                                                                                                            | -                     |
+| TLS Certificate CA\*                            | TLS certificate CA to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.                                                                                                                             | -                     |
+| TLS Certificate Secret ARN\*                    | TLS certificate data specified as an AWS secret. If this secret is specified, TLSCertificate, TLSCertificateCA and TLSCertificateKey values will be ignored. The AWS secret must have 3 key/value pairs with the key names: cert, key, ca. | -                     |
+| Allow unauthenticated Basic Station connections | Allow unauthenticated Basic Station connections. This should only be set only for testing purposes.                                                                                                                                        | false                 |
+| Admin Username                                  | Name of the admin user.                                                                                                                                                                                                                    | `admin`               |
+| Initial Admin Password                          | Initial admin password. Please choose a strong password. It is recommended to change this password upon first login.                                                                                                                       | -                     |
+| Admin Email                                     | Email address of the admin user.                                                                                                                                                                                                           | `admin@mycompany.com` |
+| Amazon ElastiCache KMS Key ID\*                 | Key used for Redis at-rest encryption. Leave empty to disable encryption. (Warning) A change to this field requires manual migration of the database.                                                                                      | -                     |
+| Amazon ElastiCache Password\*                   | Password used to access Redis. Leave empty to disable TLS connection. (Warning) A change to this field requires manual migration of the database.                                                                                          | -                     |
+| Amazon RDS Database Username                    | Username of the relational database.                                                                                                                                                                                                       | `postgres`            |
+| Amazon RDS Database Password                    | Password for the relational database. This password is used to access the Amazon RDS database.                                                                                                                                             | -                     |
+| SSH Key                                         | Name of an existing EC2 KeyPair to enable SSH access to your instance.                                                                                                                                                                     | -                     |
+| SendGrid API Key\*                              | API key for [SendGrid](https://sendgrid.com/) to send emails.                                                                                                                                                                              | -                     |
 
 > \* Optional field
 
+#### Email Settings
+
+| **Parameter**       | **Description**                                                                             | **Default** |
+| ------------------- | ------------------------------------------------------------------------------------------- | ----------- |
+| Email Provider      | Email provider for The Things Stack Identity Server                                         | sendgrid    |
+| SendGrid API Key    | If email provider is sendgrid: API key for SendGrid (https://sendgrid.com/) to send emails. |             |
+| SMTP Server Address | If email provider is smtp: Address of the SMTP server.                                      |             |
+| SMTP Username       | If email provider is smtp: Username for the SMTP server.                                    |             |
+| SMTP Password       | If email provider is smtp: Password for the SMTP server.                                    |             |
+
 #### External Connectivity
 
-| **Parameter**                       | **Description**                                                                                                            |
-| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Restrict SSH Access to IP Range     | The source IP address range that can be used to connect via SSH to the EC2 instances. Use 0.0.0.0/0 for global SSH access. |
-| Restrict Service Access to IP Range | The source IP address range that can be used to connect to the deployed services. Use 0.0.0.0/0 for global access.         |
+| **Parameter**                       | **Description**                                                                                                            | **Default** |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| Restrict SSH Access to IP Range     | The source IP address range that can be used to connect via SSH to the EC2 instances. Use 0.0.0.0/0 for global SSH access. | 0.0.0.0/0   |
+| Restrict Service Access to IP Range | The source IP address range that can be used to connect to the deployed services. Use 0.0.0.0/0 for global access.         | 0.0.0.0/0   |
 
 #### User Registration
 
@@ -120,18 +131,18 @@ This template allows the user to customize the deployment. The following is a li
 {{< note >}} The fields in this section are for advanced users. A change to some of these parameters might incur additional costs. {{</ note >}}
 {{< note >}} In order to provide failover, we recommend enabling Multi-AZ for Amazon RDS and Redis. {{</ note >}}
 
-| **Parameter**                      | **Description**                                                                                                                                                                              | **Default**    |
-| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
-| EC2 Instance Type                  | EC2 Instance Type.                                                                                                                                                                           | t3.small       |
-| Redis Backup Retention Period\*    | The retention period for daily Redis backups (days).                                                                                                                                         | 7              |
-| Redis Instance Type                | The size of machine for the Redis instance.                                                                                                                                                  | cache.t2.small |
-| Enable Multi-AZ for Redis          | If true, replicas of Redis are created. If true, RedisNumCacheClusters property must be greater than 1.                                                                                      | false          |
-| Number of Redis Multi-AZ Instances | The number of replicas for this replication group. If RedisMultiAZSupport is true, this value must be greater than 1. Note that this multiplies the Amazon ElastiCache Redis instance costs. | 1              |
-| Amazon RDS Database Name           | Name of the relational database. (Warning) A change to this field requires manual migration of the database.                                                                                 | ttn_lorawan    |
-| Amazon RDS Instance Type           | The instance type for the Amazon RDS database.                                                                                                                                               | db.t3.small    |
-| Amazon RDS Backup Retention Period | The retention period for daily Amazon RDS backups (days). (Warning) A change to this field requires manual migration of the database.                                                        | 7              |
-| Amazon RDS Postgres Version        | PostgreSQL version for the Amazon RDS database.                                                                                                                                              | 11.4           |
-| Enable Multi-AZ for Amazon RDS     | If true, a failover instance is created in case the primary instance fails. Note that this doubles the Amazon RDS instance costs.                                                            | false          |
+| **Parameter**                      | **Description**                                                                                                                                                                              | **Default**     |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| EC2 Instance Type                  | EC2 Instance Type.                                                                                                                                                                           | t3.small        |
+| Redis Backup Retention Period\*    | The retention period for daily Redis backups (days).                                                                                                                                         | 7               |
+| Redis Instance Type                | The size of machine for the Redis instance.                                                                                                                                                  | cache.t4g.small |
+| Enable Multi-AZ for Redis          | If true, replicas of Redis are created. If true, RedisNumCacheClusters property must be greater than 1.                                                                                      | false           |
+| Number of Redis Multi-AZ Instances | The number of replicas for this replication group. If RedisMultiAZSupport is true, this value must be greater than 1. Note that this multiplies the Amazon ElastiCache Redis instance costs. | 1               |
+| Amazon RDS Database Name           | Name of the relational database. (Warning) A change to this field requires manual migration of the database.                                                                                 | ttn_lorawan     |
+| Amazon RDS Instance Type           | The instance type for the Amazon RDS database.                                                                                                                                               | db.t4g.small    |
+| Amazon RDS Backup Retention Period | The retention period for daily Amazon RDS backups (days). (Warning) A change to this field requires manual migration of the database.                                                        | 7               |
+| Amazon RDS Postgres Version        | PostgreSQL version for the Amazon RDS database.                                                                                                                                              | 16.4            |
+| Enable Multi-AZ for Amazon RDS     | If true, a failover instance is created in case the primary instance fails. Note that this doubles the Amazon RDS instance costs.                                                            | false           |
 
 #### LoRaWAN Network Server Settings
 
@@ -142,6 +153,14 @@ This template allows the user to customize the deployment. The following is a li
 | LoRaWAN JoinEUI Prefix | Prefix for the LoRaWAN JoinEUIs that are handled by this network.                                                                                                                                                                                                                          | 0000000000000000/0 |
 | LoRaWAN DevAddr Prefix | Prefix for the LoRaWAN DevAddrs that are handled by this network.                                                                                                                                                                                                                          | 00000000/7         |
 | LoRaWAN NetID          | The LoRaWAN NetID that is assigned through [LoRa Alliance membership](https://lora-alliance.org/become-a-member). This is required if your network needs interoperability (e.g. roaming, peering, join flow) with other networks. If you do not have a NetID, please use 000000 or 000001. | 000000             |
+
+#### Managed Gateways {{< new-in-version "3.34.0" >}}
+
+{{< note >}} All of following parameters are optional. {{</ note >}}
+
+| **Parameter**                 | **Description**                                                                                                                                                                                                                                                                                                                            | **Default** |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| The Things Gateway Controller | If set to true, The Things Stack connects to The Things Gateway Controller for claiming and configuring managed gateways (including The Things Indoor Gateway Pro). If you are using a TLS certificate that is signed by a private CA, contact support@thethingsindustries.com to get your CA configured in The Things Gateway Controller. | false       |
 
 #### AWS IoT settings
 
