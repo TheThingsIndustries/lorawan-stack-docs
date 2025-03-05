@@ -2,7 +2,7 @@
 title: "Glossary"
 description: "Common terms and definitions"
 aliases: [/reference/glossary]
-weight: 8
+weight: 9
 ---
 
 This reference contains common terms and definitions to help you find your way around {{% tts %}}.
