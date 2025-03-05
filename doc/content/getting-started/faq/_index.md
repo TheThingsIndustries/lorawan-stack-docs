@@ -1,7 +1,7 @@
 ---
 title: "FAQ"
 description: ""
-weight: 5
+weight: 7
 ---
 
 Check out frequently asked question about {{% tts %}} and learn how to get the most out of your deployment.
