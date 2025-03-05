@@ -129,15 +129,19 @@ aws s3 cp plugins.yml s3://${PluginsConfigBucket}/plugins.yml
 
 ## TimescaleDB (optional) {#timescaledb-optional}
 
-The template `2-5-db-timescale` is an optional template that creates an EC2 instance that runs [TimescaleDB](https://www.timescale.com/), which is used by the Storage Integration and the Network Operations Center (NOC).
+The templates `2-5-db-timescale` and `2-6-db-timescale-replica` are optional templates that create an EC2 Auto Scaling Group that runs [TimescaleDB](https://www.timescale.com/), which is used by the Storage Integration and the Network Operations Center (NOC).
 
 {{< note >}} If you do not want to install the Storage Integration and NOC, you do not need to deploy this template. However, deploying this template is mandatory if you wish to install them. {{</ note >}}
 
-**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-5-db-timescale.gen.template (replace `3.x.y` with the current minor and patch version).
+**Primary Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-5-db-timescale.gen.template (replace `3.x.y` with the current minor and patch version).
 
 In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template requires you to choose an **Instance type** and **SSH Key Name** to be used to login to the instance. You either need to specify the **EBS Volume Snapshot ID** to restore, or the **EBS Volume Size** for the storage volume to create.
 
 Finally, you need to specify the database name, username and password. If you restore from a snapshot, these must match the existing database in the snapshot.
+
+**Replica Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-6-db-timescale-replica.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for an **Instance Type**, just as for the primary template. It is typically fine for small clusters to start with `db.t3.medium` and scale as you grow.
 
 ## Security Group Rules
 
