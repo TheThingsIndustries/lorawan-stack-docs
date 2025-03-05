@@ -143,6 +143,14 @@ Finally, you need to specify the database name, username and password. If you re
 
 In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for an **Instance Type**, just as for the primary template. It is typically fine for small clusters to start with `db.t3.medium` and scale as you grow.
 
+## SQS Queue (optional) {#sqs-queue-optional}
+
+The template `2-7-queue-sqs` creates an SQS queues that are used by the Alert Routing Server (ARS) and by Application Server for webhooks.
+
+**Template**: https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-7-queue-sqs.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template requires you to specify SQS parameters. When setting up a queue for ARS it should be a FIFO queue. Consult AWS documentation to set the values correctly.
+
 ## Security Group Rules
 
 The template `3-1-security-group-rules` creates the security group rules for both external and internal network traffic.
