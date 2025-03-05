@@ -289,7 +289,21 @@ For all services: the official image is `docker.io/thethingsindustries/lorawan-s
 
 > We recommend to start with 2 instances of each service. For some services it is not possible (yet) to deploy more than one instance.
 
-## Monitoring (optional, but recommended)
+## Tenant Resource Monitoring (optional) {#tenant-resource-monitoring-optional}
+
+The `5-5-tenant-resource-monitoring` template creates ECS infrastructure for Tenant Resource Monitoring (TRM).
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-5-tenant-resource-monitoring.gen.template (replace `3.x.y` with the current minor and patch version).
+
+Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and information about the cluster.
+
+The official images are `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-trm-prometheus` and `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-trm-alertmanager` (replace `3.x.y` with the current minor and patch version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack. Prometheus typically needs CPU=1024 and Memory=2048.
+
+The username for accessing TRM Prometheus is `metrics`. The password can be accessed as the `TenantResourceMetricsPasswordSecret` in the outputs section of the`4-1-secrets.gen.template`.
+
+The username for accessing TRM Alertmanager is `alerts`. Users can configure a custom `AlertmanagerPassword` while deploying the `5-5-tenant-resource-monitoring.gen.template`.
+
+## Monitoring (optional, but recommended) {#monitoring-optional}
 
 We strongly recommend to monitor your deployment with [Prometheus](https://prometheus.io) and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/overview/), from where you can forward alerts to external on-call notification systems. With the `5-6-ecs-monitoring` you can deploy Prometheus to your ECS cluster.
 
