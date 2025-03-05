@@ -1,7 +1,7 @@
 ---
 title: "FAQ"
-description: ""
-weight: 7
+description: "Frequently asked questions about LoRaWAN® and The Things Stack"
+weight: 8
 ---
 
 Check out frequently asked question about {{% tts %}} and learn how to get the most out of your deployment.
