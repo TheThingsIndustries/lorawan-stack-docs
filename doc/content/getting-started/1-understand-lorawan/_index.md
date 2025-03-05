@@ -6,11 +6,15 @@ weight: 1
 
 This guide briefly explains the architecture and key concepts of a LoRaWAN® network.
 
-### LoRa
+Start with LPWAN characterics, data size and typical use cases.
+
+- Low data rate, battery
+
+#### LoRa
 
 LoRa is a wireless modulation technique derived from Chirp Spread Spectrum (CSS) technology. It encodes information on radio waves using chirp pulses - similar to the way dolphins and bats communicate! LoRa modulated transmission is robust against disturbances and can be received across great distances.
 
-### LoRaWAN
+#### LoRaWAN
 
 LoRaWAN is a Media Access Control (MAC) layer protocol built on top of LoRa modulation. It is a _software layer_ which defines how devices use the LoRa hardware, for example when they transmit, and the format of messages.
 
@@ -22,28 +26,21 @@ The LoRaWAN protocol is developed and maintained by the [LoRa Alliance](https://
 
 A typical LoRaWAN network consists of the following basic elements.
 
-End Devices
+- **End Devices**: Sensors or actuators send LoRa modulated wireless messages to the gateways or receive messages wirelessly back from the gateways.
 
-    Sensors or actuators send LoRa modulated wireless messages to the gateways or receive messages wirelessly back from the gateways.
+- **Gateways**: Specialized devices that receive messages from end devices and forward them to the Network Server, as well as forward messages from the Network Server to the end devices.
 
-Gateways
+- **Network Server**: Software running on a server that manages the entire network. Also referred to as LoRaWAN Network Server/LNS or simply Network software.
 
-    Specialized devices that receive messages from end devices and forward them to the Network Server, as well as forward messages from the Network Server to the end devices.
-
-Network Server
-
-    A piece of software running on a server that manages the entire network.
-    Also referred to as LoRaWAN Network Server/LNS or simply Network software.
-
-Application servers
-
-    A piece of software running on a server that is responsible for securely processing application data.
-
-Message Flow
+- **Application**: Software running on a server that is responsible for securely processing application data.
 
 ### Simple message flow
 
-> TODO: Add a simple diagram.
+#### Uplinks
+
+The messages that originates from an end device and are sent to the server via gateways are called an Uplinks.
+
+> TODO: Add a simple diagram. Update the content below based on the diagram.
 
 End devices communicate with nearby gateways and each gateway is connected to the Network Server.
 
@@ -55,19 +52,17 @@ The Network Server separates the network settings related data from the separate
 
 The Application Server decrypts the application data and makes is available to the user via a multitude of options.
 
-#### Uplinks
-
-The messages that originates from an end device are called an Uplinks.
-
 #### Downlinks
 
-Messages flowing in the opposite direction (originating from the Network Server and/or Application Server and sent to end devices) are called Downlinks.
+Messages that originate in the server (Network Server or Application) and are sent to the end device via gateways are called downlinks.
+
+> TODO: Add a simple diagram. Update the content below based on the diagram.
 
 ### Security
 
 > TODO: Add some diagrams that show the two level security.
 
-All LoRaWAN data is encrypted using AES-128 symmetric keys. All devices have one or two unique AES-128 keys called the “root keys” associated with them, depending on the version of LoRaWAN they use.
+All LoRaWAN data is encrypted using symmetric keys. All devices have one or two unique keys called the “root keys” associated with them, depending on the version of LoRaWAN they use.
 
 These root keys are used to derive separate keys for the application data and network data.
 
