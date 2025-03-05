@@ -25,7 +25,7 @@ This guide is structured in seven steps.
 3. [Step 3: Setup a The Things Stack account]({{< ref "/getting-started/faq" >}}) -
 4. [Step 4: Activate the LoRaWAN end device and gateway]({{< ref "/getting-started/faq" >}}) -
 5. [Step 5: Collecting and Visualizing Your First Data]({{< ref "/getting-started/faq" >}}) -
-6. [Step 6: Control the end device behavior from the cloud]({{< ref "/getting-started/faq" >}}) -
+6. [Step 6: Control the end device behavior remotely]({{< ref "/getting-started/faq" >}}) -
 7. [Step 7: Next steps]({{< ref "/getting-started/faq" >}}) -
 
 This guide additionally contains an [FAQ]({{< ref "/getting-started/faq" >}}) and a [glossary]({{< ref "/getting-started/glossary" >}}) to provide quick answers to frequently asked questions and definitions of key LoRaWAN terms."
