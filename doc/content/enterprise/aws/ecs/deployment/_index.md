@@ -129,15 +129,27 @@ aws s3 cp plugins.yml s3://${PluginsConfigBucket}/plugins.yml
 
 ## TimescaleDB (optional) {#timescaledb-optional}
 
-The template `2-5-db-timescale` is an optional template that creates an EC2 instance that runs [TimescaleDB](https://www.timescale.com/), which is used by the Storage Integration and the Network Operations Center (NOC).
+The templates `2-5-db-timescale` and `2-6-db-timescale-replica` are optional templates that create an EC2 Auto Scaling Group that runs [TimescaleDB](https://www.timescale.com/), which is used by the Storage Integration and the Network Operations Center (NOC).
 
 {{< note >}} If you do not want to install the Storage Integration and NOC, you do not need to deploy this template. However, deploying this template is mandatory if you wish to install them. {{</ note >}}
 
-**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-5-db-timescale.gen.template (replace `3.x.y` with the current minor and patch version).
+**Primary Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-5-db-timescale.gen.template (replace `3.x.y` with the current minor and patch version).
 
 In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template requires you to choose an **Instance type** and **SSH Key Name** to be used to login to the instance. You either need to specify the **EBS Volume Snapshot ID** to restore, or the **EBS Volume Size** for the storage volume to create.
 
 Finally, you need to specify the database name, username and password. If you restore from a snapshot, these must match the existing database in the snapshot.
+
+**Replica Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-6-db-timescale-replica.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for an **Instance Type**, just as for the primary template. It is typically fine for small clusters to start with `db.t3.medium` and scale as you grow.
+
+## SQS Queue (optional) {#sqs-queue-optional}
+
+The template `2-7-queue-sqs` creates an SQS queues that are used by the Alert Routing Server (ARS) and by Application Server for webhooks.
+
+**Template**: https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-7-queue-sqs.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template requires you to specify SQS parameters. When setting up a queue for ARS it should be a FIFO queue. Consult AWS documentation to set the values correctly.
 
 ## Security Group Rules
 
@@ -277,7 +289,21 @@ For all services: the official image is `docker.io/thethingsindustries/lorawan-s
 
 > We recommend to start with 2 instances of each service. For some services it is not possible (yet) to deploy more than one instance.
 
-## Monitoring (optional, but recommended)
+## Tenant Resource Monitoring (optional) {#tenant-resource-monitoring-optional}
+
+The `5-5-tenant-resource-monitoring` template creates ECS infrastructure for Tenant Resource Monitoring (TRM).
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-5-tenant-resource-monitoring.gen.template (replace `3.x.y` with the current minor and patch version).
+
+Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and information about the cluster.
+
+The official images are `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-trm-prometheus` and `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-trm-alertmanager` (replace `3.x.y` with the current minor and patch version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack. Prometheus typically needs CPU=1024 and Memory=2048.
+
+The username for accessing TRM Prometheus is `metrics`. The password can be accessed as the `TenantResourceMetricsPasswordSecret` in the outputs section of the`4-1-secrets.gen.template`.
+
+The username for accessing TRM Alertmanager is `alerts`. Users can configure a custom `AlertmanagerPassword` while deploying the `5-5-tenant-resource-monitoring.gen.template`.
+
+## Monitoring (optional, but recommended) {#monitoring-optional}
 
 We strongly recommend to monitor your deployment with [Prometheus](https://prometheus.io) and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/overview/), from where you can forward alerts to external on-call notification systems. With the `5-6-ecs-monitoring` you can deploy Prometheus to your ECS cluster.
 
