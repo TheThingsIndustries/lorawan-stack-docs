@@ -132,6 +132,24 @@ Please respect the following guidelines for content in our documentation site.
   - If a line is longer than 120 columns, insert a line break
   - In very special cases, longer lines are tolerated
 
+## Embedding YouTube Videos
+
+In most cases, YouTube videos can be embedded using it's unique ID. You can fetch this from the last part of the video's URL. For example, the unique ID for the video [https://youtu.be/vxXKBEQxLq0](https://youtu.be/vxXKBEQxLq0) is `vxXKBEQxLq0`.
+
+You can embed this in markdown directly using
+
+```md
+<details><summary>Show video</summary>
+{{< youtube "vxXKBEQxLq0" >}}  <!-- Replace the content in the quotes with your video ID-->
+</details>
+```
+
+However, if the video should be inside a `tab` container use the special `tabs/video` short code. Example below:
+
+```md
+{{< tabs/video "vxXKBEQxLq0" >}} <!-- Replace the content in the quotes with your video ID-->
+```
+
 ## Building Frequency Plans Documentation
 
 The [Frequency Plans](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/concepts/features/lorawan/frequency-plans/_index.md) section contains all frequency plans that are officially supported by {{% tts %}}. The list of frequency plans is populated from the [LoRaWAN Frequency Plans for {{% tts %}} Github repository](https://github.com/TheThingsNetwork/lorawan-frequency-plans/). To update the list of frequency plans with the newest changes from the Frequency Plans repository, run `make freq.deps`.
