@@ -295,15 +295,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <h2 id="timescaledb-optional">TimescaleDB (optional)</h2>
-<p>The template <code>2-5-db-timescale</code> is an optional template that creates an EC2 instance that runs <a href="https://www.timescale.com/">TimescaleDB</a>, which is used by the Storage Integration and the Network Operations Center (NOC).</p>
+<p>The templates <code>2-5-db-timescale</code> and <code>2-6-db-timescale-replica</code> are optional templates that create an EC2 Auto Scaling Group that runs <a href="https://www.timescale.com/">TimescaleDB</a>, which is used by the Storage Integration and the Network Operations Center (NOC).</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   If you do not want to install the Storage Integration and NOC, you do not need to deploy this template. However, deploying this template is mandatory if you wish to install them.
 </div>
 
-<p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-5-db-timescale.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-5-db-timescale.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
+<p><strong>Primary Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-5-db-timescale.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-5-db-timescale.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/enterprise/aws/ecs/prerequisites/">Prerequisites</a>), this template requires you to choose an <strong>Instance type</strong> and <strong>SSH Key Name</strong> to be used to login to the instance. You either need to specify the <strong>EBS Volume Snapshot ID</strong> to restore, or the <strong>EBS Volume Size</strong> for the storage volume to create.</p>
 <p>Finally, you need to specify the database name, username and password. If you restore from a snapshot, these must match the existing database in the snapshot.</p>
+<p><strong>Replica Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-6-db-timescale-replica.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-6-db-timescale-replica.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
+<p>In addition to the re-used parameters (see <a href="/docs/enterprise/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for an <strong>Instance Type</strong>, just as for the primary template. It is typically fine for small clusters to start with <code>db.t3.medium</code> and scale as you grow.</p>
+<h2 id="sqs-queue-optional">SQS Queue (optional)</h2>
+<p>The template <code>2-7-queue-sqs</code> creates an SQS queues that are used by the Alert Routing Server (ARS) and by Application Server for webhooks.</p>
+<p><strong>Template</strong>: <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-7-queue-sqs.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-7-queue-sqs.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
+<p>In addition to the re-used parameters (see <a href="/docs/enterprise/aws/ecs/prerequisites/">Prerequisites</a>), this template requires you to specify SQS parameters. When setting up a queue for ARS it should be a FIFO queue. Consult AWS documentation to set the values correctly.</p>
 <h2 id="security-group-rules">Security Group Rules</h2>
 <p>The template <code>3-1-security-group-rules</code> creates the security group rules for both external and internal network traffic.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/3-1-security-group-rules.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/3-1-security-group-rules.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
@@ -393,7 +399,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <blockquote>
 <p>We recommend to start with 2 instances of each service. For some services it is not possible (yet) to deploy more than one instance.</p>
 </blockquote>
-<h2 id="monitoring-optional-but-recommended">Monitoring (optional, but recommended)</h2>
+<h2 id="tenant-resource-monitoring-optional">Tenant Resource Monitoring (optional)</h2>
+<p>The <code>5-5-tenant-resource-monitoring</code> template creates ECS infrastructure for Tenant Resource Monitoring (TRM).</p>
+<p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-5-tenant-resource-monitoring.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-5-tenant-resource-monitoring.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
+<p>Fill the re-used parameters (see <a href="/docs/enterprise/aws/ecs/prerequisites/">Prerequisites</a>) and information about the cluster.</p>
+<p>The official images are <code>docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-trm-prometheus</code> and <code>docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-trm-alertmanager</code> (replace <code>3.x.y</code> with the current minor and patch version). When deploying to <code>FARGATE</code>, make sure to select <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html">a valid combination of CPU and Memory</a>, or you will get an error about <code>Invalid CPU or memory value specified</code> when you deploy the stack. Prometheus typically needs CPU=1024 and Memory=2048.</p>
+<p>The username for accessing TRM Prometheus is <code>metrics</code>. The password can be accessed as the <code>TenantResourceMetricsPasswordSecret</code> in the outputs section of the<code>4-1-secrets.gen.template</code>.</p>
+<p>The username for accessing TRM Alertmanager is <code>alerts</code>. Users can configure a custom <code>AlertmanagerPassword</code> while deploying the <code>5-5-tenant-resource-monitoring.gen.template</code>.</p>
+<h2 id="monitoring-optional">Monitoring (optional, but recommended)</h2>
 <p>We strongly recommend to monitor your deployment with <a href="https://prometheus.io">Prometheus</a> and send alerts to <a href="https://prometheus.io/docs/alerting/latest/overview/">Alertmanager</a>, from where you can forward alerts to external on-call notification systems. With the <code>5-6-ecs-monitoring</code> you can deploy Prometheus to your ECS cluster.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-6-ecs-monitoring.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-6-ecs-monitoring.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
 <p>Fill the re-used parameters (see <a href="/docs/enterprise/aws/ecs/prerequisites/">Prerequisites</a>) and information about the cluster.</p>
@@ -492,6 +505,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <li><a href='#timescaledb-optional'>TimescaleDB (optional)</a></li>
     
       
+      <li><a href='#sqs-queue-optional'>SQS Queue (optional)</a></li>
+    
+      
       <li><a href='#security-group-rules'>Security Group Rules</a></li>
     
       
@@ -523,6 +539,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
       
       <li><a href='#routing-services'>Routing Services</a></li>
+    
+      
+      <li><a href='#tenant-resource-monitoring-optional'>Tenant Resource Monitoring (optional)</a></li>
     
       
       <li><a href='#monitoring-optional-but-recommended'>Monitoring (optional, but recommended)</a></li>
