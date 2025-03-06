@@ -82,11 +82,9 @@ If the import was successful, you will see your devices added to the list of end
 
 {{< figure src="successful-import.png" alt="successful-import" >}}
 
-See the following video from [The Things Network youtube channel](https://youtu.be/ouz-VuiosU4) for instructions.
+See the following video from [The Things Industries youtube channel](https://youtu.be/ouz-VuiosU4) for instructions.
 
-<details><summary>Show video</summary>
-{{< youtube "ouz-VuiosU4" >}}
-</details>
+{{< tabs/video "ouz-VuiosU4" >}}
 
 ## Claim devices using Claim Authentication Code
 

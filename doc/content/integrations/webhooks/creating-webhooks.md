@@ -8,7 +8,7 @@ This section provides instructions for creating a webhook in the console.
 
 <!--more-->
 
-In addition to the written instructions linked below, a video with instructions for creating webhooks is available on [The Things Network youtube channel](https://youtu.be/trNIzIf3TZo).
+In addition to the written instructions linked below, a video with instructions for creating webhooks is available on [The Things Industries youtube channel](https://youtu.be/trNIzIf3TZo).
 
 <details><summary>Show video</summary>
 {{< youtube "trNIzIf3TZo" >}}

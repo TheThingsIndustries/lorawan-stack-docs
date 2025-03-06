@@ -10,7 +10,7 @@ Payload formatters allow you to process data going to and from end devices. This
 
 This section explains how to set up payload formatters for a specific end device or an entire application.
 
-In addition to the written instructions linked below, a video with instructions for creating JavaScript and device repository payload formatters is available on [The Things Network YouTube channel](https://youtu.be/4tii7MiD-yM).
+In addition to the written instructions linked below, a video with instructions for creating JavaScript and device repository payload formatters is available on [The Things Industries youtube channel](https://youtu.be/4tii7MiD-yM).
 
 <details><summary>Show video</summary>
 {{< youtube "4tii7MiD-yM" >}}

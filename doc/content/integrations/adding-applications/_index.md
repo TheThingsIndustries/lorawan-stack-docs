@@ -25,11 +25,9 @@ Users have the freedom to select which devices are part of an application. Each 
 
 #### Adding Applications using the Console
 
-In addition to the written instructions below, a video with instructions for adding an application is available on [The Things Network youtube channel](https://youtu.be/403yK_RaONE).
+In addition to the written instructions below, a video with instructions for adding an application is available on [The Things Industries youtube channel](https://youtu.be/403yK_RaONE).
 
-<details><summary>Show video</summary>
-{{< youtube "403yK_RaONE" >}}
-</details>
+{{< tabs/video "403yK_RaONE" >}}
 
 Go to **Applications** in the top menu, and click **+ Add Application** to reach the application registration page. Fill the application ID. The other fields are optional.
 
