@@ -15,7 +15,7 @@ This guide shows how to view events in the console and to subscribe to events wi
 
 It is possible to view live events for an entire application, gateway, or specific end device in the console.
 
-See the following video from [The Things Network youtube channel](https://youtu.be/PbYzyqoJf5Q) for instructions.
+See the following video from [The Things Industries youtube channel](https://youtu.be/PbYzyqoJf5Q) for instructions.
 
 <details><summary>Show video</summary>
 {{< youtube "PbYzyqoJf5Q" >}}

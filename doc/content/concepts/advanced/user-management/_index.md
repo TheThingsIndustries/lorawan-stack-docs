@@ -14,7 +14,7 @@ This section explains how to manage users and organizations, and how to grant ri
 
 <!--more-->
 
-In addition to the written instructions linked below, a video with instructions for managing collaborator rights is available on [The Things Network youtube channel](https://youtu.be/-m5rULfP1yg).
+In addition to the written instructions linked below, a video with instructions for managing collaborator rights is available on [The Things Industries youtube channel](https://youtu.be/-m5rULfP1yg).
 
 <details><summary>Show video</summary>
 {{< youtube "-m5rULfP1yg" >}}

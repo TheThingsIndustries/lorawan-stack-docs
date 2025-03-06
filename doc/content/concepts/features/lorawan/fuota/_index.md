@@ -46,8 +46,6 @@ Using multiple gateways for updating firmware on the same group of end devices i
 
 ## Useful Links
 
-A test FUOTA server compatible with {{% tts %}} can be found [here](https://github.com/elsalahy/test-fuota-server).
-
 For a beginners guide on using multicast and FUOTA, check out [this video](https://www.youtube.com/watch?v=UIF5cOpLZxE).
 
 Regarding devices that implement FUOTA, we recommend you to check out our [Generic Node](https://www.genericnode.com/docs/).

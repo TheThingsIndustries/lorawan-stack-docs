@@ -13,7 +13,7 @@ This guide shows an example of configuring {{% tts %}} using configuration files
 
 If configuring {{% tts %}} as `localhost` on a machine with no public IP or DNS address, see the [`localhost`](#running-the-things-stack-as-localhost) section.
 
-In addition to the written instructions below, video instructions for installing {{% tts %}} are available on [The Things Network youtube channel](https://www.youtube.com/watch?v=DcmgJMvMfZc).
+In addition to the written instructions below, video instructions for installing {{% tts %}} are available on [The Things Industries youtube channel](https://www.youtube.com/watch?v=DcmgJMvMfZc).
 
 <details><summary>Show video</summary>
 {{< youtube "DcmgJMvMfZc" >}}
@@ -319,7 +319,7 @@ Once you have configured `docker-compose.yml` and `ttn-lw-stack-docker.yml` as s
 
 Follow this section if you are configuring and running {{% tts %}} on a local machine with no public IP or DNS address.
 
-In addition to the written instructions below, video instructions for installing on `localhost` are available on [The Things Network youtube channel](https://www.youtube.com/c/TheThingsNetworkCommunity).
+In addition to the written instructions below, video instructions for installing on `localhost` are available on [The Things Industries youtube channel](https://www.youtube.com/c/TheThingsNetworkCommunity).
 
 <details><summary>Show video</summary>
 {{< youtube "Owm5IUtQTx8" >}}
