@@ -223,7 +223,7 @@ Make a `PUT` request to the [`/api/v3/ns/applications/{end_device.ids.applicatio
 
 ```bash
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
--d @./req.json \
+-d @./ns.json \
  https://thethings.example.com/api/v3/ns/applications/my-test-app/devices/test-device
 {"ids":{"device_id":"test-device","application_ids":{"application_id":"my-test-app"},"dev_eui":"0000000000000011","join_eui":"1111111111111111"},"created_at":"2024-01-10T14:34:54.493279Z","updated_at":"2024-01-10T14:34:54.493279Z","lorawan_version":"MAC_V1_0_2","lorawan_phy_version":"PHY_V1_0_2_REV_B","frequency_plan_id":"EU_863_870_TTN","supports_join":true}
 ```
@@ -249,7 +249,7 @@ Make a `PUT` request to the [`/api/v3/as/applications/{end_device.ids.applicatio
 
 ```bash
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
--d @./req.json \
+-d @./as.json \
  https://thethings.example.com/api/v3/as/applications/my-test-app/devices/test-device
 {"ids":{"device_id":"test-device","application_ids":{"application_id":"my-test-app"},"dev_eui":"0000000000000011","join_eui":"1111111111111111"},"created_at":"2024-01-10T14:37:56.826742Z","updated_at":"2024-01-10T14:37:56.826742Z"}%
 ```
