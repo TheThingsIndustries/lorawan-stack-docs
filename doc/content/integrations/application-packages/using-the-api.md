@@ -14,7 +14,7 @@ Besides using the CLI, you can also use the [application package HTTP APIs]({{< 
 To list the available application packages for the given device `dev1` of the application `app1`:
 
 ```bash
-curl 'https://eu1.cloud.thethings.network/api/app1/devices/dev1/packages' \
+curl 'https://eu1.cloud.thethings.network/api/v3/as/applications/app1/devices/dev1/packages' \
   -X 'GET' \
   -H 'content-type: application/json' \
   -H 'authorization: Bearer NNSXS.XXXXXXXXX'
@@ -56,7 +56,7 @@ In the following examples, replace the `test-package` with any of the packages l
 To create a default association between the application package and the FPort `100` of an application `app1`:
 
 ```bash
-curl 'https://eu1.cloud.thethings.network/applications/app1/packages/associations/100' \
+curl 'https://eu1.cloud.thethings.network/api/v3/as/applications/app1/packages/associations/100' \
   -X 'PUT' \
   -H 'content-type: application/json' \
   -H 'authorization: Bearer NNSXS.XXXXXXXXX' \
@@ -85,7 +85,7 @@ The default association will associate the application package with all devices 
 To create an association between the application package and the FPort `100` of a device `dev1` of an application `app1`:
 
 ```bash
-curl 'https://eu1.cloud.thethings.network/applications/app1/devices/dev1/packages/associations/100' \
+curl 'https://eu1.cloud.thethings.network/api/v3/as/applications/app1/devices/dev1/packages/associations/100' \
   -X 'PUT' \
   -H 'content-type: application/json' \
   -H 'authorization: Bearer XXXXXXXXX' \
