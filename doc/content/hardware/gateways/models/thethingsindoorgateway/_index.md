@@ -99,7 +99,7 @@ Please adapt the example for your specific case.
 ```bash
 tti-lw-cli gateways claim 00800000A00009EF \
 --authentication-code abcdef \
---target-gateway-id gtw1
+--target-gateway-id gtw1 \
 --target-cups-uri https://eu1.cloud.thethings.network:443 \
 --target-gateway-server-address eu1.cloud.thethings.network \
 --target-frequency-plan-id EU_863_870 \
