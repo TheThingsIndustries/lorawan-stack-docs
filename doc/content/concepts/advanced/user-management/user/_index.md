@@ -40,9 +40,14 @@ See the following video from [The Things Industries youtube channel](https://you
 
 {{< tabs/video "vxXKBEQxLq0" >}}
 
-### Inviting Users
+### Inviting Users 
 
-It is currently not possible to invite users from the Console, but you can do this with the CLI.
+{{< new-in-version "v3.20.1" >}} 
+Invitations can be created allowing users to join The Things Stack. To do so, navigate to the **User Management** tab under the **Admin Panel** in the left-hand menu.
+
+Once there, switch to the **User Invitations** tab and click the **Invite User** button. Enter the email address of the user you wish to invite, and click **Invite** to send the invitation.
+
+{{< figure src="users-invite.png" alt="User Invite" >}}
 
 ### Updating Users
 
