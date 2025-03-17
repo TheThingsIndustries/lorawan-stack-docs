@@ -34,3 +34,7 @@ For this error, make sure that the value set in `ingress.traefik.tls.secretName`
 ## pkg/util/store:driver (driver error)
 
 {{% tts %}} runs Kubernetes jobs to initialize and migrate Postgres. This error can occur if the {{% tts %}} is accessed either before these jobs are run or if the jobs failed to execute. Check the status of the jobs for more details on what went wrong.
+
+## Failed to check version update (certificate signed by unknown authority)
+
+If the `skip-version-check` flag is disabled, the stack will check for new updates. To check for updates, requests are going to be sent to [thethingsindustries.com](https://thethingsindustries.com). For the requests to succeed, a CA certificate must be present in the trust store of the cluster that accepts the thethingsindustries.com domain (e.g. [Amazon Root CA 1](https://www.amazontrust.com/repository/)).  Another alternative is adding it to the list of certificates in the `rootCA` field in the Helm chart.
