@@ -44,6 +44,7 @@ ttn-lw-cli gateways list [flags]
       --frequency-plan-ids                                            select the frequency_plan_ids field
       --gateway-server-address                                        select the gateway_server_address field
   -h, --help                                                          help for list
+      --label-ids                                                     select the label_ids field
       --lbs-lns-secret                                                select the lbs_lns_secret field and all allowed sub-fields
       --lbs-lns-secret.key-id                                         select the lbs_lns_secret.key_id field
       --lbs-lns-secret.value                                          select the lbs_lns_secret.value field

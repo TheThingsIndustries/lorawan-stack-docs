@@ -23,6 +23,7 @@ ttn-lw-cli applications create [application-id] [flags]
       --end-device-limit uint                                                
   -h, --help                                                                 help for create
       --join-server-address string                                           
+      --label-ids strings                                                    
       --name string                                                          
       --network-server-address string                                        
       --organization-id string                                               

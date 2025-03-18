@@ -69,3 +69,38 @@ fields:
   message:
     name: ApplicationDownlink.ConfirmedRetry
   default: {}
+- name: locations
+  comment: End device location metadata, set by the Application Server while handling
+    the message.
+  map_key:
+    type: string
+  map_value:
+    message:
+      name: Location
+  default: {}
+- name: version_ids
+  comment: End device version identifiers, set by the Application Server while handling
+    the message.
+  message:
+    name: EndDeviceVersionIdentifiers
+  default: {}
+- name: network_ids
+  comment: Network identifiers, set by the Network Server that handles the message.
+  message:
+    name: NetworkIdentifiers
+  default: {}
+- name: attributes
+  comment: Attributes for devices, set by the Application Server while handling the
+    message.
+  rules:
+    max_pairs: 10
+  map_key:
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  map_value:
+    type: string
+    rules:
+      max_len: 200
+  default: {}

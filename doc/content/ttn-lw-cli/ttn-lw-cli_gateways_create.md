@@ -41,6 +41,7 @@ ttn-lw-cli gateways create [gateway-id] [flags]
       --gateway-id string                                                    
       --gateway-server-address string                                        
   -h, --help                                                                 help for create
+      --label-ids strings                                                    
       --lbs-lns-secret.key-id string                                         
       --lbs-lns-secret.value bytesHex                                        
       --location-public                                                      

@@ -43,6 +43,7 @@ ttn-lw-cli gateways set [gateway-id] [flags]
       --gateway-id string                                                    
       --gateway-server-address string                                        
   -h, --help                                                                 help for set
+      --label-ids strings                                                    
       --lbs-lns-secret.key-id string                                         
       --lbs-lns-secret.value bytesHex                                        
       --location-public                                                      

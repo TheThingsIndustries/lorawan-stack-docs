@@ -34,6 +34,7 @@ ttn-lw-cli applications search [flags]
   -h, --help                                                          help for search
       --id-contains string                                            
       --join-server-address                                           select the join_server_address field
+      --label-ids                                                     select the label_ids field
       --limit uint32                                                  
       --name                                                          select the name field
       --name-contains string                                          

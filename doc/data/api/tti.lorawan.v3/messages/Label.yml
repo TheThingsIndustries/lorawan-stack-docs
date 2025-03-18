@@ -1,0 +1,42 @@
+name: Label
+fields:
+- name: ids
+  message:
+    name: LabelIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: created_at
+  comment: When the label was created. This information is public and can be seen
+    by any authenticated user in the network.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  comment: When the label was last updated. This information is public and can be
+    seen by any authenticated user in the network.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: name
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: description
+  type: string
+  rules:
+    max_len: 2000
+  default: ""
+- name: color
+  type: string
+  rules:
+    max_len: 6
+    pattern: ([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$
+  default: ""
+- name: entities
+  message:
+    name: LabelAssociatedEntities
+  default: {}

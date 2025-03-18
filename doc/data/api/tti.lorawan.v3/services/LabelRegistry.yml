@@ -1,0 +1,54 @@
+name: LabelRegistry
+comment: 'EXPERIMENTAL: This service is subject to change.'
+methods:
+  Create:
+    name: Create
+    comment: Create a label.
+    input:
+      name: CreateLabelRequest
+    output:
+      name: Label
+    http:
+    - method: POST
+      path: /labels
+  Get:
+    name: Get
+    comment: Get a label.
+    input:
+      name: GetLabelRequest
+    output:
+      name: Label
+    http:
+    - method: GET
+      path: /labels/{label_ids.label_id}
+  List:
+    name: List
+    comment: List the labels.
+    input:
+      name: ListLabelsRequest
+    output:
+      name: Labels
+    http:
+    - method: GET
+      path: /labels
+  Update:
+    name: Update
+    comment: Update a label. This does not handle the association of Label and entities.
+    input:
+      name: UpdateLabelRequest
+    output:
+      name: Label
+    http:
+    - method: PUT
+      path: /labels/{label.ids.label_id}
+  Delete:
+    name: Delete
+    comment: Delete the given label.
+    input:
+      name: DeleteLabelRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /labels/{label_ids.label_id}

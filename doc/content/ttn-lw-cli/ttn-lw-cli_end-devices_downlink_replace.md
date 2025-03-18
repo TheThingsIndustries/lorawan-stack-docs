@@ -15,6 +15,7 @@ ttn-lw-cli end-devices downlink replace [application-id] [device-id] [flags]
 
 ```
       --application-id string                 
+      --attributes stringToString             
       --class-b-c.absolute-time timestamp     
       --class-b-c.gateways strings            
       --confirmed                             
@@ -29,8 +30,19 @@ ttn-lw-cli end-devices downlink replace [application-id] [device-id] [flags]
       --frm-payload bytesHex                  
   -h, --help                                  help for replace
       --join-eui string                       (hex)
+      --network-ids.cluster-address string    
+      --network-ids.cluster-id string         
+      --network-ids.net-id 3-bytes            
+      --network-ids.ns-id 8-bytes             
+      --network-ids.tenant-address string     
+      --network-ids.tenant-id string          
       --priority string                       allowed values: LOWEST, LOW, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, HIGH, HIGHEST
       --session-key-id bytesHex               
+      --version-ids.band-id string            
+      --version-ids.brand-id string           
+      --version-ids.firmware-version string   
+      --version-ids.hardware-version string   
+      --version-ids.model-id string           
 ```
 
 ### Options inherited from parent commands

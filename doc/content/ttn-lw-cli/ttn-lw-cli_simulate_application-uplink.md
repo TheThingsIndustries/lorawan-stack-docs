@@ -18,6 +18,7 @@ ttn-lw-cli simulate application-uplink [application-id] [device-id] [flags]
       --app-s-key.kek-label string                                            
       --app-s-key.key 16-bytes                                                
       --application-id string                                                 
+      --attributes stringToString                                             
       --confirmed                                                             
       --consumed-airtime duration                                             
       --decoded-payload-warnings strings                                      
