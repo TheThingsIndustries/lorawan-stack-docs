@@ -1,19 +1,30 @@
 ---
-title: "Setup Your First LoRaWAN Network"
-description: ""
-weight: 3
+title: "Step 2: Prerequisites"
+description: "Get a Starter Kit for LoRaWAN And setup a The Things Stack account"
+weight: 2
+aliases: ["/getting-started/setup-first-network"]
 ---
 
-Now that you are familiar with LoRaWAN® and {{% tts %}}, let us set up your first LoRaWAN Network.
+In this guide, we will walk through the steps to get a Starter Kit for LoRaWAN And setup a The Things Stack account.
 
 <!--more-->
 
-## Prerequisites
+## Getting a Starter Kit for LoRaWAN
+
+> If you already have a Starter Kit for LoRaWAN, you can skip this step.
+
+TODO: Add after Shopify
+
+## Setup a The Things Stack Account
+
+> If you already have a The Things Stack Account, you can skip this step.
+
+### Prerequisites
 
 1. A valid credit card. This card will not be charged for the free **Discovery** plan that we setup in this guide.
 2. An email address.
 
-## Setup
+### Create Account
 
 Go to the [plans](https://www.thethingsindustries.com/stack/plans/) page which lists the different plans supported by {{% tts %}} Cloud.
 
@@ -72,6 +83,7 @@ In the subsequent window, select the details of the admin user. This user has fu
 Click on **Launch The Things Stack Cloud**.
 
 Now before proceeding, please make sure to check the admin email for two emails that you received from {{% tts %}} Cloud.
+
 - The first one is used to validate the admin email address. Follow the instructions in the email to validate it.
 - The second email contains a link to create the password for the admin user. Make sure to choose a strong password.
 

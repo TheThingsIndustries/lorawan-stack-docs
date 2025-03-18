@@ -1,7 +1,6 @@
 ---
 title: "Next steps"
 description: ""
-weight: 4
 ---
 
 Once you have your first LoRaWAN® Network setup, here are the next steps.

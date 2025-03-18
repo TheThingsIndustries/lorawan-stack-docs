@@ -17,7 +17,7 @@ aliases:
 <!--more-->
 
 {{% tts %}} Cloud includes a [service level agreement](https://www.thethingsindustries.com/document/sla/) which offers an uptime commitment so that you can be assured of the availability of the service.
-We offer multiple plans based on your needs including a [free discovery tier](https://www.thethingsindustries.com/stack/plans/) for users to evaluate the product. Signing up to {{% tts %}} Cloud is very easy and within a few minutes, you can [get started]({{< ref "/getting-started/setup-first-network/" >}}) with a production-grade LoRaWAN network.
+We offer multiple plans based on your needs including a [free discovery tier](https://www.thethingsindustries.com/stack/plans/) for users to evaluate the product. Signing up to {{% tts %}} Cloud is very easy and within a few minutes, you can [get started]({{< ref "/getting-started/2-prerequisites/" >}}) with a production-grade LoRaWAN network.
 
 #### Multi-tenancy
 
