@@ -491,6 +491,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="MessagePayloadFormatters" >}}
 
+{{< proto/message message="NetworkIdentifiers" >}}
+
 {{< proto/message message="PacketBrokerMetadata" >}}
 
 {{< proto/message message="PacketBrokerRouteHop" >}}
