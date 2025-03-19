@@ -31,6 +31,7 @@ ttn-lw-cli applications list [flags]
       --field-mask strings                                            
   -h, --help                                                          help for list
       --join-server-address                                           select the join_server_address field
+      --label-ids                                                     select the label_ids field
       --limit uint32                                                  
       --name                                                          select the name field
       --network-server-address                                        select the network_server_address field

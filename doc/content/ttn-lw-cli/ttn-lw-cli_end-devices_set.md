@@ -281,6 +281,12 @@ ttn-lw-cli end-devices set [application-id] [device-id] [flags]
       --mac-state.pending-application-downlink.f-cnt uint32                                                 
       --mac-state.pending-application-downlink.f-port uint32                                                
       --mac-state.pending-application-downlink.frm-payload bytesHex                                         
+      --mac-state.pending-application-downlink.network-ids.cluster-address string                           
+      --mac-state.pending-application-downlink.network-ids.cluster-id string                                
+      --mac-state.pending-application-downlink.network-ids.net-id 3-bytes                                   
+      --mac-state.pending-application-downlink.network-ids.ns-id 8-bytes                                    
+      --mac-state.pending-application-downlink.network-ids.tenant-address string                            
+      --mac-state.pending-application-downlink.network-ids.tenant-id string                                 
       --mac-state.pending-application-downlink.priority string                                              allowed values: LOWEST, LOW, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, HIGH, HIGHEST
       --mac-state.pending-application-downlink.session-key-id bytesHex                                      
       --mac-state.pending-relay-downlink.raw-payload bytesBase64                                            

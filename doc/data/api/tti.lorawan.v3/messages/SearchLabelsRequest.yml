@@ -1,0 +1,50 @@
+name: SearchLabelsRequest
+fields:
+- name: id_contains
+  comment: Find labels where the ID contains this substring.
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: name_contains
+  comment: Find labels where the name contains this substring.
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: description_contains
+  comment: Find labels where the description contains this substring.
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: field_mask
+  message:
+    package: google.protobuf
+    name: FieldMask
+  default: {}
+- name: order
+  comment: |-
+    Order the results by this field path.
+    Default ordering is by ID. Prepend with a minus (-) to reverse the order.
+  type: string
+  rules:
+    in:
+    - ""
+    - label_id
+    - -label_id
+    - name
+    - -name
+    - created_at
+    - -created_at
+  default: ""
+- name: limit
+  comment: Limit the number of results per page.
+  type: uint32
+  rules:
+    lte: 1000
+  default: 0
+- name: page
+  comment: Page number for pagination. 0 is interpreted as 1.
+  type: uint32
+  default: 0

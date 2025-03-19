@@ -23,6 +23,7 @@ ttn-lw-cli applications set [application-id] [flags]
       --end-device-limit uint                                                
   -h, --help                                                                 help for set
       --join-server-address string                                           
+      --label-ids strings                                                    
       --name string                                                          
       --network-server-address string                                        
       --technical-contact.ids.organization-ids.organization-id string        

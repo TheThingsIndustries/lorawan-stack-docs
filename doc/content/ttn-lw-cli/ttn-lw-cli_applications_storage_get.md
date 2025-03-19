@@ -38,6 +38,7 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --stream-output                                                                       print output as JSON stream
       --type string                                                                         message type (allowed values: , downlink_ack, downlink_failed, downlink_nack, downlink_queue_invalidated, downlink_queued, downlink_sent, join_accept, location_solved, service_data, uplink_message)
       --up.downlink-ack                                                                     select the up.downlink_ack field and all allowed sub-fields
+      --up.downlink-ack.attributes                                                          select the up.downlink_ack.attributes field
       --up.downlink-ack.class-b-c                                                           select the up.downlink_ack.class_b_c field and all allowed sub-fields
       --up.downlink-ack.class-b-c.absolute-time                                             select the up.downlink_ack.class_b_c.absolute_time field
       --up.downlink-ack.class-b-c.gateways                                                  select the up.downlink_ack.class_b_c.gateways field
@@ -51,10 +52,26 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.downlink-ack.f-cnt                                                               select the up.downlink_ack.f_cnt field
       --up.downlink-ack.f-port                                                              select the up.downlink_ack.f_port field
       --up.downlink-ack.frm-payload                                                         select the up.downlink_ack.frm_payload field
+      --up.downlink-ack.locations                                                           select the up.downlink_ack.locations field
+      --up.downlink-ack.network-ids                                                         select the up.downlink_ack.network_ids field and all allowed sub-fields
+      --up.downlink-ack.network-ids.cluster-address                                         select the up.downlink_ack.network_ids.cluster_address field
+      --up.downlink-ack.network-ids.cluster-id                                              select the up.downlink_ack.network_ids.cluster_id field
+      --up.downlink-ack.network-ids.net-id                                                  select the up.downlink_ack.network_ids.net_id field
+      --up.downlink-ack.network-ids.ns-id                                                   select the up.downlink_ack.network_ids.ns_id field
+      --up.downlink-ack.network-ids.tenant-address                                          select the up.downlink_ack.network_ids.tenant_address field
+      --up.downlink-ack.network-ids.tenant-id                                               select the up.downlink_ack.network_ids.tenant_id field
       --up.downlink-ack.priority                                                            select the up.downlink_ack.priority field
       --up.downlink-ack.session-key-id                                                      select the up.downlink_ack.session_key_id field
+      --up.downlink-ack.version-ids                                                         select the up.downlink_ack.version_ids field and all allowed sub-fields
+      --up.downlink-ack.version-ids.band-id                                                 select the up.downlink_ack.version_ids.band_id field
+      --up.downlink-ack.version-ids.brand-id                                                select the up.downlink_ack.version_ids.brand_id field
+      --up.downlink-ack.version-ids.firmware-version                                        select the up.downlink_ack.version_ids.firmware_version field
+      --up.downlink-ack.version-ids.hardware-version                                        select the up.downlink_ack.version_ids.hardware_version field
+      --up.downlink-ack.version-ids.model-id                                                select the up.downlink_ack.version_ids.model_id field
       --up.downlink-failed                                                                  select the up.downlink_failed field and all allowed sub-fields
+      --up.downlink-failed.attributes                                                       select the up.downlink_failed.attributes field
       --up.downlink-failed.downlink                                                         select the up.downlink_failed.downlink field and all allowed sub-fields
+      --up.downlink-failed.downlink.attributes                                              select the up.downlink_failed.downlink.attributes field
       --up.downlink-failed.downlink.class-b-c                                               select the up.downlink_failed.downlink.class_b_c field and all allowed sub-fields
       --up.downlink-failed.downlink.class-b-c.absolute-time                                 select the up.downlink_failed.downlink.class_b_c.absolute_time field
       --up.downlink-failed.downlink.class-b-c.gateways                                      select the up.downlink_failed.downlink.class_b_c.gateways field
@@ -68,10 +85,39 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.downlink-failed.downlink.f-cnt                                                   select the up.downlink_failed.downlink.f_cnt field
       --up.downlink-failed.downlink.f-port                                                  select the up.downlink_failed.downlink.f_port field
       --up.downlink-failed.downlink.frm-payload                                             select the up.downlink_failed.downlink.frm_payload field
+      --up.downlink-failed.downlink.locations                                               select the up.downlink_failed.downlink.locations field
+      --up.downlink-failed.downlink.network-ids                                             select the up.downlink_failed.downlink.network_ids field and all allowed sub-fields
+      --up.downlink-failed.downlink.network-ids.cluster-address                             select the up.downlink_failed.downlink.network_ids.cluster_address field
+      --up.downlink-failed.downlink.network-ids.cluster-id                                  select the up.downlink_failed.downlink.network_ids.cluster_id field
+      --up.downlink-failed.downlink.network-ids.net-id                                      select the up.downlink_failed.downlink.network_ids.net_id field
+      --up.downlink-failed.downlink.network-ids.ns-id                                       select the up.downlink_failed.downlink.network_ids.ns_id field
+      --up.downlink-failed.downlink.network-ids.tenant-address                              select the up.downlink_failed.downlink.network_ids.tenant_address field
+      --up.downlink-failed.downlink.network-ids.tenant-id                                   select the up.downlink_failed.downlink.network_ids.tenant_id field
       --up.downlink-failed.downlink.priority                                                select the up.downlink_failed.downlink.priority field
       --up.downlink-failed.downlink.session-key-id                                          select the up.downlink_failed.downlink.session_key_id field
+      --up.downlink-failed.downlink.version-ids                                             select the up.downlink_failed.downlink.version_ids field and all allowed sub-fields
+      --up.downlink-failed.downlink.version-ids.band-id                                     select the up.downlink_failed.downlink.version_ids.band_id field
+      --up.downlink-failed.downlink.version-ids.brand-id                                    select the up.downlink_failed.downlink.version_ids.brand_id field
+      --up.downlink-failed.downlink.version-ids.firmware-version                            select the up.downlink_failed.downlink.version_ids.firmware_version field
+      --up.downlink-failed.downlink.version-ids.hardware-version                            select the up.downlink_failed.downlink.version_ids.hardware_version field
+      --up.downlink-failed.downlink.version-ids.model-id                                    select the up.downlink_failed.downlink.version_ids.model_id field
       --up.downlink-failed.error                                                            select the up.downlink_failed.error field and all allowed sub-fields
+      --up.downlink-failed.locations                                                        select the up.downlink_failed.locations field
+      --up.downlink-failed.network-ids                                                      select the up.downlink_failed.network_ids field and all allowed sub-fields
+      --up.downlink-failed.network-ids.cluster-address                                      select the up.downlink_failed.network_ids.cluster_address field
+      --up.downlink-failed.network-ids.cluster-id                                           select the up.downlink_failed.network_ids.cluster_id field
+      --up.downlink-failed.network-ids.net-id                                               select the up.downlink_failed.network_ids.net_id field
+      --up.downlink-failed.network-ids.ns-id                                                select the up.downlink_failed.network_ids.ns_id field
+      --up.downlink-failed.network-ids.tenant-address                                       select the up.downlink_failed.network_ids.tenant_address field
+      --up.downlink-failed.network-ids.tenant-id                                            select the up.downlink_failed.network_ids.tenant_id field
+      --up.downlink-failed.version-ids                                                      select the up.downlink_failed.version_ids field and all allowed sub-fields
+      --up.downlink-failed.version-ids.band-id                                              select the up.downlink_failed.version_ids.band_id field
+      --up.downlink-failed.version-ids.brand-id                                             select the up.downlink_failed.version_ids.brand_id field
+      --up.downlink-failed.version-ids.firmware-version                                     select the up.downlink_failed.version_ids.firmware_version field
+      --up.downlink-failed.version-ids.hardware-version                                     select the up.downlink_failed.version_ids.hardware_version field
+      --up.downlink-failed.version-ids.model-id                                             select the up.downlink_failed.version_ids.model_id field
       --up.downlink-nack                                                                    select the up.downlink_nack field and all allowed sub-fields
+      --up.downlink-nack.attributes                                                         select the up.downlink_nack.attributes field
       --up.downlink-nack.class-b-c                                                          select the up.downlink_nack.class_b_c field and all allowed sub-fields
       --up.downlink-nack.class-b-c.absolute-time                                            select the up.downlink_nack.class_b_c.absolute_time field
       --up.downlink-nack.class-b-c.gateways                                                 select the up.downlink_nack.class_b_c.gateways field
@@ -85,13 +131,43 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.downlink-nack.f-cnt                                                              select the up.downlink_nack.f_cnt field
       --up.downlink-nack.f-port                                                             select the up.downlink_nack.f_port field
       --up.downlink-nack.frm-payload                                                        select the up.downlink_nack.frm_payload field
+      --up.downlink-nack.locations                                                          select the up.downlink_nack.locations field
+      --up.downlink-nack.network-ids                                                        select the up.downlink_nack.network_ids field and all allowed sub-fields
+      --up.downlink-nack.network-ids.cluster-address                                        select the up.downlink_nack.network_ids.cluster_address field
+      --up.downlink-nack.network-ids.cluster-id                                             select the up.downlink_nack.network_ids.cluster_id field
+      --up.downlink-nack.network-ids.net-id                                                 select the up.downlink_nack.network_ids.net_id field
+      --up.downlink-nack.network-ids.ns-id                                                  select the up.downlink_nack.network_ids.ns_id field
+      --up.downlink-nack.network-ids.tenant-address                                         select the up.downlink_nack.network_ids.tenant_address field
+      --up.downlink-nack.network-ids.tenant-id                                              select the up.downlink_nack.network_ids.tenant_id field
       --up.downlink-nack.priority                                                           select the up.downlink_nack.priority field
       --up.downlink-nack.session-key-id                                                     select the up.downlink_nack.session_key_id field
+      --up.downlink-nack.version-ids                                                        select the up.downlink_nack.version_ids field and all allowed sub-fields
+      --up.downlink-nack.version-ids.band-id                                                select the up.downlink_nack.version_ids.band_id field
+      --up.downlink-nack.version-ids.brand-id                                               select the up.downlink_nack.version_ids.brand_id field
+      --up.downlink-nack.version-ids.firmware-version                                       select the up.downlink_nack.version_ids.firmware_version field
+      --up.downlink-nack.version-ids.hardware-version                                       select the up.downlink_nack.version_ids.hardware_version field
+      --up.downlink-nack.version-ids.model-id                                               select the up.downlink_nack.version_ids.model_id field
       --up.downlink-queue-invalidated                                                       select the up.downlink_queue_invalidated field and all allowed sub-fields
+      --up.downlink-queue-invalidated.attributes                                            select the up.downlink_queue_invalidated.attributes field
       --up.downlink-queue-invalidated.downlinks                                             select the up.downlink_queue_invalidated.downlinks field
       --up.downlink-queue-invalidated.last-f-cnt-down                                       select the up.downlink_queue_invalidated.last_f_cnt_down field
+      --up.downlink-queue-invalidated.locations                                             select the up.downlink_queue_invalidated.locations field
+      --up.downlink-queue-invalidated.network-ids                                           select the up.downlink_queue_invalidated.network_ids field and all allowed sub-fields
+      --up.downlink-queue-invalidated.network-ids.cluster-address                           select the up.downlink_queue_invalidated.network_ids.cluster_address field
+      --up.downlink-queue-invalidated.network-ids.cluster-id                                select the up.downlink_queue_invalidated.network_ids.cluster_id field
+      --up.downlink-queue-invalidated.network-ids.net-id                                    select the up.downlink_queue_invalidated.network_ids.net_id field
+      --up.downlink-queue-invalidated.network-ids.ns-id                                     select the up.downlink_queue_invalidated.network_ids.ns_id field
+      --up.downlink-queue-invalidated.network-ids.tenant-address                            select the up.downlink_queue_invalidated.network_ids.tenant_address field
+      --up.downlink-queue-invalidated.network-ids.tenant-id                                 select the up.downlink_queue_invalidated.network_ids.tenant_id field
       --up.downlink-queue-invalidated.session-key-id                                        select the up.downlink_queue_invalidated.session_key_id field
+      --up.downlink-queue-invalidated.version-ids                                           select the up.downlink_queue_invalidated.version_ids field and all allowed sub-fields
+      --up.downlink-queue-invalidated.version-ids.band-id                                   select the up.downlink_queue_invalidated.version_ids.band_id field
+      --up.downlink-queue-invalidated.version-ids.brand-id                                  select the up.downlink_queue_invalidated.version_ids.brand_id field
+      --up.downlink-queue-invalidated.version-ids.firmware-version                          select the up.downlink_queue_invalidated.version_ids.firmware_version field
+      --up.downlink-queue-invalidated.version-ids.hardware-version                          select the up.downlink_queue_invalidated.version_ids.hardware_version field
+      --up.downlink-queue-invalidated.version-ids.model-id                                  select the up.downlink_queue_invalidated.version_ids.model_id field
       --up.downlink-queued                                                                  select the up.downlink_queued field and all allowed sub-fields
+      --up.downlink-queued.attributes                                                       select the up.downlink_queued.attributes field
       --up.downlink-queued.class-b-c                                                        select the up.downlink_queued.class_b_c field and all allowed sub-fields
       --up.downlink-queued.class-b-c.absolute-time                                          select the up.downlink_queued.class_b_c.absolute_time field
       --up.downlink-queued.class-b-c.gateways                                               select the up.downlink_queued.class_b_c.gateways field
@@ -105,9 +181,24 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.downlink-queued.f-cnt                                                            select the up.downlink_queued.f_cnt field
       --up.downlink-queued.f-port                                                           select the up.downlink_queued.f_port field
       --up.downlink-queued.frm-payload                                                      select the up.downlink_queued.frm_payload field
+      --up.downlink-queued.locations                                                        select the up.downlink_queued.locations field
+      --up.downlink-queued.network-ids                                                      select the up.downlink_queued.network_ids field and all allowed sub-fields
+      --up.downlink-queued.network-ids.cluster-address                                      select the up.downlink_queued.network_ids.cluster_address field
+      --up.downlink-queued.network-ids.cluster-id                                           select the up.downlink_queued.network_ids.cluster_id field
+      --up.downlink-queued.network-ids.net-id                                               select the up.downlink_queued.network_ids.net_id field
+      --up.downlink-queued.network-ids.ns-id                                                select the up.downlink_queued.network_ids.ns_id field
+      --up.downlink-queued.network-ids.tenant-address                                       select the up.downlink_queued.network_ids.tenant_address field
+      --up.downlink-queued.network-ids.tenant-id                                            select the up.downlink_queued.network_ids.tenant_id field
       --up.downlink-queued.priority                                                         select the up.downlink_queued.priority field
       --up.downlink-queued.session-key-id                                                   select the up.downlink_queued.session_key_id field
+      --up.downlink-queued.version-ids                                                      select the up.downlink_queued.version_ids field and all allowed sub-fields
+      --up.downlink-queued.version-ids.band-id                                              select the up.downlink_queued.version_ids.band_id field
+      --up.downlink-queued.version-ids.brand-id                                             select the up.downlink_queued.version_ids.brand_id field
+      --up.downlink-queued.version-ids.firmware-version                                     select the up.downlink_queued.version_ids.firmware_version field
+      --up.downlink-queued.version-ids.hardware-version                                     select the up.downlink_queued.version_ids.hardware_version field
+      --up.downlink-queued.version-ids.model-id                                             select the up.downlink_queued.version_ids.model_id field
       --up.downlink-sent                                                                    select the up.downlink_sent field and all allowed sub-fields
+      --up.downlink-sent.attributes                                                         select the up.downlink_sent.attributes field
       --up.downlink-sent.class-b-c                                                          select the up.downlink_sent.class_b_c field and all allowed sub-fields
       --up.downlink-sent.class-b-c.absolute-time                                            select the up.downlink_sent.class_b_c.absolute_time field
       --up.downlink-sent.class-b-c.gateways                                                 select the up.downlink_sent.class_b_c.gateways field
@@ -121,17 +212,46 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.downlink-sent.f-cnt                                                              select the up.downlink_sent.f_cnt field
       --up.downlink-sent.f-port                                                             select the up.downlink_sent.f_port field
       --up.downlink-sent.frm-payload                                                        select the up.downlink_sent.frm_payload field
+      --up.downlink-sent.locations                                                          select the up.downlink_sent.locations field
+      --up.downlink-sent.network-ids                                                        select the up.downlink_sent.network_ids field and all allowed sub-fields
+      --up.downlink-sent.network-ids.cluster-address                                        select the up.downlink_sent.network_ids.cluster_address field
+      --up.downlink-sent.network-ids.cluster-id                                             select the up.downlink_sent.network_ids.cluster_id field
+      --up.downlink-sent.network-ids.net-id                                                 select the up.downlink_sent.network_ids.net_id field
+      --up.downlink-sent.network-ids.ns-id                                                  select the up.downlink_sent.network_ids.ns_id field
+      --up.downlink-sent.network-ids.tenant-address                                         select the up.downlink_sent.network_ids.tenant_address field
+      --up.downlink-sent.network-ids.tenant-id                                              select the up.downlink_sent.network_ids.tenant_id field
       --up.downlink-sent.priority                                                           select the up.downlink_sent.priority field
       --up.downlink-sent.session-key-id                                                     select the up.downlink_sent.session_key_id field
+      --up.downlink-sent.version-ids                                                        select the up.downlink_sent.version_ids field and all allowed sub-fields
+      --up.downlink-sent.version-ids.band-id                                                select the up.downlink_sent.version_ids.band_id field
+      --up.downlink-sent.version-ids.brand-id                                               select the up.downlink_sent.version_ids.brand_id field
+      --up.downlink-sent.version-ids.firmware-version                                       select the up.downlink_sent.version_ids.firmware_version field
+      --up.downlink-sent.version-ids.hardware-version                                       select the up.downlink_sent.version_ids.hardware_version field
+      --up.downlink-sent.version-ids.model-id                                               select the up.downlink_sent.version_ids.model_id field
       --up.join-accept                                                                      select the up.join_accept field and all allowed sub-fields
       --up.join-accept.app-s-key                                                            select the up.join_accept.app_s_key field and all allowed sub-fields
       --up.join-accept.app-s-key.encrypted-key                                              select the up.join_accept.app_s_key.encrypted_key field
       --up.join-accept.app-s-key.kek-label                                                  select the up.join_accept.app_s_key.kek_label field
       --up.join-accept.app-s-key.key                                                        select the up.join_accept.app_s_key.key field
+      --up.join-accept.attributes                                                           select the up.join_accept.attributes field
       --up.join-accept.invalidated-downlinks                                                select the up.join_accept.invalidated_downlinks field
+      --up.join-accept.locations                                                            select the up.join_accept.locations field
+      --up.join-accept.network-ids                                                          select the up.join_accept.network_ids field and all allowed sub-fields
+      --up.join-accept.network-ids.cluster-address                                          select the up.join_accept.network_ids.cluster_address field
+      --up.join-accept.network-ids.cluster-id                                               select the up.join_accept.network_ids.cluster_id field
+      --up.join-accept.network-ids.net-id                                                   select the up.join_accept.network_ids.net_id field
+      --up.join-accept.network-ids.ns-id                                                    select the up.join_accept.network_ids.ns_id field
+      --up.join-accept.network-ids.tenant-address                                           select the up.join_accept.network_ids.tenant_address field
+      --up.join-accept.network-ids.tenant-id                                                select the up.join_accept.network_ids.tenant_id field
       --up.join-accept.pending-session                                                      select the up.join_accept.pending_session field
       --up.join-accept.received-at                                                          select the up.join_accept.received_at field
       --up.join-accept.session-key-id                                                       select the up.join_accept.session_key_id field
+      --up.join-accept.version-ids                                                          select the up.join_accept.version_ids field and all allowed sub-fields
+      --up.join-accept.version-ids.band-id                                                  select the up.join_accept.version_ids.band_id field
+      --up.join-accept.version-ids.brand-id                                                 select the up.join_accept.version_ids.brand_id field
+      --up.join-accept.version-ids.firmware-version                                         select the up.join_accept.version_ids.firmware_version field
+      --up.join-accept.version-ids.hardware-version                                         select the up.join_accept.version_ids.hardware_version field
+      --up.join-accept.version-ids.model-id                                                 select the up.join_accept.version_ids.model_id field
       --up.location-solved                                                                  select the up.location_solved field and all allowed sub-fields
       --up.location-solved.attributes                                                       select the up.location_solved.attributes field
       --up.location-solved.location                                                         select the up.location_solved.location field and all allowed sub-fields
@@ -142,13 +262,29 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.location-solved.location.source                                                  select the up.location_solved.location.source field
       --up.location-solved.service                                                          select the up.location_solved.service field
       --up.service-data                                                                     select the up.service_data field and all allowed sub-fields
+      --up.service-data.attributes                                                          select the up.service_data.attributes field
       --up.service-data.data                                                                select the up.service_data.data field
+      --up.service-data.locations                                                           select the up.service_data.locations field
+      --up.service-data.network-ids                                                         select the up.service_data.network_ids field and all allowed sub-fields
+      --up.service-data.network-ids.cluster-address                                         select the up.service_data.network_ids.cluster_address field
+      --up.service-data.network-ids.cluster-id                                              select the up.service_data.network_ids.cluster_id field
+      --up.service-data.network-ids.net-id                                                  select the up.service_data.network_ids.net_id field
+      --up.service-data.network-ids.ns-id                                                   select the up.service_data.network_ids.ns_id field
+      --up.service-data.network-ids.tenant-address                                          select the up.service_data.network_ids.tenant_address field
+      --up.service-data.network-ids.tenant-id                                               select the up.service_data.network_ids.tenant_id field
       --up.service-data.service                                                             select the up.service_data.service field
+      --up.service-data.version-ids                                                         select the up.service_data.version_ids field and all allowed sub-fields
+      --up.service-data.version-ids.band-id                                                 select the up.service_data.version_ids.band_id field
+      --up.service-data.version-ids.brand-id                                                select the up.service_data.version_ids.brand_id field
+      --up.service-data.version-ids.firmware-version                                        select the up.service_data.version_ids.firmware_version field
+      --up.service-data.version-ids.hardware-version                                        select the up.service_data.version_ids.hardware_version field
+      --up.service-data.version-ids.model-id                                                select the up.service_data.version_ids.model_id field
       --up.uplink-message                                                                   select the up.uplink_message field and all allowed sub-fields
       --up.uplink-message.app-s-key                                                         select the up.uplink_message.app_s_key field and all allowed sub-fields
       --up.uplink-message.app-s-key.encrypted-key                                           select the up.uplink_message.app_s_key.encrypted_key field
       --up.uplink-message.app-s-key.kek-label                                               select the up.uplink_message.app_s_key.kek_label field
       --up.uplink-message.app-s-key.key                                                     select the up.uplink_message.app_s_key.key field
+      --up.uplink-message.attributes                                                        select the up.uplink_message.attributes field
       --up.uplink-message.confirmed                                                         select the up.uplink_message.confirmed field
       --up.uplink-message.consumed-airtime                                                  select the up.uplink_message.consumed_airtime field
       --up.uplink-message.decoded-payload                                                   select the up.uplink_message.decoded_payload field
@@ -200,6 +336,7 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.uplink-message.version-ids.hardware-version                                      select the up.uplink_message.version_ids.hardware_version field
       --up.uplink-message.version-ids.model-id                                              select the up.uplink_message.version_ids.model_id field
       --up.uplink-normalized                                                                select the up.uplink_normalized field and all allowed sub-fields
+      --up.uplink-normalized.attributes                                                     select the up.uplink_normalized.attributes field
       --up.uplink-normalized.confirmed                                                      select the up.uplink_normalized.confirmed field
       --up.uplink-normalized.consumed-airtime                                               select the up.uplink_normalized.consumed_airtime field
       --up.uplink-normalized.f-cnt                                                          select the up.uplink_normalized.f_cnt field

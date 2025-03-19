@@ -28,6 +28,7 @@ ttn-lw-cli clients get [client-id] [flags]
       --endorsed                                                      select the endorsed field
       --grants                                                        select the grants field
   -h, --help                                                          help for get
+      --label-ids                                                     select the label_ids field
       --logout-redirect-uris                                          select the logout_redirect_uris field
       --name                                                          select the name field
       --redirect-uris                                                 select the redirect_uris field

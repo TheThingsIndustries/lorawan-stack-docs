@@ -43,6 +43,7 @@ ttn-lw-cli gateways get [gateway-id] [flags]
       --gateway-id string                                             
       --gateway-server-address                                        select the gateway_server_address field
   -h, --help                                                          help for get
+      --label-ids                                                     select the label_ids field
       --lbs-lns-secret                                                select the lbs_lns_secret field and all allowed sub-fields
       --lbs-lns-secret.key-id                                         select the lbs_lns_secret.key_id field
       --lbs-lns-secret.value                                          select the lbs_lns_secret.value field

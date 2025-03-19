@@ -29,6 +29,7 @@ ttn-lw-cli clients list [flags]
       --field-mask strings                                            
       --grants                                                        select the grants field
   -h, --help                                                          help for list
+      --label-ids                                                     select the label_ids field
       --limit uint32                                                  
       --logout-redirect-uris                                          select the logout_redirect_uris field
       --name                                                          select the name field

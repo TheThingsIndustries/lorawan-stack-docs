@@ -8,6 +8,18 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+### `4-2a-configuration`
+
+- Add `MetadataStorageCacheEnabled` parameter to enable caching of metadata storage in AS.
+
+### AMI/BYOL template
+
+- Add `ManagedGateways` parameter to enable connecting with The Things Gateway Controller for claiming and remotely managing e.g. The Things Indoor Gateway Pro.
+- Fix pub/sub errors by enabling the Redis store.
+- Fix deployments to `eu-west-1`.
+- Reorder parameters and update descriptions.
+- Add `m7i` and `db.r7g` instance types.
+
 ## 3.33.2
 
 ## 3.33.1

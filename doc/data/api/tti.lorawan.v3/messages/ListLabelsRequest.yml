@@ -1,0 +1,32 @@
+name: ListLabelsRequest
+fields:
+- name: field_mask
+  message:
+    package: google.protobuf
+    name: FieldMask
+  default: {}
+- name: limit
+  comment: Limit the number of results per page.
+  type: uint32
+  rules:
+    lte: 100
+  default: 0
+- name: page
+  comment: Page number for pagination. 0 is interpreted as 1.
+  type: uint32
+  default: 0
+- name: order
+  comment: |-
+    Order the results by this field path.
+    Default ordering is by ID. Prepend with a minus (-) to reverse the order.
+  type: string
+  rules:
+    in:
+    - ""
+    - label_id
+    - -label_id
+    - name
+    - -name
+    - created_at
+    - -created_at
+  default: ""
