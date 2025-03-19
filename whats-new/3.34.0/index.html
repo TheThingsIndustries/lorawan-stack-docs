@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.140.0-DEV">
-  <title>3.30.2 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.30.2/" />
+  <title>3.34.0 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.34.0/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="3.30.2">
+  <meta itemprop="name" content="3.34.0">
   <meta itemprop="description" content="The Things Stack for LoRaWAN">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="3.30.2">
+  <meta property="og:title" content="3.34.0">
   <meta property="og:description" content="The Things Stack for LoRaWAN">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.30.2/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.34.0/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="3.30.2" />
+  <meta name="twitter:title" content="3.34.0" />
   <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
   <meta name="twitter:card" content="summary" />
   
@@ -94,7 +94,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/whats-new/" class="">Overview</a>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.34.0/" class="">3.34.0</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.34.0/" class="is-active">3.34.0</a>
+    
+
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.33.2/" class="">3.33.2</a>
@@ -121,12 +126,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.31.1/" class="">3.31.1</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.30.2/" class="is-active">3.30.2</a>
-    
-
-
-
-    
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.30.2/" class="">3.30.2</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.30.1/" class="">3.30.1</a>
@@ -363,19 +363,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="docs-content">
           
           
-        <h1 class="title is-size-2">3.30.2</h1>
+        <h1 class="title is-size-2">3.34.0</h1>
         <div class="content">
-          <h3 id="fixed">Fixed</h3>
+          <h3 id="added">Added</h3>
 <ul>
-<li>Increased the timeout for Basic Station gateways sending HTTP headers. There should now be enough time for embedded devices with little to no hardware acceleration to perform a TLS handshake. In particular, The Things Indoor Gateway can now connect to The Things Stack presenting a ECDSA certificate.</li>
-<li>Reconnect a gateway when the antenna gain is adjusted.</li>
-<li>Fixed length bytes fields, such as EUIs, device addresses or device keys, are no longer considered as being all zero when provided as null values in JSON requests.</li>
+<li>Add end device attributes to ApplicationUp messages.
+<ul>
+<li>Add the locations, version_ids, network_ids fields to the following ApplicationUp messages:
+<ul>
+<li>ApplicationJoinAccept</li>
+<li>ApplicationDownlink</li>
+<li>ApplicationDownlinkFailed</li>
+<li>ApplicationInvalidatedDownlinks</li>
+<li>ApplicationServiceData</li>
+</ul>
+</li>
+<li>Add Timeout and Cache fields in the EndDeviceMetadataStorageConfig of the AS.</li>
+</ul>
+</li>
+<li>Support for using a TLS client certificate obtained via ACME for The Things Gateway Controller.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Set default page limit to <code>100</code> on AS and NS List RPCs
+<ul>
+<li>All the List RPCs will use this value if the page limit is not provided in the request.</li>
+<li>The default limit is configurable via <code>as.pagination.default-limit</code> for AS and <code>ns.pagination.default-limit</code> for NS.</li>
+</ul>
+</li>
+</ul>
+<h3 id="deprecated">Deprecated</h3>
+<ul>
+<li>Deprecate the Location field (and its subfields) in the EndDeviceMetadataStorageConfig of AS.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Fix password manager to detect password field on the login page.</li>
 </ul>
 
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/whats-new/3.31.1/">← 3.31.1</a>
-<a class="button is-pulled-right" href="/docs/whats-new/3.30.1/">3.30.1 →</a>
+<a class="button is-pulled-left" href="/docs/whats-new/">← Release Notes</a>
+<a class="button is-pulled-right" href="/docs/whats-new/3.33.2/">3.33.2 →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>

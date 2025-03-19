@@ -220,6 +220,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <h1 id="upgrading">Upgrading</h1>
 <p>All meaningful changes to templates are documented in this file.</p>
 <h2 id="unreleased">Unreleased</h2>
+<h3 id="4-2a-configuration"><code>4-2a-configuration</code></h3>
+<ul>
+<li>Add <code>MetadataStorageCacheEnabled</code> parameter to enable caching of metadata storage in AS.</li>
+</ul>
+<h3 id="amibyol-template">AMI/BYOL template</h3>
+<ul>
+<li>Add <code>ManagedGateways</code> parameter to enable connecting with The Things Gateway Controller for claiming and remotely managing e.g. The Things Indoor Gateway Pro.</li>
+<li>Fix pub/sub errors by enabling the Redis store.</li>
+<li>Fix deployments to <code>eu-west-1</code>.</li>
+<li>Reorder parameters and update descriptions.</li>
+<li>Add <code>m7i</code> and <code>db.r7g</code> instance types.</li>
+</ul>
 <h2 id="3332">3.33.2</h2>
 <h2 id="3331">3.33.1</h2>
 <h2 id="3330">3.33.0</h2>
@@ -231,7 +243,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Add <code>NsMACSettingsProfileRegistry</code> grpc service and routes.</li>
 </ul>
-<h3 id="amibyol-template">AMI/BYOL template</h3>
+<h3 id="amibyol-template-1">AMI/BYOL template</h3>
 <ul>
 <li>Add a new <code>TLSCertificateSecretARN</code> parameter to allow loading TLS certificates from AWS secrets to BYOL and PAYG single template deployments.</li>
 <li>Add new IAM policy role that allows reading secrets from AWS Secret Manager</li>
@@ -279,7 +291,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Add new optional template for TimescaleDB replica.</li>
 </ul>
-<h3 id="4-2a-configuration"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-1"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Add configuration parameters for the UDP rate limiting firewall (<code>UDPRateLimitingFirewallEnabled</code>/<code>UDPRateLimitingFirewallMessages</code>/<code>UDPRateLimitingFirewallThreshold</code>). Environments which use the general purpose rate limiting of the Gateway Server (via <code>4-2b-configuration-rate-limiting</code>) do not need to enable this firewall.</li>
 </ul>
@@ -307,7 +319,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Remove <code>GSGatewayTokensHashKey</code>.</li>
 </ul>
-<h3 id="4-2a-configuration-1"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-2"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Remove <code>GSGatewayTokensHashKey</code> configuration.</li>
 </ul>
@@ -392,7 +404,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>The <code>r7g</code> family of machines is now available for hosting.</li>
 </ul>
-<h3 id="4-2a-configuration-2"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-3"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Add <code>EventsBatchingEnabled</code>, <code>EventsBatchingTargetSize</code>, <code>EventsBatchingDelay</code> parameters.</li>
 <li>Add correlation IDs ignored methods to the gRPC server configuration.</li>
@@ -408,7 +420,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>The instance initialization scripts now automatically terminates the instance if the initialization fails.</li>
 </ul>
-<h3 id="4-2a-configuration-3"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-4"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added the <code>CollaboratorRightsSetOthersAsContacts</code> parameter.</li>
 </ul>
@@ -566,7 +578,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>The <code>r4g</code> family of machines is now available for hosting.</li>
 </ul>
-<h3 id="4-2a-configuration-4"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-5"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added the NOC API paths.</li>
 <li>Added <code>RestrictAdminManagedFieldUpdates</code> parameter.</li>
@@ -586,7 +598,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added support for Postgres engine version 15 and TimescaleDB 2.9.3.</li>
 <li>Fixed the master configuration for new Postgres engine version 12 deployments.</li>
 </ul>
-<h3 id="4-2a-configuration-5"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-6"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added <code>RedisConnectionPoolMaxLifetime</code> parameter.</li>
 <li>Added <code>KeyVaultCacheSize</code>, <code>KeyVaultCacheTTL</code>, <code>KeyVaultCacheErrorTTL</code> parameters.</li>
@@ -618,7 +630,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Removed <code>InteropTLSSecret</code> and output <code>InteropTLSSecretID</code>.</li>
 </ul>
-<h3 id="4-2a-configuration-6"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-7"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Removed <code>InteropEnabled</code> parameter.</li>
 <li>Removed <code>CryptoServerDNSName</code> parameter.</li>
@@ -669,7 +681,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>UDP target groups now automatically kill active flows to deregistered targets. This enables the replacement of the ECS EC2 machines without having the UDP traffic blackhole in the NLB.</li>
 </ul>
-<h3 id="4-2a-configuration-7"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-8"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Add configuration option for <code>HomeNSID</code> for the DCS config object.</li>
 </ul>
@@ -682,7 +694,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Prometheus has been upgraded to version 2.40.5.</li>
 <li>Thanos default image has been upgraded to version 0.29.0.</li>
 </ul>
-<h3 id="amibyol-template-1">AMI/BYOL template</h3>
+<h3 id="amibyol-template-2">AMI/BYOL template</h3>
 <ul>
 <li>Fix RDS PostgreSQL 13 and 14 support for new deployments.</li>
 <li>The volumes used by the EC2 machine and by the RDS database are now <code>gp3</code> volumes.</li>
@@ -715,7 +727,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Add new secret to store server TLS credentials.</li>
 <li>Add new KeyVault IDs for Gateway Tokens.</li>
 </ul>
-<h3 id="4-2a-configuration-8"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-9"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Add Configuration options for Gateway Tokens.</li>
 <li>Add <code>/</code> to the ignored logging HTTP request paths.</li>
@@ -751,7 +763,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="3221">3.22.1</h2>
 <h3 id="2-4b-routing-s3-1"><code>2-4b-routing-s3</code></h3>
 <p>Add versioning to S3 buckets. Versioning is enabled by default.</p>
-<h3 id="4-2a-configuration-9"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-10"><code>4-2a-configuration</code></h3>
 <ul>
 <li>The <code>pkg/networkserver:duplicate_uplink</code> and <code>pkg/networkserver:device_not_found</code> errors of the <code>/ttn.lorawan.v3.GsNs/HandleUplink</code> RPC are now ignored.</li>
 </ul>
@@ -773,7 +785,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Updated the default <code>node_exporter</code> version to 1.4.0.</li>
 </ul>
-<h3 id="4-2a-configuration-10"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-11"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Add Console <code>dtc</code> target address.</li>
 </ul>
@@ -781,7 +793,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Updated the default <code>node_exporter</code> version to 1.4.0.</li>
 </ul>
-<h3 id="amibyol-template-2"><code>AMI/BYOL</code> template</h3>
+<h3 id="amibyol-template-3"><code>AMI/BYOL</code> template</h3>
 <ul>
 <li>The <code>t4g</code> family of machines is now available for ElastiCache, and the default machine size has been promoted to <code>cache.t4g.small</code>.</li>
 <li>The <code>t4g</code> family of machines is now available for RDS, and the default machine size has been promoted to <code>db.t4g.small</code>.</li>
@@ -790,7 +802,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="3212">3.21.2</h2>
 <h2 id="3211">3.21.1</h2>
 <h2 id="3210">3.21.0</h2>
-<h3 id="4-2a-configuration-11"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-12"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added new <code>EntityLimits</code> parameters.</li>
 </ul>
@@ -813,7 +825,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Increased backup and redeployment timeout.</li>
 </ul>
-<h3 id="4-2a-configuration-12"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-13"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added new parameters <code>EventsRedisPublishQueueSize</code>, <code>EventsRedisPublishMaxWorkers</code>, <code>PacketBrokerHomeNetworkWorkerCountLimit</code>, <code>PacketBrokerForwarderWorkerCountLimit</code>.</li>
 </ul>
@@ -821,7 +833,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added alerts for TimescaleDB running out of storage.</li>
 </ul>
-<h3 id="amibyol-template-3"><code>AMI/BYOL</code> template</h3>
+<h3 id="amibyol-template-4"><code>AMI/BYOL</code> template</h3>
 <ul>
 <li>Added new parameters <code>TLSCertificate</code>, <code>TLSCertificateCA</code>, <code>TLSCertificateKey</code>.</li>
 </ul>
@@ -845,7 +857,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added new parameters <code>IncludeNOC</code>, <code>NOCGrafanaAdminPassword</code>, <code>NOCOAuthClientIDValue</code>, <code>NOCOAuthClientSecretValue</code>.</li>
 </ul>
-<h3 id="4-2a-configuration-13"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-14"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added new parameters <code>ConsoleURLForNOC</code>, <code>IncludeNetworkOperationsCenter</code>, <code>NOCMaxIdleConnections</code>, <code>NOCMaxOpenConnections</code>, <code>NOCRawDataRetention</code>, <code>NOCTargetInsertBatchSize</code>, <code>NOCTargetInsertBatchWindow</code>.</li>
 <li>Added <code>is.email.assets-base-url</code> and <code>is.email.branding-base-url</code>. These options are set to the values of the existing parameters.</li>
@@ -869,7 +881,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 <h2 id="3191">3.19.1</h2>
 <h2 id="3190">3.19.0</h2>
-<h3 id="4-2a-configuration-14"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-15"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added new parameter <code>ConsoleStatusPageBaseURL</code>.</li>
 <li>Added new parameter <code>UserRightsUpdatePrimaryEmailAddress</code>.</li>
@@ -890,7 +902,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added new bucket for DCS configuration files. Create a <code>config.yml</code> file at the root of this bucket. This can be left empty if claiming via an external Join Server is not necessary.</li>
 </ul>
-<h3 id="4-2a-configuration-15"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-16"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Add new config items for the DCS service.</li>
 </ul>
@@ -921,7 +933,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Upgraded Redis to version 6.2</li>
 </ul>
-<h3 id="4-2a-configuration-16"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-17"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added the <code>WebhooksUnhealthyAttemptsThreshold</code> and <code>WebhooksUnhealthyRetryInterval</code> parameters.</li>
 <li>Added the <code>DatabaseMaxIdleConns</code> and <code>DatabaseMaxOpenConns</code> to control the database connection pool of the Identity Server.</li>
@@ -1095,7 +1107,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added new resource <code>InteropTLSSecret</code>. This resource is a placeholder for certbot to upload TLS certificates.</li>
 </ul>
-<h3 id="4-2a-configuration-17"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-18"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added the <code>ForwardOnlyOwnedDevAddrs</code> parameter.</li>
 <li>Added the <code>InteropEnabled</code>, <code>InteropPacketBrokerEnabled</code>, <code>InteropPacketBrokerTokenIssuer</code> and <code>CryptoServerDNSName</code> parameters..</li>
@@ -1231,7 +1243,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added alternative certificates support for all TLS listeners.</li>
 </ul>
-<h3 id="4-2a-configuration-18"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-19"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Changed log format to JSON.</li>
 <li>Added <code>NetworkServerClusterID</code> which identifies cluster in the Network Server for informative purposes. Suggested value the same as <code>PacketBrokerClusterID</code>.</li>
