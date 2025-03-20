@@ -15,6 +15,8 @@ In this guide, we will walk through the steps to get a Starter Kit for LoRaWAN A
 
 TODO: Add after Shopify
 
+TODO: Add description of the components of the Starter Kit.
+
 ## Setup a The Things Stack Account
 
 > If you already have a The Things Stack Account, you can skip this step.
