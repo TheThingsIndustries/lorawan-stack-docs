@@ -148,3 +148,11 @@ If you configured wrong Ethernet settings and you do not have WiFi or Cellular c
 ## Advanced: Serial Output
 
 {{% ttigpro %}} writes comprehensive logs via its USB-C port which also functions as serial port. You can connect a serial port client (e.g. PUTTY on Windows, `screen` on macOS or `minicom` on Linux) with a baud rate of 115200, 8 data bits, no parity and 1 stop bit. This provides extensive insight in why Cellular, WiFi and/or Ethernet is failing.
+
+## Troubleshooting
+
+#### I get an error "gateway subscription not attached and active" while claiming The Things Industries Gateway Pro
+
+The error occurs if the gateway does not have active subscription. For more information refer [subscription](https://www.thethingsindustries.com/docs/hardware/gateways/models/thethingsindoorgatewaypro/#subscription). After purchasing the TTIG Pro gateway, you will receive an email with instructions on how to create subscriptions for the gateway. If you don't see the email in your inbox, please check your spam folder as well.
+
+If the issue persists, please contact `support@thethingsindustries.com`.
