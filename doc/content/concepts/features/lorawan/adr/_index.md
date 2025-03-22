@@ -257,7 +257,7 @@ To set the min NbTrans to `2` and max NbTrans to `3` for for data rate index 5 (
 The request using `cURL` is as follows.
 
 ```bash
-curl -v -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+curl -v -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
 -d @./req.json https://thethings.example.com/api/v3/ns/applications/test-app/devices/eui-1231231231231231
 ```
 
