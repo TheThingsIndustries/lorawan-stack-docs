@@ -50,6 +50,16 @@ You can also choose to revoke all currently active sessions and access tokens by
 
 Select **Change password** to finish.
 
+## Email Notifications Settings
+
+{{< new-in-version "3.33.0">}}
+
+You can customize the email notifications you receive by selecting the specific actions for which you want to be notified. Once you’ve made your selections, click the **Save Changes** button to apply your preferences. If you wish to revert to the default notification settings, click **Discard Changes**.
+
+If you are a non-admin user, you can enable or disable all email notifications by toggling the **Turn off all email notifications**. However, you will continue to receive notifications in the console. This option is disabled for admin users as there are some notifications that require admin action.
+
+{{< figure src="email-notifications.png" alt="Email notifications" >}}
+
 ## Create Personal API Key
 
 In this section, we explain how to create personal API keys that grant certain rights using some basic examples. Keep in mind that this same procedure is identical for granting any other rights.
