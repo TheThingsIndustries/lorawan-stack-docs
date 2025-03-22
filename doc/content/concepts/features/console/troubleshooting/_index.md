@@ -24,6 +24,10 @@ If these steps do not help you solve the issue, please collect your browser cons
 
 See [Last Activity]({{< ref "/concepts/architecture/last-activity" >}}).
 
+## I see different time in the Console live data and corresponding event details.
+
+The time shown in the console's live data is based on your browser's local time zone. In contrast, the time displayed in the event details for the device, application, and gateway is provided in UTC.
+
 ## Common Errors
 
 ### Network Error / Reconnecting / Stream errors
