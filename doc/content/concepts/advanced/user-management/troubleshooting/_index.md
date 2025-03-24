@@ -23,3 +23,7 @@ If you are facing this error, you should first double check the User ID that you
 You will encounter these errors if using a wrong User ID/Username/Email and/or Password when logging into {{% tts %}} Console with credentials or The Things ID.
 
 Please double check your User ID and Password. Try changing your Password. If the problem persists, your User ID might be deleted, so contact your admin to purge it.
+
+## I get "Must not contain user ID" error while adding user
+
+This error occurs when the user's password includes `user ID` while adding a new user. Ensure that the password does not contain the user ID.
