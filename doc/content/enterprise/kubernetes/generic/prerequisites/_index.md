@@ -152,11 +152,11 @@ gtwmqttv3secure:
   protocol: TCP
   port: 8882
   exposedPort: 8882
-lbs:
+semtechws:
   protocol: TCP
   port: 1887
   exposedPort: 1887
-lbssecure:
+semtechwssecure:
   protocol: TCP
   port: 8887
   exposedPort: 8887
@@ -199,7 +199,7 @@ ingress:
     http:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
     semtechws:
-      traefik.ingress.kubernetes.io/router.entrypoints: semtechwssecure, semtechws
+      traefik.ingress.kubernetes.io/router.entrypoints: semtechwssecure,semtechws
       traefik.ingress.kubernetes.io/router.tls: "true"
   serviceAnnotations:
     traefik.ingress.kubernetes.io/service.serversscheme: h2c
