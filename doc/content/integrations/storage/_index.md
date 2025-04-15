@@ -30,7 +30,7 @@ The Storage Integration should not be used for querying realtime data. For scala
 
 ---
 
-## Viewing Stored Messages in the Console
+## Viewing stored messages
 
 The Console offers a view for checking the Storage Integration status and displays recently stored messages.
 
@@ -44,7 +44,7 @@ For performance reasons, only the first 10 results are shown in the Console.
 
 ---
 
-## Downloading Messages
+## Downloading messages
 
 The Console allows you to download the **messages currently displayed in the table** view. This provides a quick way to extract and inspect recent stored messages.
 
