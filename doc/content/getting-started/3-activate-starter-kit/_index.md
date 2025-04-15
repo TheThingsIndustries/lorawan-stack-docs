@@ -8,27 +8,44 @@ This guide walks you through activating the end device and managed gateway that'
 
 <!--more-->
 
-The first step is to register and connect a LoRaWAN gateway, which if you remember the introduction, is a specialized device that receives messages on LoRa from end devices and forwards them to {{% tts %}} via the internet (IP) and vice versa.
-Starter kit for LoRaWAN contains [{{% ttigpro %}}]({{< ref "/hardware/gateways/models/thethingsindoorgatewaypro" >}}), which is a _fully cloud managed_ LoRaWAN gateway, which you can configure and get started in seconds.
+Before we can activate an end device to send/receive data, we need to setup a LoRaWAN® gateway to receive messages from end devices and forward them to the {{% tts %}} and vice versa.
 
-Next, we will register the end device. Starter kit for LoRaWAN contains an mClimate Multipurpose Button. This device supports registering using a QR Code, which makes is very easy to register and prove your ownership of the device while also ensuring that the device root keys are safely stored and never exposed.
+The Starter Kit for LoRaWAN contains {{% ttigpro %}}, a fully cloud-managed 8 channel LoRaWAN® gateway. It support true Zero-Touch Provisioning(ZTP) and is fully remotely managed via {{% tts %}}.
 
 ### 1. The Things Indoor Gateway Pro
 
-{{% ttigpro %}} is a fully cloud-managed 8 channel LoRaWAN® gateway. It support true Zero-Touch Provisioning(ZTP) and
+To keep things simple and get started right away, we are going to use the built-in 4G LTE sim card of {{% ttigpro %}} to communicate with {{% tts %}}. You can always later change this to WiFi or Ethernet.
 
-#### Prerequisites
+There are only two steps to connecting {{% ttigpro %}}.
 
-1. {{% ttigpro %}}
-2. An activation code used to prove your ownership to this gateway. This code is found on the main page from [The Things Industries billing portal](https://accounts.thethingsindustries.com).
-3. Choose one of the following connectivity options.
-   1. 4G LTE: {{% ttigpro %}} has a 4G LTE sim card as the default connectivity option. This works out of the box and no additional steps are required.
-   2. WiFi: If you want {{% ttigpro %}} to connect to WiFi, have the WiFi SSID and Password at hand once it's registered on {{% tts %}}.
-   3. Ethernet: If you want to use Ethernet, use a standard Ethernet cable.
+##### Step 1: Register in The Things Stack
 
-#### Register (Claim)
+1. Open the back panel of the gateway, where you will find a QR Code and some information about the gateway.
 
-#### Connect
+{{< figure src="ttigpro-qrcode.jpg" alt="TTIG Pro QR Code" width="35%" >}}
+
+1. In {{% tts %}} Console, go to **Gateways**.
+1. Click **Register Gateway**.
+1. Click **Scan gateway QR code** and scan the QR code on the bottom of the gateway. Alternatively, enter the **Gateway EUI** and **Owner token**. This information is also available in [The Things Industries Account](https://accounts.thethingsindustries.com) if you do not have physical access to your gateway.
+1. Enter a **Gateway ID** and select the **Frequency plan** to use.
+1. Click **Claim gateway**.
+
+##### Step 2: Connect a power supply cable
+
+Connect the USB-C cable to the power supply slot.
+{{< figure src="ttigpro-power-cable.jpg" alt="Connect power"  width="35%">}}
+
+{{< warning >}}Only use the power adapter that comes with {{% ttigpro %}}.{{< /warning >}}
+
+It may take several minutes to activate the SIM card and attach to a mobile network.
+
+After a few minutes, {{% ttigpro %}} should be connected to {{% tts %}}.
+
+{{< figure src="post-claim.png" alt="Connect power">}}
+
+If you would like to learn more about {{% ttigpro %}} or setup WiFi or Ethernet connectivity, you can check the dedicated [{{% ttigpro %}}]({{< ref "/hardware/gateways/models/thethingsindoorgatewaypro/" >}}) page.
+
+Let's now register and activate the end device to send and receive data.
 
 ### 2. mClimate Multipurpose Button
 
