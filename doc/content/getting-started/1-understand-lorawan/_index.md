@@ -24,12 +24,12 @@ The key characteristics of a LoRaWAN
 
 LoRaWAN is optimized for low data rate communications:
 
-- **Payload Size**: 51-243 bytes per message (depending on spreading factor\*)
-- **Data Rate**: 0.3-50 kbps (varies with regional parameters and spreading factor\*)
+- **Payload Size**: 51-242 bytes per message\*
+- **Data Rate**: 0.3-50 kbps\*
 - **Daily Messages**: Typically designed for 1-100 messages per day
 - **Duty Cycle**: Subject to regional regulations (e.g., 1% in Europe)
 
-\*Spreading factor is a transmission parameter that balances transmission range against data rate - higher spreading factors reach longer distances but transmit data more slowly.
+\*Depends on the regional regulations and the spreading factor. Spreading factor is a transmission parameter that balances transmission range against data rate - higher spreading factors reach longer distances but transmit data more slowly.
 
 #### Typical Use Cases
 
