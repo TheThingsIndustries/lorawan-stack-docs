@@ -1,5 +1,5 @@
 ---
-title: "Step 4: Collect anc visualize data"
+title: "Step 4: Collect and visualize data"
 description: ""
 weight: 4
 ---
