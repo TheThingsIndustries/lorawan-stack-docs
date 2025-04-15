@@ -21,18 +21,18 @@ TODO: Add description of the components of the Starter Kit.
 
 > If you already have a The Things Stack Account, you can skip this step.
 
-### Prerequisites
+#### Prerequisites
 
 1. A valid credit card. This card will not be charged for the free **Discovery** plan that we setup in this guide.
 2. An email address.
 
-### Create Account
+#### Setup
 
 Go to the [plans](https://www.thethingsindustries.com/stack/plans/) page which lists the different plans supported by {{% tts %}} Cloud.
 
-For this example, we will choose the **Discovery** plan.
+For this example, we will choose the _free_ **Discovery** plan.
 
-{{< note  "At the time of writing this documentation, this plan allows you free access to use 10 devices and 10 gateways on The Things Stack Cloud. For updates on these limits, check the plans page." />}}
+{{< note  "At the time of writing this documentation, this plan allows you free access to use 10 devices and 10 gateways on The Things Stack Cloud. For the latest on these limits, check the plans page." />}}
 
 Click on the **Get Started for Free** button.
 
