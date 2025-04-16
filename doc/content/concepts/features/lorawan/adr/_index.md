@@ -73,11 +73,71 @@ Margin is the difference between the gateway's maximum measured SNR and the mini
 
 {{< note >}} We recommend to test the process described below on test devices before implementing it in production. It is also recommended to use different test scenarios to identify which margin best fits your environment. {{</ note >}}
 
-The Network Server uses the ADR margin of 15, but this value can be configured per device using the CLI:
+The Network Server uses the ADR margin of 15, but this value can be configured per device.
+
+{{< tabs/container "Console" "CLI" "HTTP (REST) API"  >}}
+
+{{< tabs/tab "Console" >}}
+
+Choose the target end device and Click the **Settings** tab. Navigate to the **Network Layer** section and expand the **Advanced MAC settings**
+
+Under Adaptive data rate (ADR), select Dynamic mode. Enter the value for `ADR margin` and click **Save changes** to apply.
+
+{{< figure src="adr-console.png" alt="ADR Console" >}}
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
 
 ```bash
 ttn-lw-cli end-devices set --application-id <app-id> --device-id <device-id> --mac-settings.adr.mode.dynamic.margin <float32>
 ```
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "HTTP (REST) API" >}}
+
+Since this override is part of the Network Server MAC Settings, we use the [NsEndDeviceRegistry API]({{< ref "/api/reference/http/routes/#NsEndDeviceRegistry" >}}) to set this value.
+
+<div class="fixed-table table-api-item">
+
+| Item         | Value                                                                                                                         |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| Endpoint     | [`/ns/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}`]({{< ref "/api/reference/http/routes/#nsapplications{end_device.ids.application_ids.application_id}devices{end_device.ids.device_id}-put" >}}) |
+| Request type | `PUT`                                                                                                                         |
+
+</br>
+</div>
+
+To set the ADR margin to `18` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following example contents.
+
+```json
+{
+  "end_device":{
+    "mac_settings":{
+      "adr":{
+        "dynamic":{
+          "margin":18
+        }
+      }
+    }
+  },
+  "field_mask":{
+    "paths":["mac_settings.adr"]
+  }
+}
+```
+
+The request using `cURL` is as follows.
+
+```bash
+curl -v -X 'PUT' -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+-d @./req.json https://thethings.example.com/api/v3/ns/applications/<app-id>/devices/<device-id>
+```
+
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
 
 Keep in mind that changes to `mac-settings.adr.mode.dynamic.<parameter>` are persistent and will be present even after a device reset/rejoin. Read the [MAC Settings]({{< ref "/hardware/devices/configuring-devices/mac-settings" >}}) section for detailed info.
 
