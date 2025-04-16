@@ -277,89 +277,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   We recommend to test the process described below on test devices before implementing it in production. It is also recommended to use different test scenarios to identify which margin best fits your environment.
 </div>
 
-<p>The Network Server uses the ADR margin of 15, but this value can be configured per device.</p>
-<div class="tabs is-boxed">
-  <ul>
-    
-    <li data-tab="console">
-      <a>
-        <span>Console</span>
-      </a>
-    </li>
-    
-    <li data-tab="cli">
-      <a>
-        <span>CLI</span>
-      </a>
-    </li>
-    
-    <li data-tab="http-rest-api">
-      <a>
-        <span>HTTP (REST) API</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-<div class="tab-content content">
-  <section data-content="console">
-  <p>Choose the target end device and Click the <strong>Settings</strong> tab. Navigate to the <strong>Network Layer</strong> section and expand the <strong>Advanced MAC settings</strong></p>
-<p>Under Adaptive data rate (ADR), select Dynamic mode. Enter the value for <code>ADR margin</code> and click <strong>Save changes</strong> to apply.</p>
-<figure><img src="/docs/concepts/features/lorawan/adr/adr-console.png"
-    alt="ADR Console">
-</figure>
-</section>
-<section data-content="cli">
-  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;device-id&gt; --mac-settings.adr.mode.dynamic.margin &lt;float32&gt;
-</span></span></code></pre></div>
-</section>
-<section data-content="http-rest-api">
-  <p>Since this override is part of the Network Server MAC Settings, we use the <a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#NsEndDeviceRegistry">NsEndDeviceRegistry API</a> to set this value.</p>
-<div class="fixed-table table-api-item">
-<table>
-  <thead>
-      <tr>
-          <th>Item</th>
-          <th>Value</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Endpoint</td>
-          <td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#nsapplications%7Bend_device.ids.application_ids.application_id%7Ddevices%7Bend_device.ids.device_id%7D-put"><code>/ns/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}</code></a></td>
-      </tr>
-      <tr>
-          <td>Request type</td>
-          <td><code>PUT</code></td>
-      </tr>
-  </tbody>
-</table>
-</br>
-</div>
-<p>To set the ADR margin to <code>18</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following example contents.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;end_device&#34;</span><span class="p">:{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;mac_settings&#34;</span><span class="p">:{</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;adr&#34;</span><span class="p">:{</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;dynamic&#34;</span><span class="p">:{</span>
-</span></span><span class="line"><span class="cl">          <span class="nt">&#34;margin&#34;</span><span class="p">:</span><span class="mi">18</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field_mask&#34;</span><span class="p">:{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:[</span><span class="s2">&#34;mac_settings.adr&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -v -X <span class="s1">&#39;PUT&#39;</span> -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json https://thethings.example.com/api/v3/ns/applications/&lt;app-id&gt;/devices/&lt;device-id&gt;
-</span></span></code></pre></div>
-</section>
-
-</div>
-
-<p>Keep in mind that changes to <code>mac-settings.adr.mode.dynamic.&lt;parameter&gt;</code> are persistent and will be present even after a device reset/rejoin. Read the <a href="https://www.thethingsindustries.com/docs/hardware/devices/configuring-devices/mac-settings/">MAC Settings</a> section for detailed info.</p>
+<p>The Network Server uses the ADR margin of 15, but this value can be configured per device using the CLI:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;device-id&gt; --mac-settings.adr.mode.dynamic.margin &lt;float32&gt;
+</span></span></code></pre></div><p>Keep in mind that changes to <code>mac-settings.adr.mode.dynamic.&lt;parameter&gt;</code> are persistent and will be present even after a device reset/rejoin. Read the <a href="https://www.thethingsindustries.com/docs/hardware/devices/configuring-devices/mac-settings/">MAC Settings</a> section for detailed info.</p>
 <h4 id="examples">Examples</h4>
 <p>Consider a device whose SNR values in the last 20 uplink messages were in range from 0 to 7. The data rate of the last received frame from the end device is DR3. Three cases presented below demonstrate how choosing a different ADR margin leads to different outcomes in terms of changing the data rate and Tx power.</p>
 <p>In practice, the ADR margin value should be tuned until the optimization target is reached. The optimization target can be different (like battery duration, low packet loss, etc.) in different environments, so a user needs to decide on which margin value to adopt.</p>
@@ -405,12 +325,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li data-tab="http-rest-api">
       <a>
         <span>HTTP (REST) API</span>
-      </a>
-    </li>
-    
-    <li data-tab="console">
-      <a>
-        <span>Console</span>
       </a>
     </li>
     
@@ -519,21 +433,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -v -X PUT -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -v -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>-d @./req.json https://thethings.example.com/api/v3/ns/applications/test-app/devices/eui-1231231231231231
 </span></span></code></pre></div>
-</section>
-<section data-content="console">
-  <p>In this example, we are setting the min NbTrans to <code>2</code> and max NbTrans to <code>3</code> for data rate index 5 (SF7 in EU868).</p>
-<p>Choose the target end device and Click the <strong>Settings</strong> tab. Navigate to the <strong>Network Layer</strong> section and expand the <strong>Advanced MAC settings</strong></p>
-<figure><img src="/docs/concepts/features/lorawan/adr/advanced-mac-settings.png"
-    alt="Advanced MAC Settings">
-</figure>
-<p>Under <strong>Adaptive data rate (ADR)</strong> select <code>Dynamic mode</code>. Make sure the <code>Use default settings for number of retransmissions</code> is <strong>unchecked</strong>.</p>
-<p>After Expanding <strong>Add data rate specific override</strong>, select <code>SF7BW150</code> Data Rate. Set the min NbTrans to <code>2</code> and max NbTrans to <code>3</code>. Click <strong>Save Changes</strong> to apply.</p>
-<figure><img src="/docs/concepts/features/lorawan/adr/NbTrans-values.png"
-    alt="NbTrans Values">
-</figure>
 </section>
 
 </div>
