@@ -207,7 +207,7 @@ ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-
 
 {{% tts %}} allows you fine-grained access to limit NbTrans per data rate.
 
-{{< tabs/container "CLI" "HTTP (REST) API" >}}
+{{< tabs/container "CLI" "HTTP (REST) API" "Console">}}
 
 {{< tabs/tab "CLI" >}}
 
@@ -320,6 +320,22 @@ The request using `cURL` is as follows.
 curl -v -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
 -d @./req.json https://thethings.example.com/api/v3/ns/applications/test-app/devices/eui-1231231231231231
 ```
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "Console" >}}
+
+In this example, we are setting the min NbTrans to `2` and max NbTrans to `3` for data rate index 5 (SF7 in EU868).
+
+Choose the target end device and Click the **Settings** tab. Navigate to the **Network Layer** section and expand the **Advanced MAC settings**
+
+{{< figure src="advanced-mac-settings.png" alt="Advanced MAC Settings" >}}
+
+Under **Adaptive data rate (ADR)** select `Dynamic mode`. Make sure the `Use default settings for number of retransmissions` is **unchecked**. 
+
+After Expanding **Add data rate specific override**, select `SF7BW150` Data Rate. Set the min NbTrans to `2` and max NbTrans to `3`. Click **Save Changes** to apply.
+
+{{< figure src="NbTrans-values.png" alt="NbTrans Values" >}}
 
 {{< /tabs/tab >}}
 
