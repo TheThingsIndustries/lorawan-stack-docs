@@ -8,19 +8,32 @@ This guide walks you through different options available for you to collect and 
 
 <!--more-->
 
-This guide offers three mutually exclusive options.
+{{% tts %}} has a built in database to store uplink messages so that they can be retrieved later.
 
-1. Store and retrieve messages with {{% tts %}} message storage.
-2. Create a dashboard using an external IoT platform.
-3. (Advanced) Retrieve data on your local machine using ngrok.
+To enable this, navigate to **Message storage** page in the application overview. This is disabled by default.
 
-{{< tabs/container "Store and retrieve messages" "Create a dashboard" "Retrieve data locally (Advanced)" >}}
+{{< figure src="storage-disabled.png" alt="Message storage disabled" >}}
 
-{{< tabs/tab "Store and retrieve messages" >}}
+Enable it by selecting the checkbox. At this point, there is not data stored since the feature wasn't enabled.
 
-> TODO: ADD
+{{< figure src="storage-enabled.png" alt="Message storage enabled" >}}
 
-{{< /tabs/tab >}}
+Click the button on the end device once, wait for 2-3 seconds and refresh this page. There will be one entry with the latest uplink message that's retrieved from the database.
+
+Wait for 5 mins and click the button again and repeat. You'll see two entries retrieved.
+
+{{< warning "Sending lots of uplinks may result in draining the battery quickly" />}}
+
+{{< figure src="storage-filled.png" alt="First stored messages" >}}
+
+If this integration is kept on, all future messages will be stored and retained upto a certain amount of time (this is based on your {{% tts %}} Cloud subscription)
+
+At this point, this guide offers two mutually exclusive options to further collect/visualize this data.
+
+1. Create a dashboard using an external IoT platform.
+2. (Advanced) Retrieve data on your local machine using ngrok.
+
+{{< tabs/container "Create a dashboard" "Retrieve data locally (Advanced)" >}}
 
 {{< tabs/tab "Create a dashboard" >}}
 
@@ -58,8 +71,6 @@ Instead, there are many IoT platforms out there on the market which provide vari
 Now head back to {{% tts %}} console and go to your application.
 
 1. Click on the **Webhooks** option from the side panel.
-
-   > TODO: Add screenshot of navigation with webhooks.
 
 2. Click **Add webhook**. Choose **Custom webhook**.
 
@@ -360,6 +371,27 @@ INFO : {
   "test": "value"
 }
 ```
+
+#### Configure a Webhook on {{% tts %}}
+
+1. In the {{% tts %}} Console, click on your application and navigate to the webhooks section.
+2. Select **Add Webhook** and select `Custom webhook`.
+3. Enter the webhook details.
+
+- **Wehbook ID**: An identifier for your Webhook (ex: `my-server-ngrok`). This cannot be changed later.
+- **Webhook format**: Keep this as `JSON`.
+- **Base URL**: Enter your static domain URL from `ngrok`.
+
+4. Select **Add header entry** in the additional header section.
+
+- Key: `Authorization`
+- Value: `Bearer <your-auth-token>`
+
+{{< figure src="ngrok-webhook.png" alt="Webhook settings for ngrok" >}}
+
+5. In **Enabled event types** select `Uplink message` and `Join request`. You can also select all message types.
+
+6. Click **Add webhook**.
 
 #### Sending Uplinks
 
