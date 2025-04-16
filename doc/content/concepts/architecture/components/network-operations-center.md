@@ -115,6 +115,10 @@ The Packets per channel and Channel utilization graphs can be used to find out w
 
 {{< figure src="../gateway-packets-per-data-rate.png" alt="" >}}
 
+**Round Trip Times** - a graph that visualizes Round Trip Times (RTT) between the Gateway Server and Gateways as a measure of latency in ms over a time interval. For more information on this, refer to [Round Trip Times]({{< ref "/hardware/gateways/concepts/gateway-rtt/" >}})
+
+{{< figure src="../roundtrip-times.png" alt="round trip times" >}}
+
 ## Application Details Dashboard
 
 The **Application Details** dashboard provides a detailed insight into application statistics in the selected time period.
@@ -138,6 +142,14 @@ It consists of the following panels:
 **Packets per channel** - a heat map that visualizes the number of uplink data packets for each channel.
 
 {{< figure src="../packets-per-channel-app.png" alt="" >}}
+
+**Forwarded messages count** - a chart displaying the count of different messages forwarded to The Things Stack over a period of time.
+
+{{< figure src="../forwarded-messages-count.png" alt="forwarded messages" >}}
+
+**Webhook failures by error code** - a chart that visualizes the number of webhooks failed by error code in the selected time frame.
+
+{{< figure src="../webhook-failures-by-error.png" alt="webhook failures" >}}
 
 ## End Device Details Dashboard
 
