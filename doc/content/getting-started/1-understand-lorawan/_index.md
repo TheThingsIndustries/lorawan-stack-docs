@@ -1,6 +1,6 @@
 ---
 title: "Step 1: Understanding LoRaWAN Fundamentals"
-description: ""
+description: "Learn basic concepts of LoRaWAN"
 weight: 1
 aliases: ["/getting-started/lorawan-basics"]
 ---
