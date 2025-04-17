@@ -1,5 +1,5 @@
 ---
-title: "Step 2: Prerequisites"
+title: "Step 2: Setup prerequisites"
 description: "Get a Starter Kit for LoRaWAN And setup a The Things Stack account"
 weight: 2
 aliases: ["/getting-started/setup-first-network"]
