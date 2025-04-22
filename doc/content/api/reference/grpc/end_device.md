@@ -461,6 +461,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="MACSettings" >}}
 
+{{< proto/message message="MACSettingsProfileIdentifiers" >}}
+
 {{< proto/message message="MACState" >}}
 
 {{< proto/message message="MACState.JoinAccept" >}}

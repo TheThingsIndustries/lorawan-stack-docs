@@ -82,3 +82,25 @@ methods:
       name: GetTenantIdentifiersForBillingIdentifiersRequest
     output:
       name: TenantIdentifiers
+  GetGatewayInfoForEUI:
+    name: GetGatewayInfoForEUI
+    comment: Get the tenant identifiers and gateway for the given EUI.
+    input:
+      name: GetGatewayInfoForEUIRequest
+    output:
+      name: GetGatewayInfoForEUIResponse
+    http:
+    - method: POST
+      path: /tenants/gateways/info
+  ReleaseGatewayEUI:
+    name: ReleaseGatewayEUI
+    comment: Release the EUI of the gateway. This does not delete the gateway but
+      removes the EUI.
+    input:
+      name: ReleaseGatewayEUIRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: POST
+      path: /tenants/gateways/release-eui

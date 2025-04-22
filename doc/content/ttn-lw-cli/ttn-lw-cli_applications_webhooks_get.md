@@ -17,6 +17,7 @@ ttn-lw-cli applications webhooks get [application-id] [webhook-id] [flags]
       --all                                                          select all application webhook fields
       --application-id string                                        
       --base-url                                                     select the base_url field
+      --custom-ca                                                    select the custom_ca field
       --downlink-ack                                                 select the downlink_ack field and all allowed sub-fields
       --downlink-ack.path                                            select the downlink_ack.path field
       --downlink-api-key                                             select the downlink_api_key field
