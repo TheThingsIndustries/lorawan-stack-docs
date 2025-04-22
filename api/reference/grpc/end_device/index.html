@@ -7438,6 +7438,7 @@ SDKs are responsible for combining (if desired) the three.</p>
   "serial_number": "",
   "lora_alliance_profile_ids": {},
   "label_ids": [],
+  "mac_settings_profile_ids": {},
 }</code></pre>
 </details>
 
@@ -8522,7 +8523,8 @@ Copied on creation from template identified by version_ids, if any or from the h
         Description
       </th>
       <td>
-          <p>Settings for how the Network Server handles MAC layer for this device. Stored in Network Server.</p>
+          <p>Settings for how the Network Server handles MAC layer for this device. Stored in Network Server.
+Mutually exclusive with MAC settings profile.</p>
       </td>
     </tr>
     
@@ -9595,6 +9597,54 @@ This field is set by the Application Server and stored in the Identity Server.</
       </th>
       <td>
         
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>mac_settings_profile_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:MACSettingsProfileIdentifiers">
+  
+  <code>
+    
+    MACSettingsProfileIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>MAC settings profile identifiers.
+Mutually exclusive with MAC settings.</p>
       </td>
     </tr>
     
@@ -23184,6 +23234,101 @@ If unset, the default value from Network Server configuration or regional parame
 
 
 
+<h3 id="message:MACSettingsProfileIdentifiers">Message <code>MACSettingsProfileIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "application_ids": {},
+  "profile_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationIdentifiers">
+  
+  <code>
+    
+    ApplicationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Application IDs.</p>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>profile_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Profile ID.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:MACState">Message <code>MACState</code></h3>
 <p>MACState represents the state of MAC layer of the device.
 MACState is reset on each join for OTAA or ResetInd for ABP devices.
@@ -29175,6 +29320,7 @@ Guaranteed to be based on a GPS PPS signal, with an accuracy of 1 millisecond.</
   "dev_eui_contains": "",
   "join_eui_contains": "",
   "dev_addr_contains": "",
+  "label_id_contains": [],
   "field_mask": {},
   "order": "",
   "limit": 0,
@@ -29503,6 +29649,44 @@ Guaranteed to be based on a GPS PPS signal, with an accuracy of 1 millisecond.</
       <td>
           <p>Find end devices where the (hexadecimal) DevAddr contains this substring.</p>
           <p><code>max_len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>label_id_contains</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+        
+        repeated 
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Find end devices where one of the label_ids contains this substring.</p>
+          <p><code>max_items</code>: <code>10</code></p>
+            <p><code>max_len</code>: <code>50</code></p>
+        
       </td>
     </tr>
     
