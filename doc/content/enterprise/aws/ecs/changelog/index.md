@@ -8,6 +8,16 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.34.1
+
+- Resolve issues with certificate renewal in the certbot scheduled task to ensure proper execution.
+
+### `5-4-ecs-services`
+
+- Add more options to the memory parameters.
+
+## 3.34.0
+
 ### `4-2a-configuration`
 
 - Add `MetadataStorageCacheEnabled` parameter to enable caching of metadata storage in AS.
@@ -29,6 +39,10 @@ All meaningful changes to templates are documented in this file.
 ## 3.32.3
 
 - Add GRPC methods rate limiting metric to prometheus rules.
+
+### Upgrade procedure
+
+- After upgrading Timescale version to `2.15.2` it's necessary to run a SQL script [provided in the changelog](https://github.com/timescale/timescaledb/releases/tag/2.15.2).
 
 ### Proxy
 

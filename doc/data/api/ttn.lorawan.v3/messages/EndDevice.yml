@@ -210,8 +210,9 @@ fields:
     ignore_empty: true
   default: ""
 - name: mac_settings
-  comment: Settings for how the Network Server handles MAC layer for this device.
-    Stored in Network Server.
+  comment: |-
+    Settings for how the Network Server handles MAC layer for this device. Stored in Network Server.
+    Mutually exclusive with MAC settings profile.
   message:
     name: MACSettings
   default: {}
@@ -398,3 +399,10 @@ fields:
   repeated:
     type: string
   default: []
+- name: mac_settings_profile_ids
+  comment: |-
+    MAC settings profile identifiers.
+    Mutually exclusive with MAC settings.
+  message:
+    name: MACSettingsProfileIdentifiers
+  default: {}

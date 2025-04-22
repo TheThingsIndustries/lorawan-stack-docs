@@ -16,6 +16,7 @@ ttn-lw-cli applications webhooks set [application-id] [webhook-id] [flags]
 ```
       --application-id string                    
       --base-url string                          
+      --custom-ca bytesHex                       
       --downlink-ack.path string                 
       --downlink-api-key string                  
       --downlink-failed.path string              

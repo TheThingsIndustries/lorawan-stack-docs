@@ -32,6 +32,7 @@ ttn-lw-cli clients search [flags]
       --grants                                                        select the grants field
   -h, --help                                                          help for search
       --id-contains string                                            
+      --label-id-contains strings                                     
       --label-ids                                                     select the label_ids field
       --limit uint32                                                  
       --logout-redirect-uris                                          select the logout_redirect_uris field
