@@ -63,6 +63,12 @@ Next, recreate your device as documented in the [Using the API]({{< ref "/hardwa
 
 If you're facing this error, your end device has probably been configured with incorrect server addresses, so {{% tts %}} Console treats and shows it as in `Other cluster`. To regain access to your end device, you should configure it with the correct server addresses. That can be done by accessing device's **General settings** and configuring server addresses, or by deleting and recreating the end device with appropriate server addresses.
 
+Example URL:
+
+```bash
+https://thethings.example.com/console/applications/my-test-app/devices/my-test-device/general-settings
+```
+
 ## How do I see device events?
 
 Device event logs can be found in the console in the device's general information page. See [Working with Events]({{< ref "/concepts/features/events" >}}) for other ways of subscribing to events.
