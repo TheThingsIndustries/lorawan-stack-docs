@@ -7,7 +7,7 @@ aliases:
   [
     /getting-started/console/tenant-settings,
     /concepts/featuresconsole/tenant-settings,
-    /the-things-stack/interact/console/tenant-settings
+    /the-things-stack/interact/console/tenant-settings,
   ]
 ---
 
@@ -17,13 +17,11 @@ This section explains how to modify tenant settings in {{% tts %}} Console.
 
 {{< note >}} Only tenant admins have access to tenant settings. {{</ note >}}
 
-Once you are logged into the Console, click on your avatar in the upper right corner and select **Tenant settings**.
-
-{{< figure src="tenant-settings.png" alt="Navigate to tenant settings" >}}
-
-You will be redirected to a dedicated tenant settings page, where you can configure general {{% tts %}} settings such as user registration rules, global rights or network configuration for your tenant.
+Navigate to the **Global network settings** tab under the **Admin Panel** in the left-hand menu. Here, you can configure general {{% tts %}} settings such as user registration rules, global rights or network configuration for your tenant.
 
 For all below mentioned options, you can choose to **Use global default settings** to keep the defaults set by the deployment owners.
+
+{{< figure src="tenant-settings.png" alt="Navigate to tenant settings" >}}
 
 ## User registration
 
