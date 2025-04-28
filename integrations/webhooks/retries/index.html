@@ -232,11 +232,75 @@ If you would like to evaluate this feature on your The Things Stack Cloud tenant
 <p>By default, webhook HTTP requests are tried at most once for each application uplink. This means that if the endpoint is unavailable temporarily, the HTTP requests done in this period are lost, and so is the associated traffic.</p>
 <p>Webhook queuing allows individual HTTP requests to be retried at later times, when the endpoint is hopefully back.</p>
 <h2 id="enabling-webhook-retries">Enabling webhook retries</h2>
-<p>The webhook retries feature can be enabled on both new and existing webhooks via the Console, by ticking the <strong>Retries</strong> checkbox in the webhook settings:</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="http-rest-api">
+      <a>
+        <span>HTTP (REST) API</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <p>The webhook retries feature can be enabled on both new and existing webhooks via the Console, by ticking the <strong>Retries</strong> checkbox in the webhook settings:</p>
 <p>After the checkbox has been ticked, and the webhook has been saved, future requests will be enqueued and retried on failure.</p>
 <figure><img src="../webhook-retries.png"
     alt="Webhook queueing enabled">
 </figure>
+</section>
+<section data-content="http-rest-api">
+  <h6 id="details">Details</h6>
+<div class="fixed-table table-api-item">
+<table>
+  <thead>
+      <tr>
+          <th>Item</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Endpoint</td>
+          <td><a href="https://www.thethingsindustries.com/docs/api/reference/http/routes/#aswebhooks%7Bwebhook.ids.application_ids.application_id%7D%7Bwebhook.ids.webhook_id%7D-put"><code>/api/v3/as/webhooks/{webhook.ids.application_ids.application_id}/{webhook.ids.webhook_id}</code></a></td>
+      </tr>
+      <tr>
+          <td>Request type</td>
+          <td><code>PUT</code></td>
+      </tr>
+  </tbody>
+</table>
+</br>
+</div>
+<h6 id="example">Example</h6>
+<p>To enable webhook retries option of <code>my-webhook</code> associated with application <code>my-test-app</code> on <code>thethings.example.com</code>, first create a JSON file named <code>req.json</code> in the same folder with the following contents. Set the <code>enabled</code> field to <code>false</code> to disable the same.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;webhook&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;queue&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;enabled&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field_mask&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;queue.enabled&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The request using <code>cURL</code> is as follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> curl -X <span class="s1">&#39;PUT&#39;</span> -v -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> -d @./req.json https://thethings.example.com/api/v3/as/webhooks/my-test-app/my-webhook <span class="p">|</span> jq
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;application_ids&#34;</span>:<span class="o">{</span><span class="s2">&#34;application_id&#34;</span>:<span class="s2">&#34;my-test-app&#34;</span><span class="o">}</span>,<span class="s2">&#34;webhook_id&#34;</span>:<span class="s2">&#34;my-webhook&#34;</span><span class="o">}</span>,<span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2025-02-26T08:04:08.967052214Z&#34;</span>,<span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2025-04-24T07:39:19.381493044Z&#34;</span>,<span class="s2">&#34;base_url&#34;</span>:<span class="s2">&#34;https://www.example.com&#34;</span>,<span class="s2">&#34;format&#34;</span>:<span class="s2">&#34;json&#34;</span>,<span class="s2">&#34;queue&#34;</span>:<span class="o">{</span><span class="s2">&#34;enabled&#34;</span>:true<span class="o">}}</span>
+</span></span></code></pre></div>
+</section>
+
+</div>
 
 <h2 id="what-counts-as-a-failed-try-">What counts as a failed try ?</h2>
 <p>If the endpoint is completely unavailable (the host is down, the URL is invalid, the connection attempts time out), the try is considered to be failed.</p>
