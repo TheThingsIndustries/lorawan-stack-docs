@@ -19,11 +19,62 @@ Webhook queuing allows individual HTTP requests to be retried at later times, wh
 
 ## Enabling webhook retries
 
+{{< tabs/container "Console" "HTTP (REST) API">}}
+
+{{< tabs/tab "Console" >}}
+
 The webhook retries feature can be enabled on both new and existing webhooks via the Console, by ticking the **Retries** checkbox in the webhook settings:
 
 After the checkbox has been ticked, and the webhook has been saved, future requests will be enqueued and retried on failure.
 
 {{< figure src="../webhook-retries.png" alt="Webhook queueing enabled" >}}
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "HTTP (REST) API" >}}
+
+###### Details
+
+<div class="fixed-table table-api-item">
+
+| Item         | Value                                                                                                                                                                                                                       |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Endpoint     | [`/api/v3/as/webhooks/{webhook.ids.application_ids.application_id}/{webhook.ids.webhook_id}`]({{< ref "/api/reference/http/routes/#aswebhooks{webhook.ids.application_ids.application_id}{webhook.ids.webhook_id}-put" >}}) |
+| Request type | `PUT`                                                                                                                                                                                                                       |
+
+</br>
+</div>
+
+###### Example
+
+To enable webhook retries option of `my-webhook` associated with application `my-test-app` on `thethings.example.com`, first create a JSON file named `req.json` in the same folder with the following contents. Set the `enabled` field to `false` to disable the same.
+
+```json
+{
+  "webhook": {
+    "queue": {
+      "enabled": true
+    }
+  },
+  "field_mask": {
+    "paths": ["queue.enabled"]
+  }
+}
+```
+
+The request using `cURL` is as follows.
+
+```bash
+
+ curl -X 'PUT' -v -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" \
+ -d @./req.json https://thethings.example.com/api/v3/as/webhooks/my-test-app/my-webhook | jq
+{"ids":{"application_ids":{"application_id":"my-test-app"},"webhook_id":"my-webhook"},"created_at":"2025-02-26T08:04:08.967052214Z","updated_at":"2025-04-24T07:39:19.381493044Z","base_url":"https://www.example.com","format":"json","queue":{"enabled":true}}
+
+```
+
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
 
 ## What counts as a failed try ?
 
