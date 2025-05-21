@@ -57,60 +57,11 @@ To log in to the management page and view your device's configuration status, pl
 
 For more information, please refer to Robustel’s official documentation.
 
-## Connect R1520LG with LoRa Basics™ Station
-
-This section provides instructions for connecting the R1520LG LoRaWAN® gateway to The Things Stack using LoRa Basics™ Station.
-
-- Navigate to **LoRaWAN -> LoRa Settings -> General Settings**.
-- In the **LoRaWAN Network Server** drop-down list, select **External NS**, and click the **Submit** button to save the configuration.
-
-{{< figure src="lora-setting-save.png" alt="Connect R1520LG with LoRa Basics™ Station" >}}
-
-- Click on the **Packet Forwarder** table and choose **Basic Station** from the **Packet Forwarder** drop-down list.
-- After entering the Basic Station configuration, click the **Submit** button, and then click the **Save and Apply** button in the upper right corner. The gateway will apply the changes.
-
-{{< figure src="basic-station-save.png" alt="Connect R1520LG with LoRa Basics™ Station" >}}
-
-If your configuration is successful, the gateway will connect to The Things Stack within a few seconds.
-
-## Connect R1520LG with UDP Packet Forwarder
-
-This section provides instructions for connecting the R1520LG to The Things Stack using the Semtech UDP Packet Forwarder.
-
-- Navigate to **LoRaWAN -> LoRa Settings -> General Settings**.
-- In the **LoRaWAN Network Server** drop-down list, select **External NS**, and click the **Submit** button to save the configuration.
-
-{{< figure src="lora-setting-save.png" alt="Connect R1520LG with UDP Packet Forwarder" >}}
-
-- Click on the **Packet Forwarder** table, and select **UDP Forwarder** from the **Packet Forwarder** drop-down list.
-- After entering the UDP Forwarder configuration, click the **Submit** button, and then click the **Save and Apply** button in the upper right corner. The gateway will apply the changes.
-
-{{< figure src="udp-forwarder-save.png" alt="Connect R1520LG with UDP Packet Forwarder" >}}
-
-If your configuration is successful, the gateway will connect to The Things Stack within a few seconds.
-
 ## Connecting the Gateway to {{% tts %}}
 
 The Robustel R1520LG supports {{% lbs %}} and the legacy UDP packet forwarder. {{% lbs %}} is more secure and supports configuration of custom channel plans, amongst other improvements. Please follow instructions to [Connect Robustel R1520LG with {{% lbs %}}]({{< relref "lbs" >}}).
 
 If for some reason {{% lbs %}} is not available to you, instructions for connecting with the legacy packet forwarder are [here]({{< relref "udp" >}}).
-
-## Troubleshooting
-
-### Packet Forwarder Logs
-
-Packet forwarder logs contain the messages received from the devices and the network server. You can use the information to debug the issues.
-
-To access the packet forwarder logs via the gateway’s web console, please follow these steps:
-
-- Login to your gateway's web console and navigate to **LoRaWAN -> LoRa Settings -> General Settings**. 
-- Click the **Verbose Debug Enable** button to turn it ON, then click the **Submit** button, and finally click the **Save and Apply** button in the upper right corner. The gateway will apply the changes.
-
-{{< figure src="packet-forwarder-save.png" alt="Packet Forwarder Logs" >}}
-
-- Navigate to **System -> Debug** to view the Packet Forwarder Logs.
-
-{{< figure src="system-debug.png" alt="Packet Forwarder Logs" >}}
 
 ### Upgrading the Firmware
 
