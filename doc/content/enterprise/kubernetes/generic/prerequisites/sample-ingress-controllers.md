@@ -130,6 +130,12 @@ ports:
     expose:
       default: true
     exposedPort: 8889
+  udp:
+    protocol: "UDP"
+    port: 1700
+    expose:
+      default: true
+    exposedPort: 1700
   interop:
     protocol: "TCP"
     port: 8886
@@ -138,13 +144,30 @@ ports:
     exposedPort: 8886
 ```
 
-MQTT configuration for app integrations:
+UDP Packet Forwarder Traefik UDP Ingress Route for gateway connections:
+
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteUDP
+metadata:
+  name: tts-gs-udp-packet-forwarder
+  namespace: <tts-namespace> # Set this to the namespace where TTS is deployed.
+spec:
+  entryPoints:
+    - udp
+  routes:
+  - services:
+    - name: tts-gs # Set prefix to helm chart release name.
+      port: 1700
+```
+
+MQTT Traefik TCP Ingress Route for app integrations:
 
 ```yaml
 apiVersion: traefik.io/v1alpha1
 kind: IngressRouteTCP
 metadata:
-  name: tts-app-mqtt
+  name: tts-as-mqtt
   namespace: <tts-namespace> # Set this to the namespace where TTS is deployed.
 spec:
   entryPoints:
@@ -152,7 +175,7 @@ spec:
   routes:
   - match: HostSNI(`*`)
     services:
-      - name: tts-as
+      - name: tts-as # Set prefix to helm chart release name.
         port: 1883
 ---
 apiVersion: traefik.io/v1alpha1
