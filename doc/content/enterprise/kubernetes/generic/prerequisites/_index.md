@@ -116,98 +116,20 @@ $ sudo chown -R 886:886 <blob>
 
 #### 5. An ingress controller
 
-An ingress controller is needed to route the incoming traffic. Specify the ingress controller by setting the `global.ingress.controller` to the class name of the ingress controller deployed in the cluster. For TLS, make sure to set the `global.ingress.controller.tls.secretName`. The secret has to be accessible from the namespace where the {{% tts %}} Helm Chart is deployed. These ports are needed by {{% tts %}} and must be exposed:
- 
-```yaml
-web:
-  protocol: TCP
-  port: 1885
-  exposedPort: 80
-websecure:
-  protocol: TCP
-  port: 8885
-  exposedPort: 443
-grpc:
-  protocol: TCP
-  port: 1884
-  exposedPort: 1884
-grpcsecure:
-  protocol: TCP
-  port: 8884
-  exposedPort: 8884
-# Gateway Connectivity
-gtwmqttv2:
-  protocol: TCP
-  port: 1881
-  exposedPort: 1881
-gtwmqttv2secure:
-  protocol: TCP
-  port: 8881
-  exposedPort: 8881
-gtwmqttv3:
-  protocol: TCP
-  port: 1882
-  exposedPort: 1882
-gtwmqttv3secure:
-  protocol: TCP
-  port: 8882
-  exposedPort: 8882
-semtechws:
-  protocol: TCP
-  port: 1887
-  exposedPort: 1887
-semtechwssecure:
-  protocol: TCP
-  port: 8887
-  exposedPort: 8887
-# Application MQTT
-appmqtt:
-  protocol: TCP
-  port: 1883
-  exposedPort: 1883
-appmqttsecure:
-  protocol: TCP
-  port: 8883
-  exposedPort: 8883
-# The Things Indoor Gateway Pro
-ttigw:
-  protocol: "TCP"
-  port: 1889
-  exposedPort: 1889
-ttigwsecure:
-  protocol: "TCP"
-  port: 8889
-  exposedPort: 8889
-# Interoperability. This part is optional. Only enable it if interoperability is needed.
-interop:
-  protocol: TCP
-  # Note: Change this to 1886 if using `server-only` mode.
-  port: 8886
-  exposedPort: 8886
-```
+An ingress controller is needed to route the incoming traffic. {{% tts %}} Helm chart uses Kubernetes ingress resources for routing requests to the components of {{% tts %}}. This allows the users of {{% tts %}} Helm chart to configure an ingress controller of their choice. However, Kubernetes ingress routes support only L7 traffic (HTTP/gRPC). For this reason, the configuration for routing UDP Packet Forwarder traffic for gateways is not handled by the Helm chart.
 
-In case annotations are needed for certain protocols or for the {{% tts %}} services, these can be specified under `global.ingress.annotations` and `global.ingress.serviceAnnotations`. E.g. Traefik annotations can be specified as:
-```yaml
-ingress:
-  controller: "traefik"
-  tls:
-    secretName: "ingress-tls-cert"
-  annotations:
-    grpc:
-      traefik.ingress.kubernetes.io/router.entrypoints: grpcsecure
-      traefik.ingress.kubernetes.io/router.tls: "true"
-    http:
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    semtechws:
-      traefik.ingress.kubernetes.io/router.entrypoints: semtechwssecure,semtechws
-      traefik.ingress.kubernetes.io/router.tls: "true"
-  serviceAnnotations:
-    traefik.ingress.kubernetes.io/service.serversscheme: h2c
-```
+{{% tts %}} needs several [port allocations with various protocols]({{< ref "/concepts/networking/#port-allocations" >}}). We recommend using an ingress controller that natively supports L4 and L7 protocols. Depending on your preferred setup for gateways, an ingress controller that supports only L7 protocols (such as Ingress-Nginx) can be used too, but the connecting gateways will be either limited to L7 protocols or more complex to setup and maintain if using L4 protocols.
+
+Although we do support UDP Packet Forwarder as a gateway connection option, it requires [more configuration on your side]({{< ref "enterprise/kubernetes/generic/#udp-gateway-support" >}}). We recommend using LoRa Basics™ Station LNS, The Things Industries Gateway or LBS CUPS mTLS protocols for connecting gateways.
+
+To configure the ingress controller for {{% tts %}}:
+1. Specify the ingress controller by setting the `global.ingress.controller` to the class name of the ingress controller deployed in the cluster. This will be used to set the ingress class name in the ingress routes that handle {{% tts %}} traffic.
+2. Specify the TLS secret by setting the `global.ingress.controller.tls.secretName`. The secret has to be accessible from the namespace where the {{% tts %}} Helm Chart is deployed. This will be used to terminate TLS for {{% tts %}} traffic
+3. Add annotations for the ingress routes if needed by setting `global.ingress.annotations.http`, `global.ingress.annotations.grpc`, `global.ingress.annotations.semtechws` or `global.ingress.annotations.ttigw`.
+4. Add ingress specific service annotations for {{% tts %}} services by setting `global.ingress.serviceAnnotations` if needed.
+5. Expose the ports used by {{% tts %}} in your ingress controller. A list of all the ports can be found [here]({{< ref "/concepts/networking/#port-allocations" >}}).
 
 Examples of ingress controllers configurations can be found [here](https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/prerequisites/sample-ingress-controllers/).
-
-{{< note "{{% tts %}} Helm chart uses Kubernetes ingress rules for routing requests to the components of {{% tts %}}. This allows the users of {{% tts %}} Helm chart to configure an ingress controller of their choice. However, Kubernetes ingress routes support only L7 traffic (HTTP/gRPC). For this reason, UDP Packet Forwarder for gateways is not supported in the Helm chart for now." />}}
 
 #### 6. TLS Certificates
 
