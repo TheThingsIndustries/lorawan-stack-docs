@@ -62,9 +62,13 @@ Instead, there are many IoT platforms out there on the market which provide vari
 
 6. Choose the free plan to proceed.
 
-7. Head over to the **Configuration** tab of your end device and scroll down to the **LoRaWAN** section.
+7. Get an API token
 
-8. Click **Show setup instructions** and copy the URL that starts with `https://api.datacake.co` and save it somewhere.
+- Head to **Account Settings** from the navigation panel on the left.
+- Select the **API Token** tab.
+- Copy the token
+
+{{< figure src="datacake-api-token.png" alt="Datacake API Token" >}}
 
 #### {{% tts %}}
 
@@ -72,20 +76,16 @@ Now head back to {{% tts %}} console and go to your application.
 
 1. Click on the **Webhooks** option from the side panel.
 
-2. Click **Add webhook**. Choose **Custom webhook**.
+2. Click **Add webhook**. Choose **Datacake**.
 
 3. Enter the webhook details
 
 - **Wehbook ID**: An identifier for your Webhook. This cannot be changed later.
-- **Webhook format**: Keep this as `JSON`.
-- **Base URL**: Enter the URL from Datacake's LoRaWAN tab that you copied earlier. This starts with `https://api.datacake.co`.
-- The rest of the fields below can be left as it is for now.
+- **Token**: API Key from Datacake.
 
-{{< figure src="wh-general-settings.png" alt="Webhook general settings" >}}
+{{< figure src="datacake-webhook.png" alt="Datacake" >}}
 
-4. Head down to the **Enabled event types** tab and check **Uplink message** and **Join request**. You can also choose to enable all the message types.
-
-{{< figure src="wh-event-types.png" alt="Webhook event types" >}}
+4. Select **Create Datacake webhook**
 
 5. The newly created webhook will have the `pending` status.
 
@@ -95,7 +95,9 @@ Now head back to {{% tts %}} console and go to your application.
 
 {{< figure src="wh-healthy.png" alt="Webhook healthy" >}}
 
-> TODO: Add Datacake examples
+7. Once you send a few uplinks, the Datacake dashboard for the device will get filled with that data.
+
+{{< figure src="datacake-data.png" alt="Datacake data" >}}
 
 {{< /tabs/tab >}}
 
