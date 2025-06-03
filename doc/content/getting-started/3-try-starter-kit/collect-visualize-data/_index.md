@@ -8,7 +8,7 @@ This guide walks you through different options available for you to collect and 
 
 <!--more-->
 
-{{% tts %}} Console's Live Data view gives you a quick view of the data that's sent by the end device.
+{{% tts %}} Console's Live Data view gives you a quick view of the data that's sent by the end device. This view is very useful to get a quick look at the contents of the message and also for debugging. However, if you want to truly visualize data, you can process the data and visualize it in a dashboard.
 
 At this point, this guide offers two mutually exclusive options to further collect/visualize this data.
 
