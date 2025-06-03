@@ -1,7 +1,7 @@
 ---
-title: "Step 6: Next steps"
+title: "Step 4: Next steps"
 description: ""
-weight: 6
+weight: 4
 aliases: [/getting-started/next-steps]
 ---
 
