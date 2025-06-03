@@ -1,32 +1,14 @@
 ---
-title: "Step 4: Collect and visualize data"
-description: ""
-weight: 4
+title: "Step 2: Collect and visualize data"
+description: "Use a variety of options to collect and visualize LoRaWAN data"
+weight: 2
 ---
 
 This guide walks you through different options available for you to collect and visualize your LoRaWAN data.
 
 <!--more-->
 
-{{% tts %}} has a built in database to store uplink messages so that they can be retrieved later.
-
-To enable this, navigate to **Message storage** page in the application overview. This is disabled by default.
-
-{{< figure src="storage-disabled.png" alt="Message storage disabled" >}}
-
-Enable it by selecting the checkbox. At this point, there is not data stored since the feature wasn't enabled.
-
-{{< figure src="storage-enabled.png" alt="Message storage enabled" >}}
-
-Click the button on the end device once, wait for 2-3 seconds and refresh this page. There will be one entry with the latest uplink message that's retrieved from the database.
-
-Wait for 5 mins and click the button again and repeat. You'll see two entries retrieved.
-
-{{< warning "Sending lots of uplinks may result in draining the battery quickly" />}}
-
-{{< figure src="storage-filled.png" alt="First stored messages" >}}
-
-If this integration is kept on, all future messages will be stored and retained upto a certain amount of time (this is based on your {{% tts %}} Cloud subscription)
+{{% tts %}} Console's Live Data view gives you a quick view of the data that's sent by the end device.
 
 At this point, this guide offers two mutually exclusive options to further collect/visualize this data.
 
@@ -56,7 +38,7 @@ Instead, there are many IoT platforms out there on the market which provide vari
 
 {{< figure src="tts.png" alt="The Things Stack" >}}
 
-5. In the **Add Devices** section, choose **Manual** and enter the Device EUI of the end device. You can find this on the overview page of your device on {{% tts %}} console.
+5. In the **Add Devices** section, choose **Manual** and enter the Device EUI of the end device. You can find this **Applications** -> `Your Application` -> **End Devices** page {{% tts %}} console
 
 {{< figure src="device-details.png" alt="Device Details" >}}
 
