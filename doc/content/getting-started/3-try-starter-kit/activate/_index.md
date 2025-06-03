@@ -10,11 +10,6 @@ This guide walks you through activating the end device and managed gateway that'
 
 Before we can activate an end device to send/receive data, we need to setup a LoRaWAN® gateway to receive messages from end devices and forward them to the {{% tts %}} and vice versa.
 
-The Starter Kit for LoRaWAN contains
-
-1. **{{% ttigpro %}}**: A state-of-the-art fully cloud-managed 8 channel LoRaWAN gateway. It support true Zero-Touch Provisioning(ZTP) and is fully remotely managed via {{% tts %}}. In addition, it also has three options to connect to {{% tts %}}; Ethernet, WiFi and a built-in SIM card.
-2. **mClimate Multipurpose Button**: A versatile LoRaWAN end device designed for a variety of applications. Supporting three click types (single, double, and triple), it enables users to trigger pre-set actions. The Multipurpose Button is equipped with a temperature sensor and has ultra-low power consumption.
-
 ### 1. {{% ttigpro %}}
 
 To keep things simple and get started right away, we are going to use the built-in 4G LTE sim card of {{% ttigpro %}} to communicate with {{% tts %}}. You can always later change this to WiFi or Ethernet.

@@ -8,8 +8,11 @@ LoRaWAN® is a complex topic with many technical components and considerations. 
 
 <!--more-->
 
-## Get a Starter Kit for LoRaWAN
+The Starter Kit for LoRaWAN contains
 
-TODO: Add after Shopify
+1. **{{% ttigpro %}}**: A state-of-the-art fully cloud-managed 8 channel LoRaWAN gateway. It support true Zero-Touch Provisioning(ZTP) and is fully remotely managed via {{% tts %}}. In addition, it also has three options to connect to {{% tts %}}; Ethernet, WiFi and a built-in SIM card.
+2. **mClimate Multipurpose Button**: A versatile LoRaWAN end device designed for a variety of applications. Supporting three click types (single, double, and triple), it enables users to trigger pre-set actions. The Multipurpose Button is equipped with a temperature sensor and has ultra-low power consumption.
 
-TODO: Add description of the components of the Starter Kit.
+This guide will walk you through the complete journey from unboxing to data visualization. You'll learn how to activate both devices using simple QR code scanning, establish secure LoRaWAN communication, and explore different options for collecting and visualizing your sensor data. Whether you're new to LoRaWAN or an experienced developer, this starter kit eliminates the complexity typically associated with setting up IoT networks, allowing you to focus on building your application rather than wrestling with infrastructure.
+
+Get your starter kit at [The Things Shop](https://thethingsshop.com/products/starter-kit-for-lorawan).
