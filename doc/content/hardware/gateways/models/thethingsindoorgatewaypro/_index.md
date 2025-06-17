@@ -157,14 +157,14 @@ The error occurs if the gateway does not have active subscription. For more info
 
 If the issue persists, please contact [support@thethingsindustries.com](mailto:support@thethingsindustries.com).
 
-### Firmware Changelog
+## Firmware Changelog
 
-#### 1.2.8
+### 1.2.8
 
 - Fix DNS lookup issues
 - Update to ESP-IDF v5.4.1
 
-#### 1.2.7
+### 1.2.7
 
 - Fix support for WPA-PSK authentication mode
 - Upload logs of all log levels after a panic abort
