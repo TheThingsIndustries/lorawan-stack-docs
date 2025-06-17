@@ -155,4 +155,79 @@ If you configured wrong Ethernet settings and you do not have WiFi or Cellular c
 
 The error occurs if the gateway does not have active subscription. For more information refer [subscription](https://www.thethingsindustries.com/docs/hardware/gateways/models/thethingsindoorgatewaypro/#subscription). After purchasing the TTIG Pro gateway, you will receive an email with instructions on how to create subscriptions for the gateway. If you don't see the email in your inbox, please check your spam folder as well.
 
-If the issue persists, please contact `support@thethingsindustries.com`.
+If the issue persists, please contact [support@thethingsindustries.com](mailto:support@thethingsindustries.com).
+
+### Firmware Changelog
+
+#### 1.2.8
+
+- Fix DNS lookup issues
+- Update to ESP-IDF v5.4.1
+
+#### 1.2.7
+
+- Fix support for WPA-PSK authentication mode
+- Upload logs of all log levels after a panic abort
+- Panic abort after reaching a maximum number of connection attempts
+
+### 1.2.6
+
+- Disable configuring DNS servers from DHCP
+- Add support for WPA-PSK authentication mode
+
+### 1.2.5
+
+- Fix memory corruption
+- Fix memory leak
+
+### 1.2.4
+
+- Fix stack overflow
+
+### 1.2.3
+
+- Update to ESP-IDF v5.4
+- Optimize memory usage
+- Fix memory leak
+- Optimize logging
+
+### 1.2.2
+
+- Fix firmware update rollback when the update requires a partition table update
+
+### 1.2.1
+
+- Add core dump functionality to products with bootloader version 1
+- Improve resilience against slow networks
+
+### 1.2.0
+
+- Add bootloader version 2 with flash encryption
+- Panic abort when no memory can be allocated for the TLS handshake
+- Add remote reboot, diagnostics file and logs upload
+- Update to ESP-IDF v5.3.2
+
+### 1.1.1
+
+- Fix memory leak
+- Send reset count and reason to the Gateway Controller
+
+### 1.1.0
+
+- Optimize memory usage
+- Fix memory corruption
+- Avoid restarting LoRa packet forwarder when the configuration did not change
+- Reconnect via Ethernet or WiFi if that interface comes up
+- Reconnect faster
+- Reconnect via the network interface that came up last
+- Optimize LoRa packet forwarder protocol and ping behavior to reduce bandwidth
+- Improve logging
+- Save and restore static IP configuration
+- First start Ethernet and WiFi as Cellular needs more time
+- Fix LoRa RSSI offset
+- Implement LoRa downlink queue
+- Update to ESP-IDF v5.3.1
+
+### 0.1.0
+
+First release to manufacturing version.
