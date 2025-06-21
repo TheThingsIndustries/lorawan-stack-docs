@@ -159,6 +159,10 @@ If the issue persists, please contact [support@thethingsindustries.com](mailto:s
 
 ## Firmware Changelog
 
+### 1.2.9
+
+- Fix LoRa Packet Forwarder deadlock
+
 ### 1.2.8
 
 - Fix DNS lookup issues
