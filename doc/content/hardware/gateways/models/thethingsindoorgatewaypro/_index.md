@@ -159,6 +159,12 @@ If the issue persists, please contact [support@thethingsindustries.com](mailto:s
 
 ## Firmware Changelog
 
+### 1.2.10
+
+- Adjust task stack sizes to avoid potential memory corruption
+- Increase DNS cache
+- Switch to ESP-IDF v5.3.3
+
 ### 1.2.9
 
 - Fix LoRa Packet Forwarder deadlock
