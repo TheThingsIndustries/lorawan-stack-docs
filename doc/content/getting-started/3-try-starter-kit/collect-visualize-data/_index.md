@@ -4,11 +4,11 @@ description: "Use a variety of options to collect and visualize LoRaWAN data"
 weight: 2
 ---
 
-This guide walks you through different options available for you to collect and visualize your LoRaWAN data.
+This Section covers your options for collecting and visualizing LoRaWAN data from your mClimate Multipurpose button.
 
 <!--more-->
 
-{{% tts %}} Console's Live Data view gives you a quick view of the data that's sent by the end device. This view is very useful to get a quick look at the contents of the message and also for debugging. However, if you want to truly visualize data, you can process the data and visualize it in a dashboard.
+The Live Data view in {{% tts %}} Console gives you a real-time look at messages from your end device. This view is very useful to get a quick look at the contents of the message and also for debugging. However, if you want to truly visualize data, you can process the data and visualize it in a dashboard.
 
 At this point, this guide offers two mutually exclusive options to further collect/visualize this data.
 
@@ -21,7 +21,7 @@ At this point, this guide offers two mutually exclusive options to further colle
 
 {{% tts %}} does not support building dashboards as they are very specific to the use case and are meant to be very customizable.
 
-Instead, there are many IoT platforms out there on the market which provide various dashboard options. For this example, we are going to use one such platfrom called [Datacake](https://app.datacake.de/login).
+Instead, there are many IoT platforms out there on the market which provide various dashboard options. For this example, we are going to use one such platform called [Datacake](https://app.datacake.de/login).
 
 #### Datacake
 

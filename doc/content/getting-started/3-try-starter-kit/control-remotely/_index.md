@@ -1,5 +1,5 @@
 ---
-title: "Step 3: Control the end device behavior remotely"
+title: "Step 3: Remotely control the end device behavior"
 description: ""
 weight: 3
 ---
@@ -8,13 +8,17 @@ LoRaWAN® is a full-duplex protocol, which means that we can both receive data f
 
 <!--more-->
 
-The mClimate Multipurpose button for LoRaWAN is a Class A device. This is a special mode of operation where the end device listens for downlinks only after sending an uplink. This allows the end device to control when the radio is turned on, which helps preserve battery.
+The mClimate Multipurpose button is a Class A device. This is a special mode of operation where the end device listens for downlinks only after sending an uplink. This allows the end device to control when the radio is turned on, which helps preserve battery.
 
-This means that when you schedule a downlink via {{% tts %}}, it's not immediately sent, but queued until the device sends an uplink.
+This means, when you schedule a downlink via {{% tts %}}, it's not immediately sent, but queued until the device sends an uplink.
 
 In {{% tts %}} Console, select your application and navigate to the end device overview page.
 
 Select the **Messaging** tab. The default option here is **Schedule Downlink** and that's what we are going to use.
+
+In {{% tts %}} Console, select your application and go to the end device overview.
+
+Click the **Messaging** tab. The default option is **Schedule Downlink**. We’ll use that to send a message to the device.
 
 {{< figure src="downlink-view.png" alt="Downlink view" >}}
 

@@ -1,18 +1,18 @@
 ---
-title: "Step 1: Activate the Starter kit for LoRaWAN"
-description: "Activate the Starter kit for LoRaWAN"
+title: "Step 1: Activate your Starter kit for LoRaWAN"
+description: "Activate your Starter kit for LoRaWAN"
 weight: 1
 ---
 
-This guide walks you through activating the end device and managed gateway that's part of the Starter Kit for LoRaWAN®.
+This guide shows you how to activate your Starter Kit’s LoRaWAN® gateway and end device.
 
 <!--more-->
 
-Before we can activate an end device to send/receive data, we need to setup a LoRaWAN® gateway to receive messages from end devices and forward them to the {{% tts %}} and vice versa.
+First, set up the gateway. It receives messages from the end device and forwards them to {{% tts %}}, and the other way around. Once the gateway is online, you can activate your end device to start sending and receiving data.
 
 ### 1. {{% ttigpro %}}
 
-To keep things simple and get started right away, we are going to use the built-in 4G LTE sim card of {{% ttigpro %}} to communicate with {{% tts %}}. You can always later change this to WiFi or Ethernet.
+To get started, we’ll use the built-in 4G LTE SIM in The Things Indoor Gateway Pro to connect to The Things Stack. You can switch to WiFi or Ethernet later if neede
 
 If you prefer a visual guide to connecting {{% ttigpro %}} you can use the video below.
 
