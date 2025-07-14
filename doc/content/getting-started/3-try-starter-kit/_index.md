@@ -15,4 +15,7 @@ The Starter Kit for LoRaWAN contains
 
 This guide will walk you through the complete journey from unboxing to data visualization. You'll learn how to activate both devices using simple QR code scanning, establish secure LoRaWAN communication, and explore different options for collecting and visualizing your sensor data. Whether you're new to LoRaWAN or an experienced developer, this starter kit eliminates the complexity typically associated with setting up IoT networks, allowing you to focus on building your application rather than wrestling with infrastructure.
 
-Get your starter kit at [The Things Shop](https://thethingsshop.com/products/starter-kit-for-lorawan).
+Get your Starter Kit for LoRaWAN a The Things Shop using the following links
+
+- [EU868 variant](https://thethingsshop.com/products/starter-kit-for-lorawan)
+- [US915 variant](https://thethingsshop.com/products/starter-kit-for-lorawan-us915-edition)

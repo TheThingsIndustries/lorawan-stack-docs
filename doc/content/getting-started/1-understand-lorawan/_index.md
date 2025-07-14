@@ -76,8 +76,6 @@ A typical LoRaWAN network consists of the following basic elements.
 
 The messages that originates from an end device and are sent to the server via gateways are called an Uplinks.
 
-> TODO: Add a simple diagram. Update the content below based on the diagram.
-
 End devices communicate with nearby gateways and each gateway is connected to the Network Server.
 
 LoRaWAN networks use an ALOHA based protocol, so end devices don’t need to pair with specific gateways. Messages sent from end devices travel through all gateways within range.
@@ -91,8 +89,6 @@ The Application Server decrypts the application data and makes is available to t
 #### Downlinks
 
 Messages that originate in the server (Network Server or Application) and are sent to the end device via gateways are called downlinks.
-
-> TODO: Add a simple diagram. Update the content below based on the diagram.
 
 ### Security
 
