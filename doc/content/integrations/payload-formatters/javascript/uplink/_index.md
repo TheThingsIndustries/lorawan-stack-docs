@@ -127,14 +127,57 @@ The normalized payload schema is continuously being extended to support more fie
 ```js
 {
   "time": "2022-08-29T13:50:15Z", // Timestamp (RFC 3339)
+  "battery": 3.3, // Battery level (V)
+  "soil": {
+    "depth": 22,        // Depth from the surface (cm): [0..)
+    "moisture": 55,     // Soil moisture (%): [0..100]
+    "temperature": 8.1, // Soil temperature (Celsius): [-273.15..)
+    "ec": 125,          // Soil electrical conductivity (dS/m): [0..621]
+    "pH": 7,            // Soil pH level: [0..14]
+    "n": 1234,          // Concentration of Nitrogen in the soil (ppm): [0..1000000]
+    "p": 5678,          // Concentration of Phosphorus in the soil (ppm): [0..1000000]
+    "k": 9012           // Concentration of Potassium in the soil (ppm): [0..1000000]
+  },
   "air": {
+    "location": "outdoor",    // Specifies whether the measurement was taken indoors or outdoors: indoor, outdoor
     "pressure": 1032,         // Atmospheric pressure (hPa): [900..1100]
     "relativeHumidity": 43.9, // Relative humidity (%): [0..100]
-    "temperature": 21.5       // Temperature (Celsius): [-273.15..)
+    "temperature": 21.5,      // Temperature (Celsius): [-273.15..)
+    "co2": 5678,              // Concentration of CO2 in the air (ppm): [0..1000000]
+    "lightIntensity": 400     // Light intensity (lux): [0..)
   },
   "wind": {
     "direction": 321, // Direction (degrees): [0..360)
     "speed": 5.2      // Speed (m/s): [0..)
+  },
+  "rain": {
+    "intensity": 25,   // Rainfall intensity (mm/hour): [0..)
+    "cumulative": 500  // Cumulative rainfall (mm): [0..)
+  },
+  "water": {
+    "leak": "true", // Leak detected (boolean)
+    "temperature": {
+      "min": 13.5,      // Minimum temperature (Celsius): [-273.15..)
+      "max": 18.0,      // Maxinmum temperature (Celsius): [-273.15..)
+      "avg": 15.1,      // Average temperature (Celsius): [-273.15..)
+      "current": 15.6   // Current temperature (Celsius): [-273.15..)
+    },
+  },
+  "metering": {
+    "water": {
+      "total": 125.6, // Total volume (L): [0..)
+    }
+  },
+  "action": {
+    "motion": {
+      "detected": true, // Motion detected (boolean)
+      "count": 55,      // Number of motion events (count): [0..)
+    },
+    "contactState": "closed" // State of a contact sensor: open, closed
+  },
+  "position": {
+    "latitude": 52.5,  // Horizontal distance from the equator (degrees): [-90..90]
+    "longitude": 4.889 // Vertical distance from prime meridian (degrees): [-180..180]
   }
 }
 ```
