@@ -289,14 +289,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>The normalized payload schema is continuously being extended to support more fields. You can find the latest JSON Schema definition in the <a href="https://github.com/TheThingsNetwork/lorawan-devices/blob/master/lib/payload.json">LoRaWAN Device Repository</a>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="s2">&#34;time&#34;</span><span class="o">:</span> <span class="s2">&#34;2022-08-29T13:50:15Z&#34;</span><span class="p">,</span> <span class="c1">// Timestamp (RFC 3339)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;air&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;pressure&#34;</span><span class="o">:</span> <span class="mi">1032</span><span class="p">,</span>         <span class="c1">// Atmospheric pressure (hPa): [900..1100]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;battery&#34;</span><span class="o">:</span> <span class="mf">3.3</span><span class="p">,</span> <span class="c1">// Battery level (V)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;soil&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;depth&#34;</span><span class="o">:</span> <span class="mi">22</span><span class="p">,</span>        <span class="c1">// Depth from the surface (cm): [0..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;moisture&#34;</span><span class="o">:</span> <span class="mi">55</span><span class="p">,</span>     <span class="c1">// Soil moisture (%): [0..100]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;temperature&#34;</span><span class="o">:</span> <span class="mf">8.1</span><span class="p">,</span> <span class="c1">// Soil temperature (Celsius): [-273.15..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;ec&#34;</span><span class="o">:</span> <span class="mi">125</span><span class="p">,</span>          <span class="c1">// Soil electrical conductivity (dS/m): [0..621]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;pH&#34;</span><span class="o">:</span> <span class="mi">7</span><span class="p">,</span>            <span class="c1">// Soil pH level: [0..14]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;n&#34;</span><span class="o">:</span> <span class="mi">1234</span><span class="p">,</span>          <span class="c1">// Concentration of Nitrogen in the soil (ppm): [0..1000000]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;p&#34;</span><span class="o">:</span> <span class="mi">5678</span><span class="p">,</span>          <span class="c1">// Concentration of Phosphorus in the soil (ppm): [0..1000000]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;k&#34;</span><span class="o">:</span> <span class="mi">9012</span>           <span class="c1">// Concentration of Potassium in the soil (ppm): [0..1000000]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;air&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;location&#34;</span><span class="o">:</span> <span class="s2">&#34;outdoor&#34;</span><span class="p">,</span>    <span class="c1">// Specifies whether the measurement was taken indoors or outdoors: indoor, outdoor
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;pressure&#34;</span><span class="o">:</span> <span class="mi">1032</span><span class="p">,</span>         <span class="c1">// Atmospheric pressure (hPa): [900..1100]
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;relativeHumidity&#34;</span><span class="o">:</span> <span class="mf">43.9</span><span class="p">,</span> <span class="c1">// Relative humidity (%): [0..100]
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;temperature&#34;</span><span class="o">:</span> <span class="mf">21.5</span>       <span class="c1">// Temperature (Celsius): [-273.15..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;temperature&#34;</span><span class="o">:</span> <span class="mf">21.5</span><span class="p">,</span>      <span class="c1">// Temperature (Celsius): [-273.15..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;co2&#34;</span><span class="o">:</span> <span class="mi">5678</span><span class="p">,</span>              <span class="c1">// Concentration of CO2 in the air (ppm): [0..1000000]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;lightIntensity&#34;</span><span class="o">:</span> <span class="mi">400</span>     <span class="c1">// Light intensity (lux): [0..)
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span>
 </span></span><span class="line"><span class="cl">  <span class="s2">&#34;wind&#34;</span><span class="o">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="s2">&#34;direction&#34;</span><span class="o">:</span> <span class="mi">321</span><span class="p">,</span> <span class="c1">// Direction (degrees): [0..360)
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;speed&#34;</span><span class="o">:</span> <span class="mf">5.2</span>      <span class="c1">// Speed (m/s): [0..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;rain&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;intensity&#34;</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>   <span class="c1">// Rainfall intensity (mm/hour): [0..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;cumulative&#34;</span><span class="o">:</span> <span class="mi">500</span>  <span class="c1">// Cumulative rainfall (mm): [0..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;water&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;leak&#34;</span><span class="o">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span> <span class="c1">// Leak detected (boolean)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;temperature&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;min&#34;</span><span class="o">:</span> <span class="mf">13.5</span><span class="p">,</span>      <span class="c1">// Minimum temperature (Celsius): [-273.15..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="s2">&#34;max&#34;</span><span class="o">:</span> <span class="mf">18.0</span><span class="p">,</span>      <span class="c1">// Maxinmum temperature (Celsius): [-273.15..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="s2">&#34;avg&#34;</span><span class="o">:</span> <span class="mf">15.1</span><span class="p">,</span>      <span class="c1">// Average temperature (Celsius): [-273.15..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="s2">&#34;current&#34;</span><span class="o">:</span> <span class="mf">15.6</span>   <span class="c1">// Current temperature (Celsius): [-273.15..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;metering&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;water&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;total&#34;</span><span class="o">:</span> <span class="mf">125.6</span><span class="p">,</span> <span class="c1">// Total volume (L): [0..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;action&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;motion&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;detected&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// Motion detected (boolean)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="s2">&#34;count&#34;</span><span class="o">:</span> <span class="mi">55</span><span class="p">,</span>      <span class="c1">// Number of motion events (count): [0..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;contactState&#34;</span><span class="o">:</span> <span class="s2">&#34;closed&#34;</span> <span class="c1">// State of a contact sensor: open, closed
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;position&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;latitude&#34;</span><span class="o">:</span> <span class="mf">52.5</span><span class="p">,</span>  <span class="c1">// Horizontal distance from the equator (degrees): [-90..90]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;longitude&#34;</span><span class="o">:</span> <span class="mf">4.889</span> <span class="c1">// Vertical distance from prime meridian (degrees): [-180..180]
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h3 id="multiple-measurements">Advanced: Return Multiple Measurements</h3>
