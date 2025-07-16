@@ -1,19 +1,17 @@
 ---
-title: "Next steps"
+title: "Step 4: Next steps"
 description: ""
 weight: 4
+aliases: [/getting-started/next-steps]
 ---
 
-Once you have your first LoRaWAN® Network setup, here are the next steps.
+Now that you are familiar with the basics of LoRaWAN and you've setup your first network and experimented with an end device and a gateway, this guide gives you some options on what to do next.
 
 <!--more-->
 
-1. <a href="https://www.thethingsshop.com/collections/gateways" target="_blank">Get {{% ttigpro %}}</a> or any other LoRa® gateway
-2. [Connect the gateway]({{< ref "/hardware/gateways/concepts/adding-gateways" >}}) to your netowrk.
-3. [Add LoRaWAN end devices]({{< ref "/hardware/devices/adding-devices" >}}) to send LoRaWAN traffic to your network.
-4. [Create an integration]({{< ref "integrations" >}}) to send your LoRaWAN sensor data to external integrations or to your own private server.
-5. Learn how to get the most out of [{{% tts %}}]({{< ref "/enterprise/" >}}).
-6. Check out the [Glossary]({{< ref "/getting-started/glossary" >}}) for a disambiguation of some of these terms and [FAQ]({{< ref "/getting-started/faq" >}}).
+1. [Add other LoRaWAN end devices]({{< ref "/hardware/devices/adding-devices" >}}) to send LoRaWAN traffic to your network.
+2. Learn how to get the most out of [{{% tts %}}]({{< ref "/enterprise/" >}}).
+3. Check out the [Glossary]({{< ref "/getting-started/glossary" >}}) for a disambiguation of some of these terms and [FAQ]({{< ref "/getting-started/faq" >}}).
 
 ## Learn more
 
