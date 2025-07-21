@@ -1,10 +1,11 @@
 ---
-title: "Setup Your First LoRaWAN Network"
-description: ""
-weight: 3
+title: "Step 2: Setup your first LoRaWAN® Network"
+description: "Setup your first LoRaWAN® Network with The Things Stack Cloud"
+weight: 2
+aliases: ["/getting-started/setup-first-network"]
 ---
 
-Now that you are familiar with LoRaWAN® and {{% tts %}}, let us set up your first LoRaWAN Network.
+In this guide, we will walk through the steps to setup a The Things Stack account. If you already have a The Things Stack Account, you can skip this step.
 
 <!--more-->
 
@@ -15,11 +16,11 @@ Now that you are familiar with LoRaWAN® and {{% tts %}}, let us set up your fir
 
 ## Setup
 
-Go to the [plans](https://www.thethingsindustries.com/stack/plans/) page which lists the different plans supported by {{% tts %}} Cloud.
+Go to [the plans page](https://www.thethingsindustries.com/stack/plans/) which lists the different plans supported by {{% tts %}} Cloud.
 
-For this example, we will choose the **Discovery** plan.
+For this example, we will choose the _free_ **Discovery** plan.
 
-{{< note  "At the time of writing this documentation, this plan allows you free access to use 10 devices and 10 gateways on The Things Stack Cloud. For updates on these limits, check the plans page." />}}
+{{< note  "At the time of writing this documentation, this plan allows you free access to use 10 devices and 10 gateways on The Things Stack Cloud. For the latest on these limits, check [the plans page](https://www.thethingsindustries.com/stack/plans/)." />}}
 
 Click on the **Get Started for Free** button.
 
@@ -72,6 +73,7 @@ In the subsequent window, select the details of the admin user. This user has fu
 Click on **Launch The Things Stack Cloud**.
 
 Now before proceeding, please make sure to check the admin email for two emails that you received from {{% tts %}} Cloud.
+
 - The first one is used to validate the admin email address. Follow the instructions in the email to validate it.
 - The second email contains a link to create the password for the admin user. Make sure to choose a strong password.
 
