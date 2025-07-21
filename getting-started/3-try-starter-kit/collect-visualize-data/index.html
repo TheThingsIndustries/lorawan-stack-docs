@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.140.0-DEV">
+  <title>Step 2: Collect and visualize data | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/3-try-starter-kit/collect-visualize-data/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="Use a variety of options to collect and visualize LoRaWAN data">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Step 2: Collect and visualize data">
+  <meta itemprop="description" content="Use a variety of options to collect and visualize LoRaWAN data">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Step 2: Collect and visualize data">
+  <meta property="og:description" content="Use a variety of options to collect and visualize LoRaWAN data">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/3-try-starter-kit/collect-visualize-data/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Step 2: Collect and visualize data" />
+  <meta name="twitter:description" content="Use a variety of options to collect and visualize LoRaWAN data" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Getting Started</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/getting-started/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/1-understand-lorawan/" class="">Step 1: Understanding LoRaWAN Fundamentals</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/2-prerequisites/" class="">Step 2: Setup your first LoRaWAN® Network</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/3-try-starter-kit/" class="">Step 3: Try the Starter Kit for LoRaWAN®</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/3-try-starter-kit/activate/" class="">Step 1: Activate your Starter kit for LoRaWAN</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/3-try-starter-kit/collect-visualize-data/" class="is-active">Step 2: Collect and visualize data</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/3-try-starter-kit/control-remotely/" class="">Step 3: Remotely control the end device behavior</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/3-try-starter-kit/troubleshooting/" class="">Troubleshooting</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/4-next-steps/" class="">Step 4: Next steps</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/faq/" class="">FAQ</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/glossary/" class="">Glossary</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+        <h1 class="title is-size-2">Step 2: Collect and visualize data</h1>
+        <div class="content">
+          <p>This Section covers your options for collecting and visualizing LoRaWAN data from your mClimate Multipurpose button.</p>
+<p>The Live Data view in The Things Stack Console gives you a real-time look at messages from your end device. This view is very useful to get a quick look at the contents of the message and also for debugging. However, if you want to truly visualize data, you can process the data and visualize it in a dashboard.</p>
+<p>At this point, this guide offers two mutually exclusive options to further collect/visualize this data.</p>
+<ol>
+<li>Create a dashboard using an external IoT platform.</li>
+<li>(Advanced) Retrieve data on your local machine using ngrok.</li>
+</ol>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="create-a-dashboard">
+      <a>
+        <span>Create a dashboard</span>
+      </a>
+    </li>
+    
+    <li data-tab="retrieve-data-locally-advanced">
+      <a>
+        <span>Retrieve data locally (Advanced)</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="create-a-dashboard">
+  <p>The Things Stack does not support building dashboards as they are very specific to the use case and are meant to be very customizable.</p>
+<p>Instead, there are many IoT platforms out there on the market which provide various dashboard options. For this example, we are going to use one such platform called <a href="https://app.datacake.de/login">Datacake</a>.</p>
+<h4 id="datacake">Datacake</h4>
+<ol>
+<li>Create an account on the <a href="https://app.datacake.de/login">Datacake</a> platform and login.</li>
+<li>Select <strong>Add Device</strong> and choose the <strong>LoRaWAN</strong> option.</li>
+</ol>
+<figure><img src="/docs/getting-started/3-try-starter-kit/collect-visualize-data/lorawan-device.png"
+    alt="LoRaWAN Device">
+</figure>
+<ol start="3">
+<li>In the search bar after <strong>Device Template</strong>, search for <code>mClimate Multipurpose Button</code>. Select <strong>Next</strong>.</li>
+</ol>
+<figure><img src="/docs/getting-started/3-try-starter-kit/collect-visualize-data/mclimate-button.png"
+    alt="mClimate button">
+</figure>
+<ol start="4">
+<li>In the <strong>Network Server</strong> tab select, <code>The Things Stack v3</code> and click <strong>Next</strong>.</li>
+</ol>
+<figure><img src="/docs/getting-started/3-try-starter-kit/collect-visualize-data/tts.png"
+    alt="The Things Stack">
+</figure>
+<ol start="5">
+<li>In the <strong>Add Devices</strong> section, choose <strong>Manual</strong> and enter the Device EUI of the end device. You can find this <strong>Applications</strong> -&gt; <code>Your Application</code> -&gt; <strong>End Devices</strong> page The Things Stack console</li>
+</ol>
+<figure><img src="/docs/getting-started/3-try-starter-kit/collect-visualize-data/device-details.png"
+    alt="Device Details">
+</figure>
+<ol start="6">
+<li>
+<p>Choose the free plan to proceed.</p>
+</li>
+<li>
+<p>Get an API token</p>
+</li>
+</ol>
+<ul>
+<li>Head to <strong>Account Settings</strong> from the navigation panel on the left.</li>
+<li>Select the <strong>API Token</strong> tab.</li>
+<li>Copy the token</li>
+</ul>
+<figure><img src="/docs/getting-started/3-try-starter-kit/collect-visualize-data/datacake-api-token.png"
+    alt="Datacake API Token">
+</figure>
+<h4 id="the-things-stack">The Things Stack</h4>
+<p>Now head back to The Things Stack console and go to your application.</p>
+<ol>
+<li>
+<p>Click on the <strong>Webhooks</strong> option from the side panel.</p>
+</li>
+<li>
+<p>Click <strong>Add webhook</strong>. Choose <strong>Datacake</strong>.</p>
+</li>
+<li>
+<p>Enter the webhook details</p>
+</li>
+</ol>
+<ul>
+<li><strong>Wehbook ID</strong>: An identifier for your Webhook. This cannot be changed later.</li>
+<li><strong>Token</strong>: API Key from Datacake.</li>
+</ul>
+<figure><img src="/docs/getting-started/3-try-starter-kit/collect-visualize-data/datacake-webhook.png"
+    alt="Datacake">
+</figure>
+<ol start="4">
+<li>
+<p>Select <strong>Create Datacake webhook</strong></p>
+</li>
+<li>
+<p>The newly created webhook will have the <code>pending</code> status.</p>
+</li>
+</ol>
+<figure><img src="/docs/getting-started/3-try-starter-kit/collect-visualize-data/wh-created.png"
+    alt="Webhook created">
+</figure>
+<ol start="6">
+<li>Click the button on your end device. The uplink message should now be successfully transmitted to the The Things Stack and it will be sent to Datacake. If you now refresh the webhooks page, the webhook will be marked as <code>healthy</code>.</li>
+</ol>
+<figure><img src="/docs/getting-started/3-try-starter-kit/collect-visualize-data/wh-healthy.png"
+    alt="Webhook healthy">
+</figure>
+<ol start="7">
+<li>Once you send a few uplinks, the Datacake dashboard for the device will get filled with that data.</li>
+</ol>
+<figure><img src="/docs/getting-started/3-try-starter-kit/collect-visualize-data/datacake-data.png"
+    alt="Datacake data">
+</figure>
+</section>
+<section data-content="retrieve-data-locally-advanced">
+  <p>In this guide, we will use <a href="https://ngrok.com/">ngrok</a> and some Python code to pipe the data to our local terminal. This guide is meant for users who are already comfortable with using a terminal.</p>
+<h4 id="prerequisites">Prerequisites</h4>
+<ol>
+<li><a href="https://ngrok.com/">ngrok</a> free tier account.</li>
+<li><a href="https://dashboard.ngrok.com/get-started/setup">ngrok agent command line tool</a></li>
+<li><a href="https://www.python.org/">Python</a></li>
+<li><a href="https://pypi.org/project/pip/">Pip</a> package manager.</li>
+</ol>
+<h4 id="build-a-simple-http-server-using-python">Build a Simple HTTP Server Using Python</h4>
+<h5 id="setup">Setup</h5>
+<ol>
+<li>Create Project Structure</li>
+</ol>
+<p>First, create a new directory for your project and set up the required files:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir python-http-server
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> python-http-server
+</span></span><span class="line"><span class="cl">touch server.py requirements.txt .env
+</span></span></code></pre></div><ol start="2">
+<li>Install Dependencies</li>
+</ol>
+<p>Add the following to your <code>requirements.txt</code> file:</p>
+<pre tabindex="0"><code>flask==2.3.3
+python-dotenv==1.0.0
+</code></pre><p>Then install the dependencies:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install -r requirements.txt
+</span></span></code></pre></div><ol start="3">
+<li>Generate a random authentication token. One option is to use <code>openssl</code>.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl rand -hex <span class="m">16</span>
+</span></span><span class="line"><span class="cl">33f9bf794b0aed47bb04f0a1832159db
+</span></span></code></pre></div><ol start="4">
+<li>Configure Environment Variables</li>
+</ol>
+<p>Create a <code>.env</code> file with the following configuration.</p>
+<p>The following example sets the server port to 3000 and provides an authentication token. Adapt it for your case.</p>
+<pre tabindex="0"><code>export SERVER_PORT=3000
+export AUTH_TOKEN=&lt;token from above&gt;
+</code></pre><h5 id="server-implementation">Server Implementation</h5>
+<ol>
+<li>Import Libraries and Setup</li>
+</ol>
+<p>Create the <code>server.py</code> file and add the necessary imports:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">jsonify</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+</span></span></code></pre></div><p>These imports provide:</p>
+<ul>
+<li>Access to environment variables and file system</li>
+<li>JSON handling capabilities</li>
+<li>Logging functionality</li>
+<li>Decorator utilities</li>
+<li>Flask web framework components</li>
+<li>Environment variable loading from .env files</li>
+</ul>
+<ol start="2">
+<li>Initialize Environment and Logging</li>
+</ol>
+<p>Add the following code to set up logging and load environment variables:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Load environment variables from .env file</span>
+</span></span><span class="line"><span class="cl"><span class="n">load_dotenv</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Configure basic logging</span>
+</span></span><span class="line"><span class="cl"><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(levelname)s</span><span class="s1"> : </span><span class="si">%(message)s</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Read configuration from environment variables</span>
+</span></span><span class="line"><span class="cl"><span class="n">PORT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;SERVER_PORT&#34;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;AUTH_TOKEN&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Validate required environment variables</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="ow">not</span> <span class="n">AUTH_TOKEN</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&#34;ERROR: AUTH_TOKEN environment variable is required&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><p>This section:</p>
+<ul>
+<li>Loads variables from the <code>.env</code> file</li>
+<li>Sets up logging with INFO level</li>
+<li>Retrieves environment variables with fallback values</li>
+<li>Validates that required authentication token exists</li>
+</ul>
+<ol start="3">
+<li>Create the Flask Application</li>
+</ol>
+<p>Initialize the Flask application:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span></code></pre></div><ol start="4">
+<li>Implement Authentication. Since we are exposing the server to the internet, this adds some basic security.</li>
+</ol>
+<p>Add a decorator function to handle token-based authentication:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">require_bearer_token</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Decorator to validate bearer token from Authorization header&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">decorated</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">auth_header</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Authorization&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Check if Authorization header exists and has correct format</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">auth_header</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">auth_header</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Bearer &#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&#34;error&#34;</span><span class="p">:</span> <span class="s2">&#34;Unauthorized. Bearer token required&#34;</span><span class="p">}),</span> <span class="mi">401</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Extract and validate token</span>
+</span></span><span class="line"><span class="cl">        <span class="n">token</span> <span class="o">=</span> <span class="n">auth_header</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">token</span> <span class="o">!=</span> <span class="n">AUTH_TOKEN</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&#34;error&#34;</span><span class="p">:</span> <span class="s2">&#34;Forbidden. Invalid token&#34;</span><span class="p">}),</span> <span class="mi">403</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">decorated</span>
+</span></span></code></pre></div><p>This decorator:</p>
+<ul>
+<li>Checks if the Authorization header is present and properly formatted</li>
+<li>Extracts the token from the header</li>
+<li>Compares the token against the expected value</li>
+<li>Returns appropriate error responses for invalid tokens</li>
+</ul>
+<ol start="5">
+<li>Implement JSON Validation since The Things Stack sends JSON webhooks.</li>
+</ol>
+<p>Add a helper function to validate JSON requests:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">validate_json</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Validate that the request has the correct content type header and a valid JSON body&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">is_json</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&#34;error&#34;</span><span class="p">:</span> <span class="s2">&#34;Unsupported Media Type. Expected application/json&#34;</span><span class="p">}),</span> <span class="mi">415</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># This will raise an exception if the body is not valid JSON</span>
+</span></span><span class="line"><span class="cl">        <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&#34;error&#34;</span><span class="p">:</span> <span class="s2">&#34;Bad Request. Invalid JSON format&#34;</span><span class="p">}),</span> <span class="mi">400</span>
+</span></span></code></pre></div><p>This function:</p>
+<ul>
+<li>Checks if the Content-Type header indicates JSON</li>
+<li>Validates that the body contains properly formatted JSON</li>
+<li>Returns appropriate error responses for invalid requests</li>
+</ul>
+<ol start="6">
+<li>Define the root endpoint. This is where <code>ngrok</code> will forward the webhook.</li>
+</ol>
+<p>Create the routes for handling HTTP requests:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@require_bearer_token</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_post</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Validate JSON content type and format</span>
+</span></span><span class="line"><span class="cl">    <span class="n">error_response</span> <span class="o">=</span> <span class="n">validate_json</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">error_response</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">error_response</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Get and print the JSON data</span>
+</span></span><span class="line"><span class="cl">    <span class="n">json_data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Received device data&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Return success response</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;message&#34;</span><span class="p">:</span> <span class="s2">&#34;data received successfully&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}),</span> <span class="mi">200</span>
+</span></span></code></pre></div><p>This route:</p>
+<ul>
+<li>Accepts only POST requests to the root URL</li>
+<li>Requires valid authentication via the decorator</li>
+<li>Validates the request contains proper JSON</li>
+<li>Logs the received data</li>
+<li>Returns a success message</li>
+</ul>
+<ol start="7">
+<li>Define Error Handling for Other Methods</li>
+</ol>
+<p>Add a catch-all route for unsupported HTTP methods:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;PUT&#39;</span><span class="p">,</span> <span class="s1">&#39;DELETE&#39;</span><span class="p">,</span> <span class="s1">&#39;PATCH&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">method_not_allowed</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&#34;error&#34;</span><span class="p">:</span> <span class="s2">&#34;Method Not Allowed&#34;</span><span class="p">}),</span> <span class="mi">405</span>
+</span></span></code></pre></div><p>This explicitly returns a 405 error for all HTTP methods except POST.</p>
+<ol start="8">
+<li>Start the Server</li>
+</ol>
+<p>Finally, add the code to run the server:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Log server startup information</span>
+</span></span><span class="line"><span class="cl">    <span class="n">token_preview</span> <span class="o">=</span> <span class="n">AUTH_TOKEN</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&#34;...&#34;</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Server running at http://localhost:</span><span class="si">{</span><span class="n">PORT</span><span class="si">}</span><span class="s2">/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Using auth token: </span><span class="si">{</span><span class="n">token_preview</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Start the server</span>
+</span></span><span class="line"><span class="cl">    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">PORT</span><span class="p">)</span>
+</span></span></code></pre></div><p>This server now runs on <code>http://localhost:&lt;PORT&gt;</code></p>
+<h4 id="expose-the-server-using-ngrok">Expose the Server using ngrok</h4>
+<ol>
+<li>On the <a href="https://dashboard.ngrok.com">ngrok dashboard</a>, scroll down to the <strong>Deploy your app online</strong> and claim a free <strong>Static Domain</strong>. This is the end point that The Things Stack will send the webhooks to.</li>
+<li>On your local machine, configure the auth token for ngrok agent. This token will be available on the <code>ngrok</code> dashboard.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ngrok config add-authtoken &lt;token&gt;
+</span></span></code></pre></div><ol start="3">
+<li>Start the <code>ngrok</code> agent and set it to forward traffic to the local HTTP Server.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ngrok http --url<span class="o">=</span>&lt;your-static-domain&gt; &lt;PORT&gt;
+</span></span></code></pre></div><h4 id="testing">Testing</h4>
+<p>Send an HTTP POST request to your static domain to check if the request gets forwarded to your local webserver.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -H <span class="s2">&#34;Authorization: Bearer &lt;AUTH_TOKEN&gt;&#34;</span> -H <span class="s2">&#34;Content-Type: application/json&#34;</span> https://&lt;your-static-domain&gt;  -d <span class="s1">&#39;{&#34;test&#34;:&#34;value&#34;}&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;message&#34;</span>:<span class="s2">&#34;data received successfully&#34;</span><span class="o">}</span>
+</span></span></code></pre></div><p>This request should be successful and the local server should log the JSON.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> * Running on http://localhost:3000
+</span></span><span class="line"><span class="cl">INFO : Press CTRL+C to quit
+</span></span><span class="line"><span class="cl">INFO : Received device data
+</span></span><span class="line"><span class="cl">INFO : <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;test&#34;</span>: <span class="s2">&#34;value&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h4 id="configure-a-webhook-on-the-things-stack">Configure a Webhook on The Things Stack</h4>
+<ol>
+<li>In the The Things Stack Console, click on your application and navigate to the webhooks section.</li>
+<li>Select <strong>Add Webhook</strong> and select <code>Custom webhook</code>.</li>
+<li>Enter the webhook details.</li>
+</ol>
+<ul>
+<li><strong>Wehbook ID</strong>: An identifier for your Webhook (ex: <code>my-server-ngrok</code>). This cannot be changed later.</li>
+<li><strong>Webhook format</strong>: Keep this as <code>JSON</code>.</li>
+<li><strong>Base URL</strong>: Enter your static domain URL from <code>ngrok</code>.</li>
+</ul>
+<ol start="4">
+<li>Select <strong>Add header entry</strong> in the additional header section.</li>
+</ol>
+<ul>
+<li>Key: <code>Authorization</code></li>
+<li>Value: <code>Bearer &lt;your-auth-token&gt;</code></li>
+</ul>
+<figure><img src="/docs/getting-started/3-try-starter-kit/collect-visualize-data/ngrok-webhook.png"
+    alt="Webhook settings for ngrok">
+</figure>
+<ol start="5">
+<li>
+<p>In <strong>Enabled event types</strong> select <code>Uplink message</code> and <code>Join request</code>. You can also select all message types.</p>
+</li>
+<li>
+<p>Click <strong>Add webhook</strong>.</p>
+</li>
+</ol>
+<h4 id="sending-uplinks">Sending Uplinks</h4>
+<p>If all the previous steps were successful, you now have a local HTTP server to which The Things Stack will forward uplink data via Webhooks. To test this, press the button on your end device. The HTTP Server will log this uplink JSON. An example is shown below.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">INFO : Received device data
+</span></span><span class="line"><span class="cl">INFO : <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;end_device_ids&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;device_id&#34;</span>: <span class="s2">&#34;eui-70b3d52dd600035a&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;application_ids&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;application_id&#34;</span>: <span class="s2">&#34;starter-kit&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;dev_eui&#34;</span>: <span class="s2">&#34;70B3D52DD600035A&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;join_eui&#34;</span>: <span class="s2">&#34;EC656E0000000001&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;dev_addr&#34;</span>: <span class="s2">&#34;27FE87F6&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;correlation_ids&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;gs:uplink:01JRZ767CVCHBZW1Y8YG9PZ3TS&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">]</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;received_at&#34;</span>: <span class="s2">&#34;2025-04-16T11:54:13.995136483Z&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;uplink_message&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;session_key_id&#34;</span>: <span class="s2">&#34;aAixKtmNZUKQXd4GqpHDsw==&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;f_port&#34;</span>: 2,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;f_cnt&#34;</span>: 14,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;frm_payload&#34;</span>: <span class="s2">&#34;sQAAEAHlANcB&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;decoded_payload&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;batteryVoltage&#34;</span>: 3.4,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;pressEvent&#34;</span>: 1,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;sensorTemperature&#34;</span>: 21.5,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;singlePressEventCounter&#34;</span>: 16,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;thermistorProperlyConnected&#34;</span>: <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;rx_metadata&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">      <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gateway_ids&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;gateway_id&#34;</span>: <span class="s2">&#34;ttig-52ec&#34;</span>,
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;eui&#34;</span>: <span class="s2">&#34;58A0CBFFFE8052EC&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;time&#34;</span>: <span class="s2">&#34;2025-04-16T11:54:13.697237014Z&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;timestamp&#34;</span>: 1276394164,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;rssi&#34;</span>: -31,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;channel_rssi&#34;</span>: -31,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;snr&#34;</span>: 9.5,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;uplink_token&#34;</span>: <span class="s2">&#34;ChcKFQoJdHRpZy01MmVjEghYoMv//oBS7BC09dDgBBoMCOW0/r8GEO6mnPcCIKCelfiSJQ==&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;received_at&#34;</span>: <span class="s2">&#34;2025-04-16T11:54:13.758247461Z&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">]</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;settings&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;data_rate&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;lora&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;bandwidth&#34;</span>: 125000,
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;spreading_factor&#34;</span>: 7,
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;coding_rate&#34;</span>: <span class="s2">&#34;4/5&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;frequency&#34;</span>: <span class="s2">&#34;867700000&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;timestamp&#34;</span>: 1276394164,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;time&#34;</span>: <span class="s2">&#34;2025-04-16T11:54:13.697237014Z&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;received_at&#34;</span>: <span class="s2">&#34;2025-04-16T11:54:13.787593298Z&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;confirmed&#34;</span>: true,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;consumed_airtime&#34;</span>: <span class="s2">&#34;0.061696s&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;version_ids&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;brand_id&#34;</span>: <span class="s2">&#34;mclimate&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;model_id&#34;</span>: <span class="s2">&#34;mc-button&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;hardware_version&#34;</span>: <span class="s2">&#34;1.2&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;firmware_version&#34;</span>: <span class="s2">&#34;1.2&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;band_id&#34;</span>: <span class="s2">&#34;EU_863_870&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;network_ids&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;net_id&#34;</span>: <span class="s2">&#34;000013&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns_id&#34;</span>: <span class="s2">&#34;EC656E000010181D&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;tenant_id&#34;</span>: <span class="s2">&#34;docs-test-account&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;cluster_id&#34;</span>: <span class="s2">&#34;eu1&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;cluster_address&#34;</span>: <span class="s2">&#34;eu1.cloud.thethings.industries&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;tenant_address&#34;</span>: <span class="s2">&#34;docs-test-account.eu1.cloud.thethings.industries&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;last_battery_percentage&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;f_cnt&#34;</span>: 14,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;value&#34;</span>: 90.118576,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;received_at&#34;</span>: <span class="s2">&#34;2025-04-16T11:54:13.787593298Z&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>
+</section>
+
+</div>
+
+<p>Now that we have experimented with different methods of collecting uplinks, let&rsquo;s use The Things Stack to send downlink messages to the end device.</p>
+        </div>
+          <div class="columns is-multiline">
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/getting-started/3-try-starter-kit/activate/">← Step 1: Activate your Starter kit for LoRaWAN</a>
+<a class="button is-pulled-right" href="/docs/getting-started/3-try-starter-kit/control-remotely/">Step 3: Remotely control the end device behavior →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sections</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sitemap</h3>
+        <p><a class="" href="https://www.thethingsindustries.com/docs/sitemap/">View our Sitemap</a></p>
+      </nav>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

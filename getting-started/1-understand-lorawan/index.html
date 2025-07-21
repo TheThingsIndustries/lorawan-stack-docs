@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.140.0-DEV">
+  <title>Step 1: Understanding LoRaWAN Fundamentals | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/1-understand-lorawan/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="Learn basic concepts of LoRaWAN">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Step 1: Understanding LoRaWAN Fundamentals">
+  <meta itemprop="description" content="Learn basic concepts of LoRaWAN">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Step 1: Understanding LoRaWAN Fundamentals">
+  <meta property="og:description" content="Learn basic concepts of LoRaWAN">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/1-understand-lorawan/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Step 1: Understanding LoRaWAN Fundamentals" />
+  <meta name="twitter:description" content="Learn basic concepts of LoRaWAN" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Getting Started</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/getting-started/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/1-understand-lorawan/" class="is-active">Step 1: Understanding LoRaWAN Fundamentals</a>
+    
+
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/2-prerequisites/" class="">Step 2: Setup your first LoRaWAN® Network</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/3-try-starter-kit/" class="">Step 3: Try the Starter Kit for LoRaWAN®</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/4-next-steps/" class="">Step 4: Next steps</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/faq/" class="">FAQ</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/glossary/" class="">Glossary</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+        <h1 class="title is-size-2">Step 1: Understanding LoRaWAN Fundamentals</h1>
+        <div class="content">
+          <p>This guide briefly explains the architecture and key concepts of a LoRaWAN® network.</p>
+<p>LoRaWAN is a Low Power Wide Area Network (LPWAN) protocol designed for low power, long range use cases.</p>
+<h3 id="key-characteristics">Key Characteristics</h3>
+<p>The key characteristics of a LoRaWAN</p>
+<ul>
+<li><strong>Long Range</strong>: LoRaWAN networks can provide coverage of up to 10+ km in rural areas and 2-5 km in urban environments</li>
+<li><strong>Low Power Consumption</strong>: Devices can operate for 5-10+ years on a single battery</li>
+<li><strong>Secure Communication</strong>: End-to-end encryption with AES.</li>
+<li><strong>Bidirectional Communication</strong>: Supports both upstream and downstream messages.</li>
+</ul>
+<h4 id="data-size-and-rates">Data Size and Rates</h4>
+<p>LoRaWAN is optimized for low data rate communications:</p>
+<ul>
+<li><strong>Payload Size</strong>: 51-242 bytes per message*</li>
+<li><strong>Data Rate</strong>: 0.3-50 kbps*</li>
+<li><strong>Daily Messages</strong>: Typically designed for 1-100 messages per day</li>
+<li><strong>Duty Cycle</strong>: Subject to regional regulations (e.g., 1% in Europe)</li>
+</ul>
+<p>*Depends on the regional regulations and the spreading factor. Spreading factor is a transmission parameter that balances transmission range against data rate - higher spreading factors reach longer distances but transmit data more slowly.</p>
+<h4 id="typical-use-cases">Typical Use Cases</h4>
+<p>LoRaWAN excels in applications requiring:</p>
+<ul>
+<li>Long battery life</li>
+<li>Long-range coverage</li>
+<li>Low cost</li>
+<li>Small, infrequent data transmissions</li>
+</ul>
+<p>Typical use cases are</p>
+<ul>
+<li>Smart cities (ex: Street lighting control, Traffic monitoring etc)</li>
+<li>Agriculture (ex: Soil moisture monitoring, Irrigation control etc)</li>
+<li>Supply Chain &amp; Logistics (ex: Asset tracking, Cold chain monitoring etc)</li>
+<li>Utilities (ex: Leak detection, Smart metering etc)</li>
+<li>Industrial IoT (ex: Predictive maintenance)</li>
+</ul>
+<h3 id="lora-and-lorawan">LoRa and LoRaWAN</h3>
+<p>LoRa is a wireless modulation technique derived from Chirp Spread Spectrum (CSS) technology. It encodes information on radio waves using chirp pulses - similar to the way dolphins and bats communicate! LoRa modulated transmission is robust against disturbances and can be received across great distances.</p>
+<p>LoRaWAN is a Media Access Control (MAC) layer protocol built on top of LoRa modulation. It is a <em>software layer</em> which defines how devices use the LoRa hardware, for example when they transmit, and the format of messages.</p>
+<p>The LoRaWAN protocol is developed and maintained by the <a href="https://lora-alliance.org/">LoRa Alliance</a>. The first <a href="https://resources.lora-alliance.org/technical-specifications">LoRaWAN specification</a> was released in January 2015. At the time of this writing the latest specifications are 1.0.4 (in 1.0 series) and 1.1 (1.1 series).</p>
+<h3 id="architecture">Architecture</h3>
+<figure><img src="./tts-architecture-simplified.png"
+    alt="The Things Stack Architecture" width="75%">
+</figure>
+
+<p>A typical LoRaWAN network consists of the following basic elements.</p>
+<ul>
+<li>
+<p><strong>End Devices</strong>: Sensors or actuators send LoRa modulated wireless messages to the gateways or receive messages wirelessly back from the gateways.</p>
+</li>
+<li>
+<p><strong>Gateways</strong>: Specialized devices that receive messages from end devices and forward them to the Network Server, as well as forward messages from the Network Server to the end devices.</p>
+</li>
+<li>
+<p><strong>Network Server</strong>: Software running on a server that manages the entire network. Also referred to as LoRaWAN Network Server/LNS or simply Network software.</p>
+</li>
+<li>
+<p><strong>Application</strong>: Software running on a server that is responsible for securely processing application data.</p>
+</li>
+</ul>
+<h3 id="simple-message-flow">Simple message flow</h3>
+<h4 id="uplinks">Uplinks</h4>
+<p>The messages that originates from an end device and are sent to the server via gateways are called an Uplinks.</p>
+<p>End devices communicate with nearby gateways and each gateway is connected to the Network Server.</p>
+<p>LoRaWAN networks use an ALOHA based protocol, so end devices don’t need to pair with specific gateways. Messages sent from end devices travel through all gateways within range.</p>
+<p>These messages are received by the Network Server. If the Network Server has received multiple copies of the same message, it keeps a single copy of the message and discards others. This is known as message deduplication.</p>
+<p>The Network Server separates the network settings related data from the separately-encrypted application (sensor) data and forwards the latter to the application server.</p>
+<p>The Application Server decrypts the application data and makes is available to the user via a multitude of options.</p>
+<h4 id="downlinks">Downlinks</h4>
+<p>Messages that originate in the server (Network Server or Application) and are sent to the end device via gateways are called downlinks.</p>
+<h3 id="security">Security</h3>
+<p>All LoRaWAN data is encrypted using symmetric keys. All devices have one or two unique keys called the “root keys” associated with them, depending on the version of LoRaWAN they use.</p>
+<p>These root keys are used to derive separate keys for the application data and network data.</p>
+<p>Application data is encrypted using one of these derived keys. This key is known only to the Application Server and the End Device.</p>
+<p>Network (settings) data is encrypted using different key(s). These keys are known only to the Network Server and the End Device.</p>
+<blockquote>
+<p>These keys are called Session Keys since they are rotated when a device session changes. Device sessions are a much deeper topic and is omitted from this basic guide in the interest of simplicity.</p>
+</blockquote>
+<h2 id="the-things-stack">The Things Stack</h2>
+<p>The Things Stack is a LoRaWAN® Network Server stack which is the critical component for any LoRaWAN solution. This guide quickly gets the reader up to speed with the basics of The Things Stack.</p>
+<figure><img src="./tts-architecture.jpeg"
+    alt="The Things Stack Architecture" width="75%">
+</figure>
+
+<p>The Things Stack is an enterprise grade LoRaWAN server (that includes both the Network Server and Application Server functions mentioned in the LoRaWAN Reference architecture). In addition, The Things Stack contains services and tools to securely manage millions of LoRaWAN devices in production.</p>
+<p>Now that you are up to speed with the basic concepts and terminology, let&rsquo;s move on to the hands-on part by getting your starter kit and (optionally) creating a The Things Stack account.</p>
+        </div>
+          <div class="columns is-multiline">
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/getting-started/">← Getting Started</a>
+<a class="button is-pulled-right" href="/docs/getting-started/2-prerequisites/">Step 2: Setup your first LoRaWAN® Network →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#the-things-stack'>The Things Stack</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sections</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sitemap</h3>
+        <p><a class="" href="https://www.thethingsindustries.com/docs/sitemap/">View our Sitemap</a></p>
+      </nav>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
