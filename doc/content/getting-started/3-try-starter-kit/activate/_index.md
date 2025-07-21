@@ -8,11 +8,15 @@ This guide shows you how to activate your Starter Kit’s LoRaWAN® gateway and 
 
 <!--more-->
 
-First, set up the gateway. It receives messages from the end device and forwards them to {{% tts %}}, and the other way around. Once the gateway is online, you can activate your end device to start sending and receiving data.
+<details><summary>You can also check our YouTube video on how to get started.</summary>
+{{< youtube "JRTPpME2-bw" >}}
+</details>
 
 ### 1. {{% ttigpro %}}
 
-To get started, we’ll use the built-in 4G LTE SIM in The Things Indoor Gateway Pro to connect to The Things Stack. You can switch to WiFi or Ethernet later if neede
+First, set up the gateway. It receives messages from the end device and forwards them to {{% tts %}}, and the other way around. Once the gateway is online, you can activate your end device to start sending and receiving data.
+
+We’ll use the built-in 4G LTE SIM in The Things Indoor Gateway Pro to connect to The Things Stack. You can switch to WiFi or Ethernet later if needed.
 
 If you prefer a visual guide to connecting {{% ttigpro %}} you can use the video below.
 
