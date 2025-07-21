@@ -25,4 +25,4 @@ This guide is structured in four steps.
 
 This guide additionally contains an [FAQ]({{< ref "/getting-started/faq" >}}) and a [glossary]({{< ref "/getting-started/glossary" >}}) to provide quick answers to frequently asked questions and definitions of key LoRaWAN terms.
 
-Let's get started with Step 1.
+Let's get started with [Step 1]({{< ref "/getting-started/1-understand-lorawan" >}}).
