@@ -34,7 +34,7 @@ We will only be adding different values to the **Payload** field for different t
 
 In this example, we will make the **Green** LED blink fast for 20 seconds remotely.
 
-1. Enter the value `05 02 02`.in the **Payload** field and press **Schedule Downlink** and this downlink will be queued.
+1. Enter the value `05 02 02` in the **Payload** field and press **Schedule Downlink** and this downlink will be queued.
 
 {{< figure src="blink-green.png" alt="Blink Green LED" >}}
 
