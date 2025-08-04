@@ -1,0 +1,22 @@
+name: BatchSetMACSettingsProfileRequest
+fields:
+- name: application_ids
+  message:
+    name: ApplicationIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: mac_settings_profile_ids
+  message:
+    name: MACSettingsProfileIdentifiers
+  default: {}
+- name: device_ids
+  rules:
+    min_items: 1
+    max_items: 20
+  repeated:
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: []

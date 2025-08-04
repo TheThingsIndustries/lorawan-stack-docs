@@ -14,15 +14,16 @@ ttn-lw-cli authentication-providers update [provider-id] [flags]
 ### Options
 
 ```
-      --allow-registrations                                
-      --allowed-email-domains strings                      
-      --configuration.provider.oidc.client-id string       
-      --configuration.provider.oidc.client-secret string   
-      --configuration.provider.oidc.provider-url string    
-  -h, --help                                               help for update
-      --name string                                        
-      --provider-id string                                 
-      --unset strings                                      list of fields to unset
+      --allow-registrations                                          
+      --allowed-email-domains strings                                
+      --configuration.provider.oidc.client-id string                 
+      --configuration.provider.oidc.client-secret string             
+      --configuration.provider.oidc.preferred-response-type string   
+      --configuration.provider.oidc.provider-url string              
+  -h, --help                                                         help for update
+      --name string                                                  
+      --provider-id string                                           
+      --unset strings                                                list of fields to unset
 ```
 
 ### Options inherited from parent commands
