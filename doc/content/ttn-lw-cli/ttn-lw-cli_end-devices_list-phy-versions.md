@@ -15,6 +15,7 @@ ttn-lw-cli end-devices list-phy-versions [flags]
 
 ```
       --band-id string   
+      --custom-bands     
   -h, --help             help for list-phy-versions
 ```
 
