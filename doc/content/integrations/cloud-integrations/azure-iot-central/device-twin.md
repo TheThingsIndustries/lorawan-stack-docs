@@ -87,7 +87,7 @@ An example of this property as unmodeled data would look as follows:
 
 > `frm-payload` is the service name for the service which derives the end device location from the decoded payload.
 
-- `serviceData` - Object mapping between the service (name) and the service data reported by that service. Used by integrations such as [LoRa Cloud]({{< ref "/integrations/other-integrations/lora-cloud" >}}).
+- `serviceData` - Object mapping between the service (name) and the service data reported by that service. Used by third-party integrations.
 - `decodedPayload` - Decoded payload of the uplink messages, which is generated using the [Payload Formatters]({{< ref "/integrations/payload-formatters" >}}).
 
 An example of this property as unmodeled data would look as follows:
