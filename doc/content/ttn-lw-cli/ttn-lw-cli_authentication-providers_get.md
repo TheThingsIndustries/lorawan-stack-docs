@@ -14,16 +14,17 @@ ttn-lw-cli authentication-providers get [provider-id] [flags]
 ### Options
 
 ```
-      --allow-registrations                         select the allow_registrations field
-      --allowed-email-domains                       select the allowed_email_domains field
-      --configuration                               select the configuration field and all allowed sub-fields
-      --configuration.provider.oidc                 select the configuration.provider.oidc field and all allowed sub-fields
-      --configuration.provider.oidc.client-id       select the configuration.provider.oidc.client_id field
-      --configuration.provider.oidc.client-secret   select the configuration.provider.oidc.client_secret field
-      --configuration.provider.oidc.provider-url    select the configuration.provider.oidc.provider_url field
-  -h, --help                                        help for get
-      --name                                        select the name field
-      --provider-id string                          
+      --allow-registrations                                   select the allow_registrations field
+      --allowed-email-domains                                 select the allowed_email_domains field
+      --configuration                                         select the configuration field and all allowed sub-fields
+      --configuration.provider.oidc                           select the configuration.provider.oidc field and all allowed sub-fields
+      --configuration.provider.oidc.client-id                 select the configuration.provider.oidc.client_id field
+      --configuration.provider.oidc.client-secret             select the configuration.provider.oidc.client_secret field
+      --configuration.provider.oidc.preferred-response-type   select the configuration.provider.oidc.preferred_response_type field
+      --configuration.provider.oidc.provider-url              select the configuration.provider.oidc.provider_url field
+  -h, --help                                                  help for get
+      --name                                                  select the name field
+      --provider-id string                                    
 ```
 
 ### Options inherited from parent commands

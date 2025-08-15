@@ -8,6 +8,8 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.34.2
+
 ## 3.34.1
 
 - Resolve issues with certificate renewal in the certbot scheduled task to ensure proper execution.

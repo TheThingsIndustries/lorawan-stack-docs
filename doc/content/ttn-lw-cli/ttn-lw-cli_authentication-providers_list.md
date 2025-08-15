@@ -14,18 +14,19 @@ ttn-lw-cli authentication-providers list [flags]
 ### Options
 
 ```
-      --allow-registrations                         select the allow_registrations field
-      --allowed-email-domains                       select the allowed_email_domains field
-      --configuration                               select the configuration field and all allowed sub-fields
-      --configuration.provider.oidc                 select the configuration.provider.oidc field and all allowed sub-fields
-      --configuration.provider.oidc.client-id       select the configuration.provider.oidc.client_id field
-      --configuration.provider.oidc.client-secret   select the configuration.provider.oidc.client_secret field
-      --configuration.provider.oidc.provider-url    select the configuration.provider.oidc.provider_url field
-  -h, --help                                        help for list
-      --limit uint32                                maximum number of results to get (default 50)
-      --name                                        select the name field
-      --order string                                order by this field
-      --page uint32                                 results page number (default 1)
+      --allow-registrations                                   select the allow_registrations field
+      --allowed-email-domains                                 select the allowed_email_domains field
+      --configuration                                         select the configuration field and all allowed sub-fields
+      --configuration.provider.oidc                           select the configuration.provider.oidc field and all allowed sub-fields
+      --configuration.provider.oidc.client-id                 select the configuration.provider.oidc.client_id field
+      --configuration.provider.oidc.client-secret             select the configuration.provider.oidc.client_secret field
+      --configuration.provider.oidc.preferred-response-type   select the configuration.provider.oidc.preferred_response_type field
+      --configuration.provider.oidc.provider-url              select the configuration.provider.oidc.provider_url field
+  -h, --help                                                  help for list
+      --limit uint32                                          maximum number of results to get (default 50)
+      --name                                                  select the name field
+      --order string                                          order by this field
+      --page uint32                                           results page number (default 1)
 ```
 
 ### Options inherited from parent commands

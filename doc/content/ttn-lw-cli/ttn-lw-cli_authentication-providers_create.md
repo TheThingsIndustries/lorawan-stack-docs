@@ -14,14 +14,15 @@ ttn-lw-cli authentication-providers create [provider-id] [flags]
 ### Options
 
 ```
-      --allow-registrations                                
-      --allowed-email-domains strings                      
-      --configuration.provider.oidc.client-id string       
-      --configuration.provider.oidc.client-secret string   
-      --configuration.provider.oidc.provider-url string    
-  -h, --help                                               help for create
-      --name string                                        
-      --provider-id string                                 
+      --allow-registrations                                          
+      --allowed-email-domains strings                                
+      --configuration.provider.oidc.client-id string                 
+      --configuration.provider.oidc.client-secret string             
+      --configuration.provider.oidc.preferred-response-type string   
+      --configuration.provider.oidc.provider-url string              
+  -h, --help                                                         help for create
+      --name string                                                  
+      --provider-id string                                           
 ```
 
 ### Options inherited from parent commands
