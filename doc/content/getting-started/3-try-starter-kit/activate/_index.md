@@ -8,9 +8,7 @@ This guide shows you how to activate your Starter Kit’s LoRaWAN® gateway and 
 
 <!--more-->
 
-<details><summary>You can also check our YouTube video on how to get started.</summary>
 {{< youtube "JRTPpME2-bw" >}}
-</details>
 
 ### 1. {{% ttigpro %}}
 
