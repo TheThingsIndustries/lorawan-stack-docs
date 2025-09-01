@@ -159,6 +159,14 @@ If the issue persists, please contact [support@thethingsindustries.com](mailto:s
 
 ## Firmware Changelog
 
+### 1.2.11
+
+- Update dependencies
+- Fix for DNS lookup when a single custom DNS server is configured
+- Configure network hostname as `ttigpro-112233` (where `112233` are the last six hex digits of the MAC address)
+- Reduce connect restart watchdog from 180 to 60 attempts
+- Simplify logging
+
 ### 1.2.10
 
 - Adjust task stack sizes to avoid potential memory corruption
