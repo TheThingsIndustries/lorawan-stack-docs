@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.140.0-DEV">
+  <title>Automated Device Onboarding | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/automated-device-onboarding/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="Onboard your device using Blynk App or Blynk Console.">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Automated Device Onboarding">
+  <meta itemprop="description" content="Onboard your device using Blynk App or Blynk Console.">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Automated Device Onboarding">
+  <meta property="og:description" content="Onboard your device using Blynk App or Blynk Console.">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/automated-device-onboarding/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Automated Device Onboarding" />
+  <meta name="twitter:description" content="Onboard your device using Blynk App or Blynk Console." />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Integrations</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/integrations/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" class="">Adding Applications</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/data-formats/" class="">Data Formats</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">Webhooks</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Integrate with popular IoT platforms</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza/" class="">akenza</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/allthingstalk/" class="">AllThingsTalk Maker</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/anyviz/" class="">AnyViz</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/" class="">AWS IoT</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-central/" class="">Azure IoT Central</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/" class="">Azure IoT Hub</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/" class="">Blockbax</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/" class="">Blynk</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/getting-started/" class="">Gettings started</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/automated-device-onboarding/" class="is-active">Automated Device Onboarding</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/device_grouping/" class="">Device Grouping</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cayenne/" class="">Cayenne</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/" class="">Cloud Studio</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/daizy/" class="">Daizy</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/datacake/" class="">Datacake</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/delmation/" class="">Delmation Products</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/dezem/" class="">deZem</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/homey/" class="">Homey</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/" class="">InfluxDB Cloud 2.0</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/iotinabox/" class="">IoT in a Box</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/kaa/" class="">Kaa</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/losant/" class="">Losant IoT Platform</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/mclimate/" class="">MClimate</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/my-iot-open-tech/" class="">my IoT open Tech</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/qubitro/" class="">Qubitro</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tagoio/" class="">TagoIO</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/telemetry2u/" class="">Telemetry2U</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tellsens/" class="">Tellsens</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thethingsio/" class="">thethings.iO</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thinger-io/" class="">Thinger.io</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingsboard/" class="">ThingsBoard</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingspeak/" class="">ThingSpeak</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ttnmapper/" class="">TTN Mapper</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/" class="">Ubidots</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/uib/" class="">UIB</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/unaconnect/" class="">UnaConnect</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/" class="">Widgelix</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/withthegrid/" class="">Withthegrid</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/" class="">Other integrations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/application-packages/" class="">Application Packages</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/guides/" class="">Examples</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+          
+          
+        <h1 class="title is-size-2">Automated Device Onboarding</h1>
+        <div class="content">
+          <p>Once the integration with Blynk is configured, all devices in your The Things Stack application will be automatically imported into Blynk as soon as they transmit any data.</p>
+<p>Additionally, you can manually create devices in Blynk or use the Automated Device Onboarding feature, which offers an optimal user experience for connecting devices.
+However, this requires you to configure first the Automated Device Onboarding settings in your Blynk integration.</p>
+<h2 id="enabling-automated-device-onboarding">Enabling Automated Device Onboarding</h2>
+<p>To enable the Automated Device Onboarding feature:</p>
+<ul>
+<li>Open the <strong>Blynk Console</strong> and navigate to <strong>Developer Tools -&gt; Integrations -&gt; The Things Stack</strong>.</li>
+<li>Select the application you wish to configure and access the advanced settings.</li>
+<li>Turn on the <strong>Enable Automated Device Onboarding</strong> switch.</li>
+<li>Specify the LoRaWAN version, Frequency plan, and Regional Parameter Version. If needed, check the Support class B and/or Support class C boxes.</li>
+<li>Enter the addresses of The Things Stack components, which you can find at the bottom of the <strong>Overview</strong> page on your The Things Stack dashboard.
+Save the changes.</li>
+</ul>
+<figure><img src="../integration-advanced-settings.png"
+    alt="The advanced settings of the integration on Blynk">
+</figure>
+
+<p>Additionally, Blynk requires the following permissions:</p>
+<ul>
+<li><strong>View device keys in application</strong></li>
+<li><strong>Create devices in application</strong></li>
+<li><strong>Edit device keys in application</strong></li>
+</ul>
+<p>To grant these permissions, either generate a new API key or edit the existing one that you have been using with Blynk.</p>
+<figure><img src="../api-key-permissions-settings.png"
+    alt="The API key permission settings on The Things Stack">
+</figure>
+
+<p>Now that the automated device onboarding is enabled and configured, you can onboard your first device.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Sometimes, a device requires a reboot to initiate the onboarding flow. Make sure to restart the device if it doesn&rsquo;t automatically start the onboarding process after following the setup steps. This can help ensure the device properly connects and begins the necessary communication with Blynk and The Things Stack.
+</div>
+
+<h2 id="manually-configure-the-tokens">Manually configure the tokens</h2>
+<p>This is the easiest, but least scalable way to onboard the device:</p>
+<p>Begin by creating the device from the template on the Blynk Console: <strong>Go to Devices -&gt; + New Device -&gt; From template</strong>, select the template, and assign a meaningful name to the device. Then click <strong>Create</strong>.</p>
+<p>Next, to provision the device on The Things Stack, open <strong>Info &amp; Metadata</strong> and fill out the three metadata fields: <em>Device EUI</em>, <em>App EUI</em> and <em>Application Key</em>.</p>
+<figure><img src="../device-info.png"
+    alt="The device information page on Blynk">
+</figure>
+
+<p>Once these three metadata fields are specified, Blynk will automatically create the device in The Things Stack application.</p>
+<h2 id="onboard-using-static-tokens">Onboard using Static Tokens</h2>
+<p>The preferred method for device provisioning is using <a href="https://docs.blynk.io/en/hardware-guides/the-things-stack/automated-device-onboarding#onboard-using-static-tokens">Blynk Static Tokens</a>.
+Here’s how to do it:</p>
+<ol>
+<li>Create a CSV file listing the Device EUI, App EUI, and Application Key for each device.</li>
+<li>Use this CSV file to create static tokens: open the <strong>Blynk Console -&gt; Developer Zone -&gt; Static Tokens -&gt; Generate Static Tokens -&gt; Create From File</strong>. Then select the device template and upload the file.</li>
+<li>This process will generate a unique QR code for each device.</li>
+<li>These QR codes can be scanned via the Blynk Mobile application or on the Blynk Console by the end customer.</li>
+<li>Once a QR code is scanned and the device is created, it will be automatically created in The Things Stack application.</li>
+</ol>
+<p>Here is an example of a CSV file that could be used for creating static tokens:</p>
+<pre tabindex="0"><code class="language-csv" data-lang="csv">Device EUI,App EUI,Application Key
+0018B20000000101,70B3D57ED0000010,2B7E151628AED2A6ABF7158809CF4F3C
+0018B20000000102,70B3D57ED0000011,3B7E151628AED2A6ABF7158809CF4F3D
+0018B20000000103,70B3D57ED0000012,4B7E151628AED2A6ABF7158809CF4F3E
+</code></pre><h2 id="onboard-using-lorawan-qr-code">Onboard using LoRaWAN QR Code</h2>
+<p>Blynk also supports <a href="https://lora-alliance.org/wp-content/uploads/2020/11/TR005_LoRaWAN_Device_Identification_QR_Codes.pdf">LoRaWAN® Device Identification QR Codes for Automated Onboarding</a>.
+To use them, follow these steps:</p>
+<ol>
+<li>First, create the static tokens as described in the <a href="#onboard-using-static-tokens">Onboard using Static Tokens</a> section.</li>
+<li>Construct the QR code in the LoRaWAN format using the Profile ID specified in the advanced settings of The Things Stack integration application card on Blynk.</li>
+</ol>
+<p>Additionally, you can change the Profile ID used in the QR code body.
+To do so, open the application settings on Blynk, locate to the advanced settings and edit the Profile ID field.</p>
+<figure><img src="../profile-id-field.png"
+    alt="The Profile ID field">
+</figure>
+
+<p>For LoRaWAN QR codes, Blynk requires the following:</p>
+<ul>
+<li>The code must start with <code>LW:D0</code>.</li>
+<li>It must contain the App EUI, Device EUI, and the Profile ID.</li>
+<li>Optionally, it may contain a checksum.</li>
+<li>Any other parts of the QR code are ignored.</li>
+</ul>
+<p>Here is an example of how the QR code data should be structured:</p>
+<pre tabindex="0"><code>LW:D0:&lt;App EUI&gt;:&lt;Device EUI&gt;:&lt;Profile ID&gt;:&lt;Optional CheckSum&gt;
+</code></pre><p>Here is an example of the QR code body with App EUI = <code>70B3D57ED0000010</code>, Device EUI = <code>0018B20000000101</code> and Profile ID = <code>000AF8BE</code>:</p>
+<pre tabindex="0"><code>LW:D0:70B3D57ED0000010:0018B20000000101:000AF8BE
+</code></pre><p>Generate the QR code by inputting this content into any QR code generator tool, such as <a href="https://www.urldecoder.org/">QR Code Generator</a>.
+Then this QR code can be scanned by the end customer in the Blynk Mobile application or on the Blynk Console.
+Once the device is created, it will be automatically added in The Things Stack application.</p>
+<h2 id="re-provisioning">Re-provisioning</h2>
+<p>If you&rsquo;ve changed your hardware or updated any LoRaWAN connection parameters (such as DevEUI, AppEUI/JoinEUI, or Application Key), you will need to create a new device in The Things Stack.</p>
+<p>To retain the historical data, settings, or any other details for the old device in Blynk, follow these steps:</p>
+<ol>
+<li>Navigate to the <strong>Device Information &amp; Metadata</strong> tab for the old device in Blynk.</li>
+<li>Update the <strong>TheThingsStack Device ID</strong> metafield.</li>
+<li>Optionally, you can also update other related metafields like <strong>DevEUI</strong>, <strong>JoinEUI</strong>, and <strong>Application Key</strong>.</li>
+</ol>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  If the new device goes online in The Things Stack before updating the metafields in Blynk, it may be automatically imported into Blynk. In case of a <strong>TheThingsStack Device ID</strong> collision (where two devices have the same ID), Blynk will randomly select one device. To resolve this, simply delete the automatically imported device to ensure the correct one is used.
+</div>
+
+
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/blynk/getting-started/">← Gettings started</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/blynk/device_grouping/">Device Grouping →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#enabling-automated-device-onboarding'>Enabling Automated Device Onboarding</a></li>
+    
+      
+      <li><a href='#manually-configure-the-tokens'>Manually configure the tokens</a></li>
+    
+      
+      <li><a href='#onboard-using-static-tokens'>Onboard using Static Tokens</a></li>
+    
+      
+      <li><a href='#onboard-using-lorawan-qr-code'>Onboard using LoRaWAN QR Code</a></li>
+    
+      
+      <li><a href='#re-provisioning'>Re-provisioning</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sections</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sitemap</h3>
+        <p><a class="" href="https://www.thethingsindustries.com/docs/sitemap/">View our Sitemap</a></p>
+      </nav>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

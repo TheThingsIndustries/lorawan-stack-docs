@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.140.0-DEV">
+  <title>Device Grouping | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/device_grouping/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="Group your devices correctly to ensure seamless integration and effective device management.">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Device Grouping">
+  <meta itemprop="description" content="Group your devices correctly to ensure seamless integration and effective device management.">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Device Grouping">
+  <meta property="og:description" content="Group your devices correctly to ensure seamless integration and effective device management.">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/device_grouping/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Device Grouping" />
+  <meta name="twitter:description" content="Group your devices correctly to ensure seamless integration and effective device management." />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Integrations</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/integrations/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" class="">Adding Applications</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/data-formats/" class="">Data Formats</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">Webhooks</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Integrate with popular IoT platforms</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza/" class="">akenza</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/allthingstalk/" class="">AllThingsTalk Maker</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/anyviz/" class="">AnyViz</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/" class="">AWS IoT</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-central/" class="">Azure IoT Central</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/" class="">Azure IoT Hub</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/" class="">Blockbax</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/" class="">Blynk</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/getting-started/" class="">Gettings started</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/automated-device-onboarding/" class="">Automated Device Onboarding</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/device_grouping/" class="is-active">Device Grouping</a>
+    
+    
+
+
+
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cayenne/" class="">Cayenne</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/" class="">Cloud Studio</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/daizy/" class="">Daizy</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/datacake/" class="">Datacake</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/delmation/" class="">Delmation Products</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/dezem/" class="">deZem</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/homey/" class="">Homey</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/" class="">InfluxDB Cloud 2.0</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/iotinabox/" class="">IoT in a Box</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/kaa/" class="">Kaa</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/losant/" class="">Losant IoT Platform</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/mclimate/" class="">MClimate</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/my-iot-open-tech/" class="">my IoT open Tech</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/qubitro/" class="">Qubitro</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tagoio/" class="">TagoIO</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/telemetry2u/" class="">Telemetry2U</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tellsens/" class="">Tellsens</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thethingsio/" class="">thethings.iO</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thinger-io/" class="">Thinger.io</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingsboard/" class="">ThingsBoard</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingspeak/" class="">ThingSpeak</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ttnmapper/" class="">TTN Mapper</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/" class="">Ubidots</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/uib/" class="">UIB</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/unaconnect/" class="">UnaConnect</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/" class="">Widgelix</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/withthegrid/" class="">Withthegrid</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/" class="">Other integrations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/application-packages/" class="">Application Packages</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/guides/" class="">Examples</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+          
+          
+        <h1 class="title is-size-2">Device Grouping</h1>
+        <div class="content">
+          <p>To ensure seamless integration and effective device management, follow these principles:</p>
+<h2 id="use-separate-applications-and-templates-for-different-device-types">Use Separate Applications and Templates for Different Device Types</h2>
+<ul>
+<li><strong>Why:</strong> Each device type typically has unique data structures and behaviors. Using separate templates ensures that Blynk can correctly process and display device-specific telemetry data.</li>
+<li><strong>How:</strong> Create a dedicated application in The Things Stack for each Blynk template. This alignment allows you to configure a payload formatter at the application level, ensuring consistent data formatting across devices within the same group.</li>
+</ul>
+<h2 id="group-devices-of-the-same-type-in-the-same-application-and-template">Group Devices of the Same Type in the Same Application and Template</h2>
+<ul>
+<li><strong>Why:</strong> Grouping devices of the same type within a single application simplifies management and avoids issues caused by mixing different device types.</li>
+<li><strong>How:</strong> Use a common payload formatter for all devices within an application. This reduces the risk of errors and ensures consistent behavior across similar devices.</li>
+</ul>
+<h2 id="benefits-of-this-approach">Benefits of This Approach</h2>
+<p><strong>Consistency in Data Processing</strong> <br>
+Configuring a shared payload formatter at the application level ensures uniformity, preventing potential bugs caused by incompatible data formats.</p>
+<p><strong>Simplified Maintenance</strong> <br>
+Managing devices of the same type in a single application and template makes it easier to update configurations, troubleshoot issues, and scale the solution.</p>
+<p><strong>Accurate Template Association</strong> <br>
+By separating applications for different templates, Blynk can correctly associate devices with their respective templates during the import process.</p>
+<p><div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  If multiple Blynk templates are connected to a single The Things Stack application, Device Provisioning from The Things Stack will be disabled for all associated templates. This limitation can lead to challenges in managing device lifecycles and should be avoided.
+</div>
+
+<figure><img src="../incorrect-device-grouping.png"
+    alt="Incorrect Device Grouping warning">
+</figure>
+</p>
+
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/blynk/automated-device-onboarding/">← Automated Device Onboarding</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/cayenne/">Cayenne →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#use-separate-applications-and-templates-for-different-device-types'>Use Separate Applications and Templates for Different Device Types</a></li>
+    
+      
+      <li><a href='#group-devices-of-the-same-type-in-the-same-application-and-template'>Group Devices of the Same Type in the Same Application and Template</a></li>
+    
+      
+      <li><a href='#benefits-of-this-approach'>Benefits of This Approach</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sections</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sitemap</h3>
+        <p><a class="" href="https://www.thethingsindustries.com/docs/sitemap/">View our Sitemap</a></p>
+      </nav>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
