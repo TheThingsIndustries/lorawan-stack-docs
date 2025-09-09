@@ -39,8 +39,8 @@ Please [contact our sales team](mailto:sales@thethingsindustries.com) for access
 {{% tts %}} on Kubernetes requires the following infrastructural services to run.
 
 1. A Kubernetes cluster
-2. PostgreSQL compatible database
-3. Redis compatible database (Redis 6.2 or above is required)
+2. PostgreSQL 14 or above
+3. Redis 6.2 or above
 4. Blob Storage
 5. An ingress controller to handle the ingress routes
 6. TLS Certificates
@@ -49,11 +49,11 @@ Please [contact our sales team](mailto:sales@thethingsindustries.com) for access
 
 These components are highly specific to the specific infrastructure chosen by the operator and hence are out of scope of this documentation.
 
-However, the following is a guide of the general principles involved in setting up the infrastructure.
+The following is a guide of the general principles involved in setting up the infrastructure.
 
 #### 1. Kubernetes Cluster
 
-{{% tts %}} requires a minimum kubernetes version of v1.21. However, we recommend using the highest available version.
+{{% tts %}} requires a minimum kubernetes version of v1.21. We recommend using the highest available version.
 
 #### 2. Postgres Compatible Database
 
@@ -97,6 +97,12 @@ The Things Stack requires the following buckets.
 - The contents of this bucket must be _private_ since they contain secrets.
 - Enabling encryption and versioning is highly recommended.
 
+5. Plugins configuration
+
+- Once this bucket is setup, place an empty `plugins.yml` file at the root of the bucket.
+- The contents of this bucket must be _private_ since they contain secrets.
+- Enabling encryption and versioning is highly recommended.
+
 ##### Using Local Blob Storage
 
 In the case of using a local blob, the following steps are necessary.
@@ -107,12 +113,9 @@ In the case of using a local blob, the following steps are necessary.
 $ sudo chown -R 886:886 <blob>
 ```
 
-2. Create the `edcs`, `interop`, `end_device_pictures` and `profile_pictures` folders at the root of the blob folder.
+2. Create the `edcs`, `interop`, `end_device_pictures`, `profile_pictures`, `plugins` folders at the root of the blob folder.
 3. Create an empty `config.yml` in the `edcs` and `interop` folders.
-
-##### Disabling Blob Storage
-
-{{% tts %}} Helm Chart by default expects a blob storage configured but it is possible to use {{% tts %}} without it. You can disable the usage of blob by setting `global.interop.configSource` and `global.blob.provider` values to an empty string `""`.
+4. Create an empty `plugins.yml` in the `plugins` folder.
 
 #### 5. An ingress controller
 
@@ -127,7 +130,7 @@ To configure the ingress controller for {{% tts %}}:
 2. Specify the TLS secret by setting the `global.ingress.controller.tls.secretName`. The secret has to be accessible from the namespace where the {{% tts %}} Helm Chart is deployed. This will be used to terminate TLS for {{% tts %}} traffic
 3. Add annotations for the ingress routes if needed by setting `global.ingress.annotations.http`, `global.ingress.annotations.grpc`, `global.ingress.annotations.semtechws` or `global.ingress.annotations.ttigw`.
 4. Add ingress specific service annotations for {{% tts %}} services by setting `global.ingress.serviceAnnotations` if needed.
-5. Expose the ports used by {{% tts %}} in your ingress controller. A list of all the ports can be found [here]({{< ref "/concepts/networking/#port-allocations" >}}).
+5. Expose the ports used by {{% tts %}} in your ingress controller. A list of all the ports can be found [here]({{< ref "/concepts/networking/#port-allocations" >}}). For production environments, make sure to expose only TLS ports.
 
 Examples of ingress controllers configurations can be found [here](https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/prerequisites/sample-ingress-controllers/).
 

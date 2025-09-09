@@ -29,7 +29,7 @@ global:
       adminUserID: # User ID for the Administrator of the tenant. Do not use `admin`.
       adminEmail: # Email of the Administrator of the tenant.
   blob:
-    provider: # "aws", "azure", "gcp", "local" or empty string to disable blob usage
+    provider: # "aws", "azure", "gcp", "local" or empty string to disable blob usage.
     aws: # Set only if provider is "aws".
       region: # region
       accessKeyID: # AWS access key ID

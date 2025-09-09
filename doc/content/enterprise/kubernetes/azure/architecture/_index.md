@@ -19,11 +19,15 @@ The NAT GW is assigned a Public IP Address Prefix while the LB is assigned a sta
 
 ## Data Storage
 
-{{% tts %}} relies on two databases: PostgreSQL and Redis. Azure offers these databases as managed services.
+{{% tts %}} relies on two databases: PostgreSQL and Redis.
 
-We use [Azure Database for PostgreSQL](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/overview) as the relational database.
+For PostgreSQL, we use [Azure Database for PostgreSQL](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/overview) as the relational database.
 
-Azure offers a managed [Azure Cache for Redis Database](https://azure.microsoft.com/en-us/products/cache) service, but due to it's version not being compatible with {{% tts %}} the Redis we use is in-cluster. The newest Redis version supported by Azure Cache is 6.0, while the minimum required version of Redis for {{% tts %}} is 6.2.
+For Redis, we use an in-cluster deployment instead of the [Azure Cache for Redis Database](https://azure.microsoft.com/en-us/products/cache) service due to incompatibility with {{% tts %}}. The newest Redis version supported by Azure Cache is 6.0, while the minimum required version of Redis for {{% tts %}} is 6.2.
+
+{{< note >}}
+Azure Managed Redis does support a higher version, but it's available only in clustered mode. {{% tts %}} does not work on clustered Redis. 
+{{</ note >}}
 
 User uploads of profile pictures and end device pictures are stored in public Azure Storage Containers (Optional).
 
