@@ -123,7 +123,7 @@ An ingress controller is needed to route the incoming traffic. {{% tts %}} Helm 
 
 {{% tts %}} needs several [port allocations with various protocols]({{< ref "/concepts/networking/#port-allocations" >}}). We recommend using an ingress controller that natively supports L4 and L7 protocols. Depending on your preferred setup for gateways, an ingress controller that supports only L7 protocols (such as Ingress-Nginx) can be used too, but the connecting gateways will be either limited to L7 protocols or more complex to setup and maintain if using L4 protocols.
 
-Although we do support UDP Packet Forwarder as a gateway connection option, it requires [more configuration on your side]({{< ref "enterprise/kubernetes/generic/#udp-gateway-support" >}}). We recommend using LoRa Basics™ Station LNS, The Things Industries Gateway or LBS CUPS mTLS protocols for connecting gateways.
+Although we do support UDP Packet Forwarder as a gateway connection option, it requires [more configuration on your side]({{< ref "enterprise/kubernetes/generic/#udp-gateway-support" >}}). We recommend using LoRa Basics™ Station or The Things Industries Gateway protocols for connecting gateways.
 
 To configure the ingress controller for {{% tts %}}:
 1. Specify the ingress controller by setting the `global.ingress.controller` to the class name of the ingress controller deployed in the cluster. This will be used to set the ingress class name in the ingress routes that handle {{% tts %}} traffic.

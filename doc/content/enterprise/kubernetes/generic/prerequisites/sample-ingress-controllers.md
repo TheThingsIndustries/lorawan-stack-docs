@@ -131,7 +131,7 @@ ports:
 
 UDP Ingress Route for the UDP Packet Forwarder:
 
-{{< warning "The UDP Packet Forwarder requires session affinity to work properly. Traefik does not support session affinity for UDP. Session affinity can usually be set up on the Load Balancer of the cluster. We recommend using the newer LoRa Basics™ Station LNS protocol instead of the UDP Packet Forwarder." />}}
+{{< warning "The UDP Packet Forwarder requires session affinity to work properly. Traefik does not support session affinity for UDP. Session affinity can usually be set up on the Load Balancer of the cluster. We recommend using the newer {{% lbs %}} instead of the UDP Packet Forwarder." />}}
 
 ```yaml
 apiVersion: traefik.containo.us/v1alpha1
@@ -214,7 +214,7 @@ Ingress-Nginx Helm chart port mapping configuration:
 controller:
   config:
     use-http2: true
-    strict-validate-path-type: false # This is needed to allow GRPC paths that contain dots.
+    strict-validate-path-type: false # This is needed to allow gRPC paths that contain dots.
     default-ssl-certificate: <tls-certificate-secret-namespace>/<tls-certificate-secret-name> # Make sure to set this.
 tcp:
   # Plain-text ports.

@@ -108,7 +108,7 @@ To set up the gateway controller, the following fields must be filled in `values
 `global.ttgc.tls.secretName`| Kubernetes Secret name containing the TLS. Should be the same as `global.ingress.tls.secretName`.
 `global.ttgc.address`       | (Optional) The URL of the gateway controller. It not specified, it defaults to `gc.thethings.industries:443`.
 
-{{< note "In case you are using the cloud-managed The Things Gateway Controller (i.e. `gc.thethings.industries:443`), your network must be registered on our side, otherwise connections to the gateway controller will fail. Please [contact The Things Industries support](mailto:support@thethingsindustries.com) for registration." />}}
+{{< note "In case you are using the cloud-managed The Things Gateway Controller (i.e. `gc.thethings.industries:443`), your network must be registered on The Things Gateway Controller, otherwise connections to the gateway controller will fail. Please [contact The Things Industries support](mailto:support@thethingsindustries.com) for registration." />}}
 
 {{% tts %}} verifies the identity of each connected TTIGPro gateway for security reasons, therefore mutual TLS is necessary to be configured in the ingress controller. mTLS configuration depends on the chosen ingress controller and is left to the operator of the Kubernetes cluster. {{% tts %}} recognizes the following client certificate header names:
 - `X-Forwarded-Client-Cert`
