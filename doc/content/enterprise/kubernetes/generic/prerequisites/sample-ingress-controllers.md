@@ -27,6 +27,7 @@ global:
     annotations:
       http:
         traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
       grpc:
         traefik.ingress.kubernetes.io/router.entrypoints: grpc,grpcsecure
         traefik.ingress.kubernetes.io/router.tls: "true"
@@ -207,7 +208,7 @@ global:
 
 Ingress-Nginx Helm chart port mapping configuration:
 
-{{< note "When using Ingress-Nginx, enable the TLS ports in the Helm chart." />}}
+{{< note "When using Ingress-Nginx, enable the TLS ports in the Helm chart (v0.0.13 and above)." />}}
 
 ```yaml
 controller:
