@@ -21,6 +21,7 @@ Set the respective Helm chart values to `true` to perform database migrations du
 | ------- | ---------------------------- |
 | IS      | `is.database.migrate`        |
 | NOC     | `noc.store.database.migrate` |
+| AS      | `as.storage.migrate`         |
 
 {{< note >}}
 For example to migrate Identity Server use the following config.
@@ -32,8 +33,6 @@ is:
 ```
 
 {{</ note >}}
-
-Remember to unset the value after the upgrade is done.
 
 ## Manual Procedure
 

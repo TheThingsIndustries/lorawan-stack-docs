@@ -29,7 +29,7 @@ global:
       adminUserID: # User ID for the Administrator of the tenant. Do not use `admin`.
       adminEmail: # Email of the Administrator of the tenant.
   blob:
-    provider: # "aws", "azure", "gcp", "local" or empty string to disable blob usage
+    provider: # "aws", "azure", "gcp", "local" or empty string to disable blob usage.
     aws: # Set only if provider is "aws".
       region: # region
       accessKeyID: # AWS access key ID
@@ -108,6 +108,8 @@ To set up the gateway controller, the following fields must be filled in `values
 `global.ttgc.tls.secretName`| Kubernetes Secret name containing the TLS. Should be the same as `global.ingress.tls.secretName`.
 `global.ttgc.address`       | (Optional) The URL of the gateway controller. It not specified, it defaults to `gc.thethings.industries:443`.
 
+{{< note "In case you are using the cloud-managed The Things Gateway Controller (i.e. `gc.thethings.industries:443`), your network must be registered on our side, otherwise connections to the gateway controller will fail. Please [contact The Things Industries support](mailto:support@thethingsindustries.com) for registration." />}}
+
 {{% tts %}} verifies the identity of each connected TTIGPro gateway for security reasons, therefore mutual TLS is necessary to be configured in the ingress controller. mTLS configuration depends on the chosen ingress controller and is left to the operator of the Kubernetes cluster. {{% tts %}} recognizes the following client certificate header names:
 - `X-Forwarded-Client-Cert`
 - `X-Forwarded-Tls-Client-Cert`
@@ -155,7 +157,7 @@ For more info check the [Traefik docs on the PassTLSClientCert middleware](https
     - Apply the k8s manifest to the cluster:  
 
     ```bash
-    kubectl apply -f traefik-passtlsclientcert.yaml 
+    kubectl apply -f traefik-tlsoption.yaml
     ```
 
 {{< note "{{% tts %}} Helm chart uses wildcard domains in ingress routes. This is necessary for multi-tenant deployments as we don't know the names of the tenants in advance. Traefik does not support TLS options for wildcard domains, because it maps the TLS options based solely on the host name (the `Host` part of the ingress rule) and it needs a concrete domain to match ([check out more in the Traefik docs](https://doc.traefik.io/traefik/v2.3/routing/routers/#options)). To go around this limitation, a default TLS option can be used which is the fallback for any unmatched host." />}}
