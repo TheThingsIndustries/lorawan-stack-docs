@@ -8,44 +8,47 @@ aliases: [
   ]
 ---
 
-The following are examples of ingress controllers for {{% tts %}} deployment on Kubernetes.
+The following are examples of ingress controller configurations for {{% tts %}} deployment on Kubernetes.
 
 <!--more-->
 
 ## Traefik
 
-Example of a Traefik configuration provided through the values of an Traefik Helm chart. More info about the Helm chart 
-can be found [here](https://github.com/traefik/traefik-helm-chart).
+Example of a Traefik configuration. More info about the Helm chart can be found [here](https://github.com/traefik/traefik-helm-chart).
+
+{{% tts %}} Helm chart ingress configuration:
+
+```yaml
+global:
+  ingress:
+    controller: "traefik"
+    tls:
+      secretName: "ingress-tls-cert"
+    annotations:
+      http:
+        traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+      grpc:
+        traefik.ingress.kubernetes.io/router.entrypoints: grpc,grpcsecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+      semtechws:
+        traefik.ingress.kubernetes.io/router.entrypoints: semtechws,semtechwssecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+    serviceAnnotations:
+      traefik.ingress.kubernetes.io/service.serversscheme: h2c
+```
+
+Traefik Helm chart port mapping configuration:
 
 ```yaml
 deployment:
   kind: "Deployment"
   replicas: 1
-ingressRoute:
-  dashboard:
-    enabled: false
-additionalArguments:
-- "--entrypoints.udp.udp.timeout=90s"
 ports:
   web:
-    protocol: "TCP"
-    port: 1885
-    expose:
-      default: true
-    exposedPort: 80
-    redirectTo:
-      port: "websecure"
-  websecure:
-    protocol: "TCP"
-    port: 8885
-    expose:
-      default: true
-    exposedPort: 443
-  traefik:
-    protocol: "TCP"
-    port: 9000
-    expose:
-      default: false
+    redirections:
+      to: websecure
+      scheme: https
   grpc:
     protocol: "TCP"
     port: 1884
@@ -118,66 +121,114 @@ ports:
     expose:
       default: true
     exposedPort: 8889
-  interop:
-    protocol: "TCP"
-    port: 8886
+  udp:
+    protocol: "UDP"
+    port: 1700
     expose:
       default: true
-    exposedPort: 8886
+    exposedPort: 1700
 ```
 
-## Ingress NGINX
+UDP Ingress Route for the UDP Packet Forwarder:
 
-Example of an Ingress NGINX configuration provided through the values of an Ingress NGINX Helm chart. More info about the 
-Helm chart can be found [here](https://artifacthub.io/packages/helm/bitnami/nginx).
+{{< warning "The UDP Packet Forwarder requires session affinity to work properly. Traefik does not support session affinity for UDP. Session affinity can usually be set up on the Load Balancer of the cluster. We recommend using the newer {{% lbs %}} instead of the UDP Packet Forwarder." />}}
 
 ```yaml
-fullnameOverride: "nginx"
-namespaceOverride: "ingress-nginx"
-kind: Deployment
-replicaCount: '1'
-config:
-  # redirect port 80 to 443 for HTTP to HTTPS.
-  ssl-redirect: "true"
-  upstream-keepalive-timeout: '90s'
-service:
-  ports:
-    http: 80
-    https: 443
-  extraPorts:
-  - name: semtechws
-    port: 1887
-    targetPort: 1887
-  nodePorts:
-    tcp:
-      # http
-      "80": "1885"
-      # https
-      "443": "8885"
-      # grpc
-      "1884": "1884"
-      # grpcsecure
-      "8844": "8884"
-      # gtwmqttv2
-      "1881": "1881"
-      # gtwmqttv2secure
-      "8881": "8881"
-      # gtwmqttv3
-      "1882": "1882"
-      # gtwmqttv3secure
-      "8882": "8882"
-      # semtechws
-      "1887": "1887"
-      # semtechwssecure
-      "8887": "8887"
-      # appmqtt
-      "1883": "1883"
-      # appmqttsecure
-      "8883": "8883"
-      # interop
-      "8886": "8886"
-      # ttigw
-      "1889": "1889"
-      # ttigwsecure
-      "8889": "8889"
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteUDP
+metadata:
+  name: tts-gs-udp-packet-forwarder
+  namespace: tts # Set this to the namespace where TTS is deployed.
+spec:
+  entryPoints:
+    - udp
+  routes:
+  - services:
+    - name: tts-gs # <helm-chart-release-name>-gs
+      port: 1700
+```
+
+TCP Ingress Route for MQTT application integration:
+
+```yaml
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: tts-as-mqtt
+  namespace: tts # Set this to the namespace where TTS is deployed.
+spec:
+  entryPoints:
+    - appmqtt
+  routes:
+  - match: HostSNI(`*`)
+    services:
+      - name: tts-as # <helm-chart-release-name>-as
+        port: 1883
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: tts-app-mqtt-secure
+  namespace: tts # Set this to the namespace where TTS is deployed.
+spec:
+  entryPoints:
+    - appmqttsecure
+  routes:
+  - match: HostSNI(`*`)
+    services:
+      - name: tts-as # <helm-chart-release-name>-as
+        port: 1883
+  tls:
+    secretName: ingress-tls-secret
+```
+
+## Ingress-Nginx Controller
+
+Example of an Ingress-Nginx Controller configuration. More info about the Helm chart can be found [here](https://kubernetes.github.io/ingress-nginx/).
+
+{{% tts %}} Helm chart ingress configuration:
+
+```yaml
+global:
+  ingress:
+    controller: "nginx"
+    tls:
+      secretName: "ingress-tls-cert"
+    annotations:
+      grpc:
+        nginx.ingress.kubernetes.io/backend-protocol: GRPC
+        nginx.ingress.kubernetes.io/use-http2: "true"
+      http:
+        nginx.ingress.kubernetes.io/backend-protocol: HTTP
+        nginx.ingress.kubernetes.io/use-http2: "true"
+      semtechws: {}
+      ttigw: {}
+    serviceAnnotations: {}
+```
+
+Ingress-Nginx Helm chart port mapping configuration:
+
+{{< note "When using Ingress-Nginx, enable the TLS ports in the Helm chart (v0.0.13 and above)." />}}
+
+```yaml
+controller:
+  config:
+    use-http2: true
+    strict-validate-path-type: false # This is needed to allow gRPC paths that contain dots.
+    default-ssl-certificate: <tls-certificate-secret-namespace>/<tls-certificate-secret-name> # Make sure to set this.
+tcp:
+  # Plain-text ports.
+  "1881": tts/the-things-stack-gs:1881 # <namespace>/<helm-chart-release-name>-gs:1881
+  "1882": tts/the-things-stack-gs:1882
+  "1883": tts/the-things-stack-as:1883
+  "1887": tts/the-things-stack-gs:1887
+  "1889": tts/the-things-stack-gs:1889
+  # TLS ports.
+  "8881": tts/the-things-stack-gs:8881
+  "8882": tts/the-things-stack-gs:8882
+  "8883": tts/the-things-stack-as:8883
+  "8887": tts/the-things-stack-gs:8887
+  "8889": tts/the-things-stack-gs:8889
+udp:
+  "1700": tts/the-things-stack-gs:1700
 ```

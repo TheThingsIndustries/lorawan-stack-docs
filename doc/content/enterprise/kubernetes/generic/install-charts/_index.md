@@ -45,7 +45,17 @@ Assuming that you created a deployment specific `values` file in the previous se
 $ helm install <name> oci://registry-1.docker.io/thethingsindustries/lorawan-stack-helm-chart --version <version> --values <deployment>.values.yaml
 ```
 
-4. Update the chart.
+4. Check if the chart is set up properly.
+
+Run the helm tests to see if {{% tts %}} is configured properly:
+
+```bash
+$ helm test <name>
+```
+
+If any test fails, check the logs of the test pods to troubleshoot the issue.
+
+5. Update the chart.
 
 To deploy updates to the chart.
 
@@ -57,7 +67,7 @@ $ helm upgrade <name> oci://registry-1.docker.io/thethingsindustries/lorawan-sta
 
 > Note: The `helm` CLI pulls a chart from the repository only if it's locally not present.
 
-5. Uninstall the Chart.
+6. Uninstall the Chart.
 
 Once done, you can uninstall the chart as follows.
 
