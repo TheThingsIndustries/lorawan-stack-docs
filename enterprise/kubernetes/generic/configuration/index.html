@@ -215,7 +215,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminUserID</span><span class="p">:</span><span class="w"> </span><span class="c"># User ID for the Administrator of the tenant. Do not use `admin`.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminEmail</span><span class="p">:</span><span class="w"> </span><span class="c"># Email of the Administrator of the tenant.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">blob</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="c"># &#34;aws&#34;, &#34;azure&#34;, &#34;gcp&#34;, &#34;local&#34; or empty string to disable blob usage</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="c"># &#34;aws&#34;, &#34;azure&#34;, &#34;gcp&#34;, &#34;local&#34; or empty string to disable blob usage.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">aws</span><span class="p">:</span><span class="w"> </span><span class="c"># Set only if provider is &#34;aws&#34;.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="c"># region</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">accessKeyID</span><span class="p">:</span><span class="w"> </span><span class="c"># AWS access key ID</span><span class="w">
@@ -308,6 +308,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </tr>
   </tbody>
 </table>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  In case you are using the cloud-managed The Things Gateway Controller (i.e. <code>gc.thethings.industries:443</code>), your network must be registered on The Things Gateway Controller, otherwise connections to the gateway controller will fail. Please <a href="mailto:support@thethingsindustries.com">contact The Things Industries support</a> for registration.
+</div>
+
 <p>The Things Stack verifies the identity of each connected TTIGPro gateway for security reasons, therefore mutual TLS is necessary to be configured in the ingress controller. mTLS configuration depends on the chosen ingress controller and is left to the operator of the Kubernetes cluster. The Things Stack recognizes the following client certificate header names:</p>
 <ul>
 <li><code>X-Forwarded-Client-Cert</code></li>
@@ -354,7 +359,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span></code></pre></div><ul>
 <li>Apply the k8s manifest to the cluster:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl apply -f traefik-passtlsclientcert.yaml 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl apply -f traefik-tlsoption.yaml
 </span></span></code></pre></div></li>
 </ol>
 <div class="notification is-info is-light has-text-dark">

@@ -201,9 +201,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>The <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/azure/deployment/#azure-infrastructure">compute infrastructure</a> is contained inside a Virtual Network, grouped into separate Private Subnets. Communication with the Internet is via a Network Address Translation Gateway (NAT GW). Internal load balancer (LB) is used to handle incoming traffic.</p>
 <p>The NAT GW is assigned a Public IP Address Prefix while the LB is assigned a static Public IP Address.</p>
 <h2 id="data-storage">Data Storage</h2>
-<p>The Things Stack relies on two databases: PostgreSQL and Redis. Azure offers these databases as managed services.</p>
-<p>We use <a href="https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/overview">Azure Database for PostgreSQL</a> as the relational database.</p>
-<p>Azure offers a managed <a href="https://azure.microsoft.com/en-us/products/cache">Azure Cache for Redis Database</a> service, but due to it&rsquo;s version not being compatible with The Things Stack the Redis we use is in-cluster. The newest Redis version supported by Azure Cache is 6.0, while the minimum required version of Redis for The Things Stack is 6.2.</p>
+<p>The Things Stack relies on two databases: PostgreSQL and Redis.</p>
+<p>For PostgreSQL, we use <a href="https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/overview">Azure Database for PostgreSQL</a> as the relational database.</p>
+<p>For Redis, we use an in-cluster deployment instead of the <a href="https://azure.microsoft.com/en-us/products/cache">Azure Cache for Redis Database</a> service due to incompatibility with The Things Stack. The newest Redis version supported by Azure Cache is 6.0, while the minimum required version of Redis for The Things Stack is 6.2.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Azure Managed Redis does support a higher version, but it&rsquo;s available only in clustered mode. The Things Stack does not work on clustered Redis.
+</div>
+
 <p>User uploads of profile pictures and end device pictures are stored in public Azure Storage Containers (Optional).</p>
 <h2 id="configuration">Configuration</h2>
 <p>The Azure Kubernetes deployment of The Things Stack uses a combination of configuration stored as Terraform and Helm configuration files.</p>
