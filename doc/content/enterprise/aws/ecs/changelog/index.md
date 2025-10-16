@@ -2,11 +2,12 @@
 title: "Template Changelog"
 aliases: [/getting-started/aws/ecs/changelog]
 ---
+
 # Upgrading
 
 All meaningful changes to templates are documented in this file.
 
-## Unreleased
+## 3.34.3
 
 ### 5-1-ecs-cluster
 
