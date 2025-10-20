@@ -2,11 +2,16 @@
 title: "Template Changelog"
 aliases: [/getting-started/aws/ecs/changelog]
 ---
+
 # Upgrading
 
 All meaningful changes to templates are documented in this file.
 
-## Unreleased
+## 3.34.3
+
+### 5-1-ecs-cluster
+
+- Fix `AWSRegionToAMI` arm64 mappings.
 
 ## 3.34.2
 
@@ -528,7 +533,7 @@ All meaningful changes to templates are documented in this file.
 
 ## 3.23.0
 
-For mTLS termination, check the upgrading guide at https://thethingsindustries.com/docs/getting-started/aws/ecs/mutual-tls/.
+For mTLS termination, check the upgrading guide at <https://thethingsindustries.com/docs/getting-started/aws/ecs/mutual-tls/>.
 
 ## `1-2-bastion`
 
@@ -842,7 +847,7 @@ Add versioning to S3 buckets. Versioning is enabled by default.
 
 ### `3-2-load-balancer-rules`
 
-- The `InteropEnabled` parameter has different values. Deployments that used value `false` should now choose `disabled`. Deployments that used value `true` should now choose `mutual-authentication`. `server-only-authentication` is a new option, please refer to documentation: https://www.thethingsindustries.com/docs/getting-started/aws/ecs/interop/.
+- The `InteropEnabled` parameter has different values. Deployments that used value `false` should now choose `disabled`. Deployments that used value `true` should now choose `mutual-authentication`. `server-only-authentication` is a new option, please refer to documentation: <https://www.thethingsindustries.com/docs/getting-started/aws/ecs/interop/>.
 
 ### `5-3a-ecs-is-service`
 
@@ -1007,7 +1012,7 @@ Add versioning to S3 buckets. Versioning is enabled by default.
 ### `2-5-db-timescale`
 
 - Created a hosted zone for internal use.
-- This template has been reworked so that updates are now possible. Before updating make a backup of the volume. For more information, please refer to the documentation at https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/#2-5-db-timescale.
+- This template has been reworked so that updates are now possible. Before updating make a backup of the volume. For more information, please refer to the documentation at <https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/#2-5-db-timescale>.
 - Added `EBSKmsKeyId` parameter to choose EBS volume encryption key. From now on, EBS volumes are encrypted. Previously only data volume would be encrypted using the default key. Encrypting boot drive does not significantly increase security, and is mainly targeted towards compliance with regulations. If you wish to encrypt your boot drive, please:
   1. Change the `ApplicationServerStorageEnabled` parameter in `5-2-ocs-ops` and `5-4-ecs-services` to `false`.
   2. Create a snapshot of the TimescaleDB EBS volume.
