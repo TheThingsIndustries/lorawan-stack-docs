@@ -34,11 +34,11 @@ To be able to configure your gateway to connect to {{% tts %}}, you first need t
 
 {{< note >}} KonaFT application can be installed on Windows OS only, and supports connecting to {{% tts %}} using {{% udp-pf %}} only. {{</ note >}}
 
-**Step 1:** Download the [KonaFT application](https://support.tektelic.com/portal/en/kb/articles/konaft) and complete the installation.
+**Step 1:** Download the [KonaFT application](https://knowledgehub.tektelic.com/konaft-application) and complete the installation.
 
-**Step 2:** [Connect your gateway to the KonaFT tool](https://support.tektelic.com/portal/en/kb/articles/kona-ft-faq#1_How_do_I_connect_my_gateway_to_KonaFT).
+**Step 2:** [Connect your gateway to the KonaFT tool](https://knowledgehub.tektelic.com/kona-field-tool-user-guide-konaft).
 
-**Step 3:** [Assign a static IP address to the gateway using KonaFT](https://support.tektelic.com/portal/en/kb/articles/kona-ft-faq#3_How_do_I_set_a_static_IP_on_KonaFT).
+**Step 3:** [Assign a static IP address to the gateway using KonaFT](https://knowledgehub.tektelic.com/konaft-faq).
 
 **Step 4:** Configure the gateway to connect to {{% tts %}} using [{{% udp-pf %}}]({{< relref "udp" >}}).
 
