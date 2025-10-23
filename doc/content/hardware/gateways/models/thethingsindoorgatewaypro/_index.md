@@ -64,12 +64,12 @@ Connect the USB-C cable or a 5-12 V DC power cable. The latter is typically used
 
 ## Subscription
 
-{{% ttigpro %}} requires an active subscription to operate.  
-Subscriptions are managed through **Gateway Fleets**, which group one or more gateways under your account for easier management, claiming, and renewal.
+{{% ttigpro %}} requires an active subscription to operate.
 
-Each **Gateway Fleet** contains **gateway slots**:
-- A **gateway slot** lets **one gateway** connect to {{% tts %}} for **one year**.
-- When a slot **expires**, you can **renew** it (individually or together with others).
+- If your gateway **includes a one-year prepaid subscription**, it will be managed through the **Gateway Fleets** dashboard.  
+  Each fleet contains **gateway slots** — each slot allows a single gateway to connect to {{% tts %}} for one year.  
+  When a slot expires, you can renew it to continue service.
+- If your gateway **does not include a prepaid subscription**, you’ll need to create a subscription before you can claim and activate your gateway.
 
 ---
 
@@ -84,14 +84,15 @@ If your {{% ttigpro %}} was purchased with a one-year subscription included, you
 
 {{< figure src="subscription-fleet-selection.png" alt="Choose existing fleet or create new during activation" >}}  
 
-> **Tip:** If you cannot find the activation email, check your spam folder.  
+> **Tip:** 
+> If you cannot find the activation email, check your spam folder.  
 > If it’s still missing, contact [support@thethingsindustries.com](mailto:support@thethingsindustries.com).
 
 ---
 
 #### Finding your Owner Token
 
-Each fleet has a unique **Owner Token** that is required when claiming gateways in {{% tts %}}.
+Each fleet has a unique **Owner Token** required when claiming gateways in {{% tts %}}.
 
 1. Open your **Subscription Dashboard**.
 2. Select your **Gateway Fleet**.
@@ -107,12 +108,11 @@ Each fleet has a unique **Owner Token** that is required when claiming gateways 
 
 #### Renewing slots
 
-Each gateway slot is valid for **one year** after activation.  
-When a slot expires, your gateway will stop forwarding traffic until the slot is renewed.
+Each **gateway slot** is valid for **one year** after activation. When a slot expires, the associated gateway will stop forwarding traffic until the slot is renewed.
 
-You can **renew a slot** directly from your **Gateway Fleet's page**. You can renew:
-- **Individual slots** — useful if you only want to extend certain slots.
-- **All slots** — to extend the all the expired slots from the fleet at once.
+From your **Gateway Fleet** page, you can renew:
+- **Individual slots**, or
+- **All expired slots** in the fleet at once.
 
 {{< figure src="subscription-renewal.png" alt="Renew all slots at once" >}}
 
@@ -123,7 +123,7 @@ You can **renew a slot** directly from your **Gateway Fleet's page**. You can re
 
 ### If you did not pre-purchase (no prepaid year)
 
-In this case, you’ll need to create a **subscription** before you can claim and activate your gateway.
+If your gateway does **not** include a prepaid subscription, you’ll need to create a subscription before you can claim and activate your gateway.
 
 1. Go to **Gateway Subscription**: <https://accounts.thethingsindustries.com/gateway-subscription>
 2. Click **Add Gateway**.
@@ -133,7 +133,8 @@ In this case, you’ll need to create a **subscription** before you can claim an
 {{< figure src="subscription-add-gateway.png" alt="Add Gateway: scan QR or enter EUI and Owner Token" >}}  
 
 > **Note:**  
-> Completing checkout **does not assign** your gateway to a fleet/slot.
+> Completing checkout **does not assign** your gateway to a fleet.
+> Gateway Fleets are available only for gateways purchased with a prepaid subscription.
 > If you’d like to add a slot for an existing gateway, please contact [support@thethingsindustries.com](mailto:support@thethingsindustries.com).
 
 ---
@@ -142,11 +143,14 @@ In this case, you’ll need to create a **subscription** before you can claim an
 
 {{% ttigpro %}} can be claimed in {{% tts %}} deployments that are connected to The Things Gateway Controller. {{% tts %}} Cloud and Sandbox are supported out-of-the-box.
 
-1. In {{% tts %}} Console, go to **Gateways**
-2. Click **Register Gateway**
-3. Click **Scan gateway QR code** and scan the QR code on the bottom of the gateway. Alternatively, enter the **Gateway EUI** and **Owner token**. This information is also available in [The Things Industries Account](https://accounts.thethingsindustries.com) if you do not have physical access to your gateway
-4. Enter a **Gateway ID** and select the **Frequency plan** to use
-5. Click **Claim gateway**
+1. In the {{% tts %}} Console, go to **Gateways**.
+2. Click **Register Gateway**.
+3. Click **Scan gateway QR code** and scan the QR code on the bottom of the gateway.  
+   Alternatively, enter the **Gateway EUI** and **Owner Token** manually:
+  - If your gateway is part of a **Gateway Fleet** (prepaid subscription), use the **Owner Token** from your **fleet details** in the **Subscription Dashboard**.
+  - If your gateway does **not** use a fleet (no prepaid subscription), use the **Owner Token** printed on the label under the mounting plate.
+4. Enter a **Gateway ID** and select the **Frequency plan** to use.
+5. Click **Claim gateway**.
 
 You should now see the **Connection settings** screen:
 
