@@ -15,7 +15,7 @@ This guide will help you set up an integration between {{% tts %}} and IoT Wonde
 
 ## Prerequisites
 
-1. A [user account on Wonderland](https://www.lorawonderland.com/master/public/ui/login.php)
+1. A [user account on Wonderland](https://www.lorawonderland.com/master/public/ui/login.php).
 
 ## Configuring The Things Stack
 
