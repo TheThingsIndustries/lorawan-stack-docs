@@ -121,6 +121,23 @@ From your **Gateway Fleet** page, you can renew:
 
 ---
 
+#### Auto top-up renewal
+
+**Auto top-up** automatically renews your gateway slots.
+
+- When **auto renewal** is **active**, the system will automatically add **one more year** to any gateways that expired in the last 24 hours.
+- The renewal will use your selected payment method (**credit card** or **invoice**).
+- You’ll receive a confirmation once the renewal is successful.
+
+If **auto renewal** is **inactive**, you can activate it by clicking the **Update payment method** button on the gateway fleet's page.
+
+{{< figure src="auto-top-up.png" alt="Auto Top-Up Renewal option in Gateway Fleet" >}}
+
+> **Tip:**  
+> Turn on Auto Top-Up to keep your gateways active without manual renewals.
+
+---
+
 ### If you did not pre-purchase (no prepaid year)
 
 If your gateway does **not** include a prepaid subscription, you’ll need to create a subscription before you can claim and activate your gateway.
