@@ -158,9 +158,9 @@ If the cluster has a custom CA, it must be specified in `global.tls.rootCA`. The
 
 Both {{% tts %}} [Storage Integration](https://www.thethingsindustries.com/docs/integrations/storage/) and {{% tts %}} [Network Operations Center](https://www.thethingsindustries.com/docs/concepts/architecture/components/network-operations-center/#accessing-network-operations-center) require a TimescaleDB instance.
 
-There can either be two separate TimeScaleDB instances or a single instance but different Databases.
+There can either be two separate TimeScaleDB instances or a single instance but different databases.
 
-For testing purposes, [TimeScaleDB Helm Charts](https://docs.timescale.com/install/latest/installation-kubernetes/) can be installed in the Kubernetes Cluster.
+For testing purposes, a self-hosted TimescaleDB can be installed as described in [here](https://docs.tigerdata.com/self-hosted/latest/install/installation-kubernetes/) or one of the [TimeScaleDB Helm Charts](https://github.com/timescale/helm-charts) can be installed in the Kubernetes Cluster.
 
 #### 8. (Optional) Metrics Server
 
