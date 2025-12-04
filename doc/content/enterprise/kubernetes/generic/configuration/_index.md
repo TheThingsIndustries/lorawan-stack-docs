@@ -13,7 +13,7 @@ aliases:
 
 <!--more-->
 
-The following is a list of mandatory minimum fields. For a full list of possible values, check the `values.yaml` file at the root of the {{% tts %}} Helm chart. You can find it on [artifacthub.io](https://artifacthub.io/packages/helm/thethingsindustries/lorawan-stack-helm-chart?modal=values) as well.
+The following is a list of mandatory minimum fields. For a full list of possible values, check the `values.yaml` file at the root of the {{% tts %}} Helm chart. You can find it on [artifacthub.io](https://artifacthub.io/packages/helm/tts/lorawan-stack-helm-chart?modal=values) as well.
 
 {{< warning >}} Some values in this file are secrets. Make sure to check this file into a secure repository.{{</ warning >}}
 
@@ -177,4 +177,4 @@ serviceAnnotations:
   traefik.ingress.kubernetes.io/service.serversscheme: h2c
 ```
 
-4. Install (or upgrade) the helm chart.  
+4. Install (or upgrade) the helm chart.
