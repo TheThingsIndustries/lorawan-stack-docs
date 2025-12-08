@@ -5,19 +5,19 @@ weight:
 aliases: ["/integrations/blockbax"]
 ---
 
-[Blockbax](https://blockbax.com/) is a fully configurable and scalable cloud IoT platform which requires no programming.
+[Blockbax](https://blockbax.com/platform/) is an AI-powered platform for data-driven asset management.
 
 <!--more-->
 
 The most important concept in the Blockbax Platform is a **subject**. Typically this is the business object you want to monitor such as a building, but it can be a device in its own right as well. You can also relate subjects together, for example to create composite structure like a building with floors. A subject can have **metrics** which are the things being measured. Besides a subject can also have **properties** to provide extra information (metadata) about the subject. These can be used throughout the platform for filtering, creating slices, drilldowns and aggregations. In order to enforce structure and make it easy to scale there are **subject types** which are the templates / blueprints of your subjects.
 
-Check the [Blockbax documentation page](https://blockbax.com/docs/) for more info and the short video below for an impression.
+Check the [Blockbax documentation page](https://blockbax.com/docs/) for more info.
 
 {{< figure src="subject-composition.gif" alt="Subject composition" >}}
 
 ## Prerequisites
 
-1. Own a Blockbax project or [request one](https://blockbax.com/about#contact) if you do not have an account yet.
+1. Own a Blockbax project or [request a demo](https://blockbax.com/request-demo/) to get started with Blockbax.
 
 ## Preparing an inbound connector in Blockbax
 
