@@ -31,14 +31,27 @@ global:
       grpc:
         traefik.ingress.kubernetes.io/router.entrypoints: grpc,grpcsecure
         traefik.ingress.kubernetes.io/router.tls: "true"
+      # LoRa Basics™ Station LNS.
       semtechws:
         traefik.ingress.kubernetes.io/router.entrypoints: semtechws,semtechwssecure
         traefik.ingress.kubernetes.io/router.tls: "true"
-    serviceAnnotations:
-      traefik.ingress.kubernetes.io/service.serversscheme: h2c
+      # LoRa Basics™ Station CUPS (in addition to the LNS configuration above). New in v1.1.0.
+      semtechcups:
+        traefik.ingress.kubernetes.io/router.middlewares: "<traefik-namespace>-buffering@kubernetescrd"
+      # The Things Industries Gateway Protocol.
+      ttigw:
+        traefik.ingress.kubernetes.io/router.entrypoints: ttigw,ttigwsecure
+        traefik.ingress.kubernetes.io/router.middlewares: traefik-passtlsclientcert@kubernetescrd
+        traefik.ingress.kubernetes.io/router.tls: "true"
+  services:
+    annotations:
+      grpc:
+        traefik.ingress.kubernetes.io/service.serversscheme: h2c
 ```
 
-Traefik Helm chart port mapping configuration:
+{{< note "The `global.ingress.serviceAnnotations` settings are deprecated starting with version 1.1.0. Use the `global.services.annotations` settings instead." />}}
+
+Traefik Helm chart port mapping configuration for {{% tts %}} (including both plain-text and TLS ports):
 
 ```yaml
 deployment:
@@ -129,6 +142,45 @@ ports:
     exposedPort: 1700
 ```
 
+Traefik middleware for LoRa Basics™ Station buffering:
+
+```yaml
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: buffering
+  namespace: <traefik-namespace>
+spec:
+  buffering: {}
+```
+
+Traefik Middleware for The Things Industries Gateway Protocol TLS client certificate passthrough:
+
+```yaml
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: traefik-passtlsclientcert
+  namespace: <traefik-namespace>
+spec:
+  passTLSClientCert:
+    pem: true
+```
+
+
+Traefik default TLS options for The Things Industries Gateway:
+
+```yaml
+apiVersion: traefik.io/v1alpha1
+kind: TLSOption
+metadata:
+  name: default
+  namespace: <traefik-namespace>
+spec:
+  clientAuth:
+    clientAuthType: RequestClientCert
+```
+
 UDP Ingress Route for the UDP Packet Forwarder:
 
 {{< warning "The UDP Packet Forwarder requires session affinity to work properly. Traefik does not support session affinity for UDP. Session affinity can usually be set up on the Load Balancer of the cluster. We recommend using the newer {{% lbs %}} instead of the UDP Packet Forwarder." />}}
@@ -162,7 +214,7 @@ spec:
   routes:
   - match: HostSNI(`*`)
     services:
-      - name: tts-as # <helm-chart-release-name>-as
+      - name: tts-as-mqtt # <helm-chart-release-name>-as-mqtt
         port: 1883
 ---
 apiVersion: traefik.io/v1alpha1
@@ -176,13 +228,15 @@ spec:
   routes:
   - match: HostSNI(`*`)
     services:
-      - name: tts-as # <helm-chart-release-name>-as
+      - name: tts-as-mqtt # <helm-chart-release-name>-as-mqtt
         port: 1883
   tls:
     secretName: ingress-tls-secret
 ```
 
 ## Ingress-Nginx Controller
+
+{{< warning "We strongly recommend against using Ingress-Nginx as the Kubernetes SIG for Network and Security [announced its retirement](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/)." />}}
 
 Example of an Ingress-Nginx Controller configuration. More info about the Helm chart can be found [here](https://kubernetes.github.io/ingress-nginx/).
 
@@ -201,9 +255,17 @@ global:
       http:
         nginx.ingress.kubernetes.io/backend-protocol: HTTP
         nginx.ingress.kubernetes.io/use-http2: "true"
-      semtechws: {}
-      ttigw: {}
-    serviceAnnotations: {}
+      ttigw:
+        nginx.ingress.kubernetes.io/backend-protocol: HTTP
+        nginx.ingress.kubernetes.io/use-http2: "true"
+      semtechws:
+        nginx.ingress.kubernetes.io/backend-protocol: HTTP
+        nginx.ingress.kubernetes.io/use-http2: "false"
+      semtechcups: # new in v1.1.0 
+        nginx.ingress.kubernetes.io/backend-protocol: HTTP
+        nginx.ingress.kubernetes.io/use-http2: "false"
+  services:
+    annotations: {}
 ```
 
 Ingress-Nginx Helm chart port mapping configuration:
@@ -215,9 +277,9 @@ controller:
   config:
     use-http2: true
     strict-validate-path-type: false # This is needed to allow gRPC paths that contain dots.
-    default-ssl-certificate: <tls-certificate-secret-namespace>/<tls-certificate-secret-name> # Make sure to set this.
+    default-ssl-certificate: <tls-certificate-secret-namespace>/<tls-certificate-secret-name>
 tcp:
-  # Plain-text ports.
+  # Plain-text ports. Not recommended for production usage.
   "1881": tts/the-things-stack-gs:1881 # <namespace>/<helm-chart-release-name>-gs:1881
   "1882": tts/the-things-stack-gs:1882
   "1883": tts/the-things-stack-as:1883
