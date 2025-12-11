@@ -10,7 +10,7 @@ aliases:
   ]
 ---
 
-The following are required for {{% tts %}} on Kubernetes.
+The following are required for {{% tts %}} on Kubernetes. These prerequisites may be provisioned through various methods depending on the infrastructure specifics and it is the responsibility of the cluster operator to ensure they are correctly set up to be used reliably with the {{% tts %}} Helm chart.
 
 <!--more-->
 

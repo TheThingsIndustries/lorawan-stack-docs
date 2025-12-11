@@ -8,7 +8,7 @@ aliases: [
   ]
 ---
 
-The following are examples of ingress controller configurations for {{% tts %}} deployment on Kubernetes.
+The following are examples of ingress controller configurations for {{% tts %}} deployment on Kubernetes. These examples serve only as general guidelines — the exact configuration may vary based on the user's environment and infrastructure.
 
 <!--more-->
 
