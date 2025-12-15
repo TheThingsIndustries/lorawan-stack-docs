@@ -210,7 +210,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="pkgutilstoredriver-driver-error">pkg/util/store:driver (driver error)</h2>
 <p>The Things Stack runs Kubernetes jobs to initialize and migrate Postgres. This error can occur if the The Things Stack is accessed either before these jobs are run or if the jobs failed to execute. Check the status of the jobs for more details on what went wrong.</p>
 <h2 id="failed-to-check-version-update-certificate-signed-by-unknown-authority">Failed to check version update (certificate signed by unknown authority)</h2>
-<p>If the <code>skip-version-check</code> flag is disabled, the stack will check for new updates. To check for updates, requests are going to be sent to <a href="https://thethingsindustries.com">thethingsindustries.com</a>. For the requests to succeed, a CA certificate must be present in the trust store of the cluster that accepts the thethingsindustries.com domain (e.g. <a href="https://www.amazontrust.com/repository/">Amazon Root CA 1</a>).  Another alternative is adding it to the list of certificates in the <code>rootCA</code> field in the Helm chart.</p>
+<p>If the <code>skip-version-check</code> flag is disabled, the stack will check for new updates. To check for updates, requests are going to be sent to <a href="https://thethingsindustries.com">thethingsindustries.com</a>. For the requests to succeed, a CA certificate must be present in the trust store of the cluster that accepts the thethingsindustries.com domain (e.g. <a href="https://www.amazontrust.com/repository/">Amazon Root CA 1</a>). Another alternative is adding it to the list of certificates in the <code>rootCA</code> field in the Helm chart.</p>
+<h2 id="my-gateway-is-configured-to-use-lora-basics-station-but-it-is-not-connecting">My gateway is configured to use LoRa Basics Station, but it is not connecting.</h2>
+<p>There are multiple possible causes for this issue. Check the logs of the gateway to see if there are any errors. Incorrectly configured TLS certificates are one of the most common ones. Check if the trust store used by the gateway contains the CA certificate that signed the TLS certificate used by Helm chart.</p>
+<p>If you see an error similar to <code>Malformed CUPS response: URI segments lengths (110) exceed available data (0)</code> that means your ingress controller needs to have buffering enabled explicitly for LoRa Basics Station connections. LoRa Basics Station CUPS does not support chunked transfer encoding and the gateway must receive a &lsquo;Content-Length&rsquo; header in the HTTP responses. Enabling buffering will ensure that the entire response is buffered before being sent to the gateway, allowing the &lsquo;Content-Length&rsquo; header to be set.</p>
+<p>E.g., if you are using Traefik as ingress controller, you can enable buffering by creating a Traefik middleware and adding the middleware annotations to the Helm chart. Check the example Traefik configuration in the <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/prerequisites/sample-ingress-controllers/">sample ingress controllers guide</a>.</p>
+<p>You can find more info in the LoRa Basics Station gateway setup guide: <a href="https://www.thethingsindustries.com/docs/hardware/gateways/concepts/lora-basics-station/">LoRa Basics™ Station Gateway Setup</a>).</p>
         </div>
           <div class="columns is-multiline">
 </div>
@@ -254,6 +259,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
       
       <li><a href='#failed-to-check-version-update-certificate-signed-by-unknown-authority'>Failed to check version update (certificate signed by unknown authority)</a></li>
+    
+      
+      <li><a href='#my-gateway-is-configured-to-use-lora-basics-station-but-it-is-not-connecting'>My gateway is configured to use LoRa Basics Station, but it is not connecting.</a></li>
     
   </ul>
 

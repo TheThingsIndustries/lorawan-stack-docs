@@ -206,7 +206,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         <h1 class="title is-size-2">Prerequisites</h1>
         <div class="content">
-          <p>The following are required for The Things Stack on Kubernetes.</p>
+          <p>The following are required for The Things Stack on Kubernetes. These prerequisites may be provisioned through various methods depending on the infrastructure specifics and it is the responsibility of the cluster operator to ensure they are correctly set up to be used reliably with the The Things Stack Helm chart.</p>
 <h2 id="installation-tools">Installation Tools</h2>
 <ol>
 <li><a href="https://kubernetes.io/docs/reference/kubectl/"><code>kubectl</code></a></li>
@@ -227,7 +227,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ol>
 <li>A Kubernetes cluster</li>
 <li>PostgreSQL 14 or above</li>
-<li>Redis 6.2 or above</li>
+<li>Redis 6.2 or above (with cluster mode disabled)</li>
 <li>Blob Storage</li>
 <li>An ingress controller to handle the ingress routes</li>
 <li>TLS Certificates</li>
@@ -242,7 +242,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>The database used by The Things Stack Identity Server is a PostgreSQL database. We recommend using a managed database for High Availability with backups enabled.</p>
 <p>For testing purposes, <a href="https://artifacthub.io/packages/helm/bitnami/postgresql">Bitnami&rsquo;s Helm Charts for PostgreSQL</a> can be installed in the Kubernetes Cluster.</p>
 <h4 id="3-redis-compatible-database">3. Redis Compatible Database</h4>
-<p>Multiple components of The Things Stack use Redis to store data and for task-based operations. We recommend using a managed database for High Availability with backups enabled.</p>
+<p>Multiple components of The Things Stack use Redis to store data and for task-based operations. We recommend using a managed database for High Availability with backups enabled. <strong>Cluster mode must be disabled in Redis</strong>, as it is not supported by The Things Stack.</p>
 <p>For testing purposes, <a href="https://artifacthub.io/packages/helm/bitnami/redis">Bitnami&rsquo;s Helm Charts for Redis</a> can be installed in the Kubernetes Cluster.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -301,15 +301,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Create an empty <code>plugins.yml</code> in the <code>plugins</code> folder.</li>
 </ol>
 <h4 id="5-an-ingress-controller">5. An ingress controller</h4>
-<p>An ingress controller is needed to route the incoming traffic. The Things Stack Helm chart uses Kubernetes ingress resources for routing requests to the components of The Things Stack. This allows the users of The Things Stack Helm chart to configure an ingress controller of their choice. However, Kubernetes ingress routes support only L7 traffic (HTTP/gRPC). For this reason, the configuration for routing UDP Packet Forwarder traffic for gateways is not handled by the Helm chart.</p>
-<p>The Things Stack needs several <a href="https://www.thethingsindustries.com/docs/concepts/networking/#port-allocations">port allocations with various protocols</a>. We recommend using an ingress controller that natively supports L4 and L7 protocols. Depending on your preferred setup for gateways, an ingress controller that supports only L7 protocols (such as Ingress-Nginx) can be used too, but the connecting gateways will be either limited to L7 protocols or more complex to setup and maintain if using L4 protocols.</p>
+<p>An ingress controller is needed to route the incoming traffic. The Things Stack Helm chart uses Kubernetes ingress resources for routing requests to the components of The Things Stack. This allows the users of The Things Stack Helm chart to configure an ingress controller of their choice. However, Kubernetes ingress routes support only L7 traffic (HTTP/gRPC). For this reason, the configuration for the UDP Packet Forwarder or integrations such as MQTT is not handled by the Helm chart.</p>
+<p>The Things Stack needs several <a href="https://www.thethingsindustries.com/docs/concepts/networking/#port-allocations">port allocations with various protocols</a>. We recommend using an ingress controller that natively supports L4 and L7 protocols. Depending on your preferred setup for gateways, an ingress controller that supports only L7 protocols can be used too, but the connecting gateways will be either limited to L7 protocols or will have a more complex setup.</p>
 <p>Although we do support UDP Packet Forwarder as a gateway connection option, it requires <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/#udp-gateway-support">more configuration on your side</a>. We recommend using LoRa Basics™ Station or The Things Industries Gateway protocols for connecting gateways.</p>
 <p>To configure the ingress controller for The Things Stack:</p>
 <ol>
 <li>Specify the ingress controller by setting the <code>global.ingress.controller</code> to the class name of the ingress controller deployed in the cluster. This will be used to set the ingress class name in the ingress routes that handle The Things Stack traffic.</li>
 <li>Specify the TLS secret by setting the <code>global.ingress.controller.tls.secretName</code>. The secret has to be accessible from the namespace where the The Things Stack Helm Chart is deployed. This will be used to terminate TLS for The Things Stack traffic</li>
 <li>Add annotations for the ingress routes if needed by setting <code>global.ingress.annotations.http</code>, <code>global.ingress.annotations.grpc</code>, <code>global.ingress.annotations.semtechws</code> or <code>global.ingress.annotations.ttigw</code>.</li>
-<li>Add ingress specific service annotations for The Things Stack services by setting <code>global.ingress.serviceAnnotations</code> if needed.</li>
+<li>Add service annotations for The Things Stack services by setting <code>global.services.annotations</code> if needed.</li>
 <li>Expose the ports used by The Things Stack in your ingress controller. A list of all the ports can be found <a href="https://www.thethingsindustries.com/docs/concepts/networking/#port-allocations">here</a>. For production environments, make sure to expose only TLS ports.</li>
 </ol>
 <p>Examples of ingress controllers configurations can be found <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/generic/prerequisites/sample-ingress-controllers/">here</a>.</p>
@@ -345,7 +345,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </h1>
           <div class="content has-text-grey">
             
-            The following are examples of ingress controller configurations for The Things Stack deployment on Kubernetes.
+            The following are examples of ingress controller configurations for The Things Stack deployment on Kubernetes. These examples serve only as general guidelines — the exact configuration may vary based on the user&rsquo;s environment and infrastructure.
 
             
           </div>
