@@ -10,7 +10,7 @@ aliases: [/the-things-stack/host/kubernetes/generic]
 
 This guide helps the user to install and configure {{% tts %}} on a Kubernetes cluster.
 
-<!-- more -->
+<!--more-->
 
 {{< warning "Operating The Things Stack on a Kubernetes cluster is only meant for advanced users with sufficient experience with the chosen infrastructure platform and with Kubernetes." />}}
 
