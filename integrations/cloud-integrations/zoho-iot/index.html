@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.140.0-DEV">
+  <title>Zoho IoT | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/zoho-iot/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Zoho IoT">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Zoho IoT">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/zoho-iot/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="Zoho IoT" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+
+  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Integrations</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/integrations/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" class="">Adding Applications</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/data-formats/" class="">Data Formats</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">Webhooks</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Integrate with popular IoT platforms</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza/" class="">akenza</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/allthingstalk/" class="">AllThingsTalk Maker</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/anyviz/" class="">AnyViz</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/" class="">AWS IoT</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-central/" class="">Azure IoT Central</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/" class="">Azure IoT Hub</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/" class="">Blockbax</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/" class="">Blynk</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cayenne/" class="">Cayenne</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/" class="">Cloud Studio</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/daizy/" class="">Daizy</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/datacake/" class="">Datacake</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/delmation/" class="">Delmation Products</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/dezem/" class="">deZem</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/homey/" class="">Homey</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/" class="">InfluxDB Cloud 2.0</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/iotinabox/" class="">IoT in a Box</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/wonderland/" class="">IoT Wonderland</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/kaa/" class="">Kaa</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/losant/" class="">Losant IoT Platform</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/mclimate/" class="">MClimate</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/my-iot-open-tech/" class="">my IoT open Tech</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/qubitro/" class="">Qubitro</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tagoio/" class="">TagoIO</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/telemetry2u/" class="">Telemetry2U</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tellsens/" class="">Tellsens</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thethingsio/" class="">thethings.iO</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thinger-io/" class="">Thinger.io</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingsboard/" class="">ThingsBoard</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingspeak/" class="">ThingSpeak</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ttnmapper/" class="">TTN Mapper</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/" class="">Ubidots</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/uib/" class="">UIB</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/unaconnect/" class="">UnaConnect</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/" class="">Widgelix</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/withthegrid/" class="">Withthegrid</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/zoho-iot/" class="is-active">Zoho IoT</a>
+    
+    
+
+
+
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/" class="">Other integrations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/application-packages/" class="">Application Packages</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/guides/" class="">Examples</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        
+        
+        <h1 class="title is-size-2">Zoho IoT</h1>
+        <div class="content">
+          <p><a href="https://www.zoho.com/iot/">Zoho IoT</a> is a low-code platform for building cloud based web applications tailored to IoT use cases. It lets you securely connect, monitor, and automate IoT enabled devices with ease.</p>
+<p>This guide will help you set up an integration between The Things Stack and Zoho IoT.</p>
+<h2 id="prerequisite">Prerequisite</h2>
+<ol>
+<li>A valid and active <a href="https://help.zoho.com/portal/en/kb/iot/getting-started/user-onboarding/sign-up-and-sign-in-to-zoho-iot/articles/zoho-iot-signup-signin-signout">Zoho IoT platform account</a>.</li>
+<li>Access to The Things Stack Console.</li>
+</ol>
+<h2 id="step-1-setting-up-the-data-stream-in-zoho-iot">Step 1: Setting up the Data Stream in Zoho IoT</h2>
+<p>A Zoho IoT Data Stream contains the credentials required to securely connect and integrate with The Things Stack LoRa Network Server. It enables the ingestion of uplink data from connected LoRa devices, allowing seamless monitoring and management within the Zoho IoT application.</p>
+<p>i. Sign into <a href="https://help.zoho.com/portal/en/kb/iot/getting-started/user-onboarding/sign-up-and-sign-in-to-zoho-iot/articles/zoho-iot-signup-signin-signout">Zoho IoT</a> and <a href="https://help.zoho.com/portal/en/kb/iot/getting-started/user-onboarding/working-with-applications/articles/working-with-applications#Creating_an_Application">create an application</a>.</p>
+<p>ii.  Access the End Application.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/end-applicatuion-zoho-iot.png"
+    alt="End Application Zoho IoT">
+</figure>
+
+<p>iii. Click the <strong>Settings</strong> icon at the top right.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/click-settings.png"
+    alt="Click Settings">
+</figure>
+
+<p>iv. Click <strong>Data Streams</strong> under the INTEGRATIONS section.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/click-datastreams.png"
+    alt="Click Data Streams">
+</figure>
+
+<p>v. Click <strong>Add Data Stream</strong>.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/click-add-datastreams.png"
+    alt="Click Add Data Streams">
+</figure>
+
+<p>vi. Choose <strong>The Things Stack</strong> and click <strong>Proceed</strong>.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/select-ttn.png"
+    alt="Select TTN">
+</figure>
+
+<p>vii. Provide a name for the data stream and the Keep Alive interval. For this illustration, The Things Stack is given as the name and 10 minutes is set as the Keep Alive Interval.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/fill-datastream-form.png"
+    alt="Fill Data Stream Form">
+</figure>
+
+<blockquote>
+<p>Note: The Keep Alive Interval tells the application how long to wait for data from the LoRa Network Server (LNS). If no data is received within this time, the data stream’s connection status changes to Disconnected. The interval is measured in minutes.</p>
+</blockquote>
+<p>viii. Click <strong>Add</strong>. The data stream will now be added to the application, and the connection credentials will be displayed.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/save-datastream-form.png"
+    alt="Save Data Stream Form">
+</figure>
+
+<p>ix. Click <strong>Ok</strong> in the addition successful pop-up dialog box. This will open the data stream&rsquo;s information page.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/click-ok-successful-dialog-box.png"
+    alt="Click Ok Successful in Dialog Box">
+</figure>
+
+<p>x. Click <strong>Proceed</strong> in the Onboarding wizard that appears.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/click-proceed-oboarding-assistant.png"
+    alt="Click Proceed Onboarding Assistant">
+</figure>
+
+<p>The connection details required to establish a secure integration with The Things Stack application will be displayed.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/datastream-connection-details.png"
+    alt="Data Stream Connection Details">
+</figure>
+
+<blockquote>
+<p>Do not close this window or tab. Open The Things Stack Console in a new tab to continue the integration process.</p>
+</blockquote>
+<h2 id="step-2-configuring-the-things-stack-application">Step 2: Configuring The Things Stack application</h2>
+<p>LoRa devices registered in The Things Stack can be monitored in Zoho IoT through data stream integration. The data stream connects to The Things Stack using a webhook, which forwards uplink messages from the device to Zoho IoT for monitoring. In this step, you’ll learn how to integrate the data stream with The Things Stack using the credentials generated while adding the data stream.</p>
+<blockquote>
+<p>Note: If you’ve closed the Onboarding Assistant, follow this guide to view the connection credentials of your data stream.</p>
+</blockquote>
+<p>i. Open the The Things Stack Console.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/things_stack_console.png"
+    alt="The Things Stack Console">
+</figure>
+
+<p>ii. Toggle to <strong>Applications</strong> and select the application you want to integrate with the Zoho IoT application. For this illustration, the Parking Monitoring application is selected.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/select_application.png"
+    alt="Toggle and Select Application">
+</figure>
+
+<p>iii. Select <strong>Webhooks</strong> and click <strong>Add Webhook</strong>.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/add_webhook.png"
+    alt="Add Webhook">
+</figure>
+
+<p>iv. Scroll down and click on <strong>Zoho IoT</strong>.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/select_zoho_iot.png"
+    alt="Select Zoho IoT">
+</figure>
+
+<p>v. Provide a <strong>Webhook ID</strong> for your reference. For this illustration, zoho-iot-parking-solution is used.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/provide_webhook_id.png"
+    alt="Provide Webhook ID">
+</figure>
+
+<p>vi. Provide the <strong>URL Param Implementation</strong> value from the datastreams connection credentials in the <strong>Base URL</strong> filed.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/provide-url-param-implementation-value.png"
+    alt="Provide URL Param Implementation Value">
+</figure>
+
+<blockquote>
+<p>The authentication token required for secure connection is include in the URL Param value.</p>
+</blockquote>
+<p>vii. Click <strong>Create Zoho IoT Webhook</strong>.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/create-zoho-iot-webhook.png"
+    alt="Create Zoho IoT Webhook">
+</figure>
+
+<p>The Things Stack application will now be integrated with the Zoho IoT application via the Data Stream.</p>
+<p>With this step completed, you can now view The Things Stack (TTN) data within Zoho IoT. When a device managed by The Things Stack LNS sends a message, it will also be received by your Zoho IoT application.</p>
+<h2 id="step-3-viewing-the-data-in-zoho-iot">Step 3: Viewing the Data in Zoho IoT</h2>
+<p>Once the Zoho IoT webhook is created for your data stream, you can view messages sent from The Things Stack.</p>
+<p>After updating the credentials in The Things Stack console, switch back to the Zoho IoT application tab and click <strong>Proceed</strong> in the Data Stream Onboarding Assistant. The message sent by the device will then be displayed.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/proceed-datastream-onboarding.png"
+    alt="Proceed Data Stream Onboarding ">
+</figure>
+
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/message-viewer-onboarding-assistant.png"
+    alt="Message Viewer in Onboarding Assistant">
+</figure>
+
+<blockquote>
+<p>Note: If you’ve closed the Onboarding Assistant, follow this <a href="https://help.zoho.com/portal/en/kb/iot/devices/working-with-datastreams/articles/viewing-messages-of-a-datastream">guide</a> to view the messages received by your data stream.</p>
+</blockquote>
+<h2 id="step-4-adding-a-device-in-the-zoho-iot-application">Step 4: Adding a Device in the Zoho IoT application</h2>
+<p>With the data stream added and integrated, The Things Stack application will now forward all uplink data from the connected devices. You can add a corresponding device in Zoho IoT to represent each LoRa device. This ensures that the data sent from the device is stored as datapoints in Zoho IoT and can be monitored within the application.</p>
+<p>To add a LoRa device,</p>
+<p>i. If you are in the Data Stream Onboarding Assistant, close it by clicking the <strong>X</strong> button.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/close-datastream-onboarding-assistant.png"
+    alt="Close Data Stream Onboarding Assistant">
+</figure>
+
+<p>ii. Close the Data Stream Information page by clicking the <strong>X Close</strong> button.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/close-datastream-info-page.png"
+    alt="Close Data Stream Information Page">
+</figure>
+
+<p>iii. In the left navigation panel, select <strong>Devices &gt; Devices</strong>.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/go-to-devices.png"
+    alt="Go To Devices">
+</figure>
+
+<p>iv. Click <strong>Add Device</strong>.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/click-add-device.png"
+    alt="Add Device">
+</figure>
+
+<p>v. Select <strong>Add Using Product Gallery (Devices)</strong> and click <strong>Proceed</strong>.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/select-add-using-product-gallery.png"
+    alt="Add Using Device Product">
+</figure>
+
+<p>vi. Search for, browse, or filter your LoRa device.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/browse-for-device-product.png"
+    alt="Browse Device">
+</figure>
+
+<p>vii. Click the required device. For this example, the AM319 L device is selected.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/click-required-device-product.png"
+    alt="Click on Required Device">
+</figure>
+
+<p>viii. In the device product information page, click <strong>Import and Proceed</strong>.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/click-import-and-proceed.png"
+    alt="Import and Proceed">
+</figure>
+
+<p>ix. Enter the required details in the fields provided. Here’s an example set of values you can refer to:</p>
+<ul>
+<li><strong>Model Type</strong>: Create New Model</li>
+<li><strong>Model Name</strong>: Parking IAQ</li>
+<li><strong>Name</strong>: MyAM319L</li>
+<li><strong>Type</strong>: Smart Sensor</li>
+<li><strong>Device Connectivity</strong>: LoRaWAN via LoRaWAN Datastream</li>
+<li><strong>DevEUI</strong>: 2E4xxxxxxxxxxx7F3 (the 16-digit DevEUI of your device; this is how Zoho IoT identifies which payload belongs to which device)</li>
+<li><strong>Data Stream</strong>: The Things Stack (select the data stream you integrated earlier)</li>
+<li><strong>Keep Alive Interval</strong>: 10 minutes</li>
+</ul>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/fill-device-product-form.png"
+    alt="Fill Device Product Form">
+</figure>
+
+<p>x. Click <strong>Proceed</strong>. The device will now be added to the Zoho IoT application.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/proceed-device-product-form.png"
+    alt="Proceed Device Product Form">
+</figure>
+
+<p>xi. Click <strong>View Device</strong> to open the added device&rsquo;s information page.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/view-device.png"
+    alt="View Device">
+</figure>
+
+<p>The device is now added. It will extract and store its data from the payload forwarded by The Things Stack.</p>
+<h2 id="step-5-visualizing-the-data">Step 5: Visualizing the Data.</h2>
+<p>With the data now stored in the device, you can begin visualising it in Zoho IoT.</p>
+<h3 id="using-the-data-explorer">Using the Data Explorer</h3>
+<p>The Data Explorer lets you view and analyse the datapoints stored for a device.</p>
+<p>To view data using the Data Explorer:</p>
+<p>i. On the device information page, <strong>Close</strong> the Onboarding Assistant.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/close-device-onboarding-assistant.png"
+    alt="Close Onboarding Assistant">
+</figure>
+
+<p>ii. Select the <strong>Data Explorer</strong> tab.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/select-data-explorer.png"
+    alt="Data Explorer Tab">
+</figure>
+
+<p>iii. In the left pane, choose the datapoints you want to visualise. For example, select PM10, Temperature, CO₂, and Humidity.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/choose-datapoint.png"
+    alt="Choose Datapoints">
+</figure>
+
+<p>The graph will update automatically based on the data forwarded from The Things Stack for these datapoints.</p>
+<h3 id="using-the-global-dashboard">Using the Global Dashboard</h3>
+<p>Since the device data is now stored as datapoints, you can also create a global dashboard to monitor multiple parameters at once. This allows you to build visualisations similar to the example shown below.</p>
+<figure><img src="/docs/integrations/cloud-integrations/zoho-iot/iot-dashbaord.png"
+    alt="IAQ Dashboard">
+</figure>
+
+<p>Follow this <a href="https://help.zoho.com/portal/en/kb/iot/dashboards/dashboards/working-with-dashboards/articles/working-with-iot-dashboards">guide</a> to learn how to create dashboards in Zoho IoT.</p>
+        </div>
+          <div class="columns is-multiline">
+</div>
+
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/withthegrid/">← Withthegrid</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#prerequisite'>Prerequisite</a></li>
+    
+      
+      <li><a href='#step-1-setting-up-the-data-stream-in-zoho-iot'>Step 1: Setting up the Data Stream in Zoho IoT</a></li>
+    
+      
+      <li><a href='#step-2-configuring-the-things-stack-application'>Step 2: Configuring The Things Stack application</a></li>
+    
+      
+      <li><a href='#step-3-viewing-the-data-in-zoho-iot'>Step 3: Viewing the Data in Zoho IoT</a></li>
+    
+      
+      <li><a href='#step-4-adding-a-device-in-the-zoho-iot-application'>Step 4: Adding a Device in the Zoho IoT application</a></li>
+    
+      
+      <li><a href='#step-5-visualizing-the-data'>Step 5: Visualizing the Data.</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sections</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sitemap</h3>
+        <p><a class="" href="https://www.thethingsindustries.com/docs/sitemap/">View our Sitemap</a></p>
+      </nav>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
