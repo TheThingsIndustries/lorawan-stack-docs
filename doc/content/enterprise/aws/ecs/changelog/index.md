@@ -6,6 +6,8 @@ aliases: [/getting-started/aws/ecs/changelog]
 
 All meaningful changes to templates are documented in this file.
 
+<!--more-->
+
 ## Unreleased
 
 ## 3.35.0
