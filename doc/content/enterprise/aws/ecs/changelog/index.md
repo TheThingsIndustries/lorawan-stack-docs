@@ -8,6 +8,16 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.35.1
+
+### `2-5-db-timescale-master`, `2-6-db-timescale-replica`
+
+- Use Amazon Linux 2 (AL2) instead of Amazon Linux 2023. These templates can be used to fix AL2023-related issues in versions `3.34.1` through `3.35.0`.
+
+### `2-6-db-timescale-replica`
+
+- Remove duplicate storage lifecycle policy.
+
 ## 3.35.0
 
 ## 3.34.3
