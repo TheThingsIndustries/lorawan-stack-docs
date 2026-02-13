@@ -8,6 +8,10 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+### `4-2a-configuration`
+
+- Add `DownlinkQueueCapacity` parameter.
+
 ## 3.35.1
 
 ### `2-5-db-timescale-master`, `2-6-db-timescale-replica`
@@ -17,6 +21,10 @@ All meaningful changes to templates are documented in this file.
 ### `2-6-db-timescale-replica`
 
 - Remove duplicate storage lifecycle policy.
+
+### 5-1-ecs-cluster
+
+- Update Python Lambda runtime to `3.14`.
 
 ## 3.35.0
 
