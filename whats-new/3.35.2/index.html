@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.140.0-DEV">
-  <title>3.15.0 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.15.0/" />
+  <title>3.35.2 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.35.2/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="3.15.0">
+  <meta itemprop="name" content="3.35.2">
   <meta itemprop="description" content="The Things Stack for LoRaWAN">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="3.15.0">
+  <meta property="og:title" content="3.35.2">
   <meta property="og:description" content="The Things Stack for LoRaWAN">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.15.0/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.35.2/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="3.15.0" />
+  <meta name="twitter:title" content="3.35.2" />
   <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
   <meta name="twitter:card" content="summary" />
   
@@ -94,7 +94,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/whats-new/" class="">Overview</a>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.35.2/" class="">3.35.2</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.35.2/" class="is-active">3.35.2</a>
+    
+
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.35.1/" class="">3.35.1</a>
@@ -283,12 +288,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.1/" class="">3.15.1</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.0/" class="is-active">3.15.0</a>
-    
-
-
-
-    
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.0/" class="">3.15.0</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.14.2/" class="">3.14.2</a>
@@ -381,42 +381,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="docs-content">
           
           
-        <h1 class="title is-size-2">3.15.0</h1>
+        <h1 class="title is-size-2">3.35.2</h1>
         <div class="content">
-          <h3 id="added">Added</h3>
+          <h3 id="changed">Changed</h3>
 <ul>
-<li>RPC to query supported PHY versions for a given Band ID.</li>
-<li>Non-TLS LNS endpoint support.</li>
-<li>New config option <code>is.user-login.disable-credentials-login</code> that disables login with credentials (can be set per tenant).
-<ul>
-<li>In case where only one authentication provider is configured and the config option is set to <code>true</code> the login screen redirects to provider login.</li>
-</ul>
-</li>
-</ul>
-<h3 id="changed">Changed</h3>
-<ul>
-<li>Update to Go 1.17.</li>
-<li>LBS timestamp rollover threshold.</li>
-<li>The Application Server worker pools may now drop workers if they are idle for too long.</li>
-<li>Improved error page UX in the Console.</li>
+<li>Rate limiting for downlink queue operations (<code>DownlinkQueuePush</code>, <code>DownlinkQueueReplace</code>) is now applied at the application level instead of per-device. This may result in more <code>ResourceExhausted</code> (429) errors when multiple devices under the same application perform downlink queue operations concurrently.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Collaborator ID validation in gateway claiming form in the Console.</li>
-<li>Entity purge handling for non-admin users in the Console.</li>
-<li>URL field validation in webhook forms in the Console when value is not trimmed.</li>
-<li>Not rendering site header and footer for error pages in some situations.</li>
-<li>Not providing a copy button for error pages in some situations.</li>
-<li>Improved errors for invalid URLs.</li>
-<li>Limit length of search queries within tables in the Console to 50 to comply with API validation.</li>
-<li>External Join Server address handling in end device creation form in the Console.</li>
-<li>Updating <code>supports_class_b</code> field in the end device general settings page in the Console.</li>
+<li>The support user is now properly excluded from admin-related operations (notifications, last admin checks for delete/update/purge).</li>
+<li>Application Server webhook registry now uses read-only Redis client for non-paginated list operations, reducing connection holding time during high traffic.</li>
 </ul>
 
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/whats-new/3.15.1/">← 3.15.1</a>
-<a class="button is-pulled-right" href="/docs/whats-new/3.14.2/">3.14.2 →</a>
+<a class="button is-pulled-left" href="/docs/whats-new/">← Release Notes</a>
+<a class="button is-pulled-right" href="/docs/whats-new/3.35.1/">3.35.1 →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
