@@ -244,6 +244,20 @@ If the issue persists, please contact [support@thethingsindustries.com](mailto:s
 
 ## Firmware Changelog
 
+### 1.3.0
+
+- Update dependencies.
+- Use DNS servers from DHCP.
+- Log summary of traffic instead of per packet for better diagnostics.
+- Convey connect attempt and panic reason to the Gateway Controller for better diagnostics.
+- Recover PPP data mode after a failed connection attempt.
+- Power cycle the cellular modem after three failed connection attempts.
+- Update to ESP-IDF v5.4.3.
+
+### 1.2.12
+
+- Update to ESP-IDF v5.3.4.
+
 ### 1.2.11
 
 - Update dependencies
