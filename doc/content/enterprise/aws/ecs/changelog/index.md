@@ -8,6 +8,27 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+### `5-6-ecs-proxy`
+
+- Increase the allowed number of concurrent streams (downstream) per HTTP/2 connection for the Identity Server proxy.
+- Increase the allowed number of concurrent streams (downstream) per HTTP/2 connection for the main proxy.
+- Increase the per-connection buffer limit for the main proxy listeners and Identity Server clusters.
+- Add max-concurrent-streams to IS proxy upstream connections
+
+### `1-1-vpc`
+
+- Add optional CloudWatch Logs support for NLB access logs.
+
+### AMI/BYOL template
+
+- Add `TTGCTLSCertificateSecretARN`, `TTGCTLSCertificate` and `TTGCTLSCertificateKey` parameters for specifying a separate TTGC client TLS certificate.
+
+### Proxy
+
+- Upgrade to Envoy `1.31.10`.
+
+## 3.35.2
+
 ### `4-2a-configuration`
 
 - Add `DownlinkQueueCapacity` parameter.
