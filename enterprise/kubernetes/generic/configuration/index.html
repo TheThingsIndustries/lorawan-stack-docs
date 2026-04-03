@@ -204,6 +204,59 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   Some values in this file are secrets. Make sure to check this file into a secure repository.
 </div>
 
+<h3 id="implications-of-choosing-the-domain-and-initial-tenant">Implications of choosing the domain and initial tenant</h3>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>The <code>global.domain</code>, <code>global.deployment.initialTenant.tenantID</code> and <code>global.tenancy.defaultID</code> values determine how The Things Stack constructs its URLs and what your TLS certificates must cover.</p>
+<p><strong>Single-tenant deployments</strong></p>
+<p>For single-tenant deployments, set <code>global.tenancy.defaultID</code> to the tenant ID. This makes The Things Stack accessible directly at the configured domain without a tenant subdomain.</p>
+<p>Example configuration:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">global</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l">thethings.example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deployment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">initialTenant</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">tenantID</span><span class="p">:</span><span class="w"> </span><span class="l">tti</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminUserID</span><span class="p">:</span><span class="w"> </span><span class="l">admin-tti</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminPassword</span><span class="p">:</span><span class="w"> </span><span class="l">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminEmail</span><span class="p">:</span><span class="w"> </span><span class="l">admin@example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tenancy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">defaultID</span><span class="p">:</span><span class="w"> </span><span class="l">tti</span><span class="w">
+</span></span></span></code></pre></div><p>With this configuration, The Things Stack is available at:</p>
+<ul>
+<li>Console: <code>https://thethings.example.com</code></li>
+<li>API: <code>https://thethings.example.com/api/v3</code></li>
+</ul>
+<p>The TLS certificate (referenced by <code>global.ingress.tls.secretName</code>) only needs to cover the base domain:</p>
+<ul>
+<li><code>thethings.example.com</code></li>
+</ul>
+<p><strong>Multi-tenant deployments</strong></p>
+<p>Your license must support multi-tenancy to use this configuration. For multi-tenant deployments, set <code>global.tenancy.defaultID</code> to an empty string. Each tenant is then served on its own subdomain of the configured domain.</p>
+<p>Example configuration:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">global</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l">thethings.example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deployment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">initialTenant</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">tenantID</span><span class="p">:</span><span class="w"> </span><span class="l">tti</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminUserID</span><span class="p">:</span><span class="w"> </span><span class="l">admin-tti</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminPassword</span><span class="p">:</span><span class="w"> </span><span class="l">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminEmail</span><span class="p">:</span><span class="w"> </span><span class="l">admin@example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tenancy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">defaultID</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>With this configuration, the initial tenant is available at:</p>
+<ul>
+<li>Console: <code>https://tti.thethings.example.com</code></li>
+<li>API: <code>https://tti.thethings.example.com/api/v3</code></li>
+</ul>
+<p>When additional tenants are created, they are automatically served at <code>https://&lt;tenantID&gt;.thethings.example.com</code>. The TLS certificate must cover the base domain <strong>and</strong> a wildcard for tenant subdomains:</p>
+<ul>
+<li><code>thethings.example.com</code></li>
+<li><code>*.thethings.example.com</code></li>
+</ul>
+<p>The wildcard entry is required because each tenant is served on its own subdomain. Without it, browsers and API clients will reject the connection for any tenant-specific URL. No changes to the The Things Stack configuration or TLS certificates are needed when adding new tenants, as long as the wildcard certificate is in place.</p>
+
+</div>
+
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">license</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="c"># License for The Things Stack</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">global</span><span class="p">:</span><span class="w">
