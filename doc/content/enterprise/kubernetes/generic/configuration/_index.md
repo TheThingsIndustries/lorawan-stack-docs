@@ -17,6 +17,71 @@ The following is a list of mandatory minimum fields. For a full list of possible
 
 {{< warning >}} Some values in this file are secrets. Make sure to check this file into a secure repository.{{</ warning >}}
 
+### Implications of choosing the domain and initial tenant
+
+{{< note >}}
+The `global.domain`, `global.deployment.initialTenant.tenantID` and `global.tenancy.defaultID` values determine how {{% tts %}} constructs its URLs and what your TLS certificates must cover.
+
+**Single-tenant deployments**
+
+For single-tenant deployments, set `global.tenancy.defaultID` to the tenant ID. This makes {{% tts %}} accessible directly at the configured domain without a tenant subdomain.
+
+Example configuration:
+
+```yaml
+global:
+  domain: thethings.example.com
+  deployment:
+    initialTenant:
+      tenantID: tti
+      adminUserID: admin-tti
+      adminPassword: ...
+      adminEmail: admin@example.com
+  tenancy:
+    defaultID: tti
+```
+
+With this configuration, {{% tts %}} is available at:
+
+- Console: `https://thethings.example.com`
+- API: `https://thethings.example.com/api/v3`
+
+The TLS certificate (referenced by `global.ingress.tls.secretName`) only needs to cover the base domain:
+
+- `thethings.example.com`
+
+**Multi-tenant deployments**
+
+Your license must support multi-tenancy to use this configuration. For multi-tenant deployments, set `global.tenancy.defaultID` to an empty string. Each tenant is then served on its own subdomain of the configured domain.
+
+Example configuration:
+
+```yaml
+global:
+  domain: thethings.example.com
+  deployment:
+    initialTenant:
+      tenantID: tti
+      adminUserID: admin-tti
+      adminPassword: ...
+      adminEmail: admin@example.com
+  tenancy:
+    defaultID: ""
+```
+
+With this configuration, the initial tenant is available at:
+
+- Console: `https://tti.thethings.example.com`
+- API: `https://tti.thethings.example.com/api/v3`
+
+When additional tenants are created, they are automatically served at `https://<tenantID>.thethings.example.com`. The TLS certificate must cover the base domain **and** a wildcard for tenant subdomains:
+
+- `thethings.example.com`
+- `*.thethings.example.com`
+
+The wildcard entry is required because each tenant is served on its own subdomain. Without it, browsers and API clients will reject the connection for any tenant-specific URL. No changes to the {{% tts %}} configuration or TLS certificates are needed when adding new tenants, as long as the wildcard certificate is in place.
+{{</ note >}}
+
 ```yaml
 license:
   key: # License for The Things Stack
