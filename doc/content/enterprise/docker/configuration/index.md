@@ -263,21 +263,12 @@ The `client-secret` will be needed later when authorizing the Console. Be sure t
 
 If you want to connected managed gateways, e.g. [The Things Indoor Gateway Pro]({{< ref "/hardware/gateways/models/thethingsindoorgatewaypro" >}}), you need to enable The Things Gateway Controller. This is a central service operated by The Things Industries that allows for claiming and remotely managing gateways. {{% tts %}} is natively integrated with The Things Gateway Controller.
 
-To authenticate with The Things Gateway Controller, {{% tts %}} typically uses the same TLS certificate as used for the TLS server, either Let's Encrypt or custom certificates.
-
-When using Let's Encrypt:
-
-{{< highlight yaml "linenos=table,linenostart=150" >}}
-{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=150 to=158 >}}
+To authenticate with The Things Gateway Controller, {{% tts %}} must use custom TLS certificates.
+{{< highlight yaml "linenos=table,linenostart=153" >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=153 to=159 >}}
 {{< /highlight >}}
 
-When using custom certificates:
-
-{{< highlight yaml "linenos=table,linenostart=159" >}}
-{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=159 to=163 >}}
-{{< /highlight >}}
-
-{{< note >}} If you are using a private PKI for generating certificates (e.g. a self-signed CA), you need to share your CA file with The Things Industries in order for The Things Gateway Controller to verify your certificate and authenticate your deployment. Contact [The Things Industries support](mailto:support@thethingsindustries.com). {{</ note >}}
+{{< note >}} If you are using a private PKI, you need to share your CA file with The Things Industries in order for The Things Gateway Controller to verify your certificate and authenticate your deployment. Contact [The Things Industries support](mailto:support@thethingsindustries.com) and share your CA certificate in PEM format. {{</ note >}}
 
 ### NOC
 
@@ -287,22 +278,22 @@ Besides `ui` and `oauth` settings, storage settings need to be configured in the
 
 To authorize the NOC, be sure to set and remember the client secret.
 
-{{< highlight yaml "linenos=table,linenostart=164" >}}
-{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=164 to=182 >}}
+{{< highlight yaml "linenos=table,linenostart=161" >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=161 to=178 >}}
 {{< /highlight >}}
 
 To visualize data, configure the `grafana` section.
 
-{{< highlight yaml "linenos=table,linenostart=183" >}}
-{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=183 to=188 >}}
+{{< highlight yaml "linenos=table,linenostart=179" >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=179 to=184 >}}
 {{< /highlight >}}
 
 ### Multi-tenancy
 
 {{< distributions "Enterprise" >}} If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the [`tenancy` configuration reference]({{< ref "/enterprise/management/configuration/the-things-stack#multi-tenancy" >}}).
 
-{{< highlight yaml "linenos=table,linenostart=191" >}}
-{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=191 to=194 >}}
+{{< highlight yaml "linenos=table,linenostart=188" >}}
+{{< readfile path="/enterprise/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=188 to=191 >}}
 {{< /highlight >}}
 
 For multi-tenant environments you'll also need to configure tenant admin keys in the `is` section:
