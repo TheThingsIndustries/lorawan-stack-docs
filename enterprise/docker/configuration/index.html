@@ -706,10 +706,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span><span class="lnt">189
 </span><span class="lnt">190
 </span><span class="lnt">191
-</span><span class="lnt">192
-</span><span class="lnt">193
-</span><span class="lnt">194
-</span><span class="lnt">195
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># The Things Stack requires a license key</span><span class="w">
@@ -867,14 +863,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">ttgc</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l">thethings.example.com</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Let&#39;s Encrypt</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tls</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l">acme</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># If using custom certificates:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># tls:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">#   source: file</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">#   certificate: /run/secrets/cert.pem</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">#   key: /run/secrets/key.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l">file</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">certificate</span><span class="p">:</span><span class="w"> </span><span class="l">/run/secrets/cert.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">/run/secrets/key.pem</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># If Network Operations Center is enabled, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">noc</span><span class="p">:</span><span class="w">
@@ -1159,56 +1151,34 @@ host, and also to use it as the default host.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">client-secret</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;console&#34;</span><span class="w"> </span><span class="c"># choose or generate a secret</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="managed-gateways-hahahugoshortcode155s60hbhb">Managed Gateways <span class="tag is-light">New in 3.34.0</span>
+<h3 id="managed-gateways-hahahugoshortcode157s60hbhb">Managed Gateways <span class="tag is-light">New in 3.34.0</span>
 
 </h3>
 <p>If you want to connected managed gateways, e.g. <a href="https://www.thethingsindustries.com/docs/hardware/gateways/models/thethingsindoorgatewaypro/">The Things Indoor Gateway Pro</a>, you need to enable The Things Gateway Controller. This is a central service operated by The Things Industries that allows for claiming and remotely managing gateways. The Things Stack is natively integrated with The Things Gateway Controller.</p>
-<p>To authenticate with The Things Gateway Controller, The Things Stack typically uses the same TLS certificate as used for the TLS server, either Let&rsquo;s Encrypt or custom certificates.</p>
-<p>When using Let&rsquo;s Encrypt:</p>
+<p>To authenticate with The Things Gateway Controller, The Things Stack must use custom TLS certificates.
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">150
-</span><span class="lnt">151
-</span><span class="lnt">152
-</span><span class="lnt">153
+<pre tabindex="0" class="chroma"><code><span class="lnt">153
 </span><span class="lnt">154
 </span><span class="lnt">155
 </span><span class="lnt">156
 </span><span class="lnt">157
 </span><span class="lnt">158
+</span><span class="lnt">159
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Managed gateway configuration, defaults for &#34;thethings.example.com&#34;.</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># This configures a connection with The Things Gateway Controller, a service operated by The Things Industries.</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># This allows connecting, for example, The Things Indoor Gateway Pro.</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">ttgc</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">ttgc</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l">thethings.example.com</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Let&#39;s Encrypt</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tls</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l">acme</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l">file</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">certificate</span><span class="p">:</span><span class="w"> </span><span class="l">/run/secrets/cert.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">/run/secrets/key.pem</span></span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>When using custom certificates:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">159
-</span><span class="lnt">160
-</span><span class="lnt">161
-</span><span class="lnt">162
-</span><span class="lnt">163
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">  </span><span class="c"># If using custom certificates:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># tls:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">#   source: file</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">#   certificate: /run/secrets/cert.pem</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">#   key: /run/secrets/key.pem</span></span></span></code></pre></td></tr></table>
-</div>
-</div>
+</div></p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If you are using a private PKI for generating certificates (e.g. a self-signed CA), you need to share your CA file with The Things Industries in order for The Things Gateway Controller to verify your certificate and authenticate your deployment. Contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>.
+  If you are using a private PKI, you need to share your CA file with The Things Industries in order for The Things Gateway Controller to verify your certificate and authenticate your deployment. Contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a> and share your CA certificate in PEM format.
 </div>
 
 <h3 id="noc">NOC</h3>
@@ -1239,7 +1209,10 @@ host, and also to use it as the default host.</p>
 <p>To authorize the NOC, be sure to set and remember the client secret.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">164
+<pre tabindex="0" class="chroma"><code><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
 </span><span class="lnt">165
 </span><span class="lnt">166
 </span><span class="lnt">167
@@ -1254,9 +1227,6 @@ host, and also to use it as the default host.</p>
 </span><span class="lnt">176
 </span><span class="lnt">177
 </span><span class="lnt">178
-</span><span class="lnt">179
-</span><span class="lnt">180
-</span><span class="lnt">181
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># If Network Operations Center is enabled, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
@@ -1282,12 +1252,12 @@ host, and also to use it as the default host.</p>
 <p>To visualize data, configure the <code>grafana</code> section.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">183
+<pre tabindex="0" class="chroma"><code><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
 </span><span class="lnt">184
-</span><span class="lnt">185
-</span><span class="lnt">186
-</span><span class="lnt">187
-</span><span class="lnt">188
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">  </span><span class="nt">grafana</span><span class="p">:</span><span class="w">
@@ -1324,14 +1294,16 @@ host, and also to use it as the default host.</p>
  If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/the-things-stack/#multi-tenancy"><code>tenancy</code> configuration reference</a>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">191
-</span><span class="lnt">192
-</span><span class="lnt">193
+<pre tabindex="0" class="chroma"><code><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># If running a multi-tenant environment, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tenancy</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">base-domains</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com&#34;</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">base-domains</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">default-id</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;default&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>For multi-tenant environments you&rsquo;ll also need to configure tenant admin keys in the <code>is</code> section:</p>
