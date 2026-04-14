@@ -239,7 +239,7 @@ For more details in how to use the file, please refer to <a href="https://www.th
 <h2 id="json-end-device-format">JSON End Device Format</h2>
 <p>The full specification of the JSON format is defined in the API protos. See the <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#message:EndDevice">EndDevice</a> message definition for details.</p>
 <p>The linked specification is quite extensive, and contains a lot of fields that are not required, or are only set and used internally by the Network Server. Below, the required and most commonly used fields are discussed.</p>
-<div class="fixed-table table-device-json">
+<div class="table-device-json">
 <table>
   <thead>
       <tr>
@@ -309,10 +309,10 @@ For more details in how to use the file, please refer to <a href="https://www.th
       </tr>
       <tr>
           <td><strong><code>supports_join</code></strong></td>
-          <td><strong>Always</strong></td>
+          <td>No</td>
           <td>boolean</td>
           <td><code>true</code></td>
-          <td><code>true</code> for OTAA devices, <code>false</code> for ABP.</td>
+          <td><code>true</code> for OTAA devices, <code>false</code> for ABP. Defaults to <code>false</code> (ABP) if not set.</td>
       </tr>
       <tr>
           <td><strong><code>supports_class_c</code></strong></td>
@@ -369,6 +369,13 @@ For more details in how to use the file, please refer to <a href="https://www.th
           <td>string</td>
           <td><code>&quot;01020304050607080102030405060708&quot;</code></td>
           <td>Forwarding Network Session Integrity Key, also referred to as <strong>Network Session Key</strong> in LoRaWAN v1.0.x compatibility mode. See <a href="https://www.thethingsindustries.com/docs/api/reference/grpc/end_device/#message:SessionKeys">SessionKeys</a> and <a href="https://www.thethingsindustries.com/docs/getting-started/glossary/#forwarding-network-session-integrity-key">Forwarding Network Session Integrity Key</a> for more information.</td>
+      </tr>
+      <tr>
+          <td><strong><code>session.keys.session_key_id</code></strong></td>
+          <td><strong>For existing session</strong></td>
+          <td>string</td>
+          <td><code>&quot;AXA50tHhzVMGEE…&quot;</code></td>
+          <td>A unique identifier for the session keys. If not provided, generate a random 16-byte value and encode it using base64. Required when importing devices via the Console.</td>
       </tr>
       <tr>
           <td><strong><code>session.last_f_cnt_up</code></strong></td>
