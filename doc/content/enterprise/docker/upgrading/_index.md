@@ -151,6 +151,10 @@ You can now copy the contents of those folders to a location of your choice.
 
 New minor versions of {{< tts >}} include new features/fixes which may require an update to the databases. This is done through migrations.
 
+{{< warning >}}
+For PostgreSQL deployments, run migrations with the same PostgreSQL role that owns the existing {{< tts >}} tables (or with a superuser role). Migrations execute DDL statements such as `CREATE`, `ALTER` and `DROP`, so a role with only read/write table privileges is not sufficient.
+{{< /warning >}}
+
 {{< tabs/container "Enterprise" "Open Source" >}}
 {{< tabs/tab "Enterprise" >}}
 
