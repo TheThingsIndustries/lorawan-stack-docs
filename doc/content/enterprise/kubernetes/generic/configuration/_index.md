@@ -160,6 +160,39 @@ dcs:
       bucket: # End Device Claiming Server bucket from "Section 4. Blob Storage"
 ```
 
+## Security context, scheduling and service accounts
+
+The Helm chart exposes a set of `global` values that apply to every component (`as`, `console`, `dcs`, `gcs`, `gs`, `is`, `js`, `noc`, `ns`, `pba`). Each sub-chart exposes the same keys so that the global defaults can be overridden or augmented per component.
+
+**Field name**                       | **Default**                       | **Description**
+--------------------------------------|-----------------------------------|----------------------------------------------------------------
+`global.podSecurityContext`           | `runAsUser`/`runAsGroup: 886`, `runAsNonRoot: true` | Pod-level security context shared by every component.
+`global.containerSecurityContext`     | `allowPrivilegeEscalation: false`, `capabilities.drop: [ALL]` | Container-level security context shared by every component.
+`global.nodeSelector`                 | `{}`                              | Node labels used to schedule all component pods.
+`global.podLabels`                    | `{}`                              | Labels applied to the pod template of all components.
+`global.serviceAccount.create`        | `true`                            | Whether to create ServiceAccounts for the components. Disable to bring your own pre-provisioned ServiceAccounts.
+`global.serviceAccount.automountServiceAccountToken` | `false`            | Whether pods should mount the ServiceAccount token. {{% tts %}} components do not call the Kubernetes API, so this is `false` for hardening.
+`global.serviceAccount.annotations`   | `{}`                              | Annotations applied to all component ServiceAccounts. Use this to attach cloud-provider workload-identity annotations.
+
+The override semantics differ per value type:
+
+- **Scalar keys** (for example `serviceAccount.create`, `serviceAccount.automountServiceAccountToken`): if the component value is set, it replaces the global value. Otherwise the global applies.
+- **Map keys** (for example `podSecurityContext`, `containerSecurityContext`, `nodeSelector`, `serviceAccount.annotations`): the component map is merged on top of the global map. Keys present in both are won by the component.
+
+For example, to run all pods on the `lorawan` node pool except the NOC Grafana pod which must land on the `monitoring` pool:
+
+```yaml
+global:
+  nodeSelector:
+    agentpool: lorawan
+noc:
+  grafana:
+    nodeSelector:
+      agentpool: monitoring
+```
+
+{{< note "`global.serviceAccount.name` has no global equivalent because each component needs a unique ServiceAccount name. Set `<component>.serviceAccount.name` per component to bring your own ServiceAccount." />}}
+
 ## {{% ttigpro %}} configuration
 
 The Helm chart does not support {{% ttigpro %}} by default. To enable it in the Helm chart, The Things Gateway Controller must be enabled and the ingress controller of the Kubernetes cluster must have mTLS configured.
