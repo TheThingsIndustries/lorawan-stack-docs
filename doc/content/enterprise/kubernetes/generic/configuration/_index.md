@@ -159,6 +159,16 @@ dcs:
       bucket: # End Device Claiming Server bucket from "Section 4. Blob Storage"
 ```
 
+## Optional features
+
+Beyond the mandatory minimum above, the chart supports a number of optional features. Each is configured through additional `values.yaml` keys; see the full `values.yaml` for the complete list and defaults.
+
+- **High availability**: per-component PodDisruptionBudgets (`<component>.podDisruptionBudget.*`) and horizontal pod autoscaling.
+- **Redis high availability**: Redis Sentinel failover (`global.redis.failover.*`) and separate cache/events Redis endpoints (`global.cache.redis.*`, `global.events.redis.*`).
+- **OpenTelemetry tracing**: `global.tracing.*`.
+- **OIDC login**: `is.oidcProvider.*`.
+- **Email delivery**: `is.email.provider` with `smtp`, `sendgrid` or `dir` backends.
+
 ## Security context, scheduling and service accounts
 
 The Helm chart exposes a set of `global` values that apply to every component (`as`, `console`, `dcs`, `gcs`, `gs`, `is`, `js`, `noc`, `ns`, `pba`). Each sub-chart exposes the same keys so that the global defaults can be overridden or augmented per component.
