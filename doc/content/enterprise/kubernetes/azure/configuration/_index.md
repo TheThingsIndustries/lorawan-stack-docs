@@ -82,3 +82,21 @@ global:
       adminUserID: <initial_tenant_admin_id>
       adminPassword: <initial_tenant_admin_password>
 ```
+
+{{< note "The remaining mandatory values (cluster ID, blob storage, database and Redis addresses) are supplied by the Terraform `2-kubernetes` layer. The fields shown below document the Azure-specific chart values that the Terraform layer sets, so you can understand or override them." />}}
+
+## Azure Workload Identity
+
+{{% tts %}} authenticates to Azure services (such as Blob Storage) using [Azure Workload Identity](https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview). The user-assigned managed identity created during the infrastructure deployment is wired into the {{% tts %}} components through two chart values:
+
+- `global.serviceAccount.annotations` attaches the managed identity's client ID to every component ServiceAccount.
+- `global.podLabels` opts the component pods into workload identity token injection.
+
+```yaml
+global:
+  serviceAccount:
+    annotations:
+      azure.workload.identity/client-id: <managed_identity_client_id>
+  podLabels:
+    azure.workload.identity/use: "true"
+```
