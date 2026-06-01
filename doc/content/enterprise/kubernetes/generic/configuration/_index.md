@@ -229,17 +229,21 @@ For more info check the [Traefik docs on the PassTLSClientCert middleware](https
 
 For more info check the [Traefik docs on TLS options](https://doc.traefik.io/traefik/https/tls/#tls-options).
 
-3. Set the protocol annotations for {{% ttigpro %}}, middleware annotations and serviceAnnotations in `values.yaml` 
+3. Set the protocol annotations for {{% ttigpro %}}, middleware annotations and service annotations in `values.yaml`
 (in addition to the existing annotations):
 
 ```yaml
-annotations:
-  ttigw:
-    traefik.ingress.kubernetes.io/router.entrypoints: ttigw,ttigwsecure
-    traefik.ingress.kubernetes.io/router.middlewares: traefik-passtlsclientcert@kubernetescrd
-    traefik.ingress.kubernetes.io/router.tls: "true"
-serviceAnnotations:
-  traefik.ingress.kubernetes.io/service.serversscheme: h2c
+global:
+  ingress:
+    annotations:
+      ttigw:
+        traefik.ingress.kubernetes.io/router.entrypoints: ttigw,ttigwsecure
+        traefik.ingress.kubernetes.io/router.middlewares: traefik-passtlsclientcert@kubernetescrd
+        traefik.ingress.kubernetes.io/router.tls: "true"
+  services:
+    annotations:
+      grpc:
+        traefik.ingress.kubernetes.io/service.serversscheme: h2c
 ```
 
 4. Install (or upgrade) the helm chart.
