@@ -112,3 +112,5 @@ global:
     azure:
       accountName: <storage_account_name>
 ```
+
+{{< note "Azure Key Vault is not a supported key vault provider. The chart's `global.keyVault.provider` accepts only `static` or `aws`." />}}
