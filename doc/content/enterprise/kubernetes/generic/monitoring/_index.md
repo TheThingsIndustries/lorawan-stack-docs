@@ -9,11 +9,15 @@ aliases:
   ]
 ---
 
-{{% tts %}} exposes Prometheus metrics at the `/metrics` endpoint. This route is protected by Basic Auth with username `metrics` and password `global.http.metrics.password`.
+{{% tts %}} exposes Prometheus metrics at the `/metrics` endpoint. This route is protected by Basic Auth with username `metrics` and password `global.http.metrics.password`. Exposure of the endpoint is controlled by `global.http.metrics.enable` (default `true`).
 
 <!--more-->
 
 To scrape these metrics, you can install Prometheus in the cluster. The installation details are outside the scope of this document.
+
+The chart does not ship a `ServiceMonitor` or Prometheus scrape annotations. If you use the Prometheus Operator, add your own `ServiceMonitor`, or attach scrape annotations to the component services through `global.services.annotations` (and `global.services.annotations.grafana` for the NOC Grafana service).
+
+The metrics endpoint listens on `global.http.port` (default `1885`). The examples below use `1885`; adjust the port if you have changed `global.http.port`.
 
 The following scrape config can be used to scrape metrics from each of the components of The Things Stack.
 
