@@ -15,7 +15,7 @@ This guide contains general troubleshooting information.
 
 ## Error: Get "http://localhost/api/v1/namespaces/...": dial tcp [::1]:80: connect: connection refused
 
-Set `KUBECONFIG` and `KUBE_CONFIG_PATH` variables to the location of the `kubeconfig` file. The default location is `~/.local/kubeconfig`.
+Set `KUBECONFIG` and `KUBE_CONFIG_PATH` variables to the location of the `kubeconfig` file. The default location is `~/.kube/config`.
 
 ## pkg/util/store:driver (driver error)
 
