@@ -127,7 +127,7 @@ Although we do support UDP Packet Forwarder as a gateway connection option, it r
 
 To configure the ingress controller for {{% tts %}}:
 1. Specify the ingress controller by setting the `global.ingress.controller` to the class name of the ingress controller deployed in the cluster. This will be used to set the ingress class name in the ingress routes that handle {{% tts %}} traffic.
-2. Specify the TLS secret by setting the `global.ingress.controller.tls.secretName`. The secret has to be accessible from the namespace where the {{% tts %}} Helm Chart is deployed. This will be used to terminate TLS for {{% tts %}} traffic
+2. Specify the TLS secret by setting the `global.ingress.tls.secretName`. The secret has to be accessible from the namespace where the {{% tts %}} Helm Chart is deployed. This will be used to terminate TLS for {{% tts %}} traffic
 3. Add annotations for the ingress routes if needed by setting `global.ingress.annotations.http`, `global.ingress.annotations.grpc`, `global.ingress.annotations.semtechws` or `global.ingress.annotations.ttigw`.
 4. Add service annotations for {{% tts %}} services by setting `global.services.annotations` if needed.
 5. Expose the ports used by {{% tts %}} in your ingress controller. A list of all the ports can be found [here]({{< ref "/concepts/networking/#port-allocations" >}}). For production environments, make sure to expose only TLS ports.
