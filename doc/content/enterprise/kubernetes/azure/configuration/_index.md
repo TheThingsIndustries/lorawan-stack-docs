@@ -100,3 +100,15 @@ global:
   podLabels:
     azure.workload.identity/use: "true"
 ```
+
+## Blob Storage
+
+{{% tts %}} stores blobs (for example device and profile pictures) in an Azure Storage Account. Set the blob provider to `azure` and provide the storage account name. Authentication is handled by [Azure Workload Identity](#azure-workload-identity), so no account key is required in the values file.
+
+```yaml
+global:
+  blob:
+    provider: azure
+    azure:
+      accountName: <storage_account_name>
+```

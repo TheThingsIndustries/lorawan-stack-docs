@@ -101,7 +101,6 @@ global:
       secretAccessKey: # AWS access key secret
     azure: # Set only if provider is "azure".
       accountName: # account name
-      clientID: # client ID
     gcp: # Set only if provider is "gcp".
       # Base64 encoded GCP credentials.json file.
       # One option is to run `$ cat <credentials>.json | base64`.
