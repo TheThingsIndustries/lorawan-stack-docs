@@ -14,8 +14,6 @@ This guide helps the user to install and configure {{% tts %}} on a Kubernetes c
 
 {{< warning "Operating The Things Stack on a Kubernetes cluster is only meant for advanced users with sufficient experience with the chosen infrastructure platform and with Kubernetes." />}}
 
-{{< warning >}} Until the release of v1.0.0, all versions are considered to be in the Alpha stage and are not suitable for production use. The Things Industries does not offer any guarantees on compatibility between the Alpha versions. {{</ warning >}}
-
 {{< note  "Make sure to follow each section of this guide in the same order as it is written without skipping any steps." />}}
 
 ## UDP Gateway Support
@@ -26,6 +24,6 @@ Please check the documentation of the Load Balancer and run tests to ensure that
 
 ## Kubernetes Version Support
 
-|                                | Kubernetes v1.21 and above |
-| ------------------------------ | -------------------------- |
-| Chart v1.0.0 and below (alpha) | [x]                        |
+{{% tts %}} Helm chart versions v1.x and below support **Kubernetes v1.21 and above**.
+
+Starting with {{% tts %}} Helm chart v2.0.0, **Kubernetes v1.27 or above** is required, because the chart's PodDisruptionBudgets use the `unhealthyPodEvictionPolicy` field, which is only available from Kubernetes v1.27 onwards.

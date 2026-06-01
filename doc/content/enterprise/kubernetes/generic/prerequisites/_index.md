@@ -53,7 +53,7 @@ The following is a guide of the general principles involved in setting up the in
 
 #### 1. Kubernetes Cluster
 
-{{% tts %}} requires a minimum kubernetes version of v1.21. We recommend using the highest available version.
+{{% tts %}} requires a minimum kubernetes version of v1.21. We recommend using the highest available version. From {{% tts %}} Helm chart v2.0.0, a minimum kubernetes version of v1.27 is required.
 
 #### 2. Postgres Compatible Database
 
