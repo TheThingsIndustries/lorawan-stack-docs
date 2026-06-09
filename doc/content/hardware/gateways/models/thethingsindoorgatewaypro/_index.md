@@ -15,6 +15,18 @@ This page will guide you through connecting {{% ttigpro %}} to {{% tts %}}.
 
 <!--more-->
 
+## Prerequisites
+
+1. Gateway License
+2. Billing account on [The Things Industries Account](https://accounts.thethingsindustries.com) to manage subscriptions
+3. User account on {{% tts %}} with rights to create gateways
+5. Optional: camera (webcam or phone) for scanning the QR code
+
+> **Note:**
+> {{% ttigpro %}} only works with {{% tts %}}.
+
+## Technical specifications
+
 {{% ttigpro %}} is a fully cloud-managed 8 channel LoRaWAN® gateway.
 
 - Fully cloud-managed, true zero-touch provisioning via [{{% ttigw %}}]({{< relref "../../concepts/ttigw" >}})
@@ -31,12 +43,6 @@ This page will guide you through connecting {{% ttigpro %}} to {{% tts %}}.
 - Available for EU868 and US915 regions
 
 You can find the brochure [here](https://www.thethingsindustries.com/media/uploads/managed-gateway-brochure.pdf).
-
-## Prerequisites
-
-1. User account on {{% tts %}} with rights to create gateways
-2. Billing account on [The Things Industries Account](https://accounts.thethingsindustries.com) to manage subscriptions
-3. Optional: camera (webcam or phone) for scanning the QR code
 
 ## Mounting
 
@@ -62,70 +68,64 @@ Connect the USB-C cable or a 5-12 V DC power cable. The latter is typically used
 
 {{< figure src="power.svg" width="50%" alt="Power" class="plain" >}}
 
-## Subscription
+## Gateway License
 
-{{% ttigpro %}} requires an active subscription to operate.
-
-- If your gateway **includes a one-year prepaid subscription**, it will be managed through the **Gateway Fleets** dashboard.  
-  Each fleet contains **gateway slots** — each slot allows a single gateway to connect to {{% tts %}} for one year.  
-  When a slot expires, you can renew it to continue service.
-- If your gateway **does not include a prepaid subscription**, you’ll need to create a subscription before you can claim and activate your gateway.
+{{% ttigpro %}} operates with a license, which is purchased together with the hardware and prepaid for 1 year. This license is activated after you have claimed the gateway on {{% tts %}}. When it’s time to renew, you can do it manually or turn on auto-top-up to keep your connection seamless.
 
 ---
 
-### If you prepaid for one year
+### I have a 1 year prepaid license
 
-If your {{% ttigpro %}} was purchased with a one-year subscription included, you will receive an **activation email** from The Things Industries.
+If your {{% ttigpro %}} was purchased with a one-year license included, you will receive an email from The Things Industries to connect your license.
 
-1. Open the link in the email to access your **Subscription Dashboard**.
-2. If you don’t have any fleets yet, a **new Gateway Fleet** will be created automatically and your slot will be assigned to it.
-3. If you already have fleets, you can **choose an existing fleet** or **create a new one** during activation.
-4. In the fleet view, copy your **Owner Token** — you’ll use it to claim your gateway in {{% tts %}}.
+1. Open the link in the email and connect your licenses to a [Fleet](#gateway-fleets).
+2. You can connect to an **existing fleet** or **create a new one**.
+3. You can now claim your gateway in The Things Stack.
 
-{{< figure src="subscription-fleet-selection.png" alt="Choose existing fleet or create new during activation" >}}  
+{{< figure src="subscription-fleet-selection.png" alt="Choose existing fleet or create new during activation" >}}
 
-> **Tip:** 
-> If you cannot find the activation email, check your spam folder.  
-> If it’s still missing, contact [support@thethingsindustries.com](mailto:support@thethingsindustries.com).
+{{< warning >}}
+The license needs to be **connected** before you can claim the gateway on The Things Stack.
+If you are **unsure** you connected your license, **scan the QR code** on the back of the gateway or go to the **[Gateway Status](https://accounts.thethingsindustries.com/gateway-status)** page to check the status of your license.
+{{< /warning >}}
 
----
-
-#### Finding your Owner Token
-
-Each fleet has a unique **Owner Token** required when claiming gateways in {{% tts %}}.
-
-1. Open your **Subscription Dashboard**.
-2. Select your **Gateway Fleet**.
-3. Copy the **Owner Token** from the fleet details — you’ll need it to claim your gateway.
-
-{{< figure src="subscription-owner-token.png" alt="Owner Token in fleet details" >}}
-
-> **Important:**  
-> Always use the **Owner Token from your fleet page** to claim gateways.  
-> The token in your activation email is only for activating your fleet and cannot be used to claim gateways.
+{{< figure src="gateway-status-page.png" alt="Gateway Status Page" >}}
 
 ---
 
-#### Renewing slots
+### I don't have a license
 
-Each **gateway slot** is valid for **one year** after activation. When a slot expires, the associated gateway will stop forwarding traffic until the slot is renewed.
-
-From your **Gateway Fleet** page, you can renew:
-- **Individual slots**, or
-- **All expired slots** in the fleet at once.
-
-{{< figure src="subscription-renewal.png" alt="Renew all slots at once" >}}
-
-> **Renewal reminders:**  
-> You’ll receive email notifications **30 days** and **1 day** before your slot expires to ensure continuous service.
+If you don't have a license, scan the QR code on the back of the gateway to find out what to do next or or go to the [Gateway Status](https://accounts.thethingsindustries.com/gateway-status). You can also contact support at [support@thethingsindustries.com](mailto:support@thethingsindustries.com) for assistance.
 
 ---
 
-#### Auto top-up renewal
+### Renew License
 
-**Auto top-up** automatically renews your gateway slots.
+Each **gateway license** is valid for **one year** after activation. When a license expires, the associated gateway will stop forwarding traffic until the license is renewed.
 
-- When **auto renewal** is **active**, the system will automatically add **one more year** to any gateways that expired in the last 24 hours.
+To renew your license:
+1. Open your **Dashboard** in your [The Things Industries Account](https://accounts.thethingsindustries.com).
+2. Select **Gateways** tab.
+3. Select your **Gateway Fleet**.
+4. Check which licenses need to be renewed.
+
+From your Gateway Fleet page, you can renew:
+
+- **Individual licenses**, or
+- **All expired licenses** in the fleet at once.
+
+{{< figure src="subscription-renewal.png" alt="Renew all licenses at once" >}}
+
+> **Renewal reminders:**
+> You’ll receive email notifications **30 days** and **1 day** before your license expires to ensure continuous service.
+
+---
+
+### Auto top-up renewal
+
+**Auto top-up** automatically renews your gateway licenses.
+
+- When **auto renewal** is **active**, the system will automatically add **one more year** to any licenses that expired in the last 24 hours.
 - The renewal will use your selected payment method (**credit card** or **invoice**).
 - You’ll receive a confirmation once the renewal is successful.
 
@@ -133,26 +133,48 @@ If **auto renewal** is **inactive**, you can activate it by clicking the **Updat
 
 {{< figure src="auto-top-up.png" alt="Auto Top-Up Renewal option in Gateway Fleet" >}}
 
-> **Tip:**  
+> **Tip:**
 > Turn on Auto Top-Up to keep your gateways active without manual renewals.
 
 ---
 
-### If you did not pre-purchase (no prepaid year)
+### License troubleshooting
 
-If your gateway does **not** include a prepaid subscription, you’ll need to create a subscription before you can claim and activate your gateway.
+If the Gateways were not connected to your fleet even after you've completed all the steps and checked your Gateway Status page, try one of the following:
 
-1. Go to **Gateway Subscription**: <https://accounts.thethingsindustries.com/gateway-subscription>
-2. Click **Add Gateway**.
-3. Scan the gateway’s QR code, or manually enter the **Gateway EUI** and **Owner Token** (printed on the label under the mounting plate).
-4. Click **Add gateways**, then follow the checkout steps to complete your subscription.
+1. Attach each gateway manually in the [Fleet](#gateway-fleets) Overview.
+2. Try using the fleet owner token to claim your gateways in The Things Stack.
+3. Contact support at [support@thethingsindustries.com](mailto:support@thethingsindustries.com).
 
-{{< figure src="subscription-add-gateway.png" alt="Add Gateway: scan QR or enter EUI and Owner Token" >}}  
+---
 
-> **Note:**  
-> Completing checkout **does not assign** your gateway to a fleet.
-> Gateway Fleets are available only for gateways purchased with a prepaid subscription.
-> If you’d like to add a slot for an existing gateway, please contact [support@thethingsindustries.com](mailto:support@thethingsindustries.com).
+## Gateway Fleets
+
+Gateways and their licenses are grouped in Fleets to facilitate management. When connecting your licenses you can choose to attach them to an existing Fleet or create a new one. To manage your Fleets:
+
+1. Open your **Dashboard** in your [The Things Industries Account](https://accounts.thethingsindustries.com).
+2. Select **Gateways** tab.
+3. Select the **Gateway Fleet**.
+
+{{< figure src="gateway-fleet.png" alt="Gateway Fleet Overview" >}}
+
+---
+
+### Fleet owner token
+
+> **Note:**
+> The Gateway Owner token should be enough for you to start using the {{% ttigpro %}} in {{% tts %}}.
+
+You can find the Fleet Owner Token here:
+
+1. Open your **Dashboard** in your [The Things Industries Account](https://accounts.thethingsindustries.com).
+2. Select **Gateways** tab.
+3. Select the **Gateway Fleet**.
+4. Copy the **Owner Token** from the right hand-side menu, next to **Add License** button.
+
+or
+
+5. Go to **Settings** tab.
 
 ---
 
@@ -162,12 +184,13 @@ If your gateway does **not** include a prepaid subscription, you’ll need to cr
 
 1. In the {{% tts %}} Console, go to **Gateways**.
 2. Click **Register Gateway**.
-3. Click **Scan gateway QR code** and scan the QR code on the bottom of the gateway.  
+3. Click **Scan gateway QR code** and scan the QR code on the bottom of the gateway.
    Alternatively, enter the **Gateway EUI** and **Owner Token** manually:
   - If your gateway is part of a **Gateway Fleet** (prepaid subscription), use the **Owner Token** from your **fleet details** in the **Subscription Dashboard**.
   - If your gateway does **not** use a fleet (no prepaid subscription), use the **Owner Token** printed on the label under the mounting plate.
 4. Enter a **Gateway ID** and select the **Frequency plan** to use.
 5. Click **Claim gateway**.
+6. Once claimed, your gateway connects automatically and your one-year License is activated.
 
 You should now see the **Connection settings** screen:
 
