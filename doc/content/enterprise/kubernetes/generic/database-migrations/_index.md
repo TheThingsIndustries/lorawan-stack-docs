@@ -15,6 +15,10 @@ This page describes the steps for performing database operations on a {{% tts %}
 
 ## General Procedure
 
+{{< warning >}}
+Run migrations with the same PostgreSQL role that owns the existing {{< tts >}} tables (or with a superuser role). Migrations execute DDL statements such as `CREATE`, `ALTER` and `DROP`, so a role with only read/write table privileges is not sufficient.
+{{< /warning >}}
+
 Set the respective Helm chart values to `true` to perform database migrations during Helm chart upgrade.
 
 | Service | Variable                     |
