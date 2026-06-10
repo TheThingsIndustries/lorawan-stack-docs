@@ -35,7 +35,7 @@ Make sure to modify these according to your setup.
 To create a new tenant with the tenant ID `tenant1`:
 
 ```
-tti-lw-cli tenant create $TENANT_ID --tenant-admin-key $TENANT_ADMIN_KEY
+tti-lw-cli tenant create $TETANT_ID --tenant-admin-key $TENANT_ADMIN_KEY
 ```
 
 ### Get a Tenant
