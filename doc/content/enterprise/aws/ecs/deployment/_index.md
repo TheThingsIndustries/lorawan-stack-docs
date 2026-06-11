@@ -133,7 +133,7 @@ The templates `2-5-db-timescale` and `2-6-db-timescale-replica` are optional tem
 
 {{< note >}} If you do not want to install the Storage Integration and NOC, you do not need to deploy this template. However, deploying this template is mandatory if you wish to install them. {{</ note >}}
 
-**Primary Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-5-db-timescale.gen.template (replace `3.x.y` with the current minor and patch version).
+**Primary Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-5-db-timescale-master.gen.template (replace `3.x.y` with the current minor and patch version).
 
 In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template requires you to choose an **Instance type** and **SSH Key Name** to be used to login to the instance. You either need to specify the **EBS Volume Snapshot ID** to restore, or the **EBS Volume Size** for the storage volume to create.
 
