@@ -201,6 +201,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>User are informed of required migrations for each version via the <a href="https://www.thethingsindustries.com/docs/whats-new/">Release Notes</a>. It&rsquo;s mandatory to run required database migrations for The Things Stack to function properly.</p>
 <p>This page describes the steps for performing database operations on a The Things Stack Kubernetes Cluster.</p>
 <h2 id="general-procedure">General Procedure</h2>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Run migrations with the same PostgreSQL role that owns the existing The Things Stack tables (or with a superuser role). Migrations execute DDL statements such as <code>CREATE</code>, <code>ALTER</code> and <code>DROP</code>, so a role with only read/write table privileges is not sufficient.
+</div>
+
 <p>Set the respective Helm chart values to <code>true</code> to perform database migrations during Helm chart upgrade.</p>
 <table>
   <thead>
