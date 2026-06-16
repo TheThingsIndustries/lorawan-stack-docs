@@ -18,9 +18,9 @@ ttn-lw-cli gateways api-keys list [gateway-id] [flags]
       --gateway-ids.eui 8-bytes         
       --gateway-ids.gateway-id string   
   -h, --help                            help for list
-      --limit uint32                    
+      --limit uint32                     (default 50)
       --order string                    
-      --page uint32                     
+      --page uint32                      (default 1)
 ```
 
 ### Options inherited from parent commands

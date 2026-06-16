@@ -15,11 +15,11 @@ ttn-lw-cli organizations api-keys list [organization-id] [flags]
 
 ```
   -h, --help                                      help for list
-      --limit uint32                              
+      --limit uint32                               (default 50)
       --order string                              
       --organization-id string                    
       --organization-ids.organization-id string   
-      --page uint32                               
+      --page uint32                                (default 1)
 ```
 
 ### Options inherited from parent commands

@@ -17,9 +17,9 @@ ttn-lw-cli applications api-keys list [application-id] [flags]
       --application-id string                   
       --application-ids.application-id string   
   -h, --help                                    help for list
-      --limit uint32                            
+      --limit uint32                             (default 50)
       --order string                            
-      --page uint32                             
+      --page uint32                              (default 1)
 ```
 
 ### Options inherited from parent commands

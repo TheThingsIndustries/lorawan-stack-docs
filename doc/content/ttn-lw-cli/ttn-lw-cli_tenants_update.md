@@ -66,7 +66,7 @@ ttn-lw-cli tenants update [tenant-id] [flags]
       --max-organizations uint                                                                          
       --max-users uint                                                                                  
       --name string                                                                                     
-      --state string                                                                                    allowed values: STATE_REQUESTED, STATE_APPROVED, STATE_REJECTED, STATE_FLAGGED, STATE_SUSPENDED
+      --state string                                                                                    allowed values: STATE_REQUESTED, STATE_APPROVED, STATE_REJECTED, STATE_FLAGGED, STATE_SUSPENDED (default "STATE_APPROVED")
       --state-description string                                                                        
       --tenant-id string                                                                                
       --unset strings                                                                                   list of fields to unset
