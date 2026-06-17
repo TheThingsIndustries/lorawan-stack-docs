@@ -19,7 +19,7 @@ ttn-lw-cli notifications list [flags]
       --mark-as-seen                  Mark unseen notifications as seen
       --page uint32                   
       --receiver-ids.user-id string   
-      --status strings                allowed values: NOTIFICATION_STATUS_UNSEEN, NOTIFICATION_STATUS_SEEN, NOTIFICATION_STATUS_ARCHIVED
+      --status strings                allowed values: NOTIFICATION_STATUS_UNSEEN, NOTIFICATION_STATUS_SEEN, NOTIFICATION_STATUS_ARCHIVED (default NOTIFICATION_STATUS_UNSEEN)
       --user-id string                
 ```
 

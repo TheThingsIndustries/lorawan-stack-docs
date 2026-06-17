@@ -6,7 +6,19 @@ aliases: [/getting-started/aws/ecs/changelog]
 
 All meaningful changes to templates are documented in this file.
 
+<!--more-->
+
 ## Unreleased
+
+### `2-6-db-timescale-replica`
+
+- Run `timescaledb-tune` on the replica during the initialization.
+
+### `4-2a-configuration`
+
+- Add `ApplicationStoragePostgresMaxOpenConnections`, `ApplicationStoragePostgresMaxIdleConnections`, `ApplicationStoragePostgresReadMaxOpenConnections` and `ApplicationStoragePostgresReadMaxIdleConnections` parameters to configure the Application Server storage PostgreSQL connection pool limits.
+
+## 3.36.0
 
 ### `5-6-ecs-proxy`
 

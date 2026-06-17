@@ -15,9 +15,9 @@ ttn-lw-cli users api-keys list [user-id] [flags]
 
 ```
   -h, --help                      help for list
-      --limit uint32              
+      --limit uint32               (default 50)
       --order string              
-      --page uint32               
+      --page uint32                (default 1)
       --user-id string            
       --user-ids.user-id string   
 ```

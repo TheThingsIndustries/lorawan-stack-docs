@@ -17,7 +17,7 @@ ttn-lw-cli notifications set-status [flags]
   -h, --help                          help for set-status
       --ids strings                   
       --receiver-ids.user-id string   
-      --status string                 allowed values: NOTIFICATION_STATUS_UNSEEN, NOTIFICATION_STATUS_SEEN, NOTIFICATION_STATUS_ARCHIVED
+      --status string                 allowed values: NOTIFICATION_STATUS_UNSEEN, NOTIFICATION_STATUS_SEEN, NOTIFICATION_STATUS_ARCHIVED (default "NOTIFICATION_STATUS_SEEN")
       --user-id string                
 ```
 
