@@ -86,4 +86,4 @@ kubectl apply -f <name>-<component>-migrate.yaml
 kubectl delete -f <name>-<component>-migrate.yaml
 ```
 
-Repeat the above process for all the components required. Currently only the IS and NOC components require migrations.
+Repeat the above process for all the components required. Currently the IS, NOC (when the NOC is enabled) and AS (when the storage integration is enabled) components require migrations.

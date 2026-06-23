@@ -101,7 +101,6 @@ global:
       secretAccessKey: # AWS access key secret
     azure: # Set only if provider is "azure".
       accountName: # account name
-      clientID: # client ID
     gcp: # Set only if provider is "gcp".
       # Base64 encoded GCP credentials.json file.
       # One option is to run `$ cat <credentials>.json | base64`.
@@ -159,6 +158,49 @@ dcs:
     blob:
       bucket: # End Device Claiming Server bucket from "Section 4. Blob Storage"
 ```
+
+## Optional features
+
+Beyond the mandatory minimum above, the chart supports a number of optional features. Each is configured through additional `values.yaml` keys; see the full `values.yaml` for the complete list and defaults.
+
+- **High availability**: per-component PodDisruptionBudgets (`<component>.podDisruptionBudget.*`) and horizontal pod autoscaling.
+- **Redis high availability**: Redis Sentinel failover (`global.redis.failover.*`) and separate cache/events Redis endpoints (`global.cache.redis.*`, `global.events.redis.*`).
+- **OpenTelemetry tracing**: `global.tracing.*`.
+- **OIDC login**: `is.oidcProvider.*`.
+- **Email delivery**: `is.email.provider` with `smtp`, `sendgrid` or `dir` backends.
+
+## Security context, scheduling and service accounts
+
+The Helm chart exposes a set of `global` values that apply to every component (`as`, `console`, `dcs`, `gcs`, `gs`, `is`, `js`, `noc`, `ns`, `pba`). Each sub-chart exposes the same keys so that the global defaults can be overridden or augmented per component.
+
+**Field name**                       | **Default**                       | **Description**
+--------------------------------------|-----------------------------------|----------------------------------------------------------------
+`global.podSecurityContext`           | `runAsUser`/`runAsGroup: 886`, `runAsNonRoot: true` | Pod-level security context shared by every component.
+`global.containerSecurityContext`     | `allowPrivilegeEscalation: false`, `capabilities.drop: [ALL]` | Container-level security context shared by every component.
+`global.nodeSelector`                 | `{}`                              | Node labels used to schedule all component pods.
+`global.podLabels`                    | `{}`                              | Labels applied to the pod template of all components.
+`global.serviceAccount.create`        | `true`                            | Whether to create ServiceAccounts for the components. Disable to bring your own pre-provisioned ServiceAccounts.
+`global.serviceAccount.automountServiceAccountToken` | `false`            | Whether pods should mount the ServiceAccount token. {{% tts %}} components do not call the Kubernetes API, so this is `false` for hardening.
+`global.serviceAccount.annotations`   | `{}`                              | Annotations applied to all component ServiceAccounts. Use this to attach cloud-provider workload-identity annotations.
+
+The override semantics differ per value type:
+
+- **Scalar keys** (for example `serviceAccount.create`, `serviceAccount.automountServiceAccountToken`): if the component value is set, it replaces the global value. Otherwise the global applies.
+- **Map keys** (for example `podSecurityContext`, `containerSecurityContext`, `nodeSelector`, `serviceAccount.annotations`): the component map is merged on top of the global map. Keys present in both are won by the component.
+
+For example, to run all pods on the `lorawan` node pool except the NOC Grafana pod which must land on the `monitoring` pool:
+
+```yaml
+global:
+  nodeSelector:
+    agentpool: lorawan
+noc:
+  grafana:
+    nodeSelector:
+      agentpool: monitoring
+```
+
+{{< note "`global.serviceAccount.name` has no global equivalent because each component needs a unique ServiceAccount name. Set `<component>.serviceAccount.name` per component to bring your own ServiceAccount." />}}
 
 ## {{% ttigpro %}} configuration
 
@@ -229,17 +271,21 @@ For more info check the [Traefik docs on the PassTLSClientCert middleware](https
 
 For more info check the [Traefik docs on TLS options](https://doc.traefik.io/traefik/https/tls/#tls-options).
 
-3. Set the protocol annotations for {{% ttigpro %}}, middleware annotations and serviceAnnotations in `values.yaml` 
+3. Set the protocol annotations for {{% ttigpro %}}, middleware annotations and service annotations in `values.yaml`
 (in addition to the existing annotations):
 
 ```yaml
-annotations:
-  ttigw:
-    traefik.ingress.kubernetes.io/router.entrypoints: ttigw,ttigwsecure
-    traefik.ingress.kubernetes.io/router.middlewares: traefik-passtlsclientcert@kubernetescrd
-    traefik.ingress.kubernetes.io/router.tls: "true"
-serviceAnnotations:
-  traefik.ingress.kubernetes.io/service.serversscheme: h2c
+global:
+  ingress:
+    annotations:
+      ttigw:
+        traefik.ingress.kubernetes.io/router.entrypoints: ttigw,ttigwsecure
+        traefik.ingress.kubernetes.io/router.middlewares: traefik-passtlsclientcert@kubernetescrd
+        traefik.ingress.kubernetes.io/router.tls: "true"
+  services:
+    annotations:
+      grpc:
+        traefik.ingress.kubernetes.io/service.serversscheme: h2c
 ```
 
 4. Install (or upgrade) the helm chart.

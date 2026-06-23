@@ -29,7 +29,7 @@ For this error, check that the value set in `global.tls.rootCA` is base64 encode
 
 ## x509_certificate_invalid
 
-For this error, make sure that the value set in `ingress.traefik.tls.secretName` is a valid TLS certificate.
+For this error, make sure that the value set in `global.ingress.tls.secretName` is a valid TLS certificate.
 
 ## pkg/util/store:driver (driver error)
 

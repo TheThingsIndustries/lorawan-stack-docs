@@ -53,7 +53,7 @@ The following is a guide of the general principles involved in setting up the in
 
 #### 1. Kubernetes Cluster
 
-{{% tts %}} requires a minimum kubernetes version of v1.21. We recommend using the highest available version.
+{{% tts %}} requires a minimum kubernetes version of v1.21. We recommend using the highest available version. From {{% tts %}} Helm chart v2.0.0, a minimum kubernetes version of v1.27 is required.
 
 #### 2. Postgres Compatible Database
 
@@ -127,7 +127,7 @@ Although we do support UDP Packet Forwarder as a gateway connection option, it r
 
 To configure the ingress controller for {{% tts %}}:
 1. Specify the ingress controller by setting the `global.ingress.controller` to the class name of the ingress controller deployed in the cluster. This will be used to set the ingress class name in the ingress routes that handle {{% tts %}} traffic.
-2. Specify the TLS secret by setting the `global.ingress.controller.tls.secretName`. The secret has to be accessible from the namespace where the {{% tts %}} Helm Chart is deployed. This will be used to terminate TLS for {{% tts %}} traffic
+2. Specify the TLS secret by setting the `global.ingress.tls.secretName`. The secret has to be accessible from the namespace where the {{% tts %}} Helm Chart is deployed. This will be used to terminate TLS for {{% tts %}} traffic
 3. Add annotations for the ingress routes if needed by setting `global.ingress.annotations.http`, `global.ingress.annotations.grpc`, `global.ingress.annotations.semtechws` or `global.ingress.annotations.ttigw`.
 4. Add service annotations for {{% tts %}} services by setting `global.services.annotations` if needed.
 5. Expose the ports used by {{% tts %}} in your ingress controller. A list of all the ports can be found [here]({{< ref "/concepts/networking/#port-allocations" >}}). For production environments, make sure to expose only TLS ports.
