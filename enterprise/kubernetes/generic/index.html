@@ -231,11 +231,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   Operating The Things Stack on a Kubernetes cluster is only meant for advanced users with sufficient experience with the chosen infrastructure platform and with Kubernetes.
 </div>
 
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  Until the release of v1.0.0, all versions are considered to be in the Alpha stage and are not suitable for production use. The Things Industries does not offer any guarantees on compatibility between the Alpha versions.
-</div>
-
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Make sure to follow each section of this guide in the same order as it is written without skipping any steps.
@@ -246,20 +241,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 This depends on the settings of the external Load Balancer that is used. The implementation details are specific to the external environment and is hence out of scope for this documentation.
 Please check the documentation of the Load Balancer and run tests to ensure that gateway communication is not lost on server updates.</p>
 <h2 id="kubernetes-version-support">Kubernetes Version Support</h2>
-<table>
-  <thead>
-      <tr>
-          <th></th>
-          <th>Kubernetes v1.21 and above</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Chart v1.0.0 and below (alpha)</td>
-          <td>[x]</td>
-      </tr>
-  </tbody>
-</table>
+<p>The Things Stack Helm chart versions v1.x and below support <strong>Kubernetes v1.21 and above</strong>.</p>
+<p>Starting with The Things Stack Helm chart v2.0.0, <strong>Kubernetes v1.27 or above</strong> is required, because the chart&rsquo;s PodDisruptionBudgets use the <code>unhealthyPodEvictionPolicy</code> field, which is only available from Kubernetes v1.27 onwards.</p>
         </div>
           <div class="columns is-multiline">
   <div class="column is-half is-flex">
@@ -352,7 +335,7 @@ Use the following steps to install the chart.
           </h1>
           <div class="content has-text-grey">
             
-            The Things Stack exposes Prometheus metrics at the /metrics endpoint. This route is protected by Basic Auth with username metrics and password global.http.metrics.password.
+            The Things Stack exposes Prometheus metrics at the /metrics endpoint. This route is protected by Basic Auth with username metrics and password global.http.metrics.password. Exposure of the endpoint is controlled by global.http.metrics.enable (default true).
 
             
           </div>

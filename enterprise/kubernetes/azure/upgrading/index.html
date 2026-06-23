@@ -228,6 +228,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <h2 id="kubernetes-version-upgrade">Kubernetes version upgrade</h2>
 <p>AKS Kubernetes version upgrades have to be performed sequentially for each minor version. For example to upgrade from <code>1.25</code> to <code>1.27</code> it&rsquo;s necessary to upgrade to version <code>1.26</code> first as an intermediate step. For more information refer to the <a href="https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions">official documentation</a>.</p>
+<h2 id="upgrading-from-helm-chart-1xx-to-2xx">Upgrading from Helm chart 1.x.x to 2.x.x</h2>
+<p><span class="tag is-light">New in 2.0.0</span>
+
+ Workload Identity is no longer wired up automatically from <code>global.blob.provider: azure</code>.
+Users must now set the annotation and pod label explicitly in values:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">global</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">serviceAccount</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">azure.workload.identity/client-id</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&lt;client-id&gt;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">podLabels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">azure.workload.identity/use</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;true&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>The pod label has also moved from Deployment selector labels to pod template labels. Existing Azure deployments must delete their Deployments before upgrading. Use <code>--cascade=orphan</code> to keep pods running during the migration:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">RELEASE</span><span class="o">=</span><span class="s2">&#34;&lt;your-release-name&gt;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">NAMESPACE</span><span class="o">=</span><span class="s2">&#34;&lt;your-namespace&gt;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> component in is as ns gs js dcs gcs console noc pba<span class="p">;</span> <span class="k">do</span> <span class="c1"># Drop pba and/or noc from the list if not enabled.</span>
+</span></span><span class="line"><span class="cl">  kubectl delete deployment <span class="s2">&#34;</span><span class="si">${</span><span class="nv">RELEASE</span><span class="si">}</span><span class="s2">-</span><span class="si">${</span><span class="nv">component</span><span class="si">}</span><span class="s2">&#34;</span> -n <span class="s2">&#34;</span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span><span class="s2">&#34;</span> --cascade<span class="o">=</span>orphan
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl">helm upgrade <span class="s2">&#34;</span><span class="si">${</span><span class="nv">RELEASE</span><span class="si">}</span><span class="s2">&#34;</span> . -n <span class="s2">&#34;</span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span><span class="s2">&#34;</span> -f &lt;your-values-file&gt;
+</span></span></code></pre></div><p>This is required because Kubernetes does not allow changes to <code>spec.selector.matchLabels</code> on existing Deployments. The <code>--cascade=orphan</code> flag ensures pods continue running while the Deployment objects are recreated by Helm.</p>
         </div>
           <div class="columns is-multiline">
 </div>
@@ -259,6 +278,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
       
       <li><a href='#kubernetes-version-upgrade'>Kubernetes version upgrade</a></li>
+    
+      
+      <li><a href='#upgrading-from-helm-chart-1xx-to-2xx'>Upgrading from Helm chart 1.x.x to 2.x.x</a></li>
     
   </ul>
 

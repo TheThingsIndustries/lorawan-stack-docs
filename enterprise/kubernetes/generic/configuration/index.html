@@ -275,7 +275,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">secretAccessKey</span><span class="p">:</span><span class="w"> </span><span class="c"># AWS access key secret</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">azure</span><span class="p">:</span><span class="w"> </span><span class="c"># Set only if provider is &#34;azure&#34;.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">accountName</span><span class="p">:</span><span class="w"> </span><span class="c"># account name</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">clientID</span><span class="p">:</span><span class="w"> </span><span class="c"># client ID</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">gcp</span><span class="p">:</span><span class="w"> </span><span class="c"># Set only if provider is &#34;gcp&#34;.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># Base64 encoded GCP credentials.json file.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># One option is to run `$ cat &lt;credentials&gt;.json | base64`.</span><span class="w">
@@ -332,7 +331,82 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">edcs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">blob</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">bucket</span><span class="p">:</span><span class="w"> </span><span class="c"># End Device Claiming Server bucket from &#34;Section 4. Blob Storage&#34;</span><span class="w">
-</span></span></span></code></pre></div><h2 id="the-things-indoor-gateway-pro-configuration">The Things Indoor Gateway Pro configuration</h2>
+</span></span></span></code></pre></div><h2 id="optional-features">Optional features</h2>
+<p>Beyond the mandatory minimum above, the chart supports a number of optional features. Each is configured through additional <code>values.yaml</code> keys; see the full <code>values.yaml</code> for the complete list and defaults.</p>
+<ul>
+<li><strong>High availability</strong>: per-component PodDisruptionBudgets (<code>&lt;component&gt;.podDisruptionBudget.*</code>) and horizontal pod autoscaling.</li>
+<li><strong>Redis high availability</strong>: Redis Sentinel failover (<code>global.redis.failover.*</code>) and separate cache/events Redis endpoints (<code>global.cache.redis.*</code>, <code>global.events.redis.*</code>).</li>
+<li><strong>OpenTelemetry tracing</strong>: <code>global.tracing.*</code>.</li>
+<li><strong>OIDC login</strong>: <code>is.oidcProvider.*</code>.</li>
+<li><strong>Email delivery</strong>: <code>is.email.provider</code> with <code>smtp</code>, <code>sendgrid</code> or <code>dir</code> backends.</li>
+</ul>
+<h2 id="security-context-scheduling-and-service-accounts">Security context, scheduling and service accounts</h2>
+<p>The Helm chart exposes a set of <code>global</code> values that apply to every component (<code>as</code>, <code>console</code>, <code>dcs</code>, <code>gcs</code>, <code>gs</code>, <code>is</code>, <code>js</code>, <code>noc</code>, <code>ns</code>, <code>pba</code>). Each sub-chart exposes the same keys so that the global defaults can be overridden or augmented per component.</p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Field name</strong></th>
+          <th><strong>Default</strong></th>
+          <th><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>global.podSecurityContext</code></td>
+          <td><code>runAsUser</code>/<code>runAsGroup: 886</code>, <code>runAsNonRoot: true</code></td>
+          <td>Pod-level security context shared by every component.</td>
+      </tr>
+      <tr>
+          <td><code>global.containerSecurityContext</code></td>
+          <td><code>allowPrivilegeEscalation: false</code>, <code>capabilities.drop: [ALL]</code></td>
+          <td>Container-level security context shared by every component.</td>
+      </tr>
+      <tr>
+          <td><code>global.nodeSelector</code></td>
+          <td><code>{}</code></td>
+          <td>Node labels used to schedule all component pods.</td>
+      </tr>
+      <tr>
+          <td><code>global.podLabels</code></td>
+          <td><code>{}</code></td>
+          <td>Labels applied to the pod template of all components.</td>
+      </tr>
+      <tr>
+          <td><code>global.serviceAccount.create</code></td>
+          <td><code>true</code></td>
+          <td>Whether to create ServiceAccounts for the components. Disable to bring your own pre-provisioned ServiceAccounts.</td>
+      </tr>
+      <tr>
+          <td><code>global.serviceAccount.automountServiceAccountToken</code></td>
+          <td><code>false</code></td>
+          <td>Whether pods should mount the ServiceAccount token. The Things Stack components do not call the Kubernetes API, so this is <code>false</code> for hardening.</td>
+      </tr>
+      <tr>
+          <td><code>global.serviceAccount.annotations</code></td>
+          <td><code>{}</code></td>
+          <td>Annotations applied to all component ServiceAccounts. Use this to attach cloud-provider workload-identity annotations.</td>
+      </tr>
+  </tbody>
+</table>
+<p>The override semantics differ per value type:</p>
+<ul>
+<li><strong>Scalar keys</strong> (for example <code>serviceAccount.create</code>, <code>serviceAccount.automountServiceAccountToken</code>): if the component value is set, it replaces the global value. Otherwise the global applies.</li>
+<li><strong>Map keys</strong> (for example <code>podSecurityContext</code>, <code>containerSecurityContext</code>, <code>nodeSelector</code>, <code>serviceAccount.annotations</code>): the component map is merged on top of the global map. Keys present in both are won by the component.</li>
+</ul>
+<p>For example, to run all pods on the <code>lorawan</code> node pool except the NOC Grafana pod which must land on the <code>monitoring</code> pool:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">global</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">agentpool</span><span class="p">:</span><span class="w"> </span><span class="l">lorawan</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">noc</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">grafana</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">agentpool</span><span class="p">:</span><span class="w"> </span><span class="l">monitoring</span><span class="w">
+</span></span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <code>global.serviceAccount.name</code> has no global equivalent because each component needs a unique ServiceAccount name. Set <code>&lt;component&gt;.serviceAccount.name</code> per component to bring your own ServiceAccount.
+</div>
+
+<h2 id="the-things-indoor-gateway-pro-configuration">The Things Indoor Gateway Pro configuration</h2>
 <p>The Helm chart does not support The Things Indoor Gateway Pro by default. To enable it in the Helm chart, The Things Gateway Controller must be enabled and the ingress controller of the Kubernetes cluster must have mTLS configured.</p>
 <p>To set up the gateway controller, the following fields must be filled in <code>values.yaml</code>:</p>
 <table>
@@ -422,16 +496,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>For more info check the <a href="https://doc.traefik.io/traefik/https/tls/#tls-options">Traefik docs on TLS options</a>.</p>
 <ol start="3">
-<li>Set the protocol annotations for The Things Indoor Gateway Pro, middleware annotations and serviceAnnotations in <code>values.yaml</code>
+<li>Set the protocol annotations for The Things Indoor Gateway Pro, middleware annotations and service annotations in <code>values.yaml</code>
 (in addition to the existing annotations):</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">annotations</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ttigw</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">traefik.ingress.kubernetes.io/router.entrypoints</span><span class="p">:</span><span class="w"> </span><span class="l">ttigw,ttigwsecure</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">traefik.ingress.kubernetes.io/router.middlewares</span><span class="p">:</span><span class="w"> </span><span class="l">traefik-passtlsclientcert@kubernetescrd</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">traefik.ingress.kubernetes.io/router.tls</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;true&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">serviceAnnotations</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">traefik.ingress.kubernetes.io/service.serversscheme</span><span class="p">:</span><span class="w"> </span><span class="l">h2c</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">global</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ingress</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ttigw</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">traefik.ingress.kubernetes.io/router.entrypoints</span><span class="p">:</span><span class="w"> </span><span class="l">ttigw,ttigwsecure</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">traefik.ingress.kubernetes.io/router.middlewares</span><span class="p">:</span><span class="w"> </span><span class="l">traefik-passtlsclientcert@kubernetescrd</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">traefik.ingress.kubernetes.io/router.tls</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;true&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">grpc</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">traefik.ingress.kubernetes.io/service.serversscheme</span><span class="p">:</span><span class="w"> </span><span class="l">h2c</span><span class="w">
 </span></span></span></code></pre></div><ol start="4">
 <li>Install (or upgrade) the helm chart.</li>
 </ol>
@@ -460,6 +538,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <ul class="menu-list">
+    
+      
+      <li><a href='#optional-features'>Optional features</a></li>
+    
+      
+      <li><a href='#security-context-scheduling-and-service-accounts'>Security context, scheduling and service accounts</a></li>
     
       
       <li><a href='#the-things-indoor-gateway-pro-configuration'>The Things Indoor Gateway Pro configuration</a></li>

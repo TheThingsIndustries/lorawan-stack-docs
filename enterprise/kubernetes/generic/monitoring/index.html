@@ -197,8 +197,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         <h1 class="title is-size-2">Monitoring</h1>
         <div class="content">
-          <p>The Things Stack exposes Prometheus metrics at the <code>/metrics</code> endpoint. This route is protected by Basic Auth with username <code>metrics</code> and password <code>global.http.metrics.password</code>.</p>
+          <p>The Things Stack exposes Prometheus metrics at the <code>/metrics</code> endpoint. This route is protected by Basic Auth with username <code>metrics</code> and password <code>global.http.metrics.password</code>. Exposure of the endpoint is controlled by <code>global.http.metrics.enable</code> (default <code>true</code>).</p>
 <p>To scrape these metrics, you can install Prometheus in the cluster. The installation details are outside the scope of this document.</p>
+<p>The chart does not ship a <code>ServiceMonitor</code> or Prometheus scrape annotations. If you use the Prometheus Operator, add your own <code>ServiceMonitor</code>, or attach scrape annotations to the component services through <code>global.services.annotations</code> (and <code>global.services.annotations.grafana</code> for the NOC Grafana service).</p>
+<p>The metrics endpoint listens on <code>global.http.port</code> (default <code>1885</code>). The examples below use <code>1885</code>; adjust the port if you have changed <code>global.http.port</code>.</p>
 <p>The following scrape config can be used to scrape metrics from each of the components of The Things Stack.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">scrape_configs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;name&gt;</span><span class="w">
@@ -223,7 +225,89 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;global.http.metrics.password&gt;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;mytts-is.tts.svc.cluster.local:1885&#34;</span><span class="p">]</span><span class="w">
-</span></span></span></code></pre></div>
+</span></span></span></code></pre></div><h2 id="network-operations-center-noc">Network Operations Center (NOC)</h2>
+<p>The Network Operations Center (NOC) provides network insights through a bundled Grafana instance. It is disabled by default. Enabling it requires a dedicated TimescaleDB database and event storage in Redis.</p>
+<p>To enable the NOC:</p>
+<ol>
+<li>
+<p>Enable the NOC and turn on event storage in Redis (the NOC consumes events from Redis):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">global</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">noc</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">events</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">redis</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">storageEnabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div></li>
+<li>
+<p>Configure the NOC TimescaleDB database. <code>migrate</code> runs the database migration during the Helm upgrade (see <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/database-migrations/">Database Migrations</a>).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">noc</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">store</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">database</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="c"># postgres://&lt;username&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;database&gt;?&lt;options&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">readURI</span><span class="p">:</span><span class="w"> </span><span class="c"># (Optional) Read replica connection string.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">migrate</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div></li>
+<li>
+<p>Configure the bundled Grafana instance. The Grafana store points at the same TimescaleDB server as the NOC.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">noc</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">grafana</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">adminPassword</span><span class="p">:</span><span class="w"> </span><span class="c"># See preparation section.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">store</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="c"># Hostname of the NOC TimescaleDB database (without the port).</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w">
+</span></span></span></code></pre></div><p>The OAuth client secret (<code>global.noc.oauth.clientSecret</code>) is also required and is covered in the <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/generic/preparation/">preparation section</a>.</p>
+</li>
+</ol>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The NOC Grafana image is pinned via <code>noc.grafana.image.tag</code> and does not follow the The Things Stack release version cycle. Override it only when instructed.
+</div>
+
+<h3 id="tuning-the-noc-data-store">Tuning the NOC data store</h3>
+<p>The following optional values tune the NOC data store. The defaults are suitable for most deployments.</p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Field name</strong></th>
+          <th><strong>Default</strong></th>
+          <th><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>noc.store.maxIdleConnections</code></td>
+          <td><code>2</code></td>
+          <td>Maximum number of idle database connections.</td>
+      </tr>
+      <tr>
+          <td><code>noc.store.maxOpenConnections</code></td>
+          <td><code>10</code></td>
+          <td>Maximum number of open database connections.</td>
+      </tr>
+      <tr>
+          <td><code>noc.store.rawDataRetention</code></td>
+          <td><code>72h0m0s</code></td>
+          <td>Retention duration for raw data.</td>
+      </tr>
+      <tr>
+          <td><code>noc.store.targetInsertBatchSize</code></td>
+          <td><code>8192</code></td>
+          <td>Target batch size for <code>INSERT</code> commands.</td>
+      </tr>
+      <tr>
+          <td><code>noc.store.targetInsertBatchWindow</code></td>
+          <td><code>1m</code></td>
+          <td>Target batch window for <code>INSERT</code> commands.</td>
+      </tr>
+      <tr>
+          <td><code>noc.store.pagination.defaultLimit</code></td>
+          <td><code>1000</code></td>
+          <td>Default limit for NOC pagination.</td>
+      </tr>
+  </tbody>
+</table>
         </div>
           <div class="columns is-multiline">
 </div>
@@ -247,6 +331,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#network-operations-center-noc'>Network Operations Center (NOC)</a></li>
+    
+  </ul>
 
 
   </nav>

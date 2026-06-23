@@ -241,7 +241,34 @@ use_azuread_auth     = true
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminEmail</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;initial_tenant_admin_email&gt;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminUserID</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;initial_tenant_admin_id&gt;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminPassword</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;initial_tenant_admin_password&gt;</span><span class="w">
-</span></span></span></code></pre></div>
+</span></span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The remaining mandatory values (cluster ID, blob storage, database and Redis addresses) are supplied by the Terraform <code>2-kubernetes</code> layer. The fields shown below document the Azure-specific chart values that the Terraform layer sets, so you can understand or override them.
+</div>
+
+<h2 id="azure-workload-identity">Azure Workload Identity</h2>
+<p>The Things Stack authenticates to Azure services (such as Blob Storage) using <a href="https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview">Azure Workload Identity</a>. The user-assigned managed identity created during the infrastructure deployment is wired into the The Things Stack components through two chart values:</p>
+<ul>
+<li><code>global.serviceAccount.annotations</code> attaches the managed identity&rsquo;s client ID to every component ServiceAccount.</li>
+<li><code>global.podLabels</code> opts the component pods into workload identity token injection.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">global</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">serviceAccount</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">azure.workload.identity/client-id</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;managed_identity_client_id&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">podLabels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">azure.workload.identity/use</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;true&#34;</span><span class="w">
+</span></span></span></code></pre></div><h2 id="blob-storage">Blob Storage</h2>
+<p>The Things Stack stores blobs (for example device and profile pictures) in an Azure Storage Account. Set the blob provider to <code>azure</code> and provide the storage account name. Authentication is handled by <a href="#azure-workload-identity">Azure Workload Identity</a>, so no account key is required in the values file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">global</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">blob</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">azure</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">azure</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">accountName</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;storage_account_name&gt;</span><span class="w">
+</span></span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Azure Key Vault is not a supported key vault provider. The chart&rsquo;s <code>global.keyVault.provider</code> accepts only <code>static</code> or <code>aws</code>.
+</div>
         </div>
           <div class="columns is-multiline">
 </div>
@@ -279,6 +306,12 @@ use_azuread_auth     = true
     
       
       <li><a href='#the-things-stack-values'>The Things Stack Values</a></li>
+    
+      
+      <li><a href='#azure-workload-identity'>Azure Workload Identity</a></li>
+    
+      
+      <li><a href='#blob-storage'>Blob Storage</a></li>
     
   </ul>
 
