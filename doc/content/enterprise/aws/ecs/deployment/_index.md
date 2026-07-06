@@ -322,6 +322,15 @@ This template's Alertmanager forwards alerts to the [Alert Routing Server](#aler
 
 Gateway connectivity outage alerts are based on Gateway Server metrics, which Prometheus only scrapes when this template's **Include Gateway Server** parameter is set to `true` (the default).
 
+### Gateway outage alert timing
+
+The timing of the gateway connectivity outage alert is defined in the Prometheus alerting rules that this template deploys. By default:
+
+- An alert opens after a gateway has been disconnected for about 10 minutes; brief drops are ignored.
+- An alert stays open for at most **24 hours**. When this window expires, the customer is notified that the gateway reconnected or, if it is still offline, that monitoring has stopped — see [Gateway connectivity outages]({{< ref "/concepts/features/alerting/gateway-connectivity-outages" >}}). This 24-hour cap exists for resource management, so that monitoring is not kept open indefinitely for the potentially large number of gateways in a network.
+
+These are fixed defaults of the alerting rules. The 24-hour cap in particular is bound to the metric retention window used to detect disconnections, so it is not a value you can meaningfully change on its own.
+
 ## Monitoring (optional, but recommended) {#monitoring-optional}
 
 We strongly recommend to monitor your deployment with [Prometheus](https://prometheus.io) and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/overview/), from where you can forward alerts to external on-call notification systems. With the `5-6-ecs-monitoring` you can deploy Prometheus to your ECS cluster.
