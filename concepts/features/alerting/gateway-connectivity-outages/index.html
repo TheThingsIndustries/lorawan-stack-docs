@@ -264,7 +264,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="how-often-a-gateway-outage-notification-is-sent">How often a gateway outage notification is sent</h2>
 <p>Gateway connectivity outage alerts generate notifications upon opening and closure, and every 6 hours in between these two events.</p>
 <h2 id="how-long-is-a-gateway-connectivity-outage-alert-open">How long is a gateway connectivity outage alert open</h2>
-<p>Gateway connectivity outage alerts will not stay open in perpetuity. By default, the alerts will be closed automatically after being open for 24 hours.</p>
+<p>Gateway connectivity outage alerts do not stay open indefinitely. By default, an alert remains open for at most 24 hours. This limit exists for resource management, so that monitoring is not kept open forever for the potentially large number of gateways in a network.</p>
+<p>When the alert closes, the notification you receive depends on the gateway&rsquo;s state:</p>
+<ul>
+<li>If the gateway <strong>reconnected</strong> within the 24-hour window, you receive a notification that the gateway is back online.</li>
+<li>If the gateway is <strong>still disconnected</strong> after 24 hours, you receive a notification that monitoring for this outage has stopped. You will not receive further notifications for this outage.</li>
+</ul>
         </div>
           <div class="columns is-multiline">
 </div>

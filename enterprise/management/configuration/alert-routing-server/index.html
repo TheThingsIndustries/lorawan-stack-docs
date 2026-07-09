@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.140.0-DEV">
-  <title>Network Operations Center Options | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/network-operations-center/" />
+  <title>Alert Routing Server Options | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/alert-routing-server/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Network Operations Center Options">
+  <meta itemprop="name" content="Alert Routing Server Options">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Network Operations Center Options">
+  <meta property="og:title" content="Alert Routing Server Options">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/enterprise/management/configuration/network-operations-center/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/enterprise/management/configuration/alert-routing-server/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Network Operations Center Options" />
+  <meta name="twitter:title" content="Alert Routing Server Options" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -131,7 +131,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/alert-routing-server/" class="">Alert Routing Server Options</a>
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/alert-routing-server/" class="is-active">Alert Routing Server Options</a>
+    
+    
+
+
+
     
   </li>
 
@@ -176,12 +181,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/network-operations-center/" class="is-active">Network Operations Center Options</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/network-operations-center/" class="">Network Operations Center Options</a>
     
   </li>
 
@@ -245,56 +245,127 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="docs-content">
           
           
-        <h1 class="title is-size-2">Network Operations Center Options</h1>
+        <h1 class="title is-size-2">Alert Routing Server Options</h1>
         <div class="content">
-          <h2 id="network-operations-center-mount">Network Operations Center Mount</h2>
-<p>The Network Operations Center can be served under any arbitrary path on your server:</p>
+          <p>
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+</a>
+
+
+ <span class="tag is-light">New in 3.30.0</span>
+ 
+ The <a href="https://www.thethingsindustries.com/docs/concepts/architecture/components/alert-routing-server/">Alert Routing Server</a> dispatches alert notifications about network components in The Things Stack to receivers over email and SMS. It receives alerts from an external generator such as <a href="https://prometheus.io/docs/alerting/latest/alertmanager/">Prometheus and Alertmanager</a>, stores them in a queue, and delivers a notification to each configured receiver.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  The Alert Routing Server is only available in The Things Stack deployments on AWS that use the <a href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/deployment/#alert-routing-server-optional">CloudFormation templates</a>, which deploy and wire up the component together with Prometheus and Alertmanager. It is not available for Docker or <a href="https://www.thethingsindustries.com/docs/enterprise/kubernetes/">Kubernetes</a> deployments.
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Alert routing is an experimental feature.
+</div>
+
+<h2 id="routing-options">Routing Options</h2>
+<p>The <code>ars.routing</code> options control whether the Alert Routing Server dispatches alert notifications.</p>
 <ul>
-<li><code>noc.mount</code>: Path on the server where the Network Operations Center will be served</li>
+<li><code>ars.routing.enabled</code>: Enable alert routing (default <code>true</code>)</li>
 </ul>
-<h2 id="oauth-options">OAuth Options</h2>
-<p>Network Operations Center app uses the <a href="https://en.wikipedia.org/wiki/OAuth#OAuth_2.0_2">OAuth 2.0 authorization flow</a> to authorize actions in the backend. You can customize the authorization parameters if necessary:</p>
+<h2 id="alertmanager-options">Alertmanager Options</h2>
+<p>Alert notifications are delivered to the Alert Routing Server by Alertmanager through a webhook. The webhook endpoint is exposed at <code>/api/v3/ars/internal/alertmanager</code> and is protected with HTTP Basic Authentication, using the username <code>alertmanager</code> and the password configured below. Configure the same password in the <code>basic_auth</code> section of the Alertmanager webhook receiver.</p>
 <ul>
-<li><code>noc.oauth.authorize-url</code>: The OAuth Authorize URL</li>
-<li><code>noc.oauth.client-id</code>: The OAuth client ID</li>
-<li><code>noc.oauth.client-secret</code>: The OAuth client secret</li>
-<li><code>noc.oauth.token-url</code>: The OAuth Token Exchange URL</li>
-<li><code>noc.oauth.logout-url</code>: The logout URL of the OAuth server used to perform client initiated logouts</li>
-<li><code>noc.oauth.cross-site-cookie</code>: Controls access to OAuth state cookie between origins. Set to <code>true</code> in multi-cluster deployments in order to support OAuth clients that use POST callbacks. The default is <code>false</code>.</li>
+<li><code>ars.alert-manager.password</code>: Password that Alertmanager must use to authenticate to the Alert Routing Server webhook</li>
 </ul>
-<h2 id="database-options">Database Options</h2>
-<p>Network Operations Center needs to be connected to PostgreSQL database with a TimescaleDB extension installed. Details for the form of the URI can be found in the <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING">PostgreSQL documentation</a>.</p>
+<h2 id="queue-options">Queue Options</h2>
+<p>The Alert Routing Server stores alert notifications in a <a href="https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)">FIFO</a> queue before dispatching them to receivers. The <code>provider</code> option selects the queue backend. Currently the <code>aws-sqs</code> provider is implemented.</p>
 <ul>
-<li><code>noc.store.database-uri</code>: Database connection URI</li>
-<li><code>noc.store.max-open-connections</code>: Maximum number of open database connections (default <code>10</code>)</li>
-<li><code>noc.store.max-idle-connections</code>: Maximum number of idle database connections (default <code>2</code>)</li>
-<li><code>noc.store.read-database-uri</code>: Read-Only Database connection URI</li>
-<li><code>noc.store.read-max-open-connections</code>: Maximum number of open database connections for reading</li>
-<li><code>noc.store.read-max-idle-connections</code>: Maximum number of idle database connections for reading</li>
-<li><code>noc.store.target-insert-batch-window</code>: Target batch window for INSERT commands</li>
-<li><code>noc.store.target-insert-batch-size</code>: Target batch size for INSERT commands</li>
-<li><code>noc.store.raw-data-retention</code>: Raw data retention (default: <code>72h</code>)</li>
+<li><code>ars.queue.provider</code>: Provider of the queue to be used (<code>aws-sqs</code>)</li>
 </ul>
-<h2 id="grafana-options">Grafana Options</h2>
-<p>Network Operations Center is a reverse proxy to Grafana. In order to use the Grafana API and configure the data source plugin, configure the following options.</p>
+<p>When <code>aws-sqs</code> is used as provider, the Alert Routing Server connects to an <a href="https://aws.amazon.com/sqs/">Amazon SQS</a> FIFO queue. The AWS credentials and region can be set explicitly with the options below, or resolved from the standard AWS environment when left empty.</p>
 <ul>
-<li><code>noc.grafana.target-url</code>: Target URL. This should be an internal URL, only accessible to The Things Stack (not the public internet)</li>
-<li><code>noc.grafana.admin-username</code>: Grafana admin username (default: <code>admin</code>)</li>
-<li><code>noc.grafana.admin-password</code>: Grafana admin password (default: <code>admin</code>)</li>
-<li><code>noc.grafana.console-url</code>: Public URL of the Console. This is used for the <strong>Console</strong> buttons in Grafana to go directly to the Console</li>
-<li><code>noc.grafana.noc-address</code>: Internal address for the data source plugin to contact the Network Operations Center service directly. This must be in <code>host:port</code> format. The <code>port</code> is typically <code>1885</code> or <code>8886</code> when using TLS</li>
-<li><code>noc.grafana.noc-tls.require</code>: Require TLS between Grafana data source plugin and the Network Operations Center (default: <code>false</code>)</li>
+<li><code>ars.queue.aws-sqs.name</code>: Name of the SQS queue to use</li>
+<li><code>ars.queue.aws-sqs.region</code>: AWS region of the queue</li>
+<li><code>ars.queue.aws-sqs.endpoint</code>: AWS endpoint (optional, for testing or custom endpoints)</li>
+<li><code>ars.queue.aws-sqs.access-key-id</code>: AWS access key ID</li>
+<li><code>ars.queue.aws-sqs.secret-access-key</code>: AWS secret access key</li>
+<li><code>ars.queue.aws-sqs.session-token</code>: AWS session token</li>
+<li><code>ars.queue.aws-sqs.max-messages-per-receive</code>: Maximum number of messages to receive per call (default <code>10</code>)</li>
+<li><code>ars.queue.aws-sqs.visibility-timeout</code>: Visibility timeout for the messages (default <code>1m</code>)</li>
+<li><code>ars.queue.aws-sqs.wait-timeout</code>: Wait time for receiving messages (default <code>20s</code>)</li>
 </ul>
-<h2 id="access-options">Access Options</h2>
-<p>Network Operations Center provides conditional access to the different Grafana dashboards. In order to configure access to these extra dashboards, configure the following options.</p>
+<h2 id="notification-sender-options">Notification Sender Options</h2>
+<p>The Alert Routing Server dispatches alert notifications to receivers over email and SMS. These options configure the providers used for each delivery channel, as well as the network details embedded in notifications.</p>
+<h3 id="network-options">Network Options</h3>
+<p>Notifications contain the name of the network and links back to the Identity Server and Console.</p>
 <ul>
-<li><code>noc.access.extended</code>: Applications and end devices dashboards (default: <code>true</code> since version <code>3.28.0</code>, <code>false</code> previously)</li>
+<li><code>ars.senders.network.name</code>: The name of the network</li>
+<li><code>ars.senders.network.identity-server-url</code>: The URL of the Identity Server</li>
+<li><code>ars.senders.network.console-url</code>: The URL of the Console</li>
+<li><code>ars.senders.network.assets-base-url</code>: The base URL to the email assets</li>
+<li><code>ars.senders.network.branding-base-url</code>: The base URL to the email branding assets</li>
+<li><code>ars.senders.network.subscription-management-url</code>: The URL of the Subscription Management</li>
+</ul>
+<h3 id="email-options">Email Options</h3>
+<p>The email sender can be configured with different providers. Currently the <code>sendgrid</code> and <code>dir</code> providers are implemented. The email address and name of the sender should be configured regardless of the provider that is used.</p>
+<ul>
+<li><code>ars.senders.email.provider</code>: Email provider to use (<code>sendgrid</code>, <code>dir</code>)</li>
+<li><code>ars.senders.email.sender-address</code>: The address of the sender</li>
+<li><code>ars.senders.email.sender-name</code>: The name of the sender</li>
+</ul>
+<p>When <code>sendgrid</code> is used as provider, an API key is required. For testing, use the sandbox to prevent emails from actually being sent.</p>
+<ul>
+<li><code>ars.senders.email.sendgrid.api-key</code>: The SendGrid API key to use</li>
+<li><code>ars.senders.email.sendgrid.sandbox</code>: Use SendGrid sandbox mode for testing</li>
+</ul>
+<p>When <code>dir</code> is used as provider, provide the path to the local directory where email messages should be written to. This is intended for development only.</p>
+<ul>
+<li><code>ars.senders.email.dir</code>: Directory to write emails to when the <code>dir</code> provider is used</li>
+</ul>
+<h3 id="sms-options">SMS Options</h3>
+<p>The SMS sender can be configured with different providers. Currently the <code>twilio</code> and <code>dir</code> providers are implemented.</p>
+<ul>
+<li><code>ars.senders.sms.provider</code>: SMS provider to use (<code>twilio</code>, <code>dir</code>)</li>
+</ul>
+<p>When <code>twilio</code> is used as provider, configure the Twilio account and messaging service credentials.</p>
+<ul>
+<li><code>ars.senders.sms.twilio.account-sid</code>: Twilio account SID to use</li>
+<li><code>ars.senders.sms.twilio.api-key</code>: Twilio API key to use</li>
+<li><code>ars.senders.sms.twilio.api-secret</code>: Twilio API secret to use</li>
+<li><code>ars.senders.sms.twilio.messaging-service-sid</code>: Twilio messaging service SID to use</li>
+</ul>
+<p>When <code>dir</code> is used as provider, provide the path to the local directory where SMS messages should be written to. This is intended for development only.</p>
+<ul>
+<li><code>ars.senders.sms.dir</code>: Directory to write SMS to when the <code>dir</code> provider is used</li>
 </ul>
 
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/enterprise/management/configuration/join-server/">← Join Server Options</a>
-<a class="button is-pulled-right" href="/docs/enterprise/management/configuration/network-server/">Network Server Options →</a>
+<a class="button is-pulled-left" href="/docs/enterprise/management/configuration/tenant-billing-server/">← Tenant Billing Server Options</a>
+<a class="button is-pulled-right" href="/docs/enterprise/management/configuration/application-server/">Application Server Options →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -315,19 +386,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul class="menu-list">
     
       
-      <li><a href='#network-operations-center-mount'>Network Operations Center Mount</a></li>
+      <li><a href='#routing-options'>Routing Options</a></li>
     
       
-      <li><a href='#oauth-options'>OAuth Options</a></li>
+      <li><a href='#alertmanager-options'>Alertmanager Options</a></li>
     
       
-      <li><a href='#database-options'>Database Options</a></li>
+      <li><a href='#queue-options'>Queue Options</a></li>
     
       
-      <li><a href='#grafana-options'>Grafana Options</a></li>
-    
-      
-      <li><a href='#access-options'>Access Options</a></li>
+      <li><a href='#notification-sender-options'>Notification Sender Options</a></li>
     
   </ul>
 
