@@ -29,4 +29,9 @@ Gateway connectivity outage alerts generate notifications upon opening and closu
 
 ## How long is a gateway connectivity outage alert open
 
-Gateway connectivity outage alerts will not stay open in perpetuity. By default, the alerts will be closed automatically after being open for 24 hours.
+Gateway connectivity outage alerts do not stay open indefinitely. By default, an alert remains open for at most 24 hours. This limit exists for resource management, so that monitoring is not kept open forever for the potentially large number of gateways in a network.
+
+When the alert closes, the notification you receive depends on the gateway's state:
+
+- If the gateway **reconnected** within the 24-hour window, you receive a notification that the gateway is back online.
+- If the gateway is **still disconnected** after 24 hours, you receive a notification that monitoring for this outage has stopped. You will not receive further notifications for this outage.
