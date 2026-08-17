@@ -10,6 +10,41 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.36.2
+
+### `3-1-security-group-rules`
+
+- Add ingress rule for TTIG TLS traffic on port 8890. Only enabled if `TTIGEnabled` is true.
+
+### `3-2-load-balancer-rules`
+
+- Add `TTIGCertificateARN` parameter and TLS listener on port `8890` for TTIG gateways. The listener forwards to the Basic Station target group and is only created when both `TTIGCertificateARN` is set and `BasicStationEnabled` is true. A dedicated certificate slot is required because TTIG firmware (mbedTLS) is incompatible with Let's Encrypt Y-series certificate chains.
+
+### `5-8c-certs-tti-pca`
+
+- New template. Deploys an ECS task that issues an ECDSA P-256 certificate from TTI's cross-account Private CA and imports it into ACM.
+
+### `5-8d-ecs-tti-pca-scheduled-task`
+
+- New template. Deploys an EventBridge scheduled rule to invoke the TTI PCA cert renewal task from `5-8c-certs-tti-pca` on a configurable interval.
+
+### `4-2a-configuration`
+
+- Add optional `SemtechRJSLNSURI` and `SemtechRJSLNSTrust` parameters. When set, gateways claimed through the Semtech RJS are configured with this LNS directly, instead of being redirected to the CUPS.
+- Add optional `EventsStorageEventTypeNames` parameter. When set to a comma separated list of event names, only those events are written into the Redis event type queues (`events.redis.store.event-type-names`). When empty (the default) all events are written, preserving the current behavior. Operators must keep this in sync with the event names consumed by group subscribers.
+
+### `5-5-tenant-resource-monitoring`
+
+- Add `PrometheusRetentionTime`, `PrometheusRetentionSize`, `PrometheusMinBlockDuration` and `PrometheusMaxBlockDuration` parameters. These storage flags were previously hardcoded.
+- **Enable TSDB compaction.** `min-block-duration` and `max-block-duration` were both `2h`, and equal values disable compaction. That is only correct when an external component ships and compacts blocks itself, such as a Thanos sidecar; this template has none, so blocks accumulated at twelve per day. Prometheus reads every block index at startup, so on long-lived clusters the resulting metadata I/O exhausted the EFS burst credit balance and throttled startup to around two hours. New defaults are `2h` and `6h`.
+- **Add time-based retention.** `retention.size=16GB` was the only retention flag, which suppresses Prometheus' 15-day default time retention. Sparse clusters therefore kept several hundred days of history. `PrometheusRetentionTime` now defaults to `72h`; `PrometheusRetentionSize` remains as a guard.
+- **This deletes data.** The first retention cycle after deployment drops history older than `PrometheusRetentionTime`. Raise it before deploying if longer windows are queried.
+- Keep `PrometheusRetentionTime` above `GatewayDisconnectedExtensionInterval` plus `PrometheusMaxBlockDuration`. Retention drops whole blocks, so usable history bottoms out at the difference; below the extension interval, `GatewayDisconnected` silently stops covering older outages. The defaults give a 66h floor against a 48h requirement.
+- `PrometheusMaxBlockDuration` is rounded down to the nearest of `2h`, `6h`, `18h`, `54h`, `162h`. Intermediate values have no effect.
+- The first restart after this change is as slow as the previous one: retention cannot prune blocks Prometheus has not opened yet. Restore file system throughput first if burst credits are exhausted.
+
+## 3.36.1
+
 ### `2-6-db-timescale-replica`
 
 - Run `timescaledb-tune` on the replica during the initialization.
