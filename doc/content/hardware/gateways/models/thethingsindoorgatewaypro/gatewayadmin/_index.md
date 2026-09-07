@@ -30,7 +30,7 @@ You can find the Fleet Owner Token here:
 
 or
 
-5. Go to **Settings** tab.
+1. Go to **Settings** tab.
 
 ---
 
@@ -61,7 +61,7 @@ If you are **unsure** you connected your license, **scan the QR code** on the ba
 
 ### I don't have a license
 
-If you don't have a license, scan the QR code on the back of the gateway to find out what to do next or or go to the [Gateway Status](https://accounts.thethingsindustries.com/gateway-status). You can also contact support at [support@thethingsindustries.com](mailto:support@thethingsindustries.com) for assistance.
+If you don't have a license, scan the QR code on the back of the gateway to find out what to do next or go to the [Gateway Status](https://accounts.thethingsindustries.com/gateway-status). You can also contact support at [support@thethingsindustries.com](mailto:support@thethingsindustries.com) for assistance.
 
 ---
 
@@ -70,6 +70,7 @@ If you don't have a license, scan the QR code on the back of the gateway to find
 Each **gateway license** is valid for **one year** after activation. When a license expires, the associated gateway will stop forwarding traffic until the license is renewed.
 
 To renew your license:
+
 1. Open your **Dashboard** in your [The Things Industries Account](https://accounts.thethingsindustries.com).
 2. Select **Gateways** tab.
 3. Select your **Gateway Fleet**.
