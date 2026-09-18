@@ -10,7 +10,7 @@ aliases:
     /gateways/concepts/adding-gateways,
     /gateways/gateway-claiming/make-gateways-claimable/,
     /gateways/gateway-claiming/claim-gateways/,
-    /gateways/concepts/gateway-claiming/claim-gateways/
+    /gateways/concepts/gateway-claiming/claim-gateways/,
   ]
 ---
 
@@ -39,6 +39,8 @@ Depending on whether the **Gateway EUI** is claimable you will either be shown t
 On the manual registration form fill in the **Frequency Plan** and the **Gateway ID** if it was not pre filled, The other fields are optional. Click **Register Gateway** to finish.
 
 {{< figure src="gateway-creation.png" alt="Gateway creation" >}}
+
+{{< note "Most gateways use a single frequency plan. Some 16 and 64 channel gateways however allow setting multiple within the same band. You need to use frequency plans that using different frequencies. e.g. For a 16 channel gateway in the `EU868` band you can use the `Europe 863-870 MHz (SF12 for RX2)` and `Europe 863-865 MHz (K-band, SF12 for RX2)` frequency plans." />}}
 
 If your gateway is claimable (e.g. {{% ttigpro %}} and {{% ttig %}}), you will see the claiming form. Here, fill in the **Owner Token**, **Gateway ID** and the **Frequency Plan**. Click **Claim Gateway** to finish.
 
