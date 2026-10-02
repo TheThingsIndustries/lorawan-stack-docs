@@ -340,8 +340,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           
         <h1 class="title is-size-2">Cloud Studio</h1>
         <div class="content">
-          <p><a href="https://www.cloud.studio/">Cloud Studio</a> is an IoT software company that developed an IoT platform which enables monitoring, control and automation of facilities. This platform is code-less and highly customizable, allowing enterprise and government entities to easily manage it in their unique way.</p>
-<p>Under Cloud Studio, you can find three IoT application <a href="https://www.cloud.studio/products/">sub-platforms</a>: Gear Studio, Beam Studio and Bespoke Projects. For integrating The Things Stack with Cloud Studio, we use <a href="https://www.cloud.studio/gear-studio-iot-application-platform/">Gear Studio</a>.</p>
+          <p><a href="https://cloudstudioiot.com/">Cloud Studio</a> is an IoT software company that developed an IoT platform which enables monitoring, control and automation of facilities. This platform is code-less and highly customizable, allowing enterprise and government entities to easily manage it in their unique way.</p>
+<p>Under Cloud Studio, you can find three IoT application <a href="https://cloudstudioiot.com/iot-platform">sub-platforms</a>: Gear Studio, Beam Studio and Bespoke Projects. For integrating The Things Stack with Cloud Studio, we use <a href="https://cloudstudioiot.com/iot-platform">Gear Studio</a>.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>A <a href="https://gear.cloud.studio/gear/common/sign-up">user account on Gear Studio</a>.</li>
@@ -354,7 +354,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </figure>
 
 <h3 id="create-a-custom-device-model">Create a Custom Device Model</h3>
-<p>When adding a new device in Gear Studio, you need to provide your device&rsquo;s <strong>Model</strong>. Some device models are predefined in Gear Studio, but there is also a possibility of creating a custom model. <a href="https://wiki.cloud.studio/en/page/36">See Cloud Studio documentation on creating custom device models</a></p>
+<p>When adding a new device in Gear Studio, you need to provide your device&rsquo;s <strong>Model</strong>. Some device models are predefined in Gear Studio, but there is also a possibility of creating a custom model. <a href="https://cloudstudioiot.com/docs/configuracion-del-cliente/dispositivos-y-endpoints/dispositivos/modelos-de-dispositivo">See Cloud Studio documentation on creating custom device models</a></p>
 <p>In this guide, we show how to create a custom <strong>Seeeduino LoRaWAN</strong> model. If your device&rsquo;s model is already defined in Gear Studio, you can skip this subsection and go directly to <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/#add-a-new-device">Add a New Device</a> subsection below.</p>
 <p>To create a new device model, in the <strong>Settings</strong> mode, navigate to <strong>Devices → Device models</strong> and click <strong>Add</strong>.</p>
 <p>In the <strong>Details</strong> tab, provide a <strong>Description</strong> of your model, and an arbitrary <strong>Device model code</strong>. Finish with <strong>Save</strong>.</p>
@@ -392,7 +392,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     alt="Configuration script">
 </figure>
 
-<p>The example configuration script above shows how to define device&rsquo;s address label, and how to define endpoints that will receive sensor values. <a href="https://wiki.cloud.studio/en/page/199">See Cloud Studio documentation for more info about device configuration scripts</a></p>
+<p>The example configuration script above shows how to define device&rsquo;s address label, and how to define endpoints that will receive sensor values. <a href="https://cloudstudioiot.com/docs/configuracion-del-cliente/dispositivos-y-endpoints/dispositivos/modelos-de-dispositivo/configuracion">See Cloud Studio documentation for more info about device configuration scripts</a></p>
 <p>You also need to define a payload parser script, in order for Gear Studio to be able to properly parse the data coming from your end device on The Things Stack.</p>
 <figure><img src="/docs/integrations/cloud-integrations/cloudstudio/scripts-payload-parser.png"
     alt="Add payload parser script">
@@ -415,7 +415,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Gear Studio allows parsing data coming from The Things Stack as bytes, strings and JSON objects, but it also allows reading data that is already parsed and decoded on The Things Stack using <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a>.</p>
-<p>The example payload parser script above shows how to extract temperature and humidity values from the <code>decoded_payload</code> JSON object nested in The Things Stack uplink data message, i.e. from a message that already contains decoded sensor data, and how to send the extracted data to the endpoints defined in the device configuration script. <a href="https://wiki.cloud.studio/en/page/200">See Cloud Studio documentation for more info about payload parsing scripts</a></p>
+<p>The example payload parser script above shows how to extract temperature and humidity values from the <code>decoded_payload</code> JSON object nested in The Things Stack uplink data message, i.e. from a message that already contains decoded sensor data, and how to send the extracted data to the endpoints defined in the device configuration script. <a href="https://cloudstudioiot.com/docs/configuracion-del-cliente/dispositivos-y-endpoints/dispositivos/modelos-de-dispositivo/procesamiento-de-datos">See Cloud Studio documentation for more info about payload parsing scripts</a></p>
 <p>Finish by clicking <strong>Save</strong>.</p>
 <h3 id="add-a-new-device">Add a New Device</h3>
 <p>To add a new device, navigate to <strong>Devices → Devices</strong> on the left hand menu and select the <strong>Add</strong> button.</p>
@@ -438,7 +438,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="configure-the-things-stack">Configure The Things Stack</h2>
 <p>After finishing Gear Studio setup, use the <strong>Cloud Studio</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a> to create a Webhook integration on The Things Stack.</p>
 <p>First, fill in the <strong>Webhook ID</strong>.</p>
-<p>Then you need to provide a Gear Studio <strong>Server instance</strong> that is hosting your Gear Studio IoT platform. This depends on your Gear Studio subscription. The default value is <code>gear.cloud.studio</code> that is commonly used for free subscriptions. See <a href="https://wiki.cloud.studio/en/page/174">Cloud Studio documentation</a> for detailed information on other server instances, depending on your subscription plan.</p>
+<p>Then you need to provide a Gear Studio <strong>Server instance</strong> that is hosting your Gear Studio IoT platform. This depends on your Gear Studio subscription. The default value is <code>gear.cloud.studio</code> that is commonly used for free subscriptions. See <a href="https://cloudstudioiot.com/docs/configuracion-del-cliente/dispositivos-y-endpoints/dispositivos/integracion-de-dispositivos/lorawan-network-servers-lns/the-things-stack-ttn-tts">Cloud Studio documentation</a> for detailed information on other server instances, depending on your subscription plan.</p>
 <p>As the last step, paste the access token you copied from Gear Studio in the <strong>Access token</strong> field.</p>
 <figure><img src="/docs/integrations/cloud-integrations/cloudstudio/cloud-studio-template.png"
     alt="Cloud Studio Webhook template">
@@ -462,7 +462,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </figure>
 
 <p>Now, go back to the <strong>Monitoring</strong> mode in Gear Studio, navigate to <strong>Dashboards</strong> on the left hand menu and start monitoring your sensor data!</p>
-<p>To read about available Cloud Studio features, cool ways to customize your devices, dashboards and much more, check the <a href="https://wiki.cloud.studio/">official Gear Studio documentation site</a>.</p>
+<p>To read about available Cloud Studio features, cool ways to customize your devices, dashboards and much more, check the <a href="https://cloudstudioiot.com/docs">official Gear Studio documentation site</a>.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/cayenne/">← Cayenne</a>
