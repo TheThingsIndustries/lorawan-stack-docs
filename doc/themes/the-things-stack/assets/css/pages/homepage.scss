@@ -1,61 +1,259 @@
-.section-doc-home-page-hero {
-  background-color: var(--c-background-02)
+// Home page (layouts/index.html, partials/whats-new.html)
+
+.home-hero {
+  background-color: $tts-025;
+  border-bottom: 1px solid $grey-100;
+  padding: $space-12 0;
+
+  @media (max-width: $tablet - 1px) {
+    padding: $space-6 0;
+  }
 }
 
-.container-whats-new-list {
-  background-color: var(--c-tts-primary-050)
+.home-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: $space-8;
+  align-items: start;
+
+  @media (max-width: 1215px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: $space-6;
+  }
 }
 
-.container-doc-home-page-browse {
+.home-hero__title {
+  margin: $space-2 0 $space-3;
+}
+
+.home-hero__lede {
+  font-size: 18px;
+  line-height: 25px;
+  color: $grey-700;
+  max-width: 40em;
+  margin-bottom: $space-6;
+}
+
+.home-section-title {
+  @include type-h5;
+  margin-bottom: $space-2;
+}
+
+// "Try it out" list
+.link-list {
+  background-color: $white;
+  border: 1px solid $color-border;
+  border-radius: $radius-default;
+  overflow: hidden;
+
+  li + li {
+    border-top: 1px solid $grey-100;
+  }
+}
+
+.link-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-3;
+  @include type-label-large;
+  color: $color-text;
+  transition: background-color $dur-fast $ease-standard, color $dur-fast $ease-standard;
+
+  &:hover {
+    background-color: $tts-050;
+    color: $tts-700;
+  }
+}
+
+.link-list__arrow {
+  color: $tts-500;
+  transition: transform $dur-fast $ease-standard;
+
+  .link-list__item:hover & {
+    transform: translateX(2px);
+  }
+}
+
+// "Browse by section" cards
+.section-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-2;
+
+  @media (max-width: $tablet - 1px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  li {
+    display: flex;
+  }
+}
+
+.section-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-
-.container-doc-home-page-cards {
-  height: 100%;
-}
-
-.section-whats-new {
-  background-color: var(--c-background-01);
-}
-
-.whats-new-separation-line {
-  height:1px;
   width: 100%;
-  background-color: var(--c-tts-primary-200)
+  padding: $space-3;
+  background-color: $white;
+  border: 1px solid $color-border;
+  border-radius: $radius-default;
+  color: $color-text-body;
+  transition: border-color $dur-fast $ease-standard, box-shadow $dur-base $ease-standard, transform $dur-base $ease-standard;
+
+  &:hover {
+    border-color: $tts-300;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04), 0 16px 32px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+    color: $color-text-body;
+  }
 }
 
-.whats-new-hero-card {
-  background-image: url(/img/doc-pattern.png);
-  background-repeat: no-repeat;
-  background-size: 160%;
-  background-position: center;
-  transition: all .2s ease-in-out;
+// Clickable titles use tts-500; non-clickable headings stay tts-1000
+.section-card__title {
+  @include type-h5;
+  color: $tts-500;
+  margin-bottom: $space-1;
+  transition: color $dur-fast $ease-standard;
+
+  .section-card:hover & {
+    color: $tts-700;
+  }
 }
 
-.whats-new-hero-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 2.7px 5.3px rgba(0, 0, 0, 0.02), 0px 8.9px 17.9px rgba(0, 0, 0, 0.03), 0px 40px 80px rgba(0, 0, 0, 0.05);
+.section-card__text {
+  font-size: 15px;
+  line-height: 21px;
+  color: $grey-700;
+  margin-bottom: $space-3;
 }
 
-.container-whats-new {
-  background-color: var(--c-tts-primary-100);
-  box-shadow: 0px 2.7px 5.3px rgba(0, 0, 0, 0.01), 0px 8.9px 17.9px rgba(0, 0, 0, 0.015), 0px 40px 80px rgba(0, 0, 0, 0.025);
-  background-image: url(/img/doc-pattern.png);
-  background-repeat: no-repeat;
-  background-size: 160%;
-  background-position: center;
+.section-card__more {
+  margin-top: auto;
+  @include type-label-medium;
+  color: $tts-600;
 }
 
-.item-whats-new {
-  background-color: var(--c-tts-primary-main);
-  background: rgba(30, 93, 255, 0.05);
-  transition: all .2s ease-in-out;
+// What's new
+.home-whats-new {
+  padding: $space-12 0;
+
+  @media (max-width: $tablet - 1px) {
+    padding: $space-6 0;
+  }
 }
 
-.item-whats-new:hover {
-  background-color: var(--c-tts-primary-main);
-  background: rgba(30, 93, 255, 0.10);
-  transform: translateY(-2px);
+.whats-new-panel {
+  background-color: $tts-025;
+  border: 1px solid $tts-100;
+  border-radius: $radius-panel;
+  padding: $space-6;
+
+  @media (max-width: $tablet - 1px) {
+    padding: $space-3;
+  }
+}
+
+.whats-new-panel__title {
+  @include type-h3;
+  margin-bottom: $space-4;
+
+  @media (max-width: $tablet - 1px) {
+    @include type-h4;
+  }
+}
+
+.whats-new-panel__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-2;
+  margin-bottom: $space-4;
+
+  @media (max-width: $desktop - 1px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  li {
+    display: flex;
+  }
+}
+
+.whats-new-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "tag arrow" "text arrow";
+  row-gap: $space-1;
+  column-gap: $space-3;
+  align-items: center;
+  width: 100%;
+  padding: $space-3;
+  background-color: $white;
+  border: 1px solid $color-border;
+  border-radius: $radius-default;
+  color: $color-text-body;
+  transition: border-color $dur-fast $ease-standard, transform $dur-base $ease-standard;
+
+  .pill { grid-area: tag; justify-self: start; }
+
+  &:hover,
+  &:focus-within {
+    border-color: $tts-300;
+    transform: translateY(-2px);
+    color: $color-text-body;
+  }
+}
+
+.whats-new-item__text {
+  grid-area: text;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+// The arrow link covers the whole card; links inside the entry stay clickable above it
+.whats-new-item__link {
+  grid-area: arrow;
+  color: $tts-500;
+  font-size: 18px;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    &::after {
+      outline: 2px solid $tts-500;
+      outline-offset: 2px;
+    }
+  }
+}
+
+.whats-new-item__text a {
+  position: relative;
+  z-index: 1;
+}
+
+.whats-new-item__text code {
+  font-family: $font-mono;
+  font-size: 0.875em;
+  background-color: $grey-050;
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  color: $grey-900;
+}
+
+.section-card__icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  color: $color-text;
+  margin-bottom: $space-2;
+  flex: none;
 }

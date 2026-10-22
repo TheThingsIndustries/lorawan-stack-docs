@@ -12,10 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import "@ttui/design/ui/ttui-vendor.js";
-import "@ttui/design/ui/main.js";
-import "@ttui/design/ui/components/heading-expanded/index.js";
-
 function addNavBarBurgers(){
   var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0)
   if ($navbarBurgers.length > 0) {
@@ -161,8 +157,41 @@ function addLightboxHandler() {
   })
 }
 
+// Navigation group dropdowns (disclosure pattern): click or Enter/Space to
+// toggle, Escape or a click outside to close.
+function initializeNavGroups () {
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.nav-group'))
+  function close (group, focusToggle) {
+    var toggle = group.querySelector('.nav-group__toggle')
+    group.classList.remove('is-active')
+    toggle.setAttribute('aria-expanded', 'false')
+    if (focusToggle) toggle.focus()
+  }
+  groups.forEach(function (group) {
+    var toggle = group.querySelector('.nav-group__toggle')
+    toggle.addEventListener('click', function () {
+      var open = !group.classList.contains('is-active')
+      groups.forEach(function (g) { close(g, false) })
+      if (open) {
+        group.classList.add('is-active')
+        toggle.setAttribute('aria-expanded', 'true')
+      }
+    })
+    group.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && group.classList.contains('is-active')) close(group, true)
+    })
+    group.addEventListener('focusout', function (e) {
+      if (e.relatedTarget && !group.contains(e.relatedTarget)) close(group, false)
+    })
+  })
+  document.addEventListener('click', function (e) {
+    groups.forEach(function (g) { if (!g.contains(e.target)) close(g, false) })
+  })
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   addNavBarBurgers()
+  initializeNavGroups()
   initializeTabsAndAnchors()
   addLightboxHandler()
 })

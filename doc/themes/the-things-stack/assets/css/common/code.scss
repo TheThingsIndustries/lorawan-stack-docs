@@ -1,0 +1,82 @@
+// Copy button on code blocks (assets/js/copy-code.js)
+
+.code-block {
+  position: relative;
+
+  pre {
+    padding-right: $space-8;
+  }
+}
+
+pre.code-block {
+  padding-right: $space-8;
+}
+
+.code-copy {
+  position: absolute;
+  top: $space-1;
+  right: $space-1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: $grey-700;
+  background-color: $white;
+  border: 1px solid $grey-200;
+  border-radius: $radius-default;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity $dur-fast $ease-standard, color $dur-fast $ease-standard, background-color $dur-fast $ease-standard;
+
+  &:hover {
+    color: $grey-900;
+    background-color: $grey-050;
+  }
+
+  &.is-copied {
+    color: $success-800;
+    opacity: 1;
+  }
+
+  // Revealed on hover, on keyboard focus, and always on touch screens
+  .code-block:hover &,
+  .code-line:hover &,
+  .code-cell:hover &,
+  &:focus-visible {
+    opacity: 1;
+  }
+
+  @media (hover: none) {
+    opacity: 1;
+  }
+}
+
+// Standalone inline code with the copy button to its right
+.code-line {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+}
+
+.code-copy.code-copy--inline {
+  position: static;
+  flex: none;
+  width: 28px;
+  height: 28px;
+}
+
+// Table cells and list items: button inline after the code. Table cells keep
+// the snippet and button on one line; list items wrap normally on small screens.
+.code-cell {
+  &:is(td, th) {
+    white-space: nowrap;
+  }
+
+  .code-copy.code-copy--inline {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: $space-1;
+  }
+}

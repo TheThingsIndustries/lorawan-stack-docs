@@ -1,0 +1,405 @@
+// Shared components, styled from the design tokens.
+
+// Pill / tag (999px radius is reserved for badges and tags).
+// Not named .badge: that class is used by the edition images in partials/distribution-icons.html.
+.pill {
+  display: inline-flex;
+  align-items: center;
+  @include type-label-small;
+  border-radius: $radius-pill;
+  padding: 4px 12px;
+  margin: 0;
+
+  &--primary {
+    background-color: $tts-500;
+    color: $white;
+  }
+
+  &--subtle {
+    background-color: $tts-050;
+    color: $tts-700;
+  }
+}
+
+.tag:not(body) {
+  @include type-label-small;
+  border-radius: $radius-pill;
+
+  &.is-light {
+    background-color: $tts-050;
+    color: $tts-700;
+  }
+}
+
+// Buttons — 8px radius, never pill-shaped
+.button {
+  @include type-label-large;
+  border-radius: $radius-default;
+  height: auto;
+  padding: 10px $space-2;
+  transition: background-color $dur-fast $ease-standard, border-color $dur-fast $ease-standard, color $dur-fast $ease-standard;
+
+  &.is-primary {
+    background-color: $tts-500;
+    color: $white;
+
+    &:hover, &.is-hovered {
+      background-color: $tts-600;
+      color: $white;
+    }
+
+    &.is-outlined {
+      background-color: transparent;
+      border-color: $tts-500;
+      color: $tts-600;
+
+      &:hover {
+        background-color: $tts-050;
+        border-color: $tts-600;
+        color: $tts-700;
+      }
+    }
+  }
+}
+
+// Replaces the retired TTUI button used by shortcodes and content
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  @include type-label-large;
+  background-color: $tts-500;
+  color: $white !important;
+  border-radius: $radius-default;
+  padding: 10px $space-2;
+  text-decoration: none !important;
+  transition: background-color $dur-fast $ease-standard;
+
+  &:hover {
+    background-color: $tts-600;
+    color: $white !important;
+  }
+}
+
+.text-link {
+  @include type-label-large;
+  color: $tts-600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: $tts-700;
+  }
+}
+
+// Navigation bar
+// Spec: 32px between the logo and the next item, 8px between items,
+// links in Inter Medium 15/21.
+@mixin type-nav {
+  font-family: $font-body;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.navbar {
+  .navbar-brand > a.navbar-item:first-child {
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: $space-4;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .navbar-search-menu {
+    padding: 0;
+    margin-right: $space-1;
+  }
+
+  .DocSearch-Button {
+    margin: 0 !important;
+  }
+
+  @media (min-width: $navbar-breakpoint) {
+    .navbar-start {
+      gap: $space-1;
+    }
+  }
+
+  .logo {
+    height: 32px;
+    width: auto;
+    max-height: none;
+  }
+
+  a.navbar-item {
+    @include type-nav;
+    border-radius: $radius-default;
+    align-self: center;
+    margin: 0;
+    padding: $space-1 12px;
+    transition: background-color $dur-fast $ease-standard, color $dur-fast $ease-standard;
+  }
+
+  .navbar-item .button.is-primary {
+    @include type-label-medium;
+    padding: 10px $space-2;
+  }
+}
+
+// Callouts — Note (info) and Warning shortcodes
+.notification {
+  border-radius: $radius-default;
+  border: 1px solid transparent;
+  padding: $space-2 $space-3;
+  font-size: 15px;
+  line-height: 21px;
+  color: $color-text !important;
+
+  .title {
+    @include type-label-large;
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    margin-top: 0 !important;
+    margin-bottom: $space-1 !important;
+  }
+
+  .callout-icon {
+    width: 16px;
+    height: 16px;
+    flex: none;
+  }
+
+  &.is-info {
+    background-color: $info-050;
+    border-color: $info-200;
+
+    .title { color: $info-900 !important; }
+    .callout-icon { color: $info-700; }
+  }
+
+  &.is-warning {
+    background-color: $warning-050;
+    border-color: $warning-200;
+
+    .title { color: $warning-900 !important; }
+    .callout-icon { color: $warning-700; }
+  }
+
+  &.is-danger {
+    background-color: $error-050;
+    border-color: $error-200;
+
+    .title { color: $error-900 !important; }
+  }
+
+  // Text links only; buttons inside callouts keep their own style
+  a:not(.button) {
+    color: $tts-700;
+    text-decoration: underline;
+  }
+}
+
+// Section index cards (partials/pages-cards.html)
+.page-card__title {
+  @include type-h5;
+  margin-bottom: $space-1 !important;
+  text-transform: none !important;
+
+  // Clickable titles use tts-500; non-clickable headings stay tts-1000
+  a {
+    color: $tts-500;
+    transition: color $dur-fast $ease-standard;
+
+    &:hover {
+      color: $tts-700;
+    }
+  }
+}
+
+.page-card__text {
+  font-size: 15px;
+  line-height: 21px;
+  color: $grey-700 !important;
+}
+
+// Sidebar
+.side-navigation,
+.toc {
+  .title {
+    @include type-h6;
+    margin-bottom: $space-2;
+  }
+
+  .menu-list a {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 6px $space-1;
+    border-radius: $radius-default;
+    transition: background-color $dur-fast $ease-standard, color $dur-fast $ease-standard;
+
+    &.is-active {
+      font-weight: 600;
+    }
+  }
+}
+
+.sidebar-left {
+  @media (min-width: $desktop) {
+    border-right-color: $grey-100 !important;
+  }
+}
+
+// Footer
+.footer {
+  background-color: $grey-025;
+  border-top: 1px solid $grey-100;
+  padding: $space-6 $space-3;
+
+  .title {
+    @include type-label-small;
+    color: $color-text;
+    margin-bottom: $space-2;
+  }
+
+  p {
+    margin-bottom: $space-1;
+  }
+
+  a {
+    font-size: 14px;
+    line-height: 20px;
+    color: $grey-700;
+    transition: color $dur-fast $ease-standard;
+
+    &:hover {
+      color: $tts-700;
+    }
+  }
+}
+
+// Previous / next buttons
+.is-clearfix > .button {
+  @include type-label-medium;
+  margin-top: $space-4;
+}
+
+// Respect reduced motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .section-card:hover,
+  .whats-new-item:hover,
+  .content figure:hover {
+    transform: none !important;
+  }
+}
+
+// Search button (DocSearch): brand radius, and icon-only below 1344px until there is room
+// for the full field, so the top navigation never overflows.
+.DocSearch-Button {
+  border-radius: $radius-default !important;
+}
+
+@media (max-width: 1343px) {
+  .navbar .DocSearch-Button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    justify-content: center;
+
+    .DocSearch-Button-Placeholder,
+    .DocSearch-Button-Keys {
+      display: none;
+    }
+
+    .DocSearch-Button-Container {
+      justify-content: center;
+    }
+  }
+}
+
+// Top navigation: flat or grouped, depending on the available width
+.nav-variant--grouped {
+  display: none !important;
+}
+
+@media (min-width: $navbar-breakpoint) and (max-width: $nav-flat-min - 1px) {
+  .nav-variant--flat {
+    display: none !important;
+  }
+
+  .nav-variant--grouped {
+    display: flex !important;
+  }
+}
+
+.nav-group {
+  align-self: center;
+  padding: 0;
+
+  .nav-group__toggle {
+    appearance: none;
+    background: none;
+    border: 0;
+    font: inherit;
+    cursor: pointer;
+    @include type-nav;
+    color: $grey-800;
+    border-radius: $radius-default;
+    padding: $space-1 2.25em $space-1 12px;
+    transition: background-color $dur-fast $ease-standard, color $dur-fast $ease-standard;
+
+    &::after {
+      border-color: currentColor;
+      right: 1em;
+      margin-top: -0.4em;
+    }
+
+    &:hover,
+    &.is-active {
+      background-color: $tts-050;
+      color: $tts-700;
+    }
+  }
+
+  &.is-active .nav-group__toggle {
+    background-color: $tts-050;
+    color: $tts-700;
+
+    &::after {
+      transform: rotate(135deg);
+      margin-top: -0.1em;
+    }
+  }
+
+  .navbar-dropdown {
+    top: calc(100% + #{$space-1});
+    border: 1px solid $color-border;
+    border-radius: $radius-default;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08), 0 16px 32px rgba(0, 0, 0, 0.08);
+    padding: $space-1;
+    min-width: 200px;
+
+    a.navbar-item {
+      display: block;
+      align-self: auto;
+      padding: $space-1 12px;
+    }
+  }
+
+  // Bulma opens dropdowns on .is-active; keep them closed otherwise (no hover-only menus)
+  &:not(.is-active) .navbar-dropdown {
+    display: none;
+  }
+}

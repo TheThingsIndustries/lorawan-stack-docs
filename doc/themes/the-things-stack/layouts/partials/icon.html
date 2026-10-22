@@ -1,0 +1,17 @@
+{{- /*
+  Inline a Tabler outline icon (https://tabler.io/icons, MIT) from assets/icons/tabler.
+  Usage: {{ partial "icon.html" (dict "name" "cloud" "size" 40 "class" "my-class") }}
+  Sizes follow the 8px grid: 16, 24, 32, 40 or 48. Icons are decorative (aria-hidden).
+*/ -}}
+{{- $size := .size | default 24 -}}
+{{- $class := printf "icon %s" (.class | default "") -}}
+{{- with resources.Get (printf "icons/tabler/%s.svg" .name) -}}
+  {{- $svg := .Content -}}
+  {{- $svg = replaceRE `\s+` " " $svg -}}
+  {{- $svg = replaceRE `width="24"` (printf `width="%d"` $size) $svg -}}
+  {{- $svg = replaceRE `height="24"` (printf `height="%d"` $size) $svg -}}
+  {{- $svg = replaceRE `class="[^"]*"` (printf `class="%s" aria-hidden="true" focusable="false"` $class) $svg -}}
+  {{- $svg | safeHTML -}}
+{{- else -}}
+  {{- errorf "icon %q not found in assets/icons/tabler" .name -}}
+{{- end -}}

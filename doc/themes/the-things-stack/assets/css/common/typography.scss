@@ -1,0 +1,216 @@
+// Type styles from Brand/03 Typography/typography.md.
+// Headings: Poppins SemiBold 600, tts-1000. Body: Inter, tracking 0.
+// Every style sets its own line-height.
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-body;
+  color: $color-text-body;
+}
+
+// Display — home page hero only
+.type-display {
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: 68px;
+  line-height: 68px;
+  letter-spacing: -0.03em;
+  color: $color-heading;
+
+  @media (max-width: $desktop - 1px) {
+    font-size: 56px;
+    line-height: 56px;
+  }
+
+  @media (max-width: $tablet - 1px) {
+    font-size: 32px;
+    line-height: 34px;
+    letter-spacing: -0.025em;
+  }
+}
+
+// Page title (h1 on docs pages): H2 scale
+@mixin type-h2 {
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.02em;
+  color: $color-heading;
+
+  @media (max-width: $tablet - 1px) {
+    font-size: 32px;
+    line-height: 38px;
+  }
+}
+
+@mixin type-h3 {
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+  color: $color-heading;
+}
+
+@mixin type-h4 {
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 34px;
+  letter-spacing: -0.02em;
+  color: $color-heading;
+}
+
+@mixin type-h5 {
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 29px;
+  letter-spacing: 0;
+  color: $color-heading;
+}
+
+@mixin type-h6 {
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $color-heading;
+}
+
+@mixin type-label-small {
+  font-family: $font-body;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@mixin type-label-medium {
+  font-family: $font-body;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0;
+}
+
+@mixin type-label-large {
+  font-family: $font-body;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.docs-content > .title,
+.docs-page-title {
+  @include type-h2;
+  margin-bottom: $space-3 !important;
+}
+
+// Bulma .title elements outside article content (sidebar headings, cards)
+.title {
+  font-family: $font-display;
+  font-weight: 600;
+  color: $color-heading;
+  letter-spacing: 0;
+}
+
+.content {
+  font-size: 16px;
+  line-height: 24px;
+  color: $color-text-body;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $font-display;
+    font-weight: 600;
+    color: $color-heading;
+  }
+
+  h1, h2 {
+    @include type-h3;
+    margin-top: $space-6;
+    margin-bottom: $space-2;
+  }
+
+  h3 {
+    @include type-h4;
+    margin-top: $space-5;
+    margin-bottom: $space-2;
+  }
+
+  h4 {
+    @include type-h5;
+    margin-top: $space-4;
+    margin-bottom: $space-1;
+  }
+
+  h5, h6 {
+    @include type-h6;
+    margin-top: $space-3;
+    margin-bottom: $space-1;
+  }
+
+  strong {
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  // Inline code — Mono / Medium
+  code {
+    font-family: $font-mono;
+    font-size: 0.875em;
+    line-height: 1.5;
+    font-weight: 400;
+    color: $grey-900;
+    background-color: $grey-050;
+    border: 1px solid $grey-100;
+    border-radius: 4px;
+    padding: 0.1em 0.35em;
+  }
+
+  pre {
+    font-family: $font-mono;
+    font-size: 14px;
+    line-height: 22px;
+    border-radius: $radius-default;
+    border: 1px solid $color-border;
+    padding: $space-2 $space-3;
+
+    code {
+      background: none;
+      border: 0;
+      padding: 0;
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  table {
+    font-size: 15px;
+    line-height: 21px;
+
+    th {
+      @include type-label-medium;
+      color: $color-text;
+    }
+
+    // Direct children only: code blocks inside tables (e.g. Chroma line
+    // number tables) must keep their preformatted whitespace
+    td > code, th > code {
+      white-space: nowrap;
+    }
+  }
+
+  blockquote {
+    border-left: 4px solid $color-border-strong;
+    color: $color-text-secondary;
+  }
+}
