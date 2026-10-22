@@ -1,6 +1,9 @@
 {{ if ne .Params.toc false -}}
-  <nav class="toc" aria-label="Page navigation">
-    <h2 class="title is-size-6">On this page</h2>
+{{- $headers := findRE "<h[2].*?>(.|\n])+?</h[2]>" .Content -}}
+{{- if and (ge (len $headers) 1) (ne .Params.toc "none") }}
+  <nav class="toc" aria-labelledby="toc-title">
+    <h2 class="title is-size-6" id="toc-title">On this page</h2>
     {{ partial "sidebar/headers" . }}
   </nav>
+{{- end }}
 {{ end -}}

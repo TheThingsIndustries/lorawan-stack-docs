@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="has-navbar-fixed-top">
+<html lang="{{ site.LanguageCode | default "en" }}" class="has-navbar-fixed-top">
 
 {{ partial "head/head.html" . }}
 
@@ -8,9 +8,14 @@
 
 {{ partial "gtm_body.html" . }}
 
+{{- /* Layouts with sidebars override "skip-target" to point past them, at the article */ -}}
+<a class="skip-link" href="#{{ block "skip-target" . }}main-content{{ end }}">Skip to content</a>
+
 {{- partial "header/nav.html" . -}}
 
+<main id="main-content" tabindex="-1">
 {{- block "main" . }}{{- end }}
+</main>
 
 {{ partial "footer/footer.html" . }}
 

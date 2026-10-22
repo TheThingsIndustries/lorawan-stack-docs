@@ -14,16 +14,41 @@
 
 function addNavBarBurgers(){
   var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0)
-  if ($navbarBurgers.length > 0) {
-    $navbarBurgers.forEach(function(el) {
-      el.addEventListener('click', function() {
-        var target = el.dataset.target
-        var $target = document.getElementById(target)
-        el.classList.toggle('is-active')
-        $target.classList.toggle('is-active')
-      })
+  $navbarBurgers.forEach(function(el) {
+    var $target = document.getElementById(el.dataset.target)
+    if (!$target) return
+
+    function setOpen (open) {
+      el.classList.toggle('is-active', open)
+      $target.classList.toggle('is-active', open)
+      // The page behind the open menu does not scroll
+      document.documentElement.classList.toggle('is-clipped', open)
+      el.setAttribute('aria-expanded', open ? 'true' : 'false')
+      el.setAttribute('aria-label', open ? 'Close menu' : 'Open menu')
+    }
+
+    el.addEventListener('click', function() {
+      setOpen(!el.classList.contains('is-active'))
     })
-  }
+    // Close when keyboard focus moves out of the navigation (e.g. Tab past the
+    // last link), so focus never goes to content hidden behind the open menu
+    document.addEventListener('focusin', function(e) {
+      if (el.classList.contains('is-active') && !el.closest('.navbar').contains(e.target)) {
+        setOpen(false)
+      }
+    })
+    // Escape closes the menu and returns focus to the menu button
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && el.classList.contains('is-active')) {
+        setOpen(false)
+        el.focus()
+      }
+    })
+    // Close when the window grows past the mobile layout
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', function(e) {
+      if (e.matches) setOpen(false)
+    })
+  })
 }
 
 function initializeTabsAndAnchors () {
@@ -40,7 +65,7 @@ function initializeTabsAndAnchors () {
 
   function addAnchor(element) {
     element.insertAdjacentHTML('beforeend',
-    `<a class="header-hash" href="#${element.id}" ariaLabel="Anchor">#</a>` )
+    `<a class="header-hash" href="#${element.id}" aria-label="Link to this section">#</a>` )
   }
 
   function addAnchors() {
@@ -189,9 +214,44 @@ function initializeNavGroups () {
   })
 }
 
+// Horizontally scrollable tables and tab bars must be reachable by keyboard.
+// Checked again whenever a region changes size: tables inside hidden tabs only
+// get dimensions when revealed, and the viewport width can change.
+function makeScrollableRegionsFocusable () {
+  function update (el) {
+    const scrollable = el.scrollWidth > el.clientWidth
+    if (scrollable && !el.hasAttribute('tabindex')) {
+      // Keep native table semantics; only add focusability and a name.
+      el.setAttribute('tabindex', '0')
+      el.dataset.scrollFocus = 'true'
+      if (el.tagName === 'TABLE' && !el.hasAttribute('aria-label')) {
+        el.setAttribute('aria-label', 'Scrollable table')
+        el.dataset.scrollLabel = 'true'
+      }
+    } else if (!scrollable && el.dataset.scrollFocus) {
+      // Only undo what was added here
+      el.removeAttribute('tabindex')
+      delete el.dataset.scrollFocus
+      if (el.dataset.scrollLabel) {
+        el.removeAttribute('aria-label')
+        delete el.dataset.scrollLabel
+      }
+    }
+  }
+  const regions = document.querySelectorAll('.content table, .tabs')
+  regions.forEach(update)
+  if ('ResizeObserver' in window) {
+    const observer = new ResizeObserver(function (entries) {
+      entries.forEach(function (entry) { update(entry.target) })
+    })
+    regions.forEach(function (el) { observer.observe(el) })
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   addNavBarBurgers()
   initializeNavGroups()
+  makeScrollableRegionsFocusable()
   initializeTabsAndAnchors()
   addLightboxHandler()
 })

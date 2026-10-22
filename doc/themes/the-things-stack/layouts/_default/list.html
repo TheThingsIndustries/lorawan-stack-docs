@@ -2,7 +2,7 @@
 
 {{- $hasSidebar := not (eq .Page.File.Ext "html") -}}
 
-<div class="container" role="document">
+<div class="container">
   <div class="columns my-0 {{ if not $hasSidebar }}is-desktop{{ end }}">
       {{ if $hasSidebar }}
       <div class="column is-3 is-2-desktop sidebar-left">
@@ -10,7 +10,7 @@
       </div>
       {{ end }}
       <div class="column is-9 is-8-desktop sidebar-middle">
-        <div class="docs-content">
+        <div class="docs-content" id="article-content" tabindex="-1">
         {{ $context := . }}
         {{ if or .Params.distributions (or .Params.new_in_version .Params.deprecated_in_version .Params.removed_in_version) }}
           <div class="content-tags">
@@ -47,3 +47,5 @@
 </div>
 
 {{ end }}
+
+{{ define "skip-target" }}article-content{{ end }}

@@ -1,14 +1,15 @@
+{{- $uid := printf "%s-%d" "tenant-cluster-selector" .Ordinal }}
 <div class="field">
-  <label class="label">Tenant ID</label>
+  <label class="label" for="{{ $uid }}-tenant-id">Tenant ID</label>
   <div class="control">
-    <input class="input" type="text" data-content="tenant-id" placeholder="tenant id">
+    <input class="input" type="text" id="{{ $uid }}-tenant-id" data-content="tenant-id" placeholder="tenant id">
   </div>
 </div>
 <div class="field">
-  <label class="label">Cluster</label>
+  <label class="label" for="{{ $uid }}-cluster-id">Cluster</label>
   <div class="control">
     <div class="select">
-      <select data-content="cluster-id">
+      <select id="{{ $uid }}-cluster-id" data-content="cluster-id">
         <option value="eu1" selected>Europe 1 (Ireland)</option>
         <option value="eu2">Europe 2 (UK)</option>
         <option value="nam1">North America 1 (California, USA)</option>

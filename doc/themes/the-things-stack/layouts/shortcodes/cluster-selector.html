@@ -1,8 +1,9 @@
+{{- $uid := printf "%s-%d" "cluster-selector" .Ordinal }}
 <div class="field">
-  <label class="label">Cluster</label>
+  <label class="label" for="{{ $uid }}-cluster-id">Cluster</label>
   <div class="control">
     <div class="select">
-      <select data-content="cluster-id">
+      <select id="{{ $uid }}-cluster-id" data-content="cluster-id">
         <option value="eu1" selected>Europe 1 (Ireland)</option>
         <option value="nam1">North America 1 (California, USA)</option>
         <option value="au1">Australia 1 (Sydney, Australia)</option>
