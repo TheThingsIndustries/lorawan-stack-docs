@@ -1,16 +1,15 @@
 {{ define "main" }}
 
-<div class="container" role="document">
+<div class="container">
   <div class="columns my-0">
     <div class="column is-2 sidebar-left">
-      {{ partial "sidebar/side-navigation.html" (.Site.GetPage
-      "/concepts/features/cli") }}
+      {{ partial "sidebar/side-navigation.html" (dict "page" (.Site.GetPage "/concepts/features/cli") "rendered" .) }}
     </div>
     <div class="column is-2">
       {{ partial "sidebar/command-side-navigation.html" . }}
     </div>
     <div class="column is-8">
-      <div class="docs-content">
+      <div class="docs-content" id="article-content" tabindex="-1">
         <div class="content">{{ .Content }}</div>
         {{ partial "feedback" . }}
       </div>
@@ -19,3 +18,5 @@
 </div>
 
 {{ end }}
+
+{{ define "skip-target" }}article-content{{ end }}

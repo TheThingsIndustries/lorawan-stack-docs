@@ -403,3 +403,159 @@
     display: none;
   }
 }
+
+// ---------------------------------------------------------------------------
+// Accessibility
+
+// Visible keyboard focus on every interactive element
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible,
+.button:focus-visible,
+.navbar-item:focus-visible {
+  outline: 2px solid $tts-500;
+  outline-offset: 2px;
+  box-shadow: none !important;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid $tts-500;
+  outline-offset: 1px;
+}
+
+// Skip link targets: keep the start of the content clear of the fixed header
+main,
+.docs-content {
+  scroll-margin-top: $anchor-offset;
+}
+
+main:focus,
+.docs-content:focus {
+  outline: none;
+}
+
+.skip-link {
+  position: absolute;
+  left: $space-2;
+  top: -100px;
+  z-index: 100;
+  @include type-label-large;
+  background-color: $tts-500;
+  color: $white;
+  padding: $space-1 $space-2;
+  border-radius: $radius-default;
+
+  &:focus {
+    top: $space-2;
+    color: $white;
+  }
+}
+
+// Menu button is a real <button>: reset the native styles
+button.navbar-burger {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: $grey-900;
+  border-radius: $radius-default;
+  align-self: center;
+
+  &:hover {
+    background-color: $tts-050;
+  }
+}
+
+// Mobile menu: a full-width panel below the header, not a floating card
+@media (max-width: $navbar-breakpoint - 1px) {
+  .navbar .navbar-brand {
+    align-items: center;
+    min-height: $navbar-height;
+  }
+
+  button.navbar-burger {
+    width: 44px;
+    height: 44px;
+    margin-right: 0;
+
+    &.is-active {
+      background-color: transparent;
+    }
+
+    &.is-active:hover {
+      background-color: $tts-050;
+    }
+  }
+
+  .navbar.is-fixed-top .navbar-menu.is-active {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - #{$navbar-height});
+    height: calc(100dvh - #{$navbar-height});
+    max-height: none;
+    overflow-y: auto;
+    padding: $space-2 32px $space-4;
+    background-color: $white;
+    border-top: 1px solid $grey-100;
+    box-shadow: none;
+
+    a.navbar-item {
+      display: flex;
+      align-items: center;
+      min-height: 48px;
+      margin: 0 -12px;
+      padding: 12px;
+    }
+
+    .navbar-end {
+      margin-top: $space-2;
+      padding-top: $space-3;
+      border-top: 1px solid $grey-100;
+
+      > .navbar-item:not(a) {
+        padding: 0;
+      }
+
+      .button {
+        width: 100%;
+        height: 48px;
+      }
+    }
+  }
+}
+
+// Links inside running text are underlined, not identified by color alone
+.content p a:not(.button),
+.content li a:not(.button),
+.content td a:not(.button),
+.notification a:not(.button) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+// DocSearch placeholder passes contrast
+.DocSearch-Button-Placeholder {
+  color: $grey-600 !important;
+}
+
+// Command tree targets are at least 24px tall (WCAG 2.5.8)
+.side-navigation details summary {
+  min-height: 24px;
+  line-height: 24px;
+
+  a, span {
+    display: inline-block;
+    min-width: 24px;
+    min-height: 24px;
+    line-height: 24px;
+  }
+}
