@@ -4,6 +4,7 @@ description: "Concepts specific to The Things Stack Cloud"
 weight: 4
 menu:
   main:
+    name: "Enterprise"
     weight: 4
 aliases: [/the-things-stack/host, /getting-started/installation/configuration]
 ---

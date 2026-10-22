@@ -3,7 +3,8 @@ title: "The Things Stack Cloud"
 description: "Concepts specific to The Things Stack Cloud"
 menu:
   main:
-    weight: 2
+    name: "Cloud"
+    weight: 3
 aliases:
   [
     /guides/cloud-hosted/cloud-hosted,
