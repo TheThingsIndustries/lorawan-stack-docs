@@ -41,5 +41,7 @@
 <script src="{{ $script.Permalink }}"></script>
 {{- $script := resources.Get "js/theme.js" | js.Build | resources.Minify | resources.Fingerprint }}
 <script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
+{{- $copy := resources.Get "js/copy-code.js" | js.Build | resources.Minify | resources.Fingerprint }}
+<script src="{{ $copy.Permalink }}" integrity="{{ $copy.Data.Integrity }}" crossorigin="anonymous"></script>
 
 {{- partial "intercom.html" . -}}
