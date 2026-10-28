@@ -2,7 +2,7 @@
   <div class="container is-fluid">
     <div class="navbar-brand">
       <a class="navbar-item" href="{{ relURL "" }}">
-        <img class="logo" src="{{ "img/TTS-logo.svg" | relURL }}">
+        <img class="logo" src="{{ "img/tts-horizontal-standard-color.svg" | relURL }}" alt="The Things Stack documentation home" width="166" height="32">
       </a>
       {{- if .Site.Params.search.enabled -}}
           <div class="navbar-item navbar-search-menu" id="search-input-menu">
@@ -19,13 +19,45 @@
       </span>
     </div>
     <div id="topMenu" class="navbar-menu">
-      <div class="navbar-start">
-        {{- $currentPage := . -}}
+      {{- $currentPage := . -}}
+      {{- /* Flat navigation: wide screens and the mobile menu */ -}}
+      <div class="navbar-start nav-variant nav-variant--flat">
         {{- range .Site.Menus.main }}
         <a class="navbar-item{{ if $currentPage.IsMenuCurrent "main" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
         {{- end }}
-
       </div>
+      {{- /* Grouped navigation: medium widths, where the flat navigation does not fit */ -}}
+      {{- with site.Params.navgroups }}
+      {{- $groups := . -}}
+      {{- $done := newScratch -}}
+      <div class="navbar-start nav-variant nav-variant--grouped">
+        {{- range site.Menus.main }}
+          {{- $entry := . -}}
+          {{- $section := "" -}}
+          {{- with .Page }}{{ $section = .Section }}{{ end -}}
+          {{- $group := "" -}}
+          {{- range $groups }}{{ if in .items $section }}{{ $group = . }}{{ end }}{{ end -}}
+          {{- if not $group }}
+        <a class="navbar-item{{ if $currentPage.IsMenuCurrent "main" $entry }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
+          {{- else if not ($done.Get $group.name) }}
+            {{- $done.Set $group.name true -}}
+            {{- $id := printf "nav-group-%s" ($group.name | urlize) -}}
+            {{- $groupActive := in $group.items $currentPage.Section -}}
+        <div class="navbar-item has-dropdown nav-group">
+          <button type="button" class="navbar-link nav-group__toggle{{ if $groupActive }} is-active{{ end }}" aria-expanded="false" aria-controls="{{ $id }}">{{ $group.name }}</button>
+          <div class="navbar-dropdown" id="{{ $id }}">
+            {{- range site.Menus.main }}
+              {{- $s := "" -}}{{- with .Page }}{{ $s = .Section }}{{ end -}}
+              {{- if in $group.items $s }}
+            <a class="navbar-item{{ if eq $currentPage.Section $s }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
+              {{- end }}
+            {{- end }}
+          </div>
+        </div>
+          {{- end }}
+        {{- end }}
+      </div>
+      {{- end }}
       <div class="navbar-end">
         {{- if .Site.Menus.right }}
         {{- range .Site.Menus.right }}

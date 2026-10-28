@@ -1,34 +1,31 @@
 {{ range first 1 (where .Site.RegularPages "Section" "whats-new").ByDate.Reverse }}
 
 {{ if .Params.featured }}
-<section class="section-whats-new ttui-container grid pt-ls-xl pb-ls-xl">
-
-<div class="container-whats-new item-12 br-l p-ls-s">
-  <p class="ttui-body fs-xl fw-bolder mb-cs-xl c-text-01">What's new in v{{- .Site.Params.version -}}</p>
-  <div class="grid mb-cs-xl">
-    {{ $pagePermalink := .Permalink }}
-    {{ range $feature_category, $array := .Params.featured }}
-    {{ range $array }}
-
-    <a href="{{ $pagePermalink }}" class="item-whats-new b-line-01 item-6 md:item-12 br-l p-cs-l grid">
-      <div class="item-10">
-        <p class="bg-tts-primary-main d-inline-block c-white ttui-body fs-s pl-cs-m pr-cs-m pt-cs-xxs pb-cs-xxs br-xxl mb-cs-m">{{ $feature_category | title }}</p>
-        <p class="ttui-body fs-m">{{ . }}</p>
-      </div>
-      <div class="item-1 item-start-12 d-flex al-center j-center">
-        <p class="ttui-body fs-l">&#8594</p>
-      </div>
-    </a>
-
-    {{ end }}
-    {{ end }}
+<section class="home-whats-new">
+  <div class="container">
+    <div class="whats-new-panel">
+      <h2 class="whats-new-panel__title">What's new in v{{- .Site.Params.version -}}</h2>
+      <ul class="whats-new-panel__list">
+        {{ $pagePermalink := .Permalink }}
+        {{ range $feature_category, $array := .Params.featured }}
+        {{ range $i, $entry := $array }}
+        {{- /* A <div> with a stretched link, not an <a> wrapper: an entry that
+               contains a link would otherwise produce nested <a> tags */ -}}
+        {{ $id := printf "whats-new-%s-%d" ($feature_category | urlize) $i }}
+        <li>
+          <div class="whats-new-item">
+            <span class="pill pill--subtle">{{ $feature_category | title }}</span>
+            <span class="whats-new-item__text" id="{{ $id }}">{{ $entry | markdownify }}</span>
+            <a href="{{ $pagePermalink }}" class="whats-new-item__link" aria-labelledby="{{ $id }}"><span aria-hidden="true">→</span></a>
+          </div>
+        </li>
+        {{ end }}
+        {{ end }}
+      </ul>
+      <a href='{{ ref . "whats-new" }}' class="text-link">See all release notes <span aria-hidden="true">→</span></a>
+    </div>
   </div>
-  <a href='{{ ref . "whats-new" }}' class="ttui-body c-text-01"><u>See all release notes &#8594</u></a>
-</div>
 </section>
-
 {{ end }}
-
-
 
 {{ end }}

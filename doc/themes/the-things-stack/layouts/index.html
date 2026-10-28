@@ -1,68 +1,63 @@
 {{ define "main" }}
 
-<div>
+<div class="home">
 
-  <section class="section-doc-home-page-hero ttui-container grid pt-ls-xl pb-ls-xl">
+  <section class="home-hero">
+    <div class="container home-hero__grid">
 
-    <div class="item-5 md:item-12 grid sm:mb-ls-l">
-      <div class="mb-ls-l item-12 md:item-6 sm:item-8 xs:item-12">
-        <p class="bg-tts-primary-main d-inline-block c-white ttui-body p-sides-cs-s pt-cs-xxs pb-cs-xxs br-xxl mb-cs-m">v{{- .Site.Params.version -}}</p>
-        <h1 class="mb-cs-s c-interactive-03">The Things Stack Documentation</h1>
-        <p class="ttui-body fs-l mb-cs-xl">The Things Stack is a robust, yet flexible LoRaWAN® Network Server that caters to the needs of demanding LoRaWAN deployments, from covering the essentials to advanced security configurations and device life cycle management.</p>
-      </div>
-      {{ $lorawanbasics := dict "link" "Get to know LoRaWAN®" "url" (.Site.GetPage "/getting-started/lorawan-basics").RelPermalink}}
-      {{ $lorawannetwork := dict "link" "Set up your first LoRaWAN® network" "url" (.Site.GetPage "/getting-started/2-prerequisites").RelPermalink}}
-      {{ $addgateways := dict "link" "Connect your first gateway" "url" (.Site.GetPage "/hardware/gateways/concepts/adding-gateways").RelPermalink}}
-      {{ $adddevice := dict "link" "Add your first device" "url" (.Site.GetPage "/hardware/devices/adding-devices").RelPermalink}}
-      {{ $certified := dict "link" "Get certified" "url" "https://www.thethingsnetwork.org/achievements"}}
-      {{ $api := dict "link" "Explore The Things Stack API" "url" (.Site.GetPage "/api").RelPermalink}}
-      {{ $list := slice $lorawanbasics $lorawannetwork $addgateways $adddevice $certified $api }}
-      <div class="item-12 md:item-6 sm:item-12">
-        <p class="ttui-body fs-l fw-bolder mb-cs-xl">Try it out</p>
-        <div class="container-whats-new-list flex-column b-line-02 br-l">
-          {{ range $list}}
-          <a class="ttui-link ttui-link--highlight p-cs-m" href="{{ .url }}">
-            <div class="d-flex j-between">
-              <p>{{ .link }}</p>
-              <p>&#8594</p>
-            </div>
-          </a>
-          <div class="whats-new-separation-line"></div>
+      <div class="home-hero__intro">
+        <p class="pill pill--primary">v{{- .Site.Params.version -}}</p>
+        <h1 class="type-display home-hero__title">The Things Stack Documentation</h1>
+        <p class="home-hero__lede">The Things Stack is a robust, yet flexible LoRaWAN® Network Server that caters to the needs of demanding LoRaWAN deployments, from covering the essentials to advanced security configurations and device life cycle management.</p>
+
+        {{ $lorawanbasics := dict "link" "Get to know LoRaWAN®" "url" (.Site.GetPage "/getting-started/lorawan-basics").RelPermalink}}
+        {{ $lorawannetwork := dict "link" "Set up your first LoRaWAN® network" "url" (.Site.GetPage "/getting-started/2-prerequisites").RelPermalink}}
+        {{ $addgateways := dict "link" "Connect your first gateway" "url" (.Site.GetPage "/hardware/gateways/concepts/adding-gateways").RelPermalink}}
+        {{ $adddevice := dict "link" "Add your first device" "url" (.Site.GetPage "/hardware/devices/adding-devices").RelPermalink}}
+        {{ $certified := dict "link" "Get certified" "url" "https://www.thethingsnetwork.org/achievements"}}
+        {{ $api := dict "link" "Explore The Things Stack API" "url" (.Site.GetPage "/api").RelPermalink}}
+        {{ $list := slice $lorawanbasics $lorawannetwork $addgateways $adddevice $certified $api }}
+        <h2 class="home-section-title">Try it out</h2>
+        <ul class="link-list">
+          {{ range $list }}
+          <li>
+            <a class="link-list__item" href="{{ .url }}">
+              <span>{{ .link }}</span>
+              <span class="link-list__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
           {{ end }}
-        </div>
+        </ul>
       </div>
-    </div>
 
-    {{ $gettingstarted := dict "url" (.Site.GetPage "getting-started").RelPermalink "title" "Getting Started" "text" "Get started with The Things Stack. If you're new to The Things Stack and/or LoRaWAN, this is the place to start." "bgcolor" "background-color: #002B9E"}}
-    {{ $concepts := dict "url" (.Site.GetPage "concepts").RelPermalink "title" "Concepts" "text" "Guides on basic concepts of working with The Things Stack." "bgcolor" "background-color: #1E5DFF"}}
-    {{ $cloud := dict "url" (.Site.GetPage "cloud").RelPermalink "title" "The Things Stack Cloud" "text" "Concepts specific to The Things Stack Cloud." "bgcolor" "background-color: #4275FF"}}
-    {{ $enterprise := dict "url" (.Site.GetPage "enterprise").RelPermalink "title" "The Things Stack Enterprise" "text" "Concepts specific to The Things Stack Enterprise." "bgcolor" "background-color: #001958"}}
-    {{ $integrations := dict "url" (.Site.GetPage "integrations").RelPermalink "title" "Integrations" "text" "Learn how to work with End Device data on The Things Stack and how to integrate with external systems." "bgcolor" "background-color: #1F52D8" }}
-    {{ $hardware := dict "url" (.Site.GetPage "hardware").RelPermalink "title" "Hardware" "text" "Concepts specific to LoRaWAN end devices and gateways" "bgcolor" "background-color: #001958"}}
-    {{ $api := dict "url" (.Site.GetPage "api").RelPermalink "title" "API" "text" "Explore The Things Stack API" "bgcolor" "background-color: #1e47ff" }}
-    {{ $cards := slice $gettingstarted $concepts $cloud $enterprise $integrations $hardware $api }}
-    <div class="container-doc-home-page-browse item-6 item-start-7 md:item-12 md:item-start-1">
-      <p class="ttui-body fs-l fw-bolder mb-cs-xl">Browse by section</p>
-      <div class="container-doc-home-page-cards grid grid--center">
-        {{ range $cards}}
-        <a href="{{ .url }}" class="whats-new-hero-card item-6 xxs:item-12 h-full flex-column p-cs-l br-l" style="{{ .bgcolor }}">
-          <div class="mb-cs-l">
-            <p class="ttui-body fs-l fw-bolder mb-cs-xs c-white">{{ .title }}</p>
-            <p class="ttui-body fs-m c-white">{{ .text }}</p>
-          </div>
-          <div>
-            <button class="ttui-btn ttui-btn--primary default fs-s">Learn more &#8594</button>
-          </div>
-        </a>
-        {{ end }}
+      {{ $gettingstarted := dict "url" (.Site.GetPage "getting-started").RelPermalink "title" "Getting Started" "text" "Get started with The Things Stack. If you're new to The Things Stack and/or LoRaWAN, this is the place to start." "icon" "rocket" }}
+      {{ $concepts := dict "url" (.Site.GetPage "concepts").RelPermalink "title" "Concepts" "text" "Guides on basic concepts of working with The Things Stack." "icon" "bulb" }}
+      {{ $cloud := dict "url" (.Site.GetPage "cloud").RelPermalink "title" "The Things Stack Cloud" "text" "Concepts specific to The Things Stack Cloud." "icon" "cloud" }}
+      {{ $enterprise := dict "url" (.Site.GetPage "enterprise").RelPermalink "title" "The Things Stack Enterprise" "text" "Concepts specific to The Things Stack Enterprise." "icon" "server-2" }}
+      {{ $integrations := dict "url" (.Site.GetPage "integrations").RelPermalink "title" "Integrations" "text" "Learn how to work with End Device data on The Things Stack and how to integrate with external systems." "icon" "plug-connected" }}
+      {{ $hardware := dict "url" (.Site.GetPage "hardware").RelPermalink "title" "Hardware" "text" "Concepts specific to LoRaWAN end devices and gateways." "icon" "router" }}
+      {{ $api := dict "url" (.Site.GetPage "api").RelPermalink "title" "API" "text" "Explore The Things Stack API." "icon" "api" }}
+      {{ $cards := slice $gettingstarted $concepts $cloud $enterprise $integrations $hardware $api }}
+      <div class="home-hero__browse">
+        <h2 class="home-section-title">Browse by section</h2>
+        <ul class="section-cards">
+          {{ range $cards }}
+          <li>
+            <a href="{{ .url }}" class="section-card">
+              {{ partial "icon.html" (dict "name" .icon "size" 40 "class" "section-card__icon") }}
+              <h3 class="section-card__title">{{ .title }}</h3>
+              <p class="section-card__text">{{ .text }}</p>
+              <span class="section-card__more">Learn more <span aria-hidden="true">→</span></span>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
       </div>
-    </div>
 
+    </div>
   </section>
 
-
   {{ partial "whats-new.html" . }}
-
 
 </div>
 
