@@ -10,7 +10,8 @@
   <title>Updating | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/enterprise/aws/ecs/updating/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/docs/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.c999bfc4cb1696a2894ac125b4832b10654c56f0e3163e4ae3c70bba9e583d2a.css" integrity="sha256-yZm/xMsWlqKJSsEltIMrEGVMVvDjFj5K48cLup5YPSo=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Updating">
@@ -31,8 +32,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
 
 
-
-  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
 </head>
 
 
@@ -46,7 +45,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="container is-fluid">
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
-        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <img class="logo" src="/docs/img/tts-horizontal-standard-color.svg" alt="The Things Stack documentation home" width="166" height="32">
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -55,16 +54,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <span></span>
       </span>
     </div>
-    <div id="topMenu" class="navbar-menu">
-      <div class="navbar-start">
+    <div id="topMenu" class="navbar-menu"><div class="navbar-start nav-variant nav-variant--flat">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
         <a class="navbar-item" href="/docs/concepts/">Concepts</a>
-        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
-        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/cloud/">Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">Enterprise</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/api/">API</a>
         <a class="navbar-item" href="/docs/hardware/">Hardware</a>
-
+      </div><div class="navbar-start nav-variant nav-variant--grouped">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a><div class="navbar-item has-dropdown nav-group">
+          <button type="button" class="navbar-link nav-group__toggle is-active" aria-expanded="false" aria-controls="nav-group-deployment">Deployment</button>
+          <div class="navbar-dropdown" id="nav-group-deployment">
+            <a class="navbar-item" href="/docs/cloud/">Cloud</a>
+            <a class="navbar-item is-active" href="/docs/enterprise/">Enterprise</a>
+          </div>
+        </div><div class="navbar-item has-dropdown nav-group">
+          <button type="button" class="navbar-link nav-group__toggle" aria-expanded="false" aria-controls="nav-group-build">Build</button>
+          <div class="navbar-dropdown" id="nav-group-build">
+            <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+            <a class="navbar-item" href="/docs/api/">API</a>
+            <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+          </div>
+        </div>
       </div>
       <div class="navbar-end"><div class="navbar-item">
             <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
@@ -222,8 +235,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="updating-cloudformation-stacks">Updating CloudFormation Stacks</h2>
 <p>Updating CloudFormation stacks can be done via the AWS console, using the <strong>Create changeset</strong> functionality. All stacks need to be updated in their numbering order. For example, a stack using template <code>1-1-vpc</code> needs to be updated before <code>1-2-bastion</code>, which needs to be updated before <code>2-1-db-aurora-master</code>.</p>
 <p>Not all stacks require a replacement in each version update.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   Please refer to <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/UPGRADING.md">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/UPGRADING.md</a> (replace <code>3.x</code> with the current minor version), which contains per-version changes in templates. Only templates mentioned in that file have changed in given version. Moreover use that file as a general guideline what changes to expect.
 </div>
 
@@ -236,8 +249,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>as default parameters might not be valid in context of your deployment.</p>
 <p>There are two templates that have a non-standard update procedure:</p>
 <h3 id="2-5-db-timescale"><code>2-5-db-timescale</code></h3>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   As AMI, we use the newest Amazon Linux 2 image. This means that AMI ID is most likely going to change between two consecutive releases of The Things Stack, and upon update AWS will try to replace the EC2 machine. If there are no notes in <code>UPGRADING.md</code> and new template differs only by AMI ID, consider simply upgrading the software on the machine instead of updating this particular stack via CloudFormation, especially prior to version 3.15.0. Always remember to backup your data before update.
 </div>
 
@@ -258,8 +271,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Storage integration may report failures for a brief moment before new EC2 machine starts up (about two minutes) and Application Server picks up new DNS entry (TTL one minute).</p>
 <h3 id="5-1-ecs-cluster"><code>5-1-ecs-cluster</code></h3>
 <p>In this template we use an autoscaling group. Updates to <code>LaunchConfiguration</code> do not cause any effect on already running machines that were created using said <code>LaunchConfiguration</code>. This means that if this template contains changes, e.g. different <code>UserData</code> or an updated AMI image, you should examine changes and apply them manually.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   Make sure to remember that both <code>5-1-ecs-cluster</code> and <code>2-5-db-timescale</code> use standard Amazon Linux 2 images. This should make it easy to decide whether you actually need to update the machines, and if yes, how exactly. There is no non-standard software on these machines beyond what&rsquo;s in the <code>UserData</code> section of respective template, therefore you can follow standard update procedures.
 </div>
 
@@ -279,8 +292,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <blockquote>
 <p>See <a href="/docs/enterprise/aws/ecs/database-operations/">Database Operations</a> for detailed info about migrations.</p>
 </blockquote>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   When updating from a version that is more than one minor behind your target version you need to perform all migrations mentioned in release notes between your current and target version. If a migration is mentioned more than one time, then you only need to apply it once, using the target version image.
 </div>
         </div>
@@ -337,8 +350,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">Sections</h3>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
         <p><a class="" href="/docs/concepts/">Concepts</a></p>
-        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
-        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/cloud/">Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">Enterprise</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/api/">API</a></p>
         <p><a class="" href="/docs/hardware/">Hardware</a></p>
@@ -360,7 +373,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a076fc112b09a207a82bbdb2a0d046b3de26e2322f4bd109bd1bad40b8905c3d.js" integrity="sha256-oHb8ESsJogeoK72yoNBGs94m4jIvS9EJvRutQLiQXD0=" crossorigin="anonymous"></script>
+<script src="https://www.thethingsindustries.com/docs/js/copy-code.min.a518753ee4e1c3aeebbc4c68d67a7c5567d425c897f55be565b940432bff35d9.js" integrity="sha256-pRh1PuThw67rvExo1np8VWfUJciX9VvlZblAQyv/Ndk=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

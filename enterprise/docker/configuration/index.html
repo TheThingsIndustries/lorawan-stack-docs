@@ -10,7 +10,8 @@
   <title>Configuration | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/enterprise/docker/configuration/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/docs/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.c999bfc4cb1696a2894ac125b4832b10654c56f0e3163e4ae3c70bba9e583d2a.css" integrity="sha256-yZm/xMsWlqKJSsEltIMrEGVMVvDjFj5K48cLup5YPSo=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Configuration">
@@ -31,8 +32,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
 
 
-
-  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
 </head>
 
 
@@ -46,7 +45,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="container is-fluid">
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
-        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <img class="logo" src="/docs/img/tts-horizontal-standard-color.svg" alt="The Things Stack documentation home" width="166" height="32">
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -55,16 +54,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <span></span>
       </span>
     </div>
-    <div id="topMenu" class="navbar-menu">
-      <div class="navbar-start">
+    <div id="topMenu" class="navbar-menu"><div class="navbar-start nav-variant nav-variant--flat">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
         <a class="navbar-item" href="/docs/concepts/">Concepts</a>
-        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
-        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/cloud/">Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">Enterprise</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/api/">API</a>
         <a class="navbar-item" href="/docs/hardware/">Hardware</a>
-
+      </div><div class="navbar-start nav-variant nav-variant--grouped">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a><div class="navbar-item has-dropdown nav-group">
+          <button type="button" class="navbar-link nav-group__toggle is-active" aria-expanded="false" aria-controls="nav-group-deployment">Deployment</button>
+          <div class="navbar-dropdown" id="nav-group-deployment">
+            <a class="navbar-item" href="/docs/cloud/">Cloud</a>
+            <a class="navbar-item is-active" href="/docs/enterprise/">Enterprise</a>
+          </div>
+        </div><div class="navbar-item has-dropdown nav-group">
+          <button type="button" class="navbar-link nav-group__toggle" aria-expanded="false" aria-controls="nav-group-build">Build</button>
+          <div class="navbar-dropdown" id="nav-group-build">
+            <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+            <a class="navbar-item" href="/docs/api/">API</a>
+            <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+          </div>
+        </div>
       </div>
       <div class="navbar-end"><div class="navbar-item">
             <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
@@ -236,8 +249,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="understanding-docker-configuration">Understanding Docker Configuration</h2>
 <p>In this section, configuring Docker is explained with an example <code>docker-compose.yml</code> file.</p>
 <p>Docker runs an instance of The Things Stack, as well as an SQL database and a Redis database. The Things Stack components are inherently stateless and depend on the underlying SQL and Redis databases to store data.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   For high deployment availability, it is recommended to set up redundancy in above mentioned databases.
 </div>
 
@@ -304,8 +317,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;127.0.0.1:5432:5432&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   Alternatively, you can use a managed TimescaleDB database, like <a href="https://www.timescale.com/cloud">Timescale Cloud</a>. In that case, make sure to configure the <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/identity-server/#database-options">Identity Server</a>, <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/application-server/#storage-integration-options">Application Server</a> and <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/network-operations-center/#database-options">Network Operations Center</a> databases.
 </div>
 </section>
@@ -342,8 +355,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;127.0.0.1:5432:5432&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   Alternatively, you can use a managed PostgreSQL database. In that case, make sure to configure the <a href="https://www.thethingsindustries.com/docs/enterprise/management/configuration/identity-server/#database-options">Identity Server</a> database.
 </div>
 </section>
@@ -352,8 +365,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <h3 id="redis">Redis</h3>
 <p>The configuration in this guide uses a single instance of <a href="https://redis.io/">Redis</a>. Again, note that the <code>volumes</code> need to be set up correctly so that the datastore is persisted on your server&rsquo;s disk.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   The Things Stack requires Redis version 6.2.
 </div>
 
@@ -421,8 +434,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">postgres</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   If using a managed SQL or Redis database, these can be removed from <code>depends_on</code> and the services do not need to be started in Docker.
 </div>
 
@@ -444,15 +457,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./acme:/var/lib/acme</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   If your <code>ttn-lw-stack-docker.yml</code> is in a directory other than <code>./config/stack</code>, you will need to change this volume accordingly.
 </div>
 
 <h4 id="environment-and-ports">Environment and Ports</h4>
 <p>The databases used by The Things Stack are configured in the <code>environment</code> section. In this guide, these are set to the PostgreSQL and Redis instances that are mentioned above.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   If using managed databases, the <code>environment</code> ports need to be changed to the ports of the managed databases.
 </div>
 
@@ -505,8 +518,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8889:8889&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   Be sure to provide network access to these ports on the machine you are running The Things Stack.
 </div>
 
@@ -1127,8 +1140,8 @@ host, and also to use it as the default host.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/api/v3&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+<div class="notification is-warning">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4" /><path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z" /><path d="M12 16h.01" /></svg>Warning:</h5>
   Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of <code>thethings.example.com</code> with your domain name!
 </div>
 
@@ -1176,8 +1189,8 @@ host, and also to use it as the default host.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">/run/secrets/key.pem</span></span></span></code></pre></td></tr></table>
 </div>
 </div></p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   If you are using a private PKI, you need to share your CA file with The Things Industries in order for The Things Gateway Controller to verify your certificate and authenticate your deployment. Contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a> and share your CA certificate in PEM format.
 </div>
 
@@ -1337,8 +1350,8 @@ host, and also to use it as the default host.</p>
 <h3 id="solution-1-use-the-ip-address-of-your-computer-on-your-local-network">Solution 1: Use the IP address of your computer on your local network</h3>
 <p>The best solution is to configure and use a static IP address for your machine on your local network so that redirects from your machine, from the Docker container, or from anywhere inside your local network, all resolve at the same place, on your machine.</p>
 <p>Follow instructions <a href="https://uk.pcmag.com/news/124250/how-to-set-up-a-static-ip-address">here</a> for configuring a static IP address on your computer. Use that IP address as your server address, i.e replace <code>thethings.example.com</code> with that IP address. You may also generate a self-signed certificate for that IP address by following instructions in the <a href="/docs/enterprise/docker/certificates/">Certificates</a> section.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   ACME will not work on <code>localhost</code>, so you must either generate custom certificates for your IP address as shown in the <a href="/docs/enterprise/docker/certificates/#custom-certificate-authority">Custom Certificate Authority</a> instructions, or use <code>http</code> (unsecure) in your configuration.
 </div>
 
@@ -1431,8 +1444,8 @@ host, and also to use it as the default host.</p>
         <h3 class="title is-6">Sections</h3>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
         <p><a class="" href="/docs/concepts/">Concepts</a></p>
-        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
-        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/cloud/">Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">Enterprise</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/api/">API</a></p>
         <p><a class="" href="/docs/hardware/">Hardware</a></p>
@@ -1454,7 +1467,8 @@ host, and also to use it as the default host.</p>
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a076fc112b09a207a82bbdb2a0d046b3de26e2322f4bd109bd1bad40b8905c3d.js" integrity="sha256-oHb8ESsJogeoK72yoNBGs94m4jIvS9EJvRutQLiQXD0=" crossorigin="anonymous"></script>
+<script src="https://www.thethingsindustries.com/docs/js/copy-code.min.a518753ee4e1c3aeebbc4c68d67a7c5567d425c897f55be565b940432bff35d9.js" integrity="sha256-pRh1PuThw67rvExo1np8VWfUJciX9VvlZblAQyv/Ndk=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

@@ -10,7 +10,8 @@
   <title>Managing Things | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/things/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/docs/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.c999bfc4cb1696a2894ac125b4832b10654c56f0e3163e4ae3c70bba9e583d2a.css" integrity="sha256-yZm/xMsWlqKJSsEltIMrEGVMVvDjFj5K48cLup5YPSo=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Managing Things">
@@ -31,8 +32,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
 
 
-
-  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
 </head>
 
 
@@ -46,7 +45,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="container is-fluid">
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
-        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <img class="logo" src="/docs/img/tts-horizontal-standard-color.svg" alt="The Things Stack documentation home" width="166" height="32">
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -55,16 +54,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <span></span>
       </span>
     </div>
-    <div id="topMenu" class="navbar-menu">
-      <div class="navbar-start">
+    <div id="topMenu" class="navbar-menu"><div class="navbar-start nav-variant nav-variant--flat">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
         <a class="navbar-item" href="/docs/concepts/">Concepts</a>
-        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
-        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/cloud/">Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">Enterprise</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/api/">API</a>
         <a class="navbar-item" href="/docs/hardware/">Hardware</a>
-
+      </div><div class="navbar-start nav-variant nav-variant--grouped">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a><div class="navbar-item has-dropdown nav-group">
+          <button type="button" class="navbar-link nav-group__toggle" aria-expanded="false" aria-controls="nav-group-deployment">Deployment</button>
+          <div class="navbar-dropdown" id="nav-group-deployment">
+            <a class="navbar-item" href="/docs/cloud/">Cloud</a>
+            <a class="navbar-item" href="/docs/enterprise/">Enterprise</a>
+          </div>
+        </div><div class="navbar-item has-dropdown nav-group">
+          <button type="button" class="navbar-link nav-group__toggle is-active" aria-expanded="false" aria-controls="nav-group-build">Build</button>
+          <div class="navbar-dropdown" id="nav-group-build">
+            <a class="navbar-item is-active" href="/docs/integrations/">Integrations</a>
+            <a class="navbar-item" href="/docs/api/">API</a>
+            <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+          </div>
+        </div>
       </div>
       <div class="navbar-end"><div class="navbar-item">
             <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
@@ -390,8 +403,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h1 class="title is-size-2">Managing Things</h1>
         <div class="content">
           <p>The AWS IoT Integration for The Things Stack synchronizes the device registry: you can create and claim things in AWS IoT Core which trigger a Lambda function that creates or claims the device in The Things Stack.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   <p>Devices that you create in The Things Stack are automatically created as AWS IoT Core things as soon as they activate or send their first uplink message.</p>
 <p>Create and claim things only for devices that are not yet in your The Things Stack application.</p>
 
@@ -400,8 +413,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="thing-type-and-names">Thing Type and Names</h2>
 <p>The AWS IoT Integration for The Things Stack uses the thing that you specified when deploying the integration. By default, the thing type is <code>lorawan</code>.</p>
 <p>Things are created automatically as they join the network or send an uplink message. For the name of new things, you can use their <code>&lt;DevEUI&gt;</code> or <code>&lt;stackName&gt;_&lt;DeviceID&gt;</code>.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   <ul>
 <li><code>stackName</code>: the AWS CloudFormation stack name of your deployment</li>
 <li><code>DeviceID</code>: the device-id of your device</li>
@@ -455,8 +468,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Optional <code>deviceID</code>: the device ID that will be used to create the device in your The Things Stack application. When omitted, the integration uses <code>eui-&lt;dev-eui&gt;</code> as device ID. See <a href="https://www.thethingsindustries.com/docs/concepts/architecture/id-eui-constraints/">ID and EUI constraints</a> for accepted ID formats.</li>
 <li>Optional <code>frequencyPlanID</code>: the frequency plan ID. See <a href="https://www.thethingsindustries.com/docs/concepts/features/lorawan/frequency-plans/">Frequency Plans</a> for the supported values. When omitted, the default frequency plan of your AWS region is used. See the <strong>Outputs</strong> section of your AWS CloudFormation stack to see which one that is.</li>
 </ul>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   Any errors during Creating Things will be propagated to CloudWatch. See <a href="https://www.thethingsindustries.com/docs/concepts/features/lorawan/frequency-plans/">Troubleshooting</a> for more information about retrieving logs.
 </div>
 
@@ -466,8 +479,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Click <strong>Next</strong>.</p>
 <p>Click <strong>Skip certificate and create thing</strong>.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   Certificates are used when your AWS IoT thing is capable of TLS client authentication. This is not applicable to LoRaWAN end devices. Therefore, you don&rsquo;t need to manage certificates for LoRaWAN devices in AWS IoT.
 </div>
 
@@ -523,8 +536,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">Sections</h3>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
         <p><a class="" href="/docs/concepts/">Concepts</a></p>
-        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
-        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/cloud/">Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">Enterprise</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/api/">API</a></p>
         <p><a class="" href="/docs/hardware/">Hardware</a></p>
@@ -546,7 +559,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a076fc112b09a207a82bbdb2a0d046b3de26e2322f4bd109bd1bad40b8905c3d.js" integrity="sha256-oHb8ESsJogeoK72yoNBGs94m4jIvS9EJvRutQLiQXD0=" crossorigin="anonymous"></script>
+<script src="https://www.thethingsindustries.com/docs/js/copy-code.min.a518753ee4e1c3aeebbc4c68d67a7c5567d425c897f55be565b940432bff35d9.js" integrity="sha256-pRh1PuThw67rvExo1np8VWfUJciX9VvlZblAQyv/Ndk=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

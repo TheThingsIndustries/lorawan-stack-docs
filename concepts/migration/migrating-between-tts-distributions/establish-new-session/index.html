@@ -10,7 +10,8 @@
   <title>Migrate Without Persisting Active Session | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/concepts/migration/migrating-between-tts-distributions/establish-new-session/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.d3f3815ed6609abc2ba6d0d6e3be8af6f52947117280c3cf9fbd8f5ff6ffb058.css" integrity="sha256-0/OBXtZgmrwrptDW476K9vUpRxFygMPPn72PX/b/sFg=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/docs/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.c999bfc4cb1696a2894ac125b4832b10654c56f0e3163e4ae3c70bba9e583d2a.css" integrity="sha256-yZm/xMsWlqKJSsEltIMrEGVMVvDjFj5K48cLup5YPSo=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Migrate Without Persisting Active Session">
@@ -31,8 +32,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
 
 
-
-  <link rel="stylesheet" href="https://ttui.thethingsindustries.com/release/1.10.1/main.css" />
 </head>
 
 
@@ -46,7 +45,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="container is-fluid">
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
-        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <img class="logo" src="/docs/img/tts-horizontal-standard-color.svg" alt="The Things Stack documentation home" width="166" height="32">
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -55,16 +54,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <span></span>
       </span>
     </div>
-    <div id="topMenu" class="navbar-menu">
-      <div class="navbar-start">
+    <div id="topMenu" class="navbar-menu"><div class="navbar-start nav-variant nav-variant--flat">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
         <a class="navbar-item" href="/docs/concepts/">Concepts</a>
-        <a class="navbar-item" href="/docs/cloud/">The Things Stack Cloud</a>
-        <a class="navbar-item" href="/docs/enterprise/">The Things Stack Enterprise</a>
+        <a class="navbar-item" href="/docs/cloud/">Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">Enterprise</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/api/">API</a>
         <a class="navbar-item" href="/docs/hardware/">Hardware</a>
-
+      </div><div class="navbar-start nav-variant nav-variant--grouped">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a><div class="navbar-item has-dropdown nav-group">
+          <button type="button" class="navbar-link nav-group__toggle" aria-expanded="false" aria-controls="nav-group-deployment">Deployment</button>
+          <div class="navbar-dropdown" id="nav-group-deployment">
+            <a class="navbar-item" href="/docs/cloud/">Cloud</a>
+            <a class="navbar-item" href="/docs/enterprise/">Enterprise</a>
+          </div>
+        </div><div class="navbar-item has-dropdown nav-group">
+          <button type="button" class="navbar-link nav-group__toggle" aria-expanded="false" aria-controls="nav-group-build">Build</button>
+          <div class="navbar-dropdown" id="nav-group-build">
+            <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+            <a class="navbar-item" href="/docs/api/">API</a>
+            <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+          </div>
+        </div>
       </div>
       <div class="navbar-end"><div class="navbar-item">
             <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
@@ -195,8 +208,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h1 class="title is-size-2">Migrate Without Persisting Active Session</h1>
         <div class="content">
           <p>This section explains how to migrate end devices from The Things Stack Sandbox to The Things Stack Cloud without persisting sessions that were established between those devices and The Things Stack Sandbox. This is the way to go if you cannot migrate your gateway from The Things Stack Sandbox to The Things Stack Cloud.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   Migrating devices without persisting active sessions is the preferred migration method.
 </div>
 
@@ -206,8 +219,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli dev <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;device-id&gt; <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mac-settings.schedule-downlinks<span class="o">=</span><span class="nb">false</span>
 </span></span></code></pre></div><p>When the end device gets triggered to perform a new join on The Things Stack Cloud, the uplink traffic will still reach The Things Stack Sandbox until device is actually registered on Cloud. Using the command above, we make sure that we disable The Things Stack Sandbox Network Server to send Join Accept messages, data downlinks or MAC commands to device, i.e. we make sure that device doesn&rsquo;t get re-registered on The Things Stack Sandbox, but registered on The Things Stack Cloud.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   The <a href="https://www.thethingsindustries.com/docs/concepts/migration/">migration tool</a> does this automatically when migrating devices so you don&rsquo;t need to worry about disabling the downlinks of exported devices.
 </div>
 
@@ -254,8 +267,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 <section data-content="cli">
   <p>First, configure your CLI to connect to The Things Stack Sandbox. See <a href="https://www.thethingsindustries.com/docs/concepts/features/cli/configuring-cli/">Configuring the CLI</a> guide for instructions. Make sure you also perform a <a href="https://www.thethingsindustries.com/docs/concepts/features/cli/login/">Login with the CLI</a> to The Things Stack Sandbox.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   We recommend to use the latest version of the CLI. Instructions for upgrading the CLI if you already have it installed are available in the <a href="https://www.thethingsindustries.com/docs/concepts/features/cli/installing-cli/">Installing the CLI</a> guide.
 </div>
 <p>Now, use the CLI to export your device&rsquo;s description from The Things Stack Sandbox:</p>
@@ -280,8 +293,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>After joining The Things Stack Cloud network, you will see uplinks arriving from your device.</p>
 <h2 id="migrate-abp-devices">Migrate ABP Devices</h2>
 <p>Migrating an ABP device without persisting its active session means its session and MAC state parameters will be reset, or the device will be completely re-programmed with new session parameters.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   For ABP devices, we advise to re-program the device using session parameters that are newly generated on The Things Stack Cloud, if possible. For devices that can be re-programmed, it is also recommended to change their activation method from ABP to OTAA.
 </div>
 
@@ -339,8 +352,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 <section data-content="cli">
   <p>First, configure your CLI to connect to The Things Stack Sandbox. See <a href="https://www.thethingsindustries.com/docs/concepts/features/cli/configuring-cli/">Configuring the CLI</a> guide for instructions. Make sure you also perform a <a href="https://www.thethingsindustries.com/docs/concepts/features/cli/login/">Login with the CLI</a> to The Things Stack Sandbox.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
   We recommend to use the latest version of the CLI. Instructions for upgrading the CLI if you already have it installed are available in the <a href="https://www.thethingsindustries.com/docs/concepts/features/cli/installing-cli/">Installing the CLI</a> guide.
 </div>
 <p>Now, use the CLI to export your device&rsquo;s description from The Things Stack Sandbox:</p>
@@ -414,8 +427,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">Sections</h3>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
         <p><a class="" href="/docs/concepts/">Concepts</a></p>
-        <p><a class="" href="/docs/cloud/">The Things Stack Cloud</a></p>
-        <p><a class="" href="/docs/enterprise/">The Things Stack Enterprise</a></p>
+        <p><a class="" href="/docs/cloud/">Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">Enterprise</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/api/">API</a></p>
         <p><a class="" href="/docs/hardware/">Hardware</a></p>
@@ -437,7 +450,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.3bf0da17f5ab4cc0f916662c2d2f977f7fa7259b4483f7f9eb46e875a556cc43.js" integrity="sha256-O/DaF/WrTMD5FmYsLS&#43;Xf3&#43;nJZtEg/f560bodaVWzEM=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a076fc112b09a207a82bbdb2a0d046b3de26e2322f4bd109bd1bad40b8905c3d.js" integrity="sha256-oHb8ESsJogeoK72yoNBGs94m4jIvS9EJvRutQLiQXD0=" crossorigin="anonymous"></script>
+<script src="https://www.thethingsindustries.com/docs/js/copy-code.min.a518753ee4e1c3aeebbc4c68d67a7c5567d425c897f55be565b940432bff35d9.js" integrity="sha256-pRh1PuThw67rvExo1np8VWfUJciX9VvlZblAQyv/Ndk=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };
