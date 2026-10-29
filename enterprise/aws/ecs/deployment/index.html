@@ -480,6 +480,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <blockquote>
 <p>We recommend to schedule this task to run every 14 days.</p>
 </blockquote>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
+  The Things Indoor Gateway (TTIG) is not compatible with Let&rsquo;s Encrypt certificate chains. If you plan to connect TTIGs to your deployment, see <a href="#ttig-certificates-optional">TTIG Certificates</a>.
+</div>
+
+<h2 id="ttig-certificates-optional">TTIG Certificates (optional)</h2>
+<p>The Things Indoor Gateway (TTIG) firmware is not compatible with Let&rsquo;s Encrypt certificate chains. To support TTIGs, the <code>3-2-load-balancer-rules</code> template can serve Basic Station traffic on a separate TLS listener on port <code>8890</code>, with its own certificate. You can use the <code>5-8c-certs-tti-pca</code> and <code>5-8d-ecs-tti-pca-scheduled-task</code> templates to issue this certificate from your own <a href="https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html">AWS Private Certificate Authority</a> and import it into AWS Certificate Manager.</p>
+<p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-8c-certs-tti-pca.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-8c-certs-tti-pca.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
+<p>The official image is <code>docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-certbot</code> (replace <code>3.x.y</code> with the current minor and patch version).</p>
+<p>In addition to the re-used parameters (see <a href="/docs/enterprise/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for the <strong>TTI Private CA ARN</strong>. This is the ARN of your own AWS Private CA that issues the certificate.</p>
+<p>The <strong>Domain</strong> is the domain to issue the certificate for. If you leave it blank, the <code>domain</code> from the <code>4-2a-configuration</code> template is used. The certificate is issued for both <code>domain</code> and <code>*.domain</code>.</p>
+<p>The <strong>Certificate Validity (days)</strong> sets how long each issued certificate is valid, and <strong>Renew Before Expiry</strong> sets how many days before expiry the certificate gets renewed. The defaults are 7 and 2 days.</p>
+<p>On the initial deployment, leave the <strong>Existing Certificate ARN</strong> blank.</p>
+<p>We need to manually request the certificate for the first time. In the CloudFormation <strong>Output</strong> window, copy the value for the output <code>RunTTIPCATaskCLICommand</code> and run that from a CLI.</p>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
+  If your deployment uses only the <code>FARGATE</code> launch type, then append <code>--launch-type FARGATE</code> to the command in the <code>RunTTIPCATaskCLICommand</code> output.
+</div>
+
+<p>After the task succeeds, go to <strong>Certificate Manager</strong>, find the new certificate (tagged with the name <code>domain-ttig</code>), and copy its ARN. Back in CloudFormation:</p>
+<ul>
+<li>Update the <code>3-2-load-balancer-rules</code> stack and paste the certificate ARN in <strong>Override TTIG (port 8890) Certificate ARN</strong>. The port <code>8890</code> listener is only created when this parameter is set and <strong>BasicStation Enabled</strong> is <code>true</code>.</li>
+<li>Update the <code>5-8c-certs-tti-pca</code> stack and paste the certificate ARN in <strong>Existing Certificate ARN</strong>, so that renewals update this certificate in place.</li>
+</ul>
+<p>The <code>3-1-security-group-rules</code> template allows traffic on port <code>8890</code> by default. You can disable it with the <code>TTIGEnabled</code> parameter, or restrict the allowed IP ranges with the <code>TTIGIPV4</code> and <code>TTIGIPV6</code> parameters.</p>
+<p>To automatically renew the certificate, we will now deploy template <code>5-8d-ecs-tti-pca-scheduled-task</code>.</p>
+<p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-8d-ecs-tti-pca-scheduled-task.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-8d-ecs-tti-pca-scheduled-task.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
+<p>Fill the re-used parameters (see <a href="/docs/enterprise/aws/ecs/prerequisites/">Prerequisites</a>) and the <strong>TTI PCA Task Family Name</strong>, which you can find as <code>TTIPCATaskFamilyName</code> in the outputs of the <code>5-8c-certs-tti-pca</code> stack. The <strong>Execution Frequency</strong> sets how often, in days, the task runs. The task only renews the certificate when it is about to expire.</p>
+<blockquote>
+<p>We recommend to keep the default and run this task every day, since the issued certificates are short-lived.</p>
+</blockquote>
 <h2 id="mutual-tls-optional">Mutual TLS (optional)</h2>
 <p>The template <code>2-4c-mtls-s3</code> generates an S3 bucket to store CA certificates, needed for mutual TLS authentication via a supported proxy (Envoy).</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-4c-mtls-s3.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-4c-mtls-s3.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
@@ -587,6 +618,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
       
       <li><a href='#lets-encrypt-certificates-optional'>Let’s Encrypt Certificates (optional)</a></li>
+    
+      
+      <li><a href='#ttig-certificates-optional'>TTIG Certificates (optional)</a></li>
     
       
       <li><a href='#mutual-tls-optional'>Mutual TLS (optional)</a></li>
