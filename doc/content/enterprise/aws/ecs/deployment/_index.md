@@ -381,6 +381,43 @@ To automatically renew the certificate from Let's Encrypt, we will now deploy te
 
 > We recommend to schedule this task to run every 14 days.
 
+{{< note >}} The Things Indoor Gateway (TTIG) is not compatible with Let's Encrypt certificate chains. If you plan to connect TTIGs to your deployment, see [TTIG Certificates](#ttig-certificates-optional). {{</ note >}}
+
+## TTIG Certificates (optional) {#ttig-certificates-optional}
+
+The Things Indoor Gateway (TTIG) firmware is not compatible with Let's Encrypt certificate chains. To support TTIGs, the `3-2-load-balancer-rules` template can serve Basic Station traffic on a separate TLS listener on port `8890`, with its own certificate. You can use the `5-8c-certs-tti-pca` and `5-8d-ecs-tti-pca-scheduled-task` templates to issue this certificate from your own [AWS Private Certificate Authority](https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html) and import it into AWS Certificate Manager.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-8c-certs-tti-pca.gen.template (replace `3.x.y` with the current minor and patch version).
+
+The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-certbot` (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for the **TTI Private CA ARN**. This is the ARN of your own AWS Private CA that issues the certificate.
+
+The **Domain** is the domain to issue the certificate for. If you leave it blank, the `domain` from the `4-2a-configuration` template is used. The certificate is issued for both `domain` and `*.domain`.
+
+The **Certificate Validity (days)** sets how long each issued certificate is valid, and **Renew Before Expiry** sets how many days before expiry the certificate gets renewed. The defaults are 7 and 2 days.
+
+On the initial deployment, leave the **Existing Certificate ARN** blank.
+
+We need to manually request the certificate for the first time. In the CloudFormation **Output** window, copy the value for the output `RunTTIPCATaskCLICommand` and run that from a CLI.
+
+{{< note >}} If your deployment uses only the `FARGATE` launch type, then append `--launch-type FARGATE` to the command in the `RunTTIPCATaskCLICommand` output. {{</ note >}}
+
+After the task succeeds, go to **Certificate Manager**, find the new certificate (tagged with the name `domain-ttig`), and copy its ARN. Back in CloudFormation:
+
+- Update the `3-2-load-balancer-rules` stack and paste the certificate ARN in **Override TTIG (port 8890) Certificate ARN**. The port `8890` listener is only created when this parameter is set and **BasicStation Enabled** is `true`.
+- Update the `5-8c-certs-tti-pca` stack and paste the certificate ARN in **Existing Certificate ARN**, so that renewals update this certificate in place.
+
+The `3-1-security-group-rules` template allows traffic on port `8890` by default. You can disable it with the `TTIGEnabled` parameter, or restrict the allowed IP ranges with the `TTIGIPV4` and `TTIGIPV6` parameters.
+
+To automatically renew the certificate, we will now deploy template `5-8d-ecs-tti-pca-scheduled-task`.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-8d-ecs-tti-pca-scheduled-task.gen.template (replace `3.x.y` with the current minor and patch version).
+
+Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the **TTI PCA Task Family Name**, which you can find as `TTIPCATaskFamilyName` in the outputs of the `5-8c-certs-tti-pca` stack. The **Execution Frequency** sets how often, in days, the task runs. The task only renews the certificate when it is about to expire.
+
+> We recommend to keep the default and run this task every day, since the issued certificates are short-lived.
+
 ## Mutual TLS (optional)
 
 The template `2-4c-mtls-s3` generates an S3 bucket to store CA certificates, needed for mutual TLS authentication via a supported proxy (Envoy).
