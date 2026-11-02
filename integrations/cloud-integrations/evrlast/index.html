@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.140.0-DEV">
+  <title>evrlast | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/evrlast/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/docs/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.c999bfc4cb1696a2894ac125b4832b10654c56f0e3163e4ae3c70bba9e583d2a.css" integrity="sha256-yZm/xMsWlqKJSsEltIMrEGVMVvDjFj5K48cLup5YPSo=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="Forward LoRaWAN uplinks from The Things Stack to the evrlast cloud platform with a webhook, and manage evrlast LoRaWAN devices">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="evrlast">
+  <meta itemprop="description" content="Forward LoRaWAN uplinks from The Things Stack to the evrlast cloud platform with a webhook, and manage evrlast LoRaWAN devices">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="evrlast">
+  <meta property="og:description" content="Forward LoRaWAN uplinks from The Things Stack to the evrlast cloud platform with a webhook, and manage evrlast LoRaWAN devices">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/evrlast/">
+  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta name="twitter:title" content="evrlast" />
+  <meta name="twitter:description" content="Forward LoRaWAN uplinks from The Things Stack to the evrlast cloud platform with a webhook, and manage evrlast LoRaWAN devices" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+</head>
+
+
+<body class="theme-tts">
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/tts-horizontal-standard-color.svg" alt="The Things Stack documentation home" width="166" height="32">
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu"><div class="navbar-start nav-variant nav-variant--flat">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a>
+        <a class="navbar-item" href="/docs/cloud/">Cloud</a>
+        <a class="navbar-item" href="/docs/enterprise/">Enterprise</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/api/">API</a>
+        <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+      </div><div class="navbar-start nav-variant nav-variant--grouped">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/concepts/">Concepts</a><div class="navbar-item has-dropdown nav-group">
+          <button type="button" class="navbar-link nav-group__toggle" aria-expanded="false" aria-controls="nav-group-deployment">Deployment</button>
+          <div class="navbar-dropdown" id="nav-group-deployment">
+            <a class="navbar-item" href="/docs/cloud/">Cloud</a>
+            <a class="navbar-item" href="/docs/enterprise/">Enterprise</a>
+          </div>
+        </div><div class="navbar-item has-dropdown nav-group">
+          <button type="button" class="navbar-link nav-group__toggle is-active" aria-expanded="false" aria-controls="nav-group-build">Build</button>
+          <div class="navbar-dropdown" id="nav-group-build">
+            <a class="navbar-item is-active" href="/docs/integrations/">Integrations</a>
+            <a class="navbar-item" href="/docs/api/">API</a>
+            <a class="navbar-item" href="/docs/hardware/">Hardware</a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://www.thethingsindustries.com/stack/plans/" target="_blank">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Integrations</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/integrations/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" class="">Adding Applications</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/data-formats/" class="">Data Formats</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">Webhooks</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Integrate with popular IoT platforms</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza/" class="">akenza</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/allthingstalk/" class="">AllThingsTalk Maker</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/anyviz/" class="">AnyViz</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/" class="">AWS IoT</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-central/" class="">Azure IoT Central</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/" class="">Azure IoT Hub</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/" class="">Blockbax</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/" class="">Blynk</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cayenne/" class="">Cayenne</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/" class="">Cloud Studio</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/daizy/" class="">Daizy</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/datacake/" class="">Datacake</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/delmation/" class="">Delmation Products</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/dezem/" class="">deZem</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/evrlast/" class="is-active">evrlast</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/homey/" class="">Homey</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/" class="">InfluxDB Cloud 2.0</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/iotinabox/" class="">IoT in a Box</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/wonderland/" class="">IoT Wonderland</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/kaa/" class="">Kaa</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/losant/" class="">Losant IoT Platform</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/mclimate/" class="">MClimate</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/my-iot-open-tech/" class="">my IoT open Tech</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/qubitro/" class="">Qubitro</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tagoio/" class="">TagoIO</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/telemetry2u/" class="">Telemetry2U</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tellsens/" class="">Tellsens</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thethingsio/" class="">thethings.iO</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thinger-io/" class="">Thinger.io</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingsboard/" class="">ThingsBoard</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingspeak/" class="">ThingSpeak</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ttnmapper/" class="">TTN Mapper</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/" class="">Ubidots</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/uib/" class="">UIB</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/unaconnect/" class="">UnaConnect</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/" class="">Widgelix</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/withthegrid/" class="">Withthegrid</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/zoho-iot/" class="">Zoho IoT</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/other-integrations/" class="">Other integrations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/application-packages/" class="">Application Packages</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/guides/" class="">Examples</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+          
+          
+        <h1 class="title is-size-2">evrlast</h1>
+        <div class="content">
+          <p><a href="https://app.evrlast.com">evrlast</a> is a cloud platform for the automatic collection, monitoring, and analysis of sensor data. evrlast devices continuously measure environmental and operational parameters, transmit the data wirelessly to the evrlast cloud, and notify users whenever configured thresholds are exceeded. The evrlast web application provides a centralized dashboard for monitoring and managing all sensor data.</p>
+<p>In addition to native evrlast devices, The Things Stack can be integrated as an additional data provider. Sensor data from The Things Stack is forwarded to the evrlast platform using webhooks, allowing you to monitor and analyze LoRaWAN devices from The Things Stack alongside your evrlast devices in a single platform.</p>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
+  The screenshots in this guide show the German user interface of the evrlast web application. The English labels used in the text correspond to the German labels in the screenshots.
+</div>
+
+<h2 id="create-an-account">Create an Account</h2>
+<p>If you do not already have an evrlast account, you first need to register:</p>
+<ol>
+<li>Open <a href="https://app.evrlast.com">evrlast</a> in your web browser.</li>
+<li>Click <strong>Just use this link to register!</strong> and enter your email address and a password.</li>
+<li>You will receive a confirmation email. Click the link in the email to activate your account.</li>
+<li>Sign in using your email address and password.</li>
+</ol>
+<p>See also the <a href="https://docs.evrlast.com/cloud/account_creation/">evrlast documentation</a>.</p>
+<h2 id="create-an-api-key">Create an API Key</h2>
+<p>Open your <strong>User Profile</strong> and navigate to the <strong>API Keys</strong> tab.</p>
+<ol>
+<li>
+<p>Click <strong>Add</strong>.</p>
+</li>
+<li>
+<p>Confirm the creation of the new API key in the dialog.</p>
+<figure><img src="/docs/integrations/cloud-integrations/evrlast/create_api_key.png"
+       alt="Create API Key">
+   </figure>
+
+</li>
+<li>
+<p>The following dialog shows the generated <strong>Api Key</strong>, the generated <strong>Api Passwort</strong> (API password) and the <strong>Basic Auth Token</strong>. The Basic Auth Token is the Base64 encoded combination of the API key and the API password, and it is required to configure the webhook. Copy the Basic Auth Token and store it securely.</p>
+<figure><img src="/docs/integrations/cloud-integrations/evrlast/generated_api_key.png"
+       alt="Generated API key">
+   </figure>
+
+</li>
+</ol>
+<div class="notification is-warning">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4" /><path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z" /><path d="M12 16h.01" /></svg>Warning:</h5>
+  The API password and the Basic Auth Token are shown only once. After you close the dialog, they cannot be displayed again.
+</div>
+
+<p>To connect your LoRaWAN network server directly with the evrlast cloud, manage the credentials in the <strong>LoRaWAN Networks</strong> tab, as described <a href="#create-a-lorawan-network-in-evrlast">below</a>.</p>
+<p>See also the <a href="https://docs.evrlast.com/lorawan/api_key/api_key/">evrlast documentation</a>.</p>
+<h2 id="create-a-lorawan-network-in-evrlast">Create a LoRaWAN Network in evrlast</h2>
+<p>A <strong>LoRaWAN Network</strong> is only required if you want to connect an <strong>evrlast LoRaWAN device</strong>: it allows the evrlast cloud to communicate directly with your network server, so that the platform can manage the device and its configuration without manual interaction with the LNS. You can skip this section for LoRaWAN devices from other manufacturers.</p>
+<p>In the <strong>LoRaWAN Networks</strong> tab of your user profile, you can manage the connections to your LoRaWAN network servers (LNS).</p>
+<h3 id="gather-the-connection-details">Gather the Connection Details</h3>
+<p>To connect the evrlast cloud with The Things Stack, you need the following information:</p>
+<ul>
+<li><strong>Server URL</strong></li>
+<li><strong>Application ID</strong></li>
+<li><strong>Access Token</strong></li>
+</ul>
+<h4 id="server-url">Server URL</h4>
+<p>The server URL is the address of your The Things Stack instance.</p>
+<ul>
+<li>For The Things Stack Community Edition (The Things Network), use the base URL of your cluster, for example <code>https://eu1.cloud.thethings.network</code>.</li>
+<li>For The Things Stack Cloud, use the base URL of your tenant, for example <code>https://&lt;tenant&gt;.eu1.cloud.thethings.industries</code>.</li>
+<li>If you are using a private installation of The Things Stack, use the URL of your own server.</li>
+</ul>
+<h4 id="application-id">Application ID</h4>
+<p>The <strong>Application ID</strong> uniquely identifies your application in The Things Stack.</p>
+<p>To find it:</p>
+<ol>
+<li>Log in to the Console.</li>
+<li>Open <strong>Applications</strong>.</li>
+<li>Select the application you want to connect.</li>
+<li>Copy the <strong>Application ID</strong> displayed on the <strong>General Information</strong> page.</li>
+</ol>
+<div class="notification is-info">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>Note:</h5>
+  The Application ID is also visible in the page URL after opening the application.
+</div>
+
+<h4 id="access-token">Access Token</h4>
+<p>The evrlast cloud authenticates with The Things Stack using an <strong>API key</strong> (access token).</p>
+<p>To create one:</p>
+<ol>
+<li>
+<p>Open your application in the Console.</p>
+</li>
+<li>
+<p>Navigate to <strong>API keys</strong>.</p>
+</li>
+<li>
+<p>Click <strong>+ Add API key</strong>.</p>
+</li>
+<li>
+<p>Enter a descriptive name, for example <code>evrlast cloud</code>.</p>
+</li>
+<li>
+<p>Grant the required permissions. At minimum, the API key needs the following right:</p>
+<ul>
+<li>Link as Application to a Network Server for traffic exchange, i.e. read uplink and write downlink</li>
+</ul>
+<p>Depending on the functionality used by the evrlast cloud, additional permissions may be required.</p>
+</li>
+<li>
+<p>Click <strong>Create API key</strong>.</p>
+</li>
+<li>
+<p>Copy the generated API key immediately.</p>
+</li>
+</ol>
+<div class="notification is-warning">
+  <h5 class="title is-family-sans-serif"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4" /><path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z" /><path d="M12 16h.01" /></svg>Warning:</h5>
+  The Things Stack only displays the API key once. Store it securely before leaving the page.
+</div>
+
+<h3 id="add-the-connection">Add the Connection</h3>
+<p>Open your <strong>User Profile</strong> and navigate to the <strong>LoRaWAN Networks</strong> tab.</p>
+<figure><img src="/docs/integrations/cloud-integrations/evrlast/lorawan_networks_tab.png"
+    alt="LoRaWAN Networks">
+</figure>
+
+<ol>
+<li>Click the <strong>+ Add</strong> button in the lower-left corner.</li>
+<li>In the <strong>Connection Details</strong> dialog, select the <strong>Platform</strong> matching your network server (<strong>TTN</strong>).</li>
+<li>Fill in the required fields, as described in the table below.</li>
+<li>Click <strong>Save</strong> to create the connection. Click <strong>Cancel</strong> to discard your changes without saving.</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Name</strong></td>
+          <td>A descriptive name for the connection. This name is displayed in the overview.</td>
+      </tr>
+      <tr>
+          <td><strong>URL</strong></td>
+          <td>The address of the network server.</td>
+      </tr>
+      <tr>
+          <td><strong>Port</strong></td>
+          <td>The network server port, if required.</td>
+      </tr>
+      <tr>
+          <td><strong>Application ID</strong></td>
+          <td>Identifier of the application on the network server.</td>
+      </tr>
+      <tr>
+          <td><strong>Access Token</strong></td>
+          <td>Authentication token or API key used to authenticate with the network server. Click the <strong>eye</strong> icon to reveal the entered value.</td>
+      </tr>
+  </tbody>
+</table>
+<p>See also the <a href="https://docs.evrlast.com/lorawan/networks/lorawan_networks/">evrlast documentation</a>.</p>
+<h2 id="create-the-webhook">Create the Webhook</h2>
+<p>Use the <strong>evrlast</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a> to create a Webhook integration on The Things Stack.</p>
+<p>Enter the <strong>Basic Auth Token</strong> you copied above in the <strong>API credentials</strong> field.</p>
+<h2 id="register-a-new-device">Register a New Device</h2>
+<p>In the evrlast web application, click <strong>+ neues Gerät registrieren</strong> (register new device) and select <strong>LoRaWAN</strong>. See also the <a href="https://docs.evrlast.com/cloud/lorawan_registration/">evrlast documentation</a>.</p>
+<p>After your device has sent data to the evrlast platform, a device request is created. Confirm it to add the device to your evrlast device pool.</p>
+<p>Open the <strong>Device Requests</strong> section in the evrlast web application. This page lists all devices that have recently connected but have not yet been assigned to your evrlast account.</p>
+<ol>
+<li>Click <strong>Confirm</strong> next to the device you want to register.</li>
+<li>If you register an evrlast device, select the LoRaWAN Network you created earlier in the dialog that appears. For devices from other manufacturers, you only need to confirm the assignment.</li>
+<li>Confirm the assignment.</li>
+<li>The device is automatically added to your <strong>Device List</strong> and is ready for use.</li>
+</ol>
+<p>See also the <a href="https://docs.evrlast.com/lorawan/thing_request/thing_request/">evrlast documentation</a>.</p>
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/dezem/">← deZem</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/homey/">Homey →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#create-an-account'>Create an Account</a></li>
+    
+      
+      <li><a href='#create-an-api-key'>Create an API Key</a></li>
+    
+      
+      <li><a href='#create-a-lorawan-network-in-evrlast'>Create a LoRaWAN Network in evrlast</a></li>
+    
+      
+      <li><a href='#create-the-webhook'>Create the Webhook</a></li>
+    
+      
+      <li><a href='#register-a-new-device'>Register a New Device</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sections</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/concepts/">Concepts</a></p>
+        <p><a class="" href="/docs/cloud/">Cloud</a></p>
+        <p><a class="" href="/docs/enterprise/">Enterprise</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/api/">API</a></p>
+        <p><a class="" href="/docs/hardware/">Hardware</a></p>
+      </nav>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Sitemap</h3>
+        <p><a class="" href="https://www.thethingsindustries.com/docs/sitemap/">View our Sitemap</a></p>
+      </nav>
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+      </nav>
+      
+      <nav class="column is-one-fourth">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a076fc112b09a207a82bbdb2a0d046b3de26e2322f4bd109bd1bad40b8905c3d.js" integrity="sha256-oHb8ESsJogeoK72yoNBGs94m4jIvS9EJvRutQLiQXD0=" crossorigin="anonymous"></script>
+<script src="https://www.thethingsindustries.com/docs/js/copy-code.min.a518753ee4e1c3aeebbc4c68d67a7c5567d425c897f55be565b940432bff35d9.js" integrity="sha256-pRh1PuThw67rvExo1np8VWfUJciX9VvlZblAQyv/Ndk=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
