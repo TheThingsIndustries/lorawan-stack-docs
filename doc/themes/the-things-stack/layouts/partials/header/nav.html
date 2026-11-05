@@ -1,4 +1,4 @@
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+<nav class="navbar is-fixed-top" role="navigation" aria-label="Main">
   <div class="container is-fluid">
     <div class="navbar-brand">
       <a class="navbar-item" href="{{ relURL "" }}">
@@ -12,11 +12,11 @@
       {{- range .Site.Menus.brand }}
       <a class="navbar-item{{ if $currentPage.IsMenuCurrent "brand" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
       {{- end }}
-      <span class="navbar-burger burger" data-target="topMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
+      <button type="button" class="navbar-burger burger" data-target="topMenu" aria-controls="topMenu" aria-expanded="false" aria-label="Open menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
     </div>
     <div id="topMenu" class="navbar-menu">
       {{- $currentPage := . -}}

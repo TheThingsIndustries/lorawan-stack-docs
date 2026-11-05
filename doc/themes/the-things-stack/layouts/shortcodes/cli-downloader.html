@@ -1,8 +1,9 @@
+{{- $uid := printf "%s-%d" "cli-downloader" .Ordinal }}
 <div class="field">
-  <label class="label">Deployment</label>
+  <label class="label" for="{{ $uid }}-deployment">Deployment</label>
   <div class="control">
     <div class="select">
-      <select data-content="deployment">
+      <select id="{{ $uid }}-deployment" data-content="deployment">
         <option value="the-things-stack-releases">Open Source</option>
         <option value="the-things-enterprise-stack-releases">Enterprise</option>
       </select>
@@ -10,10 +11,10 @@
   </div>
 </div>
 <div class="field">
-  <label class="label">OS</label>
+  <label class="label" for="{{ $uid }}-os">OS</label>
   <div class="control">
     <div class="select">
-      <select data-content="os">
+      <select id="{{ $uid }}-os" data-content="os">
         <option value="darwin">macOS</option>
         <option value="linux">Linux</option>
         <option value="windows">Windows</option>
@@ -22,10 +23,10 @@
   </div>
 </div>
 <div class="field">
-  <label class="label">Arch</label>
+  <label class="label" for="{{ $uid }}-arch">Arch</label>
   <div class="control">
     <div class="select">
-      <select data-content="arch">
+      <select id="{{ $uid }}-arch" data-content="arch">
         <option value="amd64">amd64 (64-bit Intel)</option>
         <option value="arm64">arm64 (64-bit ARM)</option>
         <option value="386">386 (32-bit Intel)</option>

@@ -1,23 +1,23 @@
 <footer class="footer">
   <div class="container">
     <div class="columns">
-      <nav class="column is-one-fourth">
-        <h3 class="title is-6">Sections</h3>
+      <nav class="column is-one-fourth" aria-labelledby="footer-sections">
+        <h2 class="title is-6" id="footer-sections">Sections</h2>
         {{- $currentPage := . -}}
         {{- range .Site.Menus.main }}
         <p><a class="{{ if $currentPage.IsMenuCurrent "main" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a></p>
         {{- end }}
       </nav>
-      <nav class="column is-one-fourth">
-        <h3 class="title is-6">Sitemap</h3>
+      <nav class="column is-one-fourth" aria-labelledby="footer-sitemap">
+        <h2 class="title is-6" id="footer-sitemap">Sitemap</h2>
         {{- $currentPage := . -}}
         {{- range .Site.Menus.sitemap }}
         <p><a class="{{ if $currentPage.IsMenuCurrent "sitemap" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a></p>
         {{- end }}
       </nav>
       {{- if .Site.Menus.contributing }}
-      <nav class="column is-one-fourth">
-        <h3 class="title is-6">Contributing</h3>
+      <nav class="column is-one-fourth" aria-labelledby="footer-contributing">
+        <h2 class="title is-6" id="footer-contributing">Contributing</h2>
         {{- $currentPage := . -}}
         {{- range .Site.Menus.contributing }}
         <p><a class="{{ if $currentPage.IsMenuCurrent "contributing" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a></p>
@@ -25,8 +25,8 @@
       </nav>
       {{ end -}}
       {{- if .Site.Menus.about_us }}
-      <nav class="column is-one-fourth">
-        <h3 class="title is-6">About Us</h3>
+      <nav class="column is-one-fourth" aria-labelledby="footer-about">
+        <h2 class="title is-6" id="footer-about">About Us</h2>
         {{- $currentPage := . -}}
         {{- range .Site.Menus.about_us }}
         <p><a class="{{ if $currentPage.IsMenuCurrent "about_us" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a></p>
