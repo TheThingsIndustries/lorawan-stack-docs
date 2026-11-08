@@ -1,0 +1,29 @@
+# Link checker configuration (https://lychee.cli.rs), used by
+# .github/workflows/link-check.yml. Checks external links in the docs sources.
+
+max_concurrency = 8
+max_retries = 2
+retry_wait_time = 5
+timeout = 30
+# Many vendor sites block automated requests or rate-limit them; don't report those.
+accept = ["200..=299", "403", "429"]
+scheme = ["https", "http"]
+
+exclude = [
+  # Placeholders and examples in guides
+  '^https?://localhost',
+  '^https?://127\.0\.0\.1',
+  '^https?://([a-z0-9-]+\.)*example\.(com|org|net)',
+  '^https?://[^/]*\{\{',
+  '^https?://<',
+  '^https?://(www\.)?w3\.org/',
+  '^https://telemetry\.thethingsstack\.io',
+  '^https?://[^/]*\.svc\.cluster\.local',
+  '^https?://(\d{1,3}\.){3}\d{1,3}',
+  # Sites that always refuse automated checks
+  '^https://(www\.)?linkedin\.com',
+  '^https://(www\.)?twitter\.com',
+  '^https://(www\.)?x\.com',
+]
+
+exclude_path = ["doc/content/.*\\.svg$"]

@@ -1,0 +1,48 @@
+name: Link check
+
+# Checks the external links in the docs every week and opens (or updates) an
+# issue listing the broken ones. Configuration: lychee.toml
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  link-check:
+    name: Check external links
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Check links
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --config lychee.toml --no-progress 'doc/content/**/*.md' 'doc/data/**/*.yml'
+          output: ./lychee-report.md
+          fail: false
+
+      - name: Find existing link check issue
+        id: existing
+        if: steps.lychee.outputs.exit_code != 0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          number=$(gh issue list --repo "${{ github.repository }}" --state open --label "broken links" --json number --jq '.[0].number // empty')
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+
+      - name: Open or update issue
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: Broken links in the documentation
+          content-filepath: ./lychee-report.md
+          labels: broken links
+          issue-number: ${{ steps.existing.outputs.number }}

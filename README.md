@@ -40,6 +40,14 @@ Search events are pushed to the Google Tag Manager `dataLayer` as `docs_search`,
 `docs_search_no_results` and `docs_search_click`. The 404 page pushes `docs_404`
 (with the broken path and referrer), and the "Copy page" menu pushes `docs_page_action`.
 
+### Link check
+
+A weekly workflow ([link-check.yml](.github/workflows/link-check.yml)) checks the
+external links in the docs with [lychee](https://lychee.cli.rs) and opens or
+updates an issue labelled `broken links`. Configuration is in
+[lychee.toml](lychee.toml). Run it locally with
+`lychee --config lychee.toml 'doc/content/**/*.md'`.
+
 ### Versions for AI tools
 
 The build also writes versions of the docs for AI assistants and LLM tools
