@@ -1,0 +1,76 @@
+{{- /* Native documentation search (Pagefind). The index is generated after the
+        Hugo build (see `make build.public` / `make search.dev`) and loaded on
+        demand, so pages that don't use search download nothing extra. */ -}}
+{{- $popular := slice -}}
+{{- range site.Params.search.popular -}}
+  {{- with site.GetPage .page -}}
+    {{- $popular = $popular | append (dict "title" .Title "url" .RelPermalink) -}}
+  {{- end -}}
+{{- end -}}
+<dialog class="search-dialog" id="search-dialog" aria-label="Search documentation">
+  <div class="search-dialog__panel">
+    <form class="search-dialog__form" role="search" action="{{ "" | relURL }}" method="get">
+      <svg class="search-dialog__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M8.5 3a5.5 5.5 0 1 0 3.4 9.83l3.63 3.64a.75.75 0 1 0 1.06-1.06l-3.64-3.63A5.5 5.5 0 0 0 8.5 3Zm-4 5.5a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="currentColor"/></svg>
+      <input class="search-dialog__input" type="search" name="q" id="search-input"
+        placeholder="Search docs, e.g. “add a gateway” or “payload formatter”"
+        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"
+        role="combobox" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list">
+      <button type="button" class="search-dialog__close" data-search-close aria-label="Close search"><kbd>Esc</kbd></button>
+    </form>
+
+    <div class="search-dialog__filters" id="search-filters" role="group" aria-label="Filter by section" hidden></div>
+
+    <div class="search-dialog__body">
+      <p class="search-dialog__status" id="search-status" role="status" aria-live="polite"></p>
+      <ul class="search-results" id="search-results" role="listbox" aria-label="Search results"></ul>
+      <button type="button" class="button is-light is-fullwidth search-dialog__more" id="search-more" hidden>Show more results</button>
+
+      <div class="search-empty" id="search-start">
+        <div class="search-empty__group" id="search-recent-group" hidden>
+          <h2 class="search-empty__title">Recent searches</h2>
+          <ul class="search-empty__list" id="search-recent"></ul>
+        </div>
+        {{- with $popular }}
+        <div class="search-empty__group">
+          <h2 class="search-empty__title">Popular pages</h2>
+          <ul class="search-empty__list">
+            {{- range . }}
+            <li><a class="search-empty__link" href="{{ .url }}">{{ .title }}</a></li>
+            {{- end }}
+          </ul>
+        </div>
+        {{- end }}
+      </div>
+
+      <div class="search-empty" id="search-noresults" hidden>
+        <p class="search-noresults__lead">No results for “<strong id="search-noresults-term"></strong>”<span id="search-noresults-filter"></span>.</p>
+        <ul class="search-noresults__tips">
+          <li id="search-noresults-all" hidden><button type="button" class="search-link-button" data-search-clear-filter>Search all sections instead</button></li>
+          <li>Check the spelling, or try fewer or more general words.</li>
+          {{- with site.Params.search.help.forum }}
+          <li><a id="search-forum-link" href="{{ . }}" data-base="{{ . }}" target="_blank" rel="noopener">Ask the community on The Things Network Forum</a></li>
+          {{- end }}
+          {{- with site.Params.search.help.support }}
+          <li><a href="{{ . }}" target="_blank" rel="noopener">Contact support</a></li>
+          {{- end }}
+        </ul>
+      </div>
+    </div>
+
+    <footer class="search-dialog__footer" aria-hidden="true">
+      <span><kbd>↑</kbd><kbd>↓</kbd> to navigate</span>
+      <span><kbd>↵</kbd> to open</span>
+      <span><kbd>Esc</kbd> to close</span>
+    </footer>
+  </div>
+</dialog>
+{{- $opts := dict
+  "minify" hugo.IsProduction
+  "params" (dict
+    "baseURL" ("" | relURL)
+    "pagefind" ("pagefind/pagefind.js" | relURL)
+    "sections" (site.Params.search.sections | default slice)
+  )
+-}}
+{{- $script := resources.Get "js/search.js" | js.Build $opts | resources.Fingerprint }}
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous" defer></script>

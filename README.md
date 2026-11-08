@@ -28,6 +28,17 @@ $ make init
 You can start a development server with live reloading by running
 `make` or `make server`. This command will print the address of the server.
 
+### Search
+
+Search runs on [Pagefind](https://pagefind.app): the index is generated from the built site
+(`make build.public` does this after Hugo) and is served as static files, so there is no
+external search service. The development server doesn't build the index; run
+`make search.dev` once (and again after larger content changes) to try search locally.
+This needs the Node.js dependencies (`make js.deps`).
+
+Search events are pushed to the Google Tag Manager `dataLayer` as `docs_search`,
+`docs_search_no_results` and `docs_search_click`.
+
 ## Configuration
 
 Hugo accepts configuration parameters specified in [config](doc/config), most notably for baseURL, search, and feedback widget. Parameters can be specified as environment variables, e.g `params.search.enabled` becomes `HUGO_PARAMS_SEARCH_ENABLED`.

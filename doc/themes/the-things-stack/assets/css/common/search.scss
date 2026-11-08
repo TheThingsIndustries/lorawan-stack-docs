@@ -1,0 +1,423 @@
+// Native search (Pagefind): navbar trigger and search dialog
+
+// --- Trigger in the top navigation -------------------------------------------
+
+.search-trigger {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  height: 40px;
+  min-width: 220px;
+  padding: 0 10px 0 12px;
+  border: 1px solid $grey-200;
+  border-radius: $radius-default;
+  background: $grey-050;
+  color: $grey-600;
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  transition: border-color $dur-fast $ease-standard, background-color $dur-fast $ease-standard;
+
+  &:hover {
+    border-color: $tts-200;
+    background: $white;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $tts-500;
+    outline-offset: 2px;
+  }
+
+  .search-trigger__label {
+    flex: 1;
+    text-align: left;
+  }
+
+  .search-trigger__keys {
+    font-family: $font-mono;
+    font-size: 12px;
+    line-height: 1;
+    padding: 4px 6px;
+    border: 1px solid $grey-200;
+    border-radius: 4px;
+    background: $white;
+    color: $grey-600;
+  }
+}
+
+// Icon-only until there is room for the full field, so the top navigation never overflows
+@media (max-width: 1343px) {
+  .navbar .search-trigger {
+    min-width: 0;
+    width: 40px;
+    padding: 0;
+    justify-content: center;
+
+    .search-trigger__label,
+    .search-trigger__keys {
+      display: none;
+    }
+  }
+}
+
+// --- Dialog ---------------------------------------------------------------------
+
+html.search-open {
+  overflow: hidden;
+}
+
+.search-dialog {
+  width: unquote("min(720px, calc(100vw - 32px))");
+  max-height: unquote("min(78vh, 760px)");
+  margin: 10vh auto auto;
+  padding: 0;
+  border: 0;
+  border-radius: $radius-large;
+  background: $white;
+  color: $grey-900;
+  box-shadow: 0 24px 64px rgba(18, 20, 40, 0.24), 0 0 0 1px rgba(18, 20, 40, 0.06);
+  overflow: hidden;
+
+  &::backdrop {
+    background: rgba(18, 20, 40, 0.45);
+    backdrop-filter: blur(2px);
+  }
+
+  &[open] {
+    display: flex;
+  }
+
+  // Bulma's .button sets display, which would override the hidden attribute
+  [hidden] {
+    display: none !important;
+  }
+
+  kbd {
+    font-family: $font-mono;
+    font-size: 11px;
+    line-height: 1;
+    padding: 3px 5px;
+    border: 1px solid $grey-200;
+    border-radius: 4px;
+    background: $grey-050;
+    color: $grey-600;
+  }
+
+  @media (max-width: 768px) {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+.search-dialog__panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+}
+
+.search-dialog__form {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+  padding: 0 $space-2;
+  border-bottom: 1px solid $grey-100;
+}
+
+.search-dialog__icon {
+  flex: none;
+  color: $tts-500;
+}
+
+.search-dialog__input {
+  flex: 1;
+  min-width: 0;
+  height: 60px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 18px;
+  color: $grey-900;
+
+  &::placeholder {
+    color: $grey-600;
+  }
+
+  &::-webkit-search-cancel-button {
+    cursor: pointer;
+  }
+}
+
+.search-dialog__close {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.search-dialog__filters {
+  display: flex;
+  gap: 6px;
+  padding: 10px $space-2;
+  border-bottom: 1px solid $grey-100;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.search-chip {
+  appearance: none;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border: 1px solid $grey-200;
+  border-radius: 999px;
+  background: $white;
+  color: $grey-700;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.2;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $tts-200;
+    color: $tts-700;
+  }
+
+  &.is-active {
+    border-color: $tts-500;
+    background: $tts-500;
+    color: $white;
+
+    .search-chip__count {
+      color: $tts-100;
+    }
+  }
+}
+
+.search-chip__count {
+  color: $grey-600;
+  font-variant-numeric: tabular-nums;
+}
+
+.search-dialog__body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: $space-1 $space-1 $space-2;
+}
+
+.search-dialog__status {
+  padding: 4px $space-1 6px;
+  font-size: 13px;
+  color: $grey-600;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-result {
+  margin: 0 0 4px;
+}
+
+.search-result__main,
+.search-result__sub {
+  display: block;
+  padding: 10px 12px;
+  border-radius: $radius-default;
+  color: inherit;
+  text-decoration: none;
+
+  &.is-active,
+  &:focus-visible {
+    background: $grey-050;
+    outline: 0;
+    box-shadow: inset 3px 0 0 $tts-500;
+  }
+}
+
+.search-result__head {
+  display: flex;
+  align-items: baseline;
+  gap: $space-1;
+}
+
+.search-result__title {
+  font-weight: 600;
+  font-size: 16px;
+  color: $tts-700;
+}
+
+.search-result__section {
+  flex: none;
+  margin-left: auto;
+  font-size: 12px;
+  color: $grey-600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: $grey-075;
+}
+
+.search-result__excerpt {
+  display: block;
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $grey-700;
+
+  mark {
+    background: $tts-100;
+    color: inherit;
+    padding: 0 1px;
+    border-radius: 2px;
+  }
+}
+
+.search-result__subs {
+  list-style: none;
+  margin: 0 0 0 $space-2;
+  padding: 0 0 0 10px;
+  border-left: 2px solid $grey-100;
+}
+
+.search-result__sub {
+  padding: 6px 12px;
+
+  .search-result__sub-title {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    color: $grey-900;
+
+    &::before {
+      content: "# ";
+      color: $grey-600;
+    }
+  }
+
+  .search-result__excerpt {
+    font-size: 13px;
+  }
+}
+
+.search-dialog__more {
+  margin-top: $space-1;
+}
+
+// Start state (recent searches, popular pages) and no results
+.search-empty {
+  padding: $space-1;
+}
+
+.search-empty__group + .search-empty__group {
+  margin-top: $space-2;
+}
+
+.search-empty__title {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $grey-600;
+}
+
+.search-empty__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-empty__link {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: $radius-default;
+  color: $grey-900;
+  text-align: left;
+
+  &:hover,
+  &:focus-visible {
+    background: $grey-050;
+    color: $tts-700;
+    outline: 0;
+  }
+}
+
+.search-link-button {
+  appearance: none;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  color: $tts-500;
+  padding: 0;
+
+  &.search-empty__link {
+    color: $grey-900;
+    padding: 8px 12px;
+  }
+}
+
+.search-noresults__lead {
+  margin-bottom: $space-1;
+  font-size: 16px;
+}
+
+.search-noresults__tips {
+  margin: 0;
+  padding-left: 1.2em;
+  list-style: disc;
+  color: $grey-700;
+
+  li + li {
+    margin-top: 4px;
+  }
+}
+
+.search-dialog__footer {
+  display: flex;
+  gap: $space-2;
+  padding: 10px $space-2;
+  border-top: 1px solid $grey-100;
+  background: $grey-025;
+  font-size: 12px;
+  color: $grey-600;
+
+  kbd + kbd {
+    margin-left: 2px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+// The theme offsets anchor targets with a block `[id]::before` (header/nav.scss).
+// Inside the dialog it would break inline text and layout, so switch it off.
+.search-dialog,
+.search-dialog [id] {
+  &::before {
+    content: none;
+  }
+}

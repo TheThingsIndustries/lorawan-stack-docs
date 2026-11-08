@@ -25,6 +25,9 @@ PUBLIC_DEST = ../public # Relative to DOC_ROOT
 INTERNAL_DEST = ../internal # Relative to DOC_ROOT
 ENVIRONMENT ?= gh-pages
 HUGO_BASE_URL ?= https://www.thethingsindustries.com/docs
+# Pagefind (search index) is a locked dev dependency in doc/package.json, installed by `make js.deps`
+PAGEFIND ?= $(CURDIR)/doc/node_modules/.bin/pagefind
+SEARCH_DEV_SITE = .search-dev-site
 
 .PHONY: default
 default: server
@@ -45,10 +48,20 @@ clean.deps:
 .PHONY: build.internal
 build.internal:
 	$(HUGO) --source $(DOC_ROOT) --destination $(INTERNAL_DEST)
+	cd $(DOC_ROOT) && $(PAGEFIND) --site $(strip $(INTERNAL_DEST))
 
 .PHONY: build.public
 build.public:
 	$(HUGO) --source $(DOC_ROOT) --destination $(PUBLIC_DEST) --baseURL $(HUGO_BASE_URL) --environment $(ENVIRONMENT)
+	cd $(DOC_ROOT) && $(PAGEFIND) --site $(strip $(PUBLIC_DEST))
+
+# Build the search index for `make server`. The dev server doesn't run
+# Pagefind, so search works there once this has run (re-run after big changes).
+.PHONY: search.dev
+search.dev:
+	rm -rf $(SEARCH_DEV_SITE) $(DOC_ROOT)/static/pagefind
+	$(HUGO) --source $(DOC_ROOT) --destination ../$(SEARCH_DEV_SITE) --environment $(ENVIRONMENT)
+	$(PAGEFIND) --site $(SEARCH_DEV_SITE) --output-path $(DOC_ROOT)/static/pagefind
 
 .PHONY: server
 server:

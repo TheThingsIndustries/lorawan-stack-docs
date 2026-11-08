@@ -14,9 +14,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
   {{- $style := resources.Get "css/theme.scss" | css.Sass | resources.Minify | resources.Fingerprint }}
   <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
-  {{- if .Site.Params.search.enabled -}}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
-  {{- end }}
   {{- $scratch := newScratch }}
   {{- /* Prefer the page's own description; otherwise use the start of the page
           text, so pages don't all share the generic site description. */}}

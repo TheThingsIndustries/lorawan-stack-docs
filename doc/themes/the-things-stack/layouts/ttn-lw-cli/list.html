@@ -9,10 +9,11 @@
       {{ partial "sidebar/command-side-navigation.html" . }}
     </div>
     <div class="column is-8">
-      <div class="docs-content" id="article-content" tabindex="-1">
+      <div class="docs-content" id="article-content" tabindex="-1"{{ if not (or (eq .Section "sitemap") .Params.search_exclude) }} data-pagefind-body{{ end }}>
+        {{- partial "search/index-meta.html" . }}
         <h1 class="title is-size-2">{{ .Title }}</h1>
         <div class="content">{{ .Content }}</div>
-        {{ partial "feedback" . }}
+        <div data-pagefind-ignore>{{ partial "feedback" . }}</div>
       </div>
     </div>
   </div>

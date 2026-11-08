@@ -40,7 +40,7 @@ implementation proposal in the referenced issues.
 <!-- Make sure that this pull request is complete. -->
 
 - [ ] Scope: The referenced issue is addressed, there are no unrelated changes.
-- [ ] Run Locally: Verified that the docs build using `make server`, posted screenshots, verified external links. Test with `HUGO_PARAMS_SEARCH_ENABLED=true` if style changes will affect the search bar.
+- [ ] Run Locally: Verified that the docs build using `make server`, posted screenshots, verified external links. Run `make search.dev` first to test search locally.
 - [ ] New Features Marked: Documentation for new features is marked using the `new-in-version` shortcode, according to the guidelines in [CONTRIBUTING](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/CONTRIBUTING.md).
 - [ ] Style Guidelines: Documentation obeys style guidelines in [CONTRIBUTING](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/CONTRIBUTING.md).
 - [ ] Commits: Commit messages follow guidelines in [CONTRIBUTING](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/CONTRIBUTING.md), there are no fixup commits left.

@@ -1,0 +1,25 @@
+{{- /* Search index metadata (Pagefind). Rendered inside the indexed region,
+        hidden from readers. "section" drives the filter chips in the search
+        dialog and the label next to each result. */ -}}
+{{- $labels := dict
+  "getting-started" "Getting started"
+  "cloud" "Cloud"
+  "enterprise" "Enterprise"
+  "hardware" "Hardware"
+  "integrations" "Integrations"
+  "api" "API"
+  "concepts" "Concepts"
+  "ttn-lw-cli" "CLI reference"
+  "whats-new" "Release notes"
+  "reference" "Reference"
+-}}
+{{- $section := index $labels .Section -}}
+{{- if not $section }}{{ with .FirstSection }}{{ $section = .Title }}{{ end }}{{ end -}}
+{{- with $section }}
+<span hidden data-pagefind-filter="section:{{ . }}" data-pagefind-meta="section:{{ . }}"></span>
+{{- end }}
+{{- /* Generated reference pages (CLI commands, API reference) rank below guides
+        unless they match much better; see assets/js/search.js. */}}
+{{- if or (eq .Section "ttn-lw-cli") (hasPrefix .RelPermalink (relURL "api/reference/")) }}
+<span hidden data-pagefind-filter="type:reference"></span>
+{{- end }}

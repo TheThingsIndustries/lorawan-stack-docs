@@ -27,6 +27,31 @@ pygmentsUseClasses = true
   tts_github_repository = "https://github.com/TheThingsNetwork/lorawan-stack"
   version = "3.37.0"
 
+  # Native search (Pagefind). The index is built after Hugo; see the Makefile.
+  [params.search]
+    enabled = true
+    # Order of the section filters in the search dialog
+    sections = [
+      "Getting started", "Cloud", "Enterprise", "Hardware", "Integrations",
+      "API", "Concepts", "CLI reference", "Release notes",
+    ]
+    [params.search.help]
+      forum = "https://www.thethingsnetwork.org/forum/search?q="
+      support = "https://www.thethingsindustries.com/support"
+    # Shown in the search dialog before the reader types
+    [[params.search.popular]]
+      page = "/getting-started"
+    [[params.search.popular]]
+      page = "/hardware/gateways/concepts/adding-gateways"
+    [[params.search.popular]]
+      page = "/hardware/devices/adding-devices"
+    [[params.search.popular]]
+      page = "/integrations/payload-formatters"
+    [[params.search.popular]]
+      page = "/integrations/webhooks"
+    [[params.search.popular]]
+      page = "/api/concepts/auth"
+
   # Top navigation groups, used only at medium widths where the full navigation
   # does not fit. Items are section names of pages in the "main" menu.
   [[params.navgroups]]
