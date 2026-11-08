@@ -1,0 +1,48 @@
+{{- /* JSON-LD structured data: breadcrumbs for every page below the home page,
+        and a TechArticle for regular content pages. */ -}}
+{{- $page := .page -}}
+{{- $publisher := dict
+  "@type" "Organization"
+  "name" "The Things Industries"
+  "url" "https://www.thethingsindustries.com"
+  "logo" ("apple-touch-icon.png" | absURL)
+-}}
+{{- if not $page.IsHome }}
+  {{- $items := slice -}}
+  {{- $pos := 0 -}}
+  {{- range $page.Ancestors.Reverse }}
+    {{- $pos = add $pos 1 -}}
+    {{- $name := cond .IsHome "Docs" .Title -}}
+    {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" $name "item" .Permalink) -}}
+  {{- end }}
+  {{- $items = $items | append (dict "@type" "ListItem" "position" (add $pos 1) "name" $page.Title "item" $page.Permalink) -}}
+  {{- $breadcrumbs := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $items }}
+<script type="application/ld+json">{{ $breadcrumbs | jsonify | safeJS }}</script>
+{{- end }}
+{{- if $page.IsPage }}
+  {{- $article := dict
+    "@context" "https://schema.org"
+    "@type" "TechArticle"
+    "headline" $page.Title
+    "description" .description
+    "url" $page.Permalink
+    "inLanguage" $page.Site.LanguageCode
+    "image" ("docs-thumbnail.png" | absURL)
+    "publisher" $publisher
+    "isPartOf" (dict "@type" "WebSite" "name" $page.Site.Title "url" ("" | absURL))
+  -}}
+  {{- if not $page.Lastmod.IsZero }}
+    {{- $article = merge $article (dict "dateModified" ($page.Lastmod.Format "2006-01-02T15:04:05Z07:00")) -}}
+  {{- end }}
+<script type="application/ld+json">{{ $article | jsonify | safeJS }}</script>
+{{- else if $page.IsHome }}
+  {{- $site := dict
+    "@context" "https://schema.org"
+    "@type" "WebSite"
+    "name" (printf "%s Documentation" $page.Site.Title)
+    "url" $page.Permalink
+    "inLanguage" $page.Site.LanguageCode
+    "publisher" $publisher
+  -}}
+<script type="application/ld+json">{{ $site | jsonify | safeJS }}</script>
+{{- end }}

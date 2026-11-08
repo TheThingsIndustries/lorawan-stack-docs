@@ -3,8 +3,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   {{ hugo.Generator }}
-  <title>{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
-  {{- if hasPrefix .Permalink "http" }}<link rel="canonical" href="{{ .Permalink }}" />{{ end }}
+  <title>{{ if .IsHome }}{{ .Site.Title }} Documentation{{ else }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+  {{- if eq .Kind "404" }}
+  <meta name="robots" content="noindex">
+  {{- else if hasPrefix .Permalink "http" }}
+  <link rel="canonical" href="{{ .Permalink }}" />
+  {{- end }}
   <link rel="alternate icon" type="image/png" href="{{ "favicon.png" | relURL }}">
   <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
@@ -14,7 +18,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   {{- end }}
   {{- $scratch := newScratch }}
-  {{- $scratch.Set "description" (or .Description (.Param "description")) }}
+  {{- /* Prefer the page's own description; otherwise use the start of the page
+          text, so pages don't all share the generic site description. */}}
+  {{- $summary := .Summary | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace | truncate 160 }}
+  {{- $scratch.Set "description" (or .Description $summary .Site.Params.description) }}
   {{- $scratch.Set "keywords" (delimit (or .Keywords (.Param "keywords")) ",") }}
   <meta name="description" content="{{ $scratch.Get "description" }}">
   <meta name="keywords" content="{{ $scratch.Get "keywords" }}">
@@ -22,14 +29,19 @@
   <meta itemprop="description" content="{{ $scratch.Get "description" }}">
   <meta itemprop="keywords" content="{{ $scratch.Get "keywords" }}">
   <meta property="og:title" content="{{ .Title }}">
-  {{- with .Site.Params.title }}
-  <meta property="og:site_name" content="{{ . }}">
-  {{- end }}
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
   <meta property="og:description" content="{{ $scratch.Get "description" }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:image" content="{{ "docs-thumbnail.png" | relURL }}"/>
+  <meta property="og:image" content="{{ "docs-thumbnail.png" | absURL }}"/>
+  <meta property="og:image:width" content="3200">
+  <meta property="og:image:height" content="1800">
   <meta name="twitter:title" content="{{ .Title }}" />
   <meta name="twitter:description" content="{{ $scratch.Get "description" }}" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="{{ "docs-thumbnail.png" | absURL }}" />
+  {{- if ne .Kind "404" }}
+  {{ partial "head/structured-data.html" (dict "page" . "description" ($scratch.Get "description")) }}
+  {{- end }}
   {{ partial "gtm_head.html" . }}
 </head>
