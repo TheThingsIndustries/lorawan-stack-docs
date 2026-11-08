@@ -31,6 +31,12 @@
         {{- range .Site.Menus.about_us }}
         <p><a class="{{ if $currentPage.IsMenuCurrent "about_us" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a></p>
         {{- end }}
+        {{- with site.Params.consent }}
+        {{- with .privacy_url }}
+        <p><a href="{{ . }}">Privacy Policy</a></p>
+        {{- end }}
+        <p><a href="#" role="button" data-cookie-settings>Cookie settings</a></p>
+        {{- end }}
       </nav>
       {{ end -}}
     </div>
@@ -45,3 +51,4 @@
 <script src="{{ $copy.Permalink }}" integrity="{{ $copy.Data.Integrity }}" crossorigin="anonymous"></script>
 
 {{- partial "intercom.html" . -}}
+{{ partial "consent/banner.html" . }}

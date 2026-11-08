@@ -1,0 +1,109 @@
+// Cookie consent banner (partials/consent/banner.html)
+
+.consent {
+  position: fixed;
+  left: $space-2;
+  bottom: $space-2;
+  z-index: 50;
+  width: 400px;
+  max-width: calc(100vw - #{$space-4});
+  padding: $space-2 $space-3 $space-3;
+  border-radius: $radius-large;
+  background: $white;
+  color: $grey-900;
+  box-shadow: 0 16px 48px rgba(18, 20, 40, 0.18), 0 0 0 1px rgba(18, 20, 40, 0.06);
+  font-size: 14px;
+
+  &[hidden] {
+    display: none;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  @media (max-width: 500px) {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    max-width: none;
+    border-radius: $radius-large $radius-large 0 0;
+  }
+}
+
+.consent__title {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: $grey-900;
+}
+
+.consent__text {
+  margin: 0 0 $space-2;
+  line-height: 1.5;
+  color: $grey-700;
+
+  a {
+    color: $tts-700;
+    text-decoration: underline;
+  }
+}
+
+.consent__options {
+  margin: 0 0 $space-2;
+  padding: 0;
+  border: 0;
+}
+
+.consent__option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid $grey-100;
+  cursor: pointer;
+
+  input {
+    margin-top: 3px;
+    accent-color: $tts-500;
+  }
+
+  input:disabled {
+    cursor: not-allowed;
+  }
+
+  strong {
+    display: block;
+    font-weight: 600;
+  }
+
+  span span {
+    display: block;
+    font-size: 13px;
+    color: $grey-600;
+  }
+}
+
+.consent__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-1;
+
+  .button {
+    margin: 0 !important;
+  }
+}
+
+.consent__customize {
+  margin-left: auto !important;
+  text-decoration: underline;
+}
+
+// No anchor offset (`[id]::before`, header/nav.scss) inside the banner
+.consent,
+.consent [id] {
+  &::before {
+    content: none;
+  }
+}

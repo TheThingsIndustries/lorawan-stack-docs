@@ -1,0 +1,29 @@
+{{- /* Google Consent Mode defaults. Must run before Google Tag Manager loads.
+        The consent choice is shared with www.thethingsindustries.com (Framer):
+        same origin, same localStorage keys and same Consent Mode mapping, so a
+        choice made on either site applies to both. Until a choice is made,
+        only necessary storage is granted. */ -}}
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  (function () {
+    var modes = { necessary: true, analytics: false, marketing: false, preferences: false };
+    try {
+      var decided = localStorage.getItem('framerCookiesDismissed') !== null || localStorage.getItem('framerCookiesAutoAccepted') !== null;
+      var stored = JSON.parse(localStorage.getItem('framerCookiesConsentMode') || 'null');
+      if (decided && stored) {
+        for (var k in modes) { if (typeof stored[k] === 'boolean') modes[k] = stored[k]; }
+      }
+    } catch (e) {}
+    var g = function (v) { return v ? 'granted' : 'denied'; };
+    gtag('consent', 'default', {
+      functionality_storage: g(modes.necessary),
+      security_storage: g(modes.necessary),
+      ad_storage: g(modes.marketing),
+      ad_user_data: g(modes.marketing),
+      ad_personalization: g(modes.marketing),
+      analytics_storage: g(modes.analytics),
+      personalization_storage: g(modes.preferences)
+    });
+  })();
+</script>

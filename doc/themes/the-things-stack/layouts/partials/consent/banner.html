@@ -1,0 +1,40 @@
+{{- /* Cookie consent banner. Shares its choice with www.thethingsindustries.com;
+        see partials/consent/default.html and assets/js/consent.js. */ -}}
+{{- with site.Params.consent -}}
+<section class="consent" id="consent" role="dialog" aria-labelledby="consent-title" aria-describedby="consent-text" hidden>
+  <h2 class="consent__title" id="consent-title">Cookie Settings</h2>
+  <p class="consent__text" id="consent-text">
+    We use cookies to enhance your experience, analyze site traffic and deliver personalized content.
+    {{- with .privacy_url }} Read our <a href="{{ . }}" target="_blank" rel="noopener">Privacy Policy</a>.{{ end }}
+  </p>
+
+  <fieldset class="consent__options" id="consent-options" hidden>
+    <legend class="is-sr-only">Cookie categories</legend>
+    <label class="consent__option">
+      <input type="checkbox" checked disabled>
+      <span><strong>Necessary</strong><span>Required for the site to work. Always on.</span></span>
+    </label>
+    <label class="consent__option">
+      <input type="checkbox" name="analytics">
+      <span><strong>Analytics</strong><span>Help us understand how the documentation is used, so we can improve it.</span></span>
+    </label>
+    <label class="consent__option">
+      <input type="checkbox" name="marketing">
+      <span><strong>Marketing</strong><span>Measure and personalize our advertising.</span></span>
+    </label>
+    <label class="consent__option">
+      <input type="checkbox" name="preferences">
+      <span><strong>Preferences</strong><span>Remember your settings and choices.</span></span>
+    </label>
+  </fieldset>
+
+  <div class="consent__buttons">
+    <button type="button" class="button is-primary is-small" data-consent="accept">Accept all</button>
+    <button type="button" class="button is-light is-small" data-consent="reject">Reject all</button>
+    <button type="button" class="button is-text is-small consent__customize" data-consent="customize" aria-expanded="false" aria-controls="consent-options">Customize</button>
+    <button type="button" class="button is-primary is-small" data-consent="save" hidden>Save choices</button>
+  </div>
+</section>
+{{- $script := resources.Get "js/consent.js" | js.Build (dict "minify" hugo.IsProduction) | resources.Fingerprint }}
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{- end -}}
