@@ -1,0 +1,129 @@
+// Row under the page title: last updated, edit link, "Copy page" menu
+
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-1 $space-2;
+  margin: -$space-1 0 $space-3;
+  font-size: 14px;
+  color: $grey-600;
+}
+
+.page-actions__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px $space-2;
+}
+
+.page-actions__edit {
+  color: $grey-600;
+  text-decoration: underline;
+  text-decoration-color: $grey-300;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: $tts-700;
+    text-decoration-color: currentColor;
+  }
+}
+
+.page-actions__menu {
+  position: relative;
+
+  &[open] .page-actions__chevron {
+    transform: rotate(180deg);
+  }
+}
+
+.page-actions__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border: 1px solid $grey-200;
+  border-radius: $radius-default;
+  background: $white;
+  color: $grey-800;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:hover {
+    border-color: $tts-200;
+    color: $tts-700;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $tts-500;
+    outline-offset: 2px;
+  }
+}
+
+.page-actions__chevron {
+  transition: transform $dur-fast $ease-standard;
+}
+
+.page-actions__list {
+  position: absolute;
+  right: 0;
+  z-index: 20;
+  width: 300px;
+  margin: 6px 0 0;
+  padding: 6px;
+  list-style: none;
+  background: $white;
+  border-radius: $radius-default;
+  box-shadow: 0 12px 32px rgba(18, 20, 40, 0.16), 0 0 0 1px rgba(18, 20, 40, 0.06);
+
+  @media (max-width: 500px) {
+    left: 0;
+    right: auto;
+    width: unquote("min(300px, calc(100vw - 32px))");
+  }
+}
+
+.page-actions__item {
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  font: inherit;
+  text-align: left;
+  text-decoration: none !important;
+  color: $grey-900;
+  cursor: pointer;
+
+  strong {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: $grey-900;
+  }
+
+  span {
+    display: block;
+    font-size: 13px;
+    color: $grey-600;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: $grey-050;
+    outline: 0;
+
+    strong {
+      color: $tts-700;
+    }
+  }
+}
