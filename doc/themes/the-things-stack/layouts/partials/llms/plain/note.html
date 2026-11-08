@@ -1,0 +1,3 @@
+{{- /* Markdown blockquote for the note shortcode. Returns a string (no escaping). */ -}}
+{{- $text := or (.Get 0) .Inner | strings.TrimSpace -}}
+{{- return (printf "> **Note:** %s" (replace $text "\n" "\n> ")) -}}

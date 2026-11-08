@@ -1,0 +1,5 @@
+{{- /* Plain-text version of readfile; returns the text so nothing is escaped. */ -}}
+{{- $fs := split (.Get "path" | readFile) "\n" -}}
+{{- $from := sub (or (.Get "from") 1) 1 -}}
+{{- $to := sub (or (.Get "to") (len $fs)) $from -}}
+{{- return (delimit (after $from $fs | first $to) "\n") -}}

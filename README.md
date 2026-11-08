@@ -40,6 +40,20 @@ Search events are pushed to the Google Tag Manager `dataLayer` as `docs_search`,
 `docs_search_no_results` and `docs_search_click`. The 404 page pushes `docs_404`
 (with the broken path and referrer).
 
+### Versions for AI tools
+
+The build also writes versions of the docs for AI assistants and LLM tools
+([llms.txt](https://llmstxt.org)):
+
+- `/docs/llms.txt`: an index of the guides with short descriptions
+- `/docs/llms-full.txt`: the full text of all guides (no CLI/API reference or release notes)
+- `index.md` next to every page: that page as Markdown
+
+Shortcodes that output HTML need a plain-text version for these formats
+(`<name>.markdown.md` and `<name>.llmsfull.txt` in the theme's `shortcodes`
+folder, both calling a partial in `partials/llms/plain`). Without one,
+the HTML version is used.
+
 ## Configuration
 
 Hugo accepts configuration parameters specified in [config](doc/config), most notably for baseURL, search, and feedback widget. Parameters can be specified as environment variables, e.g `params.search.enabled` becomes `HUGO_PARAMS_SEARCH_ENABLED`.

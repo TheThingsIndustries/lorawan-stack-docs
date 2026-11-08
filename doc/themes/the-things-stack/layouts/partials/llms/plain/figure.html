@@ -1,0 +1,13 @@
+{{- /* Markdown image for the figure shortcode. Returns a string (no escaping). */ -}}
+{{- $u := urls.Parse (.Get "src") -}}
+{{- $src := $u.String -}}
+{{- if not $u.IsAbs -}}
+  {{- $path := strings.TrimPrefix "./" $u.Path -}}
+  {{- with or (.Page.Resources.Get $path) (resources.Get $path) -}}
+    {{- $src = .Permalink -}}
+  {{- end -}}
+{{- end -}}
+{{- $alt := or (.Get "alt") (.Get "caption" | plainify) "" -}}
+{{- $out := printf "![%s](%s)" $alt $src -}}
+{{- with .Get "caption" }}{{ $out = printf "%s\n\n*%s*" $out (. | plainify) }}{{ end -}}
+{{- return $out -}}

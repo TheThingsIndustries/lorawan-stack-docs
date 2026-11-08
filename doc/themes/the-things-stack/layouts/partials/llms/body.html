@@ -1,0 +1,8 @@
+{{- /* Page content as Markdown, with shortcodes rendered and site links made absolute. */ -}}
+{{- $body := .RenderShortcodes -}}
+{{- $rel := "" | relURL -}}
+{{- $abs := "" | absURL -}}
+{{- $body = replace $body (printf "](%s" $rel) (printf "](%s" $abs) -}}
+{{- $body = replace $body (printf "href=\"%s" $rel) (printf "href=\"%s" $abs) -}}
+{{- $body = replace $body (printf "src=\"%s" $rel) (printf "src=\"%s" $abs) -}}
+{{- return $body -}}

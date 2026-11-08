@@ -1,0 +1,37 @@
+# {{ site.Title }} Documentation
+
+> {{ site.Params.description }}
+
+The Things Stack is an enterprise LoRaWAN® Network Server by The Things Industries. It is available as
+The Things Stack Cloud (hosted), The Things Stack Enterprise (self-hosted), The Things Stack Sandbox
+(formerly The Things Network) and The Things Stack Open Source. Current version: {{ site.Params.version }}.
+
+Every page is also available as Markdown: append `index.md` to the page URL, as in the links below.
+The full text of all guides is in {{ "llms-full.txt" | absURL }}.
+
+{{ range site.Menus.main -}}
+{{- with .Page }}
+{{- if and .IsSection (not (partial "llms/is-reference.html" .)) (ne .Section "sitemap") }}
+## {{ .Title }}
+
+{{ with partial "llms/description.html" . }}{{ . }}
+
+{{ end -}}
+- [{{ .Title }}]({{ .Permalink }}index.md)
+{{- range .Pages.ByWeight }}
+  {{- if not (partial "llms/is-reference.html" .) }}
+- [{{ .Title }}]({{ .Permalink }}index.md){{ with partial "llms/description.html" . }}: {{ . }}{{ end }}
+  {{- if .IsSection }}{{ range .Pages.ByWeight }}{{ if not (partial "llms/is-reference.html" .) }}
+  - [{{ .Title }}]({{ .Permalink }}index.md){{ with partial "llms/description.html" . }}: {{ . }}{{ end }}
+  {{- end }}{{ end }}{{ end }}
+  {{- end }}
+{{- end }}
+{{ end -}}
+{{- end }}
+{{ end }}
+## Optional
+
+- [Command-line interface reference]({{ "ttn-lw-cli/" | absURL }}index.md): every `ttn-lw-cli` command with its flags
+- [API reference]({{ "api/reference/" | absURL }}index.md): gRPC and HTTP API reference
+- [Release notes]({{ "whats-new/" | absURL }}index.md): what changed in each version of The Things Stack
+- [The Things Network Forum](https://www.thethingsnetwork.org/forum/): community questions and answers

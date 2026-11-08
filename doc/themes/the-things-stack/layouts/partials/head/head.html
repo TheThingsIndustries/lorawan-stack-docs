@@ -9,6 +9,12 @@
   {{- else if hasPrefix .Permalink "http" }}
   <link rel="canonical" href="{{ .Permalink }}" />
   {{- end }}
+  {{- with .OutputFormats.Get "markdown" }}
+  <link rel="alternate" type="text/markdown" href="{{ .Permalink }}" title="{{ $.Title }} (Markdown)">
+  {{- end }}
+  {{- if .IsHome }}
+  <link rel="alternate" type="text/plain" href="{{ "llms.txt" | absURL }}" title="Documentation index for AI tools (llms.txt)">
+  {{- end }}
   <link rel="alternate icon" type="image/png" href="{{ "favicon.png" | relURL }}">
   <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">

@@ -61,6 +61,31 @@ pygmentsUseClasses = true
     name = "Build"
     items = ["integrations", "api", "hardware"]
 
+# Machine-readable versions for AI assistants and LLM tools (see llmstxt.org):
+# /docs/llms.txt (index), /docs/llms-full.txt (all guides) and an index.md
+# Markdown version of every page.
+[outputFormats]
+  [outputFormats.markdown]
+    mediaType = "text/markdown"
+    baseName = "index"
+    isPlainText = true
+    rel = "alternate"
+  [outputFormats.llms]
+    mediaType = "text/plain"
+    baseName = "llms"
+    isPlainText = true
+    notAlternative = true
+  [outputFormats.llmsfull]
+    mediaType = "text/plain"
+    baseName = "llms-full"
+    isPlainText = true
+    notAlternative = true
+
+[outputs]
+  home = ["HTML", "llms", "llmsfull"]
+  section = ["HTML", "markdown"]
+  page = ["HTML", "markdown"]
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]

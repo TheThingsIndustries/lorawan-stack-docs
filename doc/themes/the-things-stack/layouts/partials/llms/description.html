@@ -1,0 +1,10 @@
+{{- /* One-line description of a page for llms.txt and the Markdown versions.
+        Uses the page description, or else the start of the page text without
+        Markdown markers (shortcodes in summaries render as Markdown here). */ -}}
+{{- $d := .Description -}}
+{{- if not $d -}}
+  {{- $d = .Summary | plainify | htmlUnescape -}}
+  {{- $d = $d | replaceRE `\*\*|__` "" | replaceRE `(^|\s)>\s` " " | replaceRE `\s+` " " | strings.TrimSpace -}}
+  {{- $d = $d | truncate 160 -}}
+{{- end -}}
+{{- return $d -}}
