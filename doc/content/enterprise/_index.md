@@ -1,6 +1,6 @@
 ---
 title: "The Things Stack Enterprise"
-description: "Concepts specific to The Things Stack Cloud"
+description: "Install, deploy and manage The Things Stack Enterprise on your own infrastructure: AWS, Kubernetes or Docker."
 weight: 4
 menu:
   main:
