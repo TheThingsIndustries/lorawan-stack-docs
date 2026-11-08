@@ -5,7 +5,7 @@ weight:
 aliases: [/devices/models/lilygo-lora32]
 ---
 
-{{< figure src="lora32.png" alt="" class="float plain" width="80%">}}
+{{< figure src="lora32.png" alt="LilyGO TTGO LoRa32 board, front and back" class="float plain" width="80%">}}
 
 The [LILYGO LoRa32 V2.1_1.6](https://www.lilygo.cc/products/lora3) is a development board with an ESP32 and a Semtech SX1276 transceiver. It features an OLED screen, Micro SD card slot and a JST GH for connecting a Li-Po battery.
 
@@ -21,19 +21,19 @@ Download the latest release of the [Arduino Software (IDE)](https://www.arduino.
 
 Open Arduino IDE, and click **File -> Preferences -> Settings** and click the button next to `Additional Boards Manager URLs`.
 
-{{< figure src="boards-manager-url.png" alt="">}}
+{{< figure src="boards-manager-url.png" alt="Arduino IDE Preferences window with the Additional boards manager URLs button highlighted">}}
 
 In a new line, enter: `https://espressif.github.io/arduino-esp32/package_esp32_index.json` and click **OK**.
 
-{{< figure src="esp32-url.png" alt="">}}
+{{< figure src="esp32-url.png" alt="Additional Boards Manager URLs dialog with the Espressif ESP32 board support URL entered">}}
 
 Click the **second icon in the left-hand menu** or select **Tools -> Board: -> Boards Manager...**, then search `esp32` in the search field, select the latest releases and click **install**.
 
-{{< figure src="esp32-install.png" alt="">}}
+{{< figure src="esp32-install.png" alt="Arduino IDE Boards Manager showing esp32 by Espressif Systems installed">}}
 
 Then go to the **third icon in the left-hand menu** or select **Sketch -> Include Library -> Manage Libraries...**, then search `radiolib` in the search field, select the latest releases and click **install**.
 
-{{< figure src="radiolib-install.png" alt="">}}
+{{< figure src="radiolib-install.png" alt="Arduino IDE Library Manager showing the RadioLib library installed">}}
 
 ## Connecting the Device
 
@@ -41,7 +41,7 @@ Connect the board to your computer with a micro usb cable.
 
 Click the **Select Board** drop down (or go to the **tools** menu) and select the right COM port and board:
 
-{{< figure src="lora32-select.png" alt="">}}
+{{< figure src="lora32-select.png" alt="Arduino IDE Select Other Board and Port dialog with TTGO LoRa32-OLED and a USB serial port selected">}}
 
 Then, in the **tools** menu, make sure to select the correct **Board Revision** (`TTGO LoRa32 V2.1 (1.6.1)` in our case. You can check on the board itself for which version you have) and the **Upload Speed** (`115200` is recommended).
 
@@ -90,7 +90,7 @@ In {{% tts %}}, copy the **DevEUI** and replace the `0x---------------` with the
 
 For the AppKey and NwkKey, click the **eye** icon and then selecting the **</>** icon. Then copy the **AppKey** by clicking the **Copy to clipboard** button and replace the string in the config file. Repeat this for the **NwkKey**.
 
-{{< figure src="lora32-activ-info.png" alt="" >}}
+{{< figure src="lora32-activ-info.png" alt="End device overview in The Things Stack Console with the activation information (JoinEUI, DevEUI, AppKey, NwkKey) highlighted" >}}
 
 A few lines down you will see regional settings. Make sure these match your region:
 

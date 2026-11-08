@@ -113,7 +113,7 @@ The Packets per channel and Channel utilization graphs can be used to find out w
 
 **Packets per data rate** - a time series graph that visualizes the number of uplinks at each data rate.
 
-{{< figure src="../gateway-packets-per-data-rate.png" alt="" >}}
+{{< figure src="../gateway-packets-per-data-rate.png" alt="Network Operations Center Gateway Details: packets per data rate over time" >}}
 
 **Round Trip Times** - a graph that visualizes Round Trip Times (RTT) between the Gateway Server and Gateways as a measure of latency in ms over a time interval. For more information on this, refer to [Round Trip Times]({{< ref "/hardware/gateways/concepts/gateway-rtt/" >}})
 
@@ -123,25 +123,25 @@ The Packets per channel and Channel utilization graphs can be used to find out w
 
 The **Application Details** dashboard provides a detailed insight into application statistics in the selected time period.
 
-{{< figure src="../application-details-full.png" alt="" >}}
+{{< figure src="../application-details-full.png" alt="Network Operations Center Application Details: gateways seen, device statistics, packets per data rate and packets per channel" >}}
 
 It consists of the following panels:
 
 **Gateways seen** - a chart which displays the number of packets received by each gateway and the channel they primarily use.
 
-{{< figure src="../gateways-seen.png" alt="" >}}
+{{< figure src="../gateways-seen.png" alt="Network Operations Center: gateways seen by an application, with best channel RSSI and packet count" >}}
 
 **Device statistics** - a chart displaying gateway, RSSI, and packet data for each device in the application.
 
-{{< figure src="../device-statistics.png" alt="" >}}
+{{< figure src="../device-statistics.png" alt="Network Operations Center: device statistics with last seen, packet error rate, best gateway, RSSI and packet count" >}}
 
 **Packets per data rate** - a time series graph that visualizes the number of uplinks at each data rate.
 
-{{< figure src="../packets-per-data-rate.png" alt="" >}}
+{{< figure src="../packets-per-data-rate.png" alt="Network Operations Center: packets per data rate for an application" >}}
 
 **Packets per channel** - a heat map that visualizes the number of uplink data packets for each channel.
 
-{{< figure src="../packets-per-channel-app.png" alt="" >}}
+{{< figure src="../packets-per-channel-app.png" alt="Network Operations Center: packets per channel for an application" >}}
 
 **Forwarded messages count** - a chart displaying the count of different messages forwarded to The Things Stack over a period of time.
 
@@ -155,34 +155,34 @@ It consists of the following panels:
 
 The **End Device Details** dashboard provides a detailed insight into end device statistics in the selected time period.
 
-{{< figure src="../end-device-details.png" alt="" >}}
+{{< figure src="../end-device-details.png" alt="Network Operations Center End Device Details: last seen, session age, best RSSI, packet error rate, packets per channel and channel utilization" >}}
 
 It consists of the following panels:
 
 **Last seen** - when the device last uplinked.
 
-{{< figure src="../last-seen-ed.png" alt="" >}}
+{{< figure src="../last-seen-ed.png" alt="Network Operations Center: time since the end device was last seen" >}}
 
 **Session age** - how long since the device last negotiated new keys.
 
-{{< figure src="../session-age-ed.png" alt="" >}}
+{{< figure src="../session-age-ed.png" alt="Network Operations Center: session age of the end device" >}}
 
 **Best RSSI (LoRa)** - a chart displaying the RSSI for each channel.
 
-{{< figure src="../best-rssi-ed.png" alt="" >}}
+{{< figure src="../best-rssi-ed.png" alt="Network Operations Center: best RSSI per channel for the end device" >}}
 
 **Packet error rate** - a chart displaying the historical average error rate.
 
-{{< figure src="../packet-error-rate-ed.png" alt="" >}}
+{{< figure src="../packet-error-rate-ed.png" alt="Network Operations Center: packet error rate of the end device over time" >}}
 
 **Channel utilization** - a chart displaying the percentage of channel utilization.
 
-{{< figure src="../channel-utilization-ed.png" alt="" >}}
+{{< figure src="../channel-utilization-ed.png" alt="Network Operations Center: channel utilization of the end device over time" >}}
 
 **Packets per data rate** - a time series graph that visualizes the number of uplinks at each data rate.
 
-{{< figure src="../packets-per-data-rate-ed.png" alt="" >}}
+{{< figure src="../packets-per-data-rate-ed.png" alt="Network Operations Center: packets per data rate for the end device" >}}
 
 **Packets per channel** - a heat map that visualizes the number of uplink data packets for each channel.
 
-{{< figure src="../packets-per-channel-ed.png" alt="" >}}
+{{< figure src="../packets-per-channel-ed.png" alt="Network Operations Center: packets per channel for the end device" >}}

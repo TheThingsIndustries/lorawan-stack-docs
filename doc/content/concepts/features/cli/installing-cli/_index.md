@@ -135,7 +135,7 @@ To see old versions of the CLI, or if the binary selector above does not work, f
 
 Scroll down and expand the **Assets** section to see the binaries. Search for archives starting with `lorawan-stack-cli` (usually on top), then search for the specific archive ending with your operating system and processor architecture label.
 
-{{< figure src="binaries.png" >}}
+{{< figure src="binaries.png" alt="Release assets on GitHub with the lorawan-stack-cli archives for each operating system and architecture" >}}
 
 For example, if you are using a Linux operating system on a computer with an AMD64 processor, you need to download `lorawan-stack-cli_x.x.x_linux_amd64.tar.gz`.
 

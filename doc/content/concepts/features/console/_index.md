@@ -15,7 +15,7 @@ weight: -3
 
 <!--more-->
 
-{{< figure src="console.png" >}}
+{{< figure src="console.png" alt="The Things Stack Console dashboard" >}}
 
 ## {{% tts %}} Cloud
 

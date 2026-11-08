@@ -28,11 +28,11 @@ Gateways, End Devices, and Applications have a **Collaborators** tab which allow
 
 Click the **Add collaborator** button to add a collaborator.
 
-{{< figure src="collaborators.png" >}}
+{{< figure src="collaborators.png" alt="Collaborators page of an application in The Things Stack Console" >}}
 
 Select the rights you wish the collaborator to have, and click **Add collaborator** to save your selection.
 
-{{< figure src="rights.png" >}}
+{{< figure src="rights.png" alt="Add collaborator form in The Things Stack Console with the list of individual rights" >}}
 
 Rights apply to entities which a user or organization is a member (collaborator) of. To grant rights to an entity, add the user or organization as a collaborator of the entity.
 

@@ -21,7 +21,7 @@ If you navigate to [this link](https://console.cloud.thethings.network), you can
 
 See the [Addresses]({{< ref "/concepts/ttn/addresses" >}}) for details about cluster, Console, API endpoints and other {{% ttss %}} addresses.
 
-{{< figure src="logo_TTN.svg" class="float plain" width="150px" >}}
+{{< figure src="logo_TTN.svg" alt="The Things Network logo" class="float plain" width="150px" >}}
 
 [The Things Network](https://www.thethingsnetwork.org/) is a global collaborative Internet of Things ecosystem that creates networks, devices and solutions using LoRaWAN.
 

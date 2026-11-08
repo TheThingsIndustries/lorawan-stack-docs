@@ -5,7 +5,7 @@ weight:
 aliases: [/devices/models/sg-f1]
 ---
 
-{{< figure src="f1-board.png" alt="" class="float plain" width="80%">}}
+{{< figure src="f1-board.png" alt="SG Wireless F1 Starter Kit board" class="float plain" width="80%">}}
 
 The [SG Wireless F1 Starter Kit](https://eshop.sgwireless.com/bundle-f1-starter-kit-with-cap-t-sensor/) is an Arduino form factor board based on the F1 Smart Module, which features Wi-Fi, Bluetooth LE, LTE and LoRaWAN connectivity. It boasts a nano-SIM holder, micro-SD card holder and a li-po battery connector.
 
@@ -19,23 +19,23 @@ You will need the latest version of Visual Studio Code to proceed, which can be 
 
 Open Visual Studio Code and navigate to **Extensions**. Search for `ctrlr` and click **Install**.
 
-{{< figure src="ctrl-install.png" alt="" >}}
+{{< figure src="ctrl-install.png" alt="Visual Studio Code extension marketplace with the CtrlR extension by SG Wireless and its Install button highlighted" >}}
 
 Connect your F1 Starter Kit to your PC and turn it on (SW200 switch from OFF to ON).
 
 Head over to the CtrlR tab and click on the **Connect device** button (lightning bolt) for the device.
 
-{{< figure src="connect-device.png" alt="" >}}
+{{< figure src="connect-device.png" alt="CtrlR extension in Visual Studio Code with the Connect device button for the connected board highlighted" >}}
 
 {{< note "If your PC doesn’t have the driver installed, an unknown device will be shown in your PC’s Device Manager. Download and install the [Virtual COM Port driver](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers), and the device should show up in your Device Manager." />}}
 
 Then when it's connected, click the **File explorer** button.
 
-{{< figure src="open-device.png" alt="" >}}
+{{< figure src="open-device.png" alt="CtrlR Devices panel with the Open device in file explorer button" >}}
 
 When the Explorer opens, open the folder structure of the device and open `main.py`.
 
-{{< figure src="main-file.png" alt="" >}}
+{{< figure src="main-file.png" alt="Visual Studio Code file explorer showing the files on the device, with main.py highlighted" >}}
 
 In the main.py file, replace the code with the following one:
 
@@ -148,7 +148,7 @@ In {{% tts %}}, copy the **DevEUI** and replace the `0000000000000000` with the 
 
 Repeat this for the **AppKey** and **NwkKey** too.
 
-{{< figure src="f1-activ-info.png" alt="" >}}
+{{< figure src="f1-activ-info.png" alt="End device overview in The Things Stack Console with the activation information (JoinEUI, DevEUI, AppKey, NwkKey) highlighted" >}}
 
 Save the `main.py` file, right click the file, then **CtrlR** -> **Upload to Device**.
 

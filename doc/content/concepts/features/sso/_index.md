@@ -140,7 +140,7 @@ A list of provider discovery URLs is available from AWS [here](https://docs.aws.
 
 If succesful, `tti-lw-cli` will return a list of Authentication Providers. When you go to login, you will see the login option using the `name` you registered the Authentication Provider with.
 
-{{< figure src="login-screen.png" >}}
+{{< figure src="login-screen.png" alt="The Things Industries Account login screen with options to log in with Google, The Things ID or credentials" >}}
 
 ## Troubleshooting
 

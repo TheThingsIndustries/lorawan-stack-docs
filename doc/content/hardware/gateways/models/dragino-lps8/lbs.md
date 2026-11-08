@@ -12,11 +12,11 @@ This section contains instructions for connecting the Dragino LPS8N LoRaWAN® ga
 
 In the {{% tts %}} console, go to the **Gateways** tab and click the **Register Gateway** button to register the gateway and make sure to select these three settings below:
 
-{{< figure src="../register-lbs.png" alt="" width="80%">}}
+{{< figure src="../register-lbs.png" alt="Register gateway form in The Things Stack Console with Require authenticated connection and both API key options checked" width="80%">}}
 
 When the keys popup shows after registering, download the keys, and click **I have downloaded the keys**.
 
-{{< figure src="../register-lbs-keys.png" alt="" >}}
+{{< figure src="../register-lbs-keys.png" alt="Download gateway API keys dialog with buttons to download the LNS key and the CUPS key" >}}
 
 {{< note >}}
 If you have already registered your gateway and forgot to check the boxes, or if you have been using UDP and want to switch to {{% lbs %}}, [create API keys manually](https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups/#create-separate-cups-and-lns-api-keys).
@@ -36,9 +36,9 @@ On this page, configure the following settings:
 
 **Note**: When entering the keys, the **"Authorization: Bearer"** field should not be entered in the TTN Basics Station configuration of the gateway.
 
-{{< figure src="../lbs-key.png" alt="" >}}
+{{< figure src="../lbs-key.png" alt="Dragino LoRaWAN Basic Station settings: the downloaded CUPS and LNS keys pasted into the authorization key fields" >}}
 
-{{< figure src="../lbs-config.png" alt="" >}}
+{{< figure src="../lbs-config.png" alt="Dragino LoRaWAN Basic Station settings with the CUPS server URI, CUPS and LNS authorization keys and certificate filled in" >}}
 
 Once you've done all that, click **Save & Apply**.
 

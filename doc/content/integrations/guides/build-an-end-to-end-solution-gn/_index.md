@@ -28,7 +28,7 @@ Now press the user button on top of the GNSE. In the **Live data** section, you 
 
 Select the uplink message. Scroll down and locate the **frm_payload** (frame payload) field. Note that the payload is encoded and requires decoding to understand it.
 
-{{< figure src="frm-payload.png" alt="" >}}
+{{< figure src="frm-payload.png" alt="Live data event details in The Things Stack Console with the frm_payload field of an uplink highlighted" >}}
 
 ## Using Payload Formatters
 
@@ -50,21 +50,21 @@ function decodeUplink(input) {
 }
 ```
 
-{{< figure src="javascript-payload-formatter.png" alt="" >}}
+{{< figure src="javascript-payload-formatter.png" alt="Uplink payload formatter page in The Things Stack Console with a Custom JavaScript formatter entered" >}}
 
 To test it, go back to the **Live data** tab and copy the **MAC payload** (find it in the **Forward uplink data message** event).
 
-{{< figure src="mac-payload.png" alt="" >}}
+{{< figure src="mac-payload.png" alt="Payload formatter test panel with the byte payload 10 02 DC 01 78 01 entered" >}}
 
 Next paste it in the **Byte payload** field. Then press the **Test decoder** button. The result of decoding will be displayed in the **Decoded test payload** box.
 
-{{< figure src="decoded-payload.png" alt="" >}}
+{{< figure src="decoded-payload.png" alt="Payload formatter test result showing the decoded payload with battery voltage, button press, humidity and temperature" >}}
 
 Select **Save changes**.
 
 Now go back to the **Live data** tab and press the user button on GNSE. The payload of the uplink data message gets decoded as shown below:
 
-{{< figure src="decoded-payload-live.png" alt="" >}}
+{{< figure src="decoded-payload-live.png" alt="Live data in The Things Stack Console showing uplink messages with the decoded payload" >}}
 
 ## Creating an Integration using Webhooks
 
@@ -72,7 +72,7 @@ A webhook helps you to send data from one application to another whenever a give
 
 Create a custom [webhook]({{< ref "/integrations/webhooks/creating-webhooks" >}}) in JSON format by providing the base URL and endpoint, for example, http://root.yourhost.com:3000/webhooks. Select the checkbox **Enabled** next to the **Uplink message** event type. This will configure your webhook to send all uplink messages from your device to your custom application.
 
-{{< figure src="add-webhook-1.png" alt="" >}}
+{{< figure src="add-webhook-1.png" alt="Add webhook form in The Things Stack Console with the webhook ID, JSON format and base URL filled in" >}}
 
 ## Node.js Application
 
@@ -102,7 +102,7 @@ export TTN_DEVICE_ID=
 
 After editing, your configuration file looks something like this:
 
-{{< figure src="config-file-1.png" alt="" >}}
+{{< figure src="config-file-1.png" alt="Terminal editing the configuration file with the application ID, API key, webhook ID and device ID variables" >}}
 
 Save the configuration file (`[esc][:wq][enter]`), source it (`source config.env`) and then start the server (`node index.js`).
 
@@ -118,21 +118,21 @@ app.post('/webhooks', (req, res) => {
 
 Open a web browser and go to the address your server is exposing. The address is something like this: `http://yourhost.com:3000`.
 
-{{< figure src="chart-1.png" alt="" >}}
+{{< figure src="chart-1.png" alt="Kevin's Room Climate Tracker web page showing No data received yet and an empty temperature and humidity chart" >}}
 
 Now press the push button on GNSE. The current temperature and humidity will be immediately plotted on the chart.
 
-{{< figure src="chart-2.png" alt="" >}}
+{{< figure src="chart-2.png" alt="Kevin's Room Climate Tracker showing the current temperature and humidity and the first data point in the chart" >}}
 
 Press the push button a few more times and see how your chart behaves in time.
 
-{{< figure src="chart-3.png" alt="" >}}
+{{< figure src="chart-3.png" alt="Kevin's Room Climate Tracker showing a temperature and humidity chart with several data points" >}}
 
 ## Adding Kuando Busylight
 
 Kuando BusyLight is a light device that you can control using LoRaWAN downlinks. It is a [class C]({{< ref "/hardware/devices/configuring-devices/class-c" >}}) end device that opens continuous receive windows so it is capable of receiving downlinks anytime.
 
-{{< figure src="busylight.png" alt="" >}}
+{{< figure src="busylight.png" alt="Kuando Busylight IoT, lit green" >}}
 
 To register the Kuando Busylight with {{% tts %}}, follow the steps outlined in **Manually Registering an End Device** section in the [Adding Devices]({{< ref "/hardware/devices/adding-devices/" >}}) guide. When adding the device, make sure to select **Class C (Continuous)** from the **Additional LoRaWAN class capabilities** drop-down menu. You can find this by expanding the **Show advanced activation, LoRaWAN class and cluster settings** section.
 
@@ -149,7 +149,7 @@ In {{% tts %}} Console select the **Messaging** tab and then select the **Downli
 
 Here is the payload structure for the downlink messages for your reference:
 
-{{< figure src="busylight-payload-structure.png" alt="" >}}
+{{< figure src="busylight-payload-structure.png" alt="Kuando Busylight documentation describing the 5-byte LoRa payload: red, blue and green intensity, on duration and off duration" >}}
 
 Select the **Schedule downlink** button. The Busylight will turn on solid white.
 
@@ -183,7 +183,7 @@ On the **Add API key** page, under **Rights**, select **Grant individual rights*
 
 Select the **Create API key** button. Then copy the API key.
 
-{{< figure src="api-key-1.png" alt="" >}}
+{{< figure src="api-key-1.png" alt="Add API key form in The Things Stack Console with Write downlink application traffic selected" >}}
 
 Go back to the configuration file and then paste your API key there (`export API_KEY=your API key`).
 
@@ -193,7 +193,7 @@ Copy the Busylight’s device ID and also paste it there (`export TTN_DEVICE_ID=
 
 After editing, your configuration file looks something like this:
 
-{{< figure src="config-file-2.png" alt="" >}}
+{{< figure src="config-file-2.png" alt="Terminal editing the configuration file with the application ID, API key, webhook ID and device ID for the Busylight" >}}
 
 Save the configuration file (`[esc][:wq][enter]`), source it (`source config.env`) and then start the server (`node index.js`).
 

@@ -22,11 +22,11 @@ From the [Google Cloud Console](https://console.cloud.google.com/apis/credential
 
 Click **Create Credentials** and choose **OAuth client ID**.
 
-{{< figure src="oauth-client-id.png" >}}
+{{< figure src="oauth-client-id.png" alt="Google Cloud Platform Credentials page with the Create credentials menu and the OAuth client ID option" >}}
 
 Choose **Web application** for the **Application type**.
 
-{{< figure src="web-app.png" >}}
+{{< figure src="web-app.png" alt="Google Cloud Platform Create OAuth client ID page with Web application selected as the application type" >}}
 
 Give the Application a **Name** of your choosing, and enter the **Redirect URI** of your {{% tts %}} deployment. The URI is the [Server Address]({{< ref "/concepts/server-addresses" >}}) followed by the OAuth endpoint, which includes an **Authentication Provider ID** of your choosing:
 
@@ -42,7 +42,7 @@ For example, with a tenant `tenant1` in the `eu1` cluster and an Authentication 
 https://tenant1.eu1.cloud.thethings.industries/oauth/login/goog/callback
 ```
 
-{{< figure src="callback.png" >}}
+{{< figure src="callback.png" alt="Google Cloud Platform OAuth client ID form with the authorized redirect URI for The Things Stack" >}}
 
 Click **Create** and you will be presented with the **Client ID** and **Client Secret** for this provider.
 

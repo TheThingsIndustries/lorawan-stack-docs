@@ -21,7 +21,7 @@ This reference contains information about how to do delete, restore and purge en
 
 Go to the **General Settings** tab of the entity and click **Delete**.
 
-{{< figure src="delete.png" >}}
+{{< figure src="delete.png" alt="Confirm deletion dialog for an application in The Things Stack Console" >}}
 
 If you are an administrator, you will also be presented with the option to purge the entity. For implications of purging entities and other details, check [sections below]({{< relref "#what-happens-to-purged-entities" >}}).
 
@@ -90,7 +90,7 @@ Note again that restoring entities is not possible if they have been purged.
 
 To restore an entity using the Console, navigate to the **Deleted (Admin)** tab for the entity of interest, and click **Restore**.
 
-{{< figure src="restore-app.png" >}}
+{{< figure src="restore-app.png" alt="List of deleted applications in the Admin view of The Things Stack Console, with Restore and Purge buttons" >}}
 
 {{< /tabs/tab >}}
 
@@ -132,7 +132,7 @@ There are two ways to purge an entity:
 
 - Go to the **General Settings** tab of the entity and click **Delete**. If you are an administrator, you will be presented with the option to purge the entity. Check the **Also release entity IDs** box to also purge the entity.
 
-{{< figure src="purge.png" >}}
+{{< figure src="purge.png" alt="Confirm deletion dialog for a gateway with the admin-only option to also release the entity IDs (purge) checked" >}}
 
 - After soft-deleting the entity with **Delete**, navigate to the **Deleted (Admin)** panel (the same panel where you restore entities), find your deleted entity and click **Purge**.
 

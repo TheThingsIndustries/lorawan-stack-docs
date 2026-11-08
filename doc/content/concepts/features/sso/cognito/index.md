@@ -16,43 +16,43 @@ Configuring OpenID Connect with Amazon Cognito will allow single sign-on from an
 
 From the [Amazon Cognito Management Page](https://console.aws.amazon.com/cognito/), choose **Manage User Pools**.
 
-{{< figure src="manage-user-pools.png" >}}
+{{< figure src="manage-user-pools.png" alt="Amazon Cognito start page with the Manage User Pools button" >}}
 
 Click **Create a user pool** in the top right.
 
-{{< figure src="create-user-pool.png" >}}
+{{< figure src="create-user-pool.png" alt="Amazon Cognito Your User Pools page with the Create a user pool button" >}}
 
 Give the user pool a name of your choosing. You will not need this later, you may pick any name.
 
 Click **Review defaults**.
 
-{{< figure src="name.png" >}}
+{{< figure src="name.png" alt="Create a user pool in Amazon Cognito: the pool name set to The Things Stack" >}}
 
 Leave all default settings, but click **Add app client**.
 
-{{< figure src="add-app-client.png" >}}
+{{< figure src="add-app-client.png" alt="Amazon Cognito user pool review page with the Add app client link" >}}
 
 Click **Add an app client**.
 
-{{< figure src="add-app-client-2.png" >}}
+{{< figure src="add-app-client-2.png" alt="Amazon Cognito app clients page with the Add an app client link" >}}
 
 Give the App Client a name and leave all settings default. Click **Create app client**.
 
-{{< figure src="add-app-client-3.png" >}}
+{{< figure src="add-app-client-3.png" alt="Amazon Cognito app client settings: token expiration, Generate client secret and auth flows configuration" >}}
 
 You will be taken back to the App Clients screen, where you should see the App Client you just added. Click **Return to pool details**.
 
-{{< figure src= "app-clients.png" >}}
+{{< figure src= "app-clients.png" alt="Amazon Cognito App Clients page listing the newly added app client" >}}
 
 Verify that the App Client you added is listed in the pool. Click **Create pool**.
 
-{{< figure src= "create-pool.png" >}}
+{{< figure src= "create-pool.png" alt="Amazon Cognito user pool review page with the Create pool button" >}}
 
 In the left hand menu, choose **App client settings**.
 
 Ensure that **Cognito User Pool** is checked for **Enabled Identity Providers**.
 
-{{< figure src="app-client-settings.png" >}}
+{{< figure src="app-client-settings.png" alt="Amazon Cognito app client settings with the identity providers, callback URL and allowed OAuth flows and scopes" >}}
 
 For the **Callback URL**, enter the **OAuth Callback URL** of your {{% tts %}} deployment. This is the [Server Address]({{< ref "/concepts/server-addresses" >}}) followed by the OAuth endpoint, which includes an **Authentication Provider ID** of your choosing:
 
@@ -76,7 +76,7 @@ Additionally, ensure the following **Allowed OAuth Scopes** are checked:
 
 Finally, click **Save changes**.
 
-{{< figure src="callback.png" >}}
+{{< figure src="callback.png" alt="Amazon Cognito app client settings with the callback URL for The Things Stack and the allowed OAuth flows and scopes" >}}
 
 Choose **Domain name** from the left hand menu.
 
@@ -88,11 +88,11 @@ Failing to configure a domain name will cause login to fail.
 
 Click **Save changes**.
 
-{{< figure src="domain.png" >}}
+{{< figure src="domain.png" alt="Amazon Cognito domain name settings with a domain prefix entered" >}}
 
 Finally, go to **App clients** and choose your **App Client** to view your Client ID and Client Secret.
 
-{{< figure src="secret.png" >}}
+{{< figure src="secret.png" alt="Amazon Cognito app client details showing the app client ID and app client secret" >}}
 
 Proceed to [Configure {{% tts %}} for SSO]({{< relref "../sso#configure-the-things-stack-for-sso" >}}) using the following information:
 

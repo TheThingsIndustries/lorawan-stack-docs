@@ -29,19 +29,19 @@ First step is to find out the board address.
 
 Before plugging in the board, open up a terminal and type `ls /dev/tty.*`. You should see a couple of addresses show up.
 
-{{< figure src="cmd-ls.png" class="plain    ">}}
+{{< figure src="cmd-ls.png" alt="macOS terminal listing serial devices with ls /dev/tty.* before the device is connected" class="plain    ">}}
 
 Then plug in the EVK and turn it on. When you try the command again you should see a new address show up.
 
-{{< figure src="cmd-ls-dev.png" class="plain">}}
+{{< figure src="cmd-ls-dev.png" alt="macOS terminal listing serial devices again, now including the connected device as /dev/tty.usbserial-130" class="plain">}}
 
 Now use the newly discovered board address to connect to the board using the `screen <DEVICE-ADDRESS> 115200` command.
 
-{{< figure src="cmd-screen.png" class="plain">}}
+{{< figure src="cmd-screen.png" alt="macOS terminal running screen /dev/tty.usbserial-130 115200 to open the serial console" class="plain">}}
 
 Once you do that, you should see some text show up in your terminal. Now press the reset button on the EVK to have the device show its provisioning information. Select and copy the **AppKey**, **DevEUI** and **AppEUI** and store them somewhere.
 
-{{< figure src="prov-info.png" class="plain">}}
+{{< figure src="prov-info.png" alt="Serial console output of the Quectel KG200Z showing its LoRaWAN keys, DevEUI, AppEUI and DevAddr" class="plain">}}
 
 Using these values we can now proceed with onboarding the device to {{% tts %}}.
 
@@ -53,15 +53,15 @@ For this tutorial we use [SimpleCom](https://github.com/YaSuenag/SimpleCom/relea
 
 When you run the tool, you will see the following screen. If you select the COM dropdown, you will probably see a couple of COM ports.
 
-{{< figure src="win-com.png" class="plain    ">}}
+{{< figure src="win-com.png" alt="Windows serial connection setup dialog listing the available COM ports before the device is connected" class="plain    ">}}
 
 Now close the program (using the **Cancel** button), then plug in the EVK and turn it on. Run the program again, and when you select the dropdown again you should see a new COM port show up. Select that one and make sure the **Baud Rate** is set at `115200`.
 
-{{< figure src="win-com-dev.png" class="plain">}}
+{{< figure src="win-com-dev.png" alt="Windows serial connection setup dialog listing COM ports, with the new device on COM7 selected" class="plain">}}
 
 Once that is done, hit **Connect** and you should see some text show up in the terminal. Now press the reset button on the EVK to have the device show its provisioning information. Select and copy the **AppKey**, **DevEUI** and **AppEUI** and store them somewhere.
 
-{{< figure src="win-com-prov.png" class="plain">}}
+{{< figure src="win-com-prov.png" alt="Windows serial console showing the Quectel KG200Z provisioning information with its keys, DevEUI and AppEUI" class="plain">}}
 
 Using these values we can now proceed with onboarding the device to {{% tts %}}.
 

@@ -5,7 +5,7 @@ weight:
 aliases: [/devices/models/heltec-ab01]
 ---
 
-{{< figure src="ab01.png" alt="" class="float plain" width="80%">}}
+{{< figure src="ab01.png" alt="Heltec CubeCell AB01 development board" class="float plain" width="80%">}}
 
 The [Heltec HTCC-AB01 (V2) ](https://heltec.org/project/htcc-ab01-v2/) is a development board based on the ASR6052, which has an integrated PSoC® 4000 series MCU (ARM® Cortex® M0+ Core) and SX1262 transceiver. It features Arduino compatibility, an ultra low power design and an onboard SH1.25 for lithium batteries or solar panels.
 
@@ -21,15 +21,15 @@ Download the latest release of the [Arduino Software (IDE)](https://www.arduino.
 
 Open Arduino IDE, and click **File**->**Preferences**->**Settings** and click the button next to **Additional Boards Manager URLs**.
 
-{{< figure src="boards-manager.png" alt="">}}
+{{< figure src="boards-manager.png" alt="Arduino IDE Preferences window with the Additional boards manager URLs button highlighted">}}
 
 In a new line, enter `https://github.com/HelTecAutomation/CubeCell-Arduino/releases/download/V1.5.0/package_CubeCell_index.json` and click **OK**.
 
-{{< figure src="board-url.png" alt="">}}
+{{< figure src="board-url.png" alt="Additional Boards Manager URLs dialog with the Heltec CubeCell board support URL entered">}}
 
 Click the **second icon in the left-hand menu** or select **Tools**->**Board**->**Boards Manager**, then search **Heltec** in the search field, select the latest releases and click **Install**.
 
-{{< figure src="install-board.png" alt="">}}
+{{< figure src="install-board.png" alt="Arduino IDE Boards Manager showing the Heltec CubeCell Development Framework with the Install button highlighted">}}
 
 ## Connecting the Device
 
@@ -37,7 +37,7 @@ Connect the board to your computer with a high quality USB-C cable.
 
 Click the **Select Board** drop down (or go to the **Tools** menu) and select the right COM port and board.
 
-{{< figure src="ab01-select.png" alt="">}}
+{{< figure src="ab01-select.png" alt="Arduino IDE Select Other Board and Port dialog with CubeCell-Board-V2 and a USB serial port selected">}}
 
 Then go to the **Tools** menu and you will see a couple of options. Let's run through the important ones that you have to check:
 
@@ -52,7 +52,7 @@ Then go to **File -> Examples** and you should see a separate section for the He
 
 Once the file is open, upload it and when it is done uploading, open the Serial Monitor. Set the baud rate to `115200`. If no information shows up you might need to press the **Reset** button on the Heltec board itself.
 
-{{< figure src="ab01-serial.png" alt="">}}
+{{< figure src="ab01-serial.png" alt="Arduino IDE Serial Monitor showing the CubeCell AB01 LoRaWAN settings, including DevEUI, AppEUI and AppKey">}}
 
 From the information that shows up, copy the **DevEui**, as you will need it in the next step.
 
