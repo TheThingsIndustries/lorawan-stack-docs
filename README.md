@@ -37,7 +37,8 @@ external search service. The development server doesn't build the index; run
 This needs the Node.js dependencies (`make js.deps`).
 
 Search events are pushed to the Google Tag Manager `dataLayer` as `docs_search`,
-`docs_search_no_results` and `docs_search_click`.
+`docs_search_no_results` and `docs_search_click`. The 404 page pushes `docs_404`
+(with the broken path and referrer).
 
 ## Configuration
 

@@ -1,8 +1,23 @@
 {{ define "main"}}
   <div class="container">
-    <div class="section has-text-centered">
-      <h1 class="title is-size-3 has-vertical-space">Whoops! This page doesn't exist.</h1>
-      <a href="{{ "" | relURL }}">Go to homepage</a>
+    <div class="section notfound">
+      <h1 class="title is-size-3 has-vertical-space">This page doesn't exist</h1>
+      <p class="notfound__lead">The page may have moved, or the link you followed may be out of date.</p>
+
+      {{- if site.Params.search.enabled }}
+      <div class="notfound__suggestions" id="notfound" data-pagefind="{{ "pagefind/pagefind.js" | relURL }}" data-base="{{ "" | relURL }}" hidden>
+        <h2 class="notfound__title">Maybe you were looking for</h2>
+        <ul class="notfound__list" id="notfound-results"></ul>
+      </div>
+      <p class="notfound__actions">
+        <button type="button" class="button is-primary" data-search-open>Search the documentation</button>
+        <a class="button is-light" href="{{ "" | relURL }}">Go to the documentation home</a>
+      </p>
+      {{- else }}
+      <p class="notfound__actions"><a class="button is-primary" href="{{ "" | relURL }}">Go to the documentation home</a></p>
+      {{- end }}
     </div>
   </div>
+  {{- $script := resources.Get "js/not-found.js" | js.Build (dict "minify" hugo.IsProduction) | resources.Fingerprint }}
+  <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous" defer></script>
 {{ end }}
