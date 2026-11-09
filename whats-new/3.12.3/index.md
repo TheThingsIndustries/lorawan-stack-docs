@@ -1,0 +1,23 @@
+# 3.12.3
+
+> Added Publish Snapcraft snaps tti-lw-stack and tti-lw-cli Changed Optimized storage of recent application uplinks in Application Server. Fixed Validation of …
+
+Source: https://www.thethingsindustries.com/docs/whats-new/3.12.3/
+
+
+### Added
+
+- Publish Snapcraft snaps `tti-lw-stack` and `tti-lw-cli`
+
+### Changed
+
+- Optimized storage of recent application uplinks in Application Server.
+
+### Fixed
+
+- Validation of OAuth token exchange requests from the CLI.
+- Validation of join-request types when using the Crypto Server backend.
+- Application Server session recovery functionality for imported devices.
+- Fetching AppSKey when the session is rebuilt but the identifier did not change.
+- Brew artifacts are now in a publicly accessible location.
+

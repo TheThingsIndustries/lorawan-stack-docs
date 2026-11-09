@@ -1,0 +1,60 @@
+# Connect Multitech Conduit with UDP Packet Forwarder
+
+> This section contains instructions for connecting the Multitech Conduit AEP to The Things Stack using the Semtech UDP Packet Forwarder.
+
+Source: https://www.thethingsindustries.com/docs/hardware/gateways/models/multitechconduit/udp/
+
+
+This section contains instructions for connecting the Multitech Conduit AEP to The Things Stack using the [Semtech UDP Packet Forwarder](https://www.thethingsindustries.com/docs/hardware/gateways/concepts/udp/).
+
+> **Note:** The UDP Packet Forwarder does not correctly handle unstable connectivity and has no security. It also does not support configuration of frequency plans from the Network Server. The Things Stack supports LoRa Basics™ Station, which solves all of these problems, so please [use that instead](https://www.thethingsindustries.com/docs/hardware/gateways/models/multitechconduit/lbs/) if possible.
+
+
+## Configuration
+
+To configure the gateway for the correct channel plans, you need a `global_conf.json`.
+
+The Gateway Configuration Server can be used to retrieve a proper `global_conf.json` configuration file for your gateway. Follow instructions [here](https://www.thethingsindustries.com/docs/hardware/gateways/concepts/udp/).
+
+Once the `global_conf.json` file is generated, you will need to add this to your gateway. In a web browser, open the gateway’s configuration page by navigating to its IP Address obtained from the network it is connected to. Once logged in, you can configure the gateway to connect to The Things Stack by following the steps below:
+
+Click on **LoRaWAN<sup>®</sup>** in the menu on the left. It opens the Gateway&apos;s configuration page.
+
+![MultiTech Conduit gateway home page](../main-menu.png)
+
+
+Under **Network Settings**, select the mode as &quot;Packet Forwarder&quot;.
+
+![MultiTech Conduit packet forwarder settings](../packet-forwarder-menu.png)
+
+
+On the right side of the &quot;LoRa Packet Forwarder Configuration&quot; section, you can find &quot;Manual Configuration &quot;. Click on it to setup the channel plan manually.
+
+![Switch to manual configuration mode](../manual-config.png)
+
+
+The above step will lead you to the gateway configuration editor tagged as &quot;Config&quot;.
+
+![Manual Configuration](../manual-config-2.png)
+
+
+Copy the contents of the `global_conf.json` file downloaded earlier and paste them in the gateway console configuration editor.
+
+Once pasted, modify the value of `clksrc` to set it to `0`.
+
+Click on **Submit** to save the configuration.
+
+Now, click on **Save and Restart** from the menu.
+
+![Saving the Network Interfaces Configuration](../save-and-restart.png)
+
+
+You will be prompted to confirm the restart. Choose **OK** to proceed.
+
+![Configuration restart prompt](../confirm.png)
+
+
+This will apply the custom settings and reboot the gateway. If all the steps have been followed correctly, your gateway will now connect to The Things Stack.
+
+To know more about other features of the MultiTech Conduit gateway, you can refer to the mPower Edge AEP software guide on the [Multitech Website](http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/).
+

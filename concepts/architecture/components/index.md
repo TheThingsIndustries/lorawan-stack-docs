@@ -1,0 +1,26 @@
+# Components
+
+> This section contains detailed descriptions of each of The Things Stack components.
+
+Source: https://www.thethingsindustries.com/docs/concepts/architecture/components/
+
+
+This section contains detailed descriptions of each of The Things Stack components.
+
+
+## Pages in this section
+
+- [Alert Routing Server](https://www.thethingsindustries.com/docs/concepts/architecture/components/alert-routing-server/index.md): The Alert Routing Server dispatches alerts about network components in The Things Stack. Alert Dispatch The Alert Routing Server deals only with the dispatching …
+- [Application Server](https://www.thethingsindustries.com/docs/concepts/architecture/components/application-server/index.md): The Application Server handles the LoRaWAN® application layer, including uplink data decryption and decoding, downlink queuing and downlink data encoding and …
+- [Console](https://www.thethingsindustries.com/docs/concepts/architecture/components/console/index.md): The Console is the management application of The Things Stack for LoRaWAN. It is a web application which can be used to register applications, end devices or …
+- [Device Claiming Server](https://www.thethingsindustries.com/docs/concepts/architecture/components/device-claiming-server/index.md): The Device Claiming Server allows users to claim devices and gateways in a secure manner.
+- [Device Template Converter](https://www.thethingsindustries.com/docs/concepts/architecture/components/device-template-converter/index.md): The Device Template Converter converts data to device templates for migrating networks and importing vendor-specific data.
+- [Gateway Configuration Server](https://www.thethingsindustries.com/docs/concepts/architecture/components/gateway-configuration-server/index.md): The Gateway Configuration Server (GCS) generates configuration files for UDP gateways and manages gateway configuration and firmware updates for Basic Station …
+- [Gateway Server](https://www.thethingsindustries.com/docs/concepts/architecture/components/gateway-server/index.md): The Gateway Server maintains connections with gateways supporting the Basic Station, UDP, MQTT and gRPC protocols. It forwards uplink traffic to Network Servers …
+- [Identity Server](https://www.thethingsindustries.com/docs/concepts/architecture/components/identity-server/index.md): The Identity Server provides the registries that store entities such as applications with their end devices, gateways, users, organizations, OAuth clients and …
+- [Join Server](https://www.thethingsindustries.com/docs/concepts/architecture/components/join-server/index.md): The Join Server handles the LoRaWAN® join flow, including Network and Application Server authentication and session key generation.
+- [Network Operations Center](https://www.thethingsindustries.com/docs/concepts/architecture/components/network-operations-center/index.md): The Network Operations Center provides aggregated insight in a network operated with The Things Stack. The Network Operations Center stores events from The …
+- [Network Server](https://www.thethingsindustries.com/docs/concepts/architecture/components/network-server/index.md): The Network Server handles the LoRaWAN® network layer, including MAC commands, regional parameters and adaptive data rate (ADR).
+- [Packet Broker Agent](https://www.thethingsindustries.com/docs/concepts/architecture/components/packet-broker-agent/index.md): Packet Broker Agent connects The Things Stack with Packet Broker for exchanging traffic with other networks.
+- [Tenant Billing Server](https://www.thethingsindustries.com/docs/concepts/architecture/components/tenant-billing-server/index.md): The Tenant Billing Server is an enterprise component that manages the creation, suspension and billing of tenants using different payment backends. It requires …
+

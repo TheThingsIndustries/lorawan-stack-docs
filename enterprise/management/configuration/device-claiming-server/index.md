@@ -1,0 +1,20 @@
+# Device Claiming Server Options
+
+> End Device Claiming Options dcs.edcs.net-id: NetID of the Network Server to configure when claiming dcs.edcs.ns-id: NSID of the Network Server to configure when …
+
+Source: https://www.thethingsindustries.com/docs/enterprise/management/configuration/device-claiming-server/
+
+
+## End Device Claiming Options
+
+- `dcs.edcs.net-id`: NetID of the Network Server to configure when claiming
+- `dcs.edcs.ns-id`: NSID of the Network Server to configure when claiming
+- `dcs.edcs.as-id`: AS-ID of the Application Server to configure when claiming
+- `dcs.edcs.source`: Source of the file containing Join Server settings (directory, url, blob)
+- `dcs.edcs.directory`: OS filesystem directory, which contains the config.yml and the client-specific files
+- `dcs.edcs.url`: URL, which contains Join Server client configuration
+- `dcs.edcs.blob.bucket`: Blob bucket to use for the Join Server client configuration
+- `dcs.edcs.blob.path`: Blob path to use for the Join Server client configuration
+
+See [Device Claiming Repository](https://www.thethingsindustries.com/docs/enterprise/join-server/device-claiming-configuration/) to learn how to configure the client configuration.
+

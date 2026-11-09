@@ -1,0 +1,41 @@
+# Connect Tektelic Kona Micro with UDP Packet Forwarder
+
+> This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN® Gateway to The Things Stack using the Semtech UDP Packet Forwarder.
+
+Source: https://www.thethingsindustries.com/docs/hardware/gateways/models/tektelickonamicro/udp/
+
+
+This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN® Gateway to The Things Stack using the [Semtech UDP Packet Forwarder](https://www.thethingsindustries.com/docs/hardware/gateways/concepts/udp/).
+
+## Configure the Packet Forwarder
+
+Now you can edit the gateway configuration file.
+
+```bash
+vi /etc/default/config.json
+```
+
+Press the `i` key on your keyboard to start insert mode. Once finished editing, press `ESC` and enter `:wq` to write the file and quit.
+
+Edit the server parameters:
+
+- **server_address**: Address of your The Things Stack deployment. See [Server Addresses](https://www.thethingsindustries.com/docs/concepts/server-addresses/).
+- **serv_port_up**: UDP upstream port of the Gateway Server, typically 1700.
+- **serv_port_down**: UDP downstream port of the Gateway Server, typically 1700.
+
+Save the configuration and restart the packet forwarder.
+
+```bash
+/etc/init.d/pkt_fwd restart
+```
+
+If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds.
+
+## Troubleshooting
+
+If the gateway does not connect to The Things Stack after a few minutes, disconnect and reconnect the power supply to power-cycle the gateway. Packet forwarder logs can be observed by SSH-ing into the gateway and running:
+
+```bash
+tail -f /var/log/pkt_fwd.log
+```
+

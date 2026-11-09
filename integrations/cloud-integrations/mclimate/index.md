@@ -1,0 +1,33 @@
+# MClimate
+
+> MClimate is an IoT company which designs and develops smart home and automation solutions with a focus on sustainability, comfort, security and energy savings. …
+
+Source: https://www.thethingsindustries.com/docs/integrations/cloud-integrations/mclimate/
+
+
+[MClimate](https://mclimate.eu/) is an IoT company which designs and develops smart home and automation solutions with a focus on sustainability, comfort, security and energy savings. This IoT platform can be used with a wide range of MClimate IoT devices that turn home and office appliances into smart ones, and help you control your electricity usage. 
+
+See [MClimate LoRaWAN® Devices documentation page](https://docs.mclimate.eu/mclimate-lorawan-devices/) for detailed documentation on using MClimate with LoRaWAN.
+
+## Prerequisites
+
+1. You need to own an MClimate device, such as [MClimate Vicki LoRaWAN](https://docs.mclimate.eu/mclimate-lorawan-devices/devices/mclimate-vicki-lorawan), and have it connected to The Things Stack.
+2. [MClimate app](https://mclimate.eu/pages/app) installed with a user account.
+
+The [MClimate devices documentation](https://docs.mclimate.eu/mclimate-lorawan-devices#devices) contains extended manuals and datasheets for operating these devices, but also details on connecting each device to The Things Stack, uplink decoder and downlink encoder functions, etc.
+
+## Configure The Things Stack
+
+To complete the Webhook integration between The Things Stack and your MClimate app, you can use the **MClimate** [Webhook template](https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/). Navigate to **Integrations &#8594; Webhooks** and choose the MClimate template.
+
+To integrate, you only need to fill in the **Webhook ID** with an arbitrary value.
+
+![MClimate Webhook template](https://www.thethingsindustries.com/docs/integrations/cloud-integrations/mclimate/mclimate-template.png)
+
+
+To see the values of all parameters of the MClimate integration, click on the integration after you created it with the Webhook template.
+
+You can now enjoy your smart surrounding at a lower energy cost!
+
+For more details on setting up a Webhook integration with MClimate using The Things Stack Custom webhook, see this [link](https://docs.mclimate.eu/mclimate-lorawan-devices/integrations/the-things-industries).
+

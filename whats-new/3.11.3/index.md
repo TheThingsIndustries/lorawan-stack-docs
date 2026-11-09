@@ -1,0 +1,28 @@
+# 3.11.3
+
+> Added sentry.environment configuration option to set the environment tag on Sentry reports. TR005 QR code format, with ID tr005. LoRa Cloud Geolocation Services …
+
+Source: https://www.thethingsindustries.com/docs/whats-new/3.11.3/
+
+
+### Added
+
+- `sentry.environment` configuration option to set the `environment` tag on Sentry reports.
+- TR005 QR code format, with ID `tr005`.
+- LoRa Cloud Geolocation Services support for TOA/RSSI end device geolocation.
+
+### Changed
+
+- Device Claiming Server can now contact Join Servers outside of the cluster: the source end device's registered Join Server address is dialed.
+- Default value of `gs.udp.addr-change-block` is now 0, which disables the IP firewall for UDP traffic. Deployments that need to enforce the IP check should set a value greater than 0. Note that the new default value makes UDP connections less secure.
+- Prevent flooding logs with "Packet Filtered" messages when UDP gateways exceed the maximum rate limit. Only one message per minute will be printed for each gateway.
+
+### Deprecated
+
+- TR005 Draft 2 and 3 QR code formats. Use the final version of the technical recommendation, with ID `tr005`.
+
+### Fixed
+
+- Downlink queue operations on ABP devices not working under specific circumstances.
+- NwkKey handling for end devices in the Console.
+

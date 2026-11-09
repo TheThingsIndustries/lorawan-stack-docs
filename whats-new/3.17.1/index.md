@@ -1,0 +1,15 @@
+# 3.17.1
+
+> Changed Gateways are removed from the Packet Broker Mapper API when unsetting the location public setting. This is to remove gateways from the map. Previously, …
+
+Source: https://www.thethingsindustries.com/docs/whats-new/3.17.1/
+
+
+### Changed
+
+- Gateways are removed from the Packet Broker Mapper API when unsetting the location public setting. This is to remove gateways from the map. Previously, the location was still set, but it did not get updated.
+
+### Fixed
+
+- Rate limiting of cluster authenticated RPCs.
+- CLI panic when setting end devices.

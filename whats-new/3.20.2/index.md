@@ -1,0 +1,18 @@
+# 3.20.2
+
+> Added More fields were added to the csv end-device migration procedure. The details on which fields were added can be found here. Authorization management in …
+
+Source: https://www.thethingsindustries.com/docs/whats-new/3.20.2/
+
+
+### Added
+
+- More fields were added to the csv end-device migration procedure. The details on which fields were added can be found [here](https://www.thethingsindustries.com/docs/hardware/devices/adding-devices/adding-devices-in-bulk/device-csv/).
+- Authorization management in the Account app.
+- Gateway remote address to gateway connection statistics.
+
+### Fixed
+
+- Encoding of DevAddr, EUI and similar fields in `text/event-stream` responses.
+- GPS time leap second calculations taking a new leap second into consideration for 6th of July 2022.
+

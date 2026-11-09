@@ -1,0 +1,5449 @@
+# Organization APIs
+
+> List of Organization APIs.
+
+Source: https://www.thethingsindustries.com/docs/api/reference/grpc/organization/
+
+
+List of Organization APIs.
+
+## The `OrganizationRegistry` service
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationRegistry.Create</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Create a new organization. This also sets the given user as
+first collaborator with all possible rights.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:CreateOrganizationRequest"><code>CreateOrganizationRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:Organization"><code>Organization</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/users/{collaborator.user_ids.user_id}/organizations</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationRegistry.Get</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Get the organization with the given identifiers, selecting the fields specified
+in the field mask.
+More or less fields may be returned, depending on the rights of the caller.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetOrganizationRequest"><code>GetOrganizationRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:Organization"><code>Organization</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/organizations/{organization_ids.organization_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationRegistry.List</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        List organizations where the given user or organization is a direct collaborator.
+If no user or organization is given, this returns the organizations the caller
+has access to.
+Similar to Get, this selects the fields given by the field mask.
+More or less fields may be returned, depending on the rights of the caller.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ListOrganizationsRequest"><code>ListOrganizationsRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:Organizations"><code>Organizations</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/organizations</code></p>
+        <p><code>GET</code> <code>/api/v3/users/{collaborator.user_ids.user_id}/organizations</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationRegistry.Update</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Update the organization, changing the fields specified by the field mask to the provided values.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:UpdateOrganizationRequest"><code>UpdateOrganizationRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:Organization"><code>Organization</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>PUT</code> <code>/api/v3/organizations/{organization.ids.organization_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationRegistry.Delete</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Delete the organization. This may not release the organization ID for reuse.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:OrganizationIdentifiers"><code>OrganizationIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/organizations/{organization_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationRegistry.Restore</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        <p>Restore a recently deleted organization.</p>
+<p>Deployment configuration may specify if, and for how long after deletion,
+entities can be restored.</p>
+
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:OrganizationIdentifiers"><code>OrganizationIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/organizations/{organization_id}/restore</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationRegistry.Purge</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Purge the organization. This will release the organization ID for reuse.
+The user is responsible for clearing data from any (external) integrations
+that may store and expose data by user or organization ID.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:OrganizationIdentifiers"><code>OrganizationIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/organizations/{organization_id}/purge</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+## The `EntityRegistrySearch` service
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EntityRegistrySearch.SearchOrganizations</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Search for organizations that match the conditions specified in the request.
+Non-admin users will only match organizations that they have rights on.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:SearchOrganizationsRequest"><code>SearchOrganizationsRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:Organizations"><code>Organizations</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/search/organizations</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+## The `OrganizationAccess` service
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationAccess.ListRights</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        List the rights the caller has on this organization.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:OrganizationIdentifiers"><code>OrganizationIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:Rights"><code>Rights</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/organizations/{organization_id}/rights</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationAccess.CreateAPIKey</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Create an API key scoped to this organization.
+Organization API keys can give access to the organization itself, as well as
+any application, gateway and OAuth client this organization is a collaborator of.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:CreateOrganizationAPIKeyRequest"><code>CreateOrganizationAPIKeyRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:APIKey"><code>APIKey</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/organizations/{organization_ids.organization_id}/api-keys</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationAccess.DeleteAPIKey</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Delete a single API key of this organization.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:DeleteOrganizationAPIKeyRequest"><code>DeleteOrganizationAPIKeyRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/organizations/{organization_ids.organization_id}/api-keys/{key_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationAccess.ListAPIKeys</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        List the API keys for this organization.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ListOrganizationAPIKeysRequest"><code>ListOrganizationAPIKeysRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:APIKeys"><code>APIKeys</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/organizations/{organization_ids.organization_id}/api-keys</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationAccess.GetAPIKey</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Get a single API key of this organization.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetOrganizationAPIKeyRequest"><code>GetOrganizationAPIKeyRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:APIKey"><code>APIKey</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/organizations/{organization_ids.organization_id}/api-keys/{key_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationAccess.UpdateAPIKey</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Update the rights of an API key of the organization.
+This method can also be used to delete the API key, by giving it no rights.
+The caller is required to have all assigned or/and removed rights.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:UpdateOrganizationAPIKeyRequest"><code>UpdateOrganizationAPIKeyRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:APIKey"><code>APIKey</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>PUT</code> <code>/api/v3/organizations/{organization_ids.organization_id}/api-keys/{api_key.id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationAccess.GetCollaborator</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Get the rights of a collaborator (member) of the organization.
+Pseudo-rights in the response (such as the &ldquo;_ALL&rdquo; right) are not expanded.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetOrganizationCollaboratorRequest"><code>GetOrganizationCollaboratorRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GetCollaboratorResponse"><code>GetCollaboratorResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code></code> <code>/api/v3</code></p>
+        <p><code>GET</code> <code>/api/v3/organizations/{organization_ids.organization_id}/collaborator/user/{collaborator.user_ids.user_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationAccess.DeleteCollaborator</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        DeleteCollaborator removes a collaborator from an organization.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:DeleteOrganizationCollaboratorRequest"><code>DeleteOrganizationCollaboratorRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/organizations/{organization_ids.organization_id}/collaborators/user/{collaborator_ids.user_ids.user_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationAccess.SetCollaborator</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Set the rights of a collaborator (member) on the organization.
+Organization collaborators can get access to the organization itself, as well as
+any application, gateway and OAuth client this organization is a collaborator of.
+This method can also be used to delete the collaborator, by giving them no rights.
+The caller is required to have all assigned or/and removed rights.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:SetOrganizationCollaboratorRequest"><code>SetOrganizationCollaboratorRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>PUT</code> <code>/api/v3/organizations/{organization_ids.organization_id}/collaborators</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationAccess.ListCollaborators</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        List the collaborators on this organization.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ListOrganizationCollaboratorsRequest"><code>ListOrganizationCollaboratorsRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:Collaborators"><code>Collaborators</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/organizations/{organization_ids.organization_id}/collaborators</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+## Messages
+
+
+<h3 id="message:APIKey">Message <code>APIKey</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "id": "",
+  "key": "",
+  "name": "",
+  "rights": [],
+  "created_at": "0001-01-01T00:00:00Z",
+  "updated_at": "0001-01-01T00:00:00Z",
+  "expires_at": "0001-01-01T00:00:00Z",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Immutable and unique public identifier for the API key.
+Generated by the Access Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>key</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Immutable and unique secret value of the API key.
+Generated by the Access Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>name</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>User-defined (friendly) name for the API key.</p>
+          <p><code>max_len</code>: <code>50</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rights</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#enum:Right">
+  
+  <code>
+  
+  Right
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Rights that are granted to this API key.</p>
+            <p><code>defined_only</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>created_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>updated_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>expires_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>gt_now</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:APIKeys">Message <code>APIKeys</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "api_keys": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>api_keys</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:APIKey">
+  
+  <code>
+    
+    APIKey
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:Collaborator">Message <code>Collaborator</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "ids": {},
+  "rights": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rights</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#enum:Right">
+  
+  <code>
+  
+  Right
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+            <p><code>defined_only</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:Collaborators">Message <code>Collaborators</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "collaborators": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>collaborators</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:Collaborator">
+  
+  <code>
+    
+    Collaborator
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:ContactInfo">Message <code>ContactInfo</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "contact_type": "CONTACT_TYPE_OTHER",
+  "contact_method": "CONTACT_METHOD_OTHER",
+  "value": "",
+  "public": false,
+  "validated_at": "0001-01-01T00:00:00Z",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>contact_type</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#enum:ContactType">
+  
+  <code>
+  
+  ContactType
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>contact_method</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#enum:ContactMethod">
+  
+  <code>
+  
+  ContactMethod
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>value</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>256</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>public</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>validated_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:CreateOrganizationAPIKeyRequest">Message <code>CreateOrganizationAPIKeyRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_ids": {},
+  "name": "",
+  "rights": [],
+  "expires_at": "0001-01-01T00:00:00Z",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>name</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>50</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rights</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#enum:Right">
+  
+  <code>
+  
+  Right
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>min_items</code>: <code>1</code></p>
+          <p><code>unique</code></p>
+            <p><code>defined_only</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>expires_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>gt_now</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:CreateOrganizationRequest">Message <code>CreateOrganizationRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization": {},
+  "collaborator": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:Organization">
+  
+  <code>
+    
+    Organization
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>collaborator</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Collaborator to grant all rights on the newly created application.
+NOTE: It is currently not possible to have organizations collaborating on
+other organizations.</p>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:DeleteOrganizationAPIKeyRequest">Message <code>DeleteOrganizationAPIKeyRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_ids": {},
+  "key_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>key_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:DeleteOrganizationCollaboratorRequest">Message <code>DeleteOrganizationCollaboratorRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_ids": {},
+  "collaborator_ids": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>collaborator_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:GetCollaboratorResponse">Message <code>GetCollaboratorResponse</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "ids": {},
+  "rights": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rights</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#enum:Right">
+  
+  <code>
+  
+  Right
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:GetOrganizationAPIKeyRequest">Message <code>GetOrganizationAPIKeyRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_ids": {},
+  "key_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>key_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Unique public identifier for the API key.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:GetOrganizationCollaboratorRequest">Message <code>GetOrganizationCollaboratorRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_ids": {},
+  "collaborator": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>collaborator</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>NOTE: It is currently not possible to have organizations collaborating on other organizations.</p>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:GetOrganizationRequest">Message <code>GetOrganizationRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_ids": {},
+  "field_mask": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>field_mask</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    FieldMask
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The names of the organization fields that should be returned.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:ListOrganizationAPIKeysRequest">Message <code>ListOrganizationAPIKeysRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_ids": {},
+  "order": "",
+  "limit": 0,
+  "page": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>order</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Order the results by this field path.
+Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
+          <p><code>in</code>: <code>[ api_key_id -api_key_id name -name created_at -created_at expires_at -expires_at]</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>limit</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Limit the number of results per page.</p>
+          <p><code>lte</code>: <code>1000</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>page</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Page number for pagination. 0 is interpreted as 1.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:ListOrganizationCollaboratorsRequest">Message <code>ListOrganizationCollaboratorsRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_ids": {},
+  "limit": 0,
+  "page": 0,
+  "order": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>limit</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Limit the number of results per page.</p>
+          <p><code>lte</code>: <code>1000</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>page</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Page number for pagination. 0 is interpreted as 1.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>order</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Order the results by this field path (must be present in the field mask).
+Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
+          <p><code>in</code>: <code>[ id -id -rights rights]</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:ListOrganizationsRequest">Message <code>ListOrganizationsRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "collaborator": {},
+  "field_mask": {},
+  "order": "",
+  "limit": 0,
+  "page": 0,
+  "deleted": false,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>collaborator</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>By default we list all organizations the caller has rights on.
+Set the user to instead list the organizations
+where the user or organization is collaborator on.
+NOTE: It is currently not possible to have organizations collaborating on
+other organizations.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>field_mask</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    FieldMask
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The names of the organization fields that should be returned.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>order</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Order the results by this field path (must be present in the field mask).
+Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
+          <p><code>in</code>: <code>[ organization_id -organization_id name -name created_at -created_at]</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>limit</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Limit the number of results per page.</p>
+          <p><code>lte</code>: <code>1000</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>page</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Page number for pagination. 0 is interpreted as 1.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>deleted</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Only return recently deleted organizations.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:Organization">Message <code>Organization</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "ids": {},
+  "created_at": "0001-01-01T00:00:00Z",
+  "updated_at": "0001-01-01T00:00:00Z",
+  "deleted_at": "0001-01-01T00:00:00Z",
+  "name": "",
+  "description": "",
+  "attributes": {},
+  "contact_info": [],
+  "administrative_contact": {},
+  "technical_contact": {},
+  "application_limit": null,
+  "client_limit": null,
+  "gateway_limit": null,
+  "fanout_notifications": false,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The identifiers of the organization. These are public and can be seen by any authenticated user in the network.</p>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>created_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>When the organization was created. This information is public and can be seen by any authenticated user in the network.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>updated_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>When the organization was last updated. This information is public and can be seen by any authenticated user in the network.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>deleted_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>When the organization was deleted. This information is public and can be seen by any authenticated user in the network.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>name</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The name of the organization. This information is public and can be seen by any authenticated user in the network.</p>
+          <p><code>max_len</code>: <code>50</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>description</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>A description for the organization.</p>
+          <p><code>max_len</code>: <code>2000</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>attributes</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        map of 
+  <code>string</code>
+ to 
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Key-value attributes for this organization. Typically used for organizing organizations or for storing integration-specific data.</p>
+          <p><code>max_pairs</code>: <code>10</code></p>
+            <p><code>max_len</code> (key): <code>36</code></p>
+            <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+        
+            <p><code>max_len</code> (value): <code>200</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>contact_info</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:ContactInfo">
+  
+  <code>
+    
+    ContactInfo
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Contact information for this organization. Typically used to indicate who to contact with security/billing questions about the organization.
+This field is deprecated. Use administrative_contact and technical_contact instead.</p>
+          <p><code>max_items</code>: <code>10</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>administrative_contact</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>technical_contact</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_limit</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    UInt64Value
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The maximum number of applications of the organization.
+This field can only be modified by admins.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>client_limit</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    UInt64Value
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The maximum number of clients of the organization.
+This field can only be modified by admins.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_limit</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    UInt64Value
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The maximum number of gateways of the organization.
+This field can only be modified by admins.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>fanout_notifications</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Determines if a notification will be sent to the collaborators. If false it, notifications will be sent only to the
+administrative or technical contact.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:OrganizationIdentifiers">Message <code>OrganizationIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>This ID shares namespace with user IDs.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:OrganizationOrUserIdentifiers">Message <code>OrganizationOrUserIdentifiers</code></h3>
+<p>OrganizationOrUserIdentifiers contains either organization or user identifiers.</p>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>organization_ids</code>, <code>user_ids</code> can be set.</li>
+</ul>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_ids": {},
+  "user_ids": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:UserIdentifiers">
+  
+  <code>
+    
+    UserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:Organizations">Message <code>Organizations</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organizations": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organizations</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:Organization">
+  
+  <code>
+    
+    Organization
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:Rights">Message <code>Rights</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "rights": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rights</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#enum:Right">
+  
+  <code>
+  
+  Right
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+            <p><code>defined_only</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:SearchOrganizationsRequest">Message <code>SearchOrganizationsRequest</code></h3>
+<p>This message is used for finding organizations in the EntityRegistrySearch service.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "query": "",
+  "id_contains": "",
+  "name_contains": "",
+  "description_contains": "",
+  "attributes_contain": {},
+  "field_mask": {},
+  "order": "",
+  "limit": 0,
+  "page": 0,
+  "deleted": false,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>query</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Find organizations where the ID, name or description contains this substring.</p>
+          <p><code>max_len</code>: <code>50</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>id_contains</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Find organizations where the ID contains this substring.</p>
+          <p><code>max_len</code>: <code>50</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>name_contains</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Find organizations where the name contains this substring.</p>
+          <p><code>max_len</code>: <code>50</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>description_contains</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Find organizations where the description contains this substring.</p>
+          <p><code>max_len</code>: <code>50</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>attributes_contain</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        map of 
+  <code>string</code>
+ to 
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Find organizations where the given attributes contain these substrings.</p>
+          <p><code>max_pairs</code>: <code>10</code></p>
+            <p><code>max_len</code> (key): <code>36</code></p>
+            <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+        
+            <p><code>max_len</code> (value): <code>50</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>field_mask</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    FieldMask
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>order</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Order the results by this field path (must be present in the field mask).
+Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
+          <p><code>in</code>: <code>[ organization_id -organization_id name -name created_at -created_at]</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>limit</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Limit the number of results per page.</p>
+          <p><code>lte</code>: <code>1000</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>page</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Page number for pagination. 0 is interpreted as 1.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>deleted</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Only return recently deleted organizations.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:SetOrganizationCollaboratorRequest">Message <code>SetOrganizationCollaboratorRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_ids": {},
+  "collaborator": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>collaborator</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:Collaborator">
+  
+  <code>
+    
+    Collaborator
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:UpdateOrganizationAPIKeyRequest">Message <code>UpdateOrganizationAPIKeyRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_ids": {},
+  "api_key": {},
+  "field_mask": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>api_key</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:APIKey">
+  
+  <code>
+    
+    APIKey
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>field_mask</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    FieldMask
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The names of the api key fields that should be updated.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:UpdateOrganizationRequest">Message <code>UpdateOrganizationRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization": {},
+  "field_mask": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:Organization">
+  
+  <code>
+    
+    Organization
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>field_mask</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    FieldMask
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The names of the organization fields that should be updated.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h3 id="message:UserIdentifiers">Message <code>UserIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "user_id": "",
+  "email": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>This ID shares namespace with organization IDs.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){1,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>email</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Secondary identifier, which can only be used in specific requests.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+## Enums
+
+
+
+<h3 id="enum:ContactType">Enum <code>ContactType</code></h3>
+<table class="api">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>CONTACT_TYPE_OTHER</code></td>
+      <td><code>0</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>CONTACT_TYPE_ABUSE</code></td>
+      <td><code>1</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>CONTACT_TYPE_BILLING</code></td>
+      <td><code>2</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>CONTACT_TYPE_TECHNICAL</code></td>
+      <td><code>3</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<h3 id="enum:ContactMethod">Enum <code>ContactMethod</code></h3>
+<table class="api">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>CONTACT_METHOD_OTHER</code></td>
+      <td><code>0</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>CONTACT_METHOD_EMAIL</code></td>
+      <td><code>1</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>CONTACT_METHOD_PHONE</code></td>
+      <td><code>2</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<h3 id="enum:Right">Enum <code>Right</code></h3>
+<p>Right is the enum that defines all the different rights to do something in the network.</p>
+<table class="api">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>right_invalid</code></td>
+      <td><code>0</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_INFO</code></td>
+      <td><code>1</code></td>
+      <td> The right to view user information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_SETTINGS_BASIC</code></td>
+      <td><code>2</code></td>
+      <td> The right to edit basic user settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_LIST</code></td>
+      <td><code>87</code></td>
+      <td> The right to list users accounts.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_CREATE</code></td>
+      <td><code>88</code></td>
+      <td> The right to create an user account.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_SETTINGS_API_KEYS</code></td>
+      <td><code>3</code></td>
+      <td> The right to view and edit user API keys.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_DELETE</code></td>
+      <td><code>4</code></td>
+      <td> The right to delete user account.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_PURGE</code></td>
+      <td><code>66</code></td>
+      <td> The right to purge user account.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_AUTHORIZED_CLIENTS</code></td>
+      <td><code>5</code></td>
+      <td> The right to view and edit authorized OAuth clients of the user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_APPLICATIONS_LIST</code></td>
+      <td><code>6</code></td>
+      <td> The right to list applications the user is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_APPLICATIONS_CREATE</code></td>
+      <td><code>7</code></td>
+      <td> The right to create an application under the user account.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_GATEWAYS_LIST</code></td>
+      <td><code>8</code></td>
+      <td> The right to list gateways the user is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_GATEWAYS_CREATE</code></td>
+      <td><code>9</code></td>
+      <td> The right to create a gateway under the account of the user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_CLIENTS_LIST</code></td>
+      <td><code>10</code></td>
+      <td> The right to list OAuth clients the user is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_CLIENTS_CREATE</code></td>
+      <td><code>11</code></td>
+      <td> The right to create an OAuth client under the account of the user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_ORGANIZATIONS_LIST</code></td>
+      <td><code>12</code></td>
+      <td> The right to list organizations the user is a member of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_ORGANIZATIONS_CREATE</code></td>
+      <td><code>13</code></td>
+      <td> The right to create an organization under the user account.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_NOTIFICATIONS_READ</code></td>
+      <td><code>59</code></td>
+      <td> The right to read notifications sent to the user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_ALL</code></td>
+      <td><code>14</code></td>
+      <td> The pseudo-right for all (current and future) user rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_INFO</code></td>
+      <td><code>15</code></td>
+      <td> The right to view application information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_SETTINGS_BASIC</code></td>
+      <td><code>16</code></td>
+      <td> The right to edit basic application settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_SETTINGS_API_KEYS</code></td>
+      <td><code>17</code></td>
+      <td> The right to view and edit application API keys.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_SETTINGS_COLLABORATORS</code></td>
+      <td><code>18</code></td>
+      <td> The right to view and edit application collaborators.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_SETTINGS_PACKAGES</code></td>
+      <td><code>56</code></td>
+      <td> The right to view and edit application packages and associations.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DELETE</code></td>
+      <td><code>19</code></td>
+      <td> The right to delete application.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_PURGE</code></td>
+      <td><code>64</code></td>
+      <td> The right to purge application.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DEVICES_READ</code></td>
+      <td><code>20</code></td>
+      <td> The right to view devices in application.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DEVICES_WRITE</code></td>
+      <td><code>21</code></td>
+      <td> The right to create devices in application.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DEVICES_READ_KEYS</code></td>
+      <td><code>22</code></td>
+      <td> The right to view device keys in application.
+Note that keys may not be stored in a way that supports viewing them.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DEVICES_WRITE_KEYS</code></td>
+      <td><code>23</code></td>
+      <td> The right to edit device keys in application.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_TRAFFIC_READ</code></td>
+      <td><code>24</code></td>
+      <td> The right to read application traffic (uplink and downlink).</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_TRAFFIC_UP_WRITE</code></td>
+      <td><code>25</code></td>
+      <td> The right to write uplink application traffic.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_TRAFFIC_DOWN_WRITE</code></td>
+      <td><code>26</code></td>
+      <td> The right to write downlink application traffic.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_LINK</code></td>
+      <td><code>27</code></td>
+      <td> The right to link as Application to a Network Server for traffic exchange,
+i.e. read uplink and write downlink (API keys only).
+This right is typically only given to an Application Server.
+This right implies RIGHT_APPLICATION_INFO, RIGHT_APPLICATION_TRAFFIC_READ,
+and RIGHT_APPLICATION_TRAFFIC_DOWN_WRITE.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_ALL</code></td>
+      <td><code>28</code></td>
+      <td> The pseudo-right for all (current and future) application rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_ALL</code></td>
+      <td><code>29</code></td>
+      <td> The pseudo-right for all (current and future) OAuth client rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_INFO</code></td>
+      <td><code>60</code></td>
+      <td> The right to read client information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_SETTINGS_BASIC</code></td>
+      <td><code>61</code></td>
+      <td> The right to edit basic client settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_SETTINGS_COLLABORATORS</code></td>
+      <td><code>62</code></td>
+      <td> The right to view and edit client collaborators.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_DELETE</code></td>
+      <td><code>63</code></td>
+      <td> The right to delete a client.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_PURGE</code></td>
+      <td><code>68</code></td>
+      <td> The right to purge a client.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_INFO</code></td>
+      <td><code>30</code></td>
+      <td> The right to view gateway information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_SETTINGS_BASIC</code></td>
+      <td><code>31</code></td>
+      <td> The right to edit basic gateway settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_SETTINGS_API_KEYS</code></td>
+      <td><code>32</code></td>
+      <td> The right to view and edit gateway API keys.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_SETTINGS_COLLABORATORS</code></td>
+      <td><code>33</code></td>
+      <td> The right to view and edit gateway collaborators.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_DELETE</code></td>
+      <td><code>34</code></td>
+      <td> The right to delete gateway.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_PURGE</code></td>
+      <td><code>67</code></td>
+      <td> The right to purge gateway.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_TRAFFIC_READ</code></td>
+      <td><code>35</code></td>
+      <td> The right to read gateway traffic.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_TRAFFIC_DOWN_WRITE</code></td>
+      <td><code>36</code></td>
+      <td> The right to write downlink gateway traffic.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_LINK</code></td>
+      <td><code>37</code></td>
+      <td> The right to link as Gateway to a Gateway Server for traffic exchange,
+i.e. write uplink and read downlink (API keys only)
+This right is typically only given to a gateway.
+This right implies RIGHT_GATEWAY_INFO.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_STATUS_READ</code></td>
+      <td><code>38</code></td>
+      <td> The right to view gateway status.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_LOCATION_READ</code></td>
+      <td><code>39</code></td>
+      <td> The right to view view gateway location.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_WRITE_SECRETS</code></td>
+      <td><code>57</code></td>
+      <td> The right to store secrets associated with this gateway.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_READ_SECRETS</code></td>
+      <td><code>58</code></td>
+      <td> The right to retrieve secrets associated with this gateway.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_ALL</code></td>
+      <td><code>40</code></td>
+      <td> The pseudo-right for all (current and future) gateway rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_INFO</code></td>
+      <td><code>41</code></td>
+      <td> The right to view organization information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_SETTINGS_BASIC</code></td>
+      <td><code>42</code></td>
+      <td> The right to edit basic organization settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_SETTINGS_API_KEYS</code></td>
+      <td><code>43</code></td>
+      <td> The right to view and edit organization API keys.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_SETTINGS_MEMBERS</code></td>
+      <td><code>44</code></td>
+      <td> The right to view and edit organization members.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_DELETE</code></td>
+      <td><code>45</code></td>
+      <td> The right to delete organization.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_PURGE</code></td>
+      <td><code>65</code></td>
+      <td> The right to purge organization.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_APPLICATIONS_LIST</code></td>
+      <td><code>46</code></td>
+      <td> The right to list the applications the organization is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_APPLICATIONS_CREATE</code></td>
+      <td><code>47</code></td>
+      <td> The right to create an application under the organization.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_GATEWAYS_LIST</code></td>
+      <td><code>48</code></td>
+      <td> The right to list the gateways the organization is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_GATEWAYS_CREATE</code></td>
+      <td><code>49</code></td>
+      <td> The right to create a gateway under the organization.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_CLIENTS_LIST</code></td>
+      <td><code>50</code></td>
+      <td> The right to list the OAuth clients the organization is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_CLIENTS_CREATE</code></td>
+      <td><code>51</code></td>
+      <td> The right to create an OAuth client under the organization.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_ADD_AS_COLLABORATOR</code></td>
+      <td><code>52</code></td>
+      <td> The right to add the organization as a collaborator on an existing entity.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_ALL</code></td>
+      <td><code>53</code></td>
+      <td> The pseudo-right for all (current and future) organization rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_SEND_INVITES</code></td>
+      <td><code>54</code></td>
+      <td> The right to send invites to new users.
+Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on the user entity.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ALERT_NOTIFICATION_PROFILE_CREATE</code></td>
+      <td><code>69</code></td>
+      <td> The right to create an alert notification profile.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ALERT_NOTIFICATION_PROFILE_INFO</code></td>
+      <td><code>70</code></td>
+      <td> The right to view an alert notification profile information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ALERT_NOTIFICATION_PROFILE_LIST</code></td>
+      <td><code>71</code></td>
+      <td> The right to list the alert notification profiles.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ALERT_NOTIFICATION_PROFILE_UPDATE</code></td>
+      <td><code>72</code></td>
+      <td> The right to update an alert notification profiles.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ALERT_NOTIFICATION_PROFILE_DELETE</code></td>
+      <td><code>73</code></td>
+      <td> The right to delete an alert notification profiles.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ALERT_NOTIFICATION_RECEIVER_CREATE</code></td>
+      <td><code>74</code></td>
+      <td> The right to create an alert notification receiver.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ALERT_NOTIFICATION_RECEIVER_INFO</code></td>
+      <td><code>75</code></td>
+      <td> The right to view an alert notification receiver information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ALERT_NOTIFICATION_RECEIVER_LIST</code></td>
+      <td><code>76</code></td>
+      <td> The right to list the alert notification receivers.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ALERT_NOTIFICATION_RECEIVER_UPDATE</code></td>
+      <td><code>77</code></td>
+      <td> The right to update an alert notification receivers.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ALERT_NOTIFICATION_RECEIVER_DELETE</code></td>
+      <td><code>78</code></td>
+      <td> The right to delete an alert notification receivers.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_AUTHENTICATION_PROVIDER_CREATE</code></td>
+      <td><code>79</code></td>
+      <td> The right to create an authentication provider.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_AUTHENTICATION_PROVIDER_INFO</code></td>
+      <td><code>80</code></td>
+      <td> The right to view an authentication provider information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_AUTHENTICATION_PROVIDER_LIST</code></td>
+      <td><code>81</code></td>
+      <td> The right to list the authentication providers</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_AUTHENTICATION_PROVIDER_UPDATE</code></td>
+      <td><code>82</code></td>
+      <td> The right to update an authentication providers.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_AUTHENTICATION_PROVIDER_DELETE</code></td>
+      <td><code>83</code></td>
+      <td> The right to delete an authentication providers.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_EXTERNAL_USER_CREATE</code></td>
+      <td><code>84</code></td>
+      <td> The right to create an external user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_EXTERNAL_USER_INFO</code></td>
+      <td><code>85</code></td>
+      <td> The right to view an external user&rsquo;s information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_EXTERNAL_USER_DELETE</code></td>
+      <td><code>86</code></td>
+      <td> The right to delete an external user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_PACKET_BROKER_AGENT_READ</code></td>
+      <td><code>89</code></td>
+      <td> The right to read any information related to the PBA.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_PACKET_BROKER_AGENT_WRITE</code></td>
+      <td><code>90</code></td>
+      <td> The right to perform operations in the PBA.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_TENANT_CONFIGURATION_UPDATE</code></td>
+      <td><code>91</code></td>
+      <td> The right to update a tenant&rsquo;s configuration.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_LABEL_CREATE</code></td>
+      <td><code>92</code></td>
+      <td> The right to create a label.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_LABEL_INFO</code></td>
+      <td><code>93</code></td>
+      <td> The right to view a label&rsquo;s information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_LABELS_LIST</code></td>
+      <td><code>94</code></td>
+      <td> The right to list the labels.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_LABEL_UPDATE</code></td>
+      <td><code>95</code></td>
+      <td> The right to update a label.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_LABEL_DELETE</code></td>
+      <td><code>96</code></td>
+      <td> The right to delete a label.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_LABEL_ASSIGN</code></td>
+      <td><code>97</code></td>
+      <td> The right to assign a label to an entity.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_LABEL_ALL</code></td>
+      <td><code>99</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ALL</code></td>
+      <td><code>55</code></td>
+      <td> The pseudo-right for all (current and future) possible rights.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+

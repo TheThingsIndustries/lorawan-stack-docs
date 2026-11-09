@@ -1,0 +1,138 @@
+# Messages and Device Twin
+
+> The Things Stack publishes uplink messages to Azure IoT Hub as device telemetry. The Things Stack updates the Device Twin reported properties of the device, and …
+
+Source: https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/device-twin/
+
+
+The Things Stack publishes uplink messages to Azure IoT Hub as device telemetry. The Things Stack updates the [Device Twin](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins) reported properties of the device, and schedules downlinks when the [Device Twin](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins) desired properties are changed.
+
+> The Things Stack automatically creates the end device in Azure IoT Hub in case it is not yet created. See [Managing Devices](https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/devices/) for details.
+
+> See [Architecture](https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/architecture/) for the flow.
+
+> **Note:** The [Device Twin](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins) properties functionality depends on the presence of [Payload Formatters](https://www.thethingsindustries.com/docs/integrations/payload-formatters/). Devices which are configured using [LoRaWAN Device Repository](https://www.thethingsindustries.com/docs/integrations/payload-formatters/device-repo/) will automatically have payload formatters.
+
+
+## Reported Properties
+
+The Azure IoT Hub integration will automatically update the [Device Twin](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins) reported properties when an uplink message arrives, using [Payload Formatters](https://www.thethingsindustries.com/docs/integrations/payload-formatters/).
+
+In the Azure Console, open your Azure IoT Hub resource. In the menu on the left, click **IoT Devices**.
+
+![IoT Devices](../device-list.png)
+
+
+Click on the device you want to view.
+
+![Device View](../device-created.png)
+
+
+Click on **Device Twin**. The device reported properties will be visible under the `properties.reported.decodedPayload` key.
+
+![Reported Properties](../reported-properties.png)
+
+
+## Desired Properties
+
+The Azure IoT Hub integration will automatically schedule a downlink when the [Device Twin](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins) desired properties are updated.
+
+In the Azure Console, open your Azure IoT Hub resource. In the menu on the left, click **IoT Devices**.
+
+![IoT Devices](../device-list.png)
+
+
+Click on the device you want to view.
+
+![Device View](../device-created.png)
+
+
+Click on **Device Twin**. The device reported desired will be visible under the `properties.desired.decodedPayload` key. If the key is missing, you will have to manually create it. The contents of the object should be compatible with the device's payload formatter.
+
+The final JSON `properties.desired` object should look as follows:
+
+```json
+{
+   "decodedPayload":{
+      "color":"red"
+   }
+}
+```
+
+When finished editing the JSON `properties.desired` object, click on **Save** in the top-left corner.
+
+![Desired Properties](../desired-properties.png)
+
+
+A downlink message will be generated in The Things Stack.
+
+## Message Filters
+
+The Azure IoT Hub integration can be configured such that it sends only certain message types to the Azure IoT Hub. There are two message filters available: one for the device events (also known as device to cloud messages), and one for the Device Twin reported properties.
+
+Go to your application in The Things Stack Console, navigate to **Integrations &#8594; Azure IoT** on the left hand menu and click on **Expand** next to **Azure IoT Hub**.
+
+
+![Message Filters](../filters.png)
+
+
+Click on **Enable/Update Azure IoT Hub integration** in order to save the filters.
+
+## Raw Downlinks
+
+It is possible to schedule "raw" downlinks using the Device Twin desired properties. The `rawDownlink` property allows this behavior using the following object structure:
+
+```json
+{
+  "rawDownlink": {
+    "fPort": 42,
+    "framePayload": "BEEF",
+    "confirmed": true,
+    "operation": "replace"
+  }
+}
+```
+
+The fields have the following semantics:
+
+- `fPort`: the frame port of the downlink. Defaults to 0.
+- `framePayload`: the binary frame payload, in base 16. Defaults to an empty frame.
+- `confirmed`: if the downlink should be confirmed. Defaults to `false`.
+- `operation`: the downlink operation type. Supported values are `push` and `replace`. Defaults to `push`.
+
+Note that the semantics of the `rawDownlink` and `decodedPayload` fields follow the semantics of an application downlink. Specifically, if a decoded payload is provided, and a downlink encoder is available, the frame port may be omitted, as the downlink encoder may output it automatically based on the `decodedPayload`.
+
+
+If one would like to schedule a downlink only with a binary payload, the `decodedPayload` should be explicitly set to `null`, and the `fPort` should be explicitly provided:
+
+
+```json
+{
+  "rawDownlink": {
+    "fPort": 42,
+    "framePayload": "BEEF",
+    "confirmed": true,
+    "operation": "replace"
+  },
+  "decodedPayload": null
+}
+```
+
+It is also possible to mix and match the two fields. If one would like to schedule a confirmed downlink, replacing the existing downlink queue, with a LED state payload, the following payload may be provided:
+
+```json
+{
+  "rawDownlink": {
+    "fPort": null,
+    "framePayload": null,
+    "confirmed": true,
+    "operation": "replace"
+  },
+  "decodedPayload": {
+    "ledState": "on"
+  }
+}
+```
+
+The explicit `null` values are required in order to signal to Azure IoT Hub that the values should not be present. Otherwise, updating only the relevant fields would cause the two objects to be merged, having unintended side effects.
+

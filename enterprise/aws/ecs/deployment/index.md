@@ -1,0 +1,434 @@
+# Deployment
+
+> This page describes the steps for deploying The Things Stack on AWS ECS.
+
+Source: https://www.thethingsindustries.com/docs/enterprise/aws/ecs/deployment/
+
+
+This page describes the steps for deploying The Things Stack on AWS ECS.
+
+Most steps involve deploying a CloudFormation stack from our templates. Some steps involve some manual work.
+
+## VPC and Subnets
+
+We start with the `1-1-vpc` template that creates the foundation for your deployment: the Virtual Private Cloud (VPC) and the different subnets in two availability zones (AZs). See the [Architecture](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/architecture/) section for more information.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/1-1-vpc.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template asks for a **CIDR block**. The default value is usually fine, but if you plan to deploy multiple clusters, you may want to use CIDRs that do not overlap.
+
+## TLS Certificates
+
+Go to AWS Certificate Manager and request a certificate for your domain of choice.
+
+If you are deploying a multi-tenant deployment, request a certificate that contains both `domain` and `*.domain`.
+
+Certificate Manager will give further instructions on creating the DNS records that are required for issuing the certificates.
+
+Alternatively, you can continue with the deployment without TLS, and request Let's Encrypt certificates later using [a dedicated template](#lets-encrypt-certificates-optional).
+
+## DNS Records
+
+Go to AWS Route 53 and create an A record that points `domain` to the Network Load Balancer that was created when you deployed the `1-1-vpc` template:
+
+- **Routing Policy**: Simple routing
+- **Record Name**: `domain`
+- **Value/Route traffic to**: Alias to Network Load Balancer
+- **Record Type**: A (IPv4)
+
+* **Evaluate Target Health**: **Yes**
+
+If you are deploying a multi-tenant deployment, create an similar record for `*.domain` in addition to the plain `domain` record.
+
+> **Note:** Even though the current templates do not support IPv6 yet, you can already create additional AAAA records to be ready for IPv6.
+
+
+## Bastion Host (optional)
+
+The `1-2-bastion` template will deploy an EC2 instance in one of the public subnets of your VPC. This instance can be used to provide external access to your cluster.
+
+> **Note:** You can also skip this template, and deploy it when you actually need external access to your cluster.
+
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/1-2-bastion.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template asks for the **Instance Type** you want to use. A small instance is typically fine, since it will only be used to provide access.
+
+The **SSH Key Name** is the name of the SSH keypair you created before (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)). The IPv4 and IPv6 ranges can be used to configure the Security Group rules that allow external access to this instance.
+
+## Opsgenie Alarms (optional)
+
+The `1-3-opsgenie` template will deploy an SNS Topic and a Subscription to receive AWS CloudWatch alarms and forward it to your Opsgenie server. An Opsgenie CloudWatch API Key is necessary.
+
+Once this is deployed, you can enable alerting that's configured for particular resources.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/1-3-opsgenie.gen.template (replace `3.x.y` with the current minor and patch version).
+
+For more information, please refer to the [Opsgenie documentation](https://support.atlassian.com/opsgenie/docs/integrate-opsgenie-with-amazon-cloudwatch/).
+
+## Aurora Database
+
+The `2-1-db-aurora-master` and `2-2-db-aurora-replica` templates together create a highly available RDS Aurora PostgreSQL cluster. The template `2-1-db-aurora-master` creates a database cluster with a single master instance. The template `2-2-db-aurora-replica` can be deployed multiple times to deploy additional read-only replicas. See the [Architecture](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/architecture/) section for more information.
+
+**Master Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-1-db-aurora-master.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template asks for the **Database Name** and **Username** you want to configure on the database (the password will be generated).
+
+You can select an appropriate **Instance Class** for your network. It is typically fine for small clusters to start with `db.t3.medium` and scale as you grow.
+
+If you are migrating your database from a previous deployment, or if you are upgrading your database, you can fill the ARN of the database **Snapshot** that should be restored.
+
+**Replica Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-2-db-aurora-replica.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template asks for an **Instance Type**, just as for the master template. It is typically fine for small clusters to start with `db.t3.medium` and scale as you grow.
+
+## Redis Database
+
+You can deploy one or multiple Redis clusters with the `2-3-db-redis` template. The Things Stack uses Redis for multiple purposes, and can use separate clusters for different purposes.
+
+Most deployments start with a single `general` cluster that is used for all purposes. It is also possible to use the `general` cluster for persistence only, and use a separate `cache` cluster for caching temporary data. See the [Architecture](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/architecture/) section for more information.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-3-db-redis.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)) and the previously described purpose, this template asks for the **Instance Type**. It is typically fine for small clusters to start with `cache.t3.medium` and scale as you grow.
+
+It is recommended to have a **Multi-AZ** cluster with automatic failover, in which case you'll need 2 **Replicas**. Since most load is read-write it is not necessary to deploy more than 2 replicas.
+
+If you are migrating your database from a previous deployment, or if you are upgrading your database, you can fill the name of the database **Snapshot** that should be restored.
+
+## S3 Buckets
+
+The template `2-4a-is-s3` creates S3 buckets for the Identity Server. This template only needs to be deployed for your "main" cluster that contains your Identity Server. Secondary clusters do not have an Identity Server and don't need this template.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-4a-is-s3.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template asks for the names of the buckets you want to create. It is typically fine to leave these parameters empty, and have automatically generated bucket names.
+
+The template `2-4b-routing-s3` creates an S3 bucket that stores configuration for interoperability with other LoRaWAN® Backend Interfaces-compliant servers. Even if you don't plan to immediately activate interoperability, this template is still required by another template that you will deploy later in this guide.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-4b-routing-s3.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template asks for the name of the bucket you want to create. It is typically fine to leave this parameter empty, and have a automatically generated bucket name.
+
+After deploying the `2-4b-routing-s3` template, you need to upload the interop configuration to the interop bucket, EDCS configuration to the EDCS bucket and plugins configuration to the plugins bucket. For details on those configuration files, see the [Interoperability Repository reference](https://www.thethingsindustries.com/docs/enterprise/join-server/interop-configuration/) and the [Device Claiming reference](https://www.thethingsindustries.com/docs/enterprise/join-server/device-claiming-configuration/). If you do not have the configuration, you can upload an empty configuration file:
+
+```bash
+touch config.yml
+aws s3 cp config.yml s3://${InteropConfigBucket}/config.yml
+aws s3 cp config.yml s3://${EDCSConfigBucket}/config.yml
+
+touch plugins.yml
+aws s3 cp plugins.yml s3://${PluginsConfigBucket}/plugins.yml
+```
+
+> **Note:** If you did not set bucket names, see outputs of the `2-4b-routing-s3` stack for the names of those buckets.
+
+
+## TimescaleDB (optional) {#timescaledb-optional}
+
+The templates `2-5-db-timescale` and `2-6-db-timescale-replica` are optional templates that create an EC2 Auto Scaling Group that runs [TimescaleDB](https://www.timescale.com/), which is used by the Storage Integration and the Network Operations Center (NOC).
+
+> **Note:** If you do not want to install the Storage Integration and NOC, you do not need to deploy this template. However, deploying this template is mandatory if you wish to install them.
+
+
+**Primary Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-5-db-timescale-master.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template requires you to choose an **Instance type** and **SSH Key Name** to be used to login to the instance. You either need to specify the **EBS Volume Snapshot ID** to restore, or the **EBS Volume Size** for the storage volume to create.
+
+Finally, you need to specify the database name, username and password. If you restore from a snapshot, these must match the existing database in the snapshot.
+
+**Replica Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-6-db-timescale-replica.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template asks for an **Instance Type**, just as for the primary template. It is typically fine for small clusters to start with `db.t3.medium` and scale as you grow.
+
+## SQS Queue (optional) {#sqs-queue-optional}
+
+The template `2-7-queue-sqs` creates an SQS queues that are used by the Alert Routing Server (ARS) and by Application Server for webhooks.
+
+**Template**: https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-7-queue-sqs.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template requires you to specify SQS parameters. The queue used by the Alert Routing Server must be a **FIFO** queue, so its name must end with the `.fifo` suffix. Consult AWS documentation to set the values correctly.
+
+If you set a **Deployment Name** for this queue, note it down: you need to provide the same value when deploying the Alert Routing Server service. See the [Alert Routing Server](#alert-routing-server-optional) section below.
+
+## Security Group Rules
+
+The template `3-1-security-group-rules` creates the security group rules for both external and internal network traffic.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/3-1-security-group-rules.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template asks for the IP address ranges that are allowed to connect to the different ports exposed by The Things Stack. The [Architecture](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/architecture/) section gives more information about these ports. For (public) deployments that should be accessible from anywhere on the internet, the defaults do not need to be changed.
+
+## Load Balancer Listeners
+
+Template `3-2-load-balancer-rules` creates listeners and target groups for the Network Load Balancer. Before deploying this template, go to AWS Certificate Manager, and copy the ARN of the TLS certificate you created earlier.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/3-2-load-balancer-rules.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)) and the previously mentioned TLS certificate ARN, this template asks if you want to serve HTTP/2, which is recommended for all deployments.
+
+## Secrets
+
+The `4-1-secrets` template creates several secrets in AWS Secrets Manager
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/4-1-secrets.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters, the **License Key**, **Cluster Secrets** and **OAuth Client Secrets** (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template asks for login information for your email provider. Currently, only Sendgrid and SMTP are supported.
+
+For deployments that connect to Packet Broker, you need to configure your Packet Broker secrets here. If you don't have this, you can leave these parameters empty. It is possible to add or update this in the future.
+
+For multi-tenant deployments that use tenant billing through Stripe (see the [Stripe Billing reference](https://www.thethingsindustries.com/docs/enterprise/management/stripe/)), you need to configure the Stripe API key (starting with `sk_`) and Stripe endpoint secret key (starting with `whsec_`). It is possible to add or update this in the future.
+
+For the **Gateway Secrets Encryption Key Value** parameter, provide an AES-128 Key in Base64. The following command can be used to randomly generate one:
+
+```bash
+openssl rand -base64 16
+```
+
+## Configuration
+
+The `4-2a-configuration` template creates several configuration parameters in AWS Systems Manager Parameter Store.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/4-2a-configuration.gen.template (replace `3.x.y` with the current minor and patch version).
+
+As with the other templates, this one also asks for the re-used parameters from the [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/). Next to these parameters, this template has some notable parameters:
+
+- **Domain** and **Identity Server Domain** are the `domain` from earlier. In multi-tenant deployments, tenants will use `[tenant-id].[domain]` to access the cluster.
+- The **Default Tenant ID** is the tenant ID of the only tenant in single-tenant deployments, or the optional default tenant ID in multi-tenant deployments. Please note that the stack does not automatically create the default tenant. See [Database Operations](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/database-operations/) for instructions how to do this manually.
+
+For the other parameters, see the descriptions and the [Configuration reference](https://www.thethingsindustries.com/docs/enterprise/management/configuration/).
+
+## Rate limiting
+
+The `4-2b-configuration-rate-limiting` template creates configuration options for rate limiting. Even if you don't want to use rate limiting, deploying this template is obligatory.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/4-2b-configuration-rate-limiting.gen.template (replace `3.x.y` with the current minor and patch version).
+
+More information can be found in the [Rate-limiting](https://www.thethingsindustries.com/docs/enterprise/management/rate-limiting/) section.
+
+## Resource Limiting (optional)
+
+The `4-2c-configuration-resource-limiting` template allows setting resource limiting in the Application Server.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/4-2c-configuration-resource-limiting.gen.template (replace `3.x.y` with the current minor and patch version).
+
+More information can be found in the [Resource-limiting](https://www.thethingsindustries.com/docs/enterprise/management/resource-limiting/) section.
+
+## ECS Cluster
+
+Before deploying the ECS cluster, check the ECS settings in your AWS account by going to **Amazon ECS** > **Account Settings**. If you use multiple IAM users, you need to do this with your root account.
+
+Under **Amazon ECS ARN and resource ID settings** the **new ARN and resource ID format** needs to be enabled for **container instances**, **services** and **tasks**. If you plan to deploy The Things Stack on container instances, **AWSVPC Trunking** needs to be enabled.
+
+Alternatively, you can configure these settings for the entire AWS account using the AWS CLI:
+
+```bash
+aws ecs put-account-setting-default --name serviceLongArnFormat --value enabled --region $AWS_REGION
+aws ecs put-account-setting-default --name taskLongArnFormat --value enabled --region $AWS_REGION
+aws ecs put-account-setting-default --name containerInstanceLongArnFormat --value enabled --region $AWS_REGION
+aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --region $AWS_REGION
+```
+
+> **Note:** These settings need to be applied in **each** AWS region where you want to deploy a cluster.
+
+
+As discussed in the [Architecture](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/architecture/) section, we will need the container instances for running UDP Gateway Servers. For all other services, you can consider deploying those to Fargate, in which case you won't need as much resources on the container instances.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-1-ecs-cluster.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters and the name of your SSH keypair (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template asks for an **Instance Type** and number of container instances. It is typically fine for small clusters to start with 2x `m5.large`. If you plan to use Fargate for all containers other than the UDP Gateway Server, 2x `t3.micro` may already be sufficient. Again, you can scale to more or larger instances as your network grows.
+
+> **Warning:** `t3` instances [don't support ENI trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html#eni-trunking-supported-instance-types) that is required to run a larger number of containers on the instance.
+
+
+## Operations
+
+The `5-2-ecs-ops` template creates an ECS Task Definition that will be used for performing database operations such as initializing, migrating and cleaning.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-2-ecs-ops.gen.template (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template asks for the Redis clusters to use. If you only deployed one Redis cluster, this is the `general` cluster. If you deployed a separate cluster for caching, select `cache` as the **Cache Cluster**.
+
+The **Ops Image** is the Docker image that you want to use. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replace `3.x.y` with the current version).
+
+You can now run instances of this task definition to perform operations on the deployment.
+
+> **Warning:** You need to initialize the Identity Server database before moving on to the next step. See the [Migrate Identity Server Database](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/database-operations/#migrate-identity-server-database) for details.
+
+
+## Identity Server or Identity Server Proxy
+
+Depending on the type of cluster you are deploying, you need to deploy either `5-3a-ecs-is-service` (the Identity Server) or `5-3b-ecs-external-is-proxy` (proxy to Identity Server in another cluster).
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-3a-ecs-is-service.gen.template (replace `3.x.y` with the current minor and patch version).
+
+Fill the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)) and the Redis clusters to use. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replace `3.x.y` with the current version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack.
+
+> We recommend to start with 2 instances.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-3b-ecs-external-is-proxy.gen.template (replace `3.x.y` with the current minor and patch version).
+
+Fill the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)) and the domain of the cluster that contains the Identity Server. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-proxy` (replace `3.x.y` with the current version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack.
+
+> We recommend to start with 2 instances.
+
+## Tenant Billing Server (optional)
+
+In a multi-tenant deployment where tenants are billed through Stripe, you'll need to deploy the Tenant Billing Server.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-3c-ecs-tbs-service.gen.template (replace `3.x.y` with the current minor and patch version).
+
+Fill the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)) and the Redis clusters to use. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replace `3.x.y` with the current version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack.
+
+## Routing Services
+
+The `5-4-ecs-services` template creates all other routing services.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-4-ecs-services.gen.template (replace `3.x.y` with the current minor and patch version).
+
+Fill the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)) and the Redis clusters to use. Indicate whether the services should use the Identity Server in the current cluster, or an external one through the proxy.
+
+For all services: the official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replace `3.x.y` with the current version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack.
+
+> We recommend to start with 2 instances of each service. For some services it is not possible (yet) to deploy more than one instance.
+
+## Alert Routing Server (optional) {#alert-routing-server-optional}
+
+The [Alert Routing Server](https://www.thethingsindustries.com/docs/concepts/architecture/components/alert-routing-server/) (ARS) dispatches alert notifications — such as [gateway connectivity outages](https://www.thethingsindustries.com/docs/concepts/features/alerting/gateway-connectivity-outages/) — to receivers over email and SMS. It is deployed as part of the `5-4-ecs-services` template by setting **Include Alert Routing Server** to `true`, but it relies on configuration that spans several other templates:
+
+- **A FIFO SQS queue** from the `2-7-queue-sqs` template (see [SQS Queue](#sqs-queue-optional)). The Alert Routing Server service uses the queue from this stack. If you set a **Deployment Name** when creating the queue, set the matching **Alert Routing Server SQS Deployment Name** in `5-4-ecs-services`.
+- **Email and SMS credentials** in the `4-1-secrets` template: your SendGrid API key and/or Twilio credentials, used to deliver notifications.
+- **An Alertmanager password**, which the `4-1-secrets` template generates automatically. The same password is consumed by the Alertmanager service (see [Tenant Resource Monitoring](#tenant-resource-monitoring-optional)) so that Alertmanager can authenticate to the Alert Routing Server webhook.
+- **Sender and routing configuration** in the `4-2a-configuration` template: the email sender name and address, the network name, and the Console and Identity Server URLs that are included in notifications.
+
+The alerts themselves are generated by Prometheus and forwarded by Alertmanager, both deployed by the `5-5-tenant-resource-monitoring` template described below. That template's Alertmanager always forwards alerts to the Alert Routing Server webhook — authenticating with the password from the `4-1-secrets` template — so the Alert Routing Server must be enabled. Gateway connectivity outage alerts are only generated when that template's **Include Gateway Server** parameter is set to `true` (the default).
+
+For the full list of configuration options, see the [Alert Routing Server configuration reference](https://www.thethingsindustries.com/docs/enterprise/management/configuration/alert-routing-server/).
+
+## Tenant Resource Monitoring (optional) {#tenant-resource-monitoring-optional}
+
+The `5-5-tenant-resource-monitoring` template creates ECS infrastructure for Tenant Resource Monitoring (TRM).
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-5-tenant-resource-monitoring.gen.template (replace `3.x.y` with the current minor and patch version).
+
+Fill the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)) and information about the cluster.
+
+The official images are `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-trm-prometheus` and `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-trm-alertmanager` (replace `3.x.y` with the current minor and patch version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack. Prometheus typically needs CPU=1024 and Memory=2048.
+
+The username for accessing TRM Prometheus is `metrics`. The password can be accessed as the `TenantResourceMetricsPasswordSecret` in the outputs section of the`4-1-secrets.gen.template`.
+
+The username for accessing TRM Alertmanager is `alerts`. Users can configure a custom `AlertmanagerPassword` while deploying the `5-5-tenant-resource-monitoring.gen.template`.
+
+This template's Alertmanager forwards alerts to the [Alert Routing Server](#alert-routing-server-optional) webhook, authenticating with the password generated by the `4-1-secrets` template. No additional wiring is required.
+
+Gateway connectivity outage alerts are based on Gateway Server metrics, which Prometheus only scrapes when this template's **Include Gateway Server** parameter is set to `true` (the default).
+
+### Gateway outage alert timing
+
+The timing of the gateway connectivity outage alert is defined in the Prometheus alerting rules that this template deploys. By default:
+
+- An alert opens after a gateway has been disconnected for about 10 minutes; brief drops are ignored.
+- An alert stays open for at most **24 hours**. When this window expires, the customer is notified that the gateway reconnected or, if it is still offline, that monitoring has stopped — see [Gateway connectivity outages](https://www.thethingsindustries.com/docs/concepts/features/alerting/gateway-connectivity-outages/). This 24-hour cap exists for resource management, so that monitoring is not kept open indefinitely for the potentially large number of gateways in a network.
+
+These are fixed defaults of the alerting rules. The 24-hour cap in particular is bound to the metric retention window used to detect disconnections, so it is not a value you can meaningfully change on its own.
+
+## Monitoring (optional, but recommended) {#monitoring-optional}
+
+We strongly recommend to monitor your deployment with [Prometheus](https://prometheus.io) and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/overview/), from where you can forward alerts to external on-call notification systems. With the `5-6-ecs-monitoring` you can deploy Prometheus to your ECS cluster.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-6-ecs-monitoring.gen.template (replace `3.x.y` with the current minor and patch version).
+
+Fill the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)) and information about the cluster.
+
+The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-prometheus` (replace `3.x.y` with the current minor and patch version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack. Prometheus typically needs CPU=1024 and Memory=2048.
+
+> **Note:** By default, Prometheus stores metrics only for a limited time. You can optionally enable long-term storage of metrics in an S3 bucket. This is done using a [Thanos](https://thanos.io/) sidecar. We do not support querying from long-term storage yet.
+
+
+The username for accessing Prometheus is `metrics`. Users can configure a custom `PrometheusPassword` while deploying the `5-6-ecs-monitoring.gen.template`. If this password wasn't configured during deployment, users can use `HTTPMetricsPasswordSecret` in the outputs section of the `4-1-secrets.gen.template`.
+
+We recommend to point Prometheus to an external **Alertmanager URL**, so that you can be alerted about (potential) problems with your deployment.
+
+## HTTP and gRPC Proxy
+
+The template `5-7-ecs-proxy` deploys the proxy that routes incoming gRPC and HTTP requests from the outside world to the right service.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-7-ecs-proxy.gen.template (replace `3.x.y` with the current minor and patch version).
+
+The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-proxy` (replace `3.x.y` with the current minor and patch version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack.
+
+> We recommend to start with 2 instances.
+
+## Let's Encrypt Certificates (optional) {#lets-encrypt-certificates-optional}
+
+Unfortunately not all gateways are able to connect when using AWS-issued certificates. If this is the case in your deployment, you can use the `5-8a-certs-le` and `5-8b-ecs-certbot-scheduled-task` templates to request certificates from [Let's Encrypt](https://letsencrypt.org/).
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-8a-certs-le.gen.template (replace `3.x.y` with the current minor and patch version).
+
+The Docker image we'll use is `docker.io/thethingsindustries/aws-certbot-dns-route53:latest`.
+
+On the initial deployment, leave the **Existing Certificate ARN** blank.
+
+We need to manually request the certificates for the first time. In the CloudFormation **Output** window, copy the value for the output `RunCertbotTaskCLICommand` and run that from a CLI.
+
+> **Note:** If your deployment uses only the `FARGATE` launch type, then append `--launch-type FARGATE` to the command in the `RunCertbotTaskCLICommand` output.
+
+
+After the task succeeds, go to **Certificate Manager**, find the new certificate, and copy its ARN. Back in CloudFormation, update the stacks for templates `3-2-load-balancer-rules` and `5-8a-certs-le`, and paste that certificate ARN.
+
+> **Note:** If the ECS Task has been run multiple times for some reason and there are multiple certificates in ACM, then check the Task Logs for the correct ARN.
+
+
+To automatically renew the certificate from Let's Encrypt, we will now deploy template `5-8b-ecs-certbot-scheduled-task`.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-8b-ecs-certbot-scheduled-task.gen.template (replace `3.x.y` with the current minor and patch version).
+
+> We recommend to schedule this task to run every 14 days.
+
+> **Note:** The Things Indoor Gateway (TTIG) is not compatible with Let's Encrypt certificate chains. If you plan to connect TTIGs to your deployment, see [TTIG Certificates](#ttig-certificates-optional).
+
+
+## TTIG Certificates (optional) {#ttig-certificates-optional}
+
+The Things Indoor Gateway (TTIG) firmware is not compatible with Let's Encrypt certificate chains. To support TTIGs, the `3-2-load-balancer-rules` template can serve Basic Station traffic on a separate TLS listener on port `8890`, with its own certificate. You can use the `5-8c-certs-tti-pca` and `5-8d-ecs-tti-pca-scheduled-task` templates to issue this certificate from your own [AWS Private Certificate Authority](https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html) and import it into AWS Certificate Manager.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-8c-certs-tti-pca.gen.template (replace `3.x.y` with the current minor and patch version).
+
+The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-certbot` (replace `3.x.y` with the current minor and patch version).
+
+In addition to the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)), this template asks for the **TTI Private CA ARN**. This is the ARN of your own AWS Private CA that issues the certificate.
+
+The **Domain** is the domain to issue the certificate for. If you leave it blank, the `domain` from the `4-2a-configuration` template is used. The certificate is issued for both `domain` and `*.domain`.
+
+The **Certificate Validity (days)** sets how long each issued certificate is valid, and **Renew Before Expiry** sets how many days before expiry the certificate gets renewed. The defaults are 7 and 2 days.
+
+On the initial deployment, leave the **Existing Certificate ARN** blank.
+
+We need to manually request the certificate for the first time. In the CloudFormation **Output** window, copy the value for the output `RunTTIPCATaskCLICommand` and run that from a CLI.
+
+> **Note:** If your deployment uses only the `FARGATE` launch type, then append `--launch-type FARGATE` to the command in the `RunTTIPCATaskCLICommand` output.
+
+
+After the task succeeds, go to **Certificate Manager**, find the new certificate (tagged with the name `domain-ttig`), and copy its ARN. Back in CloudFormation:
+
+- Update the `3-2-load-balancer-rules` stack and paste the certificate ARN in **Override TTIG (port 8890) Certificate ARN**. The port `8890` listener is only created when this parameter is set and **BasicStation Enabled** is `true`.
+- Update the `5-8c-certs-tti-pca` stack and paste the certificate ARN in **Existing Certificate ARN**, so that renewals update this certificate in place.
+
+The `3-1-security-group-rules` template allows traffic on port `8890` by default. You can disable it with the `TTIGEnabled` parameter, or restrict the allowed IP ranges with the `TTIGIPV4` and `TTIGIPV6` parameters.
+
+To automatically renew the certificate, we will now deploy template `5-8d-ecs-tti-pca-scheduled-task`.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-8d-ecs-tti-pca-scheduled-task.gen.template (replace `3.x.y` with the current minor and patch version).
+
+Fill the re-used parameters (see [Prerequisites](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/prerequisites/)) and the **TTI PCA Task Family Name**, which you can find as `TTIPCATaskFamilyName` in the outputs of the `5-8c-certs-tti-pca` stack. The **Execution Frequency** sets how often, in days, the task runs. The task only renews the certificate when it is about to expire.
+
+> We recommend to keep the default and run this task every day, since the issued certificates are short-lived.
+
+## Mutual TLS (optional)
+
+The template `2-4c-mtls-s3` generates an S3 bucket to store CA certificates, needed for mutual TLS authentication via a supported proxy (Envoy).
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-4c-mtls-s3.gen.template (replace `3.x.y` with the current minor and patch version).
+
+More information can be found in the [Mutual TLS](https://www.thethingsindustries.com/docs/enterprise/aws/ecs/mutual-tls/) section.
+

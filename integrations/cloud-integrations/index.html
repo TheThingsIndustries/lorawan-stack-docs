@@ -1,29 +1,64 @@
 <!DOCTYPE html>
 
-<html class="has-navbar-fixed-top">
+<html lang="en-us" class="has-navbar-fixed-top">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.140.0-DEV">
-  <title>Integrate with popular IoT platforms | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" />
+  <title>Integrate with popular IoT platforms | The Things Stack for LoRaWAN</title>
+  <link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" />
+  <link rel="alternate" type="text/markdown" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/index.md" title="Integrate with popular IoT platforms (Markdown)">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/docs/apple-touch-icon.png">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.c999bfc4cb1696a2894ac125b4832b10654c56f0e3163e4ae3c70bba9e583d2a.css" integrity="sha256-yZm/xMsWlqKJSsEltIMrEGVMVvDjFj5K48cLup5YPSo=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
-  <meta name="description" content="">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.96167afb9fde832c5d1b3939cb63fa1d0fa18ed3bc6169d2c0392e1eeef194c8.css" integrity="sha256-lhZ6&#43;5/egyxdGzk5y2P6HQ&#43;hjtO8YWnSwDkuHu7xlMg=" crossorigin="anonymous">
+  <meta name="description" content="Here you can find detailed guides for creating integrations with popular IoT platforms.">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Integrate with popular IoT platforms">
-  <meta itemprop="description" content="">
+  <meta itemprop="description" content="Here you can find detailed guides for creating integrations with popular IoT platforms.">
   <meta itemprop="keywords" content="">
   <meta property="og:title" content="Integrate with popular IoT platforms">
-  <meta property="og:description" content="">
+  <meta property="og:site_name" content="The Things Stack for LoRaWAN">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Here you can find detailed guides for creating integrations with popular IoT platforms.">
   <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/">
-  <meta property="og:image" content="/docs/docs-thumbnail.png"/>
+  <meta property="og:image" content="https://www.thethingsindustries.com/docs/docs-thumbnail.png"/>
+  <meta property="og:image:width" content="3200">
+  <meta property="og:image:height" content="1800">
   <meta name="twitter:title" content="Integrate with popular IoT platforms" />
-  <meta name="twitter:description" content="" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:description" content="Here you can find detailed guides for creating integrations with popular IoT platforms." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.thethingsindustries.com/docs/docs-thumbnail.png" />
+  
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.thethingsindustries.com/docs/","name":"Docs","position":1},{"@type":"ListItem","item":"https://www.thethingsindustries.com/docs/integrations/","name":"Integrations","position":2},{"@type":"ListItem","item":"https://www.thethingsindustries.com/docs/integrations/cloud-integrations/","name":"Integrate with popular IoT platforms","position":3}]}</script>
+
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  (function () {
+    var modes = { necessary: true, analytics: false, marketing: false, preferences: false };
+    try {
+      var decided = localStorage.getItem('framerCookiesDismissed') !== null || localStorage.getItem('framerCookiesAutoAccepted') !== null;
+      var stored = JSON.parse(localStorage.getItem('framerCookiesConsentMode') || 'null');
+      if (decided && stored) {
+        for (var k in modes) { if (typeof stored[k] === 'boolean') modes[k] = stored[k]; }
+      }
+    } catch (e) {}
+    var g = function (v) { return v ? 'granted' : 'denied'; };
+    gtag('consent', 'default', {
+      functionality_storage: g(modes.necessary),
+      security_storage: g(modes.necessary),
+      ad_storage: g(modes.marketing),
+      ad_user_data: g(modes.marketing),
+      ad_personalization: g(modes.marketing),
+      analytics_storage: g(modes.analytics),
+      personalization_storage: g(modes.preferences)
+    });
+  })();
+</script>
+
   
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -41,18 +76,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+<a class="skip-link" href="#article-content">Skip to content</a><nav class="navbar is-fixed-top" role="navigation" aria-label="Main">
   <div class="container is-fluid">
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/tts-horizontal-standard-color.svg" alt="The Things Stack documentation home" width="166" height="32">
-      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
-          </div>
-      <span class="navbar-burger burger" data-target="topMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
+      </a><div class="navbar-item navbar-search-menu">
+        <button type="button" class="search-trigger" data-search-open aria-haspopup="dialog" aria-label="Search documentation">
+          <svg class="search-trigger__icon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M8.5 3a5.5 5.5 0 1 0 3.4 9.83l3.63 3.64a.75.75 0 1 0 1.06-1.06l-3.64-3.63A5.5 5.5 0 0 0 8.5 3Zm-4 5.5a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="currentColor"/></svg>
+          <span class="search-trigger__label">Search docs</span>
+          <kbd class="search-trigger__keys" data-search-shortcut>Ctrl K</kbd>
+        </button>
+      </div>
+      <button type="button" class="navbar-burger burger" data-target="topMenu" aria-controls="topMenu" aria-expanded="false" aria-label="Open menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
     </div>
     <div id="topMenu" class="navbar-menu"><div class="navbar-start nav-variant nav-variant--flat">
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
@@ -85,27 +125,71 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </div>
   </div>
-</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-  <script type="text/javascript">
-    docsearch({
-      appId: "608OILUBK2",
-      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
-      indexName: "thethingsstack",
-      container: '#search-input-menu',
-      debug: false, 
-    });
-  </script><div class="container" role="document">
+</nav><dialog class="search-dialog" id="search-dialog" aria-label="Search documentation">
+  <div class="search-dialog__panel">
+    <form class="search-dialog__form" role="search" action="/docs/" method="get">
+      <svg class="search-dialog__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M8.5 3a5.5 5.5 0 1 0 3.4 9.83l3.63 3.64a.75.75 0 1 0 1.06-1.06l-3.64-3.63A5.5 5.5 0 0 0 8.5 3Zm-4 5.5a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="currentColor"/></svg>
+      <input class="search-dialog__input" type="search" name="q" id="search-input"
+        placeholder="Search docs, e.g. “add a gateway” or “payload formatter”"
+        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"
+        role="combobox" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list">
+      <button type="button" class="search-dialog__close" data-search-close aria-label="Close search"><kbd>Esc</kbd></button>
+    </form>
+
+    <div class="search-dialog__filters" id="search-filters" role="group" aria-label="Filter by section" hidden></div>
+
+    <div class="search-dialog__body">
+      <p class="search-dialog__status" id="search-status" role="status" aria-live="polite"></p>
+      <ul class="search-results" id="search-results" role="listbox" aria-label="Search results"></ul>
+      <button type="button" class="button is-light is-fullwidth search-dialog__more" id="search-more" hidden>Show more results</button>
+
+      <div class="search-empty" id="search-start">
+        <div class="search-empty__group" id="search-recent-group" hidden>
+          <h2 class="search-empty__title">Recent searches</h2>
+          <ul class="search-empty__list" id="search-recent"></ul>
+        </div>
+        <div class="search-empty__group">
+          <h2 class="search-empty__title">Popular pages</h2>
+          <ul class="search-empty__list">
+            <li><a class="search-empty__link" href="/docs/getting-started/">Getting Started</a></li>
+            <li><a class="search-empty__link" href="/docs/hardware/gateways/concepts/adding-gateways/">Adding Gateways</a></li>
+            <li><a class="search-empty__link" href="/docs/hardware/devices/adding-devices/">Adding Devices</a></li>
+            <li><a class="search-empty__link" href="/docs/integrations/payload-formatters/">Payload Formatters</a></li>
+            <li><a class="search-empty__link" href="/docs/integrations/webhooks/">Webhooks</a></li>
+            <li><a class="search-empty__link" href="/docs/api/concepts/auth/">Authentication</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="search-empty" id="search-noresults" hidden>
+        <p class="search-noresults__lead">No results for “<strong id="search-noresults-term"></strong>”<span id="search-noresults-filter"></span>.</p>
+        <ul class="search-noresults__tips">
+          <li id="search-noresults-all" hidden><button type="button" class="search-link-button" data-search-clear-filter>Search all sections instead</button></li>
+          <li>Check the spelling, or try fewer or more general words.</li>
+          <li><a id="search-forum-link" href="https://www.thethingsnetwork.org/forum/search?q=" data-base="https://www.thethingsnetwork.org/forum/search?q=" target="_blank" rel="noopener">Ask the community on The Things Network Forum</a></li>
+          <li><a href="https://www.thethingsindustries.com/support" target="_blank" rel="noopener">Contact support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="search-dialog__footer" aria-hidden="true">
+      <span><kbd>↑</kbd><kbd>↓</kbd> to navigate</span>
+      <span><kbd>↵</kbd> to open</span>
+      <span><kbd>Esc</kbd> to close</span>
+    </footer>
+  </div>
+</dialog>
+<script src="/docs/js/search.148930ae7ffd75c9647ef130d657568e7b365a05ad38cb3055890673d648c686.js" integrity="sha256-FIkwrn/9dclkfvEw1ldWjns2WgWtOMswVYkGc9ZIxoY=" crossorigin="anonymous" defer></script>
+<main id="main-content" tabindex="-1"><div class="container">
   <div class="columns my-0 ">
       
       <div class="column is-3 is-2-desktop sidebar-left">
-        
+        <nav class="side-navigation" aria-label="Section">
 
-<nav class="side-navigation" aria-label="Main navigation">
-
-<h2 class="title is-size-5">Integrations</h2>
+<p class="title is-size-5">Integrations</p>
 
 <ul class="menu-list">
-<a href="https://www.thethingsindustries.com/docs/integrations/" class="">Overview</a>
+<li><a href="https://www.thethingsindustries.com/docs/integrations/" class="">Overview</a></li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" class="">Adding Applications</a>
   </li>
@@ -122,8 +206,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="is-active">Integrate with popular IoT platforms</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="is-active" aria-current="page">Integrate with popular IoT platforms</a>
     
+
 
 
 <ul class="menu-list">
@@ -348,10 +433,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       
       <div class="column is-9 is-8-desktop sidebar-middle">
-        <div class="docs-content">
+        <div class="docs-content" id="article-content" tabindex="-1" data-pagefind-body>
+<span hidden data-pagefind-filter="section:Integrations" data-pagefind-meta="section:Integrations"></span>
+
         
         
         <h1 class="title is-size-2">Integrate with popular IoT platforms</h1>
+        <div class="page-actions" data-pagefind-ignore>
+  <div class="page-actions__meta">
+    <span class="page-actions__updated">Updated <time datetime="2025-01-20">20 January 2025</time></span>
+    <a class="page-actions__edit" href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/_index.md" target="_blank" rel="noopener" data-page-action="edit">Edit on GitHub</a>
+  </div><details class="page-actions__menu">
+    <summary class="page-actions__toggle" data-page-action="open-menu">
+      <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M7 3.5A1.5 1.5 0 0 1 8.5 2h7A1.5 1.5 0 0 1 17 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 7 12.5v-9Zm1.5 0v9h7v-9h-7ZM4.5 6H5v1.5h-.5v9h7V16H13v.5a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 16.5v-9A1.5 1.5 0 0 1 4.5 6Z" fill="currentColor"/></svg>
+      Copy page
+      <svg class="page-actions__chevron" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M5.2 7.7a.75.75 0 0 1 1.06.02L10 11.69l3.74-3.97a.75.75 0 1 1 1.1 1.02l-4.3 4.55a.75.75 0 0 1-1.1 0l-4.3-4.55a.75.75 0 0 1 .06-1.04Z" fill="currentColor"/></svg>
+    </summary>
+    <ul class="page-actions__list" role="menu">
+      <li role="none"><button type="button" role="menuitem" class="page-actions__item" data-page-action="copy-markdown" data-markdown-url="/docs/integrations/cloud-integrations/index.md">
+        <strong>Copy page as Markdown</strong><span>To paste into an AI assistant</span></button></li>
+      <li role="none"><a role="menuitem" class="page-actions__item" href="/docs/integrations/cloud-integrations/index.md" target="_blank" rel="noopener" data-page-action="view-markdown">
+        <strong>View as Markdown</strong><span>This page as plain text</span></a></li>
+      <li role="none"><a role="menuitem" class="page-actions__item" href="https://chatgpt.com/?q=Read&#43;https%3A%2F%2Fwww.thethingsindustries.com%2Fdocs%2Fintegrations%2Fcloud-integrations%2Findex.md&#43;and&#43;help&#43;me&#43;with&#43;questions&#43;about&#43;it.&#43;It&#43;is&#43;a&#43;page&#43;from&#43;The&#43;Things&#43;Stack&#43;documentation." target="_blank" rel="noopener" data-page-action="open-chatgpt">
+        <strong>Open in ChatGPT</strong><span>Ask questions about this page</span></a></li>
+      <li role="none"><a role="menuitem" class="page-actions__item" href="https://claude.ai/new?q=Read&#43;https%3A%2F%2Fwww.thethingsindustries.com%2Fdocs%2Fintegrations%2Fcloud-integrations%2Findex.md&#43;and&#43;help&#43;me&#43;with&#43;questions&#43;about&#43;it.&#43;It&#43;is&#43;a&#43;page&#43;from&#43;The&#43;Things&#43;Stack&#43;documentation." target="_blank" rel="noopener" data-page-action="open-claude">
+        <strong>Open in Claude</strong><span>Ask questions about this page</span></a></li>
+    </ul>
+  </details>
+</div>
+<script src="/docs/js/page-actions.537f58e67d69ce7346a710d9889ba7ed43e868b0d68370e1f1ede876e876d237.js" integrity="sha256-U39Y5n1pznNGpxDZiJun7UPoaLDWg3Dh8e3oduh20jc=" crossorigin="anonymous" defer></script>
+
         <div class="content">
           <p>Here you can find detailed guides for creating integrations with popular IoT platforms.</p>
 <p>Please keep in mind that most cloud integrations are enabled only for uplink messages by default.</p>
@@ -359,13 +470,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>However, besides enabling desired message type(s), you might also need to take care of the way that your desired third party IoT platform parses and decodes these messages. Since uplink messages are mostly the only ones enabled by default, the integration guides in this section contain instructions for using integrations only with uplink messages.</p>
 <p>Select the IoT platform that you want to learn about for integration with The Things Stack from the <strong>left menu</strong>.</p>
         </div>
-          <div class="columns is-multiline">
+          <div data-pagefind-ignore><div class="columns is-multiline">
   <div class="column is-half is-flex">
     <div class="card has-radius is-fullwidth">
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza/">akenza</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza/">akenza</a></h2>
           <div class="content page-card__text">
             
             akenza is an IoT platform designed to help you develop your own smart solutions. It connects your sensors, manages the connectivity layer, processes your data and makes it accessible to your cloud application.
@@ -374,7 +485,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza/" class="button is-primary" aria-label="Read akenza">Read</a>
         </div>
       </div>
     </div>
@@ -384,7 +495,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/allthingstalk/">AllThingsTalk Maker</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/allthingstalk/">AllThingsTalk Maker</a></h2>
           <div class="content page-card__text">
             
             AllThingsTalk Maker is a highly accessible IoT platform for a rapid IoT prototype development. It lets you connect a wide range of devices to the network of your choice, then to extract, visualize and process the collected sensor data in a user friendly way.
@@ -393,7 +504,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/allthingstalk/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/allthingstalk/" class="button is-primary" aria-label="Read AllThingsTalk Maker">Read</a>
         </div>
       </div>
     </div>
@@ -403,7 +514,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/anyviz/">AnyViz</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/anyviz/">AnyViz</a></h2>
           <div class="content page-card__text">
             
             AnyViz offers an easy way to operate, monitor and analyze machine and plant controls remotely. Some of its features are real-time data visualization, data storage, automated reports, etc.
@@ -412,7 +523,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/anyviz/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/anyviz/" class="button is-primary" aria-label="Read AnyViz">Read</a>
         </div>
       </div>
     </div>
@@ -450,13 +561,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   
 
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack">
+<a href="https://www.thethingsindustries.com/the-things-stack/deployment-options" target="_blank" rel="noopener" class="badge-stack" title="Available in: Cloud, Enterprise, Sandbox">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg" alt="Cloud">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg" alt="Enterprise">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_ttss.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_ttss.svg" alt="Sandbox">
 
 </a>
 
@@ -467,7 +578,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               
             </div>
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/">AWS IoT</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/">AWS IoT</a></h2>
           <div class="content page-card__text">
             
             The key features of the Default Integration are:
@@ -477,7 +588,7 @@ Handling uplink and downlink messages: The Things Stack publishes uplink message
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/" class="button is-primary" aria-label="Read AWS IoT">Read</a>
         </div>
       </div>
     </div>
@@ -515,13 +626,13 @@ Handling uplink and downlink messages: The Things Stack publishes uplink message
 
   
 
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack">
+<a href="https://www.thethingsindustries.com/the-things-stack/deployment-options" target="_blank" rel="noopener" class="badge-stack" title="Available in: Cloud, Enterprise, Sandbox">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg" alt="Cloud">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg" alt="Enterprise">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_ttss.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_ttss.svg" alt="Sandbox">
 
 </a>
 
@@ -532,7 +643,7 @@ Handling uplink and downlink messages: The Things Stack publishes uplink message
               
             </div>
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-central/">Azure IoT Central</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-central/">Azure IoT Central</a></h2>
           <div class="content page-card__text">
             
             This guide will help you setup the Azure IoT Central integration.
@@ -542,7 +653,7 @@ Handling uplink messages: The Things Stack publishes uplink messages to an Azure
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-central/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-central/" class="button is-primary" aria-label="Read Azure IoT Central">Read</a>
         </div>
       </div>
     </div>
@@ -580,13 +691,13 @@ Handling uplink messages: The Things Stack publishes uplink messages to an Azure
 
   
 
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack">
+<a href="https://www.thethingsindustries.com/the-things-stack/deployment-options" target="_blank" rel="noopener" class="badge-stack" title="Available in: Cloud, Enterprise, Sandbox">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg" alt="Cloud">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg" alt="Enterprise">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_ttss.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_ttss.svg" alt="Sandbox">
 
 </a>
 
@@ -597,17 +708,18 @@ Handling uplink messages: The Things Stack publishes uplink messages to an Azure
               
             </div>
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/">Azure IoT Hub</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/">Azure IoT Hub</a></h2>
           <div class="content page-card__text">
             
             This guide will help you setup the Azure IoT Hub integration.
 The key features of the Azure IoT Hub integration are:
-Handling uplink messages: The Things Stack publishes uplink messages to an Azure IoT Hub Creating and deleting devices: manage end device in Azure IoT Hub, using the LoRaWAN® device repository Updating device state in Device Twin: update the device reported properties based on the decoded payloads, and schedule downlinks based on the device desired properties Note: This integration comes with a Azure Resource Manager Template template to deploy in your Azure account. 
+Handling uplink messages: The Things Stack publishes uplink messages to an Azure IoT Hub Creating and deleting devices: manage end device in Azure IoT Hub, using the LoRaWAN® device repository Updating device state in Device Twin: update the device reported properties based on the decoded payloads, and schedule downlinks based on the device desired properties Note:
+
             
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/" class="button is-primary" aria-label="Read Azure IoT Hub">Read</a>
         </div>
       </div>
     </div>
@@ -617,7 +729,7 @@ Handling uplink messages: The Things Stack publishes uplink messages to an Azure
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/">Blockbax</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/">Blockbax</a></h2>
           <div class="content page-card__text">
             
             Blockbax is an AI-powered platform for data-driven asset management.
@@ -626,7 +738,7 @@ Handling uplink messages: The Things Stack publishes uplink messages to an Azure
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/" class="button is-primary" aria-label="Read Blockbax">Read</a>
         </div>
       </div>
     </div>
@@ -664,13 +776,13 @@ Handling uplink messages: The Things Stack publishes uplink messages to an Azure
 
   
 
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack">
+<a href="https://www.thethingsindustries.com/the-things-stack/deployment-options" target="_blank" rel="noopener" class="badge-stack" title="Available in: Cloud, Enterprise, Sandbox">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg" alt="Cloud">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg" alt="Enterprise">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_ttss.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_ttss.svg" alt="Sandbox">
 
 </a>
 
@@ -681,7 +793,7 @@ Handling uplink messages: The Things Stack publishes uplink messages to an Azure
               
             </div>
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/">Blynk</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/">Blynk</a></h2>
           <div class="content page-card__text">
             
             Blynk is a powerful IoT platform that enables businesses to easily connect, monitor, and control devices. It includes secure cloud infrastructure and customizable mobile and web applications, all without the need for coding.
@@ -691,7 +803,7 @@ Key Benefits of Blynk Integration Bidirectional Device Communication: Leverage w
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blynk/" class="button is-primary" aria-label="Read Blynk">Read</a>
         </div>
       </div>
     </div>
@@ -701,7 +813,7 @@ Key Benefits of Blynk Integration Bidirectional Device Communication: Leverage w
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cayenne/">Cayenne</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cayenne/">Cayenne</a></h2>
           <div class="content page-card__text">
             
             Cayenne is a drag-and-drop IoT platform, developed by myDevices, that empowers users to quickly prototype and share their connected IoT solutions.
@@ -710,7 +822,7 @@ Key Benefits of Blynk Integration Bidirectional Device Communication: Leverage w
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cayenne/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cayenne/" class="button is-primary" aria-label="Read Cayenne">Read</a>
         </div>
       </div>
     </div>
@@ -720,7 +832,7 @@ Key Benefits of Blynk Integration Bidirectional Device Communication: Leverage w
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/">Cloud Studio</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/">Cloud Studio</a></h2>
           <div class="content page-card__text">
             
             Cloud Studio is an IoT software company that developed an IoT platform which enables monitoring, control and automation of facilities. This platform is code-less and highly customizable, allowing enterprise and government entities to easily manage it in their unique way.
@@ -729,7 +841,7 @@ Key Benefits of Blynk Integration Bidirectional Device Communication: Leverage w
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/" class="button is-primary" aria-label="Read Cloud Studio">Read</a>
         </div>
       </div>
     </div>
@@ -767,13 +879,13 @@ Key Benefits of Blynk Integration Bidirectional Device Communication: Leverage w
 
   
 
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack">
+<a href="https://www.thethingsindustries.com/the-things-stack/deployment-options" target="_blank" rel="noopener" class="badge-stack" title="Available in: Cloud, Enterprise, Sandbox">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg" alt="Cloud">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg" alt="Enterprise">
 
-  <img class="badge" src="/docs/img/tts_frames/frame_ttss.svg"></img>
+  <img class="badge" src="/docs/img/tts_frames/frame_ttss.svg" alt="Sandbox">
 
 </a>
 
@@ -784,7 +896,7 @@ Key Benefits of Blynk Integration Bidirectional Device Communication: Leverage w
               
             </div>
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/daizy/">Daizy</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/daizy/">Daizy</a></h2>
           <div class="content page-card__text">
             
             Use Daizy to rapidly build, deploy and scale Internet of Things applications and stay in control of your data.
@@ -796,7 +908,7 @@ The Things Stack licenses can be purchased from Daizy, and in this case there is
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/daizy/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/daizy/" class="button is-primary" aria-label="Read Daizy">Read</a>
         </div>
       </div>
     </div>
@@ -806,7 +918,7 @@ The Things Stack licenses can be purchased from Daizy, and in this case there is
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/datacake/">Datacake</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/datacake/">Datacake</a></h2>
           <div class="content page-card__text">
             
             Datacake is a multi-purpose IoT platform, which provides the possibility of building custom IoT applications, without requiring programming skills.
@@ -815,7 +927,7 @@ The Things Stack licenses can be purchased from Daizy, and in this case there is
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/datacake/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/datacake/" class="button is-primary" aria-label="Read Datacake">Read</a>
         </div>
       </div>
     </div>
@@ -825,7 +937,7 @@ The Things Stack licenses can be purchased from Daizy, and in this case there is
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/delmation/">Delmation Products</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/delmation/">Delmation Products</a></h2>
           <div class="content page-card__text">
             
             With the Delmation Products | Docksters integration, data from your LoRaWAN® devices can easily be sent to the Docksters IoT portal.
@@ -835,7 +947,7 @@ Built on the latest cloud-based technology, Docksters can help you excel your bu
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/delmation/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/delmation/" class="button is-primary" aria-label="Read Delmation Products">Read</a>
         </div>
       </div>
     </div>
@@ -845,7 +957,7 @@ Built on the latest cloud-based technology, Docksters can help you excel your bu
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/dezem/">deZem</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/dezem/">deZem</a></h2>
           <div class="content page-card__text">
             
             The deZem IoT data management system facilitates an increased efficiency and productivity of plants, processes and infrastructure. To this end, deZem provides a modular solution to collect sensor data from very heterogeneous sources on a single platform, and a large variety of online analysis tools. As LoRaWAN® devices are great for effortless data acquisition in the field, the deZem system integrates with The Things Stack.
@@ -855,7 +967,7 @@ Prerequisites deZem account User rights for deZemAd&rsquo;s technical tree Setup
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/dezem/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/dezem/" class="button is-primary" aria-label="Read deZem">Read</a>
         </div>
       </div>
     </div>
@@ -865,7 +977,7 @@ Prerequisites deZem account User rights for deZemAd&rsquo;s technical tree Setup
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/evrlast/">evrlast</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/evrlast/">evrlast</a></h2>
           <div class="content page-card__text">
             
             evrlast is a cloud platform for the automatic collection, monitoring, and analysis of sensor data. evrlast devices continuously measure environmental and operational parameters, transmit the data wirelessly to the evrlast cloud, and notify users whenever configured thresholds are exceeded. The evrlast web application provides a centralized dashboard for monitoring and managing all sensor data.
@@ -875,7 +987,7 @@ In addition to native evrlast devices, The Things Stack can be integrated as an 
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/evrlast/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/evrlast/" class="button is-primary" aria-label="Read evrlast">Read</a>
         </div>
       </div>
     </div>
@@ -885,7 +997,7 @@ In addition to native evrlast devices, The Things Stack can be integrated as an 
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/homey/">Homey</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/homey/">Homey</a></h2>
           <div class="content page-card__text">
             
             Homey is a smart home hub that can be connected with practically every smart device on the market. This guide shows you how to integrate The Things Stack with a Homey application to get the best out of your LoRaWAN® data.
@@ -894,7 +1006,7 @@ In addition to native evrlast devices, The Things Stack can be integrated as an 
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/homey/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/homey/" class="button is-primary" aria-label="Read Homey">Read</a>
         </div>
       </div>
     </div>
@@ -904,7 +1016,7 @@ In addition to native evrlast devices, The Things Stack can be integrated as an 
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/">InfluxDB Cloud 2.0</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/">InfluxDB Cloud 2.0</a></h2>
           <div class="content page-card__text">
             
             InfluxDB Cloud 2.0 is a serverless real-time monitoring platform specifically created for working with time series data. It combines data storage, user interface, visualization, processing, monitoring and alerting into one cohesive system.
@@ -913,7 +1025,7 @@ In addition to native evrlast devices, The Things Stack can be integrated as an 
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/" class="button is-primary" aria-label="Read InfluxDB Cloud 2.0">Read</a>
         </div>
       </div>
     </div>
@@ -923,7 +1035,7 @@ In addition to native evrlast devices, The Things Stack can be integrated as an 
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/iotinabox/">IoT in a Box</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/iotinabox/">IoT in a Box</a></h2>
           <div class="content page-card__text">
             
             IoT in a Box combines an intelligent network of sensors and gateways with monitoring and reporting applications to solve unique and complex monitoring challenges.
@@ -932,7 +1044,7 @@ In addition to native evrlast devices, The Things Stack can be integrated as an 
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/iotinabox/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/iotinabox/" class="button is-primary" aria-label="Read IoT in a Box">Read</a>
         </div>
       </div>
     </div>
@@ -942,7 +1054,7 @@ In addition to native evrlast devices, The Things Stack can be integrated as an 
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/wonderland/">IoT Wonderland</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/wonderland/">IoT Wonderland</a></h2>
           <div class="content page-card__text">
             
             IoT Wonderland is a powerful and user-friendly platform for tracking applications, offering broad support for LoRaWAN, cellular, satellite, barcode, RFID, and beacon-based devices. It features advanced location visualization, real-time data handling, and flexible integration options—making it ideal for large-scale, multi-network tracking solutions.
@@ -951,7 +1063,7 @@ In addition to native evrlast devices, The Things Stack can be integrated as an 
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/wonderland/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/wonderland/" class="button is-primary" aria-label="Read IoT Wonderland">Read</a>
         </div>
       </div>
     </div>
@@ -961,7 +1073,7 @@ In addition to native evrlast devices, The Things Stack can be integrated as an 
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/kaa/">Kaa</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/kaa/">Kaa</a></h2>
           <div class="content page-card__text">
             
             Kaa is an IoT platform that provides device management, data collection, data processing and analytics, alerts, data visualization, configuration management, command execution, over-the-air updates and more. Kaa provides comprehensive multi-tenancy with full isolation of each tenant&rsquo;s data, users, permissions, dashboards, solutions, etc. It is modular by design and built upon cloud-native microservices that you can easily swap, customize, or integrate with third-party solutions. Also, Kaa features a modern-looking, intuitive, and fully customizable web dashboard.
@@ -970,7 +1082,7 @@ In addition to native evrlast devices, The Things Stack can be integrated as an 
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/kaa/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/kaa/" class="button is-primary" aria-label="Read Kaa">Read</a>
         </div>
       </div>
     </div>
@@ -980,7 +1092,7 @@ In addition to native evrlast devices, The Things Stack can be integrated as an 
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/losant/">Losant IoT Platform</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/losant/">Losant IoT Platform</a></h2>
           <div class="content page-card__text">
             
             Losant’s Enterprise IoT Platform provides the complete edge and cloud software foundation to build and scale compelling IoT applications for your customers.
@@ -991,7 +1103,7 @@ Requirements If you do not have a Losant account, please create a free Losant Sa
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/losant/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/losant/" class="button is-primary" aria-label="Read Losant IoT Platform">Read</a>
         </div>
       </div>
     </div>
@@ -1001,7 +1113,7 @@ Requirements If you do not have a Losant account, please create a free Losant Sa
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/mclimate/">MClimate</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/mclimate/">MClimate</a></h2>
           <div class="content page-card__text">
             
             MClimate is an IoT company which designs and develops smart home and automation solutions with a focus on sustainability, comfort, security and energy savings. This IoT platform can be used with a wide range of MClimate IoT devices that turn home and office appliances into smart ones, and help you control your electricity usage.
@@ -1010,7 +1122,7 @@ Requirements If you do not have a Losant account, please create a free Losant Sa
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/mclimate/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/mclimate/" class="button is-primary" aria-label="Read MClimate">Read</a>
         </div>
       </div>
     </div>
@@ -1020,7 +1132,7 @@ Requirements If you do not have a Losant account, please create a free Losant Sa
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/my-iot-open-tech/">my IoT open Tech</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/my-iot-open-tech/">my IoT open Tech</a></h2>
           <div class="content page-card__text">
             
             my IoT open Tech is an IoT platform, developed on top of ThingsBoard Community Edition (an open-source project), with a user-centered design.
@@ -1031,7 +1143,7 @@ my IoT open Tech development is a non-profit community effort open to everybody 
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/my-iot-open-tech/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/my-iot-open-tech/" class="button is-primary" aria-label="Read my IoT open Tech">Read</a>
         </div>
       </div>
     </div>
@@ -1041,7 +1153,7 @@ my IoT open Tech development is a non-profit community effort open to everybody 
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/qubitro/">Qubitro</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/qubitro/">Qubitro</a></h2>
           <div class="content page-card__text">
             
             Qubitro is a device data platform (DDP) built for a hyper-connected world and used by companies of all sizes — from visionary startups to large enterprises across 40+ countries.
@@ -1051,7 +1163,7 @@ Qubitro has no-code source integration support for The Things Stack.
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/qubitro/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/qubitro/" class="button is-primary" aria-label="Read Qubitro">Read</a>
         </div>
       </div>
     </div>
@@ -1061,7 +1173,7 @@ Qubitro has no-code source integration support for The Things Stack.
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tagoio/">TagoIO</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tagoio/">TagoIO</a></h2>
           <div class="content page-card__text">
             
             TagoIO combines advanced device management, services, data storage, visualization and analytics to a cloud-based IoT platform, with a wide range of functionalities and easy implementation.
@@ -1070,7 +1182,7 @@ Qubitro has no-code source integration support for The Things Stack.
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tagoio/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tagoio/" class="button is-primary" aria-label="Read TagoIO">Read</a>
         </div>
       </div>
     </div>
@@ -1080,7 +1192,7 @@ Qubitro has no-code source integration support for The Things Stack.
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/telemetry2u/">Telemetry2U</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/telemetry2u/">Telemetry2U</a></h2>
           <div class="content page-card__text">
             
             Telemetry2U is a complete IoT platform that requires little setup and configuration yet still provides advanced features, such as voice alerts, scheduled audit reports, configurable real-time dashboards and even calibrations.
@@ -1091,7 +1203,7 @@ Click the Create New link in the top right corner to add a new LoRaWAN® device.
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/telemetry2u/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/telemetry2u/" class="button is-primary" aria-label="Read Telemetry2U">Read</a>
         </div>
       </div>
     </div>
@@ -1101,7 +1213,7 @@ Click the Create New link in the top right corner to add a new LoRaWAN® device.
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tellsens/">Tellsens</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tellsens/">Tellsens</a></h2>
           <div class="content page-card__text">
             
             Tellsens is an IoT platform that facilitates map and satelite imagery with geofencing functionality. Read this section to learn how to integrate The Things Stack with Tellsens.
@@ -1110,7 +1222,7 @@ Click the Create New link in the top right corner to add a new LoRaWAN® device.
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tellsens/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tellsens/" class="button is-primary" aria-label="Read Tellsens">Read</a>
         </div>
       </div>
     </div>
@@ -1120,7 +1232,7 @@ Click the Create New link in the top right corner to add a new LoRaWAN® device.
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thethingsio/">thethings.iO</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thethingsio/">thethings.iO</a></h2>
           <div class="content page-card__text">
             
             thethings.iO is hardware and connectivity agnostic enterprise IoT plaform that enables deploying scalable and flexible IoT solutions. This simple platform offers to quickly connect your IoT products using multiple protocols, APIs to manage them and dashboards to visualize the incoming data.
@@ -1129,7 +1241,7 @@ Click the Create New link in the top right corner to add a new LoRaWAN® device.
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thethingsio/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thethingsio/" class="button is-primary" aria-label="Read thethings.iO">Read</a>
         </div>
       </div>
     </div>
@@ -1139,7 +1251,7 @@ Click the Create New link in the top right corner to add a new LoRaWAN® device.
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thinger-io/">Thinger.io</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thinger-io/">Thinger.io</a></h2>
           <div class="content page-card__text">
             
             Thinger.io is a cloud IoT Platform that provides every needed tool to prototype, scale and manage connected products in a very simple way. Its goal is to democratize the use of IoT making it accessible to the whole world, and streamlining the development of big IoT projects.
@@ -1149,7 +1261,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thinger-io/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thinger-io/" class="button is-primary" aria-label="Read Thinger.io">Read</a>
         </div>
       </div>
     </div>
@@ -1159,7 +1271,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingsboard/">ThingsBoard</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingsboard/">ThingsBoard</a></h2>
           <div class="content page-card__text">
             
             ThingsBoard is an open-source IoT platform for data collection, processing, visualization, and device management. It supports cloud and on-premises deployments, and it combines scalability, fault-tolerance and performances to nullify the chances of getting your IoT data lost.
@@ -1168,7 +1280,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingsboard/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingsboard/" class="button is-primary" aria-label="Read ThingsBoard">Read</a>
         </div>
       </div>
     </div>
@@ -1178,7 +1290,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingspeak/">ThingSpeak</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingspeak/">ThingSpeak</a></h2>
           <div class="content page-card__text">
             
             ThingSpeak is an IoT platform with built-in MATLAB® analytics, which allows preprocessing, analyzing and visualizing data sent by IoT devices, as well as creating actions such as alerts based on your channel data.
@@ -1187,7 +1299,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingspeak/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingspeak/" class="button is-primary" aria-label="Read ThingSpeak">Read</a>
         </div>
       </div>
     </div>
@@ -1197,7 +1309,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ttnmapper/">TTN Mapper</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ttnmapper/">TTN Mapper</a></h2>
           <div class="content page-card__text">
             
             TTN Mapper is a convenient tool used for mapping the network coverage of gateways connected to The Things Stack.
@@ -1206,7 +1318,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ttnmapper/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ttnmapper/" class="button is-primary" aria-label="Read TTN Mapper">Read</a>
         </div>
       </div>
     </div>
@@ -1216,7 +1328,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/">Ubidots</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/">Ubidots</a></h2>
           <div class="content page-card__text">
             
             Ubidots provides a secure and easy way to build IoT solutions for students, makers and researchers. It is used for sending data from any Internet-enabled device to the cloud, triggering actions and alerts based on that data, and visualizing it.
@@ -1225,7 +1337,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/" class="button is-primary" aria-label="Read Ubidots">Read</a>
         </div>
       </div>
     </div>
@@ -1235,7 +1347,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/uib/">UIB</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/uib/">UIB</a></h2>
           <div class="content page-card__text">
             
             UIB&rsquo;s technology makes human to machine communications simple. Keep following this guide to find out how to send notifications on data events to WhatsApp.
@@ -1244,7 +1356,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/uib/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/uib/" class="button is-primary" aria-label="Read UIB">Read</a>
         </div>
       </div>
     </div>
@@ -1254,7 +1366,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/unaconnect/">UnaConnect</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/unaconnect/">UnaConnect</a></h2>
           <div class="content page-card__text">
             
             UnaConnect is a middleware cloud platform for IoT device management from UnaBiz. It allows onboarding large fleets of devices, collecting and processing their data, and integrating with various end platforms in a secure and efficient manner.
@@ -1263,7 +1375,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/unaconnect/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/unaconnect/" class="button is-primary" aria-label="Read UnaConnect">Read</a>
         </div>
       </div>
     </div>
@@ -1273,7 +1385,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/">Widgelix</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/">Widgelix</a></h2>
           <div class="content page-card__text">
             
             Widgelix is a powerful and flexible deep analytics cloud service for IoT device management and data visualization. Widgelix platform allows you to easily integrate devices from various manufacturers into a single platform, making it easier to manage your IoT network and extract valuable insights from your collected data. With Widgelix, you can optimize your device performance, improve your decision-making, and drive business growth.
@@ -1282,7 +1394,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/" class="button is-primary" aria-label="Read Widgelix">Read</a>
         </div>
       </div>
     </div>
@@ -1292,7 +1404,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/withthegrid/">Withthegrid</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/withthegrid/">Withthegrid</a></h2>
           <div class="content page-card__text">
             
             Withthegrid is an IoT asset monitoring platform for infrastructure - it allows you to monitor assets, connect IoT sensors, visualize data, detect anomalies and manage workflows. In this section, we describe how to implement The Things Stack integration with the Withthegrid platform.
@@ -1301,7 +1413,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/withthegrid/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/withthegrid/" class="button is-primary" aria-label="Read Withthegrid">Read</a>
         </div>
       </div>
     </div>
@@ -1311,7 +1423,7 @@ Uplink data payload processing Downlink data payload processing Automatic device
       <div class="card-content">
         <div class="title-content">
           
-          <h1 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/zoho-iot/">Zoho IoT</a></h1>
+          <h2 class="title page-card__title"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/zoho-iot/">Zoho IoT</a></h2>
           <div class="content page-card__text">
             
             Zoho IoT is a low-code platform for building cloud based web applications tailored to IoT use cases. It lets you securely connect, monitor, and automate IoT enabled devices with ease.
@@ -1320,35 +1432,29 @@ Uplink data payload processing Downlink data payload processing Automatic device
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/zoho-iot/" class="button is-primary">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/zoho-iot/" class="button is-primary" aria-label="Read Zoho IoT">Read</a>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-          <div class="is-clearfix">
+</div>
+          <div data-pagefind-ignore><div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/storage/retrieve/">← Retrieve Messages</a>
 <a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/akenza/">akenza →</a>
 </div>
-
-          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+</div>
+          <div data-pagefind-ignore><script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
   <div id="emojicom-widget-inline"></div>
-</div>
+</div></div>
         </div>
       </div>
       
       <div class="column is-hidden-touch is-2-desktop sidebar-right">
-        <nav class="toc" aria-label="Page navigation">
-    <h2 class="title is-size-6">On this page</h2>
-    
-
-
-
-  </nav>
+        
 
       </div>
       
@@ -1356,12 +1462,13 @@ Uplink data payload processing Downlink data payload processing Automatic device
 </div>
 
 
+</main>
 
 <footer class="footer">
   <div class="container">
     <div class="columns">
-      <nav class="column is-one-fourth">
-        <h3 class="title is-6">Sections</h3>
+      <nav class="column is-one-fourth" aria-labelledby="footer-sections">
+        <h2 class="title is-6" id="footer-sections">Sections</h2>
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
         <p><a class="" href="/docs/concepts/">Concepts</a></p>
         <p><a class="" href="/docs/cloud/">Cloud</a></p>
@@ -1370,24 +1477,26 @@ Uplink data payload processing Downlink data payload processing Automatic device
         <p><a class="" href="/docs/api/">API</a></p>
         <p><a class="" href="/docs/hardware/">Hardware</a></p>
       </nav>
-      <nav class="column is-one-fourth">
-        <h3 class="title is-6">Sitemap</h3>
+      <nav class="column is-one-fourth" aria-labelledby="footer-sitemap">
+        <h2 class="title is-6" id="footer-sitemap">Sitemap</h2>
         <p><a class="" href="https://www.thethingsindustries.com/docs/sitemap/">View our Sitemap</a></p>
       </nav>
-      <nav class="column is-one-fourth">
-        <h3 class="title is-6">Contributing</h3>
+      <nav class="column is-one-fourth" aria-labelledby="footer-contributing">
+        <h2 class="title is-6" id="footer-contributing">Contributing</h2>
         <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
       </nav>
       
-      <nav class="column is-one-fourth">
-        <h3 class="title is-6">About Us</h3>
+      <nav class="column is-one-fourth" aria-labelledby="footer-about">
+        <h2 class="title is-6" id="footer-about">About Us</h2>
         <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+        <p><a href="https://www.thethingsindustries.com/legal/privacy-policy">Privacy Policy</a></p>
+        <p><a href="#" role="button" data-cookie-settings>Cookie settings</a></p>
       </nav>
       </div>
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.a076fc112b09a207a82bbdb2a0d046b3de26e2322f4bd109bd1bad40b8905c3d.js" integrity="sha256-oHb8ESsJogeoK72yoNBGs94m4jIvS9EJvRutQLiQXD0=" crossorigin="anonymous"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.ce7a74702e883c780aa881f7e75550831be176b589366b42507e898814744f83.js" integrity="sha256-znp0cC6IPHgKqIH351VQgxvhdrWJNmtCUH6JiBR0T4M=" crossorigin="anonymous"></script>
 <script src="https://www.thethingsindustries.com/docs/js/copy-code.min.a518753ee4e1c3aeebbc4c68d67a7c5567d425c897f55be565b940432bff35d9.js" integrity="sha256-pRh1PuThw67rvExo1np8VWfUJciX9VvlZblAQyv/Ndk=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
@@ -1396,7 +1505,41 @@ Uplink data payload processing Downlink data payload processing Automatic device
 
 <script>
 (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
-</script>
+</script><section class="consent" id="consent" role="dialog" aria-labelledby="consent-title" aria-describedby="consent-text" hidden>
+  <h2 class="consent__title" id="consent-title">Cookie Settings</h2>
+  <p class="consent__text" id="consent-text">
+    We use cookies to enhance your experience, analyze site traffic and deliver personalized content. Read our <a href="https://www.thethingsindustries.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.
+  </p>
+
+  <fieldset class="consent__options" id="consent-options" hidden>
+    <legend class="is-sr-only">Cookie categories</legend>
+    <label class="consent__option">
+      <input type="checkbox" checked disabled>
+      <span><strong>Necessary</strong><span>Required for the site to work. Always on.</span></span>
+    </label>
+    <label class="consent__option">
+      <input type="checkbox" name="analytics">
+      <span><strong>Analytics</strong><span>Help us understand how the documentation is used, so we can improve it.</span></span>
+    </label>
+    <label class="consent__option">
+      <input type="checkbox" name="marketing">
+      <span><strong>Marketing</strong><span>Measure and personalize our advertising.</span></span>
+    </label>
+    <label class="consent__option">
+      <input type="checkbox" name="preferences">
+      <span><strong>Preferences</strong><span>Remember your settings and choices.</span></span>
+    </label>
+  </fieldset>
+
+  <div class="consent__buttons">
+    <button type="button" class="button is-primary is-small" data-consent="accept">Accept all</button>
+    <button type="button" class="button is-light is-small" data-consent="reject">Reject all</button>
+    <button type="button" class="button is-text is-small consent__customize" data-consent="customize" aria-expanded="false" aria-controls="consent-options">Customize</button>
+    <button type="button" class="button is-primary is-small" data-consent="save" hidden>Save choices</button>
+  </div>
+</section>
+<script src="/docs/js/consent.9ae45e2a92644e1dc6b677eb6f116fe35110f4a2da10aefecbe0a96b464836bd.js" integrity="sha256-muReKpJkTh3GtnfrbxFv41EQ9KLaEK7&#43;y&#43;Cpa0ZINr0=" crossorigin="anonymous" defer></script>
+
 
 </body>
 
