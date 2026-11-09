@@ -78,6 +78,12 @@ You can manage your gateway license from the [Gateway Admin]({{< relref "./gatew
 
 {{% ttigpro %}} can be claimed in {{% tts %}} deployments that are connected to The Things Gateway Controller. {{% tts %}} Cloud and Sandbox are supported out-of-the-box.
 
+Claiming registers the gateway in {{% tts %}} too, so you do not need to register it beforehand.
+
+{{< tabs/container "Console" "CLI" >}}
+
+{{< tabs/tab "Console" >}}
+
 1. In the {{% tts %}} Console, go to **Gateways**.
 2. Click **Register Gateway**.
 3. Click **Scan gateway QR code** and scan the QR code on the bottom of the gateway.
@@ -91,6 +97,40 @@ You can manage your gateway license from the [Gateway Admin]({{< relref "./gatew
 You should now see the **Connection settings** screen:
 
 {{< figure src="post-claim.png" alt="Claim successful" >}}
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
+
+Make sure the [CLI]({{< relref "/concepts/features/cli" >}}) is configured for, and logged in to, the {{% tts %}} deployment where you want to claim the gateway. For example, for the `tenant1` tenant on the {{% tts %}} Cloud `eu1` cluster:
+
+```bash
+ttn-lw-cli use tenant1.eu1.cloud.thethings.industries
+ttn-lw-cli login
+```
+
+The following example claims a gateway with EUI `EC656EFFFE000000` and gives it the Gateway ID `my-ttigpro`. The gateway is owned by the user `user1` and connects to the `tenant1` tenant on the `eu1` cluster. Adapt the example to your situation:
+
+```bash
+ttn-lw-cli gateways claim EC656EFFFE000000 \
+  --authentication-code <owner-token> \
+  --target-gateway-id my-ttigpro \
+  --target-frequency-plan-id EU_863_870_TTN \
+  --target-gateway-server-address tenant1.eu1.cloud.thethings.industries \
+  --user-id user1
+```
+
+- `--authentication-code`: the **Owner Token**, entered exactly as shown. If your gateway is part of a **Gateway Fleet**, use the **Owner Token** from your **fleet details** in the **Subscription Dashboard**. If it is not, use the **Owner Token** printed on the label under the mounting plate. Claiming with the QR code is not supported in the CLI.
+- `--target-gateway-id`: a new Gateway ID. Do not use the ID of a gateway that already exists.
+- `--target-frequency-plan-id`: the frequency plan to use. You can list the available frequency plans with `ttn-lw-cli gateways list-frequency-plans`.
+- `--target-gateway-server-address`: the address of the {{% tts %}} deployment the gateway should connect to, without a scheme or port. For {{% tts %}} Cloud, this is `<tenant-id>.<cluster>.cloud.thethings.industries`.
+- `--user-id`: the user who will own the gateway. To make an organization the owner, use `--organization-id` instead.
+
+If claiming succeeds, the CLI prints the identifiers of the new gateway. The gateway then connects automatically and your one-year License is activated.
+
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
 
 {{< warning >}}When powering on your gateway for the first time without Ethernet, it may take several minutes to activate the SIM card and attach to a mobile network.{{< /warning >}}
 
