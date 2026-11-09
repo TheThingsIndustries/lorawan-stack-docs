@@ -161,6 +161,33 @@ The error occurs if the gateway does not have active subscription. For more info
 
 If the issue persists, please contact [support@thethingsindustries.com](mailto:support@thethingsindustries.com).
 
+#### I get an error "gateway already claimed by the same owner" while claiming {{% ttigpro %}}
+
+This error means that the gateway is still claimed by this {{% tts %}} deployment in The Things Gateway Controller, but it is no longer registered in {{% tts %}}. This can happen when the gateway was deleted without being unclaimed, for example with the CLI or the API, or when an earlier claim attempt failed partway through.
+
+To fix this, register the gateway in {{% tts %}} without claiming it, unclaim it, and then claim it again:
+
+1. Register the gateway with the [CLI]({{< relref "/concepts/features/cli" >}}):
+
+   ```bash
+   ttn-lw-cli gateways create <gateway-id> \
+     --gateway-eui <gateway-eui> \
+     --frequency-plan-id EU_863_870_TTN \
+     --user-id <user-id>
+   ```
+
+   To make an organization the owner, use `--organization-id` instead of `--user-id`. If the previous Gateway ID still belongs to a deleted gateway, choose a new Gateway ID.
+
+   {{< note >}}Do not register the gateway in the Console. The Console recognizes that the gateway can be claimed and tries to claim it, which fails with the same error.{{</ note >}}
+
+2. In the {{% tts %}} Console, go to the gateway you just registered. Open the menu at the top right of the gateway overview and click **Unclaim and delete gateway**. If the menu only shows **Delete gateway**, stop and contact [support@thethingsindustries.com](mailto:support@thethingsindustries.com).
+
+3. Claim the gateway again as described in [Claim in {{% tts %}}](#claim-in-the-things-stack).
+
+Do these steps in the same {{% tts %}} deployment where the gateway was claimed before. Unclaiming is only allowed for the deployment that owns the claim.
+
+If the issue persists, please contact [support@thethingsindustries.com](mailto:support@thethingsindustries.com).
+
 ## Firmware Changelog
 
 ### 1.3.0
