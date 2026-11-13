@@ -15,7 +15,7 @@ This page will guide you through connecting The Things Indoor Gateway Pro to The
 1. [Gateway License](https://www.thethingsindustries.com/docs/hardware/gateways/models/thethingsindoorgatewaypro/gatewayadmin/#gateway-license)
 2. Billing account on [The Things Industries Account](https://accounts.thethingsindustries.com) to manage subscriptions
 3. User account on The Things Stack with rights to create gateways
-5. Optional: camera (webcam or phone) for scanning the QR code
+4. Optional: camera (webcam or phone) for scanning the QR code
 
 > **Note:**
 > The Things Indoor Gateway Pro only works with The Things Stack.
@@ -80,8 +80,10 @@ The Things Indoor Gateway Pro can be claimed in The Things Stack deployments tha
 2. Click **Register Gateway**.
 3. Click **Scan gateway QR code** and scan the QR code on the bottom of the gateway.
    Alternatively, enter the **Gateway EUI** and **Owner Token** manually:
-  - If your gateway is part of a **Gateway Fleet** (prepaid subscription), use the **Owner Token** from your **fleet details** in the **Subscription Dashboard**.
-  - If your gateway does **not** use a fleet (no prepaid subscription), use the **Owner Token** printed on the label under the mounting plate.
+
+- If your gateway is part of a **Gateway Fleet** (prepaid subscription), use the **Owner Token** from your **fleet details** in the **Subscription Dashboard**.
+- If your gateway does **not** use a fleet (no prepaid subscription), use the **Owner Token** printed on the label under the mounting plate.
+
 4. Enter a **Gateway ID** and select the **Frequency plan** to use.
 5. Click **Claim gateway**.
 6. Once claimed, your gateway connects automatically and your one-year License is activated.
@@ -164,6 +166,15 @@ The error occurs if the gateway does not have active subscription. For more info
 If the issue persists, please contact [support@thethingsindustries.com](mailto:support@thethingsindustries.com).
 
 ## Firmware Changelog
+
+### 1.3.2
+
+- Update to ESP-IDF v5.4.4.
+- Update dependencies.
+
+### 1.3.1
+
+- Fix memory corruption.
 
 ### 1.3.0
 
